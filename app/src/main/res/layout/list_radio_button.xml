@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dairy_exp_list_den_color"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginVertical="15dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="140dp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="@string/everyday"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/play"
+                    android:textSize="18sp" />
+                <TextView
+
+                    android:layout_width="140dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="@string/custom_day"
+                    android:fontFamily="@font/play"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:contentDescription="@string/everyDay"
+                    android:id="@+id/everyday"
+                    android:checked="true"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content" />
+
+
+                <RadioButton
+                    android:contentDescription="@string/selectDay"
+                    android:id="@+id/selectDay"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content" />
+
+
+            </RadioGroup>
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/checkboxList"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/play"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Monday" />
+
+                <CheckBox
+                    android:contentDescription="@string/monday"
+                    android:id="@+id/pn"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/play"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Tuesday" />
+
+                <CheckBox
+                    android:contentDescription="@string/tuesday"
+                    android:id="@+id/vt"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content" />
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/play"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Wednesday" />
+                <CheckBox
+                    android:contentDescription="@string/wednesday"
+                    android:id="@+id/sr"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content"
+                    />
+
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:fontFamily="@font/play"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Thursday" />
+
+
+                <CheckBox
+                    android:contentDescription="@string/thursday"
+                    android:id="@+id/cht"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content"
+                    />
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/play"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Friday" />
+
+
+                <CheckBox
+                    android:contentDescription="@string/friday"
+                    android:id="@+id/pt"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/play"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Satuday" />
+
+                <CheckBox
+                    android:contentDescription="@string/saturday"
+                    android:id="@+id/sb"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content"
+                    />
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/play"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Sunday" />
+
+                <CheckBox
+                    android:contentDescription="@string/sunday"
+                    android:id="@+id/nd"
+                    android:layout_width="wrap_content"
+                    android:buttonTint="@color/white"
+                    android:layout_height="wrap_content"
+                    />
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

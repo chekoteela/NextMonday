@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/calculator_auto_edittext"
+    tools:context=".ui.Calculator.Ration">
+
+
+
+    <LinearLayout
+        android:id="@+id/linerka"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/play"
+            android:text="Дата якась цифра"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <ExpandableListView
+            android:id="@+id/ration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_meal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/play"
+        android:textStyle="bold"
+        android:layout_above="@+id/bar"
+        android:background="@drawable/calculator_button"
+        android:layout_centerHorizontal="true"
+        android:text="add_meal" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/dairy_navigation_bottom_bar"
+        app:itemBackground="@drawable/dairy_navigation_bottom_bar"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:menu="@menu/calculator_bottom_navigation_bar" />
+
+</RelativeLayout>

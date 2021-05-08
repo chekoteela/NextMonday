@@ -1,0 +1,69 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_gradient"
+    tools:context="Fragments.FragmentDairyThree">
+
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/baseline_search_black_24"
+
+            />
+
+        <EditText
+            android:id="@+id/find"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/play"
+            android:hint="Поиск"
+            android:textColorHint="@color/black"
+            android:textColorLink="@color/black"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+
+    <ListView
+
+        android:id="@+id/listFind"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll" />
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:elevation="5dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/dairy_navigation_bottom_bar"
+        app:itemBackground="@drawable/dairy_navigation_bottom_bar"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:menu="@menu/toolbar_bottom" />
+</RelativeLayout>
