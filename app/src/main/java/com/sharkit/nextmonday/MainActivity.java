@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         AppEventsLogger.activateApp(this);
         createRequest();
 
-        Log.d(TAG, mAuth.getCurrentUser().getUid());
+        Log.d(TAG, mAuth.getCurrentUser().getUid()); 
         FirebaseUser firebaseUser = mAuth.getCurrentUser();
         if (firebaseUser != null) {
             Target.setModerator("1");
