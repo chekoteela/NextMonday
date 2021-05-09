@@ -6,11 +6,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.navigation.NavController;
@@ -27,7 +30,9 @@ import com.sharkit.nextmonday.MySQL.DataBasePFC;
 import com.sharkit.nextmonday.MySQL.LinkRation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.DayOfWeek;
+import com.sharkit.nextmonday.ui.Calculator.FindMyFood;
 import com.sharkit.nextmonday.variables.DataPFC;
+import com.sharkit.nextmonday.variables.LocalDataPFC;
 import com.sharkit.nextmonday.variables.MealData;
 import com.sharkit.nextmonday.variables.PFC_today;
 import com.sharkit.nextmonday.variables.UserMeal;
@@ -44,21 +49,17 @@ public class RationExpList extends BaseExpandableListAdapter {
     private ArrayList<String> mMeal;
     private Context mContext;
 
-    DataPFC dataPFC;
     final String TAG = "qwerty";
+    LinkRation linkRation;
+    SQLiteDatabase sdl;
 
     TextView calorie, weight, protein, carbohydrate, name_food, fat,
     all_calorie, all_protein, all_carbohydrate, all_fat, meal;
     ImageView plus;
+    LinearLayout lin_for_long_press;
 
-    LinkRation linkRation;
 
-    SQLiteDatabase sdb;
-    Cursor query;
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference colRef;
     ArrayList<UserMeal> list;
 
     public RationExpList(ArrayList<String> mMeal , ArrayList<ArrayList<UserMeal>> mGroups, Context mContext) {
@@ -271,8 +272,61 @@ public class RationExpList extends BaseExpandableListAdapter {
         calorie.setText((String.format("%.0f", Float.parseFloat( mGroups.get(groupPosition).get(childPosition).getCalorie()) /
                 Float.parseFloat(mGroups.get(groupPosition).get(childPosition).getPortion()) * mGroups.get(groupPosition).get(childPosition).getNumber())) + " калл");
 
+        lin_for_long_press.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+                menu.add("Изменить").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
+                        PFC_today.setPage("Update");
+                        WriteLocal(groupPosition, childPosition);
+                        navController.navigate(R.id.nav_cal_my_food);
+                        return true;
+                    }
+                });
+                menu.add("Удалить").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        return true;
+                    }
+                });
+            }
+        });
+
         return convertView;
     }
+
+    private void WriteLocal(int groupPosition, int childPosition) {
+        LocalDataPFC.setBar_code(mGroups.get(groupPosition).get(childPosition).getCode());
+        LocalDataPFC.setPortion(mGroups.get(groupPosition).get(childPosition).getPortion());
+        LocalDataPFC.setPotassium(mGroups.get(groupPosition).get(childPosition).getPotassium());
+        LocalDataPFC.setSalt(mGroups.get(groupPosition).get(childPosition).getSalt());
+        LocalDataPFC.setCalcium(mGroups.get(groupPosition).get(childPosition).getCalcium());
+        LocalDataPFC.setCellulose(mGroups.get(groupPosition).get(childPosition).getCellulose());
+        LocalDataPFC.setWatter(mGroups.get(groupPosition).get(childPosition).getWatter());
+        LocalDataPFC.setCasein_protein(mGroups.get(groupPosition).get(childPosition).getCasein_protein());
+        LocalDataPFC.setAgg_protein(mGroups.get(groupPosition).get(childPosition).getAgg_protein());
+        LocalDataPFC.setSoy_protein(mGroups.get(groupPosition).get(childPosition).getSoy_protein());
+        LocalDataPFC.setWhey_protein(mGroups.get(groupPosition).get(childPosition).getWhey_protein());
+        LocalDataPFC.setProtein(mGroups.get(groupPosition).get(childPosition).getProtein());
+        LocalDataPFC.setComplex_carbohydrate(mGroups.get(groupPosition).get(childPosition).getComplex_carbohydrate());
+        LocalDataPFC.setSimple_carbohydrates(mGroups.get(groupPosition).get(childPosition).getSimple_carbohydrates());
+        LocalDataPFC.setCarbohydrate(mGroups.get(groupPosition).get(childPosition).getCarbohydrate());
+        LocalDataPFC.setEpa(mGroups.get(groupPosition).get(childPosition).getEpa());
+        LocalDataPFC.setDha(mGroups.get(groupPosition).get(childPosition).getDha());
+        LocalDataPFC.setAla(mGroups.get(groupPosition).get(childPosition).getAla());
+        LocalDataPFC.setOmega_3(mGroups.get(groupPosition).get(childPosition).getOmega_3());
+        LocalDataPFC.setOmega_6(mGroups.get(groupPosition).get(childPosition).getOmega_6());
+        LocalDataPFC.setOmega_9(mGroups.get(groupPosition).get(childPosition).getOmega_9());
+        LocalDataPFC.setTrans_fat(mGroups.get(groupPosition).get(childPosition).getTrans_fat());
+        LocalDataPFC.setSaturated_fat(mGroups.get(groupPosition).get(childPosition).getSaturated_fat());
+        LocalDataPFC.setFat(mGroups.get(groupPosition).get(childPosition).getFat());
+        LocalDataPFC.setCalorie(mGroups.get(groupPosition).get(childPosition).getCalorie());
+        LocalDataPFC.setName(mGroups.get(groupPosition).get(childPosition).getName());
+    }
+
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
@@ -289,6 +343,7 @@ public class RationExpList extends BaseExpandableListAdapter {
         weight = convertView.findViewById(R.id.weight_food);
         plus = convertView.findViewById(R.id.plus);
 
+        lin_for_long_press = convertView.findViewById(R.id.liner_for_long_press);
         all_fat = convertView.findViewById(R.id.all_fat);
         all_protein = convertView.findViewById(R.id.all_protein);
         all_calorie = convertView.findViewById(R.id.all_calorie);

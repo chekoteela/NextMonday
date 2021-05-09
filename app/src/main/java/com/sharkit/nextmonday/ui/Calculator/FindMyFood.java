@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -42,11 +43,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
+import com.sharkit.nextmonday.MySQL.LinkRation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.variables.DataPFC;
 import com.sharkit.nextmonday.variables.LocalDataPFC;
 import com.sharkit.nextmonday.variables.MealData;
 import com.sharkit.nextmonday.variables.PFC_today;
+import com.sharkit.nextmonday.variables.UserMeal;
 
 
 import java.text.SimpleDateFormat;
@@ -75,6 +78,8 @@ public class FindMyFood extends Fragment {
     SwitchCompat weight;
 
     Spinner spinner;
+    LinkRation linkRation;
+    SQLiteDatabase sdl;
 
     EditText number;
     DataBasePFC dataBasePFC;
@@ -103,14 +108,18 @@ public class FindMyFood extends Fragment {
 
         ReturnNumber();
 
+
+
         if (PFC_today.getPage().equals("MainMenu.LocalSQLite")) {
             WriteListFromSQL(PFC_today.getBar_code());
         }
+        if (PFC_today.getPage().equals("Update")){
+            number.setText(String.valueOf(LocalDataPFC.getPortion()));
+            WeightProductGram(number.getText().toString());
+            ShowView();
+        }else {
             WriteList();
-
-
-
-
+        }
 
             if (PFC_today.getPage().equals("Plus")){
                 spinner.setVisibility(View.GONE);
@@ -135,12 +144,17 @@ public class FindMyFood extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
                 if (weight.isChecked()) {
+                    if (TextUtils.isEmpty(number.getText())){
+                        number.setText(String.valueOf(1));
+                    }
                     WeightProductPortion(String.valueOf(s));
                 }else{
                     WeightProductGram(String.valueOf(s));
                 }
             }
         });
+
+
 
         weight.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -170,6 +184,10 @@ public class FindMyFood extends Fragment {
                     Toast.makeText(getContext(),"error number", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (PFC_today.getPage().equals("Update")){
+                    FoodUpdate();
+                    return;
+                }
                 NewListFoodUsers();
             }
         });
@@ -181,29 +199,52 @@ public class FindMyFood extends Fragment {
 
         try {
 
-            potassium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getPotassium())));
-            salt.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSalt())));
-            calcium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalcium())));
-            cellulose.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCellulose())));
-            watter.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getWatter())));
-            casein_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCasein_protein())));
-            agg_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getAgg_protein())));
-            soy_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSoy_protein())));
-            whey_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getWhey_protein())));
-            protein.setText(String.format(Locale.ROOT, "%.2f", Float.parseFloat(LocalDataPFC.getProtein())));
-            complex_carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getComplex_carbohydrate())));
-            simple_carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSimple_carbohydrates())));
-            carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCarbohydrate())));
-            epa.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getEpa()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            dha.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getDha())));
-            ala.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getAla())));
-            omega3.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_3())));
-            omega6.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_6())));
-            omega9.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_9())));
-            trans_fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getTrans_fat())));
-            saturated_fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSaturated_fat())));
-            fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getFat())));
-            calorie.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalorie())));
+            potassium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getPotassium()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            salt.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSalt()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            calcium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalcium()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            cellulose.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCellulose()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            watter.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getWatter()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            casein_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCasein_protein()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            agg_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getAgg_protein()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            soy_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSoy_protein()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            whey_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getWhey_protein()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            protein.setText(String.format(Locale.ROOT, "%.2f", Float.parseFloat(LocalDataPFC.getProtein()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            complex_carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getComplex_carbohydrate()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            simple_carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSimple_carbohydrates()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCarbohydrate()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            epa.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getEpa()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            dha.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getDha()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            ala.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getAla()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            omega3.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_3()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            omega6.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_6()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            omega9.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_9()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            trans_fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getTrans_fat()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            saturated_fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSaturated_fat()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getFat()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            calorie.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalorie()) /
+                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
 
         }catch (NumberFormatException e){}
 
@@ -317,29 +358,29 @@ public class FindMyFood extends Fragment {
                 fdb.execSQL("INSERT INTO " + dataBasePFC.TABLE + " VALUES ('" + mAuth.getCurrentUser().getUid() + "','" +
                         name.getText().toString() + "','" +
                         LocalDataPFC.getPortion() + "','" +
-                        calorie.getText().toString() + "','" +
-                        protein.getText().toString() + "','" +
-                        whey_protein.getText().toString() + "','" +
-                        soy_protein.getText().toString() + "','" +
-                        casein_protein.getText().toString() + "','" +
-                        agg_protein.getText().toString() + "','" +
-                        carbohydrate.getText().toString() + "','" +
-                        complex_carbohydrate.getText().toString() + "','" +
-                        simple_carbohydrate.getText().toString() + "','" +
-                        fat.getText().toString() + "','" +
-                        saturated_fat.getText().toString() + "','" +
-                        trans_fat.getText().toString() + "','" +
-                        omega9.getText().toString() + "','" +
-                        omega6.getText().toString() + "','" +
-                        omega3.getText().toString() + "','" +
-                        ala.getText().toString() + "','" +
-                        dha.getText().toString() + "','" +
-                        epa.getText().toString() + "','" +
-                        cellulose.getText().toString() + "','" +
-                        salt.getText().toString() + "','" +
-                        watter.getText().toString() + "','" +
-                        calcium.getText().toString() + "','" +
-                        potassium.getText().toString() + "','" +
+                        LocalDataPFC.getCalorie() + "','" +
+                        LocalDataPFC.getProtein() + "','" +
+                        LocalDataPFC.getWhey_protein() + "','" +
+                        LocalDataPFC.getSoy_protein() + "','" +
+                        LocalDataPFC.getCasein_protein() + "','" +
+                        LocalDataPFC.getAgg_protein() + "','" +
+                        LocalDataPFC.getCarbohydrate() + "','" +
+                        LocalDataPFC.getComplex_carbohydrate() + "','" +
+                        LocalDataPFC.getSimple_carbohydrates() + "','" +
+                        LocalDataPFC.getFat() + "','" +
+                        LocalDataPFC.getSaturated_fat() + "','" +
+                        LocalDataPFC.getTrans_fat() + "','" +
+                        LocalDataPFC.getOmega_9() + "','" +
+                        LocalDataPFC.getOmega_6() + "','" +
+                        LocalDataPFC.getOmega_3() + "','" +
+                        LocalDataPFC.getAla() + "','" +
+                        LocalDataPFC.getDha() + "','" +
+                        LocalDataPFC.getEpa() + "','" +
+                        LocalDataPFC.getCellulose() + "','" +
+                        LocalDataPFC.getSalt() + "','" +
+                        LocalDataPFC.getWatter() + "','" +
+                        LocalDataPFC.getCalcium() + "','" +
+                        LocalDataPFC.getPotassium() + "','" +
                         PFC_today.getBar_code() + "');");
             } catch (SQLiteException e) {
                 Toast.makeText(getContext(), "error SQL", Toast.LENGTH_SHORT).show();
@@ -476,99 +517,98 @@ public class FindMyFood extends Fragment {
 
     private void ShowView() {
 
-        if (TextUtils.isEmpty(watter.getText()) || watter.getText().equals(String.valueOf(0))){
+        if (TextUtils.isEmpty(watter.getText()) || watter.getText().equals(String.valueOf(0)) ||
+                watter.getText().equals(String.format( Locale.ROOT,"%.2f",0.00))){
             watter.setVisibility(View.GONE);
-            watter_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(cellulose.getText()) || cellulose.getText().equals(String.valueOf(0))){
+            watter_text.setVisibility(View.GONE); }
+        if (TextUtils.isEmpty(cellulose.getText()) || cellulose.getText().equals(String.valueOf(0)) ||
+                cellulose.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             cellulose.setVisibility(View.GONE);
-            cellulose_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(potassium.getText()) || potassium.getText().equals(String.valueOf(0))){
+            cellulose_text.setVisibility(View.GONE); }
+        if (TextUtils.isEmpty(potassium.getText()) || potassium.getText().equals(String.valueOf(0)) ||
+                potassium.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             potassium.setVisibility(View.GONE);
-            potassium_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(salt.getText()) || salt.getText().equals(String.valueOf(0))){
+            potassium_text.setVisibility(View.GONE); }
+        if (TextUtils.isEmpty(salt.getText()) || salt.getText().equals(String.valueOf(0)) ||
+                salt.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             salt.setVisibility(View.GONE);
-            salt_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(calcium.getText()) || calcium.getText().equals(String.valueOf(0))){
+            salt_text.setVisibility(View.GONE);  }
+        if (TextUtils.isEmpty(calcium.getText()) || calcium.getText().equals(String.valueOf(0)) ||
+                calcium.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             calcium.setVisibility(View.GONE);
-            calcium_text.setVisibility(View.GONE);
-        }
-
-        if (TextUtils.isEmpty(casein_protein.getText()) || casein_protein.getText().equals(String.valueOf(0))){
+            calcium_text.setVisibility(View.GONE);    }
+        if (TextUtils.isEmpty(casein_protein.getText()) || casein_protein.getText().equals(String.valueOf(0)) ||
+                casein_protein.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             casein_protein.setVisibility(View.GONE);
-            casein_protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(agg_protein.getText()) || agg_protein.getText().equals(String.valueOf(0))){
+            casein_protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(agg_protein.getText()) || agg_protein.getText().equals(String.valueOf(0)) ||
+                agg_protein.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             agg_protein.setVisibility(View.GONE);
-            agg_protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(soy_protein.getText()) || soy_protein.getText().equals(String.valueOf(0))){
+            agg_protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(soy_protein.getText()) || soy_protein.getText().equals(String.valueOf(0)) ||
+                soy_protein.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             soy_protein.setVisibility(View.GONE);
-            soy_protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(whey_protein.getText()) || whey_protein.getText().equals(String.valueOf(0))){
+            soy_protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(whey_protein.getText()) || whey_protein.getText().equals(String.valueOf(0)) ||
+                whey_protein.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             whey_protein.setVisibility(View.GONE);
-            whey_protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(protein.getText()) || protein.getText().equals(String.valueOf(0))){
+            whey_protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(protein.getText()) || protein.getText().equals(String.valueOf(0)) ||
+                protein.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             protein.setVisibility(View.GONE);
-            protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(complex_carbohydrate.getText()) || complex_carbohydrate.getText().equals(String.valueOf(0))){
+            protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(complex_carbohydrate.getText()) || complex_carbohydrate.getText().equals(String.valueOf(0))
+                || complex_carbohydrate.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             complex_carbohydrate.setVisibility(View.GONE);
-            complex_carbohydrate_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(simple_carbohydrate.getText()) || simple_carbohydrate.getText().equals(String.valueOf(0))){
+            complex_carbohydrate_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(simple_carbohydrate.getText()) || simple_carbohydrate.getText().equals(String.valueOf(0))
+                || simple_carbohydrate.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             simple_carbohydrate.setVisibility(View.GONE);
-            simple_carbohydrate_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(carbohydrate.getText()) || carbohydrate.getText().equals(String.valueOf(0))){
+            simple_carbohydrate_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(carbohydrate.getText()) || carbohydrate.getText().equals(String.valueOf(0)) ||
+                carbohydrate.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             carbohydrate.setVisibility(View.GONE);
-            carbohydrate_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(epa.getText()) || epa.getText().equals(String.valueOf(0))){
+            carbohydrate_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(epa.getText()) || epa.getText().equals(String.valueOf(0)) ||
+                epa.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             epa.setVisibility(View.GONE);
-            epa_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(dha.getText()) || dha.getText().equals(String.valueOf(0))){
+            epa_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(dha.getText()) || dha.getText().equals(String.valueOf(0)) ||
+                dha.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             dha_text.setVisibility(View.GONE);
-            dha.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(ala.getText()) || ala.getText().equals(String.valueOf(0))){
+            dha.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(ala.getText()) || ala.getText().equals(String.valueOf(0)) ||
+                ala.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             ala.setVisibility(View.GONE);
-            ala_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(omega3.getText()) || omega3.getText().equals(String.valueOf(0))){
+            ala_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(omega3.getText()) || omega3.getText().equals(String.valueOf(0)) ||
+                omega3.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             omega3.setVisibility(View.GONE);
-            omega3_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(omega6.getText()) || omega6.getText().equals(String.valueOf(0))){
+            omega3_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(omega6.getText()) || omega6.getText().equals(String.valueOf(0)) ||
+                omega6.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             omega6.setVisibility(View.GONE);
-            omega6_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(omega9.getText()) || omega9.getText().equals(String.valueOf(0))){
+            omega6_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(omega9.getText()) || omega9.getText().equals(String.valueOf(0)) ||
+                omega9.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             omega9.setVisibility(View.GONE);
-            omega9_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(saturated_fat.getText()) || saturated_fat.getText().equals(String.valueOf(0))){
+            omega9_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(saturated_fat.getText()) || saturated_fat.getText().equals(String.valueOf(0)) ||
+                saturated_fat.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             saturated_fat.setVisibility(View.GONE);
-            saturated_fat_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(trans_fat.getText()) || trans_fat.getText().equals(String.valueOf(0))){
+            saturated_fat_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(trans_fat.getText()) || trans_fat.getText().equals(String.valueOf(0)) ||
+                trans_fat.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             trans_fat.setVisibility(View.GONE);
-            trans_fat_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(fat.getText()) || fat.getText().equals(String.valueOf(0))){
+            trans_fat_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(fat.getText()) || fat.getText().equals(String.valueOf(0)) ||
+                fat.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             fat.setVisibility(View.GONE);
-            fat_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(calorie.getText()) || calorie.getText().equals(String.valueOf(0))){
+            fat_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(calorie.getText()) || calorie.getText().equals(String.valueOf(0)) ||
+                calorie.getText().equals(String.valueOf(String.format( Locale.ROOT,"%.2f",0.00)))){
             calorie.setVisibility(View.GONE);
-            calorie_text.setVisibility(View.GONE);
-        }
+            calorie_text.setVisibility(View.GONE);        }
     }
 
     private void FindView(View root) {
@@ -602,7 +642,7 @@ public class FindMyFood extends Fragment {
         fat = root.findViewById(R.id.fat);
         calorie = root.findViewById(R.id.calorie);
         name = root.findViewById(R.id.name);
-        portion = root.findViewById(R.id.portion);
+
 
         potassium_text = root.findViewById(R.id.potassium_text);
         salt_text = root.findViewById(R.id.salt_text);
@@ -632,4 +672,49 @@ public class FindMyFood extends Fragment {
 
     }
 
+    public void FoodUpdate() {
+
+        WriteListNutrition();
+
+
+
+
+        linkRation = new LinkRation(getApplicationContext());
+        sdl = linkRation.getReadableDatabase();
+        linkRation.onCreate(sdl);
+
+        sdl.execSQL("UPDATE " + linkRation.TABLE + " SET " +
+                linkRation.COLUMN_NAME + " = '" + name.getText().toString() + "'," +
+                linkRation.COLUMN_PORTION + " = '" + number.getText().toString() + "'," +
+                linkRation.COLUMN_CALORIE + " = '" + calorie.getText().toString() + "'," +
+                linkRation.COLUMN_PROTEIN + " = '" + protein.getText().toString() + "'," +
+                linkRation.COLUMN_WHEY_PROTEIN + " = '" + whey_protein.getText().toString() + "'," +
+                linkRation.COLUMN_SOY_PROTEIN + " = '" + soy_protein.getText().toString() + "'," +
+                linkRation.COLUMN_CASEIN_PROTEIN + " = '" + casein_protein.getText().toString() + "'," +
+                linkRation.COLUMN_AGG_PROTEIN + " = '" + agg_protein.getText().toString() + "'," +
+                linkRation.COLUMN_CARBOHYDRATE + " = '" + carbohydrate.getText().toString() + "'," +
+                linkRation.COLUMN_COMPLEX_C + " = '" + complex_carbohydrate.getText().toString() + "'," +
+                linkRation.COLUMN_SIMPLE_C + " = '" + simple_carbohydrate.getText().toString() + "'," +
+                linkRation.COLUMN_FAT + " = '" + fat.getText().toString() + "'," +
+                linkRation.COLUMN_SATURATED_FAT + " = '" + saturated_fat.getText().toString() + "'," +
+                linkRation.COLUMN_TRANS_FAT + " = '" + trans_fat.getText().toString() + "'," +
+                linkRation.COLUMN_OMEGA_9 + " = '" + omega9.getText().toString() + "'," +
+                linkRation.COLUMN_OMEGA_6 + " = '" + omega6.getText().toString() + "'," +
+                linkRation.COLUMN_OMEGA_3 + " = '" + omega3.getText().toString() + "'," +
+                linkRation.COLUMN_ALA + " = '" + ala.getText().toString() + "'," +
+                linkRation.COLUMN_DHA + " = '" + dha.getText().toString() + "'," +
+                linkRation.COLUMN_EPA + " = '" + epa.getText().toString() + "'," +
+                linkRation.COLUMN_CELLULOSE + " = '" + cellulose.getText().toString() + "'," +
+                linkRation.COLUMN_SALT + " = '" + salt.getText().toString() + "'," +
+                linkRation.COLUMN_WATTER + " = '" + watter.getText().toString() + "'," +
+                linkRation.COLUMN_CALCIUM + " = '" + calcium.getText().toString() + "'," +
+                linkRation.COLUMN_MEAL + " = '" + spinner.getSelectedItem() + "'," +
+                linkRation.COLUMN_POTASSIUM + " = '" + potassium.getText().toString() + "' WHERE " +
+                linkRation.COLUMN_CODE + " = '" + LocalDataPFC.getBar_code() + "' AND " +
+                linkRation.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'");
+
+        //додати оновлення порції в firebase та добавити критерії оновлення запису на точний час
+
+
+    }
 }
