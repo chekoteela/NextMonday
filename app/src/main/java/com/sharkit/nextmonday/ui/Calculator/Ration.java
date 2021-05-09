@@ -80,7 +80,7 @@ public class Ration extends Fragment {
     ArrayList<String> count;
     ArrayList<ArrayList<UserMeal>> group;
     ArrayList<UserMeal> child;
-    CollectionReference colRef, docRef;
+    CollectionReference colRef, docRef, docRef1;
 
     DataBasePFC dataBasePFC;
     LinkRation linkRation;
@@ -354,12 +354,63 @@ public class Ration extends Fragment {
         sdl = linkRation.getReadableDatabase();
         sdd = dataBasePFC.getReadableDatabase();
         docRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/Meal");
+        docRef1 = db.collection("DB Product/");
         docRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 for (QueryDocumentSnapshot queryDocumentSnapshot : queryDocumentSnapshots) {
                     MealData mealData = queryDocumentSnapshot.toObject(MealData.class);
 
+                    docRef1.whereEqualTo("id", mAuth.getCurrentUser().getUid())
+                            .whereEqualTo("bar_code", mealData.getCode())
+                            .get()
+                            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            for (QueryDocumentSnapshot queryDocumentSnapshot1 : queryDocumentSnapshots) {
+                                DataPFC dataPFC = queryDocumentSnapshot1.toObject(DataPFC.class);
+
+                                try {
+
+                                    sdl.execSQL("INSERT INTO " + linkRation.TABLE + " VALUES ('" +
+                                            mAuth.getCurrentUser().getUid() + "','" +
+                                            mealData.getDate() + "','" +
+                                            mealData.getCode() + "','" +
+                                            mealData.getMeal() + "','" +
+                                            mealData.getNumber() + "','" +
+                                            dataPFC.getName() + "','" +
+                                            dataPFC.getPortion() + "','" +
+                                            dataPFC.getCalorie() + "','" +
+                                            dataPFC.getProtein() + "','" +
+                                            dataPFC.getWhey_protein() + "','" +
+                                            dataPFC.getSoy_protein() + "','" +
+                                            dataPFC.getCasein_protein() + "','" +
+                                            dataPFC.getAgg_protein() + "','" +
+                                            dataPFC.getCarbohydrate() + "','" +
+                                            dataPFC.getComplex_carbohydrate() + "','" +
+                                            dataPFC.getSimple_carbohydrates() + "','" +
+                                            dataPFC.getFat() + "','" +
+                                            dataPFC.getSaturated_fat() + "','" +
+                                            dataPFC.getTrans_fat() + "','" +
+                                            dataPFC.getOmega_9() + "','" +
+                                            dataPFC.getOmega_6() + "','" +
+                                            dataPFC.getOmega_3() + "','" +
+                                            dataPFC.getAla() + "','" +
+                                            dataPFC.getDha() + "','" +
+                                            dataPFC.getEpa() + "','" +
+                                            dataPFC.getCellulose() + "','" +
+                                            dataPFC.getSalt() + "','" +
+                                            dataPFC.getWatter() + "','" +
+                                            dataPFC.getCalcium() + "','" +
+                                            dataPFC.getPotassium() + "','" +
+                                            mealData.getDate_millis() + "');");
+
+                                } catch (SQLiteConstraintException e) {
+                                }
+                            }
+                        }
+
+                    });
 
 
 //                        query = sdd.rawQuery("SELECT * FROM " + dataBasePFC.TABLE + " WHERE " + dataBasePFC.COLUMN_ID + " = '" +
@@ -369,40 +420,7 @@ public class Ration extends Fragment {
 //
 //                            try {
 //
-//                                sdl.execSQL("INSERT INTO " + linkRation.TABLE + " VALUES ('" +
-//                                        mAuth.getCurrentUser().getUid() + "','" +
-//                                        mealData.getDate() + "','" +
-//                                        mealData.getCode() + "','" +
-//                                        mealData.getMeal() + "','" +
-//                                        mealData.getNumber() + "','" +
-//                                        query.getString(1) + "','" +
-//                                        query.getString(2) + "','" +
-//                                        query.getString(3) + "','" +
-//                                        query.getString(4) + "','" +
-//                                        query.getString(5) + "','" +
-//                                        query.getString(6) + "','" +
-//                                        query.getString(7) + "','" +
-//                                        query.getString(8) + "','" +
-//                                        query.getString(9) + "','" +
-//                                        query.getString(10) + "','" +
-//                                        query.getString(11) + "','" +
-//                                        query.getString(12) + "','" +
-//                                        query.getString(13) + "','" +
-//                                        query.getString(14) + "','" +
-//                                        query.getString(15) + "','" +
-//                                        query.getString(16) + "','" +
-//                                        query.getString(17) + "','" +
-//                                        query.getString(18) + "','" +
-//                                        query.getString(19) + "','" +
-//                                        query.getString(20) + "','" +
-//                                        query.getString(21) + "','" +
-//                                        query.getString(22) + "','" +
-//                                        query.getString(23) + "','" +
-//                                        query.getString(24) + "','" +
-//                                        query.getString(25) + "','" +
-//                                        mealData.getDate_millis() + "');");
-//
-//                            }catch (SQLiteConstraintException e){}
+
 //
 //                        }
 

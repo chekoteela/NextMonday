@@ -181,29 +181,29 @@ public class FindMyFood extends Fragment {
 
         try {
 
-            potassium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getPotassium()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            salt.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSalt()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            calcium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalcium()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            cellulose.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCellulose()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            watter.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getWatter()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            casein_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCasein_protein()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            agg_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getAgg_protein()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            soy_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSoy_protein()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            whey_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getWhey_protein()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            protein.setText(String.format(Locale.ROOT, "%.2f", Float.parseFloat(LocalDataPFC.getProtein()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            complex_carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getComplex_carbohydrate()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            simple_carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSimple_carbohydrates()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCarbohydrate()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            potassium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getPotassium())));
+            salt.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSalt())));
+            calcium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalcium())));
+            cellulose.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCellulose())));
+            watter.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getWatter())));
+            casein_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCasein_protein())));
+            agg_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getAgg_protein())));
+            soy_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSoy_protein())));
+            whey_protein.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getWhey_protein())));
+            protein.setText(String.format(Locale.ROOT, "%.2f", Float.parseFloat(LocalDataPFC.getProtein())));
+            complex_carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getComplex_carbohydrate())));
+            simple_carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSimple_carbohydrates())));
+            carbohydrate.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCarbohydrate())));
             epa.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getEpa()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            dha.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getDha()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            ala.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getAla()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            omega3.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_3()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            omega6.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_6()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            omega9.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_9()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            trans_fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getTrans_fat()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            saturated_fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSaturated_fat()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getFat()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
-            calorie.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalorie()) / Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+            dha.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getDha())));
+            ala.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getAla())));
+            omega3.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_3())));
+            omega6.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_6())));
+            omega9.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getOmega_9())));
+            trans_fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getTrans_fat())));
+            saturated_fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSaturated_fat())));
+            fat.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getFat())));
+            calorie.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalorie())));
 
         }catch (NumberFormatException e){}
 
