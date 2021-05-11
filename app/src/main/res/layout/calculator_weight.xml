@@ -60,12 +60,15 @@
     </LinearLayout>
 
     </LinearLayout>
+
     <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
         android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="250dp"/>
 
     <ListView
+        android:id="@+id/list_item"
         android:layout_marginVertical="10dp"
         android:layout_width="wrap_content"
         android:layout_height="200dp"/>

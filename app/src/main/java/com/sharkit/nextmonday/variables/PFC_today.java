@@ -3,9 +3,25 @@ package com.sharkit.nextmonday.variables;
 public class PFC_today {
     private static float protein, fat, carbohydrate, calorie, watter,
     protein_eat, fat_eat, carbohydrate_eat, calorie_eat , watter_drink;
-    private static String bar_code;
+    private static String bar_code, weight, current_weight;
     private static String page ;
 
+
+    public static String getWeight() {
+        return weight;
+    }
+
+    public static void setWeight(String weight) {
+        PFC_today.weight = weight;
+    }
+
+    public static String getCurrent_weight() {
+        return current_weight;
+    }
+
+    public static void setCurrent_weight(String current_weight) {
+        PFC_today.current_weight = current_weight;
+    }
 
     public static String getPage() {
         return page;

@@ -244,7 +244,6 @@ public class Find_food_by_name extends Fragment {
                     list_item.setAdapter(adaptor);
                 }
             });
-
     }
 
 

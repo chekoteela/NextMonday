@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@color/food_item_list"
     android:layout_height="match_parent">
 
     <TextView
@@ -15,37 +14,14 @@
         android:text="Ведите ваш вес" />
 
     <EditText
+        android:id="@+id/weight"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:inputType="number"
         android:layout_height="40dp"
         android:background="@drawable/edit_text" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2">
 
-        <Button
-            style="@style/StandartTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/button_login"
-            android:text="Сохранить" />
-
-        <Button
-            style="@style/StandartTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/calculator_button"
-            android:text="Отмена" />
-
-    </LinearLayout>
 
 
 </LinearLayout>

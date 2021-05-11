@@ -649,6 +649,8 @@
             android:src="@drawable/water" />
 
         <ImageView
+            android:clickable="true"
+            android:id="@+id/weight"
             android:layout_width="56dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

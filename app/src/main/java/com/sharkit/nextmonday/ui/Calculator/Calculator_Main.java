@@ -1,7 +1,10 @@
 package com.sharkit.nextmonday.ui.Calculator;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,15 +37,17 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
 import com.progress.progressview.ProgressView;
 import com.sharkit.nextmonday.MySQL.LinkRation;
+import com.sharkit.nextmonday.MySQL.MyWeight;
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.variables.LocalDataPFC;
 import com.sharkit.nextmonday.variables.MealData;
 import com.sharkit.nextmonday.variables.PFC_today;
 import com.sharkit.nextmonday.variables.SettingsCalculator;
 import com.sharkit.nextmonday.variables.UserMeal;
+import com.sharkit.nextmonday.variables.WeightV;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -62,6 +68,7 @@ public class Calculator_Main extends Fragment {
     DatabaseReference users;
     LinkRation linkRation;
     SQLiteDatabase sdb;
+    MyWeight myWeight;
 
     Cursor query;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -82,9 +89,23 @@ public class Calculator_Main extends Fragment {
         SumMealNutrition();
         SynchronizedPFC();
 
-
-
-
+        add_weight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
+                LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
+                EditText weight = existProduct.findViewById(R.id.weight);
+                dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                            WriteDataWeight(weight.getText().toString());
+                    }
+                });
+                dialog.setView(existProduct);
+                dialog.show();
+            }
+        });
 
         add_food.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +122,42 @@ public class Calculator_Main extends Fragment {
         });
 
         return root;
+    }
+
+    private void WriteDataWeight(String s) {
+        myWeight = new MyWeight(getApplicationContext());
+        sdb = myWeight.getReadableDatabase();
+        myWeight.onCreate(sdb);
+
+        Calendar calendar = Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+        query = sdb.rawQuery("SELECT * FROM " + myWeight.TABLE + " WHERE " + myWeight.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'", null);
+
+        query.moveToLast();
+
+        WeightV weight = new WeightV();
+        weight.setDate(dateFormat.format(calendar.getTimeInMillis()));
+        weight.setWeight(s);
+
+        try {
+            weight.setChange(String.format( Locale.ROOT,"%.1f",(Float.parseFloat(s) - Float.parseFloat(query.getString(2)))));
+        }catch (CursorIndexOutOfBoundsException e){
+            weight.setChange(String.valueOf(0));
+        }
+
+
+
+        try {
+            sdb.execSQL("INSERT INTO " + myWeight.TABLE + " VALUES ('" + mAuth.getCurrentUser().getUid() + "','" +
+                    dateFormat.format(calendar.getTimeInMillis()) + "','" +
+                    s + "','" + weight.getChange() + "');");
+
+            CollectionReference colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MyWeight");
+            colRef.document(dateFormat.format(calendar.getTimeInMillis())).set(weight);
+
+        }catch (SQLiteConstraintException e){}
+
     }
 
     @SuppressLint("DefaultLocale")
@@ -201,6 +258,7 @@ public class Calculator_Main extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 SettingsCalculator settingsCalculator = snapshot.getValue(SettingsCalculator.class);
                 try {
+                    PFC_today.setWeight(String.valueOf(settingsCalculator.getWeight()));
                     PFC_today.setWatter(settingsCalculator.getWatter());
                     PFC_today.setProtein(settingsCalculator.getProtein());
                     PFC_today.setFat(settingsCalculator.getFat());
@@ -271,6 +329,7 @@ public class Calculator_Main extends Fragment {
     private void FindViewByID(View root) {
         tap_bar = root.findViewById(R.id.tapBarMenu);
         add_food = root.findViewById(R.id.add);
+        add_weight = root.findViewById(R.id.weight);
 
         eat_c = root.findViewById(R.id.eat_c);
         eat_calorie = root.findViewById(R.id.eat_calorie);
@@ -301,4 +360,10 @@ public class Calculator_Main extends Fragment {
         percent_watter = root.findViewById(R.id.percent_watter);
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        query.close();
+        sdb.close();
+    }
 }
