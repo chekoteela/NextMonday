@@ -33,33 +33,6 @@ public class Weight extends Fragment {
         View root = inflater.inflate(R.layout.calculator_weight, container, false);
 
 
-
-
-        TextView t1 = root.findViewById(R.id.text);
-
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                collectionReference.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                        String data = "";
-//                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
-//                            DataPFC dataPFC = documentSnapshot.toObject(DataPFC.class);
-//                            String name = dataPFC.getName();
-//                            String code = dataPFC.getBar_code();
-//                            String id = dataPFC.getID();
-//                            String portion = dataPFC.getPortion();
-//
-//                            data += "Name: " + name +"\nCode: " + code + "\nid: " + id + "\nportion: " + portion+"\n\n";
-//
-//                        }
-//                        Log.d(TAG, data);
-//                    }
-//                });
-//            }
-//        });
-
         return root;
     }
 }

@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -23,7 +24,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
@@ -288,7 +291,7 @@ public class RationExpList extends BaseExpandableListAdapter {
                 menu.add("Удалить").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-
+                        DeleteData(groupPosition, childPosition);
                         return true;
                     }
                 });
@@ -298,9 +301,23 @@ public class RationExpList extends BaseExpandableListAdapter {
         return convertView;
     }
 
+    private void DeleteData(int groupPosition, int childPosition) {
+        linkRation = new LinkRation(getApplicationContext());
+        sdl = linkRation.getReadableDatabase();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        CollectionReference colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/Meal");
+        colRef.document(String.valueOf(mGroups.get(groupPosition).get(childPosition).getDate_millis())).delete();
+        sdl.execSQL("DELETE FROM " + linkRation.TABLE + " WHERE " + linkRation.COLUMN_DATE_MILLIS + " = '" + mGroups.get(groupPosition).get(childPosition).getDate_millis() + "'");
+
+        NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
+        navController.navigate(R.id.nav_cal_ration);
+    }
+
     private void WriteLocal(int groupPosition, int childPosition) {
         LocalDataPFC.setBar_code(mGroups.get(groupPosition).get(childPosition).getCode());
         LocalDataPFC.setPortion(mGroups.get(groupPosition).get(childPosition).getPortion());
+        LocalDataPFC.setNumber(mGroups.get(groupPosition).get(childPosition).getNumber());
         LocalDataPFC.setPotassium(mGroups.get(groupPosition).get(childPosition).getPotassium());
         LocalDataPFC.setSalt(mGroups.get(groupPosition).get(childPosition).getSalt());
         LocalDataPFC.setCalcium(mGroups.get(groupPosition).get(childPosition).getCalcium());
@@ -325,6 +342,7 @@ public class RationExpList extends BaseExpandableListAdapter {
         LocalDataPFC.setFat(mGroups.get(groupPosition).get(childPosition).getFat());
         LocalDataPFC.setCalorie(mGroups.get(groupPosition).get(childPosition).getCalorie());
         LocalDataPFC.setName(mGroups.get(groupPosition).get(childPosition).getName());
+        LocalDataPFC.setDate_millis(mGroups.get(groupPosition).get(childPosition).getDate_millis());
     }
 
 

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -39,7 +40,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
@@ -91,6 +94,7 @@ public class FindMyFood extends Fragment {
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference docRef = db.collection("DB Product");
+
     FirebaseDatabase fb_db = FirebaseDatabase.getInstance();
     DatabaseReference users = fb_db.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/Meal");
 
@@ -114,7 +118,8 @@ public class FindMyFood extends Fragment {
             WriteListFromSQL(PFC_today.getBar_code());
         }
         if (PFC_today.getPage().equals("Update")){
-            number.setText(String.valueOf(LocalDataPFC.getPortion()));
+            name.setText(LocalDataPFC.getName());
+            number.setText(String.valueOf(LocalDataPFC.getNumber()));
             WeightProductGram(number.getText().toString());
             ShowView();
         }else {
@@ -200,7 +205,7 @@ public class FindMyFood extends Fragment {
         try {
 
             potassium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getPotassium()) /
-                    Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
+                    Float.parseFloat(LocalDataPFC.getPortion().trim()) * Float.parseFloat(a)));
             salt.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getSalt()) /
                     Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(a)));
             calcium.setText(String.format(Locale.ROOT,"%.2f", Float.parseFloat(LocalDataPFC.getCalcium()) /
@@ -349,6 +354,7 @@ public class FindMyFood extends Fragment {
             }
         });
     }
+
     private void SynchronizedToSQL() {
         fdb = dataBasePFC.getReadableDatabase();
         mAuth = FirebaseAuth.getInstance();
@@ -428,6 +434,16 @@ public class FindMyFood extends Fragment {
 
         ShowView();
     }
+   public void WriteListFromFirebase(String code){
+        docRef.whereEqualTo("bar_code", code).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable @org.jetbrains.annotations.Nullable QuerySnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
+                for (QueryDocumentSnapshot queryDocumentSnapshot : value){
+                    DataPFC dataPFC = queryDocumentSnapshot.toObject(DataPFC.class);
+                }
+            }
+        });
+   }
 
     private void WriteListFromSQL(String code) {
         fdb = dataBasePFC.getReadableDatabase();
@@ -458,8 +474,9 @@ public class FindMyFood extends Fragment {
             LocalDataPFC.setTrans_fat(query.getString(14));
             LocalDataPFC.setSaturated_fat(query.getString(13));
             LocalDataPFC.setFat(query.getString(12));
-            LocalDataPFC.setCalorie(query.getString(2));
+            LocalDataPFC.setCalorie(query.getString(3));
             LocalDataPFC.setName(query.getString(1));
+            LocalDataPFC.setPortion(query.getString(2));
         }
         WriteListNutrition();
 
@@ -499,6 +516,7 @@ public class FindMyFood extends Fragment {
                     LocalDataPFC.setFat(dataPFC.getFat());
                     LocalDataPFC.setCalorie(dataPFC.getCalorie());
                     LocalDataPFC.setName(dataPFC.getName());
+                    LocalDataPFC.setPortion(dataPFC.getPortion());
 
 
                 }
@@ -676,44 +694,37 @@ public class FindMyFood extends Fragment {
 
         WriteListNutrition();
 
-
-
-
         linkRation = new LinkRation(getApplicationContext());
         sdl = linkRation.getReadableDatabase();
         linkRation.onCreate(sdl);
 
+        CollectionReference docRef1 = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/Meal");
+
+        MealData mealData = new MealData();
+
+        mealData.setMeal(spinner.getSelectedItem().toString());
+        if (weight.isChecked()) {
+            mealData.setNumber(Float.parseFloat(LocalDataPFC.getPortion()) * Float.parseFloat(number.getText().toString()));
+        }else{
+            mealData.setNumber(Integer.parseInt(number.getText().toString()));
+        }
+
         sdl.execSQL("UPDATE " + linkRation.TABLE + " SET " +
                 linkRation.COLUMN_NAME + " = '" + name.getText().toString() + "'," +
-                linkRation.COLUMN_PORTION + " = '" + number.getText().toString() + "'," +
-                linkRation.COLUMN_CALORIE + " = '" + calorie.getText().toString() + "'," +
-                linkRation.COLUMN_PROTEIN + " = '" + protein.getText().toString() + "'," +
-                linkRation.COLUMN_WHEY_PROTEIN + " = '" + whey_protein.getText().toString() + "'," +
-                linkRation.COLUMN_SOY_PROTEIN + " = '" + soy_protein.getText().toString() + "'," +
-                linkRation.COLUMN_CASEIN_PROTEIN + " = '" + casein_protein.getText().toString() + "'," +
-                linkRation.COLUMN_AGG_PROTEIN + " = '" + agg_protein.getText().toString() + "'," +
-                linkRation.COLUMN_CARBOHYDRATE + " = '" + carbohydrate.getText().toString() + "'," +
-                linkRation.COLUMN_COMPLEX_C + " = '" + complex_carbohydrate.getText().toString() + "'," +
-                linkRation.COLUMN_SIMPLE_C + " = '" + simple_carbohydrate.getText().toString() + "'," +
-                linkRation.COLUMN_FAT + " = '" + fat.getText().toString() + "'," +
-                linkRation.COLUMN_SATURATED_FAT + " = '" + saturated_fat.getText().toString() + "'," +
-                linkRation.COLUMN_TRANS_FAT + " = '" + trans_fat.getText().toString() + "'," +
-                linkRation.COLUMN_OMEGA_9 + " = '" + omega9.getText().toString() + "'," +
-                linkRation.COLUMN_OMEGA_6 + " = '" + omega6.getText().toString() + "'," +
-                linkRation.COLUMN_OMEGA_3 + " = '" + omega3.getText().toString() + "'," +
-                linkRation.COLUMN_ALA + " = '" + ala.getText().toString() + "'," +
-                linkRation.COLUMN_DHA + " = '" + dha.getText().toString() + "'," +
-                linkRation.COLUMN_EPA + " = '" + epa.getText().toString() + "'," +
-                linkRation.COLUMN_CELLULOSE + " = '" + cellulose.getText().toString() + "'," +
-                linkRation.COLUMN_SALT + " = '" + salt.getText().toString() + "'," +
-                linkRation.COLUMN_WATTER + " = '" + watter.getText().toString() + "'," +
-                linkRation.COLUMN_CALCIUM + " = '" + calcium.getText().toString() + "'," +
-                linkRation.COLUMN_MEAL + " = '" + spinner.getSelectedItem() + "'," +
-                linkRation.COLUMN_POTASSIUM + " = '" + potassium.getText().toString() + "' WHERE " +
-                linkRation.COLUMN_CODE + " = '" + LocalDataPFC.getBar_code() + "' AND " +
-                linkRation.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'");
+                linkRation.COLUMN_NUMBER + " = '" + number.getText().toString() + "'," +
+                linkRation.COLUMN_MEAL + " = '" + spinner.getSelectedItem() + "' WHERE " +
+                linkRation.COLUMN_DATE_MILLIS + " = '" + LocalDataPFC.getDate_millis() + "'");
 
-        //додати оновлення порції в firebase та добавити критерії оновлення запису на точний час
+        docRef1.document(String.valueOf(LocalDataPFC.getDate_millis())).update("number",mealData.getNumber());
+        docRef1.document(String.valueOf(LocalDataPFC.getDate_millis())).update("meal",spinner.getSelectedItem()).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.nav_cal_ration);
+            }
+        });
+
 
 
     }

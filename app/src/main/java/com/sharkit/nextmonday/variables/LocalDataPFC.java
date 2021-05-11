@@ -5,6 +5,24 @@ public class LocalDataPFC {
             fat, saturated_fat, trans_fat, omega_6, omega_3, omega_9, ala, dha, epa,
             carbohydrate, simple_carbohydrates, complex_carbohydrate,
             cellulose, watter, salt, calcium, potassium, calorie, meal;
+    private static long date_millis;
+    private static float number;
+
+    public static float getNumber() {
+        return number;
+    }
+
+    public static void setNumber(float number) {
+        LocalDataPFC.number = number;
+    }
+
+    public static long getDate_millis() {
+        return date_millis;
+    }
+
+    public static void setDate_millis(long date_millis) {
+        LocalDataPFC.date_millis = date_millis;
+    }
 
     public static String getMeal() {
         return meal;
