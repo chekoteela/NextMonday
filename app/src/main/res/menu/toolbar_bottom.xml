@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/to_do_list"
+        android:icon="@drawable/icon_todo_list"
+        android:onClick="OnClickTarget"
+        android:title="@string/to_do_list">
+
+    </item>
+
+    <item
+        android:contentDescription="@string/calendar2"
+        android:id="@+id/calendar"
+        android:icon="@drawable/icon_calendar"
+        android:onClick="OnClickCalendar"
+        android:title="@string/calendar"/>
+
+    <item
+        android:contentDescription="@string/find"
+        android:id="@+id/action_search"
+        android:icon="@drawable/baseline_search_black_24"
+        android:onClick="OnClickSearch"
+        android:title="@string/search" />
+
+</menu>

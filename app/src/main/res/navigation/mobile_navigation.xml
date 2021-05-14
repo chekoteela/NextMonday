@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_calculator_main">
+
+    <fragment
+        android:id="@+id/nav_diary"
+        android:name="Fragments.FragmentDairy"
+        tools:layout="@layout/fragment_dairy" />
+
+    <fragment
+        android:id="@+id/nav_calculator_main"
+        android:name="com.sharkit.nextmonday.ui.Calculator.Calculator_Main"
+        tools:layout="@layout/calculator_main" />
+
+    <fragment
+        android:id="@+id/nav_target"
+        android:name="com.sharkit.nextmonday.ui.slideshow.SlideshowFragment"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_calendar"
+        android:name="Fragments.Calendar"
+        tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="Fragments.FragmentDairyThree"
+        tools:layout="@layout/fragment_dairy_three" />
+
+    <fragment
+        android:id="@+id/nav_plus_target"
+        android:name="Fragments.FragmentDairyTwo"
+        tools:layout="@layout/fragment_dairy_two" />
+
+    <fragment
+        android:id="@+id/nav_change_target"
+        android:name="Fragments.FragmentDairyFour"
+        tools:layout="@layout/fragment_dairy_four" />
+
+    <fragment
+        android:id="@+id/nav_feedback"
+        android:name="Fragments.Feedback"
+        tools:layout="@layout/fragment_feedback" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.sharkit.nextmonday.ui.settings.Settings"
+        tools:layout="@layout/settings" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.sharkit.nextmonday.ui.settings.FragmentEdit"
+        tools:layout="@layout/fragment_edit" />
+
+    <fragment
+        android:id="@+id/nav_cal_auto_calculate_calorie"
+        android:name="com.sharkit.nextmonday.ui.settings.Auto_calculate_calorie"
+        tools:layout="@layout/calculator_auto_calculate_calorie" />
+
+    <fragment
+        android:id="@+id/nav_cal_find_food_by_name"
+        android:name="com.sharkit.nextmonday.ui.Calculator.Find_food_by_name"
+        tools:layout="@layout/calculator_find_food_by_name" />
+
+    <fragment
+        android:id="@+id/nav_cal_change_food"
+        android:name="com.sharkit.nextmonday.ui.Calculator.ChangeFood"
+        tools:layout="@layout/calculator_change_food" />
+
+    <fragment
+        android:id="@+id/nav_cal_calendar"
+        android:name="com.sharkit.nextmonday.ui.Calculator.CalculatorCalendar"
+        tools:layout="@layout/calculator_calendar" />
+
+    <fragment
+        android:id="@+id/nav_cal_weight"
+        android:name="com.sharkit.nextmonday.ui.Calculator.Weight"
+        tools:layout="@layout/calculator_weight" />
+
+    <fragment
+        android:id="@+id/nav_cal_ration"
+        android:name="com.sharkit.nextmonday.ui.Calculator.Ration"
+        tools:layout="@layout/calculator_ration" />
+
+    <fragment
+        android:id="@+id/nav_cal_my_food"
+        android:name="com.sharkit.nextmonday.ui.Calculator.FindMyFood"
+        tools:layout="@layout/calculator_find_my_food" />
+
+
+</navigation>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="hintColor">#918c86</color>
+    <color name="back">@color/layout_gradient_three</color>
+    <color name="btn">#3E2214</color>
+    <color name="btn_obv">#6b3419</color>
+    <color name="back_calendar">#8c807a</color>
+    <color name="color_linear">#5c321d</color>
+    <color name="red">#a83232</color>
+    <color name="linnn">#733e24</color>
+    <color name="menu">#554137</color>
+    <color name="edit_two">#E0E0E0</color>
+    <color name="vladic">#080d69</color>
+
+    <color name="background_calculator">#0F173C</color>
+    <color name="background_layout_calculator">#1C214B</color>
+    <color name="bar_calor_color_rim">#292D33</color>
+    <color name="bar_calor_color_progress">#F9883A</color>
+    <color name="bar_fat_carbs_color_rim">#292D33</color>
+    <color name="bar_fat_carbs_color_progress">#F9883A</color>
+    <color name="bar_prot_water_color_rim">#292D33</color>
+    <color name="bar_prot_water_color_progress">#F9883A</color>
+
+    <color name="colorRipple">#000000</color>
+    <color name="tlo">#0A113F</color>
+    <color name="main_calculator">#32373D</color>
+    <color name="btnn">#E61C214B</color>
+
+
+    <!--Кольори для activity нової розмальовки-->
+    <!--Колір до градієнтів Актівіті Реєстрації, Входу-->
+    <color name="layout_gradient">#474A5A</color>
+    <color name="layout_gradient_two">#252837</color>
+    <color name="layout_gradient_three">#191A1F</color>
+    <color name="color_button">#F9883A</color>
+    <color name="color_button_grad">#F46F12</color>
+    <!--Градієнт для Layout де знаходиться день в щоденнику-->
+    <color name="dairy_exp_list_den_gradient_one">#4C4D52</color>
+    <color name="dairy_exp_list_den_gradient_two">#24252A</color>
+    <!--Градієнт для Layout де знаходяться задачі в щоденнику-->
+    <color name="dairy_exp_list_task_gradient_one">#23282C</color>
+    <color name="dairy_exp_list_task_gradient_two">#17181D</color>
+    <!--Градієнт для Navigation View-->
+    <color name="dairy_navigation_view_gradient_one">#4C4D52</color>
+    <color name="dairy_navigation_view_gradient_two">#24252A</color>
+    <!--Колір Navigation Bottom Bar-->
+    <color name="dairy_navigation_bottom_bar">#212121</color>
+    <color name="dairy_navigation_bottom_bar_stroke">#1AFFFFFF</color>
+    <!--Колір List View-->
+    <color name="lst_view_custom_color">#0D414141</color>
+    <!--Колір для градієнту Linear Layout в щоденнику при створенні/редагуванні задачі -->
+    <color name="dairy_create_task_linear_layout_gradient_one">#4C4D52</color>
+    <color name="dairy_create_task_linear_layout_gradient_two">#24252A</color>
+    <!--Колір для Calendar date pick -->
+    <color name="calendar_date_picker">#23282C</color>
+    <!--Колір для Toolbar -->
+    <color name="color_toolbar">#212121</color>
+    <!--Градієнти для кнопок і layout елементів-->
+
+    <color name="style_datepiker_header">#212121</color>
+    <!--Колір для тіней CardView-->
+    <color name="shadowColorLight">#D542474C</color>
+    <color name="shadowColorDark">#24272C</color>
+    <!--Прозорий колір для необхідності-->
+    <color name="Prozorui">#0024272C</color>
+    <!--Колір для EditText в калькуляторі калорій -->
+    <color name="calculator_auto_edittext">#192229</color>
+
+    <!--Колір для EditText в калькуляторі калорій -->
+    <!--Колір калькулятор-->
+    <color name="calculator_color">#232D37</color>
+    <color name="calculator_color_linear">#2C3640</color>
+    <!--Градієнти для кнопок і layout елементів-->
+    <!--Градієнти для кнопок і layout елементів-->
+    <!--Градієнти для кнопок і layout елементів-->
+    <color name="food_item_list">#77889C</color>
+
+
+
+</resources>

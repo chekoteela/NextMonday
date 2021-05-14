@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:icon="@drawable/ic_home_24"
+        android:onClick="OnClickCalculatorMain"
+        app:showAsAction="ifRoom"
+        android:title="">
+    </item>
+
+    <item
+        android:icon="@drawable/ic_food_bank"
+        android:onClick="OnClickRation"
+        android:title="" >
+    </item>
+
+    <item
+        android:contentDescription="@string/calendar2"
+        android:icon="@drawable/ic_calendar"
+        android:onClick="OnClickCalculatorCalendar"
+        android:title=""/>
+    <item
+        android:icon="@drawable/ic_monitor_weight"
+        android:onClick="OnClickWeight"
+        android:title="" >
+    </item>
+
+
+</menu>

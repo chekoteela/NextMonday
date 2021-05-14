@@ -1,0 +1,191 @@
+<resources>
+    <string name="app_name">NextMonday</string>
+    <string name="SignEmail">Почта</string>
+    <string name="SignPassword">Пароль</string>
+    <string name="DontHaveAcc">Не имеете аккаунта?</string>
+    <string name="ForgotPass">Забыли пароль?</string>
+    <string name="OrContinue">Продолжить с</string>
+    <string name="SignIn">Войти</string>
+    <string name="Register">Создать новый аккаунт</string>
+    <string name="haveAcc">Уже имеете аккаунт?</string>
+    <string name="name">Имя</string>
+    <string name="lastName">Фамилия</string>
+    <string name="phone">Номер телефона</string>
+    <!--    <string name="facebook_app_id">1086653145137007</string>-->
+    <!--    <string name="fb_login_protocol_scheme">fb1086653145137007</string>-->
+
+    <string name="facebook_app_id">822596168332514</string>
+    <string name="fb_login_protocol_scheme">fb822596168332514</string>
+
+    <string name="title_activity_main_menu">Menu</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Отсутствует подключение к сети</string>
+    <string name="nav_header_subtitle">Отсутствует подключение к сети</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Настройки</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="reset_password">Сброс пароля</string>
+    <string name="enter_verification_code">Введите код подтверждения</string>
+    <string name="send_code_again">Отправить код Снова</string>
+    <string name="exit">Выход</string>
+    <string name="Postanovschik">Постановщик целей</string>
+    <string name="Calculator">Здоровье</string>
+    <string name="Water">Water Reminder</string>
+    <string name="Ration">Рацион</string>
+    <string name="CorporationAcc">Корпоративный аккаунт</string>
+    <string name="PROVersion">Подписка на PRO версию</string>
+    <string name="Share">Поделится приложением</string>
+    <string name="Connection">Обратная связь</string>
+    <string name="confirm_new_password">Подтвердите новый пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="repeat_the_password">Повторите пароль</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="Start_changes_now">Начать изменения сейчас</string>
+    <string name="Sign_Up">Зарегистрироваться</string>
+    <string name="Sign_In">Войти</string>
+    <string name="dairy">Ежедневник</string>
+
+    <string name="pn">Пн</string>
+    <string name="vt">Вт</string>
+    <string name="sr">Ср</string>
+    <string name="cht">Чт</string>
+    <string name="pt">Пт</string>
+    <string name="sb">Сб</string>
+    <string name="nd">Нд</string>
+    <string name="list">Список дел</string>
+    <string name="next_monday">Next Monday</string>
+
+    <string name="enter_time">Установить время</string>
+    <string name="repeat">Повторять</string>
+    <string name="prototype">Доделать прототип</string>
+    <string name="clock">08:00</string>
+    <string name="calendar">Календарь</string>
+    <string name="to_do_list">Список задач</string>
+    <string name="search">Поиск</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="everyday">Каждый день</string>
+    <string name="custom_day">Выбрать дни</string>
+    <string name="ok">OK</string>
+    <string name="Monday">Пн</string>
+    <string name="Tuesday">Вт</string>
+    <string name="Wednesday">Ср</string>
+    <string name="Thursday">Чт</string>
+    <string name="Friday">Пт</string>
+    <string name="Satuday">Сб</string>
+    <string name="Sunday">Нд</string>
+    <string name="reset_pass">Восстановление пароля</string>
+    <string name="lette_post">Вам на почту будет отправленно письмо с ссылкой
+для восстановления </string>
+    <string name="create_event">Создать событие</string>
+    <string name="save">Сохранить</string>
+    <string name="delete">Удалить</string>
+    <string name="change">Изменить</string>
+
+
+    <string name="your_name">Ваше имя</string>
+    <string name="your_email">Ваша ел.почта</string>
+    <string name="text_error">Текст сообщения</string>
+    <string name="send">Отправить</string>
+
+    <string-array name="spinner_feedback">
+        <item>Сообщить об ошибке</item>
+        <item>Совет для улучшения</item>
+        <item>Задать вопрос</item>
+        <item>Оценить</item>
+    </string-array>
+
+    <string-array name="spinner_target">
+        <item>Сбросить вес</item>
+        <item>Сохранить вес</item>
+        <item>Набрать вес</item>
+    </string-array>
+
+    <string-array name="spinner_activity">
+        <item>Нет физической нагрузки</item>
+        <item>Сидячая работа без физических нагрузок</item>
+        <item>Небольшие пробежки или гимнастика 1–3 раза в неделю</item>
+        <item>Занятия спортом 3–5 раз в неделю со средними нагрузками</item>
+        <item>Полноценные тренировки 4–7 раз в неделю</item>
+        <item>Физическая работа и полноценные тренировки</item>
+    </string-array>
+
+    <string name="change_pass">Изменить пароль</string>
+    <string name="add">Добавить</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3604503009591995/5594946532</string>
+
+    <!--    ca-app-pub-3604503009591995/5594946532-->
+    <!--    ca-app-pub-3940256099942544/6300978111   test-->
+
+    <string name="SignEmail2">Email</string>
+    <string name="SignPassword2">Password</string>
+    <string name="ForgotPass2">Forgot password?</string>
+    <string name="SignIn2">Sing in</string>
+    <string name="Register2">Create new account</string>
+    <string name="haveAcc2">Do you have account?</string>
+    <string name="name2">Name</string>
+    <string name="lastName2">Last name</string>
+    <string name="google">Sign in with google</string>
+    <string name="facebook">Sign in with facebook</string>
+    <string name="privacy_policy">privacy policy</string>
+
+    <string name="action_settings2">Setting</string>
+    <string name="reset_password2">Reset password</string>
+    <string name="send_code_again2">Send code again</string>
+    <string name="exit2">Exit</string>
+    <string name="Postanovschik2">Goals provider</string>
+    <string name="Calculator2">Heath</string>
+    <string name="Water2">Water Reminder</string>
+    <string name="Ration2">Ration</string>
+    <string name="CorporationAcc2">Corporate account</string>
+    <string name="PROVersion2">PRO version subscription</string>
+    <string name="Share2">Share the app</string>
+    <string name="Connection2">Feedback</string>
+    <string name="confirm2">Confirm</string>
+    <string name="dairy2">Dairy</string>
+    <string name="changePass">Change password</string>
+    <string name="save2">Save</string>
+    <string name="plus2">Add task</string>
+    <string name="list2">List</string>
+    <string name="calendar2">Calendar</string>
+    <string name="selectTime">Select time</string>
+    <string name="repeat2">Repeat</string>
+    <string name="textMassage">Text massage</string>
+    <string name="send2">Send</string>
+    <string name="checkTarget">check target</string>
+    <string name="everyDay">Every day</string>
+    <string name="selectDay">Select Day</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="listTarget">List of Target</string>
+    <string name="find">Find</string>
+    <string name="time">Время:</string>
+    <string name="Estimate">estimate</string>
+    <string name="Estimate1">Оценить приложение</string>
+
+
+    <string name="age">Возраст</string>
+    <string name="weight_now">Текущий вес</string>
+    <string name="dream_weight">Желаемый вес</string>
+    <string name="height">Рост (в см)</string>
+    <string name="sex">Пол</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="your_target">Ваша цель</string>
+    <string name="weight_plus">Набор веса</string>
+    <string name="weight_stab">Удержание веса</string>
+    <string name="weight_def">Сброс веса</string>
+    <string name="F_harryson_benedict">Формула Харрисона-Бенедикта</string>
+    <string name="F_mifflin_san_geor">Формула Миффлина - Сан-Жеора</string>
+    <string name="rozrahunok">Расчитать</string>
+    <string name="Sum">Итого:</string>
+    <string name="check_F">Формула подсчета калорий</string>
+
+</resources>

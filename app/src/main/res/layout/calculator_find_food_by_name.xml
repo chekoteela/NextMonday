@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/calculator_auto_edittext"
+    android:orientation="vertical"
+    tools:context=".ui.Calculator.Find_food_by_name">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        app:tabTextColor="@color/white"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicatorColor="@color/bar_calor_color_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="моя еда" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Поиск по названию" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/bar_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Поиск по штрих-коду" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="История" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Избранное" />
+    </com.google.android.material.tabs.TabLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/find_food"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="6dp"
+        android:background="@drawable/calculator_auto_calculate_edittext"
+        android:fontFamily="@font/play"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="14sp" />
+
+
+
+    <ExpandableListView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/find_food"
+        />
+
+    <Button
+        android:layout_marginStart="135dp"
+        android:id="@+id/add"
+        android:background="@drawable/calculator_button"
+
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_marginBottom="60dp"
+        android:paddingHorizontal="10dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить прием" />
+
+
+
+</LinearLayout>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/dairy_navigation_bottom_bar"
+        app:itemBackground="@drawable/dairy_navigation_bottom_bar"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:menu="@menu/calculator_bottom_navigation_bar" />
+
+
+
+
+
+</RelativeLayout>

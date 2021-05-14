@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_layout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/play"
+            android:padding="5dp"
+            android:text="@string/your_name"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/edit_text"
+            android:contentDescription="@string/name2"
+            android:fontFamily="@font/play"
+            android:padding="5dp"
+            android:textColor="@color/btn"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/play"
+            android:padding="5dp"
+            android:text="@string/your_email"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="144px"
+            android:layout_gravity="center"
+            android:background="@drawable/edit_text"
+            android:contentDescription="@string/SignEmail2"
+            android:fontFamily="@font/play"
+            android:inputType="textEmailAddress"
+            android:padding="5dp"
+            android:textColor="@color/btn"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/play"
+            android:padding="5dp"
+            android:text="@string/text_error"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/text_sms"
+            android:layout_width="match_parent"
+            android:layout_height="300px"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/edit_text"
+            android:contentDescription="@string/textMassage"
+            android:elegantTextHeight="true"
+            android:fontFamily="@font/play"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:maxLines="5"
+            android:padding="5dp"
+            android:scrollHorizontally="true"
+            android:textCursorDrawable="@null"
+            android:textDirection="locale"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/send_sms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_login"
+            android:contentDescription="@string/send2"
+            android:padding="5dp"
+            android:text="@string/send"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+
+    </LinearLayout>
+</RelativeLayout>
