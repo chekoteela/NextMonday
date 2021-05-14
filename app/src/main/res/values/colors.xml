@@ -81,6 +81,7 @@
     <!--Градієнти для кнопок і layout елементів-->
     <!--Градієнти для кнопок і layout елементів-->
     <color name="food_item_list">#77889C</color>
+    <color name="food">#77889C</color>
 
 
 
