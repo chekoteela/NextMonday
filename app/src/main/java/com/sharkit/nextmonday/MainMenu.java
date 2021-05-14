@@ -157,7 +157,7 @@ public class MainMenu extends AppCompatActivity {
     }
     public void OnClickSettings(MenuItem item){
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        navController.navigate(R.id.nav_profile);
+        navController.navigate(R.id.nav_settings);
     }
     public void OnClickCalendar(MenuItem item){
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

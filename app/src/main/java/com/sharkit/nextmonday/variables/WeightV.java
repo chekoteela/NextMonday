@@ -2,14 +2,15 @@ package com.sharkit.nextmonday.variables;
 
 public class WeightV {
 
-    private String date, weight, change;
+    private String  weight, change;
+    private long date;
 
 
-    public String getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(long date) {
         this.date = date;
     }
 

@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.variables.WeightV;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class WeightAdaptor extends BaseAdapter {
 
@@ -47,9 +50,11 @@ public class WeightAdaptor extends BaseAdapter {
         }
         FindView(convertView);
 
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
         change.setText(list.get(position).getChange());
         weight.setText(list.get(position).getWeight());
-        date.setText(list.get(position).getDate());
+        date.setText(dateFormat.format(list.get(position).getDate()));
 
         return convertView;
     }

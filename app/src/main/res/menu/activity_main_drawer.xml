@@ -22,7 +22,6 @@
 
         <item
             android:contentDescription="@string/Calculator2"
-            android:enabled="false"
             android:id="@+id/calculator"
             android:onClick="OnClickCalculator"
             android:icon="@drawable/icon_calculate"

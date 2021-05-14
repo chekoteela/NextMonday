@@ -130,6 +130,7 @@ public class Calculator_Main extends Fragment {
         myWeight.onCreate(sdb);
 
         Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH,17);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         query = sdb.rawQuery("SELECT * FROM " + myWeight.TABLE + " WHERE " + myWeight.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'", null);
@@ -137,7 +138,7 @@ public class Calculator_Main extends Fragment {
         query.moveToLast();
 
         WeightV weight = new WeightV();
-        weight.setDate(dateFormat.format(calendar.getTimeInMillis()));
+        weight.setDate(calendar.getTimeInMillis());
         weight.setWeight(s);
 
         try {
@@ -150,7 +151,7 @@ public class Calculator_Main extends Fragment {
 
         try {
             sdb.execSQL("INSERT INTO " + myWeight.TABLE + " VALUES ('" + mAuth.getCurrentUser().getUid() + "','" +
-                    dateFormat.format(calendar.getTimeInMillis()) + "','" +
+                    calendar.getTimeInMillis() + "','" +
                     s + "','" + weight.getChange() + "');");
 
             CollectionReference colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MyWeight");
@@ -258,13 +259,18 @@ public class Calculator_Main extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 SettingsCalculator settingsCalculator = snapshot.getValue(SettingsCalculator.class);
                 try {
+                    PFC_today.setCurrent_weight(String.valueOf(settingsCalculator.getDesired_weight()));
                     PFC_today.setWeight(String.valueOf(settingsCalculator.getWeight()));
                     PFC_today.setWatter(settingsCalculator.getWatter());
                     PFC_today.setProtein(settingsCalculator.getProtein());
                     PFC_today.setFat(settingsCalculator.getFat());
                     PFC_today.setCarbohydrate(settingsCalculator.getCarbohydrate());
                     PFC_today.setCalorie(settingsCalculator.getCalorie());
-                }catch (NullPointerException e){}
+                }catch (NullPointerException e){
+                    ProgressBarMathNull();
+
+                }
+
                 ProgressMath();
             }
 
@@ -273,6 +279,15 @@ public class Calculator_Main extends Fragment {
 
             }
         });
+    }
+
+    private void ProgressBarMathNull() {
+        PFC_today.setCalorie(PFC_today.getCalorie_eat());
+        PFC_today.setWatter(PFC_today.getWatter_drink());
+        PFC_today.setProtein(PFC_today.getProtein_eat());
+        PFC_today.setFat(PFC_today.getFat_eat());
+        PFC_today.setCarbohydrate(PFC_today.getCarbohydrate_eat());
+
     }
 
     public void SumMealNutrition(){

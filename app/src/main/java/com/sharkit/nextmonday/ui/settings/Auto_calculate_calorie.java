@@ -1,6 +1,9 @@
 package com.sharkit.nextmonday.ui.settings;
 
 import android.annotation.SuppressLint;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,9 +28,18 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.sharkit.nextmonday.MySQL.MyWeight;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.variables.LocalDataPFC;
 import com.sharkit.nextmonday.variables.SettingsCalculator;
+import com.sharkit.nextmonday.variables.WeightV;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 public class Auto_calculate_calorie extends Fragment {
@@ -53,6 +65,10 @@ public class Auto_calculate_calorie extends Fragment {
     FirebaseAuth mAuth;
     FirebaseDatabase db;
     DatabaseReference users;
+
+    SQLiteDatabase sdb;
+    MyWeight myWeight;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -267,9 +283,34 @@ public class Auto_calculate_calorie extends Fragment {
     }
 
     public void SaveAutoSettings(float weight, float desired_weight){
+        myWeight = new MyWeight(getApplicationContext());
+        sdb = myWeight.getReadableDatabase();
+        myWeight.onCreate(sdb);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
+        FirebaseFirestore fdb = FirebaseFirestore.getInstance();
+        Calendar calendar = Calendar.getInstance();
         users = db.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/MyTarget");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+        WeightV weightV = new WeightV();
+        weightV.setChange(String.valueOf(0));
+        weightV.setDate(calendar.getTimeInMillis());
+        weightV.setWeight(String.valueOf(weight));
+
+            try {
+                sdb.execSQL("INSERT INTO " + myWeight.TABLE + " VALUES ('" + mAuth.getCurrentUser().getUid() + "','" +
+                        calendar.getTimeInMillis() + "','" +
+                        weight + "','" + 0 + "','" +
+                        dateFormat.format(calendar.getTimeInMillis()) +
+                        "');");
+                CollectionReference colRef = fdb.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MyWeight");
+                colRef.document(dateFormat.format(calendar.getTimeInMillis())).set(weightV);
+
+            } catch (SQLiteConstraintException e) {
+            }
+
+
 
         float watter = (float) (weight * 0.035);
         int protein = calorie / 4 / 4;

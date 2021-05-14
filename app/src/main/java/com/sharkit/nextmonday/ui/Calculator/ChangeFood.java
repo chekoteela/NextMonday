@@ -299,11 +299,8 @@ public class ChangeFood extends Fragment {
 
     private void WriteToFireStore() {
 
-
         DataPFC dataPFC = new DataPFC();
-
         WriteClass(dataPFC, PFC_today.getBar_code());
-
 
         try {
 
@@ -322,7 +319,7 @@ public class ChangeFood extends Fragment {
                                     public void onSuccess(DocumentReference documentReference) {
                                         Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
                                         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                                        navController.navigate(R.id.nav_cal_weight);
+                                        navController.navigate(R.id.nav_calculator_main);
                                     }
                                 });
 
@@ -331,7 +328,6 @@ public class ChangeFood extends Fragment {
                             }
                         }
                     });
-
         }
 
         }catch (NullPointerException e){}
@@ -347,7 +343,7 @@ public class ChangeFood extends Fragment {
                         public void onSuccess(DocumentReference documentReference) {
                             Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
                             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-                            navController.navigate(R.id.nav_cal_weight);
+                            navController.navigate(R.id.nav_calculator_main);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -356,10 +352,6 @@ public class ChangeFood extends Fragment {
                         }
                     });
                 }
-
-
-
-
             }
     }
 
@@ -418,7 +410,6 @@ public class ChangeFood extends Fragment {
             });
     }
 
-
     private void SQLiteUpdate(String code) {
         db = dataBasePFC.getReadableDatabase();
         db.execSQL("UPDATE " + dataBasePFC.TABLE + " SET " +
@@ -453,10 +444,8 @@ public class ChangeFood extends Fragment {
     private boolean isExistSQLite(String code) {
         db = dataBasePFC.getReadableDatabase();
 
-
             query = db.rawQuery("SELECT * FROM " + dataBasePFC.TABLE + " WHERE " + dataBasePFC.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "' AND "
                     + dataBasePFC.COLUMN_BAR_CODE + " = '" + code + "'", null);
-
             return (!query.moveToNext());
 
 
