@@ -68,7 +68,7 @@ public class Weight extends Fragment {
     TextView weight,current_weight;
     Button add_weight;
 
-
+    Calendar calendar = Calendar.getInstance();
 //    LineGraphSeries<> series;
 
     @Override
@@ -82,7 +82,12 @@ public class Weight extends Fragment {
 
         Adapter();
 
+
+
+
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy");
+
+        Log.d(TAG, calendar.getTimeInMillis() + "");
 
         graphView.getGridLabelRenderer().setGridColor(getResources().getColor(R.color.white));
         graphView.getGridLabelRenderer().setHorizontalLabelsColor(getResources().getColor(R.color.white));
@@ -196,11 +201,12 @@ public class Weight extends Fragment {
 
 
     private void WriteDataWeight(String s) {
+
         myWeight = new MyWeight(getApplicationContext());
         sdb = myWeight.getReadableDatabase();
         myWeight.onCreate(sdb);
 
-        Calendar calendar = Calendar.getInstance();
+
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         query = sdb.rawQuery("SELECT * FROM " + myWeight.TABLE + " WHERE " + myWeight.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'", null);
@@ -231,7 +237,7 @@ public class Weight extends Fragment {
 
            // добавити правильну цифру зміни ваги
 
-           Log.d(TAG, query.getInt(2)+"");
+//           Log.d(TAG, query.getInt(2)+"");
 
             try {
                 weight.setChange(String.format( Locale.ROOT,"%.1f",(Float.parseFloat(s) - Float.parseFloat(query.getString(2)))));
