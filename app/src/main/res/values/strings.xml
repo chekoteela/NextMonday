@@ -188,4 +188,55 @@
     <string name="Sum">Итого:</string>
     <string name="check_F">Формула подсчета калорий</string>
 
+    <string name="kkal">Ккал</string>
+    <string name="fat">Жиры</string>
+    <string name="Carbs">Углеводы</string>
+    <string name="Protein">Белки</string>
+    <string name="water">Вода</string>
+    <string name="alert">Введите полное название продукта иначе он не будет доступен в общей базе даных</string>
+    <string name="name_product_hint">Название</string>
+    <string name="portion_hint">Размер порции</string>
+    <string name="calor_hint">Количество калорий</string>
+    <string name="amount_protein_hint">Количество Белка</string>
+    <string name="whey_protein_hint">Сывороточный протеин</string>
+    <string name="soy_protein_hint">Соевый протеин</string>
+    <string name="egg_protein_hint">Яичный протеин</string>
+    <string name="casein_protein_hint">Казеиновый протеин</string>
+    <string name="amount_carbs_hint">Количество Углеводов</string>
+    <string name="simple_hint">Простые(быстрые)</string>
+    <string name="complicated_carbs_hint">Сложные(медленные)</string>
+    <string name="Fat">Жиры</string>
+    <string name="amount_fat_hint">Количество Жиров</string>
+    <string name="saturated_fatty_acids_hint">Насыщенные жирные кислоты</string>
+    <string name="trans_fats_hint">Трансжиры</string>
+    <string name="omega9_hint">Жирные кислоты(Омега-9)</string>
+    <string name="omega6_hint">Жирные кислоты(Омега-6)</string>
+    <string name="omega3_hint">Жирные кислоты (Омега-3)</string>
+    <string name="ala_hint">Альфа-линоленовая кислота(ALA)</string>
+    <string name="dha_hint">Докозагексаеновая кислота(DHA)</string>
+    <string name="epa_hint">Эйкозапентаеновая кислота(EPA)</string>
+    <string name="extra">Дополнительно</string>
+    <string name="cellulose_hint">Клетчатка</string>
+    <string name="water_hint">Вода</string>
+    <string name="salt_hint">Соль</string>
+    <string name="ca_hint">Ca</string>
+    <string name="k_hint">K</string>
+    <string name="save_changes_button">Сохранить изменения</string>
+    <string name="protein_">Білки:</string>
+    <string name="carbs_">Вуглеводи:</string>
+    <string name="fat_">Жири :</string>
+
+
+    <string name="gram_1">1 грамм</string>
+    <string name="portion">Порция</string>
+    <string name="energ_price">Энергетическая ценность    </string>
+    <string name="edit_hint">Редактировать</string>
+    <string name="add_eating">Добавить прием</string>
+    <string name="my_food">Моя еда</string>
+    <string name="find_by_name">Поиск по названию</string>
+    <string name="search_by_barcode">Поиск по штрих-коду</string>
+    <string name="story">История</string>
+    <string name="favorites">Избранное</string>
+    <string name="add_food">Добавить еду</string>
+
 </resources>
