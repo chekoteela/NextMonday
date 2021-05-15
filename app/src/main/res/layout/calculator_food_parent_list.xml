@@ -9,6 +9,7 @@
 
 
     <LinearLayout
+        android:id="@+id/liner_for_long_press"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/calculator_ration_parent"
@@ -20,17 +21,14 @@
 
             <TextView
                 android:id="@+id/meal_name"
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:fontFamily="@font/play"
                 android:padding="10dp"
-                android:text="Сніданок"
                 android:textAlignment="textStart"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp" />
 
             <ImageView
                 android:id="@+id/plus"
@@ -38,6 +36,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:clickable="true"
                 android:src="@drawable/plus" />
 
@@ -57,94 +56,67 @@
 
 
             <TextView
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="@font/play"
                 android:padding="5dp"
                 android:paddingStart="10dp"
-                android:text="Білки: "
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:text="@string/protein_" />
 
             <TextView
                 android:id="@+id/all_protein"
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/play"
                 android:padding="5dp"
-                android:text="40"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:text="" />
 
             <TextView
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="@font/play"
                 android:padding="5dp"
-                android:text="Вуглеводи:"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:text="@string/carbs_" />
 
             <TextView
                 android:id="@+id/all_carbohydrate"
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/play"
                 android:padding="5dp"
-                android:text="50"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:text="" />
 
 
             <TextView
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="@font/play"
                 android:padding="5dp"
-                android:text="Жири :"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:text="@string/fat_" />
 
             <TextView
                 android:id="@+id/all_fat"
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/play"
-                android:padding="5dp"
-                android:text="40"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:padding="5dp" />
 
             <TextView
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/play"
-                android:padding="5dp"
-                android:textColor="@color/white"
-
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:padding="5dp" />
 
             <TextView
                 android:id="@+id/all_calorie"
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:fontFamily="@font/play"
-                android:padding="5dp"
-                android:text="50"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:padding="5dp" />
         </LinearLayout>
 
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/calculator_auto_calculate_edittext"
+    android:background="@color/calculator_color"
     tools:context=".ui.settings.Auto_calculate_calorie">
 
 
@@ -274,6 +274,7 @@
 
             <Button
                 android:id="@+id/to_calculate"
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/calculator_button"
@@ -317,6 +318,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="10dp"
             android:background="@drawable/calculator_button"
             android:fontFamily="@font/play"
             android:text="@string/save"

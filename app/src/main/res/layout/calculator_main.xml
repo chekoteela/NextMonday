@@ -4,145 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_calculator"
+    android:background="@color/calculator_auto_edittext"
     android:orientation="vertical"
     tools:context=".ui.Calculator.Calculator_Main">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="vertical">
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:background="@color/calculator_color"
             android:layout_gravity="center">
 
-            <soup.neumorphism.NeumorphCardView
-                android:layout_width="410dp"
-                android:layout_height="250dp"
-                android:padding="20dp"
-                app:neumorph_shadowColorDark="@color/shadowColorDark"
-                app:neumorph_shadowColorLight="@color/shadowColorLight">
 
-                <com.progress.progressview.ProgressView
-                    android:id="@+id/calorie"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    app:pvBackgroundColor="@color/bar_calor_color_rim"
-                    app:pvBackgroundWidth="10dp"
-                    app:pvDirection="fromLeft"
-                    app:pvProgressColor="@color/bar_calor_color_progress"
-                    app:pvProgressWidth="20dp"
-                    app:pvShape="circle" />
+            <com.progress.progressview.ProgressView
+                android:id="@+id/calorie"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                app:pvBackgroundColor="@color/bar_calor_color_rim"
+                app:pvBackgroundWidth="30dp"
+                app:pvDirection="fromLeft"
+                app:pvProgressColor="@color/bar_calor_color_progress"
+                app:pvProgressWidth="31dp"
+                app:pvShape="circle" />
 
-                <TextView
-                    android:id="@+id/percent_calorie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="20dp"
-                    android:text="62%"
-                    android:textColor="@color/white"
-                    android:textSize="32dp"
-                    tools:layout_editor_absoluteX="93dp"
-                    tools:layout_editor_absoluteY="249dp" />
+            <TextView
+                android:id="@+id/percent_calorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                style="@style/StandartTextView"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="93dp"
+                tools:layout_editor_absoluteY="249dp" />
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="3dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="5dp"
+                android:layout_marginTop="25dp"
+                android:background="@color/bar_fat_carbs_color_progress" />
 
-                <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="3dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="9dp"
-                    android:background="@color/bar_fat_carbs_color_progress" />
 
-                <TextView
-                    android:id="@+id/eat_c"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
-                    android:text="3204"
-                    android:textColor="@color/white"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-                    tools:layout_editor_absoluteX="93dp"
-                    tools:layout_editor_absoluteY="249dp" />
+            <TextView
+                style="@style/StandartTextView"
+                android:id="@+id/eat_c"
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:textSize="25sp"
+                tools:layout_editor_absoluteX="93dp"
+                tools:layout_editor_absoluteY="249dp" />
 
-                <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/kkal"
+                style="@style/StandartTextView"
+                android:textColor="@color/white"
+                tools:layout_editor_absoluteX="93dp"
+                tools:layout_editor_absoluteY="249dp" />
 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-                    android:text="ккал"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    tools:layout_editor_absoluteX="93dp"
-                    tools:layout_editor_absoluteY="249dp" />
 
-                <LinearLayout
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginBottom="1dp"
-                    android:background="@drawable/calculator_linear_white" />
+            <LinearLayout
+                android:layout_width="13dp"
+                android:layout_marginVertical="2dp"
+                android:layout_height="13dp"
+                android:layout_gravity="bottom|center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/calculator_linear_white" />
 
-                <TextView
-                    android:id="@+id/eat_calorie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="59dp"
-                    android:layout_marginRight="15dp"
-                    android:fontFamily="@font/play"
-                    android:text="78"
-                    android:textColor="@color/white"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/eat_calorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:gravity="end"
+                android:layout_marginTop="59dp"
+                android:layout_marginRight="5dp"
+                android:fontFamily="@font/play"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/all_calorie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="59dp"
-                    android:layout_marginLeft="45dp"
-                    android:fontFamily="@font/play"
-                    android:text="78"
-                    android:textColor="@color/white"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/all_calorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|bottom"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="59dp"
+                android:fontFamily="@font/play"
+                android:textColor="@color/white"
+                android:textSize="13dp"
+                android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="13dp"
-                    android:layout_height="13dp"
-                    android:layout_marginTop="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginBottom="1dp"
-                    android:background="@drawable/calculator_linear_orange" />
-            </soup.neumorphism.NeumorphCardView>
+            <LinearLayout
+                android:layout_marginVertical="2dp"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="1dp"
+                android:background="@drawable/calculator_linear_orange" />
 
         </FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/calculator_color_linear"
+            />
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:orientation="horizontal"
+            android:background="@color/calculator_auto_edittext"
+            android:layout_height="wrap_content">
 
             <FrameLayout
-                android:layout_width="180dp"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="180dp">
 
                 <soup.neumorphism.NeumorphCardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="180dp"
+                    app:neumorph_backgroundColor="@color/calculator_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:padding="20dp"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
@@ -164,8 +164,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="62%"
-                        android:textColor="@color/white"
+                       style="@style/StandartTextView"
+                        android:layout_marginBottom="15dp"
                         android:textSize="32dp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
@@ -177,9 +177,9 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="75dp"
                         android:layout_marginBottom="15dp"
-                        android:text="ЖИР"
-                        android:textColor="@color/white"
-                        android:textSize="18dp" />
+                        android:text="@string/Fat"
+                        android:textSize="20sp"
+                        style="@style/StandartTextView"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -193,7 +193,7 @@
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="50dp"
                         android:layout_marginBottom="1dp"
                         android:background="@drawable/calculator_linear_white" />
 
@@ -204,10 +204,7 @@
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
                         android:fontFamily="@font/play"
-                        android:text="333"
-                        android:textColor="@color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <TextView
                         android:id="@+id/eat_fat"
@@ -217,10 +214,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/play"
-                        android:text="78"
-                        android:textColor="@color/white"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <TextView
                         android:id="@+id/all_fat"
@@ -229,16 +223,13 @@
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/play"
-                        android:text="78"
-                        android:textColor="@color/white"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView"/>
 
                     <LinearLayout
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="50dp"
                         android:layout_marginBottom="21dp"
                         android:background="@drawable/calculator_linear_orange" />
 
@@ -249,13 +240,14 @@
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="180dp"
-
-                android:layout_marginLeft="45dp"
-                android:layout_height="180dp">
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="180dp"
+                >
 
                 <soup.neumorphism.NeumorphCardView
-                    android:layout_width="180dp"
+                    app:neumorph_backgroundColor="@color/calculator_color"
+                    android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -277,9 +269,9 @@
                         android:id="@+id/percent_carbohydrate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
                         android:layout_gravity="center"
-                        android:text="62%"
-                        android:textColor="@color/white"
+                        style="@style/StandartTextView"
                         android:textSize="32dp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
@@ -299,9 +291,9 @@
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="75dp"
                         android:layout_marginBottom="15dp"
-                        android:text="Углі"
-                        android:textColor="@color/white"
-                        android:textSize="18dp" />
+                        android:text="@string/Carbs"
+                        android:textSize="20sp"
+                        style="@style/StandartTextView" />
 
 
                     <TextView
@@ -311,16 +303,13 @@
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
                         android:fontFamily="@font/play"
-                        android:text="333"
-                        android:textColor="@color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <LinearLayout
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="50dp"
                         android:layout_marginBottom="1dp"
                         android:background="@drawable/calculator_linear_white" />
 
@@ -332,10 +321,7 @@
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/play"
-                        android:text="78"
-                        android:textColor="@color/white"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <TextView
                         android:id="@+id/all_carbohydrate"
@@ -344,16 +330,13 @@
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/play"
-                        android:text="78"
-                        android:textColor="@color/white"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <LinearLayout
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="50dp"
                         android:layout_marginBottom="21dp"
                         android:background="@drawable/calculator_linear_orange" />
                 </soup.neumorphism.NeumorphCardView>
@@ -362,16 +345,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:background="@color/calculator_auto_edittext"
             android:layout_height="wrap_content"
             android:gravity="center">
 
             <FrameLayout
-                android:layout_weight="1"
-                android:layout_width="180dp"
-                android:layout_height="180dp">
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_weight="1">
 
                 <soup.neumorphism.NeumorphCardView
-                    android:layout_width="180dp"
+                    app:neumorph_backgroundColor="@color/calculator_color"
+                    android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -394,9 +379,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="62%"
-                        android:textColor="@color/white"
+                        style="@style/StandartTextView"
                         android:textSize="32dp"
+                        android:layout_marginBottom="15dp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
 
@@ -415,9 +400,9 @@
                         android:layout_marginTop="75dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="15dp"
-                        android:text="Білки"
-                        android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:text="@string/Protein"
+                        android:textSize="20sp"
+                        style="@style/StandartTextView" />
 
                     <TextView
                         android:id="@+id/eat_p"
@@ -426,17 +411,14 @@
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
                         android:fontFamily="@font/play"
-                        android:text="333"
-                        android:textColor="@color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
 
                     <LinearLayout
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="50dp"
                         android:layout_marginBottom="1dp"
                         android:background="@drawable/calculator_linear_white" />
 
@@ -447,11 +429,7 @@
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/play"
-                        android:text="78"
-                        android:textColor="@color/white"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <TextView
                         android:id="@+id/all_protein"
@@ -459,28 +437,26 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="@font/play"
-                        android:text="78"
-                        android:textColor="@color/white"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <LinearLayout
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="50dp"
                         android:layout_marginBottom="21dp"
                         android:background="@drawable/calculator_linear_orange" />
                 </soup.neumorphism.NeumorphCardView>
             </FrameLayout>
 
             <FrameLayout
-                android:layout_width="180dp"
-                android:layout_height="180dp">
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
 
                 <soup.neumorphism.NeumorphCardView
-                    android:layout_width="180dp"
+                    app:neumorph_backgroundColor="@color/calculator_color"
+                    android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -503,9 +479,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="62%"
-                        android:textColor="@color/white"
+                        style="@style/StandartTextView"
                         android:textSize="32dp"
+                        android:layout_marginBottom="15dp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
 
@@ -515,11 +491,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
-                        android:fontFamily="@font/play"
-                        android:text="333"
-                        android:textColor="@color/white"
-                        android:textSize="14dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -535,9 +507,9 @@
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="15dp"
-                        android:text="Вода"
-                        android:textColor="@color/white"
+                        android:text="@string/water"
                         android:textSize="20dp"
+                        style="@style/StandartTextView"
                         app:layout_constraintVertical_bias="0.0"
                         tools:layout_editor_absoluteX="93dp" />
 
@@ -545,7 +517,7 @@
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="50dp"
                         android:layout_marginBottom="1dp"
                         android:background="@drawable/calculator_linear_white" />
 
@@ -556,11 +528,7 @@
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/play"
-                        android:text="78"
-                        android:textColor="@color/white"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <TextView
                         android:id="@+id/all_watter"
@@ -568,17 +536,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="@font/play"
-                        android:text="78"
-                        android:textColor="@color/white"
-                        android:textSize="13dp"
-                        android:textStyle="bold" />
+                        style="@style/StandartTextView" />
 
                     <LinearLayout
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="30dp"
+                        android:layout_marginRight="50dp"
                         android:layout_marginBottom="21dp"
                         android:background="@drawable/calculator_linear_orange" />
                 </soup.neumorphism.NeumorphCardView>
@@ -620,24 +584,27 @@
 
     </LinearLayout>
 
+
+
     <com.michaldrabik.tapbarmenulib.TapBarMenu
 
-        android:layout_above="@+id/bar"
-        android:layout_marginBottom="10dp"
         android:id="@+id/tapBarMenu"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_above="@+id/bar"
         android:layout_gravity="bottom"
         android:layout_marginHorizontal="5dp"
-        app:tbm_backgroundColor="@color/red"
+        android:layout_marginBottom="10dp"
+        app:tbm_backgroundColor="@color/Prozorui"
         app:tbm_buttonPosition="right"
-        app:tbm_menuAnchor="top">
+        app:tbm_menuAnchor="bottom">
 
         <ImageView
+
+            android:id="@+id/add"
             android:layout_width="56dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/food"
-            android:id="@+id/add"/>
+            android:src="@drawable/food" />
 
         <ImageView
 
@@ -649,7 +616,6 @@
             android:src="@drawable/water" />
 
         <ImageView
-            android:clickable="true"
             android:id="@+id/weight"
             android:layout_width="56dp"
             android:layout_height="wrap_content"
@@ -666,6 +632,7 @@
 
     </com.michaldrabik.tapbarmenulib.TapBarMenu>
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
         android:id="@+id/bar"
@@ -677,10 +644,6 @@
         app:itemIconTint="#fff"
         app:itemTextColor="#fff"
         app:menu="@menu/calculator_bottom_navigation_bar" />
-
-
-
-
 
 
 </RelativeLayout>
