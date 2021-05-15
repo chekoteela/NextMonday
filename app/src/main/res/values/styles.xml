@@ -86,7 +86,7 @@
         <item name="neumorph_cornerSizeTopLeft">16dp</item>
         <item name="neumorph_cornerSizeTopRight">16dp</item>
         <item name="neumorph_cornerSizeBottomLeft">16dp</item>
-        <item name="neumorph_cornerSizeBottomRight">16dp</item>
+        <item name="neumorph_cornerSizeBottomRight">17dp</item>
     </style>
 
     <style name="StandartTextView" parent="Theme.AppCompat.DayNight">
