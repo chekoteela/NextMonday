@@ -21,7 +21,7 @@
         <item name="android:fontFamily">@font/play</item>
         <item name="android:unfocusedMonthDateColor">@color/purple_500</item>
         <item name="android:textColor">@color/white</item>
-        <item name="colorAccent">@color/calendar_date_picker</item>
+        <item name="colorAccent">@color/calculator_color</item>
         <item name="colorControlHighlight">@color/black</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="colorSwitchThumbNormal">@color/white</item>
@@ -86,7 +86,7 @@
         <item name="neumorph_cornerSizeTopLeft">16dp</item>
         <item name="neumorph_cornerSizeTopRight">16dp</item>
         <item name="neumorph_cornerSizeBottomLeft">16dp</item>
-        <item name="neumorph_cornerSizeBottomRight">17dp</item>
+        <item name="neumorph_cornerSizeBottomRight">16dp</item>
     </style>
 
     <style name="StandartTextView" parent="Theme.AppCompat.DayNight">

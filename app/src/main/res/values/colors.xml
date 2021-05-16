@@ -72,7 +72,7 @@
     <!--Градієнти для кнопок і layout елементів-->
     <!--Градієнти для кнопок і layout елементів-->
     <!--Градієнти для кнопок і layout елементів-->
-    <color name="food_item_list">#77889C</color>
+    <color name="food_item_list">#38424C</color>
 
     <color name="background_calculator">#0F173C</color>
     <color name="background_layout_calculator">#1C214B</color>
