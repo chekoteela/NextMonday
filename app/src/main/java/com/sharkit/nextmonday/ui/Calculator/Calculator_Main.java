@@ -120,7 +120,7 @@ public class Calculator_Main extends Fragment {
                 tap_bar.toggle();
             }
         });
-
+        Log.d(TAG, "Dima");
         return root;
     }
 
