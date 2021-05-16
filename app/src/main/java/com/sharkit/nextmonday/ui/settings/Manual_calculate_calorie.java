@@ -16,9 +16,9 @@ public class Manual_calculate_calorie extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       View root = inflater.inflate(R.layout.calculator_manual_calculate_calorie, container, false);
+        View root = inflater.inflate(R.layout.calculator_manual_calculate_calorie, container, false);
 
 
         return root;
-
+    }
     }
