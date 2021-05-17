@@ -238,5 +238,9 @@
     <string name="story">История</string>
     <string name="favorites">Избранное</string>
     <string name="add_food">Добавить еду</string>
+    <string name="general">Общие</string>
+    <string name="profile">Профиль</string>
+    <string name="calculator">Калькулятор</string>
+    <string name="moderator">Модератор</string>
 
 </resources>

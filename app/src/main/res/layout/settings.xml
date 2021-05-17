@@ -3,18 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/calculator_auto_edittext"
+    android:orientation="vertical"
+    android:gravity="center|top"
     tools:context=".ui.settings.Settings">
 
     <Button
-        android:layout_width="wrap_content"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp"
+        style="@style/button_setting_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/profile"
-        android:text="profile"/>
+        android:text="@string/general"/>
     <Button
-        android:layout_width="wrap_content"
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp"
+        style="@style/button_setting_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/profile"/>
+    <Button
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp"
+        style="@style/button_setting_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dairy"/>
+    <Button
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="10dp"
+        style="@style/button_setting_style"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/calculator"
-        android:text="calculator"/>
+        android:text="@string/calculator"/>
+    <Button
+        android:paddingVertical="5dp"
+        android:paddingHorizontal="15dp"
+        style="@style/button_setting_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/moderator"/>
+
+
 
 
 </LinearLayout>
