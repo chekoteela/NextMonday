@@ -29,7 +29,7 @@ public class MyWeight extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE + "( " + COLUMN_ID + " TEXT, " + COLUMN_DATE_MILLIS +
-                " INTEGER UNIQUE , " + COLUMN_WEIGHT + " INTEGER, " + COLUMN_CHANGE + " TEXT, " + COLUMN_DATE + " TEXT UNIQUE )");
+                " TEXT UNIQUE , " + COLUMN_WEIGHT + " INTEGER, " + COLUMN_CHANGE + " TEXT, " + COLUMN_DATE + " TEXT UNIQUE )");
     }
 
     @Override

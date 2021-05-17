@@ -68,7 +68,7 @@ public class Weight extends Fragment {
     TextView weight,current_weight;
     Button add_weight;
 
-    Calendar calendar = Calendar.getInstance();
+
 //    LineGraphSeries<> series;
 
     @Override
@@ -87,33 +87,53 @@ public class Weight extends Fragment {
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy");
 
-        Log.d(TAG, calendar.getTimeInMillis() + "");
 
         graphView.getGridLabelRenderer().setGridColor(getResources().getColor(R.color.white));
         graphView.getGridLabelRenderer().setHorizontalLabelsColor(getResources().getColor(R.color.white));
         graphView.getGridLabelRenderer().setVerticalLabelsColor(getResources().getColor(R.color.white));
-        graphView.getViewport().setYAxisBoundsManual(true);
-        graphView.getViewport().setXAxisBoundsManual(true);
 
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(GetDataPoint());
 
-        graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(){
-            @Override
-            public String formatLabel(double value, boolean isValueX) {
+        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[0]);
 
-                if (isValueX) {
-                    return dateFormat.format(value);
-                }else{
-                    return super.formatLabel(value, isValueX);
-                }
-            }
 
-        });
-        series.setDrawDataPoints(true);
         graphView.addSeries(series);
+        series.resetData(GetDataPoint());
         graphView.getGridLabelRenderer().setHorizontalLabelsAngle(45);
-        graphView.getGridLabelRenderer().setNumHorizontalLabels(query.getCount());
 
+//        graphView.getGridLabelRenderer().setNumHorizontalLabels(10); // вказує максимальну кількість точок
+
+
+
+        try {
+            graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(){
+                @Override
+                public String formatLabel(double value, boolean isValueX) {
+
+                    if (isValueX) {
+                        return dateFormat.format(value);
+                    }else{
+                        return super.formatLabel(value, isValueX);
+                    }
+                }
+
+            });
+            graphView.getGridLabelRenderer().setNumHorizontalLabels(3);
+            graphView.getViewport().setXAxisBoundsManual(true);
+            query.moveToFirst();
+            graphView.getViewport().setMinX(query.getLong(1));  // минимальная  первая точка
+            query.moveToLast();
+            graphView.getViewport().setMaxX(query.getLong(1));  // максимальная последняя точка
+
+        }catch (CursorIndexOutOfBoundsException e){
+            graphView.getGridLabelRenderer().setNumHorizontalLabels(0);
+        }
+
+        graphView.getViewport().setScrollable(true);  // scrolling x
+        graphView.getViewport().setScalable(true); // zooming x
+
+        series.setDrawDataPoints(true); // намалювати пікові точки
+        series.setDataPointsRadius(16);//радіус точок на лінії
+        series.setThickness(8);//товщина основної лінії
 
         series.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
@@ -149,14 +169,15 @@ public class Weight extends Fragment {
         myWeight = new MyWeight(getApplicationContext());
         sdb = myWeight.getReadableDatabase();
         myWeight.onCreate(sdb);
-        Cursor cursor = sdb.rawQuery("SELECT * FROM " + myWeight.TABLE + " WHERE " + myWeight.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'", null);
+        Cursor cursor = sdb.rawQuery("SELECT * FROM " + myWeight.TABLE + " WHERE " + myWeight.COLUMN_ID +
+                " = '" + mAuth.getCurrentUser().getUid() + "'", null);
 
         DataPoint[] dp = new DataPoint[cursor.getCount()];
         try {
 
-        while (cursor.moveToNext()) {
-
-            dp[cursor.getPosition()] =
+        for (int i = 0; i < cursor.getCount(); i++){
+            cursor.moveToNext();
+            dp[i] =
                     new DataPoint(cursor.getLong(1),
                             cursor.getFloat(2));
 
@@ -166,12 +187,17 @@ public class Weight extends Fragment {
             weight.setText(String.valueOf(cursor.getFloat(2)));
             current_weight.setText(PFC_today.getCurrent_weight());
         }catch (NullPointerException e){
-
         }
 
         }catch (CursorIndexOutOfBoundsException e){
-            weight.setText("");
-            current_weight.setText("");
+            try {
+
+                weight.setText(PFC_today.getWeight());
+                current_weight.setText(PFC_today.getCurrent_weight());
+            }catch (NullPointerException exception){
+                weight.setText("");
+                current_weight.setText("");
+            }
         }
 
         return dp;
@@ -189,7 +215,7 @@ public class Weight extends Fragment {
         while (query.moveToNext()) {
         WeightV weightV = new WeightV();
         weightV.setChange(query.getString(3));
-        weightV.setDate(query.getInt(1));
+        weightV.setDate(query.getLong(1));
         weightV.setWeight(query.getString(2));
         list.add(weightV);
         }
@@ -206,6 +232,7 @@ public class Weight extends Fragment {
         sdb = myWeight.getReadableDatabase();
         myWeight.onCreate(sdb);
 
+        Calendar calendar = Calendar.getInstance();
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
@@ -235,9 +262,12 @@ public class Weight extends Fragment {
 
         }catch (SQLiteConstraintException e){
 
-           // добавити правильну цифру зміни ваги
+            try {
+                query.moveToPosition(query.getCount() -2);
+                weight.setChange(String.valueOf(Float.parseFloat(s) - Float.parseFloat(query.getString(2))));
 
-//           Log.d(TAG, query.getInt(2)+"");
+            }catch (CursorIndexOutOfBoundsException exception){
+            }
 
             try {
                 weight.setChange(String.format( Locale.ROOT,"%.1f",(Float.parseFloat(s) - Float.parseFloat(query.getString(2)))));

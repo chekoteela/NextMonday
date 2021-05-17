@@ -120,17 +120,18 @@ public class Calculator_Main extends Fragment {
                 tap_bar.toggle();
             }
         });
-///dkljfghsdkfjglskdfjgklj
+
         return root;
     }
 
     private void WriteDataWeight(String s) {
+
         myWeight = new MyWeight(getApplicationContext());
         sdb = myWeight.getReadableDatabase();
         myWeight.onCreate(sdb);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.DAY_OF_MONTH,17);
+
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         query = sdb.rawQuery("SELECT * FROM " + myWeight.TABLE + " WHERE " + myWeight.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'", null);
@@ -147,17 +148,42 @@ public class Calculator_Main extends Fragment {
             weight.setChange(String.valueOf(0));
         }
 
-
-
         try {
             sdb.execSQL("INSERT INTO " + myWeight.TABLE + " VALUES ('" + mAuth.getCurrentUser().getUid() + "','" +
                     calendar.getTimeInMillis() + "','" +
-                    s + "','" + weight.getChange() + "');");
+                    s + "','" + weight.getChange() + "','" +
+                    dateFormat.format(calendar.getTimeInMillis()) +
+                    "');");
 
             CollectionReference colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MyWeight");
             colRef.document(dateFormat.format(calendar.getTimeInMillis())).set(weight);
 
-        }catch (SQLiteConstraintException e){}
+        }catch (SQLiteConstraintException e){
+
+            try {
+                query.moveToPosition(query.getCount() -2);
+                weight.setChange(String.valueOf(Float.parseFloat(s) - Float.parseFloat(query.getString(2))));
+
+            }catch (CursorIndexOutOfBoundsException exception){
+            }
+
+            try {
+                weight.setChange(String.format( Locale.ROOT,"%.1f",(Float.parseFloat(s) - Float.parseFloat(query.getString(2)))));
+            }catch (CursorIndexOutOfBoundsException ex){
+                weight.setChange(String.valueOf(0));
+            }
+
+            sdb.execSQL("UPDATE " + myWeight.TABLE + " SET " +
+                    myWeight.COLUMN_WEIGHT + " = '" + s + "'," +
+                    myWeight.COLUMN_CHANGE + " = '" + weight.getChange()
+                    + "' WHERE " +
+                    myWeight.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "' AND " +
+                    myWeight.COLUMN_DATE + " = '" + dateFormat.format(calendar.getTimeInMillis()) + "'" );
+            CollectionReference colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MyWeight");
+            colRef.document(dateFormat.format(calendar.getTimeInMillis())).set(weight);
+
+        }
+
 
     }
 
