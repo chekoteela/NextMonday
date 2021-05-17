@@ -52,13 +52,13 @@ public class WeightAdaptor extends BaseAdapter {
         }
         FindView(convertView);
 
-        Calendar calendar = Calendar.getInstance();
+
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         change.setText(list.get(position).getChange());
         weight.setText(list.get(position).getWeight());
         date.setText(dateFormat.format(list.get(position).getDate()));
-//        Log.d(TAG, dateFormat.format(list.get(position).getDate())  );
+
 
         return convertView;
     }
