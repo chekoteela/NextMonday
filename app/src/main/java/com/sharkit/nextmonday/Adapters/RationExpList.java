@@ -2,7 +2,9 @@ package com.sharkit.nextmonday.Adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -12,10 +14,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -23,6 +28,9 @@ import androidx.navigation.Navigation;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,9 +48,14 @@ import com.sharkit.nextmonday.variables.MealData;
 import com.sharkit.nextmonday.variables.PFC_today;
 import com.sharkit.nextmonday.variables.UserMeal;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.security.acl.LastOwnerException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -59,7 +72,7 @@ public class RationExpList extends BaseExpandableListAdapter {
     TextView calorie, weight, protein, carbohydrate, name_food, fat,
     all_calorie, all_protein, all_carbohydrate, all_fat, meal;
     ImageView plus;
-    LinearLayout lin_for_long_press;
+    LinearLayout lin_for_long_press, parent_item;
 
 
 
@@ -117,6 +130,40 @@ public class RationExpList extends BaseExpandableListAdapter {
 
         UserMeal userMeal = new UserMeal();
 
+        parent_item.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
+            @Override
+            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+                Calendar calendar = Calendar.getInstance();
+                Calendar calendar1 = Calendar.getInstance();
+                calendar.setTimeInMillis(DayOfWeek.getMillis());
+
+                menu.add("Изменить").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        ChangeRationItem(groupPosition);
+                        return true;
+                    }
+                });
+                menu.add("Удалить").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if (calendar1.get(Calendar.YEAR) <= calendar.get(Calendar.YEAR) &&
+                                calendar1.get(Calendar.DAY_OF_MONTH) <= calendar.get(Calendar.DAY_OF_MONTH) &&
+                                calendar1.get(Calendar.MONTH) <= calendar.get(Calendar.MONTH)){
+
+                            if (mGroups.get(groupPosition).isEmpty()) {
+                                DeleteRationItem(groupPosition);
+                            }else {
+                                Toast.makeText(mContext,"Невозможно удалить прием, пока в нем есть добавлиные продукты", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        return true;
+                    }
+                });
+            }
+        });
+
         userMeal.setCalorie("0");
         userMeal.setProtein("0");
         userMeal.setWatter("0");
@@ -163,6 +210,65 @@ public class RationExpList extends BaseExpandableListAdapter {
         });
 
         return convertView;
+    }
+
+    private void DeleteRationItem(int groupPosition) {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference users = db.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/Meal");
+
+        users.child(String.valueOf(groupPosition)).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                mMeal.remove(groupPosition);
+                Map<String, Object> data = new HashMap<>();
+                for (int i = 0; i <mMeal.size(); i ++){
+                    data.put(String.valueOf(i), mMeal.get(i));
+                }
+                users.setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
+                        navController.navigate(R.id.nav_cal_ration);
+                    }
+                });
+            }
+        });
+
+    }
+
+    private void ChangeRationItem(int groupPosition) {
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference users = db.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/Meal");
+        AlertDialog.Builder dialog = new AlertDialog.Builder((Activity)mContext, R.style.CustomAlertDialog);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View select = inflater.inflate(R.layout.calculator_alert_add_meal, null);
+
+        EditText new_meal = select.findViewById(R.id.meal);
+
+        dialog.setPositiveButton("Подтвердить", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                Map<String, Object> data = new HashMap<>();
+                data.put(String.valueOf(groupPosition), new_meal.getText().toString());
+
+                users.updateChildren(data, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
+                        NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
+                        navController.navigate(R.id.nav_cal_ration);
+                    }
+                });
+            }
+        });
+
+        dialog.setView(select);
+        dialog.show();
+
+
     }
 
     public void OnClickPlus(View v, int position){
@@ -360,6 +466,8 @@ public class RationExpList extends BaseExpandableListAdapter {
         name_food = convertView.findViewById(R.id.name_product);
         weight = convertView.findViewById(R.id.weight_food);
         plus = convertView.findViewById(R.id.plus);
+        parent_item = convertView.findViewById(R.id.parent_item);
+
 
         lin_for_long_press = convertView.findViewById(R.id.liner_for_long_press);
         all_fat = convertView.findViewById(R.id.all_fat);

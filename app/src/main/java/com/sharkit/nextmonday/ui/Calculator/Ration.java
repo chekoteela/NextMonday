@@ -35,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -81,6 +82,7 @@ public class Ration extends Fragment {
     ArrayList<ArrayList<UserMeal>> group;
     ArrayList<UserMeal> child;
     CollectionReference colRef, docRef, docRef1;
+    DocumentReference documentReference;
 
     DataBasePFC dataBasePFC;
     LinkRation linkRation;
@@ -109,6 +111,14 @@ public class Ration extends Fragment {
 
         date.setText(dateFormat.format(DayOfWeek.getMillis()));
 
+//        documentReference = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MealInfo")
+//                .document(dateFormat.format(calendar1.getTimeInMillis()));
+//     documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//         @Override
+//         public void onSuccess(DocumentSnapshot documentSnapshot) {
+//
+//         }
+//     })
         if (calendar1.get(Calendar.YEAR) <= calendar.get(Calendar.YEAR) &&
                 calendar1.get(Calendar.DAY_OF_MONTH) <= calendar.get(Calendar.DAY_OF_MONTH) &&
                 calendar1.get(Calendar.MONTH) <= calendar.get(Calendar.MONTH)){
@@ -159,23 +169,22 @@ public class Ration extends Fragment {
 
 
 
-    private void AllNutrition(String s) {
-        s = "сніданок";
-        sdl = linkRation.getReadableDatabase();
-
-        allNutrition = new ArrayList<>();
-
-        query = sdl.rawQuery("SELECT * FROM " + linkRation.TABLE + " WHERE " + linkRation.COLUMN_ID + " = '" +
-                mAuth.getCurrentUser().getUid() + "' AND " + linkRation.COLUMN_MEAL + " = '" + s + "'",null);
-
-        while (query.moveToNext()){
-//            allNutrition.add(FindFoodBySQLFromBAR(query.getString(2), s));
-//            Log.d(TAG, (FindFoodBySQLFromBAR(query.getString(2), s).getCalorie())+"");
-
-        }
-//        float a = Float.parseFloat(allNutrition.get(1).getCalorie());
-//        Log.d(TAG, a +"");
-    }
+//    private void AllNutrition(String s) {
+//        s = "сніданок";
+//        sdl = linkRation.getReadableDatabase();
+//
+//        allNutrition = new ArrayList<>();
+//
+//        query = sdl.rawQuery("SELECT * FROM " + linkRation.TABLE + " WHERE " + linkRation.COLUMN_ID + " = '" +
+//                mAuth.getCurrentUser().getUid() + "' AND " + linkRation.COLUMN_MEAL + " = '" + s + "'",null);
+//
+//        while (query.moveToNext()){
+////            allNutrition.add(FindFoodBySQLFromBAR(query.getString(2), s));
+////            Log.d(TAG, (FindFoodBySQLFromBAR(query.getString(2), s).getCalorie())+"");
+//
+//        }
+//
+//    }
 
     public DataPFC FindFoodBySQLFromBAR(String code, String k){
         DataBasePFC dataBasePFC = new DataBasePFC(getApplicationContext());
@@ -300,6 +309,7 @@ public class Ration extends Fragment {
     }
 
     private void FoodListFromSQLite(String k) {
+
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         sdl = linkRation.getReadableDatabase();
         query = sdl.rawQuery("SELECT * FROM " + linkRation.TABLE + " WHERE " + linkRation.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() +

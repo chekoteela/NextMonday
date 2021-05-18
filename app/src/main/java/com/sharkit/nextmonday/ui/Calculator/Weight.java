@@ -209,10 +209,11 @@ public class Weight extends Fragment {
         sdb = myWeight.getReadableDatabase();
         myWeight.onCreate(sdb);
         query = sdb.rawQuery("SELECT * FROM " + myWeight.TABLE + " WHERE " + myWeight.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'", null);
+        query.moveToPosition(query.getCount() +1);
 
         list = new ArrayList<>();
 
-        while (query.moveToNext()) {
+        while (query.moveToPrevious()) {
         WeightV weightV = new WeightV();
         weightV.setChange(query.getString(3));
         weightV.setDate(query.getLong(1));
