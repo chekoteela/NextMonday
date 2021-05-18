@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,9 +14,7 @@
         android:gravity="center|top"
         android:orientation="vertical">
 
-
         <Button
-            android:id="@+id/profile"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,12 +23,14 @@
             android:text="@string/general" />
 
         <Button
+            android:id="@+id/profile"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
             android:paddingVertical="5dp"
             android:text="@string/profile" />
+
 
         <Button
             style="@style/button_setting_style"
