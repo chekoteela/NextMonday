@@ -82,15 +82,13 @@ public class Weight extends Fragment {
 
         Adapter();
 
-
-
-
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy");
 
 
         graphView.getGridLabelRenderer().setGridColor(getResources().getColor(R.color.white));
         graphView.getGridLabelRenderer().setHorizontalLabelsColor(getResources().getColor(R.color.white));
         graphView.getGridLabelRenderer().setVerticalLabelsColor(getResources().getColor(R.color.white));
+        graphView.setBackgroundColor(getResources().getColor(R.color.calculator_color));
 
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[0]);
