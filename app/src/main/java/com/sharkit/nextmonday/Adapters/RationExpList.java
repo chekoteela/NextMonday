@@ -33,10 +33,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firestore.v1.WriteResult;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
 import com.sharkit.nextmonday.MySQL.LinkRation;
 import com.sharkit.nextmonday.R;
@@ -62,7 +64,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class RationExpList extends BaseExpandableListAdapter {
     private ArrayList<ArrayList<UserMeal>> mGroups;
-    private ArrayList<String> mMeal;
+    private ArrayList<Object> mMeal;
     private Context mContext;
 
     final String TAG = "qwerty";
@@ -78,7 +80,7 @@ public class RationExpList extends BaseExpandableListAdapter {
 
     ArrayList<UserMeal> list;
 
-    public RationExpList(ArrayList<String> mMeal , ArrayList<ArrayList<UserMeal>> mGroups, Context mContext) {
+    public RationExpList(ArrayList<Object> mMeal , ArrayList<ArrayList<UserMeal>> mGroups, Context mContext) {
         this.mGroups = mGroups;
         this.mContext = mContext;
         this.mMeal = mMeal;
@@ -141,7 +143,11 @@ public class RationExpList extends BaseExpandableListAdapter {
                 menu.add("Изменить").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
+                        if (mGroups.get(groupPosition).isEmpty()) {
                         ChangeRationItem(groupPosition);
+                        }else {
+                            Toast.makeText(mContext,"Невозможно переименовать прием, пока в нем есть добавлиные продукты", Toast.LENGTH_SHORT).show();
+                        }
                         return true;
                     }
                 });
@@ -199,7 +205,7 @@ public class RationExpList extends BaseExpandableListAdapter {
         all_protein.setText(String.format("%.1f",Float.parseFloat(userMeal.getProtein())));
         all_carbohydrate.setText(String.format("%.1f",Float.parseFloat(userMeal.getCarbohydrate())));
 
-        meal.setText(mMeal.get(groupPosition));
+        meal.setText(String.valueOf(mMeal.get(groupPosition)));
 
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,35 +219,48 @@ public class RationExpList extends BaseExpandableListAdapter {
     }
 
     private void DeleteRationItem(int groupPosition) {
+
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         DatabaseReference users = db.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/Meal");
+        FirebaseFirestore fdb = FirebaseFirestore.getInstance();
+        CollectionReference colRef = fdb.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MealInfo");
 
-        users.child(String.valueOf(groupPosition)).setValue(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+        mMeal.remove(groupPosition);
+        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
+        data.put(String.valueOf(groupPosition), FieldValue.delete());
+        users.child(String.valueOf(groupPosition)).removeValue();
+        colRef.document(dateFormat.format(DayOfWeek.getMillis())).update(data);
+
+        for (int i = 0; i < mMeal.size(); i++){
+            map.put(String.valueOf(i), mMeal.get(i));
+        }
+
+        colRef.document(dateFormat.format(DayOfWeek.getMillis())).set(map);
+        users.setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                mMeal.remove(groupPosition);
-                Map<String, Object> data = new HashMap<>();
-                for (int i = 0; i <mMeal.size(); i ++){
-                    data.put(String.valueOf(i), mMeal.get(i));
-                }
-                users.setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
-                        navController.navigate(R.id.nav_cal_ration);
-                    }
-                });
+                NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
+                navController.navigate(R.id.nav_cal_ration);
             }
         });
+
 
     }
 
     private void ChangeRationItem(int groupPosition) {
 
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseDatabase db = FirebaseDatabase.getInstance();
+        FirebaseFirestore fdb = FirebaseFirestore.getInstance();
         DatabaseReference users = db.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/Meal");
+        CollectionReference colRef = fdb.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MealInfo");
         AlertDialog.Builder dialog = new AlertDialog.Builder((Activity)mContext, R.style.CustomAlertDialog);
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View select = inflater.inflate(R.layout.calculator_alert_add_meal, null);
@@ -254,14 +273,14 @@ public class RationExpList extends BaseExpandableListAdapter {
 
                 Map<String, Object> data = new HashMap<>();
                 data.put(String.valueOf(groupPosition), new_meal.getText().toString());
-
-                users.updateChildren(data, new DatabaseReference.CompletionListener() {
-                    @Override
-                    public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
-                        NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
-                        navController.navigate(R.id.nav_cal_ration);
-                    }
-                });
+                colRef.document(dateFormat.format(DayOfWeek.getMillis())).update(data);
+                    users.updateChildren(data, new DatabaseReference.CompletionListener() {
+                        @Override
+                        public void onComplete(@Nullable @org.jetbrains.annotations.Nullable DatabaseError error, @NonNull @NotNull DatabaseReference ref) {
+                            NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
+                            navController.navigate(R.id.nav_cal_ration);
+                        }
+                    });
             }
         });
 
@@ -273,7 +292,7 @@ public class RationExpList extends BaseExpandableListAdapter {
 
     public void OnClickPlus(View v, int position){
         NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
-        PFC_today.setPage(mMeal.get(position));
+        PFC_today.setPage(String.valueOf(mMeal.get(position)));
         navController.navigate(R.id.nav_cal_find_food_by_name);
     }
     @SuppressLint("DefaultLocale")
