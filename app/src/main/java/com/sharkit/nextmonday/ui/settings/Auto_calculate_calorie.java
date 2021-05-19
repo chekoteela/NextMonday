@@ -91,6 +91,8 @@ public class Auto_calculate_calorie extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_activity,R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+
         spinner_target.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -118,7 +120,31 @@ public class Auto_calculate_calorie extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        tab.select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()){
+                    case 0:
+                        navController.navigate(R.id.nav_cal_auto_calculate_calorie);
+                        break;
+                    case 1:
+                        navController.navigate(R.id.nav_settings_manual_calculate);
+                        break;
+                }
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         to_calculate.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
