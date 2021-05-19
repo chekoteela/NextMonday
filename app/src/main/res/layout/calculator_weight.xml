@@ -32,6 +32,7 @@
         style="@style/StandartTV"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
+        android:textSize="18sp"
         android:layout_height="wrap_content"
         android:text="Текущий вес"/>
 
@@ -39,6 +40,7 @@
         android:id="@+id/my_weight"
         style="@style/StandartTV"
         android:padding="10dp"
+        android:textSize="18sp"
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:text="85кг"
@@ -59,12 +61,14 @@
             android:layout_gravity="center"
             android:padding="10dp"
             android:text="Желаемій вес"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/current_weight"
             style="@style/StandartTV"
+            android:textSize="18sp"
             android:padding="10dp"
             android:layout_gravity="center"
             android:text="111кг"
@@ -81,11 +85,6 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="250dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:background="@color/calculator_color_linear"
-        />
 
     <ListView
         android:id="@+id/list_item"
@@ -94,14 +93,15 @@
         android:layout_height="200dp"/>
 
     <Button
+        style="@style/button_setting_style"
         android:id="@+id/add_weight"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="60dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/calculator_button"
-        android:padding="5dp"
+        android:padding="10dp"
         android:text="Изменить вес"
-        android:textColor="@color/white" />
+        />
 
 
     </LinearLayout>
