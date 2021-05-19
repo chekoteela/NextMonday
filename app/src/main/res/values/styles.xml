@@ -34,6 +34,23 @@
     </style>
 
 
+
+
+
+
+
+    //gfdgdfgdfgdfg
+
+
+
+
+
+
+
+
+
+
+
     <style name="CalenderViewCustom" parent="Theme.AppCompat">
         <item name="colorPrimary">@android:color/darker_gray</item>
         <item name="android:background">@color/dairy_navigation_view_gradient_one</item>
