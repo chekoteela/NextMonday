@@ -21,7 +21,7 @@
         <item name="android:fontFamily">@font/play</item>
         <item name="android:unfocusedMonthDateColor">@color/purple_500</item>
         <item name="android:textColor">@color/white</item>
-        <item name="colorAccent">@color/calculator_color</item>
+        <item name="colorAccent">@color/calendar_focuse_date</item>
         <item name="colorControlHighlight">@color/black</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="colorSwitchThumbNormal">@color/white</item>
@@ -114,7 +114,6 @@
         <item name="android:fontFamily">@font/play</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:layout_margin">15dp</item>
         <item name="android:background">@drawable/calculator_button</item>
 
     </style>
