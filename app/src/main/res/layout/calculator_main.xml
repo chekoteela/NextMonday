@@ -69,7 +69,6 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="@string/kkal"
-                android:textSize="20sp"
                 style="@style/StandartTextView"
                 android:textColor="@color/white"
                 tools:layout_editor_absoluteX="93dp"
