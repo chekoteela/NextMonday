@@ -1,564 +1,415 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/calculator_auto_edittext"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.settings.ModeratorChange">
+    <ScrollView
+        android:layout_above="@+id/save_moder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
 
-<LinearLayout
-    android:weightSum="2"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        style="@style/StandartTextView"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Hазвание" />
-    <EditText
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        android:layout_weight="1"
-        android:inputType="textMultiLine"
-        style="@style/EditText_change_food_black"
-        android:background="@drawable/calculator_auto_calculate_edittext"
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Название" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Порция" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Калории" />
+            <TextView
+                android:layout_margin="5dp"
+                android:textSize="16sp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Жир" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Нас. жир" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Транс" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Омега 6" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Омега 3" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ALA" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DHA" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EPA" />
+            <TextView
+                android:textSize="16sp"
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Carbs" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Простые" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сложные" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Белок" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сыров" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Яичн." />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Соевый" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Казеин" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cellulose_hint" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/water_hint" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/salt_hint" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ca_hint" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/k_hint" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+            <TextView
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вес" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_margin="5dp"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                style="@style/EditText_change_food_black"
+                android:background="@drawable/calculator_auto_calculate_edittext"
+                android:layout_width="wrap_content"
+                android:hint="Название"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+    <Button
+        android:id="@+id/save_moder"
+        android:background="@drawable/calculator_button"
         android:layout_width="wrap_content"
-        android:hint="Название"
-        android:layout_height="40dp"/>
-</LinearLayout>
-    <LinearLayout
-        android:weightSum="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="Вес" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="numberDecimal"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Вес"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Калории" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="numberDecimal"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Калории"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Вес Жира" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Вес Жира"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Транс жир" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Транс жир"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Омега 6" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Омега 6"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Омега 3" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Омега 3"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="ALA" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="ALA"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="DHA" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="DHA"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="EPA" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="EPA"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Вес углеводов" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Вес углеводов"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Простые" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Простые"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Сложные" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Сложные"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Вес белка" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Вес белка"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Сыровот прот" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Сыровот. прот"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Соевый. прот" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Соевый. прот"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Яичный прот" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Яичный прот"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Казеин прот" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Казеин прот"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Клетчатка" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Клетчатка"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Вода" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Вода"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Соль" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Соль"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="Са" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="Са"
-            android:layout_height="40dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            style="@style/StandartTextView"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="К" />
-        <EditText
-            android:layout_margin="5dp"
-            android:padding="10dp"
-            android:layout_weight="1"
-            android:inputType="textMultiLine"
-            style="@style/EditText_change_food_black"
-            android:background="@drawable/calculator_auto_calculate_edittext"
-            android:layout_width="wrap_content"
-            android:hint="К"
-            android:layout_height="40dp"/>
-    </LinearLayout>
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:layout_above="@+id/bar"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"
+        style="@style/StandartTextView"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
 
-        <Button
-            android:background="@drawable/calculator_button"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text="Сохранить"
-            style="@style/StandartTextView"/>
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/dairy_navigation_bottom_bar"
+        app:itemBackground="@drawable/dairy_navigation_bottom_bar"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:menu="@menu/calculator_bottom_navigation_bar" />
+</RelativeLayout>
 
-    </LinearLayout>
-
-</ScrollView>

@@ -10,7 +10,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -27,7 +26,9 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,10 +36,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.Adapters.RationExpList;
@@ -50,13 +50,13 @@ import com.sharkit.nextmonday.variables.DataPFC;
 import com.sharkit.nextmonday.variables.MealData;
 import com.sharkit.nextmonday.variables.UserMeal;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -70,6 +70,9 @@ public class Ration extends Fragment {
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     DatabaseReference users = fdb.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/Meal");
 
+    Calendar calendar = Calendar.getInstance();
+
+
 
     ArrayList<DataPFC> allNutrition;
     Button add;
@@ -77,10 +80,13 @@ public class Ration extends Fragment {
     final String TAG = "qwerty";
     long num;
 
-    ArrayList<String> count;
+    Map<String, Object> data;
+    ArrayList<Object> count;
     ArrayList<ArrayList<UserMeal>> group;
     ArrayList<UserMeal> child;
-    CollectionReference colRef, docRef, docRef1;
+    CollectionReference colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MealInfo"),
+          docRef, docRef1;
+    DocumentReference documentReference;
 
     DataBasePFC dataBasePFC;
     LinkRation linkRation;
@@ -101,26 +107,43 @@ public class Ration extends Fragment {
         linkRation.onCreate(sdl);
 
         SynchronizedRation();
+        ListMeal();
 
-        Calendar calendar = Calendar.getInstance();
-        Calendar calendar1 = Calendar.getInstance();
         calendar.setTimeInMillis(DayOfWeek.getMillis());
+        Calendar calendar1 = Calendar.getInstance();
+
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         date.setText(dateFormat.format(DayOfWeek.getMillis()));
 
-        if (calendar1.get(Calendar.YEAR) <= calendar.get(Calendar.YEAR) &&
-                calendar1.get(Calendar.DAY_OF_MONTH) <= calendar.get(Calendar.DAY_OF_MONTH) &&
-                calendar1.get(Calendar.MONTH) <= calendar.get(Calendar.MONTH)){
-            ReturnNumber();
-        }else{
-            Number();
+
+        if (calendar1.get(Calendar.YEAR) < calendar.get(Calendar.YEAR) ||
+                calendar1.get(Calendar.DAY_OF_MONTH) < calendar.get(Calendar.DAY_OF_MONTH) ||
+                calendar1.get(Calendar.MONTH) < calendar.get(Calendar.MONTH)){
+            // завтра
+            ReturnToday();
+
+
+        }else if (calendar1.get(Calendar.YEAR) == calendar.get(Calendar.YEAR) &&
+                calendar1.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH) &&
+                calendar1.get(Calendar.MONTH) == calendar.get(Calendar.MONTH)){
+            //сьогодні
+            ReturnToday();
+
+        }else {
+            //вчора
+           Number();
+
         }
 
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                @SuppressLint("SimpleDateFormat")
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.CustomAlertDialog);
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -135,15 +158,22 @@ public class Ration extends Fragment {
                             Toast.makeText(getActivity(), "error text", Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        count.add(new_meal.getText().toString().trim());
 
-                        users.child(ReturnNumber()+"".trim()).setValue(new_meal.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        for (int i = 0; i < count.size(); i++){
+                            data.put(String.valueOf(i), count.get(i));
+                        }
+
+
+                        colRef.document(dateFormat.format(calendar.getTimeInMillis())).set(data);
+                        users.setValue(count).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(getContext(),"success", Toast.LENGTH_SHORT).show();
+                            public void onSuccess(Void unused) {
                                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                                 navController.navigate(R.id.nav_cal_ration);
                             }
                         });
+
                     }
                 });
                 dialog.setView(select);
@@ -156,26 +186,88 @@ public class Ration extends Fragment {
         return root;
     }
 
+    public void ListMeal(){
+        data = new HashMap<>();
+        count = new ArrayList<>();
+        users.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                for (int i = 0; i < snapshot.getChildrenCount(); i++){
 
+                    int finalI = i;
+                    users.child(String.valueOf(i)).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                            String k = snapshot.getValue(String.class);
+                            count.add(k);
+                        }
 
-    private void AllNutrition(String s) {
-        s = "сніданок";
-        sdl = linkRation.getReadableDatabase();
+                        @Override
+                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
-        allNutrition = new ArrayList<>();
+                        }
+                    });
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
 
-        query = sdl.rawQuery("SELECT * FROM " + linkRation.TABLE + " WHERE " + linkRation.COLUMN_ID + " = '" +
-                mAuth.getCurrentUser().getUid() + "' AND " + linkRation.COLUMN_MEAL + " = '" + s + "'",null);
-
-        while (query.moveToNext()){
-//            allNutrition.add(FindFoodBySQLFromBAR(query.getString(2), s));
-//            Log.d(TAG, (FindFoodBySQLFromBAR(query.getString(2), s).getCalorie())+"");
-
-        }
-//        float a = Float.parseFloat(allNutrition.get(1).getCalorie());
-//        Log.d(TAG, a +"");
     }
+
+
+
+    private void ReturnToday() {
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        documentReference = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MealInfo")
+                .document(dateFormat.format(calendar.getTimeInMillis()));
+        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot documentSnapshot = task.getResult();
+                if (documentSnapshot.exists()){ //список присутній
+                    Number();
+                }else {    // список відсутній
+                    ExistMealToday();
+
+                }
+            }
+        });
+
+    }
+
+    private void ExistMealToday() {
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+        for (int i = 0; i < count.size(); i++){
+            data.put(String.valueOf(i), count.get(i));
+        }
+        colRef.document(dateFormat.format(calendar.getTimeInMillis())).set(data);
+        Log.d(TAG, "write to fs");
+        ReturnToday();
+    }
+
+
+//    private void AllNutrition(String s) {
+//        s = "сніданок";
+//        sdl = linkRation.getReadableDatabase();
+//
+//        allNutrition = new ArrayList<>();
+//
+//        query = sdl.rawQuery("SELECT * FROM " + linkRation.TABLE + " WHERE " + linkRation.COLUMN_ID + " = '" +
+//                mAuth.getCurrentUser().getUid() + "' AND " + linkRation.COLUMN_MEAL + " = '" + s + "'",null);
+//
+//        while (query.moveToNext()){
+////            allNutrition.add(FindFoodBySQLFromBAR(query.getString(2), s));
+////            Log.d(TAG, (FindFoodBySQLFromBAR(query.getString(2), s).getCalorie())+"");
+//
+//        }
+//
+//    }
 
     public DataPFC FindFoodBySQLFromBAR(String code, String k){
         DataBasePFC dataBasePFC = new DataBasePFC(getApplicationContext());
@@ -222,84 +314,78 @@ public class Ration extends Fragment {
     }
 
 
-    public long ReturnNumber(){
 
-        users.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                group = new ArrayList<>();
-                num = snapshot.getChildrenCount();
-                MealList(snapshot.getChildrenCount());
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-
-        return num ++;
-    }
 
     public void Number(){
         group = new ArrayList<>();
-        count = new ArrayList<>();
+        count = new ArrayList<Object>();
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
-        colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() +
-                "/MealInfo");
         colRef.document(dateFormat.format(DayOfWeek.getMillis())).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 try {
-
                     for (int i = 0; i < documentSnapshot.getData().size(); i++) {
-                        count.add(documentSnapshot.get(i + "".trim()).toString());
-                        FoodListFromSQLite(documentSnapshot.get(i + "").toString());
+                        count.add(documentSnapshot.get(String.valueOf(i)));
+                        FoodListFromSQLite(documentSnapshot.get(String.valueOf(i)));
                     }
                 }catch (NullPointerException e){}
             }
         });
-
 }
 
+//    public void ReturnNumber(){
+//
+//                users.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        group = new ArrayList<>();
+//                        num = snapshot.getChildrenCount();
+//                        MealList(snapshot.getChildrenCount());
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
+//    }
+//    public void MealList(long a) {
+//
+//        Calendar calendar = Calendar.getInstance();
+//        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+//        Map<String, Object> map = new HashMap<>();
+//        count = new ArrayList<Object>();
+//        for (long i = 0; i < a; i++) {
+//            long finalI = i;
+//            users.child(i+"").addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    try {
+//
+//                        colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MealInfo");
+//                        String k = snapshot.getValue(String.class);
+//                        map.put(finalI +"", k);
+//                        count.add(k);
+//
+//                       colRef.document(dateFormat.format(calendar.getTimeInMillis())).set(map);
+//
+//                        Log.d(TAG, "mealList");
+//                            FoodListFromSQLite(k);
+//
+//
+//                    } catch (NullPointerException e) {
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                }
+//            });
+//        }
+//    }
 
+    private void FoodListFromSQLite(Object k) {
 
-    public void MealList(long a) {
-
-        Calendar calendar = Calendar.getInstance();
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        Map<String, Object> map = new HashMap<>();
-        count = new ArrayList<>();
-        for (long i = 0; i < a; i++) {
-            long finalI = i;
-            users.child(i+"").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    try {
-
-                        colRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/MealInfo");
-                        String k = snapshot.getValue(String.class);
-                        map.put(finalI +"", k);
-                        count.add(k);
-
-                        colRef.document(dateFormat.format(calendar.getTimeInMillis())).set(map);
-
-
-                            FoodListFromSQLite(k);
-
-
-                    } catch (NullPointerException e) {
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                }
-            });
-        }
-
-    }
-
-    private void FoodListFromSQLite(String k) {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         sdl = linkRation.getReadableDatabase();
         query = sdl.rawQuery("SELECT * FROM " + linkRation.TABLE + " WHERE " + linkRation.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() +
