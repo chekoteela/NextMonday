@@ -21,7 +21,7 @@
 
     <color name="colorRipple">#000000</color>
     <color name="tlo">#0A113F</color>
-    <color name="main_calculator">#32373D</color>
+    <color name="main_calculator">#232D37</color>
     <color name="btnn">#E61C214B</color>
     <color name="color_button_dialog">#38424C</color>
 
@@ -69,6 +69,7 @@
     <!--Колір для EditText в калькуляторі калорій -->
     <!--Колір калькулятор-->
     <color name="calculator_color">#232D37</color>
+    <color name="calendar_focuse_date">#38424C</color>
     <color name="calculator_button_ripple">#7E8388</color>
     <color name="calculator_color_linear">#2C3640</color>
     <!--Градієнти для кнопок і layout елементів-->

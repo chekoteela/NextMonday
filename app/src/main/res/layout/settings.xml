@@ -19,11 +19,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="10dp"
+            android:layout_margin="15dp"
             android:paddingVertical="5dp"
             android:text="@string/general" />
 
         <Button
             android:id="@+id/profile"
+            android:layout_margin="15dp"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +35,7 @@
 
 
         <Button
+            android:layout_margin="15dp"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,6 +44,7 @@
             android:text="@string/dairy" />
 
         <Button
+            android:layout_margin="15dp"
             android:id="@+id/calculator"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
@@ -50,6 +54,7 @@
             android:text="@string/calculator" />
 
         <Button
+            android:layout_margin="15dp"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
