@@ -247,8 +247,6 @@ public class RationExpList extends BaseExpandableListAdapter {
                 navController.navigate(R.id.nav_cal_ration);
             }
         });
-
-
     }
 
     private void ChangeRationItem(int groupPosition) {
@@ -283,11 +281,8 @@ public class RationExpList extends BaseExpandableListAdapter {
                     });
             }
         });
-
         dialog.setView(select);
         dialog.show();
-
-
     }
 
     public void OnClickPlus(View v, int position){
