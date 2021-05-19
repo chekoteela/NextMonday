@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <Button
+            android:layout_margin="15dp"
             android:id="@+id/general"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
@@ -24,6 +25,7 @@
             android:text="@string/general" />
 
         <Button
+            android:layout_margin="15dp"
             android:id="@+id/profile"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
@@ -34,6 +36,7 @@
 
 
         <Button
+            android:layout_margin="15dp"
             android:id="@+id/dairy"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
@@ -43,6 +46,7 @@
             android:text="@string/dairy" />
 
         <Button
+            android:layout_margin="15dp"
             android:id="@+id/calculator"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
@@ -52,6 +56,7 @@
             android:text="@string/calculator" />
 
         <Button
+            android:layout_margin="15dp"
             android:visibility="gone"
             android:id="@+id/moderator"
             style="@style/button_setting_style"
