@@ -21,10 +21,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -61,6 +63,8 @@ public class Auto_calculate_calorie extends Fragment {
     Spinner spinner, spinner_target;
 
     TextView conclusion;
+
+    TabLayout tabLayout;
 
     FirebaseAuth mAuth;
     FirebaseDatabase db;
@@ -267,6 +271,8 @@ public class Auto_calculate_calorie extends Fragment {
 
     private void FindView(View root) {
 
+
+     tabLayout = root.findViewById(R.id.tab);
      weight = root.findViewById(R.id.this_weight);
      height = root.findViewById(R.id.height);
      age = root.findViewById(R.id.age);
