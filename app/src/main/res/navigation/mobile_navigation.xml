@@ -90,5 +90,25 @@
         android:name="com.sharkit.nextmonday.ui.Calculator.FindMyFood"
         tools:layout="@layout/calculator_find_my_food" />
 
+    <fragment
+        android:id="@+id/nav_settings_general"
+        android:name="com.sharkit.nextmonday.ui.settings.GeneralSetting"
+        tools:layout="@layout/general_setting" />
+
+    <fragment
+        android:id="@+id/nav_settings_list_moderation"
+        android:name="com.sharkit.nextmonday.ui.settings.ListModeration"
+        tools:layout="@layout/set_list_moderation" />
+
+    <fragment
+        android:id="@+id/nav_settings_manual_calculate"
+        android:name="com.sharkit.nextmonday.ui.settings.Manual_calculate_calorie"
+        tools:layout="@layout/calculator_manual_calculate_calorie" />
+
+    <fragment
+        android:id="@+id/nav_settings_moderator_change"
+        android:name="com.sharkit.nextmonday.ui.settings.ModeratorChange"
+        tools:layout="@layout/set_moderator_change" />
+
 
 </navigation>
