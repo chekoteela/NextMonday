@@ -15,6 +15,9 @@
         android:orientation="vertical">
 
         <Button
+
+            android:background="@color/red"
+
             android:layout_margin="15dp"
             android:id="@+id/general"
             style="@style/button_setting_style"
