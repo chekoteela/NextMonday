@@ -27,6 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.sharkit.nextmonday.Adapters.MyFindFoodAdaptor;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
+import com.sharkit.nextmonday.MySQL.FavoriteFood;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.variables.DataPFC;
 import com.sharkit.nextmonday.variables.LocalDataPFC;
@@ -50,10 +51,14 @@ public class Find_food_by_name extends Fragment {
     EditText find_food;
 
 
+
     DataBasePFC dataBasePFC;
-    SQLiteDatabase fdb;
+    FavoriteFood favoriteFood;
+    SQLiteDatabase fdb,ddb;
 
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference collRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/FavoriteMeal");
 
     Cursor query;
     @Override
@@ -72,6 +77,9 @@ public class Find_food_by_name extends Fragment {
         dataBasePFC = new DataBasePFC(getApplicationContext());
         fdb = dataBasePFC.getReadableDatabase();
         dataBasePFC.onCreate(fdb);
+        favoriteFood = new FavoriteFood(getApplicationContext());
+        ddb = favoriteFood.getReadableDatabase();
+        favoriteFood.onCreate(fdb);
 
         if (tabLayout.getSelectedTabPosition() == 0){
             SQLiteList();
@@ -98,6 +106,10 @@ public class Find_food_by_name extends Fragment {
                         break;
                     case 0:
                         SQLiteList();
+                        break;
+                    case 3:
+                        FindFavoriteFood();
+
                         break;
 
                 }
@@ -136,6 +148,20 @@ public class Find_food_by_name extends Fragment {
         });
 
         return root;
+    }
+
+    private void FindFavoriteFood() {
+        group = new ArrayList<>();
+        query = ddb.rawQuery("SELECT * FROM " + favoriteFood.TABLE + " WHERE " + dataBasePFC.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'",null);
+
+        while (query.moveToNext()){
+            DataPFC dataPFC = new DataPFC();
+            WriteListDATA(dataPFC);
+            group.add(dataPFC);
+        }
+
+        adaptor = new MyFindFoodAdaptor(getActivity(), getContext(), group);
+        list_item.setAdapter(adaptor);
     }
 
     private void NullList() {

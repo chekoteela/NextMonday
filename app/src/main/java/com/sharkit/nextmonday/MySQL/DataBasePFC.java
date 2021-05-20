@@ -56,7 +56,7 @@ public class DataBasePFC extends SQLiteOpenHelper {
                 ""+COLUMN_FAT+" TEXT, "+COLUMN_SATURATED_FAT+" TEXT, "+COLUMN_TRANS_FAT+" TEXT, "+COLUMN_OMEGA_9+" TEXT,"
                 +COLUMN_OMEGA_6+" TEXT ," +COLUMN_OMEGA_3+" TEXT," +COLUMN_ALA+" TEXT," + COLUMN_DHA +" TEXT," + COLUMN_EPA+" TEXT," +
                 COLUMN_CELLULOSE+" TEXT, " + COLUMN_SALT +" TEXT," +COLUMN_WATTER+" TEXT," + COLUMN_CALCIUM+" TEXT," +
-                COLUMN_POTASSIUM +" TEXT, " + COLUMN_BAR_CODE + " TEXT UNIQUE)");
+                COLUMN_POTASSIUM +" TEXT, " + COLUMN_BAR_CODE + " TEXT UNIQUE )" );
     }
 
     @Override
