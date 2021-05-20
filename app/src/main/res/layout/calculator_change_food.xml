@@ -1,69 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/calculator_auto_edittext"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/calculator_auto_edittext"
     tools:context=".ui.Calculator.ChangeFood">
 
 
-
     <TextView
-        android:layout_marginTop="10dp"
+        android:id="@+id/text"
+        style="@style/StandartTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text"
-        android:text="@string/alert"
         android:layout_margin="20dp"
-        style="@style/StandartTextView"
-        android:visibility="gone"
-        android:textAlignment="center"/>
-    <EditText
+        android:layout_marginTop="10dp"
+        android:text="@string/alert"
+        android:textAlignment="center"
+        android:visibility="gone" />
 
-        android:layout_marginVertical="9dp"
-        android:layout_below="@+id/text"
+    <EditText
         android:id="@+id/name"
-        android:inputType="text"
-        style="@style/EditText_change_food_black"
-        android:background="@drawable/calculator_auto_calculate_edittext"
+        style="@style/EditText_change_food_hint"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@+id/text"
         android:layout_marginHorizontal="20sp"
-        android:hint="@string/name_product_hint"/>
+        android:layout_marginVertical="9dp"
+        android:background="@drawable/calculator_auto_calculate_edittext"
+        android:hint="@string/name_product_hint"
+        android:inputType="text" />
 
     <EditText
-
-        android:layout_marginVertical="9dp"
-        android:inputType="number"
-        style="@style/EditText_change_food_black"
         android:id="@+id/portion"
-        android:background="@drawable/calculator_auto_calculate_edittext"
-        android:layout_below="@id/name"
+        style="@style/EditText_change_food_hint"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/name"
         android:layout_marginHorizontal="20sp"
-        android:hint="@string/portion_hint"/>
+        android:layout_marginVertical="9dp"
+        android:background="@drawable/calculator_auto_calculate_edittext"
+        android:hint="@string/portion_hint"
+        android:inputType="number" />
 
 
     <EditText
-
-        android:layout_marginVertical="9dp"
-        android:inputType="number"
         android:id="@+id/calorie"
-        style="@style/EditText_change_food_black"
-        android:layout_below="@id/portion"
-        android:background="@drawable/calculator_auto_calculate_edittext"
+        style="@style/EditText_change_food_hint"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_below="@id/portion"
         android:layout_marginHorizontal="20sp"
-        android:hint="@string/calor_hint"/>
+        android:layout_marginVertical="9dp"
+        android:background="@drawable/calculator_auto_calculate_edittext"
+        android:hint="@string/calor_hint"
+        android:inputType="number" />
 
     <ScrollView
-        android:layout_above="@+id/save_change"
-        android:layout_width="match_parent"
         android:id="@+id/scrool"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/save_change"
         android:layout_below="@+id/calorie">
 
         <LinearLayout
@@ -77,77 +74,73 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="5dp"
                     android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="5dp"
                     android:text="Белки"
-                    style="@style/StandartTextView"
                     android:textSize="18dp" />
 
                 <EditText
 
-                    android:layout_marginVertical="5dp"
-                    android:inputType="numberDecimal"
                     android:id="@+id/protein"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginHorizontal="20sp"
+                    android:layout_marginVertical="5dp"
                     android:background="@drawable/calculator_auto_calculate_edittext"
-                    style="@style/EditText_change_food_black"
                     android:hint="@string/amount_protein_hint"
-                     />
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
                     android:id="@+id/whey_protein"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginVertical="5dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginVertical="5dp"
                     android:background="@drawable/calculator_auto_calculate_edittext"
-                    style="@style/EditText_change_food_black"
                     android:hint="@string/whey_protein_hint"
-                     />
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginVertical="5dp"
-                    android:inputType="numberDecimal"
                     android:id="@+id/soy_protein"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/calculator_auto_calculate_edittext"
-                    style="@style/EditText_change_food_black"
                     android:hint="@string/soy_protein_hint"
-                     />
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
                     android:id="@+id/agg_protein"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginVertical="5dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginVertical="5dp"
                     android:background="@drawable/calculator_auto_calculate_edittext"
-                    style="@style/EditText_change_food_black"
                     android:hint="@string/egg_protein_hint"
-                    />
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
+                    android:id="@+id/casein_protein"
+                    style="@style/EditText_change_food_hint"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginVertical="5dp"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/casein_protein"
-                    android:layout_width="match_parent"
                     android:background="@drawable/calculator_auto_calculate_edittext"
                     android:hint="@string/casein_protein_hint"
-                    style="@style/EditText_change_food_black" />
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -159,241 +152,241 @@
 
                 <TextView
                     style="@style/StandartTextView"
-                    android:textSize="18sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Углеводы" />
+                    android:text="Углеводы"
+                    android:textSize="18sp" />
 
                 <EditText
-                    android:layout_marginVertical="5dp"
-                    android:layout_height="40dp"
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/carbohydrate"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:hint="@string/amount_carbs_hint" />
+                    android:layout_height="40dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/amount_carbs_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/simple_carbohydrates"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/simple_hint" />
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/simple_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
 
-                    android:inputType="numberDecimal"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    style="@style/EditText_change_food_black"
                     android:id="@+id/complex_carbohydrate"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/complicated_carbs_hint" />
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/complicated_carbs_hint"
+                    android:inputType="numberDecimal" />
 
 
             </LinearLayout>
+
             <LinearLayout
-                android:layout_marginHorizontal="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/StandartTextView"
-                    android:textSize="18dp"
-                    android:text="@string/fat" />
+                    android:text="@string/fat"
+                    android:textSize="18dp" />
 
                 <EditText
 
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/fat"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/amount_fat_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/amount_fat_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/saturated_fat"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/saturated_fatty_acids_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/saturated_fatty_acids_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/trans_fat"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/trans_fats_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/trans_fats_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    style="@style/EditText_change_food_black"
-                    android:inputType="numberDecimal"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/omega9"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/omega9_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/omega9_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/omega6"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/omega6_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/omega6_hint"
+                    android:inputType="numberDecimal" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                <EditText
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:id="@+id/omega3"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_height="40dp"
-                    android:hint="@string/omega3_hint"/>
+                    <EditText
+                        android:id="@+id/omega3"
+                        style="@style/EditText_change_food_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginVertical="5dp"
+                        android:layout_marginLeft="40dp"
+                        android:background="@drawable/calculator_auto_calculate_edittext"
+                        android:hint="@string/omega3_hint"
+                        android:inputType="numberDecimal" />
 
-                <EditText
-                    android:layout_marginRight="13dp"
-                    android:inputType="numberDecimal"
-                   style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:id="@+id/ala"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:hint="@string/ala_hint"/>
+                    <EditText
+                        android:id="@+id/ala"
+                        style="@style/EditText_change_food_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="5dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="13dp"
+                        android:background="@drawable/calculator_auto_calculate_edittext"
+                        android:hint="@string/ala_hint"
+                        android:inputType="numberDecimal" />
 
-                <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:id="@+id/dha"
-                    android:layout_width="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginRight="13dp"
-                    android:layout_height="40dp"
-                    android:hint="@string/dha_hint"/>
+                    <EditText
+                        android:id="@+id/dha"
+                        style="@style/EditText_change_food_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="5dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="13dp"
+                        android:background="@drawable/calculator_auto_calculate_edittext"
+                        android:hint="@string/dha_hint"
+                        android:inputType="numberDecimal" />
 
-                <EditText
-                    android:layout_marginRight="13dp"
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:id="@+id/epa"
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:hint="@string/epa_hint"/>
+                    <EditText
+                        android:id="@+id/epa"
+                        style="@style/EditText_change_food_hint"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="5dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="13dp"
+                        android:background="@drawable/calculator_auto_calculate_edittext"
+                        android:hint="@string/epa_hint"
+                        android:inputType="numberDecimal" />
 
                 </LinearLayout>
             </LinearLayout>
 
 
-
-
             <LinearLayout
-                android:layout_marginHorizontal="20dp"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:textSize="18sp"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/extra"/>
+                    android:text="@string/extra"
+                    android:textSize="18sp" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/cellulose"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/cellulose_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/cellulose_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/watter"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/water_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/water_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/salt"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/salt_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/salt_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/calcium"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/ca_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/ca_hint"
+                    android:inputType="numberDecimal" />
 
                 <EditText
-                    android:inputType="numberDecimal"
-                    style="@style/EditText_change_food_black"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:id="@+id/potassium"
+                    style="@style/EditText_change_food_hint"
                     android:layout_width="match_parent"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginVertical="5dp"
                     android:layout_height="40dp"
-                    android:hint="@string/k_hint"/>
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginLeft="40dp"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:hint="@string/k_hint"
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -402,15 +395,16 @@
 
 
     <Button
-        android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="60dp"
-        android:padding="10dp"
         android:id="@+id/save_change"
+        style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        style="@style/button_setting_style"
         android:layout_above="@+id/bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginVertical="10dp"
+        android:contentDescription="@string/descr_save_changes"
+        android:padding="10dp"
         android:text="@string/save_changes_button" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

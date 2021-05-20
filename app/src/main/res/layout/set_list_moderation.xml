@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.settings.ListModeration">
+
     <ListView
         android:id="@+id/list_moderation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
         android:id="@+id/bar"
@@ -20,8 +22,6 @@
         app:itemIconTint="#fff"
         app:itemTextColor="#fff"
         app:menu="@menu/calculator_bottom_navigation_bar" />
-
-
 
 
 </RelativeLayout>

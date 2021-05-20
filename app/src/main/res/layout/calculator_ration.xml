@@ -8,24 +8,20 @@
     tools:context=".ui.Calculator.Ration">
 
 
-
     <LinearLayout
-        android:layout_above="@+id/add_meal"
         android:id="@+id/linerka"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/add_meal"
         android:orientation="vertical">
 
         <TextView
-            android:layout_margin="20dp"
-            android:layout_gravity="center"
             android:id="@+id/date"
+            style="@style/StandartTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/play"
-            android:text="Дата якась цифра"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:layout_gravity="center"
+            android:layout_margin="20dp" />
 
         <ExpandableListView
             android:id="@+id/ration"
@@ -37,14 +33,15 @@
 
     <Button
         android:id="@+id/add_meal"
-        android:layout_width="match_parent"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginVertical="10dp"
-        android:layout_height="wrap_content"
         style="@style/button_setting_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/bar"
         android:layout_centerHorizontal="true"
-        android:text="Добавить прием пищи" />
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginVertical="10dp"
+        android:contentDescription="@string/descr_add_meal"
+        android:text="@string/add_meal" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 

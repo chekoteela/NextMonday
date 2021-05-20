@@ -1,45 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/calculator_color"
     android:orientation="horizontal"
-    android:weightSum="3"
-    android:layout_height="wrap_content">
+    android:weightSum="3">
 
     <TextView
-        android:layout_margin="5dp"
-        android:textSize="16dp"
-        android:padding="10dp"
-        android:layout_weight="1"
+        android:id="@+id/date"
         style="@style/StandartTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:padding="10dp"
         android:textColor="@color/white"
-        android:text="datta"
-        android:id="@+id/date"/>
+        android:textSize="16dp" />
 
     <TextView
+        android:id="@+id/weight"
+        style="@style/StandartTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:textSize="16dp"
+        android:layout_weight="1"
         android:padding="10dp"
         android:textAlignment="center"
-        android:layout_weight="1"
-        android:text="weight"
-        style="@style/StandartTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/weight"/>
+        android:textSize="16dp" />
 
     <TextView
-        android:layout_margin="5dp"
-        android:textSize="16dp"
-        android:padding="10dp"
-        android:textAlignment="textEnd"
-        android:layout_weight="1"
-        android:text="change"
+        android:id="@+id/change"
         style="@style/StandartTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/change"/>
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:textAlignment="textEnd"
+        android:textSize="16dp" />
 
 </LinearLayout>

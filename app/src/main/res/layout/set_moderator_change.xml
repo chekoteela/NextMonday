@@ -13,22 +13,22 @@
         android:layout_above="@+id/save_moder">
 
         <LinearLayout
-            android:weightSum="2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
 
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Название" />
@@ -36,7 +36,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Порция" />
@@ -44,7 +44,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Калории" />
@@ -52,7 +52,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Жир"
@@ -61,7 +61,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Нас. жир" />
@@ -69,7 +69,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Транс" />
@@ -77,7 +77,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Омега 9" />
@@ -85,7 +85,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Омега 6" />
@@ -93,7 +93,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Омега 3" />
@@ -101,7 +101,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="ALA" />
@@ -109,7 +109,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="DHA" />
@@ -117,7 +117,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="EPA" />
@@ -125,7 +125,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/Carbs"
@@ -134,7 +134,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Простые" />
@@ -142,7 +142,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Сложные" />
@@ -150,7 +150,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Белок"
@@ -159,7 +159,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Сыров" />
@@ -167,7 +167,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Яичн." />
@@ -175,7 +175,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Соевый" />
@@ -183,7 +183,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Казеин" />
@@ -191,7 +191,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/cellulose_hint" />
@@ -199,7 +199,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/water_hint" />
@@ -207,7 +207,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/salt_hint" />
@@ -215,7 +215,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/ca_hint" />
@@ -223,7 +223,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/k_hint" />
@@ -237,226 +237,201 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/name"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/portion"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/calorie"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/fat"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/saturated_fat"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/trans_fat"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/omega9"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/omega6"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/omega3"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/ala"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/dha"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/epa"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/carbohydrate"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/simple_carbohydrates"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/complex_carbohydrate"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/whey_protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/agg_protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/soy_protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/casein_protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/cellulose"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/watter"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/salt"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/calcium"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
 
                 <TextView
-                    android:id="@+id/potassium"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -464,283 +439,233 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/name_text"
-                    android:hint="Значение"
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="textMultiLine"
                     android:padding="10dp" />
 
                 <EditText
-                    android:id="@+id/portion_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/calorie_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/fat_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/saturated_fat_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/trans_fat_text"
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
 
                 <EditText
-                    android:id="@+id/omega9_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/omega6_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/omega3_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/ala_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/dha_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/epa_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/carbohydrate_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/simple_carbohydrates_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/complex_carbohydrate_text"
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
 
                 <EditText
-                    android:id="@+id/protein_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/whey_protein_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/agg_protein_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/soy_protein_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/casein_protein_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/cellulose_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/watter_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/salt_text"
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
 
                 <EditText
-                    android:id="@+id/calcium_text"
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    android:id="@+id/potassium_text"
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
 
@@ -753,12 +678,12 @@
     <Button
         android:id="@+id/save_moder"
         style="@style/StandartTextView"
-        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bar"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
         android:background="@drawable/calculator_button"
         android:padding="10dp"

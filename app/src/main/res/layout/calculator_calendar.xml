@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/calculator_auto_edittext"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.Calculator.CalculatorCalendar">
 
     <CalendarView
         android:id="@+id/calendar"
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:unfocusedMonthDateColor="@color/white"
+        android:layout_marginTop="50dp"
         android:contentDescription="@string/calendar2"
-        android:theme="@style/StyleCalendarView"
-        android:weekDayTextAppearance="@style/CalenderViewDateCustomText"
         android:dateTextAppearance="@style/StyleCalendarView"
-        android:focusedMonthDateColor="@color/white"/>
+        android:focusedMonthDateColor="@color/white"
+        android:theme="@style/StyleCalendarView"
+        android:unfocusedMonthDateColor="@color/white"
+        android:weekDayTextAppearance="@style/CalenderViewDateCustomText" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 

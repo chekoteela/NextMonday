@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <Button
+            android:contentDescription="@string/descr_general_settings"
             android:layout_margin="15dp"
             android:id="@+id/general"
             style="@style/button_setting_style"
@@ -25,6 +26,7 @@
             android:text="@string/general" />
 
         <Button
+            android:contentDescription="@string/descr_profile_settings"
             android:layout_margin="15dp"
             android:id="@+id/profile"
             style="@style/button_setting_style"
@@ -36,6 +38,7 @@
 
 
         <Button
+            android:contentDescription="@string/descr_diary_settings"
             android:layout_margin="15dp"
             android:id="@+id/dairy"
             style="@style/button_setting_style"
@@ -46,6 +49,7 @@
             android:text="@string/dairy" />
 
         <Button
+            android:contentDescription="@string/descr_calculator_settings"
             android:layout_margin="15dp"
             android:id="@+id/calculator"
             style="@style/button_setting_style"
