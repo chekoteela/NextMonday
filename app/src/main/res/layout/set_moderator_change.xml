@@ -80,6 +80,14 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:padding="10dp"
+                    android:text="Омега 9" />
+
+                <TextView
+                    style="@style/StandartTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
                     android:text="Омега 6" />
 
                 <TextView
@@ -229,6 +237,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/name"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -237,6 +246,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/portion"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -245,6 +255,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/calorie"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -253,6 +264,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/fat"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -261,6 +273,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/saturated_fat"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -269,6 +282,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/trans_fat"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -277,6 +291,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/omega9"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -285,6 +300,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/omega6"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -293,6 +309,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/omega3"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -301,6 +318,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/ala"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -309,6 +327,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/dha"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -317,6 +336,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/epa"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -325,6 +345,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/carbohydrate"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -333,6 +354,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/simple_carbohydrates"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -341,6 +363,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/complex_carbohydrate"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -349,6 +372,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -357,6 +381,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/whey_protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -365,6 +390,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/agg_protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -373,6 +399,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/soy_protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -381,6 +408,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/casein_protein"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -389,6 +417,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/cellulose"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -397,6 +426,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/watter"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -405,6 +435,7 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/salt"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -413,6 +444,16 @@
                     android:text="Вес" />
 
                 <TextView
+                    android:id="@+id/calcium"
+                    style="@style/StandartTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:text="Вес" />
+
+                <TextView
+                    android:id="@+id/potassium"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -429,6 +470,7 @@
                 android:orientation="vertical">
 
                 <EditText
+                    android:id="@+id/name_text"
                     android:hint="Значение"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
@@ -440,6 +482,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/portion_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -450,6 +493,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/calorie_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -460,6 +504,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/fat_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -470,6 +515,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/saturated_fat_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -480,6 +526,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/trans_fat_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -490,6 +537,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/omega9_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -500,6 +548,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/omega6_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -510,6 +559,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/omega3_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -520,6 +570,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/ala_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -530,6 +581,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/dha_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -540,6 +592,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/epa_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -550,6 +603,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/carbohydrate_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -560,6 +614,18 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/simple_carbohydrates_text"
+                    style="@style/EditText_change_food_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    android:id="@+id/complex_carbohydrate_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -570,6 +636,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/protein_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -579,16 +646,7 @@
                     android:padding="10dp" />
 
                 <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
+                    android:id="@+id/whey_protein_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -599,6 +657,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/agg_protein_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -609,6 +668,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/soy_protein_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -619,6 +679,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/casein_protein_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -629,6 +690,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/cellulose_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -639,6 +701,18 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/watter_text"
+                    style="@style/EditText_change_food_black"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    android:id="@+id/salt_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -647,7 +721,9 @@
                     android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
+
                 <EditText
+                    android:id="@+id/calcium_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
@@ -658,6 +734,7 @@
                     android:padding="10dp" />
 
                 <EditText
+                    android:id="@+id/potassium_text"
                     style="@style/EditText_change_food_black"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"

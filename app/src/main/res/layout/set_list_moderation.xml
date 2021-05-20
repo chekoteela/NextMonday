@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.settings.ListModeration">
     <ListView
+        android:id="@+id/list_moderation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
     <com.google.android.material.bottomnavigation.BottomNavigationView

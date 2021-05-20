@@ -40,6 +40,8 @@ import com.sharkit.nextmonday.variables.DataPFC;
 import com.sharkit.nextmonday.variables.LocalDataPFC;
 import com.sharkit.nextmonday.variables.PFC_today;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -388,6 +390,8 @@ public class ChangeFood extends Fragment {
     }
 
     private void UpDateFireStore(String s) {
+
+
             fdb.collection(s)
                     .whereEqualTo("bar_code", PFC_today.getBar_code())
                     .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -400,14 +404,26 @@ public class ChangeFood extends Fragment {
             }).addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                 @Override
                 public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                    try {
                     DataPFC dataPFC = new DataPFC();
                     WriteClass(dataPFC, PFC_today.getBar_code());
                     fdb.collection(s)
                             .document(id)
                             .set(dataPFC);
                     Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                }catch (NullPointerException e){
+                    DataPFC dataPFC = new DataPFC();
+                    WriteClass(dataPFC, PFC_today.getBar_code());
+                    fdb.collection(s).add(dataPFC).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.d(TAG, "update");
+                        }
+                    });
+                }
                 }
             });
+
     }
 
     private void SQLiteUpdate(String code) {

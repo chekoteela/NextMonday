@@ -25,13 +25,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,12 +44,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
+import com.sharkit.nextmonday.MySQL.FavoriteFood;
 import com.sharkit.nextmonday.MySQL.LinkRation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.variables.DataPFC;
@@ -55,11 +62,15 @@ import com.sharkit.nextmonday.variables.PFC_today;
 import com.sharkit.nextmonday.variables.UserMeal;
 
 
+import org.jetbrains.annotations.NotNull;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -86,10 +97,14 @@ public class FindMyFood extends Fragment {
 
     EditText number;
     DataBasePFC dataBasePFC;
-    SQLiteDatabase fdb;
+    FavoriteFood favoriteFood;
+    SQLiteDatabase fdb, ddb;
+
+    ImageView favorite;
 
     Cursor query;
     List<String> meal = new ArrayList<>();
+    ArrayList<Object> count;
 
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -98,7 +113,10 @@ public class FindMyFood extends Fragment {
     FirebaseDatabase fb_db = FirebaseDatabase.getInstance();
     DatabaseReference users = fb_db.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/Meal");
 
+
     final String TAG = "qwerty";
+
+    CollectionReference collRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/FavoriteMeal");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -107,13 +125,22 @@ public class FindMyFood extends Fragment {
         FindView(root);
 
         dataBasePFC = new DataBasePFC(getApplicationContext());
-        fdb = dataBasePFC.getReadableDatabase();
-        dataBasePFC.onCreate(fdb);
+        ddb = dataBasePFC.getReadableDatabase();
+        dataBasePFC.onCreate(ddb);
+        favoriteFood = new FavoriteFood(getApplicationContext());
+        fdb = favoriteFood.getReadableDatabase();
+        favoriteFood.onCreate(fdb);
+
 
         ReturnNumber();
+        FavoriteImage();
+        WriteToMap();
 
-
-
+        if (isExistSQLiteFavorite()){
+            favorite.setImageResource(R.drawable.favorite_minus);
+        }else{
+            favorite.setImageResource(R.drawable.favorit_plus);
+        }
         if (PFC_today.getPage().equals("MainMenu.LocalSQLite")) {
             WriteListFromSQL(PFC_today.getBar_code());
         }
@@ -135,6 +162,18 @@ public class FindMyFood extends Fragment {
                 meals.setVisibility(View.GONE);
             }
 
+        favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isExistSQLiteFavorite()){
+                    favorite.setImageResource(R.drawable.favorit_plus);
+                    DropTargetFromSQLite();
+                }else{
+                    favorite.setImageResource(R.drawable.favorite_minus);
+                    WriteFavoriteFood();
+                }
+            }
+        });
 
         number.addTextChangedListener(new TextWatcher() {
             @Override
@@ -198,6 +237,46 @@ public class FindMyFood extends Fragment {
         });
 
         return root;
+    }
+
+    private void DropTargetFromSQLite() {
+        fdb = favoriteFood.getReadableDatabase();
+        fdb.execSQL("DELETE FROM " + favoriteFood.TABLE + " WHERE " + favoriteFood.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() +
+                "' AND " + favoriteFood.COLUMN_BAR_CODE + " = '" + PFC_today.getBar_code() + "'");
+    }
+
+    private boolean isExistSQLiteFavorite() {
+        query = fdb.rawQuery("SELECT * FROM " + favoriteFood.TABLE + " WHERE " + favoriteFood.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() +
+                "' AND " + favoriteFood.COLUMN_BAR_CODE + " = '" + PFC_today.getBar_code() + "'",null);
+        return query.moveToNext();
+    }
+
+    private void WriteToMap() {
+        count = new ArrayList<>();
+        collRef.document("Link")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        Map<String, Object> l = documentSnapshot.getData();
+
+                        try {
+                            for (int i = 0; i < l.size(); i++) {
+                                count.add(l.get(String.valueOf(i)));
+                            }
+
+                        }catch (NullPointerException e){
+                            favorite.setImageResource(R.drawable.favorit_plus);
+                        }
+                    }
+                });
+
+    }
+
+    private void FavoriteImage() {
+
+
+
     }
 
     private void WeightProductGram(String a) {
@@ -308,6 +387,7 @@ public class FindMyFood extends Fragment {
                         String k = snapshot.getValue(String.class);
                         meal.add(k);
                         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),R.layout.spinner_item, meal);
+                        adapter.setDropDownViewResource(R.layout.smart_material_spinner_dropdown_item_layout);
                         adapter.notifyDataSetChanged();
                         spinner.setAdapter(adapter);
                     } catch (NullPointerException e) {
@@ -354,14 +434,48 @@ public class FindMyFood extends Fragment {
             }
         });
     }
+    private void WriteFavoriteFood(){
+        fdb = favoriteFood.getReadableDatabase();
+            try {
+                fdb.execSQL("INSERT INTO " + favoriteFood.TABLE + " VALUES ('" + mAuth.getCurrentUser().getUid() + "','" +
+                        name.getText().toString() + "','" +
+                        LocalDataPFC.getPortion() + "','" +
+                        LocalDataPFC.getCalorie() + "','" +
+                        LocalDataPFC.getProtein() + "','" +
+                        LocalDataPFC.getWhey_protein() + "','" +
+                        LocalDataPFC.getSoy_protein() + "','" +
+                        LocalDataPFC.getCasein_protein() + "','" +
+                        LocalDataPFC.getAgg_protein() + "','" +
+                        LocalDataPFC.getCarbohydrate() + "','" +
+                        LocalDataPFC.getComplex_carbohydrate() + "','" +
+                        LocalDataPFC.getSimple_carbohydrates() + "','" +
+                        LocalDataPFC.getFat() + "','" +
+                        LocalDataPFC.getSaturated_fat() + "','" +
+                        LocalDataPFC.getTrans_fat() + "','" +
+                        LocalDataPFC.getOmega_9() + "','" +
+                        LocalDataPFC.getOmega_6() + "','" +
+                        LocalDataPFC.getOmega_3() + "','" +
+                        LocalDataPFC.getAla() + "','" +
+                        LocalDataPFC.getDha() + "','" +
+                        LocalDataPFC.getEpa() + "','" +
+                        LocalDataPFC.getCellulose() + "','" +
+                        LocalDataPFC.getSalt() + "','" +
+                        LocalDataPFC.getWatter() + "','" +
+                        LocalDataPFC.getCalcium() + "','" +
+                        LocalDataPFC.getPotassium() + "','" +
+                        PFC_today.getBar_code() + "');");
+            } catch (SQLiteException e) {
+                Toast.makeText(getContext(), "error SQL", Toast.LENGTH_SHORT).show();
+            }
+    }
 
     private void SynchronizedToSQL() {
-        fdb = dataBasePFC.getReadableDatabase();
-        mAuth = FirebaseAuth.getInstance();
+        ddb = dataBasePFC.getReadableDatabase();
+
 
         if (isExistSQLite(PFC_today.getBar_code())) {
             try {
-                fdb.execSQL("INSERT INTO " + dataBasePFC.TABLE + " VALUES ('" + mAuth.getCurrentUser().getUid() + "','" +
+                ddb.execSQL("INSERT INTO " + dataBasePFC.TABLE + " VALUES ('" + mAuth.getCurrentUser().getUid() + "','" +
                         name.getText().toString() + "','" +
                         LocalDataPFC.getPortion() + "','" +
                         LocalDataPFC.getCalorie() + "','" +
@@ -395,10 +509,10 @@ public class FindMyFood extends Fragment {
         }
     }
     private boolean isExistSQLite(String code) {
-        fdb = dataBasePFC.getReadableDatabase();
+        ddb = dataBasePFC.getReadableDatabase();
 
 
-        query = fdb.rawQuery("SELECT * FROM " + dataBasePFC.TABLE + " WHERE " + dataBasePFC.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "' AND "
+        query = ddb.rawQuery("SELECT * FROM " + dataBasePFC.TABLE + " WHERE " + dataBasePFC.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "' AND "
                 + dataBasePFC.COLUMN_BAR_CODE + " = '" + code + "'", null);
 
         return (!query.moveToNext());
@@ -446,9 +560,9 @@ public class FindMyFood extends Fragment {
    }
 
     private void WriteListFromSQL(String code) {
-        fdb = dataBasePFC.getReadableDatabase();
+        ddb = dataBasePFC.getReadableDatabase();
 
-        query = fdb.rawQuery("SELECT * FROM " + dataBasePFC.TABLE + " WHERE " + dataBasePFC.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid()
+        query = ddb.rawQuery("SELECT * FROM " + dataBasePFC.TABLE + " WHERE " + dataBasePFC.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid()
                 + "' AND " + dataBasePFC.COLUMN_BAR_CODE + " = '" + code + "'",null);
 
         while (query.moveToNext()){
@@ -631,6 +745,7 @@ public class FindMyFood extends Fragment {
 
     private void FindView(View root) {
 
+        favorite = root.findViewById(R.id.favorite);
         meals = root.findViewById(R.id.meal);
         spinner = root.findViewById(R.id.spinner);
         number = root.findViewById(R.id.number);

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/calculator_color"
     tools:context=".ui.settings.Auto_calculate_calorie">
+
     <com.google.android.material.tabs.TabLayout
 
         app:tabIndicatorColor="@color/bar_calor_color_progress"
@@ -20,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Автонастройка" />
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

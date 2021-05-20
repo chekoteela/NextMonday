@@ -21,10 +21,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -62,6 +64,8 @@ public class Auto_calculate_calorie extends Fragment {
 
     TextView conclusion;
 
+    TabLayout tabLayout;
+
     FirebaseAuth mAuth;
     FirebaseDatabase db;
     DatabaseReference users;
@@ -86,6 +90,8 @@ public class Auto_calculate_calorie extends Fragment {
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_activity,R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         spinner_target.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -114,7 +120,31 @@ public class Auto_calculate_calorie extends Fragment {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        tab.select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()){
+                    case 0:
+                        navController.navigate(R.id.nav_cal_auto_calculate_calorie);
+                        break;
+                    case 1:
+                        navController.navigate(R.id.nav_settings_manual_calculate);
+                        break;
+                }
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         to_calculate.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -267,6 +297,8 @@ public class Auto_calculate_calorie extends Fragment {
 
     private void FindView(View root) {
 
+
+     tabLayout = root.findViewById(R.id.tab);
      weight = root.findViewById(R.id.this_weight);
      height = root.findViewById(R.id.height);
      age = root.findViewById(R.id.age);
