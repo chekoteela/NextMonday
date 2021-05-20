@@ -119,55 +119,8 @@
     <!--    ca-app-pub-3604503009591995/5594946532-->
     <!--    ca-app-pub-3940256099942544/6300978111   test-->
 
-    <string name="SignEmail2">Email</string>
-    <string name="SignPassword2">Password</string>
-    <string name="ForgotPass2">Forgot password?</string>
-    <string name="SignIn2">Sing in</string>
-    <string name="Register2">Create new account</string>
-    <string name="haveAcc2">Do you have account?</string>
-    <string name="name2">Name</string>
-    <string name="lastName2">Last name</string>
-    <string name="google">Sign in with google</string>
-    <string name="facebook">Sign in with facebook</string>
-    <string name="privacy_policy">privacy policy</string>
 
-    <string name="action_settings2">Setting</string>
-    <string name="reset_password2">Reset password</string>
-    <string name="send_code_again2">Send code again</string>
-    <string name="exit2">Exit</string>
-    <string name="Postanovschik2">Goals provider</string>
-    <string name="Calculator2">Heath</string>
-    <string name="Water2">Water Reminder</string>
-    <string name="Ration2">Ration</string>
-    <string name="CorporationAcc2">Corporate account</string>
-    <string name="PROVersion2">PRO version subscription</string>
-    <string name="Share2">Share the app</string>
-    <string name="Connection2">Feedback</string>
-    <string name="confirm2">Confirm</string>
-    <string name="dairy2">Dairy</string>
-    <string name="changePass">Change password</string>
-    <string name="save2">Save</string>
-    <string name="plus2">Add task</string>
-    <string name="list2">List</string>
-    <string name="calendar2">Calendar</string>
-    <string name="selectTime">Select time</string>
-    <string name="repeat2">Repeat</string>
-    <string name="textMassage">Text massage</string>
-    <string name="send2">Send</string>
-    <string name="checkTarget">check target</string>
-    <string name="everyDay">Every day</string>
-    <string name="selectDay">Select Day</string>
-    <string name="monday">Monday</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="thursday">Thursday</string>
-    <string name="friday">Friday</string>
-    <string name="saturday">Saturday</string>
-    <string name="sunday">Sunday</string>
-    <string name="listTarget">List of Target</string>
-    <string name="find">Find</string>
     <string name="time">Время:</string>
-    <string name="Estimate">estimate</string>
     <string name="Estimate1">Оценить приложение</string>
 
 
@@ -242,7 +195,82 @@
     <string name="profile">Профиль</string>
     <string name="calculator">Калькулятор</string>
     <string name="moderator">Модератор</string>
+    <string name="your_weigth">Текущий вес</string>
+    <string name="heigth">Рост</string>
+    <string name="desired_weigth">Желаемый вес</string>
+    <string name="choose_gender">Выберите ваш пол</string>
+    <string name="your_aim">Ваша цель</string>
+    <string name="choose_activity">Выберите активность</string>
 
-    <string name="Vladic">Владік</string>
+
+                                                                <!--Description   -->
+                                                                <!--Description   -->
+    <string name="action_settings2">Setting</string>
+    <string name="reset_password2">Reset password</string>
+    <string name="send_code_again2">Send code again</string>
+    <string name="exit2">Exit</string>
+    <string name="Postanovschik2">Goals provider</string>
+    <string name="Calculator2">Heath</string>
+    <string name="Water2">Water Reminder</string>
+    <string name="Ration2">Ration</string>
+    <string name="CorporationAcc2">Corporate account</string>
+    <string name="PROVersion2">PRO version subscription</string>
+    <string name="Share2">Share the app</string>
+    <string name="Connection2">Feedback</string>
+    <string name="confirm2">Confirm</string>
+    <string name="dairy2">Dairy</string>
+    <string name="changePass">Change password</string>
+    <string name="save2">Save</string>
+    <string name="plus2">Add task</string>
+    <string name="list2">List</string>
+    <string name="calendar2">Calendar</string>
+    <string name="selectTime">Select time</string>
+    <string name="repeat2">Repeat</string>
+    <string name="textMassage">Text massage</string>
+    <string name="send2">Send</string>
+    <string name="checkTarget">check target</string>
+    <string name="everyDay">Every day</string>
+    <string name="selectDay">Select Day</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="listTarget">List of Target</string>
+    <string name="find">Find</string>
+    <string name="Estimate">estimate</string>
+    <string name="SignEmail2">Email</string>
+    <string name="SignPassword2">Password</string>
+    <string name="ForgotPass2">Forgot password?</string>
+    <string name="SignIn2">Sing in</string>
+    <string name="Register2">Create new account</string>
+    <string name="haveAcc2">Do you have account?</string>
+    <string name="name2">Name</string>
+    <string name="lastName2">Last name</string>
+    <string name="google">Sign in with google</string>
+    <string name="facebook">Sign in with facebook</string>
+    <string name="privacy_policy">privacy policy</string>
+
+    <string name="descr_your_current_weight">Your current weight</string>
+    <string name="descr_automatic_tuning">Automatic tuning</string>
+    <string name="descr_manual_setting">Manual setting</string>
+    <string name="descr_age">Age</string>
+    <string name="descr_desired_weight">Desired weight</string>
+    <string name="descr_height">Height</string>
+    <string name="descr_heigth">Heigth</string>
+    <string name="descr_male">Male</string>
+    <string name="descr_female">Female</string>
+    <string name="descr_harris_benedict_equation">Harris-Benedict equation</string>
+    <string name="descr_mifflin_st_jeor_formula">Mifflin-St Jeor formula</string>
+    <string name="descr_your_aim">Your aim</string>
+    <string name="descr_choose_activity">Select an activity</string>
+    <string name="descr_calculate">Calculate</string>
+    <string name="descr_general_settings">General settings</string>
+    <string name="descr_profile_settings">Profile settings</string>
+    <string name="descr_diary_settings">Diary settings</string>
+    <string name="descr_calculator_settings">Calculator settings</string>
+
 
 </resources>

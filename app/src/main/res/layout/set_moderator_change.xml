@@ -28,7 +28,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Название" />
@@ -36,7 +36,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Порция" />
@@ -44,7 +44,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Калории" />
@@ -52,7 +52,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Жир"
@@ -61,7 +61,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Нас. жир" />
@@ -69,15 +69,22 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Транс" />
+                <TextView
+                    style="@style/StandartTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:text="Омега 9" />
 
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Омега 6" />
@@ -85,7 +92,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Омега 3" />
@@ -93,7 +100,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="ALA" />
@@ -101,7 +108,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="DHA" />
@@ -109,7 +116,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="EPA" />
@@ -117,7 +124,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/Carbs"
@@ -126,7 +133,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Простые" />
@@ -134,7 +141,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Сложные" />
@@ -142,7 +149,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Белок"
@@ -151,7 +158,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Сыров" />
@@ -159,7 +166,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Яичн." />
@@ -167,7 +174,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Соевый" />
@@ -175,7 +182,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Казеин" />
@@ -183,7 +190,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/cellulose_hint" />
@@ -191,7 +198,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/water_hint" />
@@ -199,7 +206,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/salt_hint" />
@@ -207,7 +214,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/ca_hint" />
@@ -215,7 +222,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="@string/k_hint" />
@@ -231,7 +238,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -239,7 +246,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -247,7 +254,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -255,7 +262,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -263,7 +270,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -271,7 +278,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -279,7 +286,14 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:padding="10dp"
+                    android:text="Вес" />
+                <TextView
+                    style="@style/StandartTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -287,7 +301,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -295,7 +309,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -303,7 +317,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -311,7 +325,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -319,7 +333,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -327,7 +341,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -335,7 +349,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -343,7 +357,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -351,7 +365,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -359,7 +373,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -367,7 +381,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -375,7 +389,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -383,7 +397,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -391,7 +405,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -399,7 +413,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -407,7 +421,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -415,7 +429,7 @@
                 <TextView
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:padding="10dp"
                     android:text="Вес" />
@@ -429,241 +443,225 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:hint="Значение"
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="textMultiLine"
                     android:padding="10dp" />
 
                 <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
 
                 <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
 
                 <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-
-                <EditText
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:inputType="numberDecimal"
-                    android:padding="10dp" />
-                <EditText
-                    style="@style/EditText_change_food_black"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
 
                 <EditText
-                    style="@style/EditText_change_food_black"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:inputType="numberDecimal"
+                    android:padding="10dp" />
+
+                <EditText
+                    style="@style/EditText_change_food_white"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
                     android:inputType="numberDecimal"
                     android:padding="10dp" />
 
