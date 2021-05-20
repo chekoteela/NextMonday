@@ -201,6 +201,10 @@
     <string name="choose_gender">Выберите ваш пол</string>
     <string name="your_aim">Ваша цель</string>
     <string name="choose_activity">Выберите активность</string>
+    <string name="auto_tuning">Автонастройка</string>
+    <string name="manual_setting">Ручная настройка</string>
+    <string name="add_meal">Добавить прием пищи</string>
+    <string name="change_weight">Изменить вес</string>
 
 
                                                                 <!--Description   -->
@@ -259,7 +263,6 @@
     <string name="descr_age">Age</string>
     <string name="descr_desired_weight">Desired weight</string>
     <string name="descr_height">Height</string>
-    <string name="descr_heigth">Heigth</string>
     <string name="descr_male">Male</string>
     <string name="descr_female">Female</string>
     <string name="descr_harris_benedict_equation">Harris-Benedict equation</string>
@@ -271,6 +274,19 @@
     <string name="descr_profile_settings">Profile settings</string>
     <string name="descr_diary_settings">Diary settings</string>
     <string name="descr_calculator_settings">Calculator settings</string>
+    <string name="descr_save">Save</string>
+    <string name="descr_save_changes">Save changes</string>
+    <string name="descr_my_food">My food</string>
+    <string name="descr_search_by_name">Search by name</string>
+    <string name="descr_search_by_barcode">Search by barcode</string>
+    <string name="descr_favorites">Favorites</string>
+    <string name="descr_find_food">Find food</string>
+    <string name="descr_add_food">Add food</string>
+    <string name="descr_number">Number</string>
+    <string name="descr_edit">Edit</string>
+    <string name="descr_auto_tuning">Auto tuning</string>
+    <string name="descr_add_meal">Add meal</string>
+    <string name="descr_change_weight">Change weight</string>
 
 
 </resources>
