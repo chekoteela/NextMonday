@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="" />
+                android:text="9999" />
 
             <TextView
                 style="@style/StandartTextView"
@@ -89,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="" />
+                android:text="9999" />
 
 
             <TextView
@@ -101,6 +101,7 @@
                 android:text="@string/fat_" />
 
             <TextView
+                android:text="9999"
                 android:id="@+id/all_fat"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"
@@ -114,6 +115,7 @@
                 android:padding="5dp" />
 
             <TextView
+                android:text="1900"
                 android:id="@+id/all_calorie"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"

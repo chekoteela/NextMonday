@@ -28,6 +28,7 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:paddingEnd="20dp"
                 android:id="@+id/weight_food"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"

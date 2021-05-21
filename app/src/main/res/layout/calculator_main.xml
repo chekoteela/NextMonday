@@ -144,6 +144,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="20dp"
+                    app:neumorph_shadowElevation="3dp"
                     app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
@@ -167,7 +168,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="15dp"
-                        android:textSize="32dp"
+                        android:textSize="32sp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
 
@@ -246,6 +247,7 @@
                 android:layout_weight="1">
 
                 <soup.neumorphism.NeumorphCardView
+                    app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
@@ -355,6 +357,7 @@
                 android:layout_weight="1">
 
                 <soup.neumorphism.NeumorphCardView
+                    app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
@@ -455,6 +458,7 @@
                 android:layout_weight="1">
 
                 <soup.neumorphism.NeumorphCardView
+                    app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
