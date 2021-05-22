@@ -287,6 +287,12 @@
     <string name="descr_auto_tuning">Auto tuning</string>
     <string name="descr_add_meal">Add meal</string>
     <string name="descr_change_weight">Change weight</string>
+    <string name="theme">Темы</string>
+    <string name="bright">Светлая</string>
+    <string name="dark">Темная</string>
+    <string name="reminders">Напоминания</string>
+    <string name="enable">Включить</string>
+    <string name="disable">Выключить</string>
 
 
 </resources>

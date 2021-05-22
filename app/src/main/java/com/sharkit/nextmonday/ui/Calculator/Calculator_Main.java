@@ -357,7 +357,7 @@ public class Calculator_Main extends Fragment {
             PFC_today.setCarbohydrate_eat(Float.parseFloat(userMeal.getCarbohydrate()));
 
             userMeal.setWatter(String.valueOf(Float.parseFloat(userMeal.getWatter()) + Float.parseFloat(query.getString(27)) /
-                    Float.parseFloat(query.getString(6)) * Float.parseFloat(query.getString(4)) / 100));
+                    Float.parseFloat(query.getString(6)) * Float.parseFloat(query.getString(4)) / 1000));
             PFC_today.setWatter_drink(Float.parseFloat(userMeal.getWatter()));
 
         }catch (NumberFormatException e){
