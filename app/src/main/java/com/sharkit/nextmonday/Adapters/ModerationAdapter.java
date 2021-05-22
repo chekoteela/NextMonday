@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -21,6 +23,8 @@ import java.util.ArrayList;
 public class ModerationAdapter extends BaseAdapter {
     Context mContext;
     ArrayList<DataPFC> mGroup;
+    LinearLayout layout;
+    TextView name, protein, fat, carbohydrate, calorie;
 
     public ModerationAdapter(Context context, ArrayList<DataPFC> group) {
         mContext = context;
@@ -42,14 +46,22 @@ public class ModerationAdapter extends BaseAdapter {
         return position;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.calculator_food_item_list, null);
         }
+        FindView(convertView);
+
+        protein.setText("Protein: " + mGroup.get(position).getProtein());
+        carbohydrate.setText("Carbohydrate: " + mGroup.get(position).getCarbohydrate());
+        fat.setText("Fat: " + mGroup.get(position).getFat());
+        name.setText(mGroup.get(position).getName());
+        calorie.setText("Calorie: " + mGroup.get(position).getCalorie());
+
         NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
-        LinearLayout layout = convertView.findViewById(R.id.liner_for_long_press);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +71,16 @@ public class ModerationAdapter extends BaseAdapter {
         });
 
         return convertView;
+    }
+
+    private void FindView(View convertView) {
+        layout = convertView.findViewById(R.id.liner_for_long_press);
+        name = convertView.findViewById(R.id.name_product);
+        protein = convertView.findViewById(R.id.protein);
+        calorie = convertView.findViewById(R.id.calorie);
+        carbohydrate = convertView.findViewById(R.id.carbohydrate);
+        fat = convertView.findViewById(R.id.fat);
+
     }
 
     private void WriteListNutrition(int position) {

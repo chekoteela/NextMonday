@@ -200,10 +200,10 @@ public class RationExpList extends BaseExpandableListAdapter {
             SumEatNutrition(i,groupPosition,userMeal);
 
         }
-        all_calorie.setText(String.format("%.0f",Float.parseFloat(userMeal.getCalorie())));
-        all_fat.setText(String.format("%.1f",Float.parseFloat(userMeal.getFat())));
-        all_protein.setText(String.format("%.1f",Float.parseFloat(userMeal.getProtein())));
-        all_carbohydrate.setText(String.format("%.1f",Float.parseFloat(userMeal.getCarbohydrate())));
+        all_calorie.setText("Calorie: " + String.format("%.0f",Float.parseFloat(userMeal.getCalorie())));
+        all_fat.setText("Fat: " + String.format("%.1f",Float.parseFloat(userMeal.getFat())));
+        all_protein.setText("Protein: " + String.format("%.1f",Float.parseFloat(userMeal.getProtein())));
+        all_carbohydrate.setText("Carbohydrate: " + String.format("%.1f",Float.parseFloat(userMeal.getCarbohydrate())));
 
         meal.setText(String.valueOf(mMeal.get(groupPosition)));
 
