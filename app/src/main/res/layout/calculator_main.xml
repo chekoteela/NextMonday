@@ -16,8 +16,8 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="240dp"
-            android:background="@color/calculator_color"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:background="@color/calculator_color">
 
 
             <com.progress.progressview.ProgressView
@@ -34,14 +34,15 @@
 
             <TextView
                 android:id="@+id/percent_calorie"
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
-                style="@style/StandartTextView"
                 android:textSize="30sp"
                 tools:layout_editor_absoluteX="93dp"
                 tools:layout_editor_absoluteY="249dp" />
+
             <LinearLayout
                 android:layout_width="100dp"
                 android:layout_height="3dp"
@@ -52,24 +53,24 @@
 
 
             <TextView
-                style="@style/StandartTextView"
                 android:id="@+id/eat_c"
-                android:text="0"
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="40dp"
+                android:text="0"
                 android:textSize="25sp"
                 tools:layout_editor_absoluteX="93dp"
                 tools:layout_editor_absoluteY="249dp" />
 
             <TextView
+                style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="@string/kkal"
-                style="@style/StandartTextView"
                 android:textColor="@color/white"
                 tools:layout_editor_absoluteX="93dp"
                 tools:layout_editor_absoluteY="249dp" />
@@ -77,9 +78,9 @@
 
             <LinearLayout
                 android:layout_width="13dp"
-                android:layout_marginVertical="2dp"
                 android:layout_height="13dp"
                 android:layout_gravity="bottom|center"
+                android:layout_marginVertical="2dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="60dp"
                 android:layout_marginBottom="1dp"
@@ -90,10 +91,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
-                android:gravity="end"
                 android:layout_marginTop="59dp"
                 android:layout_marginRight="5dp"
                 android:fontFamily="@font/play"
+                android:gravity="end"
                 android:textColor="@color/white"
                 android:textSize="13dp"
                 android:textStyle="bold" />
@@ -111,39 +112,40 @@
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_marginVertical="2dp"
                 android:layout_width="13dp"
                 android:layout_height="13dp"
                 android:layout_gravity="center|bottom"
+                android:layout_marginVertical="2dp"
                 android:layout_marginTop="60dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginBottom="1dp"
                 android:background="@drawable/calculator_linear_orange" />
 
         </FrameLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="8dp"
-            android:background="@color/calculator_color_linear"
-            />
+            android:background="@color/calculator_color_linear" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
             android:background="@color/calculator_auto_edittext"
-            android:layout_height="wrap_content">
+            android:orientation="horizontal">
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="180dp">
+                android:layout_height="180dp"
+                android:layout_weight="1">
 
                 <soup.neumorphism.NeumorphCardView
-                    app:neumorph_backgroundColor="@color/calculator_color"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="20dp"
+                    app:neumorph_shadowElevation="3dp"
+                    app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
 
@@ -161,16 +163,17 @@
 
                     <TextView
                         android:id="@+id/percent_fat"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                       style="@style/StandartTextView"
                         android:layout_marginBottom="15dp"
-                        android:textSize="32dp"
+                        android:textSize="32sp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
 
                     <TextView
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
@@ -178,8 +181,7 @@
                         android:layout_marginTop="75dp"
                         android:layout_marginBottom="15dp"
                         android:text="@string/Fat"
-                        android:textSize="20sp"
-                        style="@style/StandartTextView"/>
+                        android:textSize="20sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -199,31 +201,31 @@
 
                     <TextView
                         android:id="@+id/eat_f"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
-                        android:fontFamily="@font/play"
-                        style="@style/StandartTextView" />
+                        android:fontFamily="@font/play" />
 
                     <TextView
                         android:id="@+id/eat_fat"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/play"
-                        style="@style/StandartTextView" />
+                        android:fontFamily="@font/play" />
 
                     <TextView
                         android:id="@+id/all_fat"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="@font/play"
-                        style="@style/StandartTextView"/>
+                        android:fontFamily="@font/play" />
 
                     <LinearLayout
                         android:layout_width="13dp"
@@ -241,15 +243,15 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_weight="1"
                 android:layout_height="180dp"
-                >
+                android:layout_weight="1">
 
                 <soup.neumorphism.NeumorphCardView
-                    app:neumorph_backgroundColor="@color/calculator_color"
+                    app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
+                    app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
 
@@ -267,11 +269,11 @@
 
                     <TextView
                         android:id="@+id/percent_carbohydrate"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
                         android:layout_gravity="center"
-                        style="@style/StandartTextView"
+                        android:layout_marginBottom="15dp"
                         android:textSize="32dp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
@@ -285,6 +287,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
@@ -292,18 +295,17 @@
                         android:layout_marginTop="75dp"
                         android:layout_marginBottom="15dp"
                         android:text="@string/Carbs"
-                        android:textSize="20sp"
-                        style="@style/StandartTextView" />
+                        android:textSize="20sp" />
 
 
                     <TextView
                         android:id="@+id/eatC"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
-                        android:fontFamily="@font/play"
-                        style="@style/StandartTextView" />
+                        android:fontFamily="@font/play" />
 
                     <LinearLayout
                         android:layout_width="13dp"
@@ -315,22 +317,22 @@
 
                     <TextView
                         android:id="@+id/eat_carbohydrate"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/play"
-                        style="@style/StandartTextView" />
+                        android:fontFamily="@font/play" />
 
                     <TextView
                         android:id="@+id/all_carbohydrate"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
-                        android:fontFamily="@font/play"
-                        style="@style/StandartTextView" />
+                        android:fontFamily="@font/play" />
 
                     <LinearLayout
                         android:layout_width="13dp"
@@ -345,8 +347,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:background="@color/calculator_auto_edittext"
             android:layout_height="wrap_content"
+            android:background="@color/calculator_auto_edittext"
             android:gravity="center">
 
             <FrameLayout
@@ -355,10 +357,11 @@
                 android:layout_weight="1">
 
                 <soup.neumorphism.NeumorphCardView
-                    app:neumorph_backgroundColor="@color/calculator_color"
+                    app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
+                    app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
 
@@ -376,12 +379,12 @@
 
                     <TextView
                         android:id="@+id/percent_protein"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        style="@style/StandartTextView"
-                        android:textSize="32dp"
                         android:layout_marginBottom="15dp"
+                        android:textSize="32dp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
 
@@ -394,6 +397,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
@@ -401,17 +405,16 @@
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="15dp"
                         android:text="@string/Protein"
-                        android:textSize="20sp"
-                        style="@style/StandartTextView" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/eat_p"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
-                        android:fontFamily="@font/play"
-                        style="@style/StandartTextView" />
+                        android:fontFamily="@font/play" />
 
 
                     <LinearLayout
@@ -424,20 +427,20 @@
 
                     <TextView
                         android:id="@+id/eat_protein"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
-                        android:layout_marginBottom="20dp"
-                        style="@style/StandartTextView" />
+                        android:layout_marginBottom="20dp" />
 
                     <TextView
                         android:id="@+id/all_protein"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="10dp"
-                        style="@style/StandartTextView" />
+                        android:layout_marginRight="10dp" />
 
                     <LinearLayout
                         android:layout_width="13dp"
@@ -451,14 +454,15 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <soup.neumorphism.NeumorphCardView
-                    app:neumorph_backgroundColor="@color/calculator_color"
+                    app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:padding="20dp"
+                    app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
 
@@ -476,22 +480,22 @@
 
                     <TextView
                         android:id="@+id/percent_watter"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        style="@style/StandartTextView"
-                        android:textSize="32dp"
                         android:layout_marginBottom="15dp"
+                        android:textSize="32dp"
                         tools:layout_editor_absoluteX="93dp"
                         tools:layout_editor_absoluteY="249dp" />
 
                     <TextView
                         android:id="@+id/drink_w"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginLeft="5dp"
-                        style="@style/StandartTextView" />
+                        android:layout_marginLeft="5dp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -502,6 +506,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
@@ -509,7 +514,6 @@
                         android:layout_marginBottom="15dp"
                         android:text="@string/water"
                         android:textSize="20dp"
-                        style="@style/StandartTextView"
                         app:layout_constraintVertical_bias="0.0"
                         tools:layout_editor_absoluteX="93dp" />
 
@@ -523,20 +527,20 @@
 
                     <TextView
                         android:id="@+id/drink_watter"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="10dp"
-                        android:layout_marginBottom="20dp"
-                        style="@style/StandartTextView" />
+                        android:layout_marginBottom="20dp" />
 
                     <TextView
                         android:id="@+id/all_watter"
+                        style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
-                        android:layout_marginRight="10dp"
-                        style="@style/StandartTextView" />
+                        android:layout_marginRight="10dp" />
 
                     <LinearLayout
                         android:layout_width="13dp"
@@ -583,7 +587,6 @@
 
 
     </LinearLayout>
-
 
 
     <com.michaldrabik.tapbarmenulib.TapBarMenu

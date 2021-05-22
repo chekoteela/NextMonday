@@ -9,34 +9,34 @@
 
     <com.google.android.material.tabs.TabLayout
 
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/calculator_color"
         app:tabIndicatorColor="@color/bar_calor_color_progress"
         app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="@color/white"
-        android:id="@+id/tab"
-        android:background="@color/calculator_color"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:tabTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/descr_automatic_tuning"
             android:text="Автонастройка" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/descr_manual_setting"
             android:text="Ручная настройка" />
 
 
     </com.google.android.material.tabs.TabLayout>
 
 
-
-
     <LinearLayout
-        android:layout_below="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/tab"
         android:orientation="vertical">
 
 
@@ -55,46 +55,37 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/play"
-                    android:text="Текущий вес"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="@string/your_weigth"
+                    android:textSize="18sp" />
 
 
                 <EditText
                     android:id="@+id/this_weight"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
                     android:layout_margin="5dp"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:fontFamily="@font/play"
-                    android:padding="5dp"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/descr_your_current_weight" />
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/play"
-                    android:text="Возраст"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="@string/age"
+                    android:textSize="18sp" />
 
 
                 <EditText
                     android:id="@+id/age"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
                     android:layout_margin="5dp"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:fontFamily="@font/play"
-                    android:padding="5dp"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/descr_age"
+                    android:padding="5dp" />
 
 
             </LinearLayout>
@@ -108,46 +99,38 @@
                 android:orientation="vertical">
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/play"
-                    android:text="Желаемій вес"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="@string/desired_weigth"
+                    android:textSize="18sp" />
 
 
                 <EditText
                     android:id="@+id/desired_weight"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
                     android:layout_margin="5dp"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:fontFamily="@font/play"
-                    android:padding="5dp"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/descr_desired_weight"
+                    android:padding="5dp" />
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/play"
-                    android:text="Рост"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:text="@string/heigth"
+                    android:textSize="18sp" />
 
 
                 <EditText
                     android:id="@+id/height"
+                    style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
                     android:layout_margin="5dp"
-                    android:background="@drawable/calculator_auto_calculate_edittext"
-                    android:fontFamily="@font/play"
-                    android:padding="5dp"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/descr_height"
+                    android:padding="5dp" />
 
 
             </LinearLayout>
@@ -155,10 +138,10 @@
 
         </LinearLayout>
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="10dp"
-    android:background="@color/calculator_color_linear"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/calculator_color_linear" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -173,7 +156,7 @@
                 android:layout_gravity="left"
                 android:fontFamily="@font/play"
                 android:padding="5dp"
-                android:text="Віберете ваш пол"
+                android:text="@string/choose_gender"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -186,25 +169,23 @@
 
                 <RadioButton
                     android:id="@+id/male"
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:buttonTint="@color/white"
-                    android:fontFamily="@font/play"
-                    android:text="@string/male"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/descr_male"
+                    android:text="@string/male" />
 
                 <RadioButton
                     android:id="@+id/female"
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:buttonTint="@color/white"
-                    android:fontFamily="@font/play"
-                    android:text="@string/female"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/descr_female"
+                    android:text="@string/female" />
             </RadioGroup>
 
         </LinearLayout>
@@ -212,7 +193,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/calculator_color_linear"/>
+            android:background="@color/calculator_color_linear" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -235,39 +217,39 @@
 
                 <RadioButton
                     android:id="@+id/harrison_formula"
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/white"
                     android:checked="true"
-                    android:fontFamily="@font/play"
-                    android:text="@string/F_harryson_benedict"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/descr_harris_benedict_equation"
+                    android:text="@string/F_harryson_benedict" />
 
                 <RadioButton
                     android:id="@+id/miffin_formula"
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/white"
-                    android:fontFamily="@font/play"
-                    android:text="@string/F_mifflin_san_geor"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:contentDescription="@string/descr_mifflin_st_jeor_formula"
+                    android:text="@string/F_mifflin_san_geor" />
 
             </RadioGroup>
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/calculator_color_linear"/>
+            android:background="@color/calculator_color_linear" />
 
 
         <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
             android:id="@+id/spinner_target"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/descr_your_aim"
             app:smsp_arrowColor="@color/white"
             app:smsp_floatingLabelColor="@color/white"
             app:smsp_hint="Ваша цель"
@@ -276,18 +258,17 @@
             app:smsp_underlineColor="@color/white" />
 
 
-            <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:smsp_hint="Виберіть активність"
-                app:smsp_itemColor="@color/white"
-                app:smsp_floatingLabelColor="@color/white"
-                app:smsp_hintColor="@color/white"
-                app:smsp_arrowColor="@color/white"
-                app:smsp_underlineColor="@color/white"
-                android:id="@+id/spinner"/>
-
-
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/descr_choose_activity"
+            app:smsp_arrowColor="@color/white"
+            app:smsp_floatingLabelColor="@color/white"
+            app:smsp_hint="@string/choose_activity"
+            app:smsp_hintColor="@color/white"
+            app:smsp_itemColor="@color/white"
+            app:smsp_underlineColor="@color/white" />
 
 
         <LinearLayout
@@ -300,16 +281,13 @@
 
             <Button
                 android:id="@+id/to_calculate"
-                android:padding="10dp"
+                style="@style/button_setting_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/calculator_button"
-                android:fontFamily="@font/play"
-                android:text="@string/rozrahunok"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
-
-
+                android:contentDescription="@string/descr_calculate"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="@string/rozrahunok" />
 
 
             <LinearLayout
@@ -337,18 +315,18 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
+
         <Button
             android:id="@+id/save"
+            style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="60dp"
+            android:contentDescription="@string/descr_save"
             android:padding="10dp"
-            style="@style/button_setting_style"
-            android:text="@string/save"
-            />
+            android:text="@string/save" />
     </LinearLayout>
 
 </RelativeLayout>
