@@ -555,86 +555,47 @@
     </LinearLayout>
 
     <LinearLayout
+        android:weightSum="5"
         android:id="@+id/linearr"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:layout_marginBottom="55dp"
         android:layout_alignParentBottom="true"
-        android:visibility="gone">
+        >
 
-        <Button
-            android:id="@+id/add_food"
+        <ImageView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="add_food" />
+            android:src="@drawable/food"/>
+        <ImageView
+            android:layout_weight="1"
+            android:src="@drawable/water"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/add_watter"
+
+        <ImageView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="add_watter" />
+            android:src="@drawable/weigth"/>
 
-        <Button
-            android:id="@+id/add_weight"
+
+        <ImageView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="add_weight" />
+            android:src="@drawable/activity"/>
 
-        <Button
-            android:id="@+id/add_activity"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:textAlignment="textEnd"
+            android:layout_weight="1"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:text="add_activity" />
-
+            android:src="@drawable/plus"/>
 
     </LinearLayout>
-
-
-    <com.michaldrabik.tapbarmenulib.TapBarMenu
-
-        android:id="@+id/tapBarMenu"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_above="@+id/bar"
-        android:layout_gravity="bottom"
-        android:layout_marginHorizontal="5dp"
-        android:layout_marginBottom="10dp"
-        app:tbm_backgroundColor="@color/Prozorui"
-        app:tbm_buttonPosition="right"
-        app:tbm_menuAnchor="bottom">
-
-        <ImageView
-
-            android:id="@+id/add"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/food" />
-
-        <ImageView
-
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:src="@drawable/water" />
-
-        <ImageView
-            android:id="@+id/weight"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/weigth" />
-
-        <ImageView
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="50dp"
-            android:layout_weight="1"
-            android:src="@drawable/activity" />
-
-
-    </com.michaldrabik.tapbarmenulib.TapBarMenu>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
