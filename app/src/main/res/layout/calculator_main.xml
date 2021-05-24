@@ -551,54 +551,61 @@
                         android:background="@drawable/calculator_linear_orange" />
                 </soup.neumorphism.NeumorphCardView>
             </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:weightSum="4"
+            android:id="@+id/linearr"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="55dp"
+            >
+
+            <ImageView
+                android:id="@+id/add_food"
+                android:visibility="gone"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/food"/>
+
+            <ImageView
+                android:id="@+id/add_watter"
+                android:visibility="gone"
+                android:layout_weight="1"
+                android:src="@drawable/water"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/weight"
+                android:visibility="gone"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:src="@drawable/weigth"/>
+
+            <ImageView
+                android:id="@+id/plus"
+                android:textAlignment="textEnd"
+                android:layout_weight="1"
+                android:layout_width="40dp"
+                android:clickable="true"
+                android:layout_height="wrap_content"
+                android:src="@drawable/plus"/>
+
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:weightSum="5"
-        android:id="@+id/linearr"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginBottom="55dp"
-        android:layout_alignParentBottom="true"
-        >
 
-        <ImageView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/food"/>
-        <ImageView
-            android:layout_weight="1"
-            android:src="@drawable/water"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-        <ImageView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/weigth"/>
-
-
-        <ImageView
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/activity"/>
-
-        <ImageView
-            android:textAlignment="textEnd"
-            android:layout_weight="1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/plus"/>
-
-    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-
+        app:labelVisibilityMode ="labeled"
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"

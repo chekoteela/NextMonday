@@ -10,7 +10,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
-        app:tabMode="scrollable"
+
         android:background="@color/calculator_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
         android:text="@string/add_food" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-
+        app:labelVisibilityMode ="labeled"
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"

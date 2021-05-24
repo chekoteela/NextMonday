@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -56,6 +58,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import org.jetbrains.annotations.NotNull;
+
 import Fragments.Calendar;
 
 public class MainMenu extends AppCompatActivity {
@@ -71,7 +75,9 @@ public class MainMenu extends AppCompatActivity {
 
     DataBasePFC dataBasePFC;
     SQLiteDatabase db;
-
+    BottomNavigationView bar;
+    Menu menu;
+    MenuItem home, ration, calendar1, weight;
 
 
 
@@ -83,6 +89,9 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Toolbar toolbar = findViewById(R.id.toolbar_core);
+        bar = findViewById(R.id.bar);
+
+
         setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
         fdb = FirebaseDatabase.getInstance();
@@ -121,10 +130,12 @@ public class MainMenu extends AppCompatActivity {
     public void OnClickWeight(MenuItem item){
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.navigate(R.id.nav_cal_weight);
+
     }
     public void OnClickCalculatorCalendar(MenuItem item){
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.navigate(R.id.nav_cal_calendar);
+
     }
     public void OnClickRation(MenuItem item){
         java.util.Calendar calendar = java.util.Calendar.getInstance();
@@ -135,7 +146,10 @@ public class MainMenu extends AppCompatActivity {
     public void OnClickCalculatorMain(MenuItem item){
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.navigate(R.id.nav_calculator_main);
+
+
     }
+
     public void OnClickCalculator(MenuItem item){
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -337,5 +351,6 @@ public class MainMenu extends AppCompatActivity {
         LocalDataPFC.setCalcium(null);
         LocalDataPFC.setPotassium(null);
     }
+
 
 }

@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -24,6 +26,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,23 +56,26 @@ import java.util.Locale;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Calculator_Main extends Fragment {
-    ImageView add_food, add_watter, add_activity, add_weight;
+    ImageView add_food, add_watter, add_activity, add_weight, plus;
     ProgressView calorie, protein, fat, carbohydrate, watter;
     TextView percent_calorie, percent_protein, percent_fat, percent_carbohydrate,percent_watter,
             eat_c, eat_calorie, all_calorie, eat_f, eat_fat, all_fat,
     eatC, eat_carbohydrate, all_carbohydrate, eat_p, eat_protein, all_protein,
     drink_w, drink_watter, all_watter;
-    TapBarMenu tap_bar;
 
     int percent_w, percent_p, percent_ch, percent_c, percent_f;
 
-
+    BottomNavigationView bottomNavigationView;
+    BottomNavigationItemView ration;
     FirebaseAuth mAuth;
     FirebaseDatabase fdb;
     DatabaseReference users;
     LinkRation linkRation;
     SQLiteDatabase sdb;
     MyWeight myWeight;
+
+
+    MenuItem home1;
 
     Cursor query;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -88,6 +95,29 @@ public class Calculator_Main extends Fragment {
         linkRation.onCreate(sdb);
         SumMealNutrition();
         SynchronizedPFC();
+
+
+
+        home1 = bottomNavigationView.getMenu().findItem(R.id.main);
+
+        home1.setIcon(R.drawable.main_selected);
+
+
+
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (add_food.getVisibility() == View.GONE){
+                    add_food.setVisibility(View.VISIBLE);
+                    add_watter.setVisibility(View.VISIBLE);
+                    add_weight.setVisibility(View.VISIBLE);
+                } else {
+                    add_food.setVisibility(View.GONE);
+                    add_watter.setVisibility(View.GONE);
+                    add_weight.setVisibility(View.GONE);
+                }
+            }
+        });
 
         add_weight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,12 +144,7 @@ public class Calculator_Main extends Fragment {
                 navController.navigate(R.id.nav_cal_find_food_by_name);
             }
         });
-        tap_bar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tap_bar.toggle();
-            }
-        });
+
 
         return root;
     }
@@ -368,9 +393,13 @@ public class Calculator_Main extends Fragment {
 
 
     private void FindViewByID(View root) {
-        tap_bar = root.findViewById(R.id.tapBarMenu);
-        add_food = root.findViewById(R.id.add);
+        bottomNavigationView = root.findViewById(R.id.bar);
+
+        ration = root.findViewById(R.id.ration);
+        add_food = root.findViewById(R.id.add_food);
         add_weight = root.findViewById(R.id.weight);
+        add_watter = root.findViewById(R.id.add_watter);
+        plus = root.findViewById(R.id.plus);
 
         eat_c = root.findViewById(R.id.eat_c);
         eat_calorie = root.findViewById(R.id.eat_calorie);

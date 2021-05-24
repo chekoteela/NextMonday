@@ -8,8 +8,6 @@
                 android:startColor="@color/hintColor"
                 android:endColor="@color/white"
 
-
-
                 />
 
         </shape>

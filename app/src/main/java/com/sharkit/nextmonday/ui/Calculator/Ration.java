@@ -17,6 +17,7 @@ import androidx.navigation.Navigation;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -72,6 +74,7 @@ public class Ration extends Fragment {
 
     Calendar calendar = Calendar.getInstance();
 
+    BottomNavigationView bar;
 
 
     ArrayList<DataPFC> allNutrition;
@@ -105,6 +108,9 @@ public class Ration extends Fragment {
         sdd = dataBasePFC.getReadableDatabase();
         sdl = linkRation.getReadableDatabase();
         linkRation.onCreate(sdl);
+        MenuItem menuItem = bar.getMenu().findItem(R.id.ration);
+
+        menuItem.setIcon(R.drawable.meal);
 
         SynchronizedRation();
         ListMeal();
@@ -563,6 +569,8 @@ public class Ration extends Fragment {
         expandableListView = root.findViewById(R.id.ration);
         date = root.findViewById(R.id.date);
         add = root.findViewById(R.id.add_meal);
+        bar = root.findViewById(R.id.bar);
+
 
     }
 

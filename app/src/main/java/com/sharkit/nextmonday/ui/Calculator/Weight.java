@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,6 +23,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationMenu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -67,6 +70,7 @@ public class Weight extends Fragment {
 
     TextView weight,current_weight;
     Button add_weight;
+    BottomNavigationView bar;
 
 
 //    LineGraphSeries<> series;
@@ -76,10 +80,10 @@ public class Weight extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.calculator_weight, container, false);
-
-
         FindView(root);
 
+        MenuItem item = bar.getMenu().findItem(R.id.weight);
+        item.setIcon(R.drawable.my_weight);
         Adapter();
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy");
@@ -289,6 +293,7 @@ public class Weight extends Fragment {
     }
 
     private void FindView(View root) {
+        bar = root.findViewById(R.id.bar);
         add_weight = root.findViewById(R.id.add_weight);
         weight = root.findViewById(R.id.my_weight);
         current_weight = root.findViewById(R.id.current_weight);

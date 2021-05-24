@@ -768,7 +768,7 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-
+        app:labelVisibilityMode ="labeled"
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"

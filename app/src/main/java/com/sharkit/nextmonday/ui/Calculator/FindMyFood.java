@@ -133,8 +133,6 @@ public class FindMyFood extends Fragment {
 
 
         ReturnNumber();
-        FavoriteImage();
-        WriteToMap();
 
         if (isExistSQLiteFavorite()){
             favorite.setImageResource(R.drawable.favorite_minus);
@@ -266,18 +264,12 @@ public class FindMyFood extends Fragment {
                             }
 
                         }catch (NullPointerException e){
-                            favorite.setImageResource(R.drawable.favorit_plus);
                         }
                     }
                 });
 
     }
 
-    private void FavoriteImage() {
-
-
-
-    }
 
     private void WeightProductGram(String a) {
 
