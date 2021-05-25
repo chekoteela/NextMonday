@@ -39,12 +39,14 @@
         android:layout_below="@+id/tab"
         android:layout_marginVertical="10dp"
         android:orientation="vertical">
+
         <TextView
             android:padding="10dp"
             style="@style/StandartTextView"
             android:text="Внесите данные на 1 кг веса"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <TextView
             android:padding="10dp"
             style="@style/StandartTextView"
@@ -52,7 +54,9 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <EditText
+            android:id="@+id/weight"
             android:padding="10dp"
             android:layout_gravity="center"
             style="@style/EditText_change_food_white"
@@ -84,6 +88,7 @@
 
 
                 <EditText
+                    android:id="@+id/protein"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -99,6 +104,7 @@
 
 
                 <EditText
+                    android:id="@+id/fat"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -125,6 +131,7 @@
 
 
                 <EditText
+                    android:id="@+id/carbohydrate"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -141,6 +148,7 @@
 
 
                 <EditText
+                    android:id="@+id/watter"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"

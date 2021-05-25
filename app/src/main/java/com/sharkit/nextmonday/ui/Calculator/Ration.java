@@ -78,7 +78,7 @@ public class Ration extends Fragment {
 
 
     ArrayList<DataPFC> allNutrition;
-    Button add;
+    Button adds;
 
     final String TAG = "qwerty";
     long num;
@@ -110,9 +110,10 @@ public class Ration extends Fragment {
         linkRation.onCreate(sdl);
         MenuItem menuItem = bar.getMenu().findItem(R.id.ration);
 
-        menuItem.setIcon(R.drawable.meal);
+        menuItem.setIcon(R.drawable.meal_selected);
 
         SynchronizedRation();
+        StartMeal();
         ListMeal();
 
         calendar.setTimeInMillis(DayOfWeek.getMillis());
@@ -121,6 +122,8 @@ public class Ration extends Fragment {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         date.setText(dateFormat.format(DayOfWeek.getMillis()));
+
+
 
 
         if (calendar1.get(Calendar.YEAR) < calendar.get(Calendar.YEAR) ||
@@ -139,11 +142,11 @@ public class Ration extends Fragment {
         }else {
             //вчора
            Number();
-
         }
 
 
-        add.setOnClickListener(new View.OnClickListener() {
+
+        adds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 @SuppressLint("SimpleDateFormat")
@@ -157,7 +160,7 @@ public class Ration extends Fragment {
 
                 EditText new_meal = select.findViewById(R.id.meal);
 
-                dialog.setPositiveButton("add", new DialogInterface.OnClickListener() {
+                dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (TextUtils.isEmpty(new_meal.getText())) {
@@ -192,28 +195,54 @@ public class Ration extends Fragment {
         return root;
     }
 
+    private void StartMeal() {
+        users.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+    }
+
     public void ListMeal(){
         data = new HashMap<>();
-        count = new ArrayList<>();
+
         users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for (int i = 0; i < snapshot.getChildrenCount(); i++){
+                if (!snapshot.exists()){
+                    count = new ArrayList<>();
+                    count.add("Завтрак");
+                    count.add("Перекус");
+                    count.add("Обед");
+                    count.add("Ужин");
+                    users.setValue(count);
+                    ExistMealToday();
+                    return;
+                }
+                count = new ArrayList<>();
+                    for (int i = 0; i < snapshot.getChildrenCount(); i++) {
 
-                    int finalI = i;
-                    users.child(String.valueOf(i)).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                            String k = snapshot.getValue(String.class);
-                            count.add(k);
-                        }
+                        int finalI = i;
+                        users.child(String.valueOf(i)).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                String k = snapshot.getValue(String.class);
+                                count.add(k);
+                            }
 
-                        @Override
-                        public void onCancelled(@NonNull @NotNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
-                        }
-                    });
+                            }
+                        });
+
                 }
             }
             @Override
@@ -566,13 +595,14 @@ public class Ration extends Fragment {
 
 
     private void FindView(View root) {
-        expandableListView = root.findViewById(R.id.ration);
-        date = root.findViewById(R.id.date);
-        add = root.findViewById(R.id.add_meal);
-        bar = root.findViewById(R.id.bar);
+        expandableListView = root.findViewById(R.id.ration_xml);
+        date = root.findViewById(R.id.date_xml);
+        adds = root.findViewById(R.id.add_meal_xml);
+        bar = root.findViewById(R.id.bar_xml);
 
 
     }
+
 
     @Override
     public void onStop() {

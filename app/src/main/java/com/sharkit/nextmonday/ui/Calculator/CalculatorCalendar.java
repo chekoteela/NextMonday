@@ -32,7 +32,7 @@ public class CalculatorCalendar extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.calculator_calendar, container, false);
-        CalendarView calendarView = root.findViewById(R.id.calendar);
+        CalendarView calendarView = root.findViewById(R.id.calendar_xml);
         BottomNavigationView bar = root.findViewById(R.id.bar);
 
         MenuItem item = bar.getMenu().findItem(R.id.calendar);

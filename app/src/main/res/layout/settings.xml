@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <Button
+            android:visibility="gone"
             android:contentDescription="@string/descr_general_settings"
             android:layout_margin="15dp"
             android:id="@+id/general"
@@ -38,6 +39,7 @@
 
 
         <Button
+            android:visibility="gone"
             android:contentDescription="@string/descr_diary_settings"
             android:layout_margin="15dp"
             android:id="@+id/dairy"

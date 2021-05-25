@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,13 +21,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -43,14 +49,18 @@ import com.sharkit.nextmonday.Adapters.WeightAdaptor;
 import com.sharkit.nextmonday.MySQL.MyWeight;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.variables.PFC_today;
+import com.sharkit.nextmonday.variables.SettingsCalculator;
 import com.sharkit.nextmonday.variables.WeightV;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
+import static com.facebook.FacebookSdk.isDebugEnabled;
 
 
 public class Weight extends Fragment {
@@ -67,10 +77,13 @@ public class Weight extends Fragment {
     ArrayList<WeightV> list;
     ListView listView;
     WeightAdaptor adaptor;
+    LinearLayout desired_weight;
 
     TextView weight,current_weight;
     Button add_weight;
     BottomNavigationView bar;
+    FirebaseDatabase fs = FirebaseDatabase.getInstance();
+    DatabaseReference users = fs.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/MyTarget");
 
 
 //    LineGraphSeries<> series;
@@ -88,7 +101,6 @@ public class Weight extends Fragment {
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy");
 
-
         graphView.getGridLabelRenderer().setGridColor(getResources().getColor(R.color.white));
         graphView.getGridLabelRenderer().setHorizontalLabelsColor(getResources().getColor(R.color.white));
         graphView.getGridLabelRenderer().setVerticalLabelsColor(getResources().getColor(R.color.white));
@@ -105,6 +117,34 @@ public class Weight extends Fragment {
 //        graphView.getGridLabelRenderer().setNumHorizontalLabels(10); // вказує максимальну кількість точок
 
 
+
+        desired_weight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
+                LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
+                EditText weight = existProduct.findViewById(R.id.weight);
+
+                dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("desired_weight", weight.getText().toString());
+                        users.updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                                navController.navigate(R.id.nav_cal_weight);
+                            }
+                        });
+
+                    }
+                });
+                dialog.setView(existProduct);
+                dialog.show();
+            }
+        });
 
         try {
             graphView.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter(){
@@ -155,6 +195,8 @@ public class Weight extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         WriteDataWeight(weight.getText().toString());
+                        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                        navController.navigate(R.id.nav_cal_weight);
                     }
                 });
                 dialog.setView(existProduct);
@@ -292,7 +334,15 @@ public class Weight extends Fragment {
 
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        query.close();
+        myWeight.close();
+    }
+
     private void FindView(View root) {
+        desired_weight = root.findViewById(R.id.desired_weight);
         bar = root.findViewById(R.id.bar);
         add_weight = root.findViewById(R.id.add_weight);
         weight = root.findViewById(R.id.my_weight);

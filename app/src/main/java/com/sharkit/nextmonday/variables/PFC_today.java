@@ -1,11 +1,19 @@
 package com.sharkit.nextmonday.variables;
 
 public class PFC_today {
+    private static String mealName;
     private static float protein, fat, carbohydrate, calorie, watter,
     protein_eat, fat_eat, carbohydrate_eat, calorie_eat , watter_drink;
     private static String bar_code, weight, current_weight;
     private static String page ;
 
+    public static String getMealName() {
+        return mealName;
+    }
+
+    public static void setMealName(String mealName) {
+        PFC_today.mealName = mealName;
+    }
 
     public static String getWeight() {
         return weight;

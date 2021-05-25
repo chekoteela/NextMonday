@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/ration"
-        android:icon="@drawable/ic_food_bank"
+        android:icon="@drawable/meal"
         android:onClick="OnClickRation"
         android:title="Рацион" >
     </item>

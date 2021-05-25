@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
@@ -93,6 +94,7 @@ public class MyFindFoodAdaptor extends BaseExpandableListAdapter {
         return true;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if (convertView == null) {
@@ -103,11 +105,11 @@ public class MyFindFoodAdaptor extends BaseExpandableListAdapter {
 
         NavController navController = Navigation.findNavController(mActivity, R.id.nav_host_fragment);
         name.setText(mGroup.get(groupPosition).getName());
-        all_fat.setText(mGroup.get(groupPosition).getFat());
-        all_carbohydrate.setText(mGroup.get(groupPosition).getCarbohydrate());
-        all_calorie.setText(mGroup.get(groupPosition).getCalorie());
-        all_protein.setText(mGroup.get(groupPosition).getProtein());
-        weight.setText(mGroup.get(groupPosition).getPortion());
+        all_fat.setText("Жиры: " + mGroup.get(groupPosition).getFat());
+        all_carbohydrate.setText("Углеводы: " + mGroup.get(groupPosition).getCarbohydrate());
+        all_calorie.setText("Ккал: " + mGroup.get(groupPosition).getCalorie());
+        all_protein.setText("Белки: " + mGroup.get(groupPosition).getProtein());
+        weight.setText(mGroup.get(groupPosition).getPortion() + " грамм");
 
         up_linear.setOnClickListener(new View.OnClickListener() {
             @Override

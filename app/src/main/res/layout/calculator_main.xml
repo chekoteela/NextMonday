@@ -564,36 +564,36 @@
             >
 
             <ImageView
-                android:id="@+id/add_food"
-                android:visibility="gone"
+                android:id="@+id/add_food_xml"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:src="@drawable/food"/>
+                android:src="@drawable/add_food_menu"/>
 
             <ImageView
-                android:id="@+id/add_watter"
-                android:visibility="gone"
+                android:id="@+id/add_watter_xml"
+
                 android:layout_weight="1"
-                android:src="@drawable/water"
+                android:src="@drawable/watter_menu"
                 android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+
             <ImageView
-                android:id="@+id/weight"
-                android:visibility="gone"
+                android:id="@+id/add_weight_xml"
+
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
-                android:src="@drawable/weigth"/>
+                android:src="@drawable/weight_menu"/>
 
             <ImageView
-                android:id="@+id/plus"
+                android:id="@+id/plus_xml"
                 android:textAlignment="textEnd"
-                android:layout_weight="1"
+
                 android:layout_width="40dp"
                 android:clickable="true"
                 android:layout_height="wrap_content"

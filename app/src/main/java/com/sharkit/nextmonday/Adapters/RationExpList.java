@@ -63,6 +63,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 public class RationExpList extends BaseExpandableListAdapter {
+
     private ArrayList<ArrayList<UserMeal>> mGroups;
     private ArrayList<Object> mMeal;
     private Context mContext;
@@ -200,17 +201,18 @@ public class RationExpList extends BaseExpandableListAdapter {
             SumEatNutrition(i,groupPosition,userMeal);
 
         }
-        all_calorie.setText("Calorie: " + String.format("%.0f",Float.parseFloat(userMeal.getCalorie())));
-        all_fat.setText("Fat: " + String.format("%.1f",Float.parseFloat(userMeal.getFat())));
-        all_protein.setText("Protein: " + String.format("%.1f",Float.parseFloat(userMeal.getProtein())));
-        all_carbohydrate.setText("Carbohydrate: " + String.format("%.1f",Float.parseFloat(userMeal.getCarbohydrate())));
+        all_calorie.setText("Ккал: " + String.format("%.0f",Float.parseFloat(userMeal.getCalorie())));
+        all_fat.setText("Жиры: " + String.format("%.1f",Float.parseFloat(userMeal.getFat())));
+        all_protein.setText("Белки: " + String.format("%.1f",Float.parseFloat(userMeal.getProtein())));
+        all_carbohydrate.setText("Углеводы: " + String.format("%.1f",Float.parseFloat(userMeal.getCarbohydrate())));
 
         meal.setText(String.valueOf(mMeal.get(groupPosition)));
 
+        PFC_today.setMealName(null);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PFC_today.setPage("Plus");
+                PFC_today.setMealName(mMeal.get(groupPosition).toString());
                 OnClickPlus(plus, groupPosition);
             }
         });
@@ -381,19 +383,19 @@ public class RationExpList extends BaseExpandableListAdapter {
         FindView(convertView);
 
         name_food.setText(mGroups.get(groupPosition).get(childPosition).getName());
-        weight.setText(mGroups.get(groupPosition).get(childPosition).getNumber() + " gram");
+        weight.setText(mGroups.get(groupPosition).get(childPosition).getNumber() + " грамм");
 
-        carbohydrate.setText("Carbohydrate: " + String.format("%.1f", Float.parseFloat( mGroups.get(groupPosition).get(childPosition).getCarbohydrate()) /
+        carbohydrate.setText("Углеводы: " + String.format("%.1f", Float.parseFloat( mGroups.get(groupPosition).get(childPosition).getCarbohydrate()) /
                 Float.parseFloat(mGroups.get(groupPosition).get(childPosition).getPortion()) * mGroups.get(groupPosition).get(childPosition).getNumber()));
 
-        protein.setText("Protein: " + String.format("%.1f", Float.parseFloat( mGroups.get(groupPosition).get(childPosition).getProtein()) /
+        protein.setText("Белки: " + String.format("%.1f", Float.parseFloat( mGroups.get(groupPosition).get(childPosition).getProtein()) /
                 Float.parseFloat(mGroups.get(groupPosition).get(childPosition).getPortion()) * mGroups.get(groupPosition).get(childPosition).getNumber()));
 
-        fat.setText("Fat: " + String.format("%.1f", Float.parseFloat( mGroups.get(groupPosition).get(childPosition).getFat()) /
+        fat.setText("Жиры: " + String.format("%.1f", Float.parseFloat( mGroups.get(groupPosition).get(childPosition).getFat()) /
                 Float.parseFloat(mGroups.get(groupPosition).get(childPosition).getPortion()) * mGroups.get(groupPosition).get(childPosition).getNumber()));
 
         calorie.setText((String.format("%.0f", Float.parseFloat( mGroups.get(groupPosition).get(childPosition).getCalorie()) /
-                Float.parseFloat(mGroups.get(groupPosition).get(childPosition).getPortion()) * mGroups.get(groupPosition).get(childPosition).getNumber())) + " калл");
+                Float.parseFloat(mGroups.get(groupPosition).get(childPosition).getPortion()) * mGroups.get(groupPosition).get(childPosition).getNumber())) + " Калл");
 
         lin_for_long_press.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
             @Override
@@ -435,6 +437,7 @@ public class RationExpList extends BaseExpandableListAdapter {
     }
 
     private void WriteLocal(int groupPosition, int childPosition) {
+
         LocalDataPFC.setBar_code(mGroups.get(groupPosition).get(childPosition).getCode());
         LocalDataPFC.setPortion(mGroups.get(groupPosition).get(childPosition).getPortion());
         LocalDataPFC.setNumber(mGroups.get(groupPosition).get(childPosition).getNumber());
@@ -463,6 +466,7 @@ public class RationExpList extends BaseExpandableListAdapter {
         LocalDataPFC.setCalorie(mGroups.get(groupPosition).get(childPosition).getCalorie());
         LocalDataPFC.setName(mGroups.get(groupPosition).get(childPosition).getName());
         LocalDataPFC.setDate_millis(mGroups.get(groupPosition).get(childPosition).getDate_millis());
+
     }
 
 

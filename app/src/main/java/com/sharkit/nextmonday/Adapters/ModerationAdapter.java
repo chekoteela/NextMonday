@@ -55,11 +55,11 @@ public class ModerationAdapter extends BaseAdapter {
         }
         FindView(convertView);
 
-        protein.setText("Protein: " + mGroup.get(position).getProtein());
-        carbohydrate.setText("Carbohydrate: " + mGroup.get(position).getCarbohydrate());
-        fat.setText("Fat: " + mGroup.get(position).getFat());
+        protein.setText("Белки: " + mGroup.get(position).getProtein());
+        carbohydrate.setText("Углеводы: " + mGroup.get(position).getCarbohydrate());
+        fat.setText("Жиры: " + mGroup.get(position).getFat());
         name.setText(mGroup.get(position).getName());
-        calorie.setText("Calorie: " + mGroup.get(position).getCalorie());
+        calorie.setText("Ккал: " + mGroup.get(position).getCalorie());
 
         NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
         layout.setOnClickListener(new View.OnClickListener() {

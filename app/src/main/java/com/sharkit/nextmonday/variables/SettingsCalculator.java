@@ -2,9 +2,18 @@ package com.sharkit.nextmonday.variables;
 
 public class SettingsCalculator {
 
-    private float weight, watter, desired_weight, activity, current_weight;
+    private float weight, watter,  activity, current_weight;
     private int protein, carbohydrate, fat, height, age, calorie;
-    private String sex, target, formula;
+    private String sex, target, formula, var;
+    private Object desired_weight;
+
+    public String getVar() {
+        return var;
+    }
+
+    public void setVar(String var) {
+        this.var = var;
+    }
 
     public float getWeight() {
         return weight;
@@ -22,11 +31,11 @@ public class SettingsCalculator {
         this.watter = watter;
     }
 
-    public float getDesired_weight() {
+    public Object getDesired_weight() {
         return desired_weight;
     }
 
-    public void setDesired_weight(float desired_weight) {
+    public void setDesired_weight(Object desired_weight) {
         this.desired_weight = desired_weight;
     }
 

@@ -12,11 +12,11 @@
         android:id="@+id/linerka"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/add_meal"
+        android:layout_above="@+id/add_meal_xml"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/date_xml"
             style="@style/StandartTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:layout_margin="20dp" />
 
         <ExpandableListView
-            android:id="@+id/ration"
+            android:id="@+id/ration_xml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -32,11 +32,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/add_meal"
+        android:id="@+id/add_meal_xml"
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bar"
+        android:layout_above="@+id/bar_xml"
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="60dp"
         android:layout_marginVertical="10dp"
@@ -45,7 +45,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         app:labelVisibilityMode ="labeled"
-        android:id="@+id/bar"
+        android:id="@+id/bar_xml"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

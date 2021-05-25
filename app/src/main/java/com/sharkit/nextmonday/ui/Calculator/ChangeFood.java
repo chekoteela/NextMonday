@@ -281,7 +281,7 @@ public class ChangeFood extends Fragment {
         agg_protein.setText(LocalDataPFC.getAgg_protein());
         soy_protein.setText(LocalDataPFC.getSoy_protein());
         whey_protein.setText(LocalDataPFC.getWhey_protein());
-        protein.setText(LocalDataPFC.getWhey_protein());
+        protein.setText(LocalDataPFC.getProtein());
         complex_carbohydrate.setText(LocalDataPFC.getComplex_carbohydrate());
         simple_carbohydrate.setText(LocalDataPFC.getSimple_carbohydrates());
         carbohydrate.setText(LocalDataPFC.getCarbohydrate());

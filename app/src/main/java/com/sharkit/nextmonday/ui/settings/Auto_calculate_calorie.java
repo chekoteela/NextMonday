@@ -314,6 +314,7 @@ public class Auto_calculate_calorie extends Fragment {
      conclusion = root.findViewById(R.id.conclusion);
     }
 
+    @SuppressLint("DefaultLocale")
     public void SaveAutoSettings(float weight, float desired_weight){
         myWeight = new MyWeight(getApplicationContext());
         sdb = myWeight.getReadableDatabase();
@@ -323,7 +324,8 @@ public class Auto_calculate_calorie extends Fragment {
         FirebaseFirestore fdb = FirebaseFirestore.getInstance();
         Calendar calendar = Calendar.getInstance();
         users = db.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/MyTarget");
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
         WeightV weightV = new WeightV();
         weightV.setChange(String.valueOf(0));
@@ -365,6 +367,7 @@ public class Auto_calculate_calorie extends Fragment {
         settingsCalculator.setWatter(watter);
         settingsCalculator.setSex(sex);
         settingsCalculator.setWeight(weight);
+        settingsCalculator.setVar("Auto");
 
         users.setValue(settingsCalculator).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

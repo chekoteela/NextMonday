@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -49,9 +51,13 @@ import com.sharkit.nextmonday.variables.SettingsCalculator;
 import com.sharkit.nextmonday.variables.UserMeal;
 import com.sharkit.nextmonday.variables.WeightV;
 
+import java.nio.channels.FileLock;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -71,15 +77,19 @@ public class Calculator_Main extends Fragment {
     FirebaseDatabase fdb;
     DatabaseReference users;
     LinkRation linkRation;
-    SQLiteDatabase sdb;
+    SQLiteDatabase sdb,mdb;
     MyWeight myWeight;
 
+    String setting;
 
     MenuItem home1;
 
-    Cursor query;
+    Cursor query, cursor;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference docRef;
+
+    int change_weight;
+
 
     final String TAG = "qwerty";
 
@@ -93,14 +103,18 @@ public class Calculator_Main extends Fragment {
         linkRation = new LinkRation(getApplicationContext());
         sdb = linkRation.getReadableDatabase();
         linkRation.onCreate(sdb);
+        myWeight = new MyWeight(getApplicationContext());
+        mdb = myWeight.getReadableDatabase();
+        myWeight.onCreate(sdb);
+
         SumMealNutrition();
         SynchronizedPFC();
 
 
 
         home1 = bottomNavigationView.getMenu().findItem(R.id.main);
-
         home1.setIcon(R.drawable.main_selected);
+
 
 
 
@@ -141,12 +155,24 @@ public class Calculator_Main extends Fragment {
             @Override
             public void onClick(View v) {
                 PFC_today.setPage("");
+                PFC_today.setMealName(null);
                 navController.navigate(R.id.nav_cal_find_food_by_name);
             }
         });
 
 
         return root;
+    }
+
+    private void GetWeight() {
+
+        cursor = mdb.rawQuery("SELECT * FROM " + myWeight.TABLE + " WHERE " + myWeight.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "'", null);
+
+        cursor.moveToLast();
+        try {
+
+            PFC_today.setWeight(cursor.getString(2));
+        }catch (CursorIndexOutOfBoundsException e) {}
     }
 
     private void WriteDataWeight(String s) {
@@ -231,9 +257,9 @@ public class Calculator_Main extends Fragment {
         eat_protein.setText(String.format("%.1f", PFC_today.getProtein_eat()));
         all_protein.setText(String.format("%.1f", PFC_today.getProtein()));
 
-        drink_w.setText(String.valueOf(PFC_today.getWatter_drink()));
-        drink_watter.setText(String.valueOf(PFC_today.getWatter_drink()));
-        all_watter.setText(String.valueOf(PFC_today.getWatter()));
+        drink_w.setText(String.format("%.2f", PFC_today.getWatter_drink()));
+        drink_watter.setText(String.format("%.2f", PFC_today.getWatter_drink()));
+        all_watter.setText(String.format("%.0f", PFC_today.getWatter()));
 
     }
 
@@ -317,9 +343,80 @@ public class Calculator_Main extends Fragment {
                     PFC_today.setFat(settingsCalculator.getFat());
                     PFC_today.setCarbohydrate(settingsCalculator.getCarbohydrate());
                     PFC_today.setCalorie(settingsCalculator.getCalorie());
+
+                    if (settingsCalculator.getVar().equals("Manual")){
+                        GetWeight();
+
+                        PFC_today.setProtein(PFC_today.getProtein() * Float.parseFloat(PFC_today.getWeight()));
+                        PFC_today.setCarbohydrate(PFC_today.getCarbohydrate() * Float.parseFloat(PFC_today.getWeight()));
+                        PFC_today.setFat(PFC_today.getFat() * Float.parseFloat(PFC_today.getWeight()));
+                        PFC_today.setWatter(PFC_today.getWatter() * Float.parseFloat(PFC_today.getWeight()));
+
+                        PFC_today.setCalorie((PFC_today.getProtein() * 4) + (PFC_today.getFat() * 9) + (PFC_today.getCarbohydrate() * 4));
+
+                        Log.d(TAG, PFC_today.getWeight());
+                    }
+                    if (settingsCalculator.getVar().equals("Auto")){
+                        GetWeight();
+
+                        switch (settingsCalculator.getTarget()){
+                            case "lose_weight":
+                                change_weight = -300;
+                                break;
+                            case "gain_weight":
+                                change_weight = 300;
+                                break;
+                            case "hold_the_weight":
+                                change_weight = 0;
+                                break;
+                        }
+
+                        if (Float.parseFloat(PFC_today.getCurrent_weight()) > Float.parseFloat(PFC_today.getWeight())
+                                && !settingsCalculator.getTarget().equals("gain_weight")){
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("target", "gain_weight");
+                            users.updateChildren(map);
+                            change_weight = 300;
+                        }
+                        if (Float.parseFloat(PFC_today.getCurrent_weight()) < Float.parseFloat(PFC_today.getWeight())
+                                && !settingsCalculator.getTarget().equals("lose_weight")){
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("target", "lose_weight");
+                            users.updateChildren(map);
+                            change_weight = -300;
+                        }
+                        if (Float.parseFloat(PFC_today.getCurrent_weight()) == Float.parseFloat(PFC_today.getWeight())
+                                && !settingsCalculator.getTarget().equals("hold_the_weight")){
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("target", "hold_the_weight");
+                            users.updateChildren(map);
+                            change_weight = 0;
+                        }
+
+                        if(settingsCalculator.getFormula().equals("muffin") && settingsCalculator.getSex().equals("female")){
+                            PFC_today.setCalorie((int) ((((10 * Float.parseFloat(PFC_today.getWeight())) + (6.25 * settingsCalculator.getHeight()) -
+                                    (5 * settingsCalculator.getAge()) - 161) * settingsCalculator.getActivity()) + change_weight));
+
+                        }
+                        if (settingsCalculator.getFormula().equals("muffin") && settingsCalculator.getSex().equals("female")){
+                            PFC_today.setCalorie((int) ((((10 * Float.parseFloat(PFC_today.getWeight())) + (6.25 * settingsCalculator.getHeight()) -
+                                    (5 * settingsCalculator.getAge()) + 5) * settingsCalculator.getActivity()) + change_weight));
+                        }
+                        if (settingsCalculator.getFormula().equals("harrison") && settingsCalculator.getSex().equals("male")){
+                            PFC_today.setCalorie((int) ((((9.247 * Float.parseFloat(PFC_today.getWeight())) + (3.098 * settingsCalculator.getHeight()) -
+                                    (4.330 * settingsCalculator.getAge()) + 447.593) * settingsCalculator.getActivity()) + change_weight));
+
+                        }
+                        if(settingsCalculator.getFormula().equals("harrison") && settingsCalculator.getSex().equals("male")){
+                            PFC_today.setCalorie((int) ((((13.397 * Float.parseFloat(PFC_today.getWeight())) + (4.799 * settingsCalculator.getHeight()) -
+                                    (5.677 * settingsCalculator.getAge()) + 88.362) * settingsCalculator.getActivity()) + change_weight));
+
+                        }
+
+
+                    }
                 }catch (NullPointerException e){
                     ProgressBarMathNull();
-
                 }
 
                 ProgressMath();
@@ -358,7 +455,11 @@ public class Calculator_Main extends Fragment {
         while (query.moveToNext()){
             WritePFC_Today(userMeal);
         }
-
+        PFC_today.setCalorie_eat(Float.parseFloat(userMeal.getCalorie()));
+        PFC_today.setProtein_eat(Float.parseFloat(userMeal.getProtein()));
+        PFC_today.setFat_eat(Float.parseFloat(userMeal.getFat()));
+        PFC_today.setCarbohydrate_eat(Float.parseFloat(userMeal.getCarbohydrate()));
+        PFC_today.setWatter_drink(Float.parseFloat(userMeal.getWatter()));
     }
 
     @SuppressLint("DefaultLocale")
@@ -367,23 +468,19 @@ public class Calculator_Main extends Fragment {
 
             userMeal.setCalorie(String.valueOf(Float.parseFloat(userMeal.getCalorie()) + Float.parseFloat(query.getString(7)) /
                     Float.parseFloat(query.getString(6)) * Float.parseFloat(query.getString(4))));
-            PFC_today.setCalorie_eat(Float.parseFloat(userMeal.getCalorie()));
 
             userMeal.setProtein(String.valueOf(Float.parseFloat(userMeal.getProtein()) + Float.parseFloat(query.getString(8)) /
                     Float.parseFloat(query.getString(6)) * Float.parseFloat(query.getString(4))));
-            PFC_today.setProtein_eat(Float.parseFloat(userMeal.getProtein()));
 
             userMeal.setFat(String.valueOf(Float.parseFloat(userMeal.getFat()) + Float.parseFloat(query.getString(16)) /
                     Float.parseFloat(query.getString(6)) * Float.parseFloat(query.getString(4))));
-            PFC_today.setFat_eat(Float.parseFloat(userMeal.getFat()));
 
             userMeal.setCarbohydrate(String.valueOf(Float.parseFloat(userMeal.getCarbohydrate()) + Float.parseFloat(query.getString(13)) /
                     Float.parseFloat(query.getString(6)) * Float.parseFloat(query.getString(4))));
-            PFC_today.setCarbohydrate_eat(Float.parseFloat(userMeal.getCarbohydrate()));
 
             userMeal.setWatter(String.valueOf(Float.parseFloat(userMeal.getWatter()) + Float.parseFloat(query.getString(27)) /
                     Float.parseFloat(query.getString(6)) * Float.parseFloat(query.getString(4)) / 1000));
-            PFC_today.setWatter_drink(Float.parseFloat(userMeal.getWatter()));
+
 
         }catch (NumberFormatException e){
             Log.d(TAG, e.getLocalizedMessage());
@@ -396,10 +493,12 @@ public class Calculator_Main extends Fragment {
         bottomNavigationView = root.findViewById(R.id.bar);
 
         ration = root.findViewById(R.id.ration);
-        add_food = root.findViewById(R.id.add_food);
-        add_weight = root.findViewById(R.id.weight);
-        add_watter = root.findViewById(R.id.add_watter);
-        plus = root.findViewById(R.id.plus);
+
+        add_food = root.findViewById(R.id.add_food_xml);
+        add_weight = root.findViewById(R.id.add_weight_xml);
+        add_watter = root.findViewById(R.id.add_watter_xml);
+        plus = root.findViewById(R.id.plus_xml);
+
 
         eat_c = root.findViewById(R.id.eat_c);
         eat_calorie = root.findViewById(R.id.eat_calorie);

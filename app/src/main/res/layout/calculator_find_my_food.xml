@@ -30,7 +30,7 @@
                 android:textSize="18sp" />
 
             <ImageView
-                android:id="@+id/favorite"
+                android:id="@+id/favorite_xml"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -45,7 +45,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/number"
+                android:id="@+id/number_xml"
                 style="@style/EditText_change_food_white"
                 android:layout_width="153dp"
                 android:layout_height="40dp"
@@ -77,7 +77,7 @@
                 android:textColor="@color/white" />
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/weight"
+                android:id="@+id/weight_xml"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:theme="@style/CustomSwitch" />
@@ -90,8 +90,12 @@
                 android:text="@string/portion" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinner_xml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -100,13 +104,16 @@
             android:spinnerMode="dialog" />
 
         <TextView
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginVertical="10dp"
             android:id="@+id/meal"
             style="@style/StandartTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/save"
+            android:id="@+id/save_xml"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,6 +121,7 @@
             android:layout_marginHorizontal="60dp"
             android:layout_marginVertical="10dp"
             android:text="@string/save" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -160,6 +168,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
+                        android:id="@+id/gram"
                         android:padding="10dp"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
