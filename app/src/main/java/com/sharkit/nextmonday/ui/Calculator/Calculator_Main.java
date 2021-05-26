@@ -92,7 +92,7 @@ public class Calculator_Main extends Fragment {
         add_weight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.EditText_change_food_white);
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
                 View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
                 EditText weight = existProduct.findViewById(R.id.weight);
@@ -368,7 +368,6 @@ public class Calculator_Main extends Fragment {
 
 
     private void FindViewByID(View root) {
-        tap_bar = root.findViewById(R.id.tapBarMenu);
         add_food = root.findViewById(R.id.add);
         add_weight = root.findViewById(R.id.weight);
 

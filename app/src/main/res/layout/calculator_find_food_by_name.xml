@@ -10,42 +10,33 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
+        app:tabMode="scrollable"
+        android:background="@color/calculator_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/calculator_color"
         app:tabIndicatorColor="@color/bar_calor_color_progress"
-        app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/descr_my_food"
             android:text="@string/my_food" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/descr_search_by_name"
             android:text="@string/find_by_name" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/bar_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/descr_search_by_barcode"
             android:text="@string/search_by_barcode" />
-
-        <!--        <com.google.android.material.tabs.TabItem-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:text="@string/story" />-->
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/descr_favorites"
             android:text="@string/favorites" />
     </com.google.android.material.tabs.TabLayout>
 
@@ -81,8 +72,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bar"
-        android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="60dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginVertical="10dp"
         android:contentDescription="@string/descr_add_food"
         android:padding="10dp"

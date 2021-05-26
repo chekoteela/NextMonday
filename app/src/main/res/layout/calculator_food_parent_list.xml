@@ -52,22 +52,15 @@
             android:background="@color/calculator_auto_edittext" />
 
         <LinearLayout
+            android:weightSum="4"
             android:id="@+id/parent_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom">
-
-
-            <TextView
-                style="@style/StandartTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:text="@string/protein_" />
+            
 
             <TextView
+                android:layout_weight="1"
                 android:id="@+id/all_protein"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"
@@ -75,15 +68,9 @@
                 android:padding="5dp"
                 android:text="9999" />
 
-            <TextView
-                style="@style/StandartTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:padding="5dp"
-                android:text="@string/carbs_" />
 
             <TextView
+                android:layout_weight="1"
                 android:id="@+id/all_carbohydrate"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"
@@ -93,14 +80,7 @@
 
 
             <TextView
-                style="@style/StandartTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:padding="5dp"
-                android:text="@string/fat_" />
-
-            <TextView
+                android:layout_weight="1"
                 android:text="9999"
                 android:id="@+id/all_fat"
                 style="@style/StandartTextView"
@@ -109,12 +89,7 @@
                 android:padding="5dp" />
 
             <TextView
-                style="@style/StandartTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp" />
-
-            <TextView
+                android:layout_weight="1"
                 android:text="1900"
                 android:id="@+id/all_calorie"
                 style="@style/StandartTextView"
