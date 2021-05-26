@@ -95,15 +95,15 @@ public class ChangeFood extends Fragment {
             public void onClick(View v) {
                 String inputText = name.getText().toString();
                 if(isProteinWeight()){
-                    Toast.makeText(getContext(), "error protein", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Введите корректное количество белков", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (isFatWeight()){
-                    Toast.makeText(getContext(), "error fat", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Введите корректное количество жиров", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (isCarbohydrateWeight()){
-                    Toast.makeText(getContext(), "error carbohydrate", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Введите корректное количество углеводов", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 EmptyEdit();
@@ -236,10 +236,10 @@ public class ChangeFood extends Fragment {
             h = Float.parseFloat(epa.getText().toString());
         }else {h = 0;}
         if (TextUtils.isEmpty(fat.getText())){
-            fat.setText(a + b + c + d + e + f + g + h + "");
+            fat.setText(a + b + "");
         }
 
-        return !(a + b + c + d + e + f + g + h <= Float.parseFloat(fat.getText().toString()));
+        return !(a + b  <= Float.parseFloat(fat.getText().toString()));
     }
 
     @SuppressLint("SetTextI18n")
@@ -319,7 +319,7 @@ public class ChangeFood extends Fragment {
                                 collectionAdmin.add(dataPFC).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                     @Override
                                     public void onSuccess(DocumentReference documentReference) {
-                                        Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "Успешное добавление продукта", Toast.LENGTH_SHORT).show();
                                         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                                         navController.navigate(R.id.nav_calculator_main);
                                     }
@@ -343,7 +343,7 @@ public class ChangeFood extends Fragment {
                     collectionReference.add(dataPFC).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Успешное добавление продукта модерацию", Toast.LENGTH_SHORT).show();
                             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                             navController.navigate(R.id.nav_calculator_main);
                         }
@@ -410,14 +410,14 @@ public class ChangeFood extends Fragment {
                     fdb.collection(s)
                             .document(id)
                             .set(dataPFC);
-                    Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Обновленияя отправлены на модерацию", Toast.LENGTH_SHORT).show();
                 }catch (NullPointerException e){
                     DataPFC dataPFC = new DataPFC();
                     WriteClass(dataPFC, PFC_today.getBar_code());
                     fdb.collection(s).add(dataPFC).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-                            Log.d(TAG, "update");
+
                         }
                     });
                 }

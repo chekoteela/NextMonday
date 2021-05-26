@@ -33,6 +33,7 @@ import com.sharkit.nextmonday.variables.LocalDataPFC;
 import com.sharkit.nextmonday.variables.PFC_today;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MyFindFoodAdaptor extends BaseExpandableListAdapter {
     Activity mActivity;
@@ -167,30 +168,31 @@ public class MyFindFoodAdaptor extends BaseExpandableListAdapter {
         return convertView;
     }
 
+    @SuppressLint("SetTextI18n")
     private void WriteChild(int groupPosition) {
-        calorie.setText(mGroup.get(groupPosition).getCalorie());
-        protein.setText(mGroup.get(groupPosition).getProtein());
-        whey_protein.setText(mGroup.get(groupPosition).getWhey_protein());
-        soy_protein.setText(mGroup.get(groupPosition).getSoy_protein());
-        agg_protein.setText(mGroup.get(groupPosition).getAgg_protein());
-        casein_protein.setText(mGroup.get(groupPosition).getCasein_protein());
-        carbohydrate.setText(mGroup.get(groupPosition).getCarbohydrate());
-        simple_carbohydrate.setText(mGroup.get(groupPosition).getSimple_carbohydrates());
-        complex_carbohydrate.setText(mGroup.get(groupPosition).getComplex_carbohydrate());
-        fat.setText(mGroup.get(groupPosition).getFat());
-        saturated_fat.setText(mGroup.get(groupPosition).getSaturated_fat());
-        trans_fat.setText(mGroup.get(groupPosition).getTrans_fat());
-        omega9.setText(mGroup.get(groupPosition).getOmega_9());
-        omega6.setText(mGroup.get(groupPosition).getOmega_6());
-        omega3.setText(mGroup.get(groupPosition).getOmega_3());
-        ala.setText(mGroup.get(groupPosition).getAla());
-        dha.setText(mGroup.get(groupPosition).getDha());
-        epa.setText(mGroup.get(groupPosition).getEpa());
-        watter.setText(mGroup.get(groupPosition).getWatter());
-        cellulose.setText(mGroup.get(groupPosition).getCellulose());
-        salt.setText(mGroup.get(groupPosition).getSalt());
-        calcium.setText(mGroup.get(groupPosition).getCalcium());
-        potassium.setText(mGroup.get(groupPosition).getPotassium());
+        calorie.setText(mGroup.get(groupPosition).getCalorie() + " Ккал");
+        protein.setText(mGroup.get(groupPosition).getProtein() + " гр");
+        whey_protein.setText(mGroup.get(groupPosition).getWhey_protein() + " гр");
+        soy_protein.setText(mGroup.get(groupPosition).getSoy_protein() + " гр");
+        agg_protein.setText(mGroup.get(groupPosition).getAgg_protein() + " гр");
+        casein_protein.setText(mGroup.get(groupPosition).getCasein_protein() + " гр");
+        carbohydrate.setText(mGroup.get(groupPosition).getCarbohydrate() + " гр");
+        simple_carbohydrate.setText(mGroup.get(groupPosition).getSimple_carbohydrates() + " гр");
+        complex_carbohydrate.setText(mGroup.get(groupPosition).getComplex_carbohydrate() + " гр");
+        fat.setText(mGroup.get(groupPosition).getFat() + " гр");
+        saturated_fat.setText(mGroup.get(groupPosition).getSaturated_fat() + " гр");
+        trans_fat.setText(mGroup.get(groupPosition).getTrans_fat() + " гр");
+        omega9.setText(mGroup.get(groupPosition).getOmega_9() + " мг");
+        omega6.setText(mGroup.get(groupPosition).getOmega_6() + " мг");
+        omega3.setText(mGroup.get(groupPosition).getOmega_3() + " мг");
+        ala.setText(mGroup.get(groupPosition).getAla() + " мг");
+        dha.setText(mGroup.get(groupPosition).getDha() + " мг");
+        epa.setText(mGroup.get(groupPosition).getEpa() + " мг");
+        watter.setText(mGroup.get(groupPosition).getWatter() + " мл");
+        cellulose.setText(mGroup.get(groupPosition).getCellulose() + " гр");
+        salt.setText(mGroup.get(groupPosition).getSalt() + " гр");
+        calcium.setText(mGroup.get(groupPosition).getCalcium() + " мг");
+        potassium.setText(mGroup.get(groupPosition).getPotassium() + " мг");
 
     }
 
@@ -268,98 +270,77 @@ public class MyFindFoodAdaptor extends BaseExpandableListAdapter {
     }
     private void ShowView() {
 
-        if (TextUtils.isEmpty(cellulose.getText())){
+        if (TextUtils.isEmpty(watter.getText()) || watter.getText().equals(String.valueOf(0) + " мл")){
+            watter.setVisibility(View.GONE);
+            watter_text.setVisibility(View.GONE); }
+        if (TextUtils.isEmpty(cellulose.getText()) || cellulose.getText().equals(String.valueOf(0) + " гр") ){
             cellulose.setVisibility(View.GONE);
-            cellulose_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(potassium.getText())){
+            cellulose_text.setVisibility(View.GONE); }
+        if (TextUtils.isEmpty(potassium.getText()) || potassium.getText().equals(String.valueOf(0) + " мг") ){
             potassium.setVisibility(View.GONE);
-            potassium_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(salt.getText())){
+            potassium_text.setVisibility(View.GONE); }
+        if (TextUtils.isEmpty(salt.getText()) || salt.getText().equals(String.valueOf(0) + " гр") ){
             salt.setVisibility(View.GONE);
-            salt_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(calcium.getText())){
+            salt_text.setVisibility(View.GONE);  }
+        if (TextUtils.isEmpty(calcium.getText()) || calcium.getText().equals(String.valueOf(0) + " мг") ){
             calcium.setVisibility(View.GONE);
-            calcium_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(watter.getText())){
-            watter.setVisibility(View.GONE);
-            watter.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(casein_protein.getText())){
+            calcium_text.setVisibility(View.GONE);    }
+        if (TextUtils.isEmpty(casein_protein.getText()) || casein_protein.getText().equals(String.valueOf(0) + " гр") ){
             casein_protein.setVisibility(View.GONE);
-            casein_protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(agg_protein.getText())){
+            casein_protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(agg_protein.getText()) || agg_protein.getText().equals(String.valueOf(0) + " гр") ){
             agg_protein.setVisibility(View.GONE);
-            agg_protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(soy_protein.getText())){
+            agg_protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(soy_protein.getText()) || soy_protein.getText().equals(String.valueOf(0) + " гр")){
             soy_protein.setVisibility(View.GONE);
-            soy_protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(whey_protein.getText())){
+            soy_protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(whey_protein.getText()) || whey_protein.getText().equals(String.valueOf(0) + " гр") ){
             whey_protein.setVisibility(View.GONE);
-            whey_protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(protein.getText())){
+            whey_protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(protein.getText()) || protein.getText().equals(String.valueOf(0) + " гр") ){
             protein.setVisibility(View.GONE);
-            protein_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(complex_carbohydrate.getText())){
+            protein_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(complex_carbohydrate.getText()) || complex_carbohydrate.getText().equals(String.valueOf(0) + " гр")){
             complex_carbohydrate.setVisibility(View.GONE);
-            complex_carbohydrate_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(simple_carbohydrate.getText())){
+            complex_carbohydrate_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(simple_carbohydrate.getText()) || simple_carbohydrate.getText().equals(String.valueOf(0) + " гр")){
             simple_carbohydrate.setVisibility(View.GONE);
-            simple_carbohydrate_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(carbohydrate.getText())){
+            simple_carbohydrate_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(carbohydrate.getText()) || carbohydrate.getText().equals(String.valueOf(0) + " гр") ){
             carbohydrate.setVisibility(View.GONE);
-            carbohydrate_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(epa.getText())){
+            carbohydrate_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(epa.getText()) || epa.getText().equals(String.valueOf(0) + " мг") ){
             epa.setVisibility(View.GONE);
-            epa_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(dha.getText())){
+            epa_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(dha.getText()) || dha.getText().equals(String.valueOf(0) + " мг") ){
             dha_text.setVisibility(View.GONE);
-            dha.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(ala.getText())){
+            dha.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(ala.getText()) || ala.getText().equals(String.valueOf(0) + " мг") ){
             ala.setVisibility(View.GONE);
-            ala_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(omega3.getText())){
+            ala_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(omega3.getText()) || omega3.getText().equals(String.valueOf(0) + " мг")){
             omega3.setVisibility(View.GONE);
-            omega3_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(omega6.getText())){
+            omega3_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(omega6.getText()) || omega6.getText().equals(String.valueOf(0) + " мг") ){
             omega6.setVisibility(View.GONE);
-            omega6_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(omega9.getText())){
+            omega6_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(omega9.getText()) || omega9.getText().equals(String.valueOf(0) + " мг") ){
             omega9.setVisibility(View.GONE);
-            omega9_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(saturated_fat.getText())){
+            omega9_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(saturated_fat.getText()) || saturated_fat.getText().equals(String.valueOf(0) + " гр") ){
             saturated_fat.setVisibility(View.GONE);
-            saturated_fat_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(trans_fat.getText())){
+            saturated_fat_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(trans_fat.getText()) || trans_fat.getText().equals(String.valueOf(0) + " гр") ){
             trans_fat.setVisibility(View.GONE);
-            trans_fat_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(fat.getText())){
+            trans_fat_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(fat.getText()) || fat.getText().equals(String.valueOf(0) + " гр") ){
             fat.setVisibility(View.GONE);
-            fat_text.setVisibility(View.GONE);
-        }
-        if (TextUtils.isEmpty(calorie.getText())){
+            fat_text.setVisibility(View.GONE);        }
+        if (TextUtils.isEmpty(calorie.getText()) || calorie.getText().equals(String.valueOf(0)) ||
+                calorie.getText().equals(String.format( Locale.ROOT,"%.2f",0.00))){
             calorie.setVisibility(View.GONE);
-            calorie_text.setVisibility(View.GONE);
-        }
+            calorie_text.setVisibility(View.GONE);        }
+
     }
 
 }

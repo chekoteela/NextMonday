@@ -2,6 +2,7 @@ package com.sharkit.nextmonday.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.variables.PFC_today;
 import com.sharkit.nextmonday.variables.WeightV;
 
 import java.text.SimpleDateFormat;
@@ -54,6 +56,20 @@ public class WeightAdaptor extends BaseAdapter {
 
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        if (Float.parseFloat(PFC_today.getCurrent_weight()) > Float.parseFloat(PFC_today.getWeight())) {
+            if (Float.parseFloat(list.get(position).getChange()) < 0) {
+                change.setTextColor(Color.RED);
+            }else if (Float.parseFloat(list.get(position).getChange()) > 0){
+                change.setTextColor(Color.GREEN);
+            }
+        }
+        if (Float.parseFloat(PFC_today.getCurrent_weight()) < Float.parseFloat(PFC_today.getWeight())) {
+            if (Float.parseFloat(list.get(position).getChange()) > 0) {
+                change.setTextColor(Color.RED);
+            }else if (Float.parseFloat(list.get(position).getChange()) < 0){
+                change.setTextColor(Color.GREEN);
+            }
+        }
 
         change.setText(list.get(position).getChange());
         weight.setText(list.get(position).getWeight());

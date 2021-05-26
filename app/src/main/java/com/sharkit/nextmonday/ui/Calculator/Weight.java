@@ -125,7 +125,8 @@ public class Weight extends Fragment {
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
                 View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
                 EditText weight = existProduct.findViewById(R.id.weight);
-
+                TextView textView = existProduct.findViewById(R.id.text_xml);
+                textView.setText("Изменить желаемый вес");
                 dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -138,7 +139,6 @@ public class Weight extends Fragment {
                                 navController.navigate(R.id.nav_cal_weight);
                             }
                         });
-
                     }
                 });
                 dialog.setView(existProduct);
