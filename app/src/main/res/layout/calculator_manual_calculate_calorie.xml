@@ -41,6 +41,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:textSize="18sp"
             android:layout_gravity="center"
             android:padding="10dp"
             style="@style/StandartTextView"
@@ -58,6 +59,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+            android:inputType="numberDecimal"
             android:id="@+id/weight"
             android:padding="10dp"
             android:layout_gravity="center"
@@ -91,6 +93,7 @@
 
 
                 <EditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/protein"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
@@ -108,6 +111,7 @@
 
 
                 <EditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/fat"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
@@ -136,6 +140,7 @@
 
 
                 <EditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/carbohydrate"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
@@ -154,6 +159,7 @@
 
 
                 <EditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/watter"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
@@ -168,70 +174,74 @@
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/polosa"
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="@color/calculator_color_linear" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/save"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-
-        <Button
-            android:id="@+id/to_calculate"
-            style="@style/button_setting_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/descr_calculate"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp"
-            android:text="@string/rozrahunok" />
-
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <TextView
-                style="@style/StandartTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+
+            <Button
+                android:id="@+id/to_calculate"
+                style="@style/button_setting_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="@string/Sum" />
+                android:contentDescription="@string/descr_calculate"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="@string/rozrahunok" />
 
-            <TextView
-                android:id="@+id/conclusion"
-                style="@style/StandartTextView"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    style="@style/StandartTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/Sum" />
+
+                <TextView
+                    android:id="@+id/conclusion"
+                    style="@style/StandartTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+    </LinearLayout>
+        <Button
+            android:id="@+id/save"
+            style="@style/button_setting_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="100dp"
+            android:contentDescription="@string/descr_save"
+            android:padding="10dp"
+            android:text="@string/save"
+            />
+
+
 
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/save"
-        style="@style/button_setting_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="100dp"
-        android:contentDescription="@string/descr_save"
-        android:padding="10dp"
-        android:text="@string/save"
 
-        />
 
 </RelativeLayout>
