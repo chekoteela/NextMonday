@@ -21,6 +21,7 @@
 
 
             <com.progress.progressview.ProgressView
+                android:rotation="90"
                 android:id="@+id/calorie"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -596,7 +597,6 @@
             android:src="@drawable/plus"/>
 
     </LinearLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
         android:id="@+id/bar"

@@ -16,7 +16,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="10dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
@@ -84,7 +85,6 @@
             android:id="@+id/graph"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_margin="5dp"
             android:layout_marginTop="10dp" />
 
         <ListView
@@ -93,20 +93,20 @@
             android:layout_height="200dp"
             android:layout_marginVertical="10dp" />
 
-        <Button
-            android:id="@+id/add_weight"
-            style="@style/button_setting_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="60dp"
-            android:contentDescription="@string/descr_change_weight"
-            android:padding="10dp"
-            android:text="@string/change_weight" />
-
-
     </LinearLayout>
 
+    <Button
+        android:layout_marginVertical="10dp"
+        android:layout_above="@+id/bar"
+        android:id="@+id/add_weight"
+        style="@style/button_setting_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="60dp"
+        android:contentDescription="@string/descr_change_weight"
+        android:padding="10dp"
+        android:text="@string/change_weight" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bar"
