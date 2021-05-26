@@ -152,8 +152,6 @@ public class Ration extends Fragment {
                 @SuppressLint("SimpleDateFormat")
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
-
-
                 AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(), R.style.EditText_change_food_white);
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View select = inflater.inflate(R.layout.calculator_alert_add_meal, null);
