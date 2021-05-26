@@ -187,7 +187,7 @@ public class Weight extends Fragment {
         add_weight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.EditText_change_food_white);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
                 View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
                 EditText weight = existProduct.findViewById(R.id.weight);
