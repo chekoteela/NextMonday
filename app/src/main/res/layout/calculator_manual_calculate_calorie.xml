@@ -41,6 +41,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_gravity="center"
             android:padding="10dp"
             style="@style/StandartTextView"
             android:text="Внесите данные на 1 кг веса"
@@ -48,6 +49,7 @@
             android:layout_height="wrap_content"/>
 
         <TextView
+            android:textSize="18sp"
             android:padding="10dp"
             style="@style/StandartTextView"
             android:text="@string/your_weigth"
@@ -81,6 +83,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textSize="18sp"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -97,6 +100,7 @@
                     android:padding="5dp" />
 
                 <TextView
+                    android:textSize="18sp"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -124,6 +128,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textSize="18sp"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -140,6 +145,7 @@
                     android:padding="5dp" />
 
                 <TextView
+                    android:textSize="18sp"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -220,7 +226,8 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginHorizontal="60dp"
-        android:layout_marginVertical="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="100dp"
         android:contentDescription="@string/descr_save"
         android:padding="10dp"
         android:text="@string/save"
