@@ -128,7 +128,7 @@ public class Calculator_Main extends Fragment {
 
 
 
-//        GetWatter();
+        GetWatter();
 
         home1 = bottomNavigationView.getMenu().findItem(R.id.main);
         home1.setIcon(R.drawable.main_selected);
