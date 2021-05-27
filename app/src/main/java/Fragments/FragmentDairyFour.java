@@ -60,6 +60,7 @@ public class FragmentDairyFour extends Fragment {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,h/11);
         LinearLayout.LayoutParams params_button = new LinearLayout.LayoutParams(-2,h/17);
         params_button.setMargins(h/28,h/85,h/28,h/85);
+
         linear_time.setLayoutParams(params);
         save.setLayoutParams(params_button);
         linear_repeat.setLayoutParams(params);

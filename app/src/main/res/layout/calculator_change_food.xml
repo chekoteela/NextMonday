@@ -403,13 +403,25 @@
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bar"
+        android:layout_above="@+id/adView"
         android:layout_centerHorizontal="true"
         android:layout_marginHorizontal="60dp"
         android:layout_marginVertical="10dp"
         android:contentDescription="@string/descr_save_changes"
         android:padding="10dp"
         android:text="@string/save_changes_button" />
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:elevation="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/bar"
+        android:layout_marginBottom="10dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         app:labelVisibilityMode ="labeled"

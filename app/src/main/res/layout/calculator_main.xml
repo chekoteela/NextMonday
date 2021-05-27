@@ -571,6 +571,7 @@
         android:layout_below="@+id/linear_dima"
         android:layout_above="@+id/bar"
         android:layout_marginTop="10dp"
+        android:elevation="5dp"
         android:weightSum="4"
         android:id="@+id/linearr"
         android:layout_width="match_parent"
@@ -615,6 +616,18 @@
             android:src="@drawable/plus"/>
 
     </LinearLayout>
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:elevation="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/bar"
+        android:layout_marginBottom="10dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
 
 
 
