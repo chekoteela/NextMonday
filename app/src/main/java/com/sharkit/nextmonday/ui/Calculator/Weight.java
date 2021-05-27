@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -69,6 +70,7 @@ public class Weight extends Fragment {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference collectionReference = db.collection("DB Product");
 
+
     SQLiteDatabase sdb;
     MyWeight myWeight;
     GraphView graphView;
@@ -85,6 +87,19 @@ public class Weight extends Fragment {
     FirebaseDatabase fs = FirebaseDatabase.getInstance();
     DatabaseReference users = fs.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/MyTarget");
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    DisplayMetrics metrics = getResources().getDisplayMetrics();
+    int h = metrics.heightPixels;
+
+
+    LinearLayout.LayoutParams r_params = new LinearLayout.LayoutParams(h / 4, h / 4);
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //    LineGraphSeries<> series;
 
@@ -340,6 +355,8 @@ public class Weight extends Fragment {
         query.close();
         myWeight.close();
     }
+
+
 
     private void FindView(View root) {
         desired_weight = root.findViewById(R.id.desired_weight);
