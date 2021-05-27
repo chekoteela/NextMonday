@@ -63,6 +63,7 @@
 
 
                 <EditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/this_weight"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
@@ -79,6 +80,7 @@
 
 
                 <EditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/age"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
@@ -107,6 +109,7 @@
 
 
                 <EditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/desired_weight"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
@@ -124,6 +127,7 @@
 
 
                 <EditText
+                    android:inputType="numberDecimal"
                     android:id="@+id/height"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
@@ -326,6 +330,18 @@
             android:contentDescription="@string/descr_save"
             android:padding="10dp"
             android:text="@string/save" />
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:elevation="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id">
+        </com.google.android.gms.ads.AdView>
     </LinearLayout>
 
 </RelativeLayout>
