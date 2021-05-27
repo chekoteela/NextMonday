@@ -83,7 +83,6 @@ public class Weight extends Fragment {
     ListView listView;
     WeightAdaptor adaptor;
     LinearLayout desired_weight, layout_left_xlm;
-
     TextView weight,current_weight,text_weight_xml,text_current_weight_xml;
     Button add_weight;
     BottomNavigationView bar;
@@ -153,8 +152,6 @@ public class Weight extends Fragment {
             weight.setTextSize(14);
             current_weight.setTextSize(14);
         }
-
-
 //text_weight_xml text_current_weight_xml  weight current_weight
 
             //Параметри Графіка
@@ -439,8 +436,5 @@ public class Weight extends Fragment {
         listView = root.findViewById(R.id.list_item);
         text_current_weight_xml = root.findViewById(R.id.text_current_weight_xml);
         text_weight_xml = root.findViewById(R.id.text_weight_xml);
-
-
-
     }
 }
