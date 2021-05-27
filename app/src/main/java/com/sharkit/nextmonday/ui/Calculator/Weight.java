@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +61,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import static android.view.Gravity.CENTER;
+import static android.view.TouchDelegate.ABOVE;
 import static com.facebook.FacebookSdk.getApplicationContext;
 import static com.facebook.FacebookSdk.isDebugEnabled;
 
@@ -79,27 +82,15 @@ public class Weight extends Fragment {
     ArrayList<WeightV> list;
     ListView listView;
     WeightAdaptor adaptor;
-    LinearLayout desired_weight;
+    LinearLayout desired_weight, layout_left_xlm;
 
-    TextView weight,current_weight;
+    TextView weight,current_weight,text_weight_xml,text_current_weight_xml;
     Button add_weight;
     BottomNavigationView bar;
     FirebaseDatabase fs = FirebaseDatabase.getInstance();
     DatabaseReference users = fs.getReference("Users/" + mAuth.getCurrentUser().getUid() + "/Setting/Calculator/MyTarget");
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    DisplayMetrics metrics = getResources().getDisplayMetrics();
-    int h = metrics.heightPixels;
-
-
-    LinearLayout.LayoutParams r_params = new LinearLayout.LayoutParams(h / 4, h / 4);
-
-
-
-
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //    LineGraphSeries<> series;
 
@@ -113,6 +104,85 @@ public class Weight extends Fragment {
         MenuItem item = bar.getMenu().findItem(R.id.weight);
         item.setIcon(R.drawable.my_weight);
         Adapter();
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int h = metrics.heightPixels;
+        int w = metrics.widthPixels;
+
+        Log.d(TAG, String.valueOf(h));
+
+            //Основний лінер який об'єднує нижні лінери//
+        LinearLayout linear_weight = root.findViewById(R.id.linear_weight);
+        LinearLayout.LayoutParams layout_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 7);
+        layout_params.setMargins(10, 10, 10, 10);
+        linear_weight.setWeightSum(2);
+        linear_weight.setLayoutParams(layout_params);
+
+            //Лінери які містять текст і їх 2////
+        LinearLayout.LayoutParams layout_top = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 7);
+        layout_top.weight = 1;
+        layout_top.setMargins(w / 84, 10, w / 84, 10);
+            //Лівий блок
+        layout_left_xlm.setGravity(CENTER);
+        layout_left_xlm.setLayoutParams(layout_top);
+            //Правий блок
+        desired_weight.setGravity(CENTER);
+        desired_weight.setLayoutParams(layout_top);
+            //Параметра TextView
+        LinearLayout.LayoutParams layout_top_text = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        layout_top_text.setMargins(w / 84, 0, w / 84, 0);
+                //Встановлення внутрішніх відступів
+        text_current_weight_xml.setPadding(0, 0, 0, 0);
+        text_weight_xml.setPadding(0,0,0,0);
+                //Встановлення параметрів TextView
+        text_weight_xml.setLayoutParams(layout_top_text);
+        text_current_weight_xml.setLayoutParams(layout_top_text);
+        weight.setLayoutParams(layout_top_text);
+        current_weight.setLayoutParams(layout_top_text);
+                //Умова яка змінює розмір тексту верхніх Layout залежно від екрану
+        if (h < 2400) {
+            text_weight_xml.setTextSize(16);
+            text_current_weight_xml.setTextSize(16);
+            weight.setTextSize(16);
+            current_weight.setTextSize(16);
+        } else if (h < 1400) {
+            text_weight_xml.setTextSize(14);
+            text_current_weight_xml.setTextSize(14);
+            weight.setTextSize(14);
+            current_weight.setTextSize(14);
+        }
+
+
+//text_weight_xml text_current_weight_xml  weight current_weight
+
+            //Параметри Графіка
+        LinearLayout.LayoutParams graph_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 3);
+        graph_params.setMargins(0, 20, 0, 10);
+        graphView.setLayoutParams(graph_params);
+            //Параметри кнопки
+        RelativeLayout.LayoutParams but_params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 16);
+        but_params.setMargins(h / 32, h / 84, 32, h / 84);
+        but_params.addRule(2, R.id.bar);
+        add_weight.setPadding(0,0,0,0);
+        add_weight.setLayoutParams(but_params);
+
+            //Умова яка змінює розмір тексту Кнопки залежно від екрану
+        if (h < 2400) {
+            add_weight.setTextSize(16);
+        } else if (h < 1400) {
+            add_weight.setTextSize(14);
+        }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yy");
 
@@ -359,6 +429,7 @@ public class Weight extends Fragment {
 
 
     private void FindView(View root) {
+        layout_left_xlm = root.findViewById(R.id.layout_left_xlm);
         desired_weight = root.findViewById(R.id.desired_weight);
         bar = root.findViewById(R.id.bar);
         add_weight = root.findViewById(R.id.add_weight);
@@ -366,5 +437,10 @@ public class Weight extends Fragment {
         current_weight = root.findViewById(R.id.current_weight);
         graphView = root.findViewById(R.id.graph);
         listView = root.findViewById(R.id.list_item);
+        text_current_weight_xml = root.findViewById(R.id.text_current_weight_xml);
+        text_weight_xml = root.findViewById(R.id.text_weight_xml);
+
+
+
     }
 }

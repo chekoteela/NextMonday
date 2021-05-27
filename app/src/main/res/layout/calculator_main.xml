@@ -571,6 +571,7 @@
         >
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/add_food_xml"
             android:layout_weight="1"
             android:layout_width="match_parent"
@@ -580,7 +581,7 @@
 
         <ImageView
             android:id="@+id/add_watter_xml"
-
+            android:visibility="gone"
             android:layout_weight="1"
             android:src="@drawable/watter_menu"
             android:clickable="true"
@@ -590,7 +591,7 @@
 
         <ImageView
             android:id="@+id/add_weight_xml"
-
+            android:visibility="gone"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

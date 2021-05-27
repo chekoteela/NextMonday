@@ -118,7 +118,7 @@ public class FindMyFood extends Fragment {
 
     CollectionReference collRef = db.collection("Users/" + mAuth.getCurrentUser().getUid() + "/FavoriteMeal");
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -146,7 +146,7 @@ public class FindMyFood extends Fragment {
         }
         if (PFC_today.getPage().equals("Update")){
             name.setText(LocalDataPFC.getName());
-            number.setText(String.format("%.0f" + LocalDataPFC.getNumber()));
+            number.setText(String.format("%.0f" , LocalDataPFC.getNumber()));
             WeightProductGram(number.getText().toString());
             ShowView();
         }else {
