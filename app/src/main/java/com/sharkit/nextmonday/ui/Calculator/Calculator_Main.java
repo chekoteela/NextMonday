@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,17 +18,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,7 +42,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.michaldrabik.tapbarmenulib.TapBarMenu;
@@ -51,6 +60,8 @@ import com.sharkit.nextmonday.variables.SettingsCalculator;
 import com.sharkit.nextmonday.variables.UserMeal;
 import com.sharkit.nextmonday.variables.WeightV;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.nio.channels.FileLock;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -58,6 +69,9 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.IntStream;
+
+import kotlin.jvm.internal.markers.KMappedMarker;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -67,22 +81,26 @@ public class Calculator_Main extends Fragment {
     TextView percent_calorie, percent_protein, percent_fat, percent_carbohydrate,percent_watter,
             eat_c, eat_calorie, all_calorie, eat_f, eat_fat, all_fat,
     eatC, eat_carbohydrate, all_carbohydrate, eat_p, eat_protein, all_protein,
-    drink_w, drink_watter, all_watter;
+    drink_w, drink_watter, all_watter, text_w, text_c, text_p, text_f;
 
     int percent_w, percent_p, percent_ch, percent_c, percent_f;
+    FrameLayout c_layout, p_layout, w_layout, f_layout, car_layout;
 
     BottomNavigationView bottomNavigationView;
     BottomNavigationItemView ration;
-    FirebaseAuth mAuth;
+    FirebaseAuth mAuth= FirebaseAuth.getInstance();;
     FirebaseDatabase fdb;
     DatabaseReference users;
     LinkRation linkRation;
     SQLiteDatabase sdb,mdb;
     MyWeight myWeight;
+    ArrayList<Object> watter_drink;
 
-    String setting;
+    float v_watter = 0;
 
     MenuItem home1;
+    FirebaseFirestore fb = FirebaseFirestore.getInstance();
+    DocumentReference collRef;
 
     Cursor query, cursor;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -98,7 +116,6 @@ public class Calculator_Main extends Fragment {
 
         View root = inflater.inflate(R.layout.calculator_main, container, false);
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
-        mAuth = FirebaseAuth.getInstance();
         FindViewByID(root);
         linkRation = new LinkRation(getApplicationContext());
         sdb = linkRation.getReadableDatabase();
@@ -107,16 +124,35 @@ public class Calculator_Main extends Fragment {
         mdb = myWeight.getReadableDatabase();
         myWeight.onCreate(sdb);
 
-        SumMealNutrition();
-        SynchronizedPFC();
+        Adaptive();
 
 
+
+//        GetWatter();
 
         home1 = bottomNavigationView.getMenu().findItem(R.id.main);
         home1.setIcon(R.drawable.main_selected);
 
 
-
+        add_watter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
+                LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
+                EditText weight = existProduct.findViewById(R.id.weight);
+                TextView textView = existProduct.findViewById(R.id.text_xml);
+                textView.setText("Добавить воду в мл");
+                dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AddWatter(weight.getText().toString());
+                    }
+                });
+                dialog.setView(existProduct);
+                dialog.show();
+            }
+        });
 
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,6 +198,86 @@ public class Calculator_Main extends Fragment {
 
 
         return root;
+    }
+
+    private void Adaptive() {
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int h = metrics.heightPixels;
+        int w = metrics.widthPixels;
+        int h_c = (int) (h / 3.2);
+        int h_dot = (int) (h/ 4.4);
+        Log.d(TAG, w+"");
+
+        if (h < 2600 && h > 1800){
+            text_w.setTextSize(18);
+            text_p.setTextSize(18);
+            text_f.setTextSize(18);
+            text_c.setTextSize(18);
+        }else if (h < 1800) {
+            text_w.setTextSize(16);
+            text_p.setTextSize(16);
+            text_f.setTextSize(16);
+            text_c.setTextSize(16);
+        }
+
+        LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(-1, h_c);
+        LinearLayout.LayoutParams dot_params = new LinearLayout.LayoutParams(w/2, h_dot);
+        c_layout.setLayoutParams(c_params);
+        car_layout.setLayoutParams(dot_params);
+
+        f_layout.setLayoutParams(dot_params);
+        w_layout.setLayoutParams(dot_params);
+        p_layout.setLayoutParams(dot_params);
+    }
+
+    private void GetWatter() {
+        watter_drink = new ArrayList<>();
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        Calendar calendar = Calendar.getInstance();
+
+        collRef = fb.collection("Users/" + mAuth.getCurrentUser().getUid() + "/DrinkWatter")
+        .document(dateFormat.format(calendar.getTimeInMillis()));
+        collRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                if (task.getResult().exists()){
+                    DocumentSnapshot documentSnapshot = task.getResult();
+                    for (int i = 0; i < documentSnapshot.getData().size(); i++){
+                        watter_drink.add(documentSnapshot.get(String.valueOf(i)));
+                    }
+                }
+
+                for (int i = 0; i <watter_drink.size(); i++){
+                    v_watter +=  Float.parseFloat(String.valueOf(watter_drink.get(i)));
+                }
+                SynchronizedPFC();
+                SumMealNutrition();
+            }
+        });
+    }
+
+    private void AddWatter(String w) {
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        Calendar calendar = Calendar.getInstance();
+
+        collRef = fb.collection("Users/" + mAuth.getCurrentUser().getUid() + "/DrinkWatter")
+                .document(dateFormat.format(calendar.getTimeInMillis()));
+
+        watter_drink.add(w);
+        Map <String, Object> map = new HashMap<>();
+        for (int i = 0; i < watter_drink.size(); i ++){
+            map.put(String.valueOf(i), watter_drink.get(i));
+        }
+        collRef.set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.nav_calculator_main);
+            }
+        });
+
     }
 
     private void GetWeight() {
@@ -259,7 +375,7 @@ public class Calculator_Main extends Fragment {
 
         drink_w.setText(String.format("%.2f", PFC_today.getWatter_drink()));
         drink_watter.setText(String.format("%.2f", PFC_today.getWatter_drink()));
-        all_watter.setText(String.format("%.0f", PFC_today.getWatter()));
+        all_watter.setText(String.format("%.2f", PFC_today.getWatter()));
 
     }
 
@@ -354,7 +470,6 @@ public class Calculator_Main extends Fragment {
 
                         PFC_today.setCalorie((PFC_today.getProtein() * 4) + (PFC_today.getFat() * 9) + (PFC_today.getCarbohydrate() * 4));
 
-                        Log.d(TAG, PFC_today.getWeight());
                     }
                     if (settingsCalculator.getVar().equals("Auto")){
                         GetWeight();
@@ -455,11 +570,13 @@ public class Calculator_Main extends Fragment {
         while (query.moveToNext()){
             WritePFC_Today(userMeal);
         }
+        PFC_today.setWatter_drink(Float.parseFloat(userMeal.getWatter()) + (v_watter / 1000));
         PFC_today.setCalorie_eat(Float.parseFloat(userMeal.getCalorie()));
         PFC_today.setProtein_eat(Float.parseFloat(userMeal.getProtein()));
         PFC_today.setFat_eat(Float.parseFloat(userMeal.getFat()));
         PFC_today.setCarbohydrate_eat(Float.parseFloat(userMeal.getCarbohydrate()));
-        PFC_today.setWatter_drink(Float.parseFloat(userMeal.getWatter()));
+        Log.d(TAG, PFC_today.getWatter_drink()+ "");
+
     }
 
     @SuppressLint("DefaultLocale")
@@ -490,6 +607,17 @@ public class Calculator_Main extends Fragment {
 
 
     private void FindViewByID(View root) {
+        text_c = root.findViewById(R.id.text_carb);
+        text_f = root.findViewById(R.id.text_fat);
+        text_p = root.findViewById(R.id.text_protein);
+        text_w = root.findViewById(R.id.text_watter);
+
+        c_layout = root.findViewById(R.id.c_xml);
+        f_layout = root.findViewById(R.id.f_xml);
+        p_layout = root.findViewById(R.id.p_xml);
+        car_layout = root.findViewById(R.id.car_xml);
+        w_layout = root.findViewById(R.id.w_xml);
+
         bottomNavigationView = root.findViewById(R.id.bar);
 
         ration = root.findViewById(R.id.ration);
@@ -532,7 +660,6 @@ public class Calculator_Main extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        query.close();
-        sdb.close();
+
     }
 }

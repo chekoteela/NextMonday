@@ -61,13 +61,17 @@ public class WeightAdaptor extends BaseAdapter {
                 change.setTextColor(Color.RED);
             }else if (Float.parseFloat(list.get(position).getChange()) > 0){
                 change.setTextColor(Color.GREEN);
-            }
+            }else if (Float.parseFloat(list.get(position).getChange()) == 0){
+            change.setTextColor(Color.WHITE);
+        }
         }
         if (Float.parseFloat(PFC_today.getCurrent_weight()) < Float.parseFloat(PFC_today.getWeight())) {
             if (Float.parseFloat(list.get(position).getChange()) > 0) {
                 change.setTextColor(Color.RED);
             }else if (Float.parseFloat(list.get(position).getChange()) < 0){
                 change.setTextColor(Color.GREEN);
+            }else if (Float.parseFloat(list.get(position).getChange()) == 0){
+                change.setTextColor(Color.WHITE);
             }
         }
 

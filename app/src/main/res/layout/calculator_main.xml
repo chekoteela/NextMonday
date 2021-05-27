@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <FrameLayout
+            android:id="@+id/c_xml"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_gravity="center"
@@ -138,6 +139,7 @@
             android:orientation="horizontal">
 
             <FrameLayout
+                android:id="@+id/f_xml"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_weight="1">
@@ -175,6 +177,7 @@
                         tools:layout_editor_absoluteY="249dp" />
 
                     <TextView
+                        android:id="@+id/text_fat"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -244,6 +247,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/car_xml"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_weight="1">
@@ -289,6 +293,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        android:id="@+id/text_carb"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -354,6 +359,7 @@
             android:gravity="center">
 
             <FrameLayout
+                android:id="@+id/p_xml"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_weight="1">
@@ -399,6 +405,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        android:id="@+id/text_protein"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -455,6 +462,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/w_xml"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -508,6 +516,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        android:id="@+id/text_watter"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

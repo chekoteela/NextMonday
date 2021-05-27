@@ -79,7 +79,7 @@ public class Weight extends Fragment {
     WeightAdaptor adaptor;
     LinearLayout desired_weight;
 
-    TextView weight,current_weight;
+    TextView weight, current_weight;
     Button add_weight;
     BottomNavigationView bar;
     FirebaseDatabase fs = FirebaseDatabase.getInstance();
