@@ -47,6 +47,7 @@
                 tools:layout_editor_absoluteY="249dp" />
 
             <LinearLayout
+                android:id="@+id/linear_orange_top_xml"
                 android:layout_width="100dp"
                 android:layout_height="3dp"
                 android:layout_gravity="center"
@@ -255,7 +256,7 @@
                 <soup.neumorphism.NeumorphCardView
                     app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:padding="20dp"
                     app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -367,7 +368,7 @@
                 <soup.neumorphism.NeumorphCardView
                     app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:padding="20dp"
                     app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -470,7 +471,7 @@
                 <soup.neumorphism.NeumorphCardView
                     app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:padding="20dp"
                     app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -616,18 +617,7 @@
             android:src="@drawable/plus"/>
 
     </LinearLayout>
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:elevation="1dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/bar"
-        android:layout_marginBottom="10dp"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
+
 
 
 
