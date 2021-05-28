@@ -10,12 +10,15 @@ import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
@@ -69,7 +72,7 @@ public class Find_food_by_name extends Fragment {
         NavController navController = Navigation.findNavController(getActivity(),R.id.nav_host_fragment);
 
         FindView(root);
-
+        Adaptive();
 
 
         TabLayout tabLayout = root.findViewById(R.id.tab_layout);
@@ -148,6 +151,23 @@ public class Find_food_by_name extends Fragment {
         });
 
         return root;
+    }
+
+    private void Adaptive() {
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int h = metrics.heightPixels;
+
+        RelativeLayout.LayoutParams but_params = new RelativeLayout.LayoutParams(-1, h/16);
+        but_params.setMargins(h/21,h/84, h/21, h/84);
+        LinearLayout.LayoutParams dot_params = new LinearLayout.LayoutParams(-1,h/16);
+        dot_params.setMargins(h/42,h/11,h/42,h/84);
+
+        but_params.addRule(2, R.id.bar);
+        find_food.setLayoutParams(dot_params);
+        add.setLayoutParams(but_params);
+        if (h < 1400){
+           add.setTextSize(16);
+        }
     }
 
     private void FindFavoriteFood() {

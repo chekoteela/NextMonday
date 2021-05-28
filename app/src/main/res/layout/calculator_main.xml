@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <FrameLayout
+            android:id="@+id/c_xml"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:layout_gravity="center"
@@ -46,6 +47,7 @@
                 tools:layout_editor_absoluteY="249dp" />
 
             <LinearLayout
+                android:id="@+id/linear_orange_top_xml"
                 android:layout_width="100dp"
                 android:layout_height="3dp"
                 android:layout_gravity="center"
@@ -138,6 +140,7 @@
             android:orientation="horizontal">
 
             <FrameLayout
+                android:id="@+id/f_xml"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_weight="1">
@@ -175,6 +178,7 @@
                         tools:layout_editor_absoluteY="249dp" />
 
                     <TextView
+                        android:id="@+id/text_fat"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -244,6 +248,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/car_xml"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_weight="1">
@@ -251,7 +256,7 @@
                 <soup.neumorphism.NeumorphCardView
                     app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:padding="20dp"
                     app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -289,6 +294,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        android:id="@+id/text_carb"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -354,6 +360,7 @@
             android:gravity="center">
 
             <FrameLayout
+                android:id="@+id/p_xml"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_weight="1">
@@ -361,7 +368,7 @@
                 <soup.neumorphism.NeumorphCardView
                     app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:padding="20dp"
                     app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -399,6 +406,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        android:id="@+id/text_protein"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -455,6 +463,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/w_xml"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
@@ -462,7 +471,7 @@
                 <soup.neumorphism.NeumorphCardView
                     app:neumorph_shadowElevation="3dp"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="match_parent"
                     android:padding="20dp"
                     app:neumorph_backgroundColor="@color/calculator_color"
                     app:neumorph_shadowColorDark="@color/shadowColorDark"
@@ -508,6 +517,7 @@
                         android:background="@color/bar_fat_carbs_color_progress" />
 
                     <TextView
+                        android:id="@+id/text_watter"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -607,18 +617,7 @@
             android:src="@drawable/plus"/>
 
     </LinearLayout>
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
-        android:elevation="1dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/bar"
-        android:layout_marginBottom="10dp"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
+
 
 
 

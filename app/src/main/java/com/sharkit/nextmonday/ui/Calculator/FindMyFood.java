@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -79,7 +81,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class FindMyFood extends Fragment {
 
 
-    TextView  potassium, salt, calcium, cellulose, watter, casein_protein, agg_protein, soy_protein, whey_protein,
+    TextView potassium, salt, calcium, cellulose, watter, casein_protein, agg_protein, soy_protein, whey_protein,
             protein, complex_carbohydrate, simple_carbohydrate, carbohydrate, epa, dha, ala,
             omega3, omega6, omega9, trans_fat, saturated_fat, fat, name, portion, calorie,
             potassium_text, salt_text, calcium_text, cellulose_text, watter_text, casein_protein_text,
@@ -133,6 +135,7 @@ public class FindMyFood extends Fragment {
         favoriteFood.onCreate(fdb);
         portion.setText(LocalDataPFC.getPortion() + " гр");
         num.setText(" Грамм");
+        Adaptive();
 
         ReturnNumber();
 
@@ -241,6 +244,31 @@ public class FindMyFood extends Fragment {
         });
 
         return root;
+    }
+
+    private void Adaptive() {
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int h = metrics.heightPixels;
+        int w = metrics.widthPixels;
+        int w_e = (int)(w / 1.6);
+        LinearLayout.LayoutParams edit_params = new LinearLayout.LayoutParams(w_e, h/17 );
+        edit_params.setMargins(h/32,h/82, h/32,h/82);
+
+        number.setLayoutParams(edit_params);
+
+        LinearLayout.LayoutParams but_params = new LinearLayout.LayoutParams(-1, h/17);
+        but_params.setMargins(h/21,h/84, h/21, h/84);
+        meals.setLayoutParams(but_params);
+        save.setLayoutParams(but_params);
+        change_food.setLayoutParams(but_params);
+        int w_n = (int)(w/1.2);
+         LinearLayout.LayoutParams name_params = new LinearLayout.LayoutParams(w_n  , -2);
+         name_params.setMargins(h/84, h/84,h/84,h/84);
+
+         name.setLayoutParams(name_params);
+
+
+
     }
 
     private void DropTargetFromSQLite() {
