@@ -73,6 +73,8 @@ import java.util.stream.IntStream;
 
 import kotlin.jvm.internal.markers.KMappedMarker;
 
+import static android.view.Gravity.CENTER;
+import static android.view.Gravity.CENTER_HORIZONTAL;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Calculator_Main extends Fragment {
@@ -95,6 +97,7 @@ public class Calculator_Main extends Fragment {
     SQLiteDatabase sdb,mdb;
     MyWeight myWeight;
     ArrayList<Object> watter_drink;
+    LinearLayout linear_orange_xml;
 
     float v_watter = 0;
 
@@ -202,11 +205,23 @@ public class Calculator_Main extends Fragment {
 
     private void Adaptive() {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
+        //визначення розмірів екрану та створення змінної
         int h = metrics.heightPixels;
         int w = metrics.widthPixels;
+        //створення додаткових змінних
+            //для прогресбара
+       int h_pb_top = (int) (h/407);
+
         int h_c = (int) (h / 3.2);
         int h_dot = (int) (h/ 4.4);
+        //Лог
         Log.d(TAG, w+"");
+        Log.d(TAG, h+"");
+        Log.d(TAG, h_pb_top + "propg");
+        Log.d(TAG, h_dot+"dot");
+
+
+
 
         if (h < 2600 && h > 1800){
             text_w.setTextSize(18);
@@ -219,10 +234,29 @@ public class Calculator_Main extends Fragment {
             text_f.setTextSize(16);
             text_c.setTextSize(16);
         }
-
-        LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(-1, h_c);
-        LinearLayout.LayoutParams dot_params = new LinearLayout.LayoutParams(w/2, h_dot);
+        //Встановлення параметрів FrameLayout
+        LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 3);
         c_layout.setLayoutParams(c_params);
+        //Встановлення параметрів прогресбара калорії
+        FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /3.5));
+        progress_calorie.setMargins(0,0,0,0);
+        progress_calorie.gravity = CENTER;
+        calorie.setAnimationDuration(60000);
+        calorie.setLayoutParams(progress_calorie);
+        calorie.setPadding(0,0,0,0);
+        //Встановлення параметрів Внутрішнього LinearLayout
+        FrameLayout.LayoutParams linear_orange = new FrameLayout.LayoutParams((int)(w / 3.5), (int)(h / 200));
+        linear_orange.gravity = CENTER;
+        linear_orange_xml.setLayoutParams(linear_orange);
+
+
+
+
+        LinearLayout.LayoutParams dot_params = new LinearLayout.LayoutParams(w/2, h_dot);
+
+
+
+
         car_layout.setLayoutParams(dot_params);
 
         f_layout.setLayoutParams(dot_params);
@@ -655,6 +689,7 @@ public class Calculator_Main extends Fragment {
         percent_fat = root.findViewById(R.id.percent_fat);
         percent_carbohydrate = root.findViewById(R.id.percent_carbohydrate);
         percent_watter = root.findViewById(R.id.percent_watter);
+        linear_orange_xml = root.findViewById(R.id.linear_orange_top_xml);
     }
 
     @Override
