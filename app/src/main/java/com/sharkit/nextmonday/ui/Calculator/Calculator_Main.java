@@ -72,9 +72,11 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 import kotlin.jvm.internal.markers.KMappedMarker;
+import soup.neumorphism.NeumorphCardView;
 
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.CENTER_HORIZONTAL;
+import static android.view.Gravity.CENTER_VERTICAL;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Calculator_Main extends Fragment {
@@ -97,7 +99,7 @@ public class Calculator_Main extends Fragment {
     SQLiteDatabase sdb,mdb;
     MyWeight myWeight;
     ArrayList<Object> watter_drink;
-    LinearLayout linear_orange_xml;
+    LinearLayout linear_orange_xml, linear_cv_top, linear_a1;
 
     float v_watter = 0;
 
@@ -235,20 +237,57 @@ public class Calculator_Main extends Fragment {
             text_c.setTextSize(16);
         }
         //Встановлення параметрів FrameLayout
-        LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 3);
+        LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 3.5));
         c_layout.setLayoutParams(c_params);
         //Встановлення параметрів прогресбара калорії
-        FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /3.5));
+        FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /4.2));
         progress_calorie.setMargins(0,0,0,0);
-        progress_calorie.gravity = CENTER;
-        calorie.setAnimationDuration(60000);
+        progress_calorie.gravity = CENTER;          //центрування в FrameLayout
+        calorie.setAnimationDuration(60000);        //встановлення швидкості анімації прогресбара
+        calorie.setBackgroundWidth((int)(w / 20)); // встановлення ширини беку прогресбара
+        calorie.setProgressWidth((int)(w / 20.2)); //встановлення ширини прогресу прогресбара
+
         calorie.setLayoutParams(progress_calorie);
         calorie.setPadding(0,0,0,0);
         //Встановлення параметрів Внутрішнього LinearLayout
-        FrameLayout.LayoutParams linear_orange = new FrameLayout.LayoutParams((int)(w / 3.5), (int)(h / 200));
+        FrameLayout.LayoutParams linear_orange = new FrameLayout.LayoutParams((int)(w / 4.1), (int)(h / 200));
         linear_orange.gravity = CENTER;
         linear_orange_xml.setLayoutParams(linear_orange);
+                        //Надання параметрів TextView калорії
+        FrameLayout.LayoutParams text_param = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        text_param.setMargins(0,h / 20,0,0);
+        text_param.gravity = CENTER;  //Центрування
+        eat_c.setLayoutParams(text_param);
 
+
+
+
+
+        //Встановлення LinearLayout CardView
+        LinearLayout.LayoutParams linear_cv_top_par = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 4.4));
+        linear_cv_top.setLayoutParams(linear_cv_top_par);
+        linear_cv_top.setWeightSum(2);
+        //Задання параметрів елементам CardView
+        LinearLayout.LayoutParams frame_cv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 4.4));
+        frame_cv.weight = 1;
+        frame_cv.gravity = CENTER;
+        f_layout.setLayoutParams(frame_cv);
+        car_layout.setLayoutParams(frame_cv);
+        w_layout.setLayoutParams(frame_cv);
+        p_layout.setLayoutParams(frame_cv);
+
+
+        NeumorphCardView.LayoutParams neumorph = new NeumorphCardView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 5.4));
+        neumorph.gravity = CENTER_HORIZONTAL;
+        fat.setLayoutParams(neumorph);
+        fat.setAnimationDuration(60000);        //встановлення швидкості анімації прогресбара
+        fat.setBackgroundWidth((int)(w / 26)); // встановлення ширини беку прогресбара
+        fat.setProgressWidth((int)(w / 26.2)); //встановлення ширини прогресу прогресбара
+
+        FrameLayout.LayoutParams linear_a1_param = new FrameLayout.LayoutParams((int)(w / 3.5), (int)(h / 200));
+        linear_a1_param.setMargins(0,h / 65,0,0);
+        linear_a1_param.gravity = CENTER;
+        linear_a1.setLayoutParams(linear_a1_param);
 
 
 
@@ -257,11 +296,7 @@ public class Calculator_Main extends Fragment {
 
 
 
-        car_layout.setLayoutParams(dot_params);
 
-        f_layout.setLayoutParams(dot_params);
-        w_layout.setLayoutParams(dot_params);
-        p_layout.setLayoutParams(dot_params);
     }
 
     private void GetWatter() {
@@ -689,7 +724,10 @@ public class Calculator_Main extends Fragment {
         percent_fat = root.findViewById(R.id.percent_fat);
         percent_carbohydrate = root.findViewById(R.id.percent_carbohydrate);
         percent_watter = root.findViewById(R.id.percent_watter);
+        ///
         linear_orange_xml = root.findViewById(R.id.linear_orange_top_xml);
+        linear_cv_top = root.findViewById(R.id.linear_cv_top_xml);
+        linear_a1 = root.findViewById(R.id.a1);
     }
 
     @Override

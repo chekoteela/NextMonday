@@ -232,7 +232,7 @@
     <string name="repeat2">Repeat</string>
     <string name="textMassage">Text massage</string>
     <string name="send2">Send</string>
-    <string name="checkTarget">check target</string>
+    <string name="checkTarget">Check target</string>
     <string name="everyDay">Every day</string>
     <string name="selectDay">Select Day</string>
     <string name="monday">Monday</string>
@@ -244,7 +244,7 @@
     <string name="sunday">Sunday</string>
     <string name="listTarget">List of Target</string>
     <string name="find">Find</string>
-    <string name="Estimate">estimate</string>
+    <string name="Estimate">Estimate</string>
     <string name="SignEmail2">Email</string>
     <string name="SignPassword2">Password</string>
     <string name="ForgotPass2">Forgot password?</string>
@@ -287,6 +287,14 @@
     <string name="descr_auto_tuning">Auto tuning</string>
     <string name="descr_add_meal">Add meal</string>
     <string name="descr_change_weight">Change weight</string>
+
+
+
+
+
+
+
+
     <string name="theme">Темы</string>
     <string name="bright">Светлая</string>
     <string name="dark">Темная</string>
