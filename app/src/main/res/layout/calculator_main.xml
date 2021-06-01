@@ -186,10 +186,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="75dp"
                         android:layout_marginBottom="15dp"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="93dp"
                         android:text="@string/Fat"
                         android:textSize="20sp" />
+
 
                     <LinearLayout
                         android:id="@+id/a1"
@@ -202,9 +204,9 @@
                         android:orientation="horizontal" />
 
                     <LinearLayout
-
-                        android:layout_width="13dp"
-                        android:layout_height="13dp"
+                        android:id="@+id/black_linear_a1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="1dp"
@@ -240,12 +242,14 @@
                         android:fontFamily="@font/play" />
 
                     <LinearLayout
+                        android:id="@+id/orange_linear_a1"
                         android:layout_width="13dp"
-                        android:layout_height="13dp"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="21dp"
-                        android:background="@drawable/calculator_linear_orange" />
+                        android:background="@drawable/calculator_linear_orange"
+                        android:orientation="horizontal" />
 
 
                 </soup.neumorphism.NeumorphCardView>
@@ -292,12 +296,14 @@
                         tools:layout_editor_absoluteY="249dp" />
 
                     <LinearLayout
+                        android:id="@+id/b1"
                         android:layout_width="match_parent"
                         android:layout_height="3dp"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginTop="25dp"
-                        android:background="@color/bar_fat_carbs_color_progress" />
+                        android:background="@color/bar_fat_carbs_color_progress"
+                        android:orientation="horizontal" />
 
                     <TextView
                         android:id="@+id/text_carb"
@@ -306,10 +312,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="75dp"
                         android:layout_marginBottom="15dp"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="93dp"
                         android:text="@string/Carbs"
                         android:textSize="20sp" />
+
+
 
 
                     <TextView
@@ -322,12 +331,14 @@
                         android:fontFamily="@font/play" />
 
                     <LinearLayout
+                        android:id="@+id/black_linear_b1"
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="1dp"
-                        android:background="@drawable/calculator_linear_white" />
+                        android:background="@drawable/calculator_linear_white"
+                        android:orientation="horizontal" />
 
                     <TextView
                         android:id="@+id/eat_carbohydrate"
@@ -349,17 +360,20 @@
                         android:fontFamily="@font/play" />
 
                     <LinearLayout
+                        android:id="@+id/orange_linear_b1"
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="21dp"
-                        android:background="@drawable/calculator_linear_orange" />
+                        android:background="@drawable/calculator_linear_orange"
+                        android:orientation="horizontal" />
                 </soup.neumorphism.NeumorphCardView>
             </FrameLayout>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linear_cv_bottom_xml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/calculator_auto_edittext"
@@ -404,12 +418,14 @@
                         tools:layout_editor_absoluteY="249dp" />
 
                     <LinearLayout
+                        android:id="@+id/a2"
                         android:layout_width="match_parent"
                         android:layout_height="3dp"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginTop="25dp"
-                        android:background="@color/bar_fat_carbs_color_progress" />
+                        android:background="@color/bar_fat_carbs_color_progress"
+                        android:orientation="horizontal" />
 
                     <TextView
                         android:id="@+id/text_protein"
@@ -417,9 +433,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginTop="75dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
                         android:layout_marginBottom="15dp"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:layout_editor_absoluteX="93dp"
                         android:text="@string/Protein"
                         android:textSize="20sp" />
 
@@ -434,12 +451,14 @@
 
 
                     <LinearLayout
+                        android:id="@+id/black_linear_a2"
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="1dp"
-                        android:background="@drawable/calculator_linear_white" />
+                        android:background="@drawable/calculator_linear_white"
+                        android:orientation="horizontal" />
 
                     <TextView
                         android:id="@+id/eat_protein"
@@ -459,12 +478,14 @@
                         android:layout_marginRight="10dp" />
 
                     <LinearLayout
+                        android:id="@+id/orange_linear_a2"
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="21dp"
-                        android:background="@drawable/calculator_linear_orange" />
+                        android:background="@drawable/calculator_linear_orange"
+                        android:orientation="horizontal" />
                 </soup.neumorphism.NeumorphCardView>
             </FrameLayout>
 
@@ -515,12 +536,14 @@
                         android:layout_marginLeft="5dp" />
 
                     <LinearLayout
+                        android:id="@+id/b2"
                         android:layout_width="match_parent"
                         android:layout_height="3dp"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginTop="25dp"
-                        android:background="@color/bar_fat_carbs_color_progress" />
+                        android:background="@color/bar_fat_carbs_color_progress"
+                        android:orientation="horizontal" />
 
                     <TextView
                         android:id="@+id/text_watter"
@@ -530,18 +553,20 @@
                         android:layout_gravity="bottom"
                         android:layout_marginLeft="5dp"
                         android:layout_marginBottom="15dp"
-                        android:text="@string/water"
-                        android:textSize="20dp"
+                        android:textSize="20sp"
                         app:layout_constraintVertical_bias="0.0"
-                        tools:layout_editor_absoluteX="93dp" />
+                        tools:layout_editor_absoluteX="93dp"
+                        android:text="@string/water"/>
 
                     <LinearLayout
+                        android:id="@+id/orange_linear_b2"
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="1dp"
-                        android:background="@drawable/calculator_linear_white" />
+                        android:background="@drawable/calculator_linear_white"
+                        android:orientation="horizontal" />
 
                     <TextView
                         android:id="@+id/drink_watter"
@@ -561,12 +586,14 @@
                         android:layout_marginRight="10dp" />
 
                     <LinearLayout
+                        android:id="@+id/black_linear_b2"
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
                         android:layout_marginRight="50dp"
                         android:layout_marginBottom="21dp"
-                        android:background="@drawable/calculator_linear_orange" />
+                        android:background="@drawable/calculator_linear_orange"
+                        android:orientation="horizontal" />
                 </soup.neumorphism.NeumorphCardView>
             </FrameLayout>
 
@@ -575,15 +602,13 @@
 
     </LinearLayout>
     <LinearLayout
+        android:layout_marginVertical="1mm"
         android:layout_below="@+id/linear_dima"
         android:layout_above="@+id/bar"
-        android:layout_marginTop="10dp"
-        android:elevation="5dp"
         android:weightSum="4"
         android:id="@+id/linearr"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
         >
 
         <ImageView
