@@ -458,12 +458,10 @@ public class Calculator_Main extends Fragment {
         linear_black_b2.setLayoutParams(linear_black_b2_param);
 
         //Встановлення  параметрів  нижнього меню
-//        RelativeLayout.LayoutParams bottom_menu_params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 20);
-//        bottom_menu_params.setMargins(10,10,10,10);
-//        bottom_menu_params.addRule(ABOVE,R.id.bar);
-//        bottom_menu_params.addRule(BELOW, R.id.linear_dima);
-//        linear_bottom_menu.setWeightSum(4);
-//        linear_bottom_menu.setLayoutParams(bottom_menu_params);
+        LinearLayout.LayoutParams bottom_menu_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 20);
+        bottom_menu_params.setMargins(10,10,10,10);
+        linear_bottom_menu.setWeightSum(4);
+        linear_bottom_menu.setLayoutParams(bottom_menu_params);
 
 
         //Адаптація тексту під розмір екранів

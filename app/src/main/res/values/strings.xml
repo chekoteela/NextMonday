@@ -301,6 +301,11 @@
     <string name="reminders">Напоминания</string>
     <string name="enable">Включить</string>
     <string name="disable">Выключить</string>
+    <string name="litr">л</string>
+    <string name="gramm">грамм</string>
+    <string name="data_per_1_kg">Внесите данные на 1 кг веса</string>
+    <string name="kg">кг</string>
+    <string name="sm">см</string>
 
 
 </resources>
