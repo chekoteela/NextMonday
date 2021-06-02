@@ -229,12 +229,75 @@ public class Calculator_Main extends Fragment {
         Log.d(TAG, h+"");
 
 
-        if(h < 1400){
-            //Встановлення параметрів FrameLayout
-            LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 3.4));
+        if(h <= 2400 && h >= 2000 ){//Встановлення параметрів FrameLayout
+            LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 2));
             c_layout.setLayoutParams(c_params);
             //Встановлення параметрів прогресбара калорії
-            FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /4.3));
+            FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /2));
+            progress_calorie.setMargins(0,0,0,0);
+            progress_calorie.gravity = CENTER;          //центрування в FrameLayout
+            calorie.setAnimationDuration(4000);        //встановлення швидкості анімації прогресбара
+            calorie.setBackgroundWidth((int)(w / 20)); // встановлення ширини беку прогресбара
+            calorie.setProgressWidth((int)(w / 20.2)); //встановлення ширини прогресу прогресбара
+            calorie.setLayoutParams(progress_calorie);
+            calorie.setPadding(0,0,0,0);
+            //Встановлення параметрів Внутрішнього LinearLayout
+            FrameLayout.LayoutParams linear_orange = new FrameLayout.LayoutParams((int)(w / 4.1), (int)(h / 2));
+            linear_orange.gravity = CENTER;
+            linear_orange_xml.setLayoutParams(linear_orange);
+            //Надання параметрів TextView калорії
+            FrameLayout.LayoutParams text_param = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            text_param.setMargins(0,h / 20,0,0);
+            text_param.gravity = CENTER;  //Центрування
+            eat_c.setLayoutParams(text_param);
+            //Задання параметрів елементам CardView
+            LinearLayout.LayoutParams frame_cv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 2));
+            frame_cv.weight = 1;
+            frame_cv.gravity = CENTER;
+            f_layout.setLayoutParams(frame_cv);
+            car_layout.setLayoutParams(frame_cv);
+            w_layout.setLayoutParams(frame_cv);
+            p_layout.setLayoutParams(frame_cv);
+
+        }
+        else if (h < 2000 && h > 1000) {//Встановлення параметрів FrameLayout для ммого HuaweiP8-line2017 за розширенням
+            LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 3.5));
+            c_layout.setLayoutParams(c_params);
+            //Встановлення параметрів прогресбара калорії
+            FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /4.2));
+            progress_calorie.setMargins(0,0,0,0);
+            progress_calorie.gravity = CENTER;          //центрування в FrameLayout
+            calorie.setAnimationDuration(4000);        //встановлення швидкості анімації прогресбара
+            calorie.setBackgroundWidth((int)(w / 20)); // встановлення ширини беку прогресбара
+            calorie.setProgressWidth((int)(w / 20.2)); //встановлення ширини прогресу прогресбара
+            calorie.setLayoutParams(progress_calorie);
+            calorie.setPadding(0,0,0,0);
+            //Встановлення параметрів Внутрішнього LinearLayout
+            FrameLayout.LayoutParams linear_orange = new FrameLayout.LayoutParams((int)(w / 4.1), (int)(h / 200));
+            linear_orange.gravity = CENTER;
+            linear_orange_xml.setLayoutParams(linear_orange);
+            //Надання параметрів TextView калорії
+            FrameLayout.LayoutParams text_param = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            text_param.setMargins(0,h / 20,0,0);
+            text_param.gravity = CENTER;  //Центрування
+            eat_c.setLayoutParams(text_param);
+            //Задання параметрів елементам CardView
+            LinearLayout.LayoutParams frame_cv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 4.4));
+            frame_cv.weight = 1;
+            frame_cv.gravity = CENTER;
+            f_layout.setLayoutParams(frame_cv);
+            car_layout.setLayoutParams(frame_cv);
+            w_layout.setLayoutParams(frame_cv);
+            p_layout.setLayoutParams(frame_cv);
+
+        }
+
+        else if (h <= 1000) {
+            //Встановлення параметрів FrameLayout для малих за розширенням телефонів
+            LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 3.9));
+            c_layout.setLayoutParams(c_params);
+            //Встановлення параметрів прогресбара калорії
+            FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /4.7));
             progress_calorie.setMargins(0,0,0,0);
             progress_calorie.gravity = CENTER;          //центрування в FrameLayout
             calorie.setAnimationDuration(4000);        //встановлення швидкості анімації прогресбара
@@ -263,40 +326,17 @@ public class Calculator_Main extends Fragment {
         }
 
 
-        //Встановлення параметрів FrameLayout
-        LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 3.5));
-        c_layout.setLayoutParams(c_params);
-        //Встановлення параметрів прогресбара калорії
-        FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /4.2));
-        progress_calorie.setMargins(0,0,0,0);
-        progress_calorie.gravity = CENTER;          //центрування в FrameLayout
-        calorie.setAnimationDuration(4000);        //встановлення швидкості анімації прогресбара
-        calorie.setBackgroundWidth((int)(w / 20)); // встановлення ширини беку прогресбара
-        calorie.setProgressWidth((int)(w / 20.2)); //встановлення ширини прогресу прогресбара
-        calorie.setLayoutParams(progress_calorie);
-        calorie.setPadding(0,0,0,0);
-        //Встановлення параметрів Внутрішнього LinearLayout
-        FrameLayout.LayoutParams linear_orange = new FrameLayout.LayoutParams((int)(w / 4.1), (int)(h / 200));
-        linear_orange.gravity = CENTER;
-        linear_orange_xml.setLayoutParams(linear_orange);
-                        //Надання параметрів TextView калорії
-        FrameLayout.LayoutParams text_param = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        text_param.setMargins(0,h / 20,0,0);
-        text_param.gravity = CENTER;  //Центрування
-        eat_c.setLayoutParams(text_param);
-        //Задання параметрів елементам CardView
-        LinearLayout.LayoutParams frame_cv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 4.4));
-        frame_cv.weight = 1;
-        frame_cv.gravity = CENTER;
-        f_layout.setLayoutParams(frame_cv);
-        car_layout.setLayoutParams(frame_cv);
-        w_layout.setLayoutParams(frame_cv);
-        p_layout.setLayoutParams(frame_cv);
+
+
+
+
+
+
 
 
 
         //Встановлення LinearLayout CardView Top
-        LinearLayout.LayoutParams linear_cv_top_par = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 4.6));
+        LinearLayout.LayoutParams linear_cv_top_par = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 4.4));
         linear_cv_top.setLayoutParams(linear_cv_top_par);
         linear_cv_top.setWeightSum(2);
 
@@ -358,7 +398,7 @@ public class Calculator_Main extends Fragment {
 
 
         //Встановлення LinearLayout CardView bottom
-        LinearLayout.LayoutParams linear_cv_bottom_par = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 4.6));
+        LinearLayout.LayoutParams linear_cv_bottom_par = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 4.4));
         linear_cv_bottom_par.setMargins(0,0,0,0);
         linear_cv_bottom.setLayoutParams(linear_cv_top_par);
         linear_cv_bottom.setWeightSum(2);
