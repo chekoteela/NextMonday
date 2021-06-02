@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -74,9 +75,15 @@ import java.util.stream.IntStream;
 import kotlin.jvm.internal.markers.KMappedMarker;
 import soup.neumorphism.NeumorphCardView;
 
+import static android.icu.lang.UCharacter.IndicPositionalCategory.BOTTOM_AND_RIGHT;
+import static android.icu.lang.UCharacter.IndicPositionalCategory.RIGHT;
+import static android.view.Gravity.BOTTOM;
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.CENTER_HORIZONTAL;
 import static android.view.Gravity.CENTER_VERTICAL;
+import static android.view.Gravity.END;
+import static android.view.TouchDelegate.ABOVE;
+import static android.view.TouchDelegate.BELOW;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Calculator_Main extends Fragment {
@@ -99,7 +106,8 @@ public class Calculator_Main extends Fragment {
     SQLiteDatabase sdb,mdb;
     MyWeight myWeight;
     ArrayList<Object> watter_drink;
-    LinearLayout linear_orange_xml, linear_cv_top, linear_a1;
+    LinearLayout linear_orange_xml, linear_cv_top, linear_a1, linear_black_a1, linear_orange_a1,linear_b1,linear_black_b1, linear_orange_b1, linear_a2,
+            linear_orange_a2, linear_black_a2, linear_cv_bottom, linear_b2, linear_orange_b2, linear_black_b2, linear_bottom_menu, linear_general;
 
     float v_watter = 0;
 
@@ -219,23 +227,42 @@ public class Calculator_Main extends Fragment {
         //Лог
         Log.d(TAG, w+"");
         Log.d(TAG, h+"");
-        Log.d(TAG, h_pb_top + "propg");
-        Log.d(TAG, h_dot+"dot");
 
 
+        if(h < 1400){
+            //Встановлення параметрів FrameLayout
+            LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 3.4));
+            c_layout.setLayoutParams(c_params);
+            //Встановлення параметрів прогресбара калорії
+            FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /4.3));
+            progress_calorie.setMargins(0,0,0,0);
+            progress_calorie.gravity = CENTER;          //центрування в FrameLayout
+            calorie.setAnimationDuration(4000);        //встановлення швидкості анімації прогресбара
+            calorie.setBackgroundWidth((int)(w / 20.2)); // встановлення ширини беку прогресбара
+            calorie.setProgressWidth((int)(w / 20.4)); //встановлення ширини прогресу прогресбара
+            calorie.setLayoutParams(progress_calorie);
+            calorie.setPadding(0,0,0,0);
+            //Встановлення параметрів Внутрішнього LinearLayout
+            FrameLayout.LayoutParams linear_orange = new FrameLayout.LayoutParams((int)(w / 4.3), (int)(h / 203));
+            linear_orange.gravity = CENTER;
+            linear_orange_xml.setLayoutParams(linear_orange);
+            //Надання параметрів TextView калорії
+            FrameLayout.LayoutParams text_param = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            text_param.setMargins(0,h / 20,0,0);
+            text_param.gravity = CENTER;  //Центрування
+            eat_c.setLayoutParams(text_param);
+            //Задання параметрів елементам CardView
+            LinearLayout.LayoutParams frame_cv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 4.5));
+            frame_cv.weight = 1;
+            frame_cv.gravity = CENTER;
+            f_layout.setLayoutParams(frame_cv);
+            car_layout.setLayoutParams(frame_cv);
+            w_layout.setLayoutParams(frame_cv);
+            p_layout.setLayoutParams(frame_cv);
 
-
-        if (h < 2600 && h > 1800){
-            text_w.setTextSize(18);
-            text_p.setTextSize(18);
-            text_f.setTextSize(18);
-            text_c.setTextSize(18);
-        }else if (h < 1800) {
-            text_w.setTextSize(16);
-            text_p.setTextSize(16);
-            text_f.setTextSize(16);
-            text_c.setTextSize(16);
         }
+
+
         //Встановлення параметрів FrameLayout
         LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 3.5));
         c_layout.setLayoutParams(c_params);
@@ -243,10 +270,9 @@ public class Calculator_Main extends Fragment {
         FrameLayout.LayoutParams progress_calorie = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (h /4.2));
         progress_calorie.setMargins(0,0,0,0);
         progress_calorie.gravity = CENTER;          //центрування в FrameLayout
-        calorie.setAnimationDuration(60000);        //встановлення швидкості анімації прогресбара
+        calorie.setAnimationDuration(4000);        //встановлення швидкості анімації прогресбара
         calorie.setBackgroundWidth((int)(w / 20)); // встановлення ширини беку прогресбара
         calorie.setProgressWidth((int)(w / 20.2)); //встановлення ширини прогресу прогресбара
-
         calorie.setLayoutParams(progress_calorie);
         calorie.setPadding(0,0,0,0);
         //Встановлення параметрів Внутрішнього LinearLayout
@@ -258,15 +284,6 @@ public class Calculator_Main extends Fragment {
         text_param.setMargins(0,h / 20,0,0);
         text_param.gravity = CENTER;  //Центрування
         eat_c.setLayoutParams(text_param);
-
-
-
-
-
-        //Встановлення LinearLayout CardView
-        LinearLayout.LayoutParams linear_cv_top_par = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 4.4));
-        linear_cv_top.setLayoutParams(linear_cv_top_par);
-        linear_cv_top.setWeightSum(2);
         //Задання параметрів елементам CardView
         LinearLayout.LayoutParams frame_cv = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 4.4));
         frame_cv.weight = 1;
@@ -277,25 +294,182 @@ public class Calculator_Main extends Fragment {
         p_layout.setLayoutParams(frame_cv);
 
 
-        NeumorphCardView.LayoutParams neumorph = new NeumorphCardView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 5.4));
-        neumorph.gravity = CENTER_HORIZONTAL;
-        fat.setLayoutParams(neumorph);
-        fat.setAnimationDuration(60000);        //встановлення швидкості анімації прогресбара
-        fat.setBackgroundWidth((int)(w / 26)); // встановлення ширини беку прогресбара
-        fat.setProgressWidth((int)(w / 26.2)); //встановлення ширини прогресу прогресбара
 
-        FrameLayout.LayoutParams linear_a1_param = new FrameLayout.LayoutParams((int)(w / 3.5), (int)(h / 200));
-        linear_a1_param.setMargins(0,h / 65,0,0);
+        //Встановлення LinearLayout CardView Top
+        LinearLayout.LayoutParams linear_cv_top_par = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 4.6));
+        linear_cv_top.setLayoutParams(linear_cv_top_par);
+        linear_cv_top.setWeightSum(2);
+
+        //Встановелння  параметрів Прогрес бара Жирів
+        NeumorphCardView.LayoutParams neumorphic_progress_bar = new NeumorphCardView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT , (int) (h / 5.4));
+        neumorphic_progress_bar.gravity = CENTER_HORIZONTAL;
+        fat.setLayoutParams(neumorphic_progress_bar);
+        fat.setAnimationDuration(5000);        //встановлення швидкості анімації прогресбара
+        fat.setBackgroundWidth((int)(w / 26)); // встановлення ширини беку прогресбара
+        fat.setProgressWidth((int)(w / 26.2)); //встановлення ширини прогресу прогресбар
+        //Встановлення параметрів замальованого оранжевого Linear Layout
+        FrameLayout.LayoutParams linear_a1_param = new FrameLayout.LayoutParams((int)(w / 3), (int)(h / 200));
+        linear_a1_param.setMargins(w / 2,h / 45,w / 2,0);
         linear_a1_param.gravity = CENTER;
         linear_a1.setLayoutParams(linear_a1_param);
+        //Встановлення параметрів тексту спожиті в а1
+        NeumorphCardView.LayoutParams text_param_a1 = new NeumorphCardView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        text_param_a1.gravity  = BOTTOM | END;
+        text_param_a1.setMargins(0,0,h / 60,h / 30);
+        eat_fat.setLayoutParams(text_param_a1);
+        //Встановлення розмірів кругів координатів а1
+        NeumorphCardView.LayoutParams linear_black_a1_param = new NeumorphCardView.LayoutParams((int)(h / 64), (int)(h / 64));
+        linear_black_a1_param.gravity  = BOTTOM | END;
+        linear_black_a1_param.setMargins(0,0,(int)(h / 12),4);
+        linear_black_a1.setLayoutParams(linear_black_a1_param);
+
+        NeumorphCardView.LayoutParams linear_orange_a1_param = new NeumorphCardView.LayoutParams((int)(h / 64), (int)(h / 64));
+        linear_orange_a1_param.gravity  = BOTTOM | END;
+        linear_orange_a1_param.setMargins(0,0,(int)(h / 12),h / 28);
+        linear_orange_a1.setLayoutParams(linear_orange_a1_param);
+
+
+        //Встановелння  параметрів Прогрес бара Вуглеводів
+        carbohydrate.setLayoutParams(neumorphic_progress_bar);
+        carbohydrate.setAnimationDuration(5000);        //встановлення швидкості анімації прогресбара
+        carbohydrate.setBackgroundWidth((int)(w / 26)); // встановлення ширини беку прогресбара
+        carbohydrate.setProgressWidth((int)(w / 26.2)); //встановлення ширини прогресу прогресбар
+        //Встановлення параметрів замальованого оранжевого Linear Layout b1
+        FrameLayout.LayoutParams linear_b1_param = new FrameLayout.LayoutParams((int)(w / 3), (int)(h / 200));
+        linear_b1_param.setMargins(w / 2,h / 45,w / 2,0);
+        linear_b1_param.gravity = CENTER;
+        linear_b1.setLayoutParams(linear_b1_param);
+        //Встановлення параметрів тексту спожиті в b1
+        NeumorphCardView.LayoutParams text_param_b1 = new NeumorphCardView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        text_param_b1.gravity  = BOTTOM | END;
+        text_param_b1.setMargins(0,0,h / 60,h / 30);
+        eat_carbohydrate.setLayoutParams(text_param_b1);
+        //Встановлення розмірів кругів координатів b1
+        NeumorphCardView.LayoutParams linear_black_b1_param = new NeumorphCardView.LayoutParams((int)(h / 64), (int)(h / 64));
+        linear_black_b1_param.gravity  = BOTTOM | END;
+        linear_black_b1_param.setMargins(0,0,(int)(h / 12),4);
+        linear_black_b1.setLayoutParams(linear_black_b1_param);
+
+        NeumorphCardView.LayoutParams linear_orange_b1_param = new NeumorphCardView.LayoutParams((int)(h / 64), (int)(h / 64));
+        linear_orange_b1_param.gravity  = BOTTOM | END;
+        linear_orange_b1_param.setMargins(0,0,(int)(h / 12),h / 28);
+        linear_orange_b1.setLayoutParams(linear_orange_b1_param);
 
 
 
-        LinearLayout.LayoutParams dot_params = new LinearLayout.LayoutParams(w/2, h_dot);
+        //Встановлення LinearLayout CardView bottom
+        LinearLayout.LayoutParams linear_cv_bottom_par = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int)(h / 4.6));
+        linear_cv_bottom_par.setMargins(0,0,0,0);
+        linear_cv_bottom.setLayoutParams(linear_cv_top_par);
+        linear_cv_bottom.setWeightSum(2);
 
 
+        //Встановелння  параметрів Прогрес бара Білків
+        protein.setLayoutParams(neumorphic_progress_bar);
+        protein.setAnimationDuration(5000);        //встановлення швидкості анімації прогресбара
+        protein.setBackgroundWidth((int)(w / 26)); // встановлення ширини беку прогресбара
+        protein.setProgressWidth((int)(w / 26.2)); //встановлення ширини прогресу прогресбар
+        //Встановлення параметрів замальованого оранжевого Linear Layout
+        FrameLayout.LayoutParams linear_a2_param = new FrameLayout.LayoutParams((int)(w / 3), (int)(h / 200));
+        linear_a2_param.setMargins(w / 2,h / 45,w / 2,0);
+        linear_a2_param.gravity = CENTER;
+        linear_a2.setLayoutParams(linear_a2_param);
+        //Встановлення параметрів тексту спожиті в а1
+        NeumorphCardView.LayoutParams text_param_a2 = new NeumorphCardView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        text_param_a2.gravity  = BOTTOM | END;
+        text_param_a2.setMargins(0,0,h / 60,h / 30);
+        eat_protein.setLayoutParams(text_param_a2);
+        //Встановлення розмірів кругів координатів а1
+        NeumorphCardView.LayoutParams linear_black_a2_param = new NeumorphCardView.LayoutParams((int)(h / 64), (int)(h / 64));
+        linear_black_a2_param.gravity  = BOTTOM | END;
+        linear_black_a2_param.setMargins(0,0,(int)(h / 12),4);
+        linear_black_a2.setLayoutParams(linear_black_a2_param);
+
+        NeumorphCardView.LayoutParams linear_orange_a2_param = new NeumorphCardView.LayoutParams((int)(h / 64), (int)(h / 64));
+        linear_orange_a2_param.gravity  = BOTTOM | END;
+        linear_orange_a2_param.setMargins(0,0,(int)(h / 12),h / 28);
+        linear_orange_a2.setLayoutParams(linear_orange_a2_param);
 
 
+        //Встановелння  параметрів Прогрес бара Води
+        watter.setLayoutParams(neumorphic_progress_bar);
+        watter.setAnimationDuration(5000);        //встановлення швидкості анімації прогресбара
+        watter.setBackgroundWidth((int)(w / 26)); // встановлення ширини беку прогресбара
+        watter.setProgressWidth((int)(w / 26.2)); //встановлення ширини прогресу прогресбар
+        //Встановлення параметрів замальованого оранжевого Linear Layout
+        FrameLayout.LayoutParams linear_b2_param = new FrameLayout.LayoutParams((int)(w / 3), (int)(h / 200));
+        linear_b2_param.setMargins(w / 2,h / 45,w / 2,0);
+        linear_b2_param.gravity = CENTER;
+        linear_b2.setLayoutParams(linear_b2_param);
+        //Встановлення параметрів тексту спожиті в а1
+        NeumorphCardView.LayoutParams text_param_b2 = new NeumorphCardView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        text_param_b2.gravity  = BOTTOM | END;
+        text_param_b2.setMargins(0,0,h / 60,h / 30);
+        eat_protein.setLayoutParams(text_param_b2);
+        //Встановлення розмірів кругів координатів а1
+        NeumorphCardView.LayoutParams linear_orange_b2_param = new NeumorphCardView.LayoutParams((int)(h / 64), (int)(h / 64));
+        linear_orange_b2_param.gravity  = BOTTOM | END;
+        linear_orange_b2_param.setMargins(0,0,(int)(h / 12),4);
+        linear_orange_b2.setLayoutParams(linear_orange_b2_param);
+
+        NeumorphCardView.LayoutParams linear_black_b2_param = new NeumorphCardView.LayoutParams((int)(h / 64), (int)(h / 64));
+        linear_black_b2_param.gravity  = BOTTOM | END;
+        linear_black_b2_param.setMargins(0,0,(int)(h / 12),h / 28);
+        linear_black_b2.setLayoutParams(linear_black_b2_param);
+
+        //Встановлення  параметрів  нижнього меню
+//        RelativeLayout.LayoutParams bottom_menu_params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 20);
+//        bottom_menu_params.setMargins(10,10,10,10);
+//        bottom_menu_params.addRule(ABOVE,R.id.bar);
+//        bottom_menu_params.addRule(BELOW, R.id.linear_dima);
+//        linear_bottom_menu.setWeightSum(4);
+//        linear_bottom_menu.setLayoutParams(bottom_menu_params);
+
+
+        //Адаптація тексту під розмір екранів
+        if (h <= 2400 && h >= 2000) {
+            eat_f.setTextSize(14);
+            eat_fat.setTextSize(14);
+            all_fat.setTextSize(14);
+            text_p.setTextSize(18);
+            text_f.setTextSize(18);
+            text_c.setTextSize(18);
+            text_w.setTextSize(18);
+            eat_c.setTextSize(32);
+            percent_calorie.setTextSize(32);
+            percent_fat.setTextSize(32);
+            percent_watter.setTextSize(32);
+            percent_carbohydrate.setTextSize(32);
+            percent_protein.setTextSize(32);
+        } else if (h < 2000 && h > 1000) {
+            eat_f.setTextSize(12);
+            eat_fat.setTextSize(12);
+            all_fat.setTextSize(12);
+            text_p.setTextSize(14);
+            text_f.setTextSize(14);
+            text_c.setTextSize(14);
+            text_w.setTextSize(14);
+            eat_c.setTextSize(22);
+            percent_calorie.setTextSize(22);
+            percent_fat.setTextSize(22);
+            percent_watter.setTextSize(22);
+            percent_carbohydrate.setTextSize(22);
+            percent_protein.setTextSize(22);
+        } else if (h <= 1000) {
+            eat_f.setTextSize(10);
+            eat_fat.setTextSize(10);
+            all_fat.setTextSize(10);
+            text_p.setTextSize(12);
+            text_f.setTextSize(12);
+            text_c.setTextSize(12);
+            text_w.setTextSize(12);
+            eat_c.setTextSize(16);
+            percent_calorie.setTextSize(16);
+            percent_fat.setTextSize(16);
+            percent_watter.setTextSize(16);
+            percent_carbohydrate.setTextSize(16);
+            percent_protein.setTextSize(16);
+        }
 
     }
 
@@ -728,6 +902,20 @@ public class Calculator_Main extends Fragment {
         linear_orange_xml = root.findViewById(R.id.linear_orange_top_xml);
         linear_cv_top = root.findViewById(R.id.linear_cv_top_xml);
         linear_a1 = root.findViewById(R.id.a1);
+        linear_black_a1 = root.findViewById(R.id.black_linear_a1);
+        linear_orange_a1 = root.findViewById(R.id.orange_linear_a1);
+        linear_b1 = root.findViewById(R.id.b1);
+        linear_black_b1 = root.findViewById(R.id.black_linear_b1);
+        linear_orange_b1 = root.findViewById(R.id.orange_linear_b1);
+        linear_a2 = root.findViewById(R.id.a2);
+        linear_black_a2 = root.findViewById(R.id.black_linear_a2);
+        linear_orange_a2 = root.findViewById(R.id.orange_linear_a2);
+        linear_cv_bottom = root.findViewById(R.id.linear_cv_bottom_xml);
+        linear_b2 = root.findViewById(R.id.b2);
+        linear_black_b2 = root.findViewById(R.id.black_linear_b2);
+        linear_orange_b2 = root.findViewById(R.id.orange_linear_b2);
+        linear_bottom_menu = root.findViewById(R.id.linearr);
+        linear_general = root.findViewById(R.id.linear_dima);
     }
 
     @Override
