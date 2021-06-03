@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +51,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import static android.widget.RelativeLayout.ABOVE;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 
@@ -59,6 +61,7 @@ public class ChangeFood extends Fragment {
     omega3, omega6, omega9, trans_fat, saturated_fat, fat, name, portion, calorie;
 
     TextView text,text_p, text_c, text_f, text_d;
+    LinearLayout change_food_linear;
 
     Button save_change;
     boolean success = true;
@@ -68,7 +71,7 @@ public class ChangeFood extends Fragment {
     SQLiteDatabase db;
     Cursor query;
     ArrayList<String> tags;
-
+    ScrollView scroll;
     FirebaseFirestore fdb = FirebaseFirestore.getInstance();
     CollectionReference collectionReference = fdb.collection("DB for moderation");
     CollectionReference collectionAdmin = fdb.collection("DB Product");
@@ -126,9 +129,20 @@ public class ChangeFood extends Fragment {
     private void Adaptive() {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int h = metrics.heightPixels;
+//встановлення параметрів верхнього Linear Layout з елементами включно
+        LinearLayout.LayoutParams top_linear_params = new LinearLayout.LayoutParams(-1, h/16);
+        top_linear_params.setMargins(h/42,h/84,h/42,h/84);
+        name.setLayoutParams(top_linear_params);
+        portion.setLayoutParams(top_linear_params);
+        calorie.setLayoutParams(top_linear_params);
+//
+        //Встановлення параметрів Scroll View
+        RelativeLayout.LayoutParams scroll_param = new RelativeLayout.LayoutParams(-1,(int)(h / 1.5));
+        scroll_param.addRule(3, R.id.change_food_linear);
+        scroll_param.addRule(2,R.id.save_change);
+        scroll.setLayoutParams(scroll_param);
 
-        RelativeLayout.LayoutParams par_params = new RelativeLayout.LayoutParams(-1, h/16);
-        par_params.setMargins(h/42,h/84,h/42,h/84);
+
 
         LinearLayout.LayoutParams parent_params = new LinearLayout.LayoutParams(-1, h/16);
         parent_params.setMargins(h/42,h/84,h/42,h/84);
@@ -140,38 +154,43 @@ public class ChangeFood extends Fragment {
         f_params.setMargins(h/14, h/84,h/42,h/84);
 
         RelativeLayout.LayoutParams but_params = new RelativeLayout.LayoutParams(-1, h/16);
+        but_params.addRule(2, R.id.bar);
         but_params.setMargins(h/21,h/84, h/21, h/84);
+        save_change.setPadding(0,0,0,0);
+        save_change.setLayoutParams(but_params);
 
-        name.setLayoutParams(par_params);
-        portion.setLayoutParams(par_params);
-        calorie.setLayoutParams(par_params);
 
-        protein.setLayoutParams(parent_params);
-        carbohydrate.setLayoutParams(parent_params);
-        fat.setLayoutParams(parent_params);
+
+
+
         cellulose.setLayoutParams(parent_params);
         watter.setLayoutParams(parent_params);
         salt.setLayoutParams(parent_params);
         potassium.setLayoutParams(parent_params);
         calcium.setLayoutParams(parent_params);
 
+
+        protein.setLayoutParams(parent_params);
         whey_protein.setLayoutParams(dot_params);
         casein_protein.setLayoutParams(dot_params);
         soy_protein.setLayoutParams(dot_params);
         agg_protein.setLayoutParams(dot_params);
+
+        carbohydrate.setLayoutParams(parent_params);
         simple_carbohydrate.setLayoutParams(dot_params);
         complex_carbohydrate.setLayoutParams(dot_params);
+
+        fat.setLayoutParams(parent_params);
         trans_fat.setLayoutParams(dot_params);
         saturated_fat.setLayoutParams(dot_params);
         omega9.setLayoutParams(dot_params);
         omega6.setLayoutParams(dot_params);
         omega3.setLayoutParams(dot_params);
-
         ala.setLayoutParams(f_params);
         dha.setLayoutParams(f_params);
         epa.setLayoutParams(f_params);
 
-        save_change.setLayoutParams(but_params);
+
 
         if (h < 1400){
             text_d.setTextSize(16);
@@ -584,19 +603,23 @@ public class ChangeFood extends Fragment {
        text_d = root.findViewById(R.id.text_els);
 
        save_change  = root.findViewById(R.id.save_change);
+
        potassium = root.findViewById(R.id.potassium);
        salt = root.findViewById(R.id.salt);
        calcium = root.findViewById(R.id.calcium);
        cellulose = root.findViewById(R.id.cellulose);
        watter = root.findViewById(R.id.watter);
+
        casein_protein = root.findViewById(R.id.casein_protein);
        agg_protein = root.findViewById(R.id.agg_protein);
        soy_protein = root.findViewById(R.id.soy_protein);
        whey_protein = root.findViewById(R.id.whey_protein);
        protein = root.findViewById(R.id.protein);
+
        complex_carbohydrate = root.findViewById(R.id.complex_carbohydrate);
        simple_carbohydrate = root.findViewById(R.id.simple_carbohydrates);
        carbohydrate = root.findViewById(R.id.carbohydrate);
+
        epa = root.findViewById(R.id.epa);
        dha = root.findViewById(R.id.dha);
        ala = root.findViewById(R.id.ala);
@@ -606,10 +629,15 @@ public class ChangeFood extends Fragment {
        trans_fat = root.findViewById(R.id.trans_fat);
        saturated_fat = root.findViewById(R.id.saturated_fat);
        fat = root.findViewById(R.id.fat);
+
        name = root.findViewById(R.id.name);
        portion = root.findViewById(R.id.portion);
        calorie = root.findViewById(R.id.calorie);
+
        text = root.findViewById(R.id.text);
+
+       change_food_linear = root.findViewById(R.id.change_food_linear);
+       scroll = root.findViewById(R.id.scrool);
 
     }
 }

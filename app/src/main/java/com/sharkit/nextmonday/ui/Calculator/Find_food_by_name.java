@@ -159,12 +159,16 @@ public class Find_food_by_name extends Fragment {
 
         RelativeLayout.LayoutParams but_params = new RelativeLayout.LayoutParams(-1, h/16);
         but_params.setMargins(h/21,h/84, h/21, h/84);
+        but_params.addRule(2, R.id.bar);
+        add.setLayoutParams(but_params);
+        add.setPadding(0,0,0,0);
+
         LinearLayout.LayoutParams dot_params = new LinearLayout.LayoutParams(-1,h/16);
         dot_params.setMargins(h/42,h/11,h/42,h/84);
-
-        but_params.addRule(2, R.id.bar);
         find_food.setLayoutParams(dot_params);
-        add.setLayoutParams(but_params);
+
+
+
         if (h < 1400){
            add.setTextSize(16);
         }
