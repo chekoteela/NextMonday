@@ -380,7 +380,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/star_half/baseline_star_half_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/search/baseline_search_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -391,7 +391,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_star" />
+                            <entry key="outputName" value="icon_search_white" />
                             <entry key="sourceFile" value="D:\workShopA\NextMonday2" />
                           </map>
                         </option>

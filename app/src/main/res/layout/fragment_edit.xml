@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_layout"
+    android:background="@color/calculator_auto_edittext"
     >
 
         <LinearLayout
@@ -17,9 +17,7 @@
                     android:text="@string/name"
                     android:layout_marginTop="25dp"
                     android:layout_marginHorizontal="34dp"
-                    android:fontFamily="@font/play"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"
+                    style="@style/StandartTextView"
                     android:layout_height="wrap_content"/>
 
                 <EditText
@@ -28,18 +26,14 @@
                     android:layout_width="match_parent"
                     android:textSize="18sp"
                     android:layout_marginHorizontal="34dp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/play"
-                    android:background="@drawable/edit_text"
+                    style="@style/EditText_change_food_white"
                     android:padding="5dp"
                     android:layout_height="50dp"/>
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/play"
                     android:layout_marginHorizontal="34dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"
                     android:text="@string/lastName"
                     android:layout_height="wrap_content"/>
 
@@ -49,32 +43,26 @@
                     android:layout_width="match_parent"
                     android:textSize="18sp"
                     android:padding="5dp"
-                    android:fontFamily="@font/play"
-                    android:textColor="@color/black"
+                    style="@style/EditText_change_food_white"
                     android:layout_marginHorizontal="34dp"
-                    android:background="@drawable/edit_text"
                     android:layout_height="50dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:text="@string/your_email"
-                    android:fontFamily="@font/play"
-                    android:textColor="@color/white"
+                   style="@style/StandartTextView"
                     android:layout_marginHorizontal="34dp"
-                    android:textSize="14sp"
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    style="@style/EditText_change_food_white"
                     android:id="@+id/email"
                     android:contentDescription="@string/SignEmail2"
                     android:layout_width="match_parent"
                     android:padding="5dp"
                     android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/play"
                     android:layout_marginBottom="33dp"
                     android:layout_marginHorizontal="34dp"
-                    android:background="@drawable/edit_text"
                     android:layout_height="50dp"/>
 
                 <EditText
@@ -92,18 +80,15 @@
                     android:layout_height="50dp"/>
 
                 <Button
+                    style="@style/button_setting_style"
                     android:contentDescription="@string/save2"
                     android:visibility="gone"
                     android:id="@+id/save"
                     android:layout_width="match_parent"
-                    android:background="@drawable/button_login"
                     android:text="@string/save"
                     android:layout_marginHorizontal="34dp"
-                    android:fontFamily="@font/play"
                     android:padding="5dp"
                     android:layout_marginBottom="33dp"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"/>
 
@@ -111,12 +96,9 @@
                     android:id="@+id/change_pass"
                     android:contentDescription="@string/changePass"
                     android:layout_width="match_parent"
-                    android:fontFamily="@font/play"
-                    android:textSize="14sp"
-                    android:layout_marginHorizontal="34dp"
-                    android:textColor="@color/white"
+                    android:layout_marginHorizontal="60dp"
+                    style="@style/button_setting_style"
                     android:text="@string/change_pass"
-                    android:background="@drawable/button_login"
                     android:layout_height="wrap_content"/>
 
                 <TextView

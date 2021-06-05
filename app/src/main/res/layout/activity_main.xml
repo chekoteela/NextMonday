@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root"
-    android:background="@drawable/gradient_layout"
+    android:background="@color/calculator_auto_edittext"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -37,6 +37,7 @@
        >
 
         <EditText
+            style="@style/EditText_change_food_white"
             android:id="@+id/SignEmail"
             android:contentDescription="@string/name2"
             android:layout_width="match_parent"
@@ -44,15 +45,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/edit_text"
             android:ems="10"
             android:hint="@string/SignEmail"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textColor="@color/black"
             android:textColorHint="@color/hintColor" />
 
         <EditText
+            style="@style/EditText_change_food_white"
             android:contentDescription="@string/SignEmail2"
             android:id="@+id/SignPass"
             android:layout_width="match_parent"
@@ -61,7 +61,6 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/edit_text"
             android:ems="10"
             android:hint="@string/SignPassword"
             android:inputType="textPassword"
@@ -71,20 +70,19 @@
 
 
         <TextView
+            style="@style/StandartTextView"
             android:id="@+id/forgotPass"
             android:contentDescription="@string/ForgotPass2"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:textColor="@color/color_button_grad"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="30dp"
             android:clickable="true"
-            android:fontFamily="@font/play"
             android:gravity="center"
             android:text="@string/ForgotPass"
-            android:textAlignment="center"
-            android:textColor="@color/color_button_grad"
-            android:textSize="18sp" />
+            android:textAlignment="center" />
         
         <Button
             android:id="@+id/SignIn"
@@ -94,28 +92,24 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/button_login"
-            android:fontFamily="@font/play"
-            android:text="@string/SignIn"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            style="@style/button_setting_style"
+            android:text="@string/SignIn" />
 
 
 
         <TextView
+            style="@style/StandartTextView"
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
-            android:fontFamily="@font/play"
             android:gravity="center_horizontal"
             android:text="@string/DontHaveAcc"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textAlignment="center"/>
         <Button
+            style="@style/button_setting_style"
             android:id="@+id/CreateAcc"
             android:contentDescription="@string/haveAcc2"
             android:layout_width="match_parent"
@@ -123,24 +117,18 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/button_login"
-            android:fontFamily="@font/play"
-            android:text="@string/Register"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:text="@string/Register" />
 
 
         <TextView
+            style="@style/StandartTextView"
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/play"
             android:gravity="center_horizontal"
             android:text="@string/OrContinue"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:textAlignment="center" />
 
 
         <LinearLayout

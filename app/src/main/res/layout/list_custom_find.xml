@@ -18,14 +18,12 @@
         />
 
     <TextView
-
+        style="@style/StandartTextView"
         android:id="@+id/textT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/checkFind"
-        android:fontFamily="@font/play"
-        android:textColor="@color/white"
         android:textSize="18sp" />
 
 
