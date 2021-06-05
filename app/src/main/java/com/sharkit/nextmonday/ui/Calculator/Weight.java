@@ -72,8 +72,6 @@ public class Weight extends Fragment {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference collectionReference = db.collection("DB Product");
-
-
     SQLiteDatabase sdb;
     MyWeight myWeight;
     GraphView graphView;
@@ -83,11 +81,7 @@ public class Weight extends Fragment {
     ListView listView;
     WeightAdaptor adaptor;
     LinearLayout desired_weight, layout_left_xlm;
-
-
-
     TextView weight,current_weight,text_weight_xml,text_current_weight_xml;
-
     Button add_weight;
     BottomNavigationView bar;
     FirebaseDatabase fs = FirebaseDatabase.getInstance();
@@ -273,6 +267,7 @@ public class Weight extends Fragment {
         //Параметри Графіка
         LinearLayout.LayoutParams graph_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 3);
         graph_params.setMargins(0, 20, 0, 10);
+        graphView.setPadding(10,10,10,10);
         graphView.setLayoutParams(graph_params);
         //Параметри кнопки
         RelativeLayout.LayoutParams but_params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 16);

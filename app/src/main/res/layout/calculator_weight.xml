@@ -7,7 +7,9 @@
     android:background="@color/calculator_auto_edittext"
     android:orientation="vertical"
     tools:context=".ui.Calculator.Weight">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -100,6 +102,9 @@
 
     </LinearLayout>
 
+
+
+</ScrollView>
     <Button
         android:layout_marginVertical="10dp"
         android:layout_above="@+id/adView"
@@ -112,6 +117,7 @@
         android:contentDescription="@string/descr_change_weight"
         android:padding="10dp"
         android:text="@string/change_weight" />
+
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
