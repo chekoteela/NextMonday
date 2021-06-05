@@ -31,8 +31,10 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-
-
+<ScrollView
+    android:layout_below="@+id/tab"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -45,7 +47,7 @@
             android:layout_gravity="center"
             android:padding="10dp"
             style="@style/StandartTextView"
-            android:text="Внесите данные на 1 кг веса"
+            android:text="@string/data_per_1_kg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -59,8 +61,10 @@
             android:layout_height="wrap_content"/>
 
         <EditText
+            android:gravity="center"
             android:inputType="numberDecimal"
             android:id="@+id/weight"
+            android:hint="@string/kg"
             android:padding="10dp"
             android:layout_gravity="center"
             style="@style/EditText_change_food_white"
@@ -93,6 +97,8 @@
 
 
                 <EditText
+                    android:gravity="center"
+                    android:hint="@string/gramm"
                     android:inputType="numberDecimal"
                     android:id="@+id/protein"
                     style="@style/EditText_change_food_white"
@@ -111,6 +117,8 @@
 
 
                 <EditText
+                    android:gravity="center"
+                    android:hint="@string/gramm"
                     android:inputType="numberDecimal"
                     android:id="@+id/fat"
                     style="@style/EditText_change_food_white"
@@ -140,6 +148,8 @@
 
 
                 <EditText
+                    android:gravity="center"
+                    android:hint="@string/gramm"
                     android:inputType="numberDecimal"
                     android:id="@+id/carbohydrate"
                     style="@style/EditText_change_food_white"
@@ -159,6 +169,8 @@
 
 
                 <EditText
+                    android:gravity="center"
+                    android:hint="@string/litr"
                     android:inputType="numberDecimal"
                     android:id="@+id/watter"
                     style="@style/EditText_change_food_white"
@@ -220,7 +232,7 @@
 
             </LinearLayout>
 
-    </LinearLayout>
+        </LinearLayout>
         <Button
             android:id="@+id/save"
             style="@style/button_setting_style"
@@ -241,6 +253,9 @@
 
 
     </LinearLayout>
+</ScrollView>
+
+
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"

@@ -260,6 +260,7 @@ public class FindMyFood extends Fragment {
         but_params.setMargins(h/21,h/84, h/21, h/84);
         meals.setLayoutParams(but_params);
         save.setLayoutParams(but_params);
+        change_food.setPadding(0,0,0,0);
         change_food.setLayoutParams(but_params);
         int w_n = (int)(w/1.2);
          LinearLayout.LayoutParams name_params = new LinearLayout.LayoutParams(w_n  , -2);
