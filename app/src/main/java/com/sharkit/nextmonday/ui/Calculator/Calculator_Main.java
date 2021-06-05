@@ -175,10 +175,12 @@ public class Calculator_Main extends Fragment {
                     add_food.setVisibility(View.VISIBLE);
                     add_watter.setVisibility(View.VISIBLE);
                     add_weight.setVisibility(View.VISIBLE);
+                    plus.setImageResource(R.drawable.plus);
                 } else {
                     add_food.setVisibility(View.GONE);
                     add_watter.setVisibility(View.GONE);
                     add_weight.setVisibility(View.GONE);
+                    plus.setImageResource(R.drawable.icon_x);
                 }
             }
         });
