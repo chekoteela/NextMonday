@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/rootParent"
     android:layout_height="match_parent"
+    android:background="@color/Prozorui"
     >
 
     <LinearLayout
@@ -19,7 +20,7 @@
             android:id="@+id/linear"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:background="@color/calculator_auto_edittext"
+            android:background="@drawable/dairy_exp_list_den_color"
             android:orientation="vertical">
 
             <TextView
