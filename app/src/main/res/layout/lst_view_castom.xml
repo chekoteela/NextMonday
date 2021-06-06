@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:id="@+id/create_child_item"
     android:clickable="true"
-    android:background="@color/lst_view_custom_color">
+    android:background="@color/calculator_color">
 
 
     <CheckBox

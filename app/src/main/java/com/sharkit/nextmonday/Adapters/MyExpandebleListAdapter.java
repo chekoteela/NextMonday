@@ -170,10 +170,10 @@ public class MyExpandebleListAdapter extends BaseExpandableListAdapter {
             after.setText(mGroups.get(groupPosition).size() + "");
             before.setText(completeTargetarr[groupPosition] + "");
             pb.setProgress(percent[groupPosition]);
-            linearLayout.setBackgroundResource(R.drawable.dairy_exp_list_den_color);
+            linearLayout.setBackgroundResource(R.color.calculator_auto_edittext);
 
             if (SelectToday(Integer.parseInt(num.getText().toString().trim())) == groupPosition){
-                linearLayout.setBackgroundResource(R.drawable.dairy_exp_list_task_color);
+                linearLayout.setBackgroundResource(R.color.calculator_color);
             }
 
         if (isExpanded) {
