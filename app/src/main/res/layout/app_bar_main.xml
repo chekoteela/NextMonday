@@ -31,7 +31,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:background="@color/color_toolbar"
+                    android:background="@color/tool_bar_color"
                     app:popupTheme="@style/Theme.NextMonday.PopupOverlay"
                     app:titleMarginStart="60dp"
                     app:title="@string/next_monday"

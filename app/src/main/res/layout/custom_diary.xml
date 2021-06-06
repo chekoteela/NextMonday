@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/rootParent"
     android:layout_height="match_parent"
+    android:background="@color/Prozorui"
     >
 
     <LinearLayout
@@ -28,9 +29,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_gravity="center|left"
-                android:fontFamily="@font/play"
+                style="@style/StandartTextView"
                 android:text="@string/pn"
-                android:textColor="@color/white"
                 android:textSize="12sp" />
 
             <TextView
@@ -38,27 +38,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/play"
                 android:gravity="center"
                 android:text="1"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                style="@style/StandartTextView"
+                android:textSize="18sp" />
 
             <TextView
+                style="@style/StandartTextView"
                 android:id="@+id/month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/play"
                 android:layout_gravity="center"
                 android:text="month"
-                android:textColor="@color/white"
                 android:textSize="12sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:background="@drawable/dairy_exp_list_task_color"
+            android:background="@color/calculator_color"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -69,10 +66,8 @@
                 android:layout_marginLeft="24sp"
                 android:layout_gravity="center|left"
                 android:layout_marginTop="10dp"
-                android:fontFamily="@font/play"
                 android:text="@string/list"
-                android:textColor="@color/white"
-                android:textSize="14sp" />
+                style="@style/StandartTextView" />
 
 
             <LinearLayout
@@ -83,35 +78,31 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:id="@+id/dop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/play"
-                    android:text="2"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:text="2" />
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:id="@+id/slash"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/play"
                     android:text="/"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    />
 
                 <TextView
                     android:id="@+id/pisly"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:fontFamily="@font/play"
+                    style="@style/StandartTextView"
                     android:text="9"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    />
 
                 <ProgressBar
                     android:id="@+id/progressBar123"

@@ -85,5 +85,7 @@
     <color name="bar_fat_carbs_color_progress">#F9883A</color>
     <color name="bar_prot_water_color_rim">#192229</color>
     <color name="bar_prot_water_color_progress">#F9883A</color>
+    <color name="tool_bar_color">#131C23</color>
+    <color name="exp_list">#131C23</color>
 
 </resources>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_layout"
+    android:background="@color/calculator_auto_edittext"
     android:id="@+id/root"
     tools:context=".MainActivity">
 
@@ -37,6 +37,7 @@
         android:orientation="vertical">
 
         <EditText
+            style="@style/EditText_change_food_white"
             android:contentDescription="@string/name2"
             android:id="@+id/RegistrName"
             android:layout_width="match_parent"
@@ -45,20 +46,17 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/edit_text"
             android:ems="10"
-            android:fontFamily="@font/play"
             android:hint="@string/name"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textColorHint="@color/hintColor"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
             tools:layout_editor_absoluteX="0dp"
 
             />
 
         <EditText
+            style="@style/EditText_change_food_white"
             android:id="@+id/RegistrLastName"
             android:contentDescription="@string/lastName2"
             android:layout_width="match_parent"
@@ -67,14 +65,10 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/edit_text"
             android:ems="10"
-            android:fontFamily="@font/play"
             android:hint="@string/lastName"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textColorHint="@color/hintColor"
             app:layout_constraintTop_toBottomOf="@+id/RegistrName"
             tools:layout_editor_absoluteX="0dp" />
 
@@ -88,14 +82,11 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/edit_text"
+            style="@style/EditText_change_food_white"
             android:ems="10"
-            android:fontFamily="@font/play"
             android:hint="@string/SignEmail"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textColorHint="@color/hintColor"
             app:layout_constraintTop_toBottomOf="@+id/RegistrLastName"
             tools:layout_editor_absoluteX="-16dp" />
 
@@ -108,14 +99,11 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/edit_text"
+            style="@style/EditText_change_food_white"
             android:ems="10"
-            android:fontFamily="@font/play"
             android:hint="@string/SignPassword"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textColorHint="@color/hintColor"
             app:layout_constraintTop_toBottomOf="@+id/RegisterEmail"
             tools:layout_editor_absoluteX="-16dp" />
 
@@ -128,7 +116,7 @@
             android:textColor="@color/white"
             android:theme="@style/colorCheckBox"
             android:layout_height="wrap_content"
-            android:text="Соглашаюсь"
+            android:text="@string/agree"
 
             />
 
@@ -136,11 +124,10 @@
             android:contentDescription="@string/privacy_policy"
             android:id="@+id/policy_text"
             android:layout_width="wrap_content"
-            android:fontFamily="@font/play"
-            android:textSize="14sp"
+            style="@style/StandartTextView"
             android:layout_height="wrap_content"
             android:textColor="@color/color_button_grad"
-            android:text=" с политикой конфиденциальности"
+            android:text="@string/with_pr_pol"
             android:clickable="true"
             />
 
@@ -157,6 +144,7 @@
         >
 
         <Button
+            style="@style/button_setting_style"
             android:contentDescription="@string/Register2"
             android:id="@+id/CreateAcc"
             android:layout_width="match_parent"
@@ -164,30 +152,24 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/button_login"
-            android:fontFamily="@font/play"
             android:text="@string/Register"
-            android:textColor="@color/white"
-            android:textSize="14sp"
             tools:layout_editor_absoluteX="-16dp" />
 
         <TextView
+            style="@style/StandartTextView"
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
-
             android:layout_marginRight="30dp"
-            android:fontFamily="@font/play"
             android:gravity="center_horizontal"
             android:text="@string/haveAcc"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@+id/CreateAcc"
             tools:layout_editor_absoluteX="20dp" />
 
         <Button
+            style="@style/button_setting_style"
             android:layout_below="@id/textView"
             android:id="@+id/SignIn"
             android:contentDescription="@string/SignIn2"
@@ -196,10 +178,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/button_login"
             android:text="@string/SignIn"
-            android:textColor="@color/white"
-            android:textSize="14sp"
             />
 
         <LinearLayout

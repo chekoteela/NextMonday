@@ -23,11 +23,11 @@
 
 
             <com.progress.progressview.ProgressView
-                android:rotation="90"
                 android:id="@+id/calorie"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
+                android:rotation="90"
                 app:pvBackgroundColor="@color/bar_calor_color_rim"
                 app:pvBackgroundWidth="30dp"
                 app:pvDirection="fromLeft"
@@ -214,6 +214,7 @@
                         android:orientation="horizontal" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/eat_f"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
@@ -322,6 +323,7 @@
 
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/eatC"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
@@ -441,6 +443,7 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/eat_p"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
@@ -528,6 +531,7 @@
                         tools:layout_editor_absoluteY="249dp" />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/drink_w"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"

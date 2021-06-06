@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/dairy_exp_list_den_color"
+        android:background="@color/calculator_auto_edittext"
         android:gravity="center"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
@@ -27,22 +27,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView
+                    style="@style/StandartTextView"
                     android:id="@+id/textView13"
                     android:layout_width="140dp"
-                    android:textColor="@color/white"
                     android:layout_height="wrap_content"
                     android:text="@string/everyday"
                     android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/play"
                     android:textSize="18sp" />
                 <TextView
-
+                    style="@style/StandartTextView"
                     android:layout_width="140dp"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:text="@string/custom_day"
-                    android:fontFamily="@font/play"
-                    android:textColor="@color/white"
                     android:textSize="18sp" />
 
 

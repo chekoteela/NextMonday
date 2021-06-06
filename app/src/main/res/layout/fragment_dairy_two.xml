@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/rootParent"
-    android:background="@drawable/gradient_layout"
+    android:background="@color/calculator_auto_edittext"
     >
 
     <LinearLayout
@@ -16,18 +16,18 @@
 
 
         <LinearLayout
+            android:layout_marginVertical="5px"
             android:id="@+id/weeq"
             android:layout_width="match_parent"
-
-            android:background="@drawable/dairy_create_task_gradient"
             android:layout_height="match_parent"
+            android:background="@color/calculator_color"
             android:orientation="horizontal">
 
 
             <ImageView
-                android:layout_marginLeft="5dp"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="45dp"
                 android:padding="5dp"
                 android:src="@drawable/ic_pencil" />
@@ -37,14 +37,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:layout_marginBottom="15dp"
                 android:layout_marginRight="48dp"
-                android:padding="10dp"
+                android:layout_marginBottom="15dp"
                 android:backgroundTint="@color/white"
                 android:elegantTextHeight="true"
                 android:gravity="bottom"
                 android:inputType="textMultiLine"
                 android:maxLines="5"
+                android:padding="10dp"
                 android:scrollHorizontally="true"
                 android:textColor="@color/white"
                 android:textCursorDrawable="@null" />
@@ -59,9 +59,10 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_marginVertical="5px"
                 android:id="@+id/ll"
                 android:layout_width="match_parent"
-                android:background="@drawable/dairy_create_task_gradient"
+                android:background="@color/calculator_color"
                 android:layout_height="80dp"
                 android:padding="10dp"
                 android:gravity="center"
@@ -69,15 +70,12 @@
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout3">
 
                 <TextView
-
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="100dp"
-                    android:fontFamily="@font/play"
                     android:text="@string/enter_time"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
 
                 <Switch
                     android:id="@+id/take_time"
@@ -90,23 +88,22 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginVertical="5px"
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@drawable/dairy_create_task_gradient"
+                android:background="@color/calculator_color"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="144dp"
-                    android:fontFamily="@font/play"
                     android:text="@string/repeat"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
 
                 <Switch
                     android:id="@+id/repeat"
@@ -118,15 +115,14 @@
             </LinearLayout>
 
             <Button
+                style="@style/button_setting_style"
+                android:layout_marginHorizontal="60dp"
                 android:id="@+id/add"
                 android:layout_marginTop="10dp"
-                android:layout_width="130dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_login"
                 android:contentDescription="@string/save2"
-                android:fontFamily="@font/play"
                 android:text="@string/add"
-                android:textColor="@color/white"
                 android:textSize="18sp"
 
                 />

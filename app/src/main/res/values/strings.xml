@@ -143,7 +143,7 @@
 
     <string name="kkal">Ккал</string>
     <string name="fat">Жиры</string>
-    <string name="Carbs">Углеводы</string>
+    <string name="Carbs">Углев.</string>
     <string name="Protein">Белки</string>
     <string name="water">Вода</string>
     <string name="alert">Введите полное название продукта иначе он не будет доступен в общей базе даных</string>
@@ -306,6 +306,8 @@
     <string name="data_per_1_kg">Внесите данные на 1 кг веса</string>
     <string name="kg">кг</string>
     <string name="sm">см</string>
+    <string name="agree">Соглашаюсь</string>
+    <string name="with_pr_pol">с политикой конфиденциальности</string>
 
 
 </resources>
