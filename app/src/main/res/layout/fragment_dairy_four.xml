@@ -4,7 +4,7 @@
     android:id="@+id/rootParent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/gradient_layout"
+    android:background="@color/calculator_auto_edittext"
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,10 +15,11 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_marginVertical="5px"
             android:id="@+id/weeq"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/dairy_create_task_gradient"
+            android:background="@color/calculator_color"
             android:orientation="horizontal">
 
 
@@ -43,16 +44,16 @@
                 android:inputType="textMultiLine"
                 android:maxLines="5"
                 android:scrollHorizontally="true"
-
                 android:textColor="@color/white"
                 android:textCursorDrawable="@null" />
         </LinearLayout>
 
 
         <LinearLayout
+            android:layout_marginVertical="5px"
             android:id="@+id/layout_redag"
             android:layout_width="match_parent"
-            android:background="@drawable/dairy_create_task_gradient"
+            android:background="@color/calculator_color"
             android:layout_height="wrap_content"
             android:layout_below="@+id/weeq"
             android:gravity="center"
@@ -69,13 +70,11 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/play"
+                    style="@style/StandartTextView"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/repeat"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/repeat"
@@ -83,12 +82,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="25dp"
-                    android:fontFamily="@font/play"
                     android:gravity="center"
                     android:padding="5dp"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    style="@style/StandartTextView" />
 
             </LinearLayout>
 
@@ -98,21 +94,19 @@
                 android:orientation="vertical">
 
                 <TextView
-
+                    style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="30dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/play"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="@string/time"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
 
                 <TextView
+                    style="@style/StandartTextView"
                     android:id="@+id/change_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -120,13 +114,10 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
-                    android:fontFamily="@font/play"
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="12:44"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
 
@@ -141,12 +132,12 @@
             android:orientation="vertical">
 
             <LinearLayout
-
+                android:layout_marginVertical="5px"
                 android:id="@+id/layout_time"
                 android:layout_width="match_parent"
                 android:layout_height="250px"
                 android:gravity="center"
-                android:background="@drawable/dairy_create_task_gradient"
+                android:background="@color/calculator_color"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout3">
 
@@ -155,11 +146,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="100dp"
-                    android:fontFamily="@font/play"
                     android:text="@string/enter_time"
-                    android:textColor="@color/white"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    style="@style/StandartTextView" />
 
                 <Switch
                     android:id="@+id/selectTime"
@@ -172,11 +161,11 @@
             </LinearLayout>
 
             <LinearLayout
-
+                android:layout_marginVertical="5px"
                 android:id="@+id/layout_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="250px"
-                android:background="@drawable/dairy_create_task_gradient"
+                android:background="@color/calculator_color"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -184,11 +173,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="144dp"
-                    android:fontFamily="@font/play"
+                    style="@style/StandartTextView"
                     android:text="@string/repeat"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="18sp" />
 
                 <Switch
                     android:id="@+id/selectRepeat"
@@ -204,16 +191,14 @@
         </LinearLayout>
 
         <Button
+            style="@style/button_setting_style"
             android:id="@+id/saveChange"
-            android:layout_width="130dp"
+            android:layout_marginHorizontal="60dp"
+            android:layout_width="match_parent"
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_login"
             android:contentDescription="@string/save2"
-            android:fontFamily="@font/play"
-            android:text="@string/save"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            android:text="@string/save" />
 
 
 
