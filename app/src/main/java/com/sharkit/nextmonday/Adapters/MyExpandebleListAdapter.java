@@ -173,7 +173,7 @@ public class MyExpandebleListAdapter extends BaseExpandableListAdapter {
             linearLayout.setBackgroundResource(R.drawable.dairy_exp_list_den_color);
 
             if (SelectToday(Integer.parseInt(num.getText().toString().trim())) == groupPosition){
-                linearLayout.setBackgroundResource(R.drawable.dairy_exp_list_task_color);
+                linearLayout.setBackgroundResource(R.color.exp_list);
             }
 
         if (isExpanded) {

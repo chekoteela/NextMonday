@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <stroke android:width="4px" android:color="@color/Prozorui"></stroke>
+            <stroke android:width="10px" android:color="@color/Prozorui"></stroke>
             <gradient
                 android:endColor="@color/calculator_color"
                 android:startColor="@color/calculator_color"
