@@ -7,7 +7,7 @@
     android:id="@+id/cal"
     android:orientation="vertical"
     tools:context="Fragments.Calendar"
-    android:background="@drawable/gradient_layout">
+    android:background="@color/calculator_auto_edittext">
 
     <LinearLayout
         android:layout_width="match_parent"
