@@ -171,7 +171,7 @@
                 <EditText
                     android:gravity="center"
                     android:hint="@string/litr"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:id="@+id/watter"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"

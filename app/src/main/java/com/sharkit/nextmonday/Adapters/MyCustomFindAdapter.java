@@ -68,12 +68,10 @@ public class MyCustomFindAdapter extends BaseAdapter {
         TextView timeTarget = convertView.findViewById(R.id.timeT);
         TextView dataTarget = convertView.findViewById(R.id.dateT);
 
-        for(int i = 0; i < mGroups.size(); i++){
             completeTarget.setChecked(arrayComplete.get(position));
             textTarget.setText(arrayText.get(position));
             timeTarget.setText(arrayTime.get(position));
             dataTarget.setText(arrayData.get(position));
-        }
 
         completeTarget.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

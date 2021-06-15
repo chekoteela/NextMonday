@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -87,7 +88,7 @@ import static android.view.TouchDelegate.ABOVE;
 import static android.view.TouchDelegate.BELOW;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class Calculator_Main extends Fragment {
+public class Calculator_Main extends Fragment implements View.OnClickListener{
     ImageView add_food, add_watter, add_activity, add_weight, plus;
     ProgressView calorie, protein, fat, carbohydrate, watter;
     TextView percent_calorie, percent_protein, percent_fat, percent_carbohydrate,percent_watter,
@@ -131,21 +132,23 @@ public class Calculator_Main extends Fragment {
         View root = inflater.inflate(R.layout.calculator_main, container, false);
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         FindViewByID(root);
+
         linkRation = new LinkRation(getApplicationContext());
         sdb = linkRation.getReadableDatabase();
         linkRation.onCreate(sdb);
         myWeight = new MyWeight(getApplicationContext());
         mdb = myWeight.getReadableDatabase();
         myWeight.onCreate(sdb);
+        Onclick(this);
+
 
         Adaptive();
-
-
 
         GetWatter();
 
         home1 = bottomNavigationView.getMenu().findItem(R.id.main);
         home1.setIcon(R.drawable.main_selected);
+
 
 
         add_watter.setOnClickListener(new View.OnClickListener() {
@@ -156,10 +159,19 @@ public class Calculator_Main extends Fragment {
                 View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
                 EditText weight = existProduct.findViewById(R.id.weight);
                 TextView textView = existProduct.findViewById(R.id.text_xml);
+                weight.setHint("Мл");
                 textView.setText("Добавить воду в мл");
                 dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        if(TextUtils.isEmpty(weight.getText())){
+                            Toast.makeText(getContext(), "Введите количество випитой воды в мл", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (Float.parseFloat(weight.getText().toString()) > 4000 || Float.parseFloat(weight.getText().toString()) < 0){
+                            Toast.makeText(getContext(), "Введите корректный количество воды", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         AddWatter(weight.getText().toString());
                     }
                 });
@@ -192,9 +204,18 @@ public class Calculator_Main extends Fragment {
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
                 View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
                 EditText weight = existProduct.findViewById(R.id.weight);
+                weight.setHint("Кг");
                 dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        if(TextUtils.isEmpty(weight.getText())){
+                            Toast.makeText(getContext(), "Введите ваш вес в кг", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (Float.parseFloat(weight.getText().toString()) > 1000 || Float.parseFloat(weight.getText().toString()) < 10){
+                            Toast.makeText(getContext(), "Введите корректный вес", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                             WriteDataWeight(weight.getText().toString());
                     }
                 });
@@ -216,6 +237,8 @@ public class Calculator_Main extends Fragment {
         return root;
     }
 
+
+
     private void Adaptive() {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         //визначення розмірів екрану та створення змінної
@@ -228,8 +251,6 @@ public class Calculator_Main extends Fragment {
 //        toast.show();
 
         //Лог
-        Log.d(TAG, w+"");
-        Log.d(TAG, h+"");
 
         if(h >= 2000 ){//Встановлення параметрів FrameLayout
             int p = (int)(h/4.1);
@@ -782,6 +803,7 @@ if(h >= 2000){ // створення адаптів для h = 2000
 
     }
 
+
     @SuppressLint("DefaultLocale")
     private void WriteText() {
 
@@ -894,7 +916,7 @@ if(h >= 2000){ // створення адаптів для h = 2000
                         PFC_today.setProtein(PFC_today.getProtein() * Float.parseFloat(PFC_today.getWeight()));
                         PFC_today.setCarbohydrate(PFC_today.getCarbohydrate() * Float.parseFloat(PFC_today.getWeight()));
                         PFC_today.setFat(PFC_today.getFat() * Float.parseFloat(PFC_today.getWeight()));
-                        PFC_today.setWatter(PFC_today.getWatter() * Float.parseFloat(PFC_today.getWeight()));
+                        PFC_today.setWatter(PFC_today.getWatter() * Float.parseFloat(PFC_today.getWeight()) / 1000);
 
                         PFC_today.setCalorie((PFC_today.getProtein() * 4) + (PFC_today.getFat() * 9) + (PFC_today.getCarbohydrate() * 4));
 
@@ -1003,7 +1025,6 @@ if(h >= 2000){ // створення адаптів для h = 2000
         PFC_today.setProtein_eat(Float.parseFloat(userMeal.getProtein()));
         PFC_today.setFat_eat(Float.parseFloat(userMeal.getFat()));
         PFC_today.setCarbohydrate_eat(Float.parseFloat(userMeal.getCarbohydrate()));
-        Log.d(TAG, PFC_today.getWatter_drink()+ "");
 
     }
 
@@ -1028,7 +1049,6 @@ if(h >= 2000){ // створення адаптів для h = 2000
 
 
         }catch (NumberFormatException e){
-            Log.d(TAG, e.getLocalizedMessage());
         }
 
     }
@@ -1103,10 +1123,71 @@ if(h >= 2000){ // створення адаптів для h = 2000
         linear_bottom_menu = root.findViewById(R.id.linearr);
         linear_general = root.findViewById(R.id.linear_dima);
     }
+    private void Onclick(Calculator_Main i) {
+        all_calorie.setOnClickListener(i);
+        eat_carbohydrate.setOnClickListener(i);
+        eat_protein.setOnClickListener(i);
+        eat_fat.setOnClickListener(i);
+        eat_calorie.setOnClickListener(i);
+        drink_watter.setOnClickListener(i);
+        all_carbohydrate.setOnClickListener(i);
+        all_fat.setOnClickListener(i);
+        all_protein.setOnClickListener(i);
+        all_watter.setOnClickListener(i);
+    }
 
     @Override
     public void onStop() {
         super.onStop();
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        String hint_eat = "За сегодня вам нужно употребать ";
+        String hint = "За сегодня вы употребили ";
+        switch (v.getId()){
+            case R.id.all_calorie:
+                hint_eat += all_calorie.getText().toString() + " ккл";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.eat_calorie:
+                hint += eat_calorie.getText().toString() + " ккл";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.eat_fat:
+                hint += eat_fat.getText().toString() + " гр жиров";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.eat_protein:
+                hint += eat_protein.getText().toString() + " гр белков";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.eat_carbohydrate:
+                hint += eat_carbohydrate.getText().toString() + " гр углеводов";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.drink_watter:
+                hint += drink_watter.getText().toString() + " л воды";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.all_protein:
+                hint_eat += all_protein.getText().toString() + " гр белков";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.all_carbohydrate:
+                hint_eat += all_carbohydrate.getText().toString() + " гр углеводов";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.all_fat:
+                hint_eat += all_fat.getText().toString() + " гр жиров";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.all_watter:
+                hint_eat += all_watter.getText().toString() + " л воды";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+
+        }
     }
 }

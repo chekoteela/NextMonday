@@ -77,7 +77,8 @@ public class Feedback extends Fragment {
 
         mail.setText(mAuth.getCurrentUser().getEmail());
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_feedback,R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),R.array.spinner_feedback,R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.smart_material_spinner_dropdown_item_layout);
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -429,14 +429,22 @@ public class MyExpandebleListAdapter extends BaseExpandableListAdapter {
 
         while (query.moveToNext()) {
 
-            Log.d(TAG, "while " + query.getPosition());
             if (query.getInt(14) == day && query.getInt(13) == month && query.getInt(15) == year) {
                 arrayAllTime.add(query.getString(16));
                 arrayText.add(query.getString(1));
                 if(query.getInt(12) == -1 && query.getInt(11) == -1){
                     arrayTime.add("--:--");
                 }else {
-                    arrayTime.add(query.getInt(12) + ":" + query.getInt(11));
+                    String hour = String.valueOf(query.getInt(12));
+                    String minute = String.valueOf(query.getInt(11));
+                    if (query.getInt(12) < 10){
+                        hour = "0" + hour;
+                    }
+                    if (query.getInt(11) < 10){
+                        minute = "0" + minute;
+                    }
+
+                    arrayTime.add(hour + ":" + minute);
                 }
                 if (query.getInt(2) == 0) {
                     arrayComplete.add(false);
@@ -445,7 +453,6 @@ public class MyExpandebleListAdapter extends BaseExpandableListAdapter {
                 }
             }
         }
-        Log.d(TAG, "after while");
 
     }
 

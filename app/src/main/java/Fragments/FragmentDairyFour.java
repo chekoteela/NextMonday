@@ -39,7 +39,8 @@ public class FragmentDairyFour extends Fragment {
     SQLiteDatabase db;
     String text;
     Boolean monday, tuesday, wednesday, thursday, friday, saturday,sunday, repeat;
-    int hour, minute;
+    int h, m;
+    String hour, minute;
     Cursor query;
     final String TAG = "qwerty";
 
@@ -50,7 +51,6 @@ public class FragmentDairyFour extends Fragment {
         Button saveChange = root.findViewById(R.id.saveChange);
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
-        Log.d(TAG,metrics.heightPixels + "");
         int h = metrics.heightPixels;
 
         LinearLayout linear_time = root.findViewById(R.id.layout_time);
@@ -98,8 +98,8 @@ public class FragmentDairyFour extends Fragment {
                     databaseHelper.COLUMN_REPEAT_SATURDAY + " = '" + dayOfWeek(saturday) + "'," +
                     databaseHelper.COLUMN_REPEAT_SUNDAY + " = '" + dayOfWeek(sunday) + "'," +
                     databaseHelper.COLUMN_REPEAT + " = '" + dayOfWeek(repeat) + "'," +
-                    databaseHelper.COLUMN_HOUR + " = '" + hour + "'," +
-                    databaseHelper.COLUMN_MINUTE + " = '" + minute + "'" +
+                    databaseHelper.COLUMN_HOUR + " = '" + h + "'," +
+                    databaseHelper.COLUMN_MINUTE + " = '" + m + "'" +
                     "  WHERE " + databaseHelper.COLUMN_TIME + " = '" + Target.getAll_time() + "'");
     }
 
@@ -122,11 +122,21 @@ public class FragmentDairyFour extends Fragment {
                     TimePickerDialog timePicker = new TimePickerDialog(getContext(), R.style.TimePickerTheme, new TimePickerDialog.OnTimeSetListener() {
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay, int minuted) {
-                            hour = hourOfDay;
-                            minute = minuted;
+                            hour = String.valueOf(hourOfDay);
+                            minute = String.valueOf(minuted);
+                            m = minuted;
+                            h = hourOfDay;
+
+                            if (hourOfDay < 10){
+                                hour = "0" + hourOfDay;
+                            }
+                            if (minuted < 10){
+                                minute = "0" + minuted;
+                            }
+
                             timeT.setText(hour + ":" + minute);
                         }
-                    },hour,minute,true);
+                    },Integer.parseInt(hour),Integer.parseInt(minute),true);
                     timePicker.setOnCancelListener(new DialogInterface.OnCancelListener() {
                         @Override
                         public void onCancel(DialogInterface dialog) {
@@ -333,9 +343,20 @@ public class FragmentDairyFour extends Fragment {
             monday = dayOfWeek(query.getInt(9));
             repeat = dayOfWeek(query.getInt(10));
             text = query.getString(1);
-            hour = query.getInt(12);
-            minute = query.getInt(11);
-        }
+            hour = String.valueOf(query.getInt(12));
+            minute = String.valueOf(query.getInt(11));
+
+            h = query.getInt(12);
+            m = query.getInt(11);
+            if (query.getInt(12) < 10){
+                hour = "0" + hour;
+            }
+            if (query.getInt(11) < 10){
+                minute = "0" + minute;
+            }
+
+            }
+        Log.d(TAG, h +":" + m);
     }
     public int dayOfWeek(boolean num){
         if (!(num)) {

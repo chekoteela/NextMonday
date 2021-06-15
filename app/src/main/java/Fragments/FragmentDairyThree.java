@@ -88,7 +88,17 @@ public class FragmentDairyThree extends Fragment {
             if(query.getInt(12) == -1 && query.getInt(11) == -1){
                 arrayTime.add("--:--");
             }else {
-                arrayTime.add(query.getInt(12) + ":" + query.getInt(11));
+                String hour = String.valueOf(query.getInt(12));
+                String minute = String.valueOf(query.getInt(11));
+                if (query.getInt(12) < 10){
+                    hour = "0" + hour;
+                }
+                if (query.getInt(11) < 10){
+                    minute = "0" + minute;
+                }
+
+                    arrayTime.add(hour + ":" + minute);
+
             }
             arrayData.add(query.getInt(14) + "." + query.getInt(13) + "." + query.getInt(15));
             if (query.getInt(2) == 0) {
@@ -122,7 +132,21 @@ public class FragmentDairyThree extends Fragment {
             groups.add("item");
             arrayAllTime.add(query.getInt(14) + "-" + query.getInt(13) + "-" + query.getInt(15) + " " + query.getInt(12) + ":" + query.getInt(11));
             arrayText.add(query.getString(1));
-            arrayTime.add(query.getInt(12) + ":" + query.getInt(11));
+            if(query.getInt(12) == -1 && query.getInt(11) == -1){
+                arrayTime.add("--:--");
+            }else {
+                String hour = String.valueOf(query.getInt(12));
+                String minute = String.valueOf(query.getInt(11));
+                if (query.getInt(12) < 10){
+                    hour = "0" + hour;
+                }
+                if (query.getInt(11) < 10){
+                    minute = "0" + minute;
+                }
+
+                arrayTime.add(hour + ":" + minute);
+
+            }
             arrayData.add(query.getInt(14) + "." + query.getInt(13) + "." + query.getInt(15));
             if (query.getInt(2) == 0) {
                 arrayComplete.add(false);

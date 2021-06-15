@@ -3,15 +3,8 @@ package com.sharkit.nextmonday.variables;
 public class Manual_settings {
     private String var;
     private float weight, watter, desired_weight;
-    private int protein, carbohydrate, fat;
+    private float protein, carbohydrate, fat;
 
-    public float getDesired_weight() {
-        return desired_weight;
-    }
-
-    public void setDesired_weight(float desired_weight) {
-        this.desired_weight = desired_weight;
-    }
 
     public String getVar() {
         return var;
@@ -37,27 +30,35 @@ public class Manual_settings {
         this.watter = watter;
     }
 
-    public int getProtein() {
+    public float getDesired_weight() {
+        return desired_weight;
+    }
+
+    public void setDesired_weight(float desired_weight) {
+        this.desired_weight = desired_weight;
+    }
+
+    public float getProtein() {
         return protein;
     }
 
-    public void setProtein(int protein) {
+    public void setProtein(float protein) {
         this.protein = protein;
     }
 
-    public int getCarbohydrate() {
+    public float getCarbohydrate() {
         return carbohydrate;
     }
 
-    public void setCarbohydrate(int carbohydrate) {
+    public void setCarbohydrate(float carbohydrate) {
         this.carbohydrate = carbohydrate;
     }
 
-    public int getFat() {
+    public float getFat() {
         return fat;
     }
 
-    public void setFat(int fat) {
+    public void setFat(float fat) {
         this.fat = fat;
     }
 }

@@ -156,6 +156,7 @@ public class FindMyFood extends Fragment {
             WriteList();
         }
 
+
         try {
 
             if (!PFC_today.getMealName().equals(null)) {
@@ -167,6 +168,7 @@ public class FindMyFood extends Fragment {
             spinner.setVisibility(View.VISIBLE);
             meals.setVisibility(View.GONE);
         }
+
 
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override

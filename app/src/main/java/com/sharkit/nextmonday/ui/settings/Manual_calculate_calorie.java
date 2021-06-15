@@ -82,7 +82,7 @@ public class Manual_calculate_calorie extends Fragment {
                 double res = (Float.parseFloat(weight.getText().toString()) * Float.parseFloat(protein.getText().toString()) * 4) +
                         (Float.parseFloat(weight.getText().toString()) * Float.parseFloat(carbohydrate.getText().toString()) * 4) +
                         (Float.parseFloat(weight.getText().toString()) * Float.parseFloat(fat.getText().toString()) * 9);
-                conclusion.setText(String.format("%.0f", res));
+                conclusion.setText(String.format("%.0f", res) + " ккл");
 
             }
         });
@@ -99,6 +99,10 @@ public class Manual_calculate_calorie extends Fragment {
                 Calendar calendar = Calendar.getInstance();
                 if (TextUtils.isEmpty(weight.getText())){
                     Toast.makeText(getContext(), "Введите ваш текущий вес", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Float.parseFloat(weight.getText().toString()) > 1000 || Float.parseFloat(weight.getText().toString()) < 10){
+                    Toast.makeText(getContext(), "Введите корректный вес", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(protein.getText())){
@@ -177,9 +181,9 @@ public class Manual_calculate_calorie extends Fragment {
         Manual_settings manualSettings = new Manual_settings();
 
         manualSettings.setVar("Manual");
-        manualSettings.setCarbohydrate(Integer.parseInt(carbohydrate.getText().toString()));
-        manualSettings.setFat(Integer.parseInt(fat.getText().toString()));
-        manualSettings.setProtein(Integer.parseInt(protein.getText().toString()));
+        manualSettings.setCarbohydrate(Float.parseFloat(carbohydrate.getText().toString()));
+        manualSettings.setFat(Float.parseFloat(fat.getText().toString()));
+        manualSettings.setProtein(Float.parseFloat(protein.getText().toString()));
         manualSettings.setWatter(Float.parseFloat(watter.getText().toString()));
         manualSettings.setWeight(Float.parseFloat(weight.getText().toString()));
 
