@@ -595,10 +595,10 @@ if(h >= 2000){ // створення адаптів для h = 2000
             eat_fat.setTextSize(14);
             all_fat.setTextSize(14);
 
-            text_p.setTextSize(16);
-            text_f.setTextSize(16);
-            text_c.setTextSize(16);
-            text_w.setTextSize(16);
+            text_p.setTextSize(14);
+            text_f.setTextSize(14);
+            text_c.setTextSize(14);
+            text_w.setTextSize(14);
 
             eat_c.setTextSize(32);
             percent_calorie.setTextSize(32);
