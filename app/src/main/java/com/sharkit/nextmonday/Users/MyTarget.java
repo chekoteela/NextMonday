@@ -1,9 +1,10 @@
 package com.sharkit.nextmonday.Users;
 
 public class MyTarget {
-    private String date, time_alarm, name, description;
-    private int status, repeat, repeat_monday, repeat_tuesday, repeat_wednesday,
+    private String date, time_alarm, name, description, repeat;
+    private boolean status, repeat_monday, repeat_tuesday, repeat_wednesday,
             repeat_thursday, repeat_friday, repeat_saturday, repeat_sunday;
+
 
     public String getTime_alarm() {
         return time_alarm;
@@ -37,75 +38,75 @@ public class MyTarget {
         this.description = description;
     }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public int getRepeat() {
+    public String getRepeat() {
         return repeat;
     }
 
-    public void setRepeat(int repeat) {
+    public void setRepeat(String repeat) {
         this.repeat = repeat;
     }
 
-    public int getRepeat_monday() {
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isRepeat_monday() {
         return repeat_monday;
     }
 
-    public void setRepeat_monday(int repeat_monday) {
+    public void setRepeat_monday(boolean repeat_monday) {
         this.repeat_monday = repeat_monday;
     }
 
-    public int getRepeat_tuesday() {
+    public boolean isRepeat_tuesday() {
         return repeat_tuesday;
     }
 
-    public void setRepeat_tuesday(int repeat_tuesday) {
+    public void setRepeat_tuesday(boolean repeat_tuesday) {
         this.repeat_tuesday = repeat_tuesday;
     }
 
-    public int getRepeat_wednesday() {
+    public boolean isRepeat_wednesday() {
         return repeat_wednesday;
     }
 
-    public void setRepeat_wednesday(int repeat_wednesday) {
+    public void setRepeat_wednesday(boolean repeat_wednesday) {
         this.repeat_wednesday = repeat_wednesday;
     }
 
-    public int getRepeat_thursday() {
+    public boolean isRepeat_thursday() {
         return repeat_thursday;
     }
 
-    public void setRepeat_thursday(int repeat_thursday) {
+    public void setRepeat_thursday(boolean repeat_thursday) {
         this.repeat_thursday = repeat_thursday;
     }
 
-    public int getRepeat_friday() {
+    public boolean isRepeat_friday() {
         return repeat_friday;
     }
 
-    public void setRepeat_friday(int repeat_friday) {
+    public void setRepeat_friday(boolean repeat_friday) {
         this.repeat_friday = repeat_friday;
     }
 
-    public int getRepeat_saturday() {
+    public boolean isRepeat_saturday() {
         return repeat_saturday;
     }
 
-    public void setRepeat_saturday(int repeat_saturday) {
+    public void setRepeat_saturday(boolean repeat_saturday) {
         this.repeat_saturday = repeat_saturday;
     }
 
-    public int getRepeat_sunday() {
+    public boolean isRepeat_sunday() {
         return repeat_sunday;
     }
 
-    public void setRepeat_sunday(int repeat_sunday) {
+    public void setRepeat_sunday(boolean repeat_sunday) {
         this.repeat_sunday = repeat_sunday;
     }
 }

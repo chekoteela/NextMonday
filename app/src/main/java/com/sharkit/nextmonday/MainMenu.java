@@ -50,7 +50,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
-import com.sharkit.nextmonday.MySQL.DatabaseHelper;
 import com.sharkit.nextmonday.Users.DayOfWeek;
 import com.sharkit.nextmonday.Users.Target;
 import com.sharkit.nextmonday.Users.Users;
@@ -66,7 +65,6 @@ public class MainMenu extends AppCompatActivity {
      FirebaseAuth mAuth;
      FirebaseDatabase fdb;
      DatabaseReference users;
-    DatabaseHelper databaseHelper;
     SQLiteDatabase sdb;
     final String TAG = "qwerty";
 
@@ -93,9 +91,7 @@ public class MainMenu extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fdb = FirebaseDatabase.getInstance();
         users = fdb.getReference("Users");
-        databaseHelper = new DatabaseHelper(getApplicationContext());
-        sdb = databaseHelper.getReadableDatabase();
-        databaseHelper.onCreate(sdb);
+
         dataBasePFC = new DataBasePFC(getApplicationContext());
         db = dataBasePFC.getReadableDatabase();
         dataBasePFC.onCreate(db);
