@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_calculator_main">
+    app:startDestination="@+id/nav_diary">
 
     <fragment
         android:id="@+id/nav_diary"
-        android:name="Fragments.FragmentDairy"
+        android:name="com.sharkit.nextmonday.ui.Diary.MainDiary"
         tools:layout="@layout/fragment_dairy" />
 
     <fragment
@@ -22,17 +22,17 @@
 
     <fragment
         android:id="@+id/nav_calendar"
-        android:name="Fragments.Calendar"
+        android:name="com.sharkit.nextmonday.ui.Diary.DiaryCalendar"
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/nav_search"
-        android:name="Fragments.FragmentDairyThree"
+        android:name="com.sharkit.nextmonday.ui.Diary.DiaryFindAllTarget"
         tools:layout="@layout/fragment_dairy_three" />
 
     <fragment
         android:id="@+id/nav_plus_target"
-        android:name="Fragments.FragmentDairyTwo"
+        android:name="com.sharkit.nextmonday.ui.Diary.DiaryCreateNewTarget"
         tools:layout="@layout/fragment_dairy_two" />
 
     <fragment
@@ -42,7 +42,7 @@
 
     <fragment
         android:id="@+id/nav_feedback"
-        android:name="Fragments.Feedback"
+        android:name="com.sharkit.nextmonday.ui.settings.Feedback"
         tools:layout="@layout/fragment_feedback" />
 
     <fragment

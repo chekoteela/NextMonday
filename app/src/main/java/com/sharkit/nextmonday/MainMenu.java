@@ -10,30 +10,31 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-import com.sharkit.nextmonday.MySQL.DatabaseHelper;
-import com.sharkit.nextmonday.Users.DayOfWeek;
-import com.sharkit.nextmonday.Users.Target;
-import com.sharkit.nextmonday.Users.Users;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -41,26 +42,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
+import com.sharkit.nextmonday.MySQL.DatabaseHelper;
+import com.sharkit.nextmonday.Users.DayOfWeek;
+import com.sharkit.nextmonday.Users.Target;
+import com.sharkit.nextmonday.Users.Users;
 import com.sharkit.nextmonday.variables.LocalDataPFC;
 import com.sharkit.nextmonday.variables.PFC_today;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import org.jetbrains.annotations.NotNull;
-
-import Fragments.Calendar;
+import java.util.Calendar;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -119,12 +116,11 @@ public class MainMenu extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        Calendar calendar = Calendar.getInstance();
+        DayOfWeek.setMillis(calendar.getTimeInMillis());
 
         UpDateUser();
 
-        Calendar calendar = new Calendar();
-        java.util.Calendar cal = java.util.Calendar.getInstance();
-        calendar.Week(cal.get(java.util.Calendar.DAY_OF_MONTH),cal.get(java.util.Calendar.MONTH),cal.get(java.util.Calendar.YEAR));
 
     }
     public void OnClickWeight(MenuItem item){
@@ -182,9 +178,11 @@ public class MainMenu extends AppCompatActivity {
         navController.navigate(R.id.nav_search);
     }
     public void OnClickTarget(MenuItem item){
-        Calendar calendar = new Calendar();
-        java.util.Calendar cal = java.util.Calendar.getInstance();
-        calendar.Week(cal.get(java.util.Calendar.DAY_OF_MONTH),cal.get(java.util.Calendar.MONTH),cal.get(java.util.Calendar.YEAR));
+        Calendar calendar = Calendar.getInstance();
+        while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY){
+            calendar.add(Calendar.DAY_OF_WEEK, -1);
+        }
+        DayOfWeek.setMillis(calendar.getTimeInMillis());
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.navigate(R.id.nav_diary);
     }

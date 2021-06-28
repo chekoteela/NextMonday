@@ -11,7 +11,7 @@ android {
     signingConfigs {
         release {
    
-            storeFile file('home\\chekoteela\\AndroidStudio\\Keys\\key_next_monday\\key_next_monday.jks')
+            storeFile file('\\home\\chaosmaster\\Документи\\Keys\\key_next_monday\\key_next_monday.jks')
             storePassword 'adidas1996'
             keyAlias 'key_next_monday'
             keyPassword 'adidas1996'
