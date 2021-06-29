@@ -11,6 +11,7 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.Users.MyTarget;
 import com.sharkit.nextmonday.Users.Target;
+import com.sharkit.nextmonday.Users.Users;
 import com.sharkit.nextmonday.Users.Week;
 
 import java.text.SimpleDateFormat;
@@ -201,7 +202,9 @@ public class TargetData extends SQLiteOpenHelper {
 
     public ArrayList<MyTarget> findItemForName(String text, ArrayList<MyTarget> targets) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("", null);
+
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id
+                + "' AND " + COLUMN_TEXT_TARGET +" LIKE '" + text + "%'", null);
         while (cursor.moveToNext()){
             MyTarget target = new MyTarget();
             target.setName(cursor.getString(1));
