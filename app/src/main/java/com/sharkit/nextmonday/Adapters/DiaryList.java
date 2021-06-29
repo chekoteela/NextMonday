@@ -3,9 +3,7 @@ package com.sharkit.nextmonday.Adapters;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -19,6 +17,7 @@ import android.widget.TextView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.sharkit.nextmonday.Exception.CustomToastException;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.Days;
@@ -32,7 +31,7 @@ import java.util.Calendar;
 
 public class DiaryList extends BaseExpandableListAdapter {
 
-    public LinearLayout linearLayout;
+    public LinearLayout linearLayout, lin;
     public TextView day, number, month, before, after, text_target, time_target;
     public CheckBox status;
     public ImageView plus;
@@ -94,6 +93,9 @@ public class DiaryList extends BaseExpandableListAdapter {
         }
         findView(convertView);
 
+        if (SelectToday(mData.get(groupPosition).getNumber()) == groupPosition){
+            lin.setBackgroundResource(R.drawable.dairy_exp_list_task_color);
+        }
 
         NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
 
@@ -103,6 +105,14 @@ public class DiaryList extends BaseExpandableListAdapter {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (){
+                    try {
+                        throw new CustomToastException(mContext, "Нельзя задать задачу задним числом");
+                    } catch (CustomToastException e) {
+                        e.printStackTrace();
+                    }
+                    return;
+                }
                 Target.setDay(mDay.get(groupPosition).getDay());
                 Target.setMonth(mDay.get(groupPosition).getMonth());
                 Target.setYear(mDay.get(groupPosition).getYear());
@@ -207,6 +217,7 @@ public class DiaryList extends BaseExpandableListAdapter {
     }
 
     private void findView(View convertView) {
+        lin = convertView.findViewById(R.id.linear);
         linearLayout = convertView.findViewById(R.id.lin_xml);
         day = convertView.findViewById(R.id.day_xml);
         number = convertView.findViewById(R.id.num_x);
