@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/nav_change_target"
-        android:name="Fragments.FragmentDairyFour"
+        android:name="com.sharkit.nextmonday.ui.Diary.DiaryChangeTarget"
         tools:layout="@layout/fragment_dairy_four" />
 
     <fragment

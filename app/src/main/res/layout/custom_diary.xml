@@ -120,7 +120,7 @@
     </LinearLayout>
     <ImageView
         android:contentDescription="@string/plus2"
-        android:id="@+id/plus"
+        android:id="@+id/plus_xml"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="25dp"
