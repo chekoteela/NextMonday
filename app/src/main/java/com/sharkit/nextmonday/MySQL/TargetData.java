@@ -228,4 +228,10 @@ public class TargetData extends SQLiteOpenHelper {
 
         return targets;
     }
+    public void completeTarget(String time_alarm, boolean complete){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        db.execSQL("UPDATE " + TABLE + " SET " + COLUMN_STATUS + " = '" + complete + "' WHERE " + COLUMN_ALARM + " = '" + time_alarm + "'");
+        db.close();
+    }
 }

@@ -74,6 +74,9 @@ public class DiaryListFind extends BaseAdapter {
                return true;
             });
         });
+        status.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            data.completeTarget(mGroup.get(position).getTime_alarm(), isChecked);
+        });
 
         return convertView;
     }

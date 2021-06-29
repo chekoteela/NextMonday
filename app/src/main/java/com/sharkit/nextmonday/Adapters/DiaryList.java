@@ -93,6 +93,7 @@ public class DiaryList extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.custom_diary, null);
         }
         findView(convertView);
+
         NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
 
         number.setText(String.valueOf(mData.get(groupPosition).getNumber()));
@@ -110,6 +111,12 @@ public class DiaryList extends BaseExpandableListAdapter {
 
 
         return convertView;
+    }
+
+    private boolean isToday(int position) {
+        Calendar calendar = Calendar.getInstance();
+
+        return true;
     }
 
 
@@ -132,27 +139,24 @@ public class DiaryList extends BaseExpandableListAdapter {
         }
         status.setChecked(mGroup.get(groupPosition).get(childPosition).isStatus());
 
-        item.setOnCreateContextMenuListener(new View.OnCreateContextMenuListener() {
-            @Override
-            public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-                menu.add("Изменить").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        Target.setDay(mDay.get(groupPosition).getDay());
-                        Target.setMonth(mDay.get(groupPosition).getMonth());
-                        Target.setYear(mDay.get(groupPosition).getYear());
-                        Target.setTimeForChange(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
-                        navController.navigate(R.id.nav_change_target);
-                        return true;
-                    }
-                });
-                menu.add("Удалить").setOnMenuItemClickListener(item1 -> {
-                    data.deleteItemForDate(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
-                    return true;
-                });
-            }
+        item.setOnCreateContextMenuListener((menu, v, menuInfo) -> {
+            menu.add("Изменить").setOnMenuItemClickListener(item -> {
+                Target.setDay(mDay.get(groupPosition).getDay());
+                Target.setMonth(mDay.get(groupPosition).getMonth());
+                Target.setYear(mDay.get(groupPosition).getYear());
+                Target.setTimeForChange(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
+                navController.navigate(R.id.nav_change_target);
+                return true;
+            });
+            menu.add("Удалить").setOnMenuItemClickListener(item1 -> {
+                data.deleteItemForDate(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
+                return true;
+            });
         });
 
+        status.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            data.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked);
+        });
         return convertView;
     }
 
