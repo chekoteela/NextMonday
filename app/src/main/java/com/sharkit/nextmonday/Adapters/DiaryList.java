@@ -94,6 +94,7 @@ public class DiaryList extends BaseExpandableListAdapter {
         }
         findView(convertView);
 
+
         NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
 
         number.setText(String.valueOf(mData.get(groupPosition).getNumber()));
@@ -167,6 +168,43 @@ public class DiaryList extends BaseExpandableListAdapter {
         return true;
     }
 
+    public int  SelectToday (int day){
+        int position = -1;
+        Calendar calendar = Calendar.getInstance();
+
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY &&
+                day == calendar.get(Calendar.DAY_OF_MONTH)){
+            position = 0;
+        }
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY &&
+                day == calendar.get(Calendar.DAY_OF_MONTH)){
+            position = 1;
+        }
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY &&
+                day == calendar.get(Calendar.DAY_OF_MONTH)){
+            position = 2;
+        }
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY &&
+                day == calendar.get(Calendar.DAY_OF_MONTH)){
+
+            position = 3;
+        }
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY &&
+                day == calendar.get(Calendar.DAY_OF_MONTH)){
+            position = 4;
+        }
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY &&
+                day == calendar.get(Calendar.DAY_OF_MONTH)){
+            position = 5;
+        }
+        if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY &&
+                day == calendar.get(Calendar.DAY_OF_MONTH)){
+            position = 6;
+        }
+
+        return position;
+
+    }
 
     private void findView(View convertView) {
         linearLayout = convertView.findViewById(R.id.lin_xml);
