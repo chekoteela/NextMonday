@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class DiaryFindAllTarget extends Fragment {
     private EditText text;
-    private ListView listView;
+    private ExpandableListView listView;
     private ArrayList<MyTarget> targets;
 
     @Nullable

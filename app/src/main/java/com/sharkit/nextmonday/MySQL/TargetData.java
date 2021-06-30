@@ -9,6 +9,7 @@ import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.Users.MyTarget;
 import com.sharkit.nextmonday.Users.Target;
 import com.sharkit.nextmonday.Users.Users;
@@ -89,6 +90,7 @@ public class TargetData extends SQLiteOpenHelper {
                 target.getTime_alarm() + "');");
         db.close();
     }
+
     public ArrayList<MyTarget> findAllTarget (ArrayList<MyTarget> targets, String time){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +"' AND " + COLUMN_DATE + " = '" + time + "'", null);
@@ -113,6 +115,12 @@ public class TargetData extends SQLiteOpenHelper {
         db.close();
 
         return targets;
+    }
+    public int getCompleteCount(String date){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
+                COLUMN_DATE + " = '" + date + "' AND " + COLUMN_STATUS + " = '" + true + "'", null);
+         return cursor.getCount();
     }
 
     public int getCount(){
@@ -192,7 +200,7 @@ public class TargetData extends SQLiteOpenHelper {
             target.setDate(cursor.getString(12));
             target.setTime_alarm(cursor.getString(13));
             targets.add(target);
-            Log.d(TAG, cursor.getCount()  +""  );
+
         }
         cursor.close();
         db.close();
@@ -233,5 +241,29 @@ public class TargetData extends SQLiteOpenHelper {
 
         db.execSQL("UPDATE " + TABLE + " SET " + COLUMN_STATUS + " = '" + complete + "' WHERE " + COLUMN_ALARM + " = '" + time_alarm + "'");
         db.close();
+    }
+
+    public void synchronised(){
+        TargetEntity entity = new TargetEntity();
+        SQLiteDatabase db = this.getReadableDatabase();
+        @SuppressLint("Recycle")
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "'", null);
+        while (cursor.moveToNext()) {
+            MyTarget target = new MyTarget();
+            target.setName(cursor.getString(1));
+            target.setStatus(Boolean.parseBoolean(cursor.getString(2)));
+            target.setRepeat_sunday(Boolean.parseBoolean(cursor.getString(3)));
+            target.setRepeat_saturday(Boolean.parseBoolean(cursor.getString(4)));
+            target.setRepeat_friday(Boolean.parseBoolean(cursor.getString(5)));
+            target.setRepeat_thursday(Boolean.parseBoolean(cursor.getString(6)));
+            target.setRepeat_wednesday(Boolean.parseBoolean(cursor.getString(7)));
+            target.setRepeat_tuesday(Boolean.parseBoolean(cursor.getString(8)));
+            target.setRepeat_monday(Boolean.parseBoolean(cursor.getString(9)));
+            target.setRepeat(cursor.getString(10));
+            target.setDescription(cursor.getString(11));
+            target.setDate(cursor.getString(12));
+            target.setTime_alarm(cursor.getString(13));
+            entity.createNewTarget(target);
+        }
     }
 }

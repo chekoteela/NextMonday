@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.Adapters;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import androidx.navigation.Navigation;
 import com.sharkit.nextmonday.Exception.CustomToastException;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.Users.DayOfWeek;
 import com.sharkit.nextmonday.Users.Days;
 import com.sharkit.nextmonday.Users.MyTarget;
 import com.sharkit.nextmonday.Users.Target;
@@ -85,6 +87,7 @@ public class DiaryList extends BaseExpandableListAdapter {
         return true;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if (convertView == null){
@@ -98,25 +101,21 @@ public class DiaryList extends BaseExpandableListAdapter {
         }
 
         NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
-
+        progressBar.setProgress(setProgress(mGroup.get(groupPosition).size(), mData.get(groupPosition).getBefore()));
         number.setText(String.valueOf(mData.get(groupPosition).getNumber()));
         month.setText(mData.get(groupPosition).getMonth());
         day.setText(mData.get(groupPosition).getDay());
-        plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (){
-                    try {
-                        throw new CustomToastException(mContext, "Нельзя задать задачу задним числом");
-                    } catch (CustomToastException e) {
-                        e.printStackTrace();
-                    }
-                    return;
-                }
-                Target.setDay(mDay.get(groupPosition).getDay());
-                Target.setMonth(mDay.get(groupPosition).getMonth());
-                Target.setYear(mDay.get(groupPosition).getYear());
+        after.setText(String.valueOf(mGroup.get(groupPosition).size()));
+        before.setText(String.valueOf(mData.get(groupPosition).getBefore()));
+        plus.setOnClickListener(v -> {
+            if (isValidation(groupPosition)) {
                 navController.navigate(R.id.nav_plus_target);
+            }else {
+                try {
+                    throw new CustomToastException(mContext, "Нельзя задать задачу задним числом");
+                } catch (CustomToastException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -124,14 +123,33 @@ public class DiaryList extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    private boolean isToday(int position) {
-        Calendar calendar = Calendar.getInstance();
+        private int setProgress(int after, int before) {
 
-        return true;
+        int a = 0;
+        if (before != 0) {
+            a =  ( (100 * before) / after);
+        }
+        return a;
     }
 
 
-    @SuppressLint("SimpleDateFormat")
+    private boolean isValidation(int groupPosition){
+        Calendar instance = Calendar.getInstance();
+        instance.setTimeInMillis(DayOfWeek.getMillis());
+        instance.set(mDay.get(groupPosition).getYear(),
+                mDay.get(groupPosition).getMonth(),
+                mDay.get(groupPosition).getDay(), 23,59,59);
+        Calendar calendar = Calendar.getInstance();
+        if (calendar.getTimeInMillis() > instance.getTimeInMillis()){
+
+          return false;
+        }
+        Target.setDay(mDay.get(groupPosition).getDay());
+        Target.setMonth(mDay.get(groupPosition).getMonth());
+        Target.setYear(mDay.get(groupPosition).getYear());
+        return true;
+    }
+    @SuppressLint({"SimpleDateFormat", "InflateParams"})
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -149,7 +167,6 @@ public class DiaryList extends BaseExpandableListAdapter {
             time_target.setText("--:--");
         }
         status.setChecked(mGroup.get(groupPosition).get(childPosition).isStatus());
-
         item.setOnCreateContextMenuListener((menu, v, menuInfo) -> {
             menu.add("Изменить").setOnMenuItemClickListener(item -> {
                 Target.setDay(mDay.get(groupPosition).getDay());
@@ -161,12 +178,14 @@ public class DiaryList extends BaseExpandableListAdapter {
             });
             menu.add("Удалить").setOnMenuItemClickListener(item1 -> {
                 data.deleteItemForDate(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
+                navController.navigate(R.id.nav_diary);
                 return true;
             });
         });
 
         status.setOnCheckedChangeListener((buttonView, isChecked) -> {
             data.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked);
+            navController.navigate(R.id.nav_diary);
         });
         return convertView;
     }
@@ -233,4 +252,8 @@ public class DiaryList extends BaseExpandableListAdapter {
         item = convertView.findViewById(R.id.create_child_item);
     }
 
+    @Override
+    public void registerDataSetObserver(DataSetObserver observer) {
+        super.registerDataSetObserver(observer);
+    }
 }

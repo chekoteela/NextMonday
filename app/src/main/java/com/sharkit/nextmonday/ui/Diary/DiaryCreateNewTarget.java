@@ -3,34 +3,36 @@ package com.sharkit.nextmonday.ui.Diary;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
-import android.content.DialogInterface;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Switch;
-import android.widget.TimePicker;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
+import com.sharkit.nextmonday.Exception.CustomToastComplete;
 import com.sharkit.nextmonday.Exception.CustomToastException;
+import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.MyTarget;
 import com.sharkit.nextmonday.Users.Target;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class DiaryCreateNewTarget extends Fragment{
 
@@ -83,7 +85,7 @@ public class DiaryCreateNewTarget extends Fragment{
             if (!repeat.isChecked() && !take_time.isChecked()){
                 myTarget.setRepeat("one more time");
             }
-//            myTarget.setDescription();       add description field
+            myTarget.setDescription("");
             myTarget.setName(text_target.getText().toString());
         if (minutes == -1 && hour == -1){
             calendar.set(Target.getYear(),
@@ -107,8 +109,18 @@ public class DiaryCreateNewTarget extends Fragment{
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
             myTarget.setDate(dateFormat.format(calendar.getTimeInMillis()));
-        TargetData targetData = new TargetData(getContext());
-        targetData.addNewTarget(myTarget);
+            TargetData targetData = new TargetData(getContext());
+            TargetEntity targetEntity = new TargetEntity();
+            targetEntity.createNewTarget(myTarget);
+            targetData.addNewTarget(myTarget);
+            @SuppressLint("UseRequireInsteadOfGet")
+            NavController navController = Navigation.findNavController(Objects.requireNonNull(getActivity()), R.id.nav_host_fragment);
+            navController.navigate(R.id.nav_diary);
+            try {
+                throw new CustomToastComplete(getContext(), "Задача успешно обновлена");
+            } catch (CustomToastComplete customToastComplete) {
+                customToastComplete.printStackTrace();
+            }
         });
     }
 
@@ -188,20 +200,14 @@ public class DiaryCreateNewTarget extends Fragment{
     }
 
     private void createTimePicker() {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                hour = hourOfDay;
-                minutes = minute;
-            }
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hourOfDay, minute) -> {
+            hour = hourOfDay;
+            minutes = minute;
         }, hour, minutes, true);
-        timePickerDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                hour = -1;
-                minutes = -1;
-                take_time.setChecked(false);
-            }
+        timePickerDialog.setOnCancelListener(dialog -> {
+            hour = -1;
+            minutes = -1;
+            take_time.setChecked(false);
         });
         timePickerDialog.show();
     }

@@ -38,7 +38,7 @@
     </LinearLayout>
 
 
-    <ListView
+    <ExpandableListView
 
         android:id="@+id/listFind"
         android:layout_width="match_parent"

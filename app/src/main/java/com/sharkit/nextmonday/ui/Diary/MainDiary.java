@@ -3,7 +3,6 @@ package com.sharkit.nextmonday.ui.Diary;
 import android.annotation.SuppressLint;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +11,14 @@ import android.widget.ExpandableListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.Adapters.DiaryList;
-import com.sharkit.nextmonday.MySQL.DataBasePFC;
+import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.DayOfWeek;
 import com.sharkit.nextmonday.Users.Days;
 import com.sharkit.nextmonday.Users.MyTarget;
-import com.sharkit.nextmonday.Users.Target;
 import com.sharkit.nextmonday.Users.Week;
 
 import org.jetbrains.annotations.NotNull;
@@ -32,15 +28,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainDiary extends Fragment {
-    private final String TAG = "qwerty";
-    private ArrayList<MyTarget> targets;
     private ArrayList<Week> dataWeek;
     private ArrayList<Days> day;
-    private ArrayList<ArrayList<MyTarget>> allTarget;
     private ExpandableListView expandableListView;
-    private  Calendar calendar;
-    private SQLiteDatabase db;
     private TargetData targetData;
+    private DiaryList diaryList;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -49,19 +41,27 @@ public class MainDiary extends Fragment {
       View root = inflater.inflate(R.layout.fragment_dairy,container, false );
       findView(root);
         targetData = new TargetData(getContext());
-        db = targetData.getReadableDatabase();
+        SQLiteDatabase db = targetData.getReadableDatabase();
         targetData.onCreate(db);
+        synchronised();
       crateListAdapter();
 
         return root;
+    }
+
+    private void synchronised() {
+        TargetEntity entity = new TargetEntity();
+        entity.synchronisedToFirestore(getContext());
+        TargetData data = new TargetData(getContext());
+        data.synchronised();
     }
 
     private void findView(View root) {
         expandableListView = root.findViewById(R.id.expListView);
     }
 
-    private void crateListAdapter() {
-        allTarget = new ArrayList<>();
+    public void crateListAdapter() {
+        ArrayList<ArrayList<MyTarget>> allTarget = new ArrayList<>();
         dataWeek = new ArrayList<>();
         day = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
@@ -74,6 +74,7 @@ public class MainDiary extends Fragment {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
         }
 
+        ArrayList<MyTarget> targets;
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY){
             targets = new ArrayList<>();
             Week week = new Week();
@@ -88,24 +89,34 @@ public class MainDiary extends Fragment {
         writeDate(days,week,calendar);
         allTarget.add(listTarget(targets, dateFormat.format(calendar.getTimeInMillis())));
 
-        DiaryList diaryList = new DiaryList(getContext(), allTarget, dataWeek, day);
+        diaryList = new DiaryList(getContext(), allTarget, dataWeek, day);
         diaryList.notifyDataSetChanged();
         expandableListView.setAdapter(diaryList);
 
 
+
+    }
+    public void update(){
+        diaryList.notifyDataSetChanged();
     }
 
 
     private void writeDate(Days days, Week week, Calendar calendar) {
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         days.setDay(calendar.get(Calendar.DATE));
         days.setMonth(calendar.get(Calendar.MONTH));
         days.setYear(calendar.get(Calendar.YEAR));
         week.setDay(setNameDay(calendar.get(Calendar.DAY_OF_WEEK)));
         week.setMonth(setNameMonth(calendar.get(Calendar.MONTH)));
         week.setNumber(calendar.get(Calendar.DATE));
+        week.setBefore(targetData.getCompleteCount(dateFormat.format(calendar.getTimeInMillis())));
+
         day.add(days);
         dataWeek.add(week);
+
     }
+
 
     private String setNameDay(int i) {
         switch (i){

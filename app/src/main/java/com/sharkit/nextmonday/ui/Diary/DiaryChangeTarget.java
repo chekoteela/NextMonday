@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.Exception.CustomToastException;
+import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.MyTarget;
@@ -112,6 +113,9 @@ public class DiaryChangeTarget extends Fragment {
         }
         newTarget.setDate(dateFormat.format(calendar.getTimeInMillis()));
         TargetData targetData = new TargetData(getContext());
+        TargetEntity entity = new TargetEntity();
+        //додати провірку на інтернет
+        entity.updateTarget(Target.getTimeForChange(), newTarget);
         targetData.updateItemForDate(Target.getTimeForChange(),newTarget);
 
     }

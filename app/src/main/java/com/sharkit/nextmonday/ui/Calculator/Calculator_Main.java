@@ -7,32 +7,25 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
-
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -47,12 +40,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.michaldrabik.tapbarmenulib.TapBarMenu;
 import com.progress.progressview.ProgressView;
 import com.sharkit.nextmonday.MySQL.LinkRation;
 import com.sharkit.nextmonday.MySQL.MyWeight;
@@ -65,27 +55,19 @@ import com.sharkit.nextmonday.variables.WeightV;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.nio.channels.FileLock;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.stream.IntStream;
 
-import kotlin.jvm.internal.markers.KMappedMarker;
 import soup.neumorphism.NeumorphCardView;
 
-import static android.icu.lang.UCharacter.IndicPositionalCategory.BOTTOM_AND_RIGHT;
-import static android.icu.lang.UCharacter.IndicPositionalCategory.RIGHT;
 import static android.view.Gravity.BOTTOM;
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.CENTER_HORIZONTAL;
-import static android.view.Gravity.CENTER_VERTICAL;
 import static android.view.Gravity.END;
-import static android.view.TouchDelegate.ABOVE;
-import static android.view.TouchDelegate.BELOW;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Calculator_Main extends Fragment implements View.OnClickListener{
