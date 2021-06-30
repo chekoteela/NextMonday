@@ -28,6 +28,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.sharkit.nextmonday.Adapters.MyFindFoodAdaptor;
+import com.sharkit.nextmonday.Configuration.CaptureAct;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
 import com.sharkit.nextmonday.MySQL.FavoriteFood;
 import com.sharkit.nextmonday.R;

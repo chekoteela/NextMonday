@@ -17,6 +17,7 @@ import com.sharkit.nextmonday.Users.Week;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class TargetData extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "UserTarget.db"; // название бд
@@ -63,7 +64,7 @@ public class TargetData extends SQLiteOpenHelper {
                 ""+COLUMN_REPEAT_FRIDAY+" BOOL, "+COLUMN_REPEAT_THURSDAY+" BOOL, " +
                 ""+COLUMN_REPEAT_WEDNESDAY+" BOOL, "+COLUMN_REPEAT_TUESDAY+" BOOL," +
                 ""+COLUMN_REPEAT_MONDAY+" BOOL, "+COLUMN_REPEAT+" TEXT, " +
-                ""+COLUMN_DESCRIPTION+" TEXT, " +COLUMN_DATE+" TEXT, "+ COLUMN_ALARM+" TEXT UNIQUE)");
+                ""+COLUMN_DESCRIPTION+" TEXT, " +COLUMN_DATE+" TEXT, "+ COLUMN_ALARM+" INTEGER UNIQUE)");
     }
 
     @Override
@@ -88,7 +89,7 @@ public class TargetData extends SQLiteOpenHelper {
                 target.getDescription() + "','" +
                 target.getDate() + "','" +
                 target.getTime_alarm() + "');");
-        db.close();
+//        db.close();
     }
 
     public ArrayList<MyTarget> findAllTarget (ArrayList<MyTarget> targets, String time){
@@ -108,11 +109,11 @@ public class TargetData extends SQLiteOpenHelper {
          target.setRepeat(cursor.getString(10));
          target.setDescription(cursor.getString(11));
          target.setDate(cursor.getString(12));
-         target.setTime_alarm(cursor.getString(13));
+         target.setTime_alarm(cursor.getLong(13));
          targets.add(target);
         }
-        cursor.close();
-        db.close();
+//        cursor.close();
+//        db.close();
 
         return targets;
     }
@@ -130,13 +131,13 @@ public class TargetData extends SQLiteOpenHelper {
     }
 
 
-    public void deleteItemForDate(String time_alarm) {
+    public void deleteItemForDate(Long time_alarm) {
         SQLiteDatabase db = this.getReadableDatabase();
         db.execSQL("DELETE FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + time_alarm + "'");
-        db.close();
+//        db.close();
     }
 
-    public MyTarget findItemForDate(String date){
+    public MyTarget findItemForDate(Long date){
         SQLiteDatabase db = this.getReadableDatabase();
         MyTarget target = new MyTarget();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'", null);
@@ -154,14 +155,14 @@ public class TargetData extends SQLiteOpenHelper {
             target.setRepeat(cursor.getString(10));
             target.setDescription(cursor.getString(11));
             target.setDate(cursor.getString(12));
-            target.setTime_alarm(cursor.getString(13));
+            target.setTime_alarm(cursor.getLong(13));
         }
-        cursor.close();
-        db.close();
+//        cursor.close();
+//        db.close();
         return target;
     }
 
-    public void updateItemForDate(String timeForChange, MyTarget target) {
+    public void updateItemForDate(Long timeForChange, MyTarget target) {
         SQLiteDatabase db = this.getReadableDatabase();
         db.execSQL("UPDATE " + TABLE + " SET " +
                 COLUMN_TEXT_TARGET + " = '" + target.getName() + "' , " +
@@ -178,7 +179,7 @@ public class TargetData extends SQLiteOpenHelper {
                 COLUMN_ALARM + " = '" + target.getTime_alarm() + "' WHERE " +
                 COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + timeForChange + "'"
         );
-        db.close();
+//        db.close();
     }
 
     public ArrayList<MyTarget> findAllComplete(ArrayList<MyTarget> targets) {
@@ -198,12 +199,12 @@ public class TargetData extends SQLiteOpenHelper {
             target.setRepeat(cursor.getString(10));
             target.setDescription(cursor.getString(11));
             target.setDate(cursor.getString(12));
-            target.setTime_alarm(cursor.getString(13));
+            target.setTime_alarm(cursor.getLong(13));
             targets.add(target);
 
         }
-        cursor.close();
-        db.close();
+//        cursor.close();
+//        db.close();
 
         return targets;
     }
@@ -227,16 +228,16 @@ public class TargetData extends SQLiteOpenHelper {
             target.setRepeat(cursor.getString(10));
             target.setDescription(cursor.getString(11));
             target.setDate(cursor.getString(12));
-            target.setTime_alarm(cursor.getString(13));
+            target.setTime_alarm(cursor.getLong(13));
             targets.add(target);
             Log.d(TAG, cursor.getCount()  +""  );
         }
-        cursor.close();
-        db.close();
+//        cursor.close();
+//        db.close();
 
         return targets;
     }
-    public void completeTarget(String time_alarm, boolean complete){
+    public void completeTarget(Long time_alarm, boolean complete){
         SQLiteDatabase db = this.getReadableDatabase();
 
         db.execSQL("UPDATE " + TABLE + " SET " + COLUMN_STATUS + " = '" + complete + "' WHERE " + COLUMN_ALARM + " = '" + time_alarm + "'");
@@ -262,8 +263,22 @@ public class TargetData extends SQLiteOpenHelper {
             target.setRepeat(cursor.getString(10));
             target.setDescription(cursor.getString(11));
             target.setDate(cursor.getString(12));
-            target.setTime_alarm(cursor.getString(13));
+            target.setTime_alarm(cursor.getLong(13));
             entity.createNewTarget(target);
         }
     }
+    public void deleteAllSimilarTarget(String name){
+        SQLiteDatabase db = this.getReadableDatabase();
+        TargetEntity entity = new TargetEntity();
+
+        @SuppressLint("Recycle")
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_TEXT_TARGET + " = '" + name + "' AND " +
+                COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_REPEAT + " = 'every day' OR " + COLUMN_REPEAT + " = 'select day'",null);
+        while (cursor.moveToNext()){
+            deleteItemForDate(cursor.getLong(13));
+            entity.deleteTarget(cursor.getLong(13));
+        }
+
+    }
+
 }

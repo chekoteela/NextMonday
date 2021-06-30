@@ -1,13 +1,17 @@
 package com.sharkit.nextmonday.Users;
 
 public class MyTarget {
-    private String date, time_alarm, name, description, repeat;
+    private String date, name, description, repeat;
     private boolean status, repeat_monday, repeat_tuesday, repeat_wednesday,
             repeat_thursday, repeat_friday, repeat_saturday, repeat_sunday;
+    private Long time_alarm;
 
-
-    public String getTime_alarm() {
+    public Long getTime_alarm() {
         return time_alarm;
+    }
+
+    public void setTime_alarm(Long time_alarm) {
+        this.time_alarm = time_alarm;
     }
 
     public String getDate() {
@@ -16,10 +20,6 @@ public class MyTarget {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public void setTime_alarm(String time_alarm) {
-        this.time_alarm = time_alarm;
     }
 
     public String getName() {

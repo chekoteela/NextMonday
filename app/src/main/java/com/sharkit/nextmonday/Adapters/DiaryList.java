@@ -2,8 +2,10 @@ package com.sharkit.nextmonday.Adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
-import android.database.DataSetObserver;
+import android.content.DialogInterface;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,11 @@ import android.widget.TextView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.sharkit.nextmonday.Configuration.Configuration;
+import com.sharkit.nextmonday.Exception.CustomToastComplete;
 import com.sharkit.nextmonday.Exception.CustomToastException;
+import com.sharkit.nextmonday.Exception.InternetException;
+import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.DayOfWeek;
@@ -118,13 +124,10 @@ public class DiaryList extends BaseExpandableListAdapter {
                 }
             }
         });
-
-
         return convertView;
     }
 
         private int setProgress(int after, int before) {
-
         int a = 0;
         if (before != 0) {
             a =  ( (100 * before) / after);
@@ -159,37 +162,101 @@ public class DiaryList extends BaseExpandableListAdapter {
         NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
         Calendar calendar = Calendar.getInstance();
-        TargetData data = new TargetData(mContext);
+
         text_target.setText(mGroup.get(groupPosition).get(childPosition).getName());
 
-        time_target.setText(dateFormat.format(Long.parseLong(mGroup.get(groupPosition).get(childPosition).getTime_alarm())));
-        if (calendar.getTimeInMillis() > Long.parseLong(mGroup.get(groupPosition).get(childPosition).getTime_alarm())){
+        time_target.setText(dateFormat.format(mGroup.get(groupPosition).get(childPosition).getTime_alarm()));
+        if (calendar.getTimeInMillis() > mGroup.get(groupPosition).get(childPosition).getTime_alarm()){
             time_target.setText("--:--");
         }
         status.setChecked(mGroup.get(groupPosition).get(childPosition).isStatus());
-        item.setOnCreateContextMenuListener((menu, v, menuInfo) -> {
-            menu.add("Изменить").setOnMenuItemClickListener(item -> {
-                Target.setDay(mDay.get(groupPosition).getDay());
-                Target.setMonth(mDay.get(groupPosition).getMonth());
-                Target.setYear(mDay.get(groupPosition).getYear());
-                Target.setTimeForChange(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
-                navController.navigate(R.id.nav_change_target);
-                return true;
-            });
-            menu.add("Удалить").setOnMenuItemClickListener(item1 -> {
-                data.deleteItemForDate(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
-                navController.navigate(R.id.nav_diary);
-                return true;
-            });
-        });
+
+        item.setOnCreateContextMenuListener((menu, v, menuInfo) -> createContextMenu(menu, groupPosition,childPosition, navController));
 
         status.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            data.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked);
-            navController.navigate(R.id.nav_diary);
+            if (!Configuration.hasConnection(mContext)){
+                try {
+                    throw new InternetException(mContext);
+                } catch (InternetException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                TargetData data = new TargetData(mContext);
+                TargetEntity entity= new TargetEntity();
+                entity.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked);
+                data.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked);
+                navController.navigate(R.id.nav_diary);
+            }
         });
         return convertView;
     }
 
+    private void createContextMenu(ContextMenu menu, int groupPosition, int childPosition, NavController navController) {
+        menu.add("Изменить").setOnMenuItemClickListener(item -> {
+            Target.setDay(mDay.get(groupPosition).getDay());
+            Target.setMonth(mDay.get(groupPosition).getMonth());
+            Target.setYear(mDay.get(groupPosition).getYear());
+            Target.setTimeForChange(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
+            navController.navigate(R.id.nav_change_target);
+            return true;
+        });
+        menu.add("Удалить").setOnMenuItemClickListener(item1 -> {
+            if (Configuration.hasConnection(mContext)) {
+                if (mGroup.get(groupPosition).get(childPosition).isStatus()){
+                    try {
+                        throw new CustomToastException(mContext, "Невозможно удалить выполнену задачу");
+                    } catch (CustomToastException e) {
+                        e.printStackTrace();
+                    }
+                }else if (!mGroup.get(groupPosition).get(childPosition).getRepeat().equals("every day") ||
+                        !mGroup.get(groupPosition).get(childPosition).getRepeat().equals("select day")){
+
+                    createAlertDelete(groupPosition, childPosition);
+                }else {
+                    TargetData data = new TargetData(mContext);
+                    data.deleteItemForDate(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
+                    TargetEntity entity = new TargetEntity();
+                    entity.deleteTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
+                }
+            }
+            navController.navigate(R.id.nav_diary);
+            return true;
+        });
+    }
+
+    @SuppressLint("InflateParams")
+    private void createAlertDelete(int i, int j) {
+        NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(mContext, R.style.CustomAlertDialog);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        View view = inflater.inflate(R.layout.calculator_alert_exist, null);
+        TargetData data = new TargetData(mContext);
+        TargetEntity entity = new TargetEntity();
+        TextView textView = view.findViewById(R.id.text_xml);
+        textView.setText("Как именно вы хотите удалить задачу");
+        dialog.setPositiveButton("Удалить только эту", (dialog1, which) -> {
+            data.deleteItemForDate(mGroup.get(i).get(j).getTime_alarm());
+            entity.deleteTarget(mGroup.get(i).get(j).getTime_alarm());
+            try {
+                throw new CustomToastComplete(mContext,"Задача успешно удалена");
+            } catch (CustomToastComplete customToastComplete) {
+                customToastComplete.printStackTrace();
+            }
+            navController.navigate(R.id.nav_diary);
+        });
+        dialog.setNegativeButton("Удалить все подобные", (dialog1, which) -> {
+            data.deleteAllSimilarTarget(mGroup.get(i).get(j).getName());
+            try {
+                throw new CustomToastComplete(mContext,"Все Задачи успешно удалены");
+            } catch (CustomToastComplete customToastComplete) {
+                customToastComplete.printStackTrace();
+            }
+            navController.navigate(R.id.nav_diary);
+        });
+        dialog.setOnCancelListener(DialogInterface::dismiss);
+        dialog.setView(view);
+        dialog.show();
+    }
 
 
     @Override
@@ -252,8 +319,4 @@ public class DiaryList extends BaseExpandableListAdapter {
         item = convertView.findViewById(R.id.create_child_item);
     }
 
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {
-        super.registerDataSetObserver(observer);
-    }
 }

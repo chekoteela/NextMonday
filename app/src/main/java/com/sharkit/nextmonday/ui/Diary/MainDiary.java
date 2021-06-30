@@ -43,7 +43,7 @@ public class MainDiary extends Fragment {
         targetData = new TargetData(getContext());
         SQLiteDatabase db = targetData.getReadableDatabase();
         targetData.onCreate(db);
-        synchronised();
+//        synchronised();
       crateListAdapter();
 
         return root;

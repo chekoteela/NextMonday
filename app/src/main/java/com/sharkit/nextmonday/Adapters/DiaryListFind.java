@@ -88,10 +88,10 @@ public class DiaryListFind extends BaseExpandableListAdapter {
         status.setChecked(mGroup.get(groupPosition).isStatus());
         text_target.setText(mGroup.get(groupPosition).getName());
         date_text.setText(mGroup.get(groupPosition).getDate());
-        if (calendar.getTimeInMillis() > Long.parseLong(mGroup.get(groupPosition).getTime_alarm())){
+        if (calendar.getTimeInMillis() > mGroup.get(groupPosition).getTime_alarm()){
             time_text.setText("--:--");
         }else {
-            time_text.setText(timeFormat.format(Long.parseLong(mGroup.get(groupPosition).getTime_alarm())));
+            time_text.setText(timeFormat.format(mGroup.get(groupPosition).getTime_alarm()));
         }
         status.setOnCheckedChangeListener((buttonView, isChecked) ->{
             data.completeTarget(mGroup.get(groupPosition).getTime_alarm(), isChecked);

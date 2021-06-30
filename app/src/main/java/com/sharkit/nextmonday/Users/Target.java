@@ -2,13 +2,14 @@ package com.sharkit.nextmonday.Users;
 
 public class Target {
     private static int year, day, month;
-    public static String  moderator, timeForChange;
+    public static String  moderator;
+    private static Long timeForChange;
 
-    public static String getTimeForChange() {
+    public static Long getTimeForChange() {
         return timeForChange;
     }
 
-    public static void setTimeForChange(String timeForChange) {
+    public static void setTimeForChange(Long timeForChange) {
         Target.timeForChange = timeForChange;
     }
 

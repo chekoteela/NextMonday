@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.sharkit.nextmonday.Configuration.Configuration;
 import com.sharkit.nextmonday.Exception.CustomToastException;
 import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
@@ -77,11 +78,15 @@ public class DiaryChangeTarget extends Fragment {
             }
         });
         save.setOnClickListener(v -> {
-            saveChange();
+            try {
+                saveChange();
+            } catch (CustomToastException e) {
+                e.printStackTrace();
+            }
         });
     }
 
-    private void saveChange() {
+    private void saveChange() throws CustomToastException {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Calendar calendar = Calendar.getInstance();
@@ -96,7 +101,7 @@ public class DiaryChangeTarget extends Fragment {
             calendar.set(Target.getYear(),
                     Target.getMonth(),
                     Target.getDay());
-            newTarget.setTime_alarm(String.valueOf(instance.getTimeInMillis()));
+            newTarget.setTime_alarm(instance.getTimeInMillis());
         } else {
             calendar.set(Target.getYear(),
                     Target.getMonth(),
@@ -109,14 +114,18 @@ public class DiaryChangeTarget extends Fragment {
                 }
                 return;
             }
-            newTarget.setTime_alarm(String.valueOf(calendar.getTimeInMillis()));
+            newTarget.setTime_alarm(calendar.getTimeInMillis());
         }
         newTarget.setDate(dateFormat.format(calendar.getTimeInMillis()));
         TargetData targetData = new TargetData(getContext());
         TargetEntity entity = new TargetEntity();
-        //додати провірку на інтернет
-        entity.updateTarget(Target.getTimeForChange(), newTarget);
-        targetData.updateItemForDate(Target.getTimeForChange(),newTarget);
+
+        if (Configuration.hasConnection(getContext())) {
+            entity.updateTarget(Target.getTimeForChange(), newTarget);
+            targetData.updateItemForDate(Target.getTimeForChange(), newTarget);
+        }else {
+            throw new CustomToastException(getContext(), "Проверте интернет подключение");
+        }
 
     }
 
@@ -124,13 +133,13 @@ public class DiaryChangeTarget extends Fragment {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
         Calendar calendar = Calendar.getInstance();
-        if (calendar.getTimeInMillis() > Long.parseLong(target.getTime_alarm())){
+        if (calendar.getTimeInMillis() > target.getTime_alarm()){
             time.setText("--:--");
             newTarget.setTime_alarm(target.getTime_alarm());
             take_time.setChecked(false);
         }else {
             newTarget.setTime_alarm(target.getTime_alarm());
-            time.setText(dateFormat.format(Long.parseLong(target.getTime_alarm())));
+            time.setText(dateFormat.format(target.getTime_alarm()));
             take_time.setChecked(true);
         }
     }
@@ -248,7 +257,7 @@ public class DiaryChangeTarget extends Fragment {
             time.setText(format.format(calendar.getTimeInMillis()));
             hour = hourOfDay;
             minute = minute1;
-            newTarget.setTime_alarm(String.valueOf(calendar.getTimeInMillis()));
+            newTarget.setTime_alarm(calendar.getTimeInMillis());
         } ,hour, minute,true);
         dialog.setOnCancelListener(dialog1 -> {
             dialog1.dismiss();
