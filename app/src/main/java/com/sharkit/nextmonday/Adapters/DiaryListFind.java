@@ -94,7 +94,7 @@ public class DiaryListFind extends BaseExpandableListAdapter {
             time_text.setText(timeFormat.format(mGroup.get(groupPosition).getTime_alarm()));
         }
         status.setOnCheckedChangeListener((buttonView, isChecked) ->{
-            data.completeTarget(mGroup.get(groupPosition).getTime_alarm(), isChecked);
+            data.completeTarget(mGroup.get(groupPosition).getTime_alarm(), isChecked, mGroup.get(groupPosition).getDate());
             navController.navigate(R.id.nav_search);
         });
 

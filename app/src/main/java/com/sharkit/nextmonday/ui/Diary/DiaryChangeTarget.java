@@ -92,10 +92,13 @@ public class DiaryChangeTarget extends Fragment {
         Calendar calendar = Calendar.getInstance();
         Calendar instance = Calendar.getInstance();
 
-        if (!repeat.isChecked() && !take_time.isChecked()) {
-            newTarget.setRepeat("one more time");
+        if (!repeat.isChecked() && !take_time.isChecked()){
+            newTarget.setRepeat("one not time");
         }
-        //            myTarget.setDescription();       add description field
+        if (repeat.isChecked() && !take_time.isChecked()){
+            newTarget.setRepeat(newTarget.getRepeat()+ " not time");
+        }
+        newTarget.setDescription("");
         newTarget.setName(text_target.getText().toString());
         if (minute == -1 && hour == -1) {
             calendar.set(Target.getYear(),

@@ -84,7 +84,10 @@ public class DiaryCreateNewTarget extends Fragment{
             Calendar instance = Calendar.getInstance();
             Calendar calendar = Calendar.getInstance();
             if (!repeat.isChecked() && !take_time.isChecked()){
-                myTarget.setRepeat("one more time");
+                myTarget.setRepeat("one not time");
+            }
+            if (repeat.isChecked() && !take_time.isChecked()){
+                myTarget.setRepeat(myTarget.getRepeat()+ " not time");
             }
             myTarget.setDescription("");
             myTarget.setName(text_target.getText().toString());

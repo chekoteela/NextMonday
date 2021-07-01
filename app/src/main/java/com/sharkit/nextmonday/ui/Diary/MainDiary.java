@@ -43,7 +43,7 @@ public class MainDiary extends Fragment {
         targetData = new TargetData(getContext());
         SQLiteDatabase db = targetData.getReadableDatabase();
         targetData.onCreate(db);
-//        synchronised();
+        synchronised();
       crateListAdapter();
 
         return root;
@@ -53,6 +53,7 @@ public class MainDiary extends Fragment {
         TargetEntity entity = new TargetEntity();
         entity.synchronisedToFirestore(getContext());
         TargetData data = new TargetData(getContext());
+        data.findFromRepeat();
         data.synchronised();
     }
 
@@ -66,6 +67,7 @@ public class MainDiary extends Fragment {
         day = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(DayOfWeek.getMillis());
+        ArrayList<MyTarget> targets;
 
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
@@ -74,7 +76,6 @@ public class MainDiary extends Fragment {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
         }
 
-        ArrayList<MyTarget> targets;
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY){
             targets = new ArrayList<>();
             Week week = new Week();
@@ -96,6 +97,8 @@ public class MainDiary extends Fragment {
 
 
     }
+
+
     public void update(){
         diaryList.notifyDataSetChanged();
     }

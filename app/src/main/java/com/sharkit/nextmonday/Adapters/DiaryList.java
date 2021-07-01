@@ -184,7 +184,7 @@ public class DiaryList extends BaseExpandableListAdapter {
                 TargetData data = new TargetData(mContext);
                 TargetEntity entity= new TargetEntity();
                 entity.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked);
-                data.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked);
+                data.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked, mGroup.get(groupPosition).get(childPosition).getDate());
                 navController.navigate(R.id.nav_diary);
             }
         });
