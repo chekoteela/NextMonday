@@ -209,7 +209,7 @@ public class TargetData extends SQLiteOpenHelper {
 
         @SuppressLint("Recycle")
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_TEXT_TARGET + " = '" + name + "' AND " +
-                COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_REPEAT + " <> 'one not time' ",null);
+                COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_REPEAT + " <> 'one not time' AND " + COLUMN_REPEAT + " <> 'one with time'",null);
         while (cursor.moveToNext()){
             deleteItemForDate(cursor.getLong(13));
             entity.deleteTarget(cursor.getLong(13));
@@ -290,11 +290,11 @@ public class TargetData extends SQLiteOpenHelper {
         calendar.setTimeInMillis(time_alarm);
         switch (repeat){
             case "every day not time":
-            case "every day":
+            case "every day with time":
                time_alarm = calendar.getTimeInMillis() +  86400000;
                 break;
             case "select day not time":
-            case "select day":
+            case "select day with time":
                 time_alarm = calendar.getTimeInMillis() +  604800000;
                 break;
         }
@@ -317,5 +317,21 @@ public class TargetData extends SQLiteOpenHelper {
         target.setDate(cursor.getString(12));
         target.setTime_alarm(cursor.getLong(13));
     }
+   public void dropAnotherTarget(String text, String description){
+        Log.d(TAG, text +"  " + description);
+       SQLiteDatabase db = this.getReadableDatabase();
+       TargetEntity entity = new TargetEntity();
+
+       @SuppressLint("Recycle")
+       Cursor cursor = db.rawQuery("SELECT * FROM " +  TABLE + "  WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_TEXT_TARGET + " = '" + text + "' AND " + COLUMN_STATUS +
+               " = '" + false + "' AND " + COLUMN_DESCRIPTION + " = '" + description + "'", null);
+       while (cursor.moveToNext()){
+           Log.d("logo",cursor.getLong(13)+"");
+           //           entity.deleteTarget(cursor.getLong(13));
+//           db.execSQL("DELETE FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_TEXT_TARGET + " = '" + text + "' AND " + COLUMN_STATUS +
+//                   " = '" + false + "' AND " + COLUMN_DESCRIPTION + " = '" + description + "'");
+       }
+
+   }
 
 }

@@ -49,6 +49,7 @@ public class DiaryCreateNewTarget extends Fragment{
     public int hour = -1,
             minutes = -1;
     public final String TAG = "qwerty";
+    private String repeatString = "one", timeString = " not time";
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -83,12 +84,7 @@ public class DiaryCreateNewTarget extends Fragment{
         add.setOnClickListener(v -> {
             Calendar instance = Calendar.getInstance();
             Calendar calendar = Calendar.getInstance();
-            if (!repeat.isChecked() && !take_time.isChecked()){
-                myTarget.setRepeat("one not time");
-            }
-            if (repeat.isChecked() && !take_time.isChecked()){
-                myTarget.setRepeat(myTarget.getRepeat()+ " not time");
-            }
+            myTarget.setRepeat(repeatString + timeString);
             myTarget.setDescription("");
             myTarget.setName(text_target.getText().toString());
         if (minutes == -1 && hour == -1){
@@ -130,7 +126,7 @@ public class DiaryCreateNewTarget extends Fragment{
     }
 
     private void notRepeat() {
-        myTarget.setRepeat("not repeat");
+        repeatString = "one";
         myTarget.setRepeat_monday(false);
         myTarget.setRepeat_tuesday(false);
         myTarget.setRepeat_wednesday(false);
@@ -182,7 +178,7 @@ public class DiaryCreateNewTarget extends Fragment{
         sunday.isChecked()){
             everyDayRepeat();
         }else {
-            myTarget.setRepeat("select day");
+            repeatString = "select day";
             myTarget.setRepeat_sunday(sunday.isChecked());
             myTarget.setRepeat_saturday(saturday.isChecked());
             myTarget.setRepeat_friday(friday.isChecked());
@@ -194,7 +190,7 @@ public class DiaryCreateNewTarget extends Fragment{
     }
 
     private void everyDayRepeat() {
-        myTarget.setRepeat("every day");
+        repeatString = "every day";
         myTarget.setRepeat_monday(true);
         myTarget.setRepeat_tuesday(true);
         myTarget.setRepeat_wednesday(true);
@@ -208,10 +204,12 @@ public class DiaryCreateNewTarget extends Fragment{
         TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), (view, hourOfDay, minute) -> {
             hour = hourOfDay;
             minutes = minute;
+            timeString = " with time";
         }, hour, minutes, true);
         timePickerDialog.setOnCancelListener(dialog -> {
             hour = -1;
             minutes = -1;
+            timeString = " not time";
             take_time.setChecked(false);
         });
         timePickerDialog.show();

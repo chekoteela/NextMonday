@@ -6,10 +6,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.navigation.NavController;
@@ -18,24 +16,19 @@ import androidx.navigation.Navigation;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.MyTarget;
-import com.sharkit.nextmonday.Users.Target;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class DiaryListFind extends BaseExpandableListAdapter {
-    private Context mContext;
-    private ArrayList<MyTarget> mGroup;
+    private final Context mContext;
+    private final ArrayList<MyTarget> mGroup;
     private CheckBox status;
     private TextView text_target, time_text, date_text, description;
-    private RelativeLayout press;
     public DiaryListFind(Context mContext, ArrayList<MyTarget> mGroup) {
         this.mGroup = mGroup;
         this.mContext = mContext;
     }
-
-
 
     @Override
     public int getGroupCount() {
@@ -82,13 +75,14 @@ public class DiaryListFind extends BaseExpandableListAdapter {
         findView(convertView);
         NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
         TargetData data = new TargetData(mContext);
-        Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
         status.setChecked(mGroup.get(groupPosition).isStatus());
         text_target.setText(mGroup.get(groupPosition).getName());
         date_text.setText(mGroup.get(groupPosition).getDate());
-        if (calendar.getTimeInMillis() > mGroup.get(groupPosition).getTime_alarm()){
+        if (mGroup.get(groupPosition).getRepeat().equals("one not time") ||
+                mGroup.get(groupPosition).getRepeat().equals("select day not time") ||
+                mGroup.get(groupPosition).getRepeat().equals("every day not time")){
             time_text.setText("--:--");
         }else {
             time_text.setText(timeFormat.format(mGroup.get(groupPosition).getTime_alarm()));
@@ -124,7 +118,6 @@ public class DiaryListFind extends BaseExpandableListAdapter {
         return true;
     }
     private void findView(View convertView) {
-        press = convertView.findViewById(R.id.layout);
         status = convertView.findViewById(R.id.checkFind);
         text_target = convertView.findViewById(R.id.textT);
         time_text = convertView.findViewById(R.id.timeT);

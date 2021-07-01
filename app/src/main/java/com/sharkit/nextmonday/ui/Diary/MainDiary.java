@@ -93,9 +93,6 @@ public class MainDiary extends Fragment {
         diaryList = new DiaryList(getContext(), allTarget, dataWeek, day);
         diaryList.notifyDataSetChanged();
         expandableListView.setAdapter(diaryList);
-
-
-
     }
 
 

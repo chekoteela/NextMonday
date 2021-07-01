@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.ui.Diary;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.Configuration.Configuration;
 import com.sharkit.nextmonday.Exception.CustomToastException;
@@ -31,20 +34,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Objects;
 
 public class DiaryChangeTarget extends Fragment {
 
     private EditText text_target;
     private TextView repeat_text, time;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     private Switch take_time, repeat;
     private Button save;
-    private TargetData targetData;
     private MyTarget target, newTarget;
     private RadioButton select_day, every_day;
     private LinearLayout list;
     private CheckBox monday, tuesday, wednesday,
             thursday, friday, saturday, sunday;
     private int hour = -1, minute = -1;
+    private String r, t;
+
 
 
     @Nullable
@@ -55,9 +61,32 @@ public class DiaryChangeTarget extends Fragment {
         findView(root);
         writeToForm();
         onClickListener();
+        writeString();
         return root;
+    }
 
+    private void writeString() {
+        switch (target.getRepeat()){
 
+            case "one not time":
+                r = "one"; t = " not time";
+                break;
+            case "select day not time":
+                r = "select day"; t = " not time";
+                break;
+            case "one with time":
+                r = "one"; t = " with time";
+                break;
+            case "every day with time":
+                r = "every day"; t = " with time";
+                break;
+            case "every day not time":
+                r = "every day"; t = " not time";
+                break;
+            case "select day with time":
+                r = "select day"; t = " with time";
+                break;
+        }
     }
 
     private void onClickListener() {
@@ -78,26 +107,45 @@ public class DiaryChangeTarget extends Fragment {
             }
         });
         save.setOnClickListener(v -> {
-            try {
-                saveChange();
-            } catch (CustomToastException e) {
-                e.printStackTrace();
-            }
+            if ((r + t).equals("one not time")
+                    || (r + t).equals("one with time")){
+                try {
+                    saveChange();
+                } catch (CustomToastException e) {
+                    e.printStackTrace();
+                }
+            }else
+            createAlertSave();
         });
     }
 
+    @SuppressLint("InflateParams")
+    private void createAlertSave() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
+
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View view = inflater.inflate(R.layout.calculator_alert_exist, null);
+        TextView textView = view.findViewById(R.id.text_xml);
+        textView.setText("Изменения затронут все будущие подобные записи. \nПродолжить?");
+        builder.setPositiveButton("Продолжить",(dialog, which) -> {
+                try {
+                    saveChange();
+                } catch (CustomToastException e) {
+                    e.printStackTrace();
+                }
+        });
+        builder.setOnCancelListener(DialogInterface::dismiss);
+        builder.setView(view);
+        builder.show();
+    }
+
+    @SuppressLint("UseRequireInsteadOfGet")
     private void saveChange() throws CustomToastException {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         Calendar calendar = Calendar.getInstance();
         Calendar instance = Calendar.getInstance();
-
-        if (!repeat.isChecked() && !take_time.isChecked()){
-            newTarget.setRepeat("one not time");
-        }
-        if (repeat.isChecked() && !take_time.isChecked()){
-            newTarget.setRepeat(newTarget.getRepeat()+ " not time");
-        }
+        newTarget.setRepeat(r + t);
         newTarget.setDescription("");
         newTarget.setName(text_target.getText().toString());
         if (minute == -1 && hour == -1) {
@@ -120,14 +168,24 @@ public class DiaryChangeTarget extends Fragment {
             newTarget.setTime_alarm(calendar.getTimeInMillis());
         }
         newTarget.setDate(dateFormat.format(calendar.getTimeInMillis()));
+
         TargetData targetData = new TargetData(getContext());
         TargetEntity entity = new TargetEntity();
-
-        if (Configuration.hasConnection(getContext())) {
-            entity.updateTarget(Target.getTimeForChange(), newTarget);
-            targetData.updateItemForDate(Target.getTimeForChange(), newTarget);
+        if (Configuration.hasConnection(Objects.requireNonNull(getContext()))) {
+            if ((r + t).equals("one not time")
+                    || (r + t).equals("one with time")) {
+                entity.updateTarget(Target.getTimeForChange(), newTarget);
+                targetData.updateItemForDate(Target.getTimeForChange(), newTarget);
+            }else {
+                targetData.updateItemForDate(Target.getTimeForChange(), newTarget);
+                entity.updateTarget(Target.getTimeForChange(),newTarget);
+                targetData.deleteAllSimilarTarget(target.getName());
+            }
+            NavController navController = Navigation.findNavController(Objects.requireNonNull(getActivity()), R.id.nav_host_fragment);
+            navController.navigate(R.id.nav_diary);
         }else {
             throw new CustomToastException(getContext(), "Проверте интернет подключение");
+
         }
 
     }
@@ -135,8 +193,10 @@ public class DiaryChangeTarget extends Fragment {
     private void writeDefaultTime() {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-        Calendar calendar = Calendar.getInstance();
-        if (calendar.getTimeInMillis() > target.getTime_alarm()){
+
+        if (target.getRepeat().equals("one not time") ||
+                target.getRepeat().equals("select day not time") ||
+                target.getRepeat().equals("every day not time")){
             time.setText("--:--");
             newTarget.setTime_alarm(target.getTime_alarm());
             take_time.setChecked(false);
@@ -185,7 +245,6 @@ public class DiaryChangeTarget extends Fragment {
             writeDefaultRepeat();
         });
 
-
         dialog.setView(view);
         dialog.show();
 
@@ -201,7 +260,7 @@ public class DiaryChangeTarget extends Fragment {
                 sunday.isChecked()){
             everyDayRepeat();
         }else {
-            newTarget.setRepeat("select day");
+            r = "select day";
             newTarget.setRepeat_sunday(sunday.isChecked());
             newTarget.setRepeat_saturday(saturday.isChecked());
             newTarget.setRepeat_friday(friday.isChecked());
@@ -213,7 +272,7 @@ public class DiaryChangeTarget extends Fragment {
     }
 
     private void everyDayRepeat() {
-        newTarget.setRepeat("every day");
+        r = "every day";
         newTarget.setRepeat_monday(true);
         newTarget.setRepeat_tuesday(true);
         newTarget.setRepeat_wednesday(true);
@@ -224,7 +283,7 @@ public class DiaryChangeTarget extends Fragment {
     }
 
     private void noRepeat(){
-        newTarget.setRepeat("not repeat");
+        r = "one";
         newTarget.setRepeat_monday(false);
         newTarget.setRepeat_tuesday(false);
         newTarget.setRepeat_wednesday(false);
@@ -260,9 +319,11 @@ public class DiaryChangeTarget extends Fragment {
             time.setText(format.format(calendar.getTimeInMillis()));
             hour = hourOfDay;
             minute = minute1;
+            t = " with time";
             newTarget.setTime_alarm(calendar.getTimeInMillis());
         } ,hour, minute,true);
         dialog.setOnCancelListener(dialog1 -> {
+            t = " not time";
             dialog1.dismiss();
             writeDefaultTime();
         });
@@ -272,9 +333,10 @@ public class DiaryChangeTarget extends Fragment {
 
     private void writeToForm() {
         newTarget = new MyTarget();
-        targetData = new TargetData(getContext());
+        TargetData targetData = new TargetData(getContext());
         target = targetData.findItemForDate(Target.getTimeForChange());
         writeDefaultTime();
+        writeDefaultRepeat();
         text_target.setText(target.getName());
         repeat_text.setText(textRepeat(target));
 
