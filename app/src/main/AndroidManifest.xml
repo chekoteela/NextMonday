@@ -57,10 +57,6 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-3604503009591995~9917334920"/>
 
-        <receiver android:name=".Users.MyAlarm"
-            android:enabled="true"
-            android:exported="true"
-            />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
