@@ -160,7 +160,6 @@ public class MainMenu extends AppCompatActivity {
         googleSignInClient.signOut();
         FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
-        sdb.close();
         startActivity(new Intent(MainMenu.this,MainActivity.class));
         finish();
     }
