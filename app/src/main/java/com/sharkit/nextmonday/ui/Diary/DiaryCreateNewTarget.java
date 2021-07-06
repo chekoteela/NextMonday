@@ -95,7 +95,7 @@ public class DiaryCreateNewTarget extends Fragment{
         }else{
             calendar.set(Target.getYear(),
                     Target.getMonth(),
-                    Target.getDay(), hour,minutes);
+                    Target.getDay(), hour,minutes,0);
             if (instance.getTimeInMillis() > calendar.getTimeInMillis()){
                 try {
                     throw new CustomToastException(getContext(), "Нельзя задавать задачу прошедшим временем");

@@ -14,6 +14,7 @@ import android.widget.ExpandableListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.Adapters.DiaryList;
@@ -52,8 +53,9 @@ public class MainDiary extends Fragment {
         SQLiteDatabase db = targetData.getReadableDatabase();
         targetData.onCreate(db);
         synchronised();
-      crateListAdapter();
-        setAlarm();
+        crateListAdapter();
+        TargetData targetData = new TargetData(getContext());
+        targetData.getAlarm(getContext());
         return root;
     }
 
@@ -126,16 +128,7 @@ public class MainDiary extends Fragment {
         dataWeek.add(week);
 
     }
-    private void setAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
-        TargetData targetData = new TargetData(getContext());
-        Intent intent = new Intent(getContext(), AlarmDiary.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-        Log.d("logo", "run");
-        Calendar calendar = Calendar.getInstance();
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
-    }
 
     private String setNameDay(int i) {
         switch (i){

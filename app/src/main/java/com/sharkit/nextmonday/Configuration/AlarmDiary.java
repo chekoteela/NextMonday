@@ -5,6 +5,9 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -18,15 +21,19 @@ public class AlarmDiary extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(context);
-        intent = new Intent(context, MainMenu.class);
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,1, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent, 0);
+        Bitmap imageDiary = BitmapFactory.decodeResource(context.getResources(), R.drawable.notification_diary);
 
         Notification notification = new NotificationCompat.Builder(context, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.logo_white)
-                .setContentTitle("Next Monday")
-                .setContentText("Target")
-                .setLights(context.getColor(R.color.color_button),5000,1000)
+                .setLargeIcon(imageDiary)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .setSummaryText(intent.getStringExtra("part of the Next Monday"))
+                        .setBigContentTitle(intent.getStringExtra("text of target"))
+                        .bigText(intent.getStringExtra("description")))
+                .setContentTitle("У вас есть невыполненные задачи")
+                .setLights(context.getColor(R.color.color_button), 5000, 1000)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setAutoCancel(true)

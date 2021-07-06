@@ -96,18 +96,18 @@ public class DiaryList extends BaseExpandableListAdapter {
     @SuppressLint("InflateParams")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        if (convertView == null){
+        if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.custom_diary, null);
         }
         findView(convertView);
 
-        if (SelectToday(mData.get(groupPosition).getNumber()) == groupPosition){
+        if (SelectToday(mData.get(groupPosition).getNumber()) == groupPosition) {
             lin.setBackgroundResource(R.drawable.dairy_exp_list_task_color);
         }
 
-        validation = new Validation(mGroup,mDay,mContext);
-        NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
+        validation = new Validation(mGroup, mDay, mContext);
+        NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
         progressBar.setProgress(setProgress(mGroup.get(groupPosition).size(), mData.get(groupPosition).getBefore()));
         number.setText(String.valueOf(mData.get(groupPosition).getNumber()));
         month.setText(mData.get(groupPosition).getMonth());
@@ -118,7 +118,7 @@ public class DiaryList extends BaseExpandableListAdapter {
         plus.setOnClickListener(v -> {
             if (validation.isValidYesterday(groupPosition)) {
                 navController.navigate(R.id.nav_plus_target);
-            }else {
+            } else {
                 try {
                     throw new CustomToastException(mContext, "Нельзя задать задачу задним числом");
                 } catch (CustomToastException e) {
@@ -129,10 +129,10 @@ public class DiaryList extends BaseExpandableListAdapter {
         return convertView;
     }
 
-        private int setProgress(int after, int before) {
+    private int setProgress(int after, int before) {
         int a = 0;
         if (before != 0) {
-            a =  ( (100 * before) / after);
+            a = ((100 * before) / after);
         }
         return a;
     }
@@ -144,31 +144,31 @@ public class DiaryList extends BaseExpandableListAdapter {
         convertView = inflater.inflate(R.layout.lst_view_castom, null);
 
         findView(convertView);
-        NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 
-        validation = new Validation(mGroup,mDay,mContext);
+        validation = new Validation(mGroup, mDay, mContext);
 
         text_target.setText(mGroup.get(groupPosition).get(childPosition).getName());
 
         time_target.setText(dateFormat.format(mGroup.get(groupPosition).get(childPosition).getTime_alarm()));
-        if (validation.isNullTime(groupPosition,childPosition)){
+        if (validation.isNullTime(groupPosition, childPosition)) {
             time_target.setText("--:--");
         }
         status.setChecked(mGroup.get(groupPosition).get(childPosition).isStatus());
 
-        item.setOnCreateContextMenuListener((menu, v, menuInfo) -> createContextMenu(menu, groupPosition,childPosition, navController));
+        item.setOnCreateContextMenuListener((menu, v, menuInfo) -> createContextMenu(menu, groupPosition, childPosition, navController));
 
         status.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (!Configuration.hasConnection(mContext)){
+            if (!Configuration.hasConnection(mContext)) {
                 try {
                     throw new InternetException(mContext);
                 } catch (InternetException e) {
                     e.printStackTrace();
                 }
-            }else {
+            } else {
                 TargetData data = new TargetData(mContext);
-                TargetEntity entity= new TargetEntity();
+                TargetEntity entity = new TargetEntity();
                 entity.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked);
                 data.completeTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm(), isChecked, mGroup.get(groupPosition).get(childPosition).getDate());
                 navController.navigate(R.id.nav_diary);
@@ -180,7 +180,7 @@ public class DiaryList extends BaseExpandableListAdapter {
     private void createContextMenu(ContextMenu menu, int groupPosition, int childPosition, NavController navController) {
         menu.add("Изменить").setOnMenuItemClickListener(item -> {
 
-        if (validation.isValidateCreateTarget(groupPosition,childPosition)){
+            if (validation.isValidateCreateTarget(groupPosition, childPosition)) {
                 Target.setDay(mDay.get(groupPosition).getDay());
                 Target.setMonth(mDay.get(groupPosition).getMonth());
                 Target.setYear(mDay.get(groupPosition).getYear());
@@ -190,25 +190,39 @@ public class DiaryList extends BaseExpandableListAdapter {
             return true;
         });
         menu.add("Удалить").setOnMenuItemClickListener(item1 -> {
-            if (Configuration.hasConnection(mContext)) {
-                if (!validation.isValidDeleteTarget(groupPosition,childPosition)){
-                    TargetData data = new TargetData(mContext);
-                    data.deleteItemForDate(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
-                    TargetEntity entity = new TargetEntity();
-                    entity.deleteTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
-                }else if (!validation.isValidYesterday(groupPosition)){
-                    try {
-                        throw new CustomToastException(mContext,"Нельзя идалить задачу задним числом");
-                    } catch (CustomToastException e) {
-                        e.printStackTrace();
-                    }
+            if (!Configuration.hasConnection(mContext)) {
+                try {
+                    throw new InternetException(mContext);
+                } catch (InternetException e) {
+                    e.printStackTrace();
                 }
-                else if (!mGroup.get(groupPosition).get(childPosition).getRepeat().equals("every day") ||
-                        !mGroup.get(groupPosition).get(childPosition).getRepeat().equals("select day")){
-
-                    createAlertDelete(groupPosition, childPosition);
-                }
+                return false;
             }
+            if (!validation.isValidYesterday(groupPosition)) {
+                try {
+                    throw new CustomToastException(mContext, "Нельзя идалить задачу задним числом");
+                } catch (CustomToastException e) {
+                    e.printStackTrace();
+                }
+                return false;
+            }
+            if (mGroup.get(groupPosition).get(childPosition).getRepeat().equals("select day not time") ||
+                    mGroup.get(groupPosition).get(childPosition).getRepeat().equals("select day with time") ||
+                    mGroup.get(groupPosition).get(childPosition).getRepeat().equals("every day not time") ||
+                    mGroup.get(groupPosition).get(childPosition).getRepeat().equals("every day with time")) {
+                createAlertDelete(groupPosition, childPosition);
+                return false;
+            }
+
+            if (!validation.isValidDeleteTarget(groupPosition, childPosition)) {
+                return false;
+            }
+
+            TargetData data = new TargetData(mContext);
+            data.deleteItemForDate(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
+            TargetEntity entity = new TargetEntity();
+            entity.deleteTarget(mGroup.get(groupPosition).get(childPosition).getTime_alarm());
+
             navController.navigate(R.id.nav_diary);
             return true;
         });
@@ -216,7 +230,7 @@ public class DiaryList extends BaseExpandableListAdapter {
 
     @SuppressLint("InflateParams")
     private void createAlertDelete(int i, int j) {
-        NavController navController = Navigation.findNavController((Activity)mContext, R.id.nav_host_fragment);
+        NavController navController = Navigation.findNavController((Activity) mContext, R.id.nav_host_fragment);
         AlertDialog.Builder dialog = new AlertDialog.Builder(mContext, R.style.CustomAlertDialog);
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.calculator_alert_exist, null);
@@ -224,7 +238,7 @@ public class DiaryList extends BaseExpandableListAdapter {
         TargetEntity entity = new TargetEntity();
         TextView textView = view.findViewById(R.id.text_xml);
         textView.setText("Как именно вы хотите удалить задачу");
-        if (validation.isValidDeleteTodayTarget(i,j)) {
+        if (validation.isValidDeleteTodayTarget(i, j)) {
             dialog.setPositiveButton("Удалить только эту", (dialog1, which) -> {
                 data.deleteItemForDate(mGroup.get(i).get(j).getTime_alarm());
                 entity.deleteTarget(mGroup.get(i).get(j).getTime_alarm());
@@ -239,7 +253,7 @@ public class DiaryList extends BaseExpandableListAdapter {
         dialog.setNegativeButton("Удалить все подобные", (dialog1, which) -> {
             data.deleteAllSimilarTarget(mGroup.get(i).get(j).getName());
             try {
-                throw new CustomToastComplete(mContext,"Все задачи успешно удалены");
+                throw new CustomToastComplete(mContext, "Все задачи успешно удалены");
             } catch (CustomToastComplete customToastComplete) {
                 customToastComplete.printStackTrace();
             }
@@ -256,38 +270,38 @@ public class DiaryList extends BaseExpandableListAdapter {
         return true;
     }
 
-    public int  SelectToday (int day){
+    public int SelectToday(int day) {
         int position = -1;
         Calendar calendar = Calendar.getInstance();
 
 
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY &&
-                day == calendar.get(Calendar.DAY_OF_MONTH)){
+                day == calendar.get(Calendar.DAY_OF_MONTH)) {
             position = 0;
         }
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY &&
-                day == calendar.get(Calendar.DAY_OF_MONTH)){
+                day == calendar.get(Calendar.DAY_OF_MONTH)) {
             position = 1;
         }
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY &&
-                day == calendar.get(Calendar.DAY_OF_MONTH)){
+                day == calendar.get(Calendar.DAY_OF_MONTH)) {
             position = 2;
         }
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY &&
-                day == calendar.get(Calendar.DAY_OF_MONTH)){
+                day == calendar.get(Calendar.DAY_OF_MONTH)) {
 
             position = 3;
         }
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY &&
-                day == calendar.get(Calendar.DAY_OF_MONTH)){
+                day == calendar.get(Calendar.DAY_OF_MONTH)) {
             position = 4;
         }
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY &&
-                day == calendar.get(Calendar.DAY_OF_MONTH)){
+                day == calendar.get(Calendar.DAY_OF_MONTH)) {
             position = 5;
         }
         if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY &&
-                day == calendar.get(Calendar.DAY_OF_MONTH)){
+                day == calendar.get(Calendar.DAY_OF_MONTH)) {
             position = 6;
         }
 

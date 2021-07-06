@@ -1,7 +1,10 @@
 package com.sharkit.nextmonday.MySQL;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,18 +12,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.sharkit.nextmonday.Configuration.AlarmDiary;
 import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
+import com.sharkit.nextmonday.MainMenu;
 import com.sharkit.nextmonday.Users.MyTarget;
+import com.sharkit.nextmonday.ui.Diary.MainDiary;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Objects;
 
+import static android.content.Context.ALARM_SERVICE;
+
 public class TargetData extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "UserTarget.db"; // название бд
     private static final int SCHEMA = 6; // версия базы данных
-    public static final String TABLE = "my_target" ; // название таблицы в бд
+    public static final String TABLE = "my_target"; // название таблицы в бд
     // названия столбцов
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_TEXT_TARGET = "text_target";
@@ -35,7 +43,7 @@ public class TargetData extends SQLiteOpenHelper {
     private static final String COLUMN_REPEAT_TUESDAY = "tuesday";
     private static final String COLUMN_REPEAT_MONDAY = "monday";
     private static final String COLUMN_REPEAT = "repeat";
-    private static final String COLUMN_ALARM= "time_alarm";
+    private static final String COLUMN_ALARM = "time_alarm";
 
 
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -50,24 +58,23 @@ public class TargetData extends SQLiteOpenHelper {
     }
 
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE + "( "+COLUMN_ID+" TEXT,"+COLUMN_TEXT_TARGET+" TEXT , "+COLUMN_STATUS+" BOOL," +
-                ""+COLUMN_REPEAT_SUNDAY+" BOOL, "+COLUMN_REPEAT_SATURDAY+" BOOL," +
-                ""+COLUMN_REPEAT_FRIDAY+" BOOL, "+COLUMN_REPEAT_THURSDAY+" BOOL, " +
-                ""+COLUMN_REPEAT_WEDNESDAY+" BOOL, "+COLUMN_REPEAT_TUESDAY+" BOOL," +
-                ""+COLUMN_REPEAT_MONDAY+" BOOL, "+COLUMN_REPEAT+" TEXT, " +
-                ""+COLUMN_DESCRIPTION+" TEXT, " +COLUMN_DATE+" TEXT, "+ COLUMN_ALARM+" INTEGER UNIQUE)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE + "( " + COLUMN_ID + " TEXT," + COLUMN_TEXT_TARGET + " TEXT , " + COLUMN_STATUS + " BOOL," +
+                "" + COLUMN_REPEAT_SUNDAY + " BOOL, " + COLUMN_REPEAT_SATURDAY + " BOOL," +
+                "" + COLUMN_REPEAT_FRIDAY + " BOOL, " + COLUMN_REPEAT_THURSDAY + " BOOL, " +
+                "" + COLUMN_REPEAT_WEDNESDAY + " BOOL, " + COLUMN_REPEAT_TUESDAY + " BOOL," +
+                "" + COLUMN_REPEAT_MONDAY + " BOOL, " + COLUMN_REPEAT + " TEXT, " +
+                "" + COLUMN_DESCRIPTION + " TEXT, " + COLUMN_DATE + " TEXT, " + COLUMN_ALARM + " INTEGER UNIQUE)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE);
         onCreate(db);
     }
 
-    public void addNewTarget(MyTarget target){
+    public void addNewTarget(MyTarget target) {
         SQLiteDatabase db = this.getReadableDatabase();
         db.execSQL("INSERT INTO " + TABLE + " VALUES ('" + id + "','" +
                 target.getName() + "','" +
@@ -76,7 +83,7 @@ public class TargetData extends SQLiteOpenHelper {
                 target.isRepeat_saturday() + "','" +
                 target.isRepeat_friday() + "','" +
                 target.isRepeat_thursday() + "','" +
-                target.isRepeat_wednesday()+ "','" +
+                target.isRepeat_wednesday() + "','" +
                 target.isRepeat_tuesday() + "','" +
                 target.isRepeat_monday() + "','" +
                 target.getRepeat() + "','" +
@@ -86,31 +93,32 @@ public class TargetData extends SQLiteOpenHelper {
 //        db.close();
     }
 
-    public ArrayList<MyTarget> findAllTarget (ArrayList<MyTarget> targets, String time){
+    public ArrayList<MyTarget> findAllTarget(ArrayList<MyTarget> targets, String time) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +"' AND " + COLUMN_DATE + " = '" + time + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + time + "'", null);
         while (cursor.moveToNext()) {
             MyTarget target = new MyTarget();
-            writeTarget(target,cursor);
-         targets.add(target);
+            writeTarget(target, cursor);
+            targets.add(target);
         }
 //        cursor.close();
 //        db.close();
 
         return targets;
     }
-    public int getCompleteCount(String date){
+
+    public int getCompleteCount(String date) {
         SQLiteDatabase db = this.getReadableDatabase();
         @SuppressLint("Recycle")
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
                 COLUMN_DATE + " = '" + date + "' AND " + COLUMN_STATUS + " = '" + true + "'", null);
-         return cursor.getCount();
+        return cursor.getCount();
     }
 
-    public int getCount(){
+    public int getCount() {
         SQLiteDatabase db = this.getReadableDatabase();
         @SuppressLint("Recycle")
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +"'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "'", null);
         return cursor.getCount();
     }
 
@@ -121,13 +129,13 @@ public class TargetData extends SQLiteOpenHelper {
 //        db.close();
     }
 
-    public MyTarget findItemForDate(Long date){
+    public MyTarget findItemForDate(Long date) {
         SQLiteDatabase db = this.getReadableDatabase();
         MyTarget target = new MyTarget();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'", null);
 
-        while (cursor.moveToNext()){
-            writeTarget(target,cursor);
+        while (cursor.moveToNext()) {
+            writeTarget(target, cursor);
         }
 //        cursor.close();
 //        db.close();
@@ -157,9 +165,9 @@ public class TargetData extends SQLiteOpenHelper {
     public ArrayList<MyTarget> findAllComplete(ArrayList<MyTarget> targets) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_STATUS + " = '" + false + "'", null);
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             MyTarget target = new MyTarget();
-            writeTarget(target,cursor);
+            writeTarget(target, cursor);
             targets.add(target);
 
         }
@@ -173,10 +181,10 @@ public class TargetData extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id
-                + "' AND " + COLUMN_TEXT_TARGET +" LIKE '" + text + "%'", null);
-        while (cursor.moveToNext()){
+                + "' AND " + COLUMN_TEXT_TARGET + " LIKE '" + text + "%'", null);
+        while (cursor.moveToNext()) {
             MyTarget target = new MyTarget();
-            writeTarget(target,cursor);
+            writeTarget(target, cursor);
             targets.add(target);
         }
 //        cursor.close();
@@ -184,49 +192,52 @@ public class TargetData extends SQLiteOpenHelper {
 
         return targets;
     }
-    public void completeTarget(Long time_alarm, boolean complete, String date){
+
+    public void completeTarget(Long time_alarm, boolean complete, String date) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         db.execSQL("UPDATE " + TABLE + " SET " + COLUMN_STATUS + " = '" + complete + "' WHERE " + COLUMN_ALARM + " = '" + time_alarm + "' AND " + COLUMN_DATE + "= '" + date + "'");
         db.close();
     }
 
-    public void synchronised(){
+    public void synchronised() {
         TargetEntity entity = new TargetEntity();
         SQLiteDatabase db = this.getReadableDatabase();
         @SuppressLint("Recycle")
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "'", null);
         while (cursor.moveToNext()) {
             MyTarget target = new MyTarget();
-            writeTarget(target,cursor);
+            writeTarget(target, cursor);
             entity.createNewTarget(target);
         }
     }
-    public void deleteAllSimilarTarget(String name){
+
+    public void deleteAllSimilarTarget(String name) {
         SQLiteDatabase db = this.getReadableDatabase();
         TargetEntity entity = new TargetEntity();
 
         @SuppressLint("Recycle")
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_TEXT_TARGET + " = '" + name + "' AND " +
-                COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_REPEAT + " <> 'one not time' AND " + COLUMN_REPEAT + " <> 'one with time'",null);
-        while (cursor.moveToNext()){
+                COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_REPEAT + " <> 'one not time' AND " + COLUMN_REPEAT + " <> 'one with time'", null);
+        while (cursor.moveToNext()) {
             deleteItemForDate(cursor.getLong(13));
             entity.deleteTarget(cursor.getLong(13));
         }
     }
-    @SuppressLint({"SimpleDateFormat","Recycle"})
-    public void findFromRepeat(){
+
+    @SuppressLint({"SimpleDateFormat", "Recycle"})
+    public void findFromRepeat() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + format.format(calendar.getTimeInMillis()) + "' AND "+
-                COLUMN_STATUS + " = '" + false + "'",null);
-        while (cursor.moveToNext()){
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + format.format(calendar.getTimeInMillis()) + "' AND " +
+                COLUMN_STATUS + " = '" + false + "'", null);
+        while (cursor.moveToNext()) {
             MyTarget target = new MyTarget();
-            writeTarget(target,cursor);
-            for (int i = 3; i < 10; i++){
-                if (Boolean.parseBoolean(cursor.getString(i))){
-                    writeRepeat(i,target);
+            writeTarget(target, cursor);
+            for (int i = 3; i < 10; i++) {
+                if (Boolean.parseBoolean(cursor.getString(i))) {
+                    writeRepeat(i, target);
                 }
             }
         }
@@ -235,7 +246,7 @@ public class TargetData extends SQLiteOpenHelper {
 
     private void writeRepeat(int i, MyTarget target) {
         Calendar calendar = Calendar.getInstance();
-        switch (i){
+        switch (i) {
             case 3:
                 findDayOfWeek(Calendar.SUNDAY, calendar, target);
                 break;
@@ -243,7 +254,7 @@ public class TargetData extends SQLiteOpenHelper {
                 findDayOfWeek(Calendar.SATURDAY, calendar, target);
                 break;
             case 5:
-                findDayOfWeek(Calendar.FRIDAY, calendar,target);
+                findDayOfWeek(Calendar.FRIDAY, calendar, target);
                 break;
             case 6:
                 findDayOfWeek(Calendar.THURSDAY, calendar, target);
@@ -252,53 +263,55 @@ public class TargetData extends SQLiteOpenHelper {
                 findDayOfWeek(Calendar.WEDNESDAY, calendar, target);
                 break;
             case 8:
-                findDayOfWeek(Calendar.TUESDAY,calendar,target);
+                findDayOfWeek(Calendar.TUESDAY, calendar, target);
                 break;
             case 9:
-                findDayOfWeek(Calendar.MONDAY,calendar,target);
+                findDayOfWeek(Calendar.MONDAY, calendar, target);
 
                 break;
         }
     }
 
     @SuppressLint("SimpleDateFormat")
-    private void findDayOfWeek(int day, Calendar calendar, MyTarget target){
+    private void findDayOfWeek(int day, Calendar calendar, MyTarget target) {
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        if (calendar.get(Calendar.DAY_OF_WEEK) == day){
+        if (calendar.get(Calendar.DAY_OF_WEEK) == day) {
             target.setTime_alarm(target.getTime_alarm() + 604800000);
             target.setDate(format.format(target.getTime_alarm()));
             try {
                 addNewTarget(target);
-            }catch (SQLiteConstraintException ignored){}
+            } catch (SQLiteConstraintException ignored) {
+            }
             return;
         }
 
-        while (calendar.get(Calendar.DAY_OF_WEEK) != day){
-            calendar.add(Calendar.DAY_OF_WEEK,1);
+        while (calendar.get(Calendar.DAY_OF_WEEK) != day) {
+            calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
-            target.setTime_alarm(switchRepeat(target.getRepeat(), target.getTime_alarm()));
-            target.setDate(format.format(calendar.getTimeInMillis()));
+        target.setTime_alarm(switchRepeat(target.getRepeat(), target.getTime_alarm()));
+        target.setDate(format.format(calendar.getTimeInMillis()));
 
         try {
             addNewTarget(target);
-        }catch (SQLiteConstraintException ignored){}
+        } catch (SQLiteConstraintException ignored) {
+        }
     }
 
     private Long switchRepeat(String repeat, Long time_alarm) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(time_alarm);
-        switch (repeat){
+        switch (repeat) {
             case "every day not time":
             case "every day with time":
-               time_alarm = calendar.getTimeInMillis() +  86400000;
+                time_alarm = calendar.getTimeInMillis() + 86400000;
                 break;
             case "select day not time":
             case "select day with time":
-                time_alarm = calendar.getTimeInMillis() +  604800000;
+                time_alarm = calendar.getTimeInMillis() + 604800000;
                 break;
         }
 
-       return time_alarm;
+        return time_alarm;
     }
 
     private void writeTarget(MyTarget target, Cursor cursor) {
@@ -318,7 +331,7 @@ public class TargetData extends SQLiteOpenHelper {
     }
 
     @SuppressLint("SimpleDateFormat")
-    public long getAlarm() {
+    public void getAlarm(Context context) {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         SQLiteDatabase db = this.getReadableDatabase();
@@ -326,24 +339,23 @@ public class TargetData extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
                 COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_DATE + " = '" + dateFormat.format(calendar.getTimeInMillis()) + "' AND " +
                 COLUMN_REPEAT + " = 'one with time' OR " + COLUMN_REPEAT + " = 'select day with time' OR " + COLUMN_REPEAT + " = 'every day with time'", null);
-        while (cursor.moveToNext()){
-            return cursor.getLong(13);
+        while (cursor.moveToNext()) {
+            setAlarm(cursor.getLong(13), cursor.getPosition(), context, cursor.getString(1), cursor.getString(11));
         }
-        return calendar.getTimeInMillis()-1;
     }
-    @SuppressLint("SimpleDateFormat")
-    public int getCountAlarm(){
+
+    private void setAlarm(long time, int count, Context context, String text, String description) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmDiary.class);
+        intent.putExtra("part of the Next Monday", "Ежедневник")
+                .putExtra("text of target", text)
+                .putExtra("description", description);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, count, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        SQLiteDatabase db = this.getReadableDatabase();
-        @SuppressLint("Recycle")
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
-                COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_DATE + " = '" + dateFormat.format(calendar.getTimeInMillis()) + "' AND " +
-                COLUMN_REPEAT + " = 'one with time' OR " + COLUMN_REPEAT + " = 'select day with time' OR " + COLUMN_REPEAT + " = 'every day with time'", null);
-        while (cursor.moveToNext()){
-            return cursor.getPosition();
+        if (time < calendar.getTimeInMillis() + 5000) {
+            alarmManager.cancel(pendingIntent);
         }
-         return -1;
     }
 
 

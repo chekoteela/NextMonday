@@ -122,13 +122,13 @@ public class MainMenu extends AppCompatActivity {
 
         UpDateUser();
 
-
     }
+
+
 
     public void OnClickWeight(MenuItem item){
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.navigate(R.id.nav_cal_weight);
-
     }
     public void OnClickCalculatorCalendar(MenuItem item){
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -143,8 +143,6 @@ public class MainMenu extends AppCompatActivity {
     public void OnClickCalculatorMain(MenuItem item){
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.navigate(R.id.nav_calculator_main);
-
-
     }
 
     public void OnClickCalculator(MenuItem item){
