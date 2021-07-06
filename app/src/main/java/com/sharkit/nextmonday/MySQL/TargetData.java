@@ -178,7 +178,6 @@ public class TargetData extends SQLiteOpenHelper {
             MyTarget target = new MyTarget();
             writeTarget(target,cursor);
             targets.add(target);
-            Log.d(TAG, cursor.getCount()  +""  );
         }
 //        cursor.close();
 //        db.close();
@@ -341,8 +340,10 @@ public class TargetData extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
                 COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_DATE + " = '" + dateFormat.format(calendar.getTimeInMillis()) + "' AND " +
                 COLUMN_REPEAT + " = 'one with time' OR " + COLUMN_REPEAT + " = 'select day with time' OR " + COLUMN_REPEAT + " = 'every day with time'", null);
-
-         return cursor.getCount();
+        while (cursor.moveToNext()){
+            return cursor.getPosition();
+        }
+         return -1;
     }
 
 

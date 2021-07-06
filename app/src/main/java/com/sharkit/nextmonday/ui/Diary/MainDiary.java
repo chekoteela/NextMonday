@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.Adapters.DiaryList;
-import com.sharkit.nextmonday.Configuration.Alarm;
 import com.sharkit.nextmonday.Configuration.AlarmDiary;
 import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
@@ -24,6 +24,7 @@ import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.DayOfWeek;
 import com.sharkit.nextmonday.Users.Days;
 import com.sharkit.nextmonday.Users.MyTarget;
+import com.sharkit.nextmonday.Users.Target;
 import com.sharkit.nextmonday.Users.Week;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,8 +34,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import static android.content.Context.ALARM_SERVICE;
-import static com.facebook.FacebookSdk.getApplicationContext;
-import static com.facebook.FacebookSdk.publishInstallAsync;
 
 public class MainDiary extends Fragment {
     private ArrayList<Week> dataWeek;
@@ -66,16 +65,7 @@ public class MainDiary extends Fragment {
         data.synchronised();
     }
 
-    private void setAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
-        Calendar calendar = Calendar.getInstance();
-        TargetData targetData = new TargetData(getContext());
 
-            Alarm alarm = new Alarm(getContext(),targetData.getAlarm());
-            alarm.setAlarm();
-
-
-    }
 
     private void findView(View root) {
         expandableListView = root.findViewById(R.id.expListView);
@@ -136,7 +126,16 @@ public class MainDiary extends Fragment {
         dataWeek.add(week);
 
     }
+    private void setAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
+        TargetData targetData = new TargetData(getContext());
+        Intent intent = new Intent(getContext(), AlarmDiary.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        Log.d("logo", "run");
+        Calendar calendar = Calendar.getInstance();
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
+    }
 
     private String setNameDay(int i) {
         switch (i){
