@@ -37,21 +37,22 @@ import com.sharkit.nextmonday.Exception.CustomToastException;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.Users;
 
-import org.jetbrains.annotations.NotNull;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.sharkit.nextmonday.MainActivity.isValidEmail;
 
 public class FragmentEdit extends Fragment {
+    private final String TAG = "qwerty";
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private final DatabaseReference users = db.getReference("Users");
+    private final FirebaseUser firebaseUser = mAuth.getCurrentUser();
     private Button save, changPass;
     private EditText name, last_Name, pass, email;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference users = db.getReference("Users");
-    private FirebaseUser firebaseUser = mAuth.getCurrentUser();
     private AdView mAdView;
     private String Name, mail, lastName, password;
     private TextView text;
-    private final String TAG = "qwerty";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -191,44 +192,133 @@ public class FragmentEdit extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pass.setVisibility(View.VISIBLE);
-                if (!isValidEmail(email.getText())) {
-                    Toast.makeText(getContext(), "Введите коректный формат почты", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+                if (email.getText().toString().equals(mail)) {
+                    changeUserFields();
+                } else changeEmail();
 
-                if (TextUtils.isEmpty(pass.getText())) {
-                    Toast.makeText(getContext(), "Введите пароль для подтверждения", Toast.LENGTH_LONG).show();
-                    return;
-                }
-                Log.d(TAG, password);
-                if (!pass.getText().toString().equals(password)){
-                    try {
-                        throw new CustomToastException(getContext(), "Пароль не верный");
-                    } catch (CustomToastException e) {
-                        e.printStackTrace();
-                    }
-                    return;
-                }
-                changeEmail();
             }
         });
     }
 
-    private void changeEmail() {
+    private void changeUserFields() {
+        if (TextUtils.isEmpty(name.getText().toString())) {
+            try {
+                throw new CustomToastException(getContext(), "Введите имя");
+            } catch (CustomToastException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        if (name.getText().toString().length() < 2 || name.getText().toString().length() > 30) {
+            try {
+                throw new CustomToastException(getContext(), "Введите корректное имя");
+            } catch (CustomToastException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        if (Validator(name.getText().toString())) {
+            try {
+                throw new CustomToastException(getContext(), "Имя не должно иметь цифр, символов или пробелов");
+            } catch (CustomToastException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
 
-        firebaseUser.updateEmail(email.getText().toString())
+
+        if (TextUtils.isEmpty(last_Name.getText().toString())) {
+            try {
+                throw new CustomToastException(getContext(), "Введите фамилию");
+            } catch (CustomToastException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        if (last_Name.getText().toString().length() < 2 || last_Name.getText().toString().length() > 30) {
+            try {
+                throw new CustomToastException(getContext(), "Введите корректную фамилию");
+            } catch (CustomToastException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        if (Validator(last_Name.getText().toString())) {
+            try {
+                throw new CustomToastException(getContext(), "Фамилия не должна иметь цифр, символов, или пробелов");
+            } catch (CustomToastException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+
+        Users us = new Users();
+        us.setName(name.getText().toString());
+        us.setEmail(email.getText().toString());
+        us.setLastName(last_Name.getText().toString());
+        us.setPassword(pass.getText().toString());
+        users.child(mAuth.getCurrentUser().getUid()).setValue(us);
+        Toast.makeText(getContext(), "Изменения сохранены", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void changeEmail() {
+        pass.setVisibility(View.VISIBLE);
+        if(TextUtils.isEmpty(email.getText().toString())){
+            Toast.makeText(getContext(),"Введите почту",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!isValidEmail(email.getText())) {
+            Toast.makeText(getContext(), "Введите коректный формат почты", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(pass.getText())) {
+            Toast.makeText(getContext(), "Введите пароль для подтверждения", Toast.LENGTH_LONG).show();
+            return;
+        }
+        Log.d(TAG, password);
+        if (!pass.getText().toString().equals(password)) {
+            try {
+                throw new CustomToastException(getContext(), "Пароль не верный");
+            } catch (CustomToastException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+        AuthCredential credential = EmailAuthProvider
+                .getCredential(mAuth.getCurrentUser().getEmail(), pass.getText().toString());
+        firebaseUser.reauthenticate(credential);
+        firebaseUser.updateEmail(email.getText().toString().trim())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
-                    public void onSuccess(Void unused) {
-
+                    public void onSuccess(Void aVoid) {
+                        pass.setVisibility(View.GONE);
+                        Users us = new Users();
+                        us.setName(name.getText().toString());
+                        us.setEmail(email.getText().toString());
+                        us.setLastName(last_Name.getText().toString());
+                        us.setPassword(pass.getText().toString());
+                        users.child(mAuth.getCurrentUser().getUid()).setValue(us);
+                        Toast.makeText(getContext(), "Почта была успешно изменена", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Почта уже занята", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public boolean Validator(String s) {
+        Pattern num = Pattern.compile("[0-9]");
+        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,`]°•○●□■♤♡◇♧☆▪¤《》¡¿,.]");
+        Pattern space = Pattern.compile(" ");
+        Matcher hasSpace = space.matcher(s);
+        Matcher hasNum = num.matcher(s);
+        Matcher hasSigns = sign.matcher(s);
+
+        return (hasSigns.find() || hasNum.find() || hasSpace.find());
     }
 
     private void Adaptive() {
@@ -258,7 +348,7 @@ public class FragmentEdit extends Fragment {
     }
 
     public void FirebaseUsers() {
-        Log.d(TAG, "user"   );
+        Log.d(TAG, "user");
         users.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -274,7 +364,7 @@ public class FragmentEdit extends Fragment {
                     lastName = user.getLastName();
                     Name = user.getName();
                     save.setVisibility(View.GONE);
-                }catch (NullPointerException e){
+                } catch (NullPointerException e) {
                     name.setEnabled(false);
                     last_Name.setEnabled(false);
                     email.setEnabled(false);

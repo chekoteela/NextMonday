@@ -1,8 +1,6 @@
 package com.sharkit.nextmonday;
 
-import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -12,7 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,16 +49,13 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.sharkit.nextmonday.Configuration.AlarmDiary;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
-import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.Users.DayOfWeek;
 import com.sharkit.nextmonday.Users.Target;
 import com.sharkit.nextmonday.Users.Users;
 import com.sharkit.nextmonday.variables.LocalDataPFC;
 import com.sharkit.nextmonday.variables.PFC_today;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainMenu extends AppCompatActivity {

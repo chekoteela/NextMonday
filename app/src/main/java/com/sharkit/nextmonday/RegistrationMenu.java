@@ -262,7 +262,7 @@ public class RegistrationMenu extends AppCompatActivity {
 
     public boolean Validator(String s){
         Pattern num = Pattern.compile("[0-9]");
-        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~]");
+        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,`]°•○●□■♤♡◇♧☆▪¤《》¡¿,.]");
         Pattern space = Pattern.compile(" ");
         Matcher hasSpace = space.matcher(s);
         Matcher hasNum = num.matcher(s);
@@ -273,12 +273,12 @@ public class RegistrationMenu extends AppCompatActivity {
 
     public boolean ValidatorPass(String s){
         Pattern cyrillic = Pattern.compile("[а-яА-Я]");
-        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~]");
+        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,`]°•○●□■♤♡◇♧☆▪¤《》¡¿,.]");
         Pattern space = Pattern.compile(" ");
         Matcher hasSign = sign.matcher(s);
         Matcher hasCyrillic = cyrillic.matcher(s);
         Matcher hasSpace = space.matcher(s);
-        return  (hasCyrillic.find() || hasSpace.find() );
+        return  (hasCyrillic.find() || hasSpace.find() || hasSign.find());
     }
     public void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
