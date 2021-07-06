@@ -317,21 +317,33 @@ public class TargetData extends SQLiteOpenHelper {
         target.setDate(cursor.getString(12));
         target.setTime_alarm(cursor.getLong(13));
     }
-   public void dropAnotherTarget(String text, String description){
-        Log.d(TAG, text +"  " + description);
-       SQLiteDatabase db = this.getReadableDatabase();
-       TargetEntity entity = new TargetEntity();
 
-       @SuppressLint("Recycle")
-       Cursor cursor = db.rawQuery("SELECT * FROM " +  TABLE + "  WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_TEXT_TARGET + " = '" + text + "' AND " + COLUMN_STATUS +
-               " = '" + false + "' AND " + COLUMN_DESCRIPTION + " = '" + description + "'", null);
-       while (cursor.moveToNext()){
-           Log.d("logo",cursor.getLong(13)+"");
-           //           entity.deleteTarget(cursor.getLong(13));
-//           db.execSQL("DELETE FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_TEXT_TARGET + " = '" + text + "' AND " + COLUMN_STATUS +
-//                   " = '" + false + "' AND " + COLUMN_DESCRIPTION + " = '" + description + "'");
-       }
+    @SuppressLint("SimpleDateFormat")
+    public long getAlarm() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        SQLiteDatabase db = this.getReadableDatabase();
+        @SuppressLint("Recycle")
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
+                COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_DATE + " = '" + dateFormat.format(calendar.getTimeInMillis()) + "' AND " +
+                COLUMN_REPEAT + " = 'one with time' OR " + COLUMN_REPEAT + " = 'select day with time' OR " + COLUMN_REPEAT + " = 'every day with time'", null);
+        while (cursor.moveToNext()){
+            return cursor.getLong(13);
+        }
+        return calendar.getTimeInMillis()-1;
+    }
+    @SuppressLint("SimpleDateFormat")
+    public int getCountAlarm(){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+        SQLiteDatabase db = this.getReadableDatabase();
+        @SuppressLint("Recycle")
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
+                COLUMN_STATUS + " = '" + false + "' AND " + COLUMN_DATE + " = '" + dateFormat.format(calendar.getTimeInMillis()) + "' AND " +
+                COLUMN_REPEAT + " = 'one with time' OR " + COLUMN_REPEAT + " = 'select day with time' OR " + COLUMN_REPEAT + " = 'every day with time'", null);
 
-   }
+         return cursor.getCount();
+    }
+
 
 }

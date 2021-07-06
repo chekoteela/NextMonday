@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.Adapters.DiaryList;
+import com.sharkit.nextmonday.Configuration.Alarm;
 import com.sharkit.nextmonday.Configuration.AlarmDiary;
 import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
@@ -33,6 +34,7 @@ import java.util.Calendar;
 
 import static android.content.Context.ALARM_SERVICE;
 import static com.facebook.FacebookSdk.getApplicationContext;
+import static com.facebook.FacebookSdk.publishInstallAsync;
 
 public class MainDiary extends Fragment {
     private ArrayList<Week> dataWeek;
@@ -52,7 +54,7 @@ public class MainDiary extends Fragment {
         targetData.onCreate(db);
         synchronised();
       crateListAdapter();
-
+        setAlarm();
         return root;
     }
 
@@ -63,15 +65,15 @@ public class MainDiary extends Fragment {
         data.findFromRepeat();
         data.synchronised();
     }
-    private void SetAlarm() {
 
+    private void setAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getContext().getSystemService(ALARM_SERVICE);
+        Calendar calendar = Calendar.getInstance();
+        TargetData targetData = new TargetData(getContext());
 
+            Alarm alarm = new Alarm(getContext(),targetData.getAlarm());
+            alarm.setAlarm();
 
-            AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(ALARM_SERVICE);
-            Intent intent = new Intent(getApplicationContext(), AlarmDiary.class);
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), count, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
     }
 

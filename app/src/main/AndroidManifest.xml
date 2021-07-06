@@ -70,7 +70,7 @@
             android:theme="@style/zxing_CaptureTheme">
 
         </activity>
-
+        <receiver android:name=".Configuration.AlarmDiary"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 
