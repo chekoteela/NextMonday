@@ -1,6 +1,8 @@
 package com.sharkit.nextmonday.ui.settings;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
@@ -40,6 +42,8 @@ import com.sharkit.nextmonday.variables.WeightV;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -62,7 +66,7 @@ public class Auto_calculate_calorie extends Fragment {
 
     Spinner spinner, spinner_target;
 
-    TextView conclusion;
+    TextView conclusion, formula_info;
 
     TabLayout tabLayout;
 
@@ -93,6 +97,24 @@ public class Auto_calculate_calorie extends Fragment {
 
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
+        formula_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
+                LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                View existProduct = layoutInflater.inflate(R.layout.spinner_item, null);
+                TextView textView = existProduct.findViewById(R.id.text_xml);
+                textView.setText("Изменить желаемый вес");
+                dialog.setNegativeButton("Назад", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setView(existProduct);
+                dialog.show();
+            }
+        });
         spinner_target.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -154,12 +176,25 @@ public class Auto_calculate_calorie extends Fragment {
                     Toast.makeText(getContext(),"Введите ваш текщий вес",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (Float.parseFloat(weight.getText().toString()) > 1000 || Float.parseFloat(weight.getText().toString()) < 10){
+                    Toast.makeText(getContext(), "Введите корректный вес", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if (TextUtils.isEmpty(age.getText())){
                     Toast.makeText(getContext(),"Введите ваш возраст",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (Float.parseFloat(age.getText().toString()) > 120 || Float.parseFloat(age.getText().toString()) < 5){
+                    Toast.makeText(getContext(), "Введите корректный возраст", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if (TextUtils.isEmpty(height.getText())){
                     Toast.makeText(getContext(),"Введите ваш рост",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Float.parseFloat(height.getText().toString()) > 300 || Float.parseFloat(height.getText().toString()) < 30){
+                    Toast.makeText(getContext(), "Введите корректный рост", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(!male.isChecked() && !female.isChecked()){
@@ -173,6 +208,11 @@ public class Auto_calculate_calorie extends Fragment {
                 if(spinner_target.getSelectedItemPosition() == 0 || spinner_target.getSelectedItemPosition() == 2){
                     if (TextUtils.isEmpty(desired_weight.getText())){
                         Toast.makeText(getContext(),"Введите желаемый вес",Toast.LENGTH_SHORT).show();
+                        return;
+
+                    }
+                    if (Float.parseFloat(desired_weight.getText().toString()) > 400 || Float.parseFloat(desired_weight.getText().toString()) < 10){
+                        Toast.makeText(getContext(), "Введите корректный желаемый вес", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
@@ -189,30 +229,29 @@ public class Auto_calculate_calorie extends Fragment {
                                                 (5 * Float.parseFloat(age.getText().toString())) - 161) * pos) + change_weight);
                     sex = "female";
                     formula = "muffin";
-                    conclusion.setText(calorie + "");
+                    conclusion.setText(calorie + " ккл");
                 }
                 if (muffin_formula.isChecked() && male.isChecked()){
                     calorie = (int) ((((10 * Float.parseFloat(weight.getText().toString())) + (6.25 * Float.parseFloat(height.getText().toString())) -
                             (5 * Float.parseFloat(age.getText().toString())) + 5) * pos) + change_weight);
                     sex = "male";
                     formula = "muffin";
-                    conclusion.setText(calorie + "");
+                    conclusion.setText(calorie + " ккл");
                 }
                 if (harrison_formula.isChecked() && female.isChecked()){
                     calorie = (int) ((((9.247 * Float.parseFloat(weight.getText().toString())) + (3.098 * Float.parseFloat(height.getText().toString())) -
                             (4.330 * Float.parseFloat(age.getText().toString())) + 447.593) * pos) + change_weight);
                     sex = "female";
                     formula = "harrison";
-                    conclusion.setText(calorie + "");
+                    conclusion.setText(calorie + " ккл");
                 }
                 if(harrison_formula.isChecked() && male.isChecked()){
                     calorie = (int) ((((13.397 * Float.parseFloat(weight.getText().toString())) + (4.799 * Float.parseFloat(height.getText().toString())) -
                                                 (5.677 * Float.parseFloat(age.getText().toString())) + 88.362) * pos) + change_weight);
                     sex = "male";
                     formula = "harrison";
-                    conclusion.setText(calorie + "");
+                    conclusion.setText(calorie + " ккл");
                 }
-                Log.d(TAG, target);
                 save.setVisibility(View.VISIBLE);
             }
         });
@@ -297,7 +336,7 @@ public class Auto_calculate_calorie extends Fragment {
 
     private void FindView(View root) {
 
-
+        formula_info = root.findViewById(R.id.form);
      tabLayout = root.findViewById(R.id.tab);
      weight = root.findViewById(R.id.this_weight);
      height = root.findViewById(R.id.height);

@@ -33,7 +33,7 @@
                 android:src="@drawable/ic_pencil" />
 
             <EditText
-                android:id="@+id/write_target"
+                android:id="@+id/write_target_xml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -78,7 +78,7 @@
                     android:textSize="18sp" />
 
                 <Switch
-                    android:id="@+id/take_time"
+                    android:id="@+id/take_time_xml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -106,7 +106,7 @@
                     android:textSize="18sp" />
 
                 <Switch
-                    android:id="@+id/repeat"
+                    android:id="@+id/repeat_xml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:contentDescription="@string/repeat2"
@@ -117,7 +117,7 @@
             <Button
                 style="@style/button_setting_style"
                 android:layout_marginHorizontal="60dp"
-                android:id="@+id/add"
+                android:id="@+id/add_xml"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

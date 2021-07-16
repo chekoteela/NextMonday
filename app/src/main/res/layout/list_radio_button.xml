@@ -51,7 +51,7 @@
 
                 <RadioButton
                     android:contentDescription="@string/everyDay"
-                    android:id="@+id/everyday"
+                    android:id="@+id/everyday_xml"
                     android:checked="true"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
@@ -60,7 +60,7 @@
 
                 <RadioButton
                     android:contentDescription="@string/selectDay"
-                    android:id="@+id/selectDay"
+                    android:id="@+id/selectDay_xml"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content" />

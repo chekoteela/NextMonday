@@ -7,31 +7,26 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
-
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -46,12 +41,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.michaldrabik.tapbarmenulib.TapBarMenu;
 import com.progress.progressview.ProgressView;
 import com.sharkit.nextmonday.MySQL.LinkRation;
 import com.sharkit.nextmonday.MySQL.MyWeight;
@@ -64,30 +56,22 @@ import com.sharkit.nextmonday.variables.WeightV;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.nio.channels.FileLock;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.stream.IntStream;
 
-import kotlin.jvm.internal.markers.KMappedMarker;
 import soup.neumorphism.NeumorphCardView;
 
-import static android.icu.lang.UCharacter.IndicPositionalCategory.BOTTOM_AND_RIGHT;
-import static android.icu.lang.UCharacter.IndicPositionalCategory.RIGHT;
 import static android.view.Gravity.BOTTOM;
 import static android.view.Gravity.CENTER;
 import static android.view.Gravity.CENTER_HORIZONTAL;
-import static android.view.Gravity.CENTER_VERTICAL;
 import static android.view.Gravity.END;
-import static android.view.TouchDelegate.ABOVE;
-import static android.view.TouchDelegate.BELOW;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class Calculator_Main extends Fragment {
+public class Calculator_Main extends Fragment implements View.OnClickListener{
     ImageView add_food, add_watter, add_activity, add_weight, plus;
     ProgressView calorie, protein, fat, carbohydrate, watter;
     TextView percent_calorie, percent_protein, percent_fat, percent_carbohydrate,percent_watter,
@@ -131,21 +115,23 @@ public class Calculator_Main extends Fragment {
         View root = inflater.inflate(R.layout.calculator_main, container, false);
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
         FindViewByID(root);
+
         linkRation = new LinkRation(getApplicationContext());
         sdb = linkRation.getReadableDatabase();
         linkRation.onCreate(sdb);
         myWeight = new MyWeight(getApplicationContext());
         mdb = myWeight.getReadableDatabase();
         myWeight.onCreate(sdb);
+        Onclick(this);
+
 
         Adaptive();
-
-
 
         GetWatter();
 
         home1 = bottomNavigationView.getMenu().findItem(R.id.main);
         home1.setIcon(R.drawable.main_selected);
+
 
 
         add_watter.setOnClickListener(new View.OnClickListener() {
@@ -156,10 +142,19 @@ public class Calculator_Main extends Fragment {
                 View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
                 EditText weight = existProduct.findViewById(R.id.weight);
                 TextView textView = existProduct.findViewById(R.id.text_xml);
+                weight.setHint("Мл");
                 textView.setText("Добавить воду в мл");
                 dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        if(TextUtils.isEmpty(weight.getText())){
+                            Toast.makeText(getContext(), "Введите количество випитой воды в мл", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (Float.parseFloat(weight.getText().toString()) > 4000 || Float.parseFloat(weight.getText().toString()) < 0){
+                            Toast.makeText(getContext(), "Введите корректный количество воды", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         AddWatter(weight.getText().toString());
                     }
                 });
@@ -175,10 +170,12 @@ public class Calculator_Main extends Fragment {
                     add_food.setVisibility(View.VISIBLE);
                     add_watter.setVisibility(View.VISIBLE);
                     add_weight.setVisibility(View.VISIBLE);
+                    plus.setImageResource(R.drawable.plus);
                 } else {
                     add_food.setVisibility(View.GONE);
                     add_watter.setVisibility(View.GONE);
                     add_weight.setVisibility(View.GONE);
+                    plus.setImageResource(R.drawable.icon_x);
                 }
             }
         });
@@ -190,9 +187,18 @@ public class Calculator_Main extends Fragment {
                 LayoutInflater layoutInflater = LayoutInflater.from(getContext());
                 View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
                 EditText weight = existProduct.findViewById(R.id.weight);
+                weight.setHint("Кг");
                 dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        if(TextUtils.isEmpty(weight.getText())){
+                            Toast.makeText(getContext(), "Введите ваш вес в кг", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (Float.parseFloat(weight.getText().toString()) > 1000 || Float.parseFloat(weight.getText().toString()) < 10){
+                            Toast.makeText(getContext(), "Введите корректный вес", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                             WriteDataWeight(weight.getText().toString());
                     }
                 });
@@ -214,20 +220,21 @@ public class Calculator_Main extends Fragment {
         return root;
     }
 
+
+
     private void Adaptive() {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         //визначення розмірів екрану та створення змінної
         int h = metrics.heightPixels;
         int w = metrics.widthPixels;
         //створення додаткових змінних
+        Log.d(TAG, "log" + h + w );
 
 //        Toast toast = Toast.makeText(getApplicationContext(),
 //                "Значення" + h, Toast.LENGTH_LONG);
 //        toast.show();
 
         //Лог
-        Log.d(TAG, w+"");
-        Log.d(TAG, h+"");
 
         if(h >= 2000 ){//Встановлення параметрів FrameLayout
             int p = (int)(h/4.1);
@@ -262,7 +269,7 @@ public class Calculator_Main extends Fragment {
             w_layout.setLayoutParams(frame_cv);
             p_layout.setLayoutParams(frame_cv);
         }
-        else if (h <= 2000 && h >= 1000) {//Встановлення параметрів FrameLayout для ммого HuaweiP8-line2017 за розширенням
+        else if (h <= 2000 && h >= 1000) {//Встановлення параметрів FrameLayout для мого HuaweiP8-line2017 за розширенням
             int c = (int)(h/3.5);
             int v = (int)(h/4.1);
             LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, c);
@@ -780,6 +787,7 @@ if(h >= 2000){ // створення адаптів для h = 2000
 
     }
 
+
     @SuppressLint("DefaultLocale")
     private void WriteText() {
 
@@ -892,7 +900,7 @@ if(h >= 2000){ // створення адаптів для h = 2000
                         PFC_today.setProtein(PFC_today.getProtein() * Float.parseFloat(PFC_today.getWeight()));
                         PFC_today.setCarbohydrate(PFC_today.getCarbohydrate() * Float.parseFloat(PFC_today.getWeight()));
                         PFC_today.setFat(PFC_today.getFat() * Float.parseFloat(PFC_today.getWeight()));
-                        PFC_today.setWatter(PFC_today.getWatter() * Float.parseFloat(PFC_today.getWeight()));
+                        PFC_today.setWatter(PFC_today.getWatter() * Float.parseFloat(PFC_today.getWeight()) / 1000);
 
                         PFC_today.setCalorie((PFC_today.getProtein() * 4) + (PFC_today.getFat() * 9) + (PFC_today.getCarbohydrate() * 4));
 
@@ -1001,7 +1009,6 @@ if(h >= 2000){ // створення адаптів для h = 2000
         PFC_today.setProtein_eat(Float.parseFloat(userMeal.getProtein()));
         PFC_today.setFat_eat(Float.parseFloat(userMeal.getFat()));
         PFC_today.setCarbohydrate_eat(Float.parseFloat(userMeal.getCarbohydrate()));
-        Log.d(TAG, PFC_today.getWatter_drink()+ "");
 
     }
 
@@ -1026,7 +1033,6 @@ if(h >= 2000){ // створення адаптів для h = 2000
 
 
         }catch (NumberFormatException e){
-            Log.d(TAG, e.getLocalizedMessage());
         }
 
     }
@@ -1101,10 +1107,71 @@ if(h >= 2000){ // створення адаптів для h = 2000
         linear_bottom_menu = root.findViewById(R.id.linearr);
         linear_general = root.findViewById(R.id.linear_dima);
     }
+    private void Onclick(Calculator_Main i) {
+        all_calorie.setOnClickListener(i);
+        eat_carbohydrate.setOnClickListener(i);
+        eat_protein.setOnClickListener(i);
+        eat_fat.setOnClickListener(i);
+        eat_calorie.setOnClickListener(i);
+        drink_watter.setOnClickListener(i);
+        all_carbohydrate.setOnClickListener(i);
+        all_fat.setOnClickListener(i);
+        all_protein.setOnClickListener(i);
+        all_watter.setOnClickListener(i);
+    }
 
     @Override
     public void onStop() {
         super.onStop();
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        String hint_eat = "За сегодня вам нужно употребать ";
+        String hint = "За сегодня вы употребили ";
+        switch (v.getId()){
+            case R.id.all_calorie:
+                hint_eat += all_calorie.getText().toString() + " ккл";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.eat_calorie:
+                hint += eat_calorie.getText().toString() + " ккл";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.eat_fat:
+                hint += eat_fat.getText().toString() + " гр жиров";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.eat_protein:
+                hint += eat_protein.getText().toString() + " гр белков";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.eat_carbohydrate:
+                hint += eat_carbohydrate.getText().toString() + " гр углеводов";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.drink_watter:
+                hint += drink_watter.getText().toString() + " л воды";
+                Toast.makeText(getContext(), hint, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.all_protein:
+                hint_eat += all_protein.getText().toString() + " гр белков";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.all_carbohydrate:
+                hint_eat += all_carbohydrate.getText().toString() + " гр углеводов";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.all_fat:
+                hint_eat += all_fat.getText().toString() + " гр жиров";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.all_watter:
+                hint_eat += all_watter.getText().toString() + " л воды";
+                Toast.makeText(getContext(), hint_eat, Toast.LENGTH_SHORT).show();
+                break;
+
+        }
     }
 }

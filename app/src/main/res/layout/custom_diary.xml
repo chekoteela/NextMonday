@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:contentDescription="@string/list2"
-        android:id="@+id/lin"
+        android:id="@+id/lin_xml"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/day"
+                android:id="@+id/day_xml"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -34,18 +34,17 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/num"
+                android:id="@+id/num_x"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="1"
                 style="@style/StandartTextView"
                 android:textSize="18sp" />
 
             <TextView
                 style="@style/StandartTextView"
-                android:id="@+id/month"
+                android:id="@+id/month_xml"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -79,7 +78,7 @@
 
                 <TextView
                     style="@style/StandartTextView"
-                    android:id="@+id/dop"
+                    android:id="@+id/before_xml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
@@ -96,7 +95,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/pisly"
+                    android:id="@+id/after_xml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -105,7 +104,7 @@
                     />
 
                 <ProgressBar
-                    android:id="@+id/progressBar123"
+                    android:id="@+id/progress_bar_xml"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="7dp"
@@ -121,20 +120,12 @@
     </LinearLayout>
     <ImageView
         android:contentDescription="@string/plus2"
-        android:id="@+id/plus"
+        android:id="@+id/plus_xml"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginRight="25dp"
         android:layout_marginTop="25dp"
         android:layout_alignParentEnd="true"
         android:src="@drawable/plus" />
-
-    <ListView
-
-        android:background="@color/black"
-        android:id="@+id/dayList"
-        android:layout_below="@+id/lin"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </RelativeLayout>

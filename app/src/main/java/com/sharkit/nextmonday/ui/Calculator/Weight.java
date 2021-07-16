@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -124,6 +125,33 @@ public class Weight extends Fragment {
 
 
 
+        layout_left_xlm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                           AlertDialog.Builder dialog = new AlertDialog.Builder(getContext(), R.style.CustomAlertDialog);
+                LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                View existProduct = layoutInflater.inflate(R.layout.calculator_weigth_button_dialog, null);
+                EditText weight = existProduct.findViewById(R.id.weight);
+                dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(TextUtils.isEmpty(weight.getText())){
+                            Toast.makeText(getContext(), "Введите ваш вес в кг", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (Float.parseFloat(weight.getText().toString()) > 1000 || Float.parseFloat(weight.getText().toString()) < 10){
+                            Toast.makeText(getContext(), "Введите корректный вес", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        WriteDataWeight(weight.getText().toString());
+                        NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                        navController.navigate(R.id.nav_cal_weight);
+                    }
+                });
+                dialog.setView(existProduct);
+                dialog.show();
+            }
+        });
         desired_weight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,9 +161,18 @@ public class Weight extends Fragment {
                 EditText weight = existProduct.findViewById(R.id.weight);
                 TextView textView = existProduct.findViewById(R.id.text_xml);
                 textView.setText("Изменить желаемый вес");
+                weight.setHint("Кг");
                 dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        if(TextUtils.isEmpty(weight.getText())){
+                            Toast.makeText(getContext(), "Введите ваш вес в кг", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (Float.parseFloat(weight.getText().toString()) > 1000 || Float.parseFloat(weight.getText().toString()) < 10){
+                            Toast.makeText(getContext(), "Введите корректный вес", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         Map<String, Object> map = new HashMap<>();
                         map.put("desired_weight", weight.getText().toString());
                         users.updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -200,6 +237,14 @@ public class Weight extends Fragment {
                 dialog.setPositiveButton("Добавить", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        if(TextUtils.isEmpty(weight.getText())){
+                            Toast.makeText(getContext(), "Введите ваш вес в кг", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        if (Float.parseFloat(weight.getText().toString()) > 1000 || Float.parseFloat(weight.getText().toString()) < 10){
+                            Toast.makeText(getContext(), "Введите корректный вес", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         WriteDataWeight(weight.getText().toString());
                         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
                         navController.navigate(R.id.nav_cal_weight);

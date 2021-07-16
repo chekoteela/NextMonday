@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.ui.Calculator;
+package com.sharkit.nextmonday.Configuration;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
 

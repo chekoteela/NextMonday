@@ -3,11 +3,6 @@ package com.sharkit.nextmonday.ui.Calculator;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -20,6 +15,10 @@ import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +28,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.sharkit.nextmonday.Adapters.MyFindFoodAdaptor;
+import com.sharkit.nextmonday.Configuration.CaptureAct;
 import com.sharkit.nextmonday.MySQL.DataBasePFC;
 import com.sharkit.nextmonday.MySQL.FavoriteFood;
 import com.sharkit.nextmonday.R;
@@ -278,7 +278,7 @@ public class Find_food_by_name extends Fragment {
     private void FindMyListFood(String s) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference collRef = db.collection("DB Product");
-        group = new ArrayList<DataPFC>();
+        group = new ArrayList<>();
 
             collRef
                     .whereArrayContains("tag", s)

@@ -50,6 +50,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static android.widget.RelativeLayout.ABOVE;
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -101,6 +103,14 @@ public class ChangeFood extends Fragment {
             @Override
             public void onClick(View v) {
                 String inputText = name.getText().toString();
+                if (TextUtils.isEmpty(name.getText().toString())){
+                    Toast.makeText(getContext(), "Введите имя продукта", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(portion.getText().toString())){
+                    Toast.makeText(getContext(), "Введите порцию", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(isProteinWeight()){
                     Toast.makeText(getContext(), "Введите корректное количество белков", Toast.LENGTH_SHORT).show();
                     return;
@@ -111,6 +121,10 @@ public class ChangeFood extends Fragment {
                 }
                 if (isCarbohydrateWeight()){
                     Toast.makeText(getContext(), "Введите корректное количество углеводов", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (ValidatorName(name.getText().toString())){
+                    Toast.makeText(getContext(), "Имя не должно иметь символов", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 EmptyEdit();
@@ -124,6 +138,12 @@ public class ChangeFood extends Fragment {
             }
         });
         return root;
+    }
+
+    private boolean ValidatorName(String toString) {
+        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>`'?{}\\[\\]~]\"");
+        Matcher hasSign = sign.matcher(toString);
+        return hasSign.find();
     }
 
     private void Adaptive() {

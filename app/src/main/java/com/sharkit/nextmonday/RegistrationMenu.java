@@ -44,6 +44,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import static com.sharkit.nextmonday.MainActivity.isValidEmail;
 
 public class RegistrationMenu extends AppCompatActivity {
@@ -132,14 +136,35 @@ public class RegistrationMenu extends AppCompatActivity {
         CreateAcc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(TextUtils.isEmpty(RegistrName.getText().toString())){
                     Toast.makeText(getApplication(),"Введите имя",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(RegistrName.getText().toString().length() < 2 || RegistrName.getText().toString().length() > 30){
+                    Toast.makeText(getApplication(),"Введите корректное имя",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(Validator(RegistrName.getText().toString())){
+                    Toast.makeText(getApplication(),"Имя не должно иметь цифр, символов или пробелов",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 if(TextUtils.isEmpty(RegistrLastName.getText().toString())){
                     Toast.makeText(getApplication(),"Введите фамилию",Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if(RegistrLastName.getText().toString().length() < 2 || RegistrLastName.getText().toString().length() > 30){
+                    Toast.makeText(getApplication(),"Введите корректную фамилию",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(Validator(RegistrLastName.getText().toString())){
+                    Toast.makeText(getApplication(),"Фамилия не должна иметь цифр, символов, или пробелов",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
                 if(TextUtils.isEmpty(RegistrEmail.getText().toString())){
                     Toast.makeText(getApplication(),"Введите почту",Toast.LENGTH_SHORT).show();
                     return;
@@ -148,8 +173,12 @@ public class RegistrationMenu extends AppCompatActivity {
                     Toast.makeText(getApplication(),"Введите коректный формат почты",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(RegistrPass.length() < 5){
+                if(RegistrPass.length() <= 5){
                     Toast.makeText(getApplication(),"Введите пароль который больше 5 символов",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (ValidatorPass(RegistrPass.getText().toString())){
+                    Toast.makeText(getApplication(),"Пароль не должен иметь пробелов или кириллици",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(!policy.isChecked()){
@@ -231,6 +260,26 @@ public class RegistrationMenu extends AppCompatActivity {
         }
     }
 
+    public boolean Validator(String s){
+        Pattern num = Pattern.compile("[0-9]");
+        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,`]°•○●□■♤♡◇♧☆▪¤《》¡¿,.]");
+        Pattern space = Pattern.compile(" ");
+        Matcher hasSpace = space.matcher(s);
+        Matcher hasNum = num.matcher(s);
+        Matcher hasSigns = sign.matcher(s);
+
+        return (hasSigns.find() || hasNum.find() || hasSpace.find());
+    }
+
+    public boolean ValidatorPass(String s){
+        Pattern cyrillic = Pattern.compile("[а-яА-Я]");
+        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,`]°•○●□■♤♡◇♧☆▪¤《》¡¿,.]");
+        Pattern space = Pattern.compile(" ");
+        Matcher hasSign = sign.matcher(s);
+        Matcher hasCyrillic = cyrillic.matcher(s);
+        Matcher hasSpace = space.matcher(s);
+        return  (hasCyrillic.find() || hasSpace.find() || hasSign.find());
+    }
     public void firebaseAuthWithGoogle(String idToken) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
