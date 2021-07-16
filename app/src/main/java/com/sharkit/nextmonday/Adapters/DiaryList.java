@@ -209,12 +209,6 @@ public class DiaryList extends BaseExpandableListAdapter {
             RelativeLayout.LayoutParams lh_params = new RelativeLayout.LayoutParams(-1, height_high);
             linearLayout.setLayoutParams(lh_params);
         }
-//        else if (h <= 2000 && h >= 1000);{
-//            RelativeLayout.LayoutParams l_params = new RelativeLayout.LayoutParams(-1, height);
-//            linearLayout.setLayoutParams(l_params);
-//        }
-
-
     }
 
 
