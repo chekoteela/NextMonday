@@ -123,8 +123,6 @@ public class RegistrationMenu extends AppCompatActivity {
                 dialog.show();
             }
         });
-
-
         createRequest();
         googleSign.setOnClickListener(new View.OnClickListener() {
             @Override

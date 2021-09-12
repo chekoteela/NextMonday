@@ -1,12 +1,8 @@
 package com.sharkit.nextmonday.ui.Diary;
 
 import android.annotation.SuppressLint;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,18 +10,15 @@ import android.widget.ExpandableListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.Adapters.DiaryList;
-import com.sharkit.nextmonday.Configuration.AlarmDiary;
 import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.Users.DayOfWeek;
 import com.sharkit.nextmonday.Users.Days;
 import com.sharkit.nextmonday.Users.MyTarget;
-import com.sharkit.nextmonday.Users.Target;
 import com.sharkit.nextmonday.Users.Week;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,8 +26,6 @@ import org.jetbrains.annotations.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import static android.content.Context.ALARM_SERVICE;
 
 public class MainDiary extends Fragment {
     private ArrayList<Week> dataWeek;
@@ -180,7 +171,6 @@ public class MainDiary extends Fragment {
     }
 
     private ArrayList<MyTarget> listTarget(ArrayList<MyTarget> targets,String time) {
-
         targetData.findAllTarget(targets,time);
         return targets;
     }

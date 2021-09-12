@@ -229,66 +229,60 @@ public class TargetData extends SQLiteOpenHelper {
     public void findFromRepeat() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + format.format(calendar.getTimeInMillis()) + "' AND " +
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
+                COLUMN_DATE + " = '" + format.format(calendar.getTimeInMillis()) + "' AND " +
                 COLUMN_STATUS + " = '" + false + "'", null);
+
         while (cursor.moveToNext()) {
-            MyTarget target = new MyTarget();
-            writeTarget(target, cursor);
+            MyTarget target = writeTargets(cursor);
+            calendar.setTimeInMillis(target.getTime_alarm());
             for (int i = 3; i < 10; i++) {
                 if (Boolean.parseBoolean(cursor.getString(i))) {
-                    writeRepeat(i, target);
+                    writeRepeat(i, target, calendar);
                 }
+                calendar.add(Calendar.DAY_OF_WEEK, 1);
             }
         }
     }
 
 
-    private void writeRepeat(int i, MyTarget target) {
-        Calendar calendar = Calendar.getInstance();
+    private void writeRepeat(int i, MyTarget target, Calendar calendar) {
         switch (i) {
             case 3:
-                findDayOfWeek(Calendar.SUNDAY, calendar, target);
+                findDayOfWeek(Calendar.SUNDAY, target, calendar);
                 break;
             case 4:
-                findDayOfWeek(Calendar.SATURDAY, calendar, target);
+                findDayOfWeek(Calendar.SATURDAY, target,calendar);
                 break;
             case 5:
-                findDayOfWeek(Calendar.FRIDAY, calendar, target);
+                findDayOfWeek(Calendar.FRIDAY, target,calendar);
                 break;
             case 6:
-                findDayOfWeek(Calendar.THURSDAY, calendar, target);
+                findDayOfWeek(Calendar.THURSDAY, target,calendar);
                 break;
             case 7:
-                findDayOfWeek(Calendar.WEDNESDAY, calendar, target);
+                findDayOfWeek(Calendar.WEDNESDAY, target,calendar);
                 break;
             case 8:
-                findDayOfWeek(Calendar.TUESDAY, calendar, target);
+                findDayOfWeek(Calendar.TUESDAY, target,calendar);
                 break;
             case 9:
-                findDayOfWeek(Calendar.MONDAY, calendar, target);
+                findDayOfWeek(Calendar.MONDAY, target,calendar);
 
                 break;
         }
     }
 
     @SuppressLint("SimpleDateFormat")
-    private void findDayOfWeek(int day, Calendar calendar, MyTarget target) {
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        if (calendar.get(Calendar.DAY_OF_WEEK) == day) {
-            target.setTime_alarm(target.getTime_alarm() + 604800000);
-            target.setDate(format.format(target.getTime_alarm()));
-            try {
-                addNewTarget(target);
-            } catch (SQLiteConstraintException ignored) {
-            }
-            return;
-        }
+    private void findDayOfWeek(int day, MyTarget target,Calendar calendar) {
 
-        while (calendar.get(Calendar.DAY_OF_WEEK) != day) {
-            calendar.add(Calendar.DAY_OF_WEEK, 1);
+        if (calendar.get(Calendar.DAY_OF_WEEK) == day) {
+            addRepeatToNextWeek(target, calendar);
         }
-        target.setTime_alarm(switchRepeat(target.getRepeat(), target.getTime_alarm()));
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        target.setTime_alarm(calendar.getTimeInMillis());
         target.setDate(format.format(calendar.getTimeInMillis()));
 
         try {
@@ -297,24 +291,20 @@ public class TargetData extends SQLiteOpenHelper {
         }
     }
 
-    private Long switchRepeat(String repeat, Long time_alarm) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(time_alarm);
-        switch (repeat) {
-            case "every day not time":
-            case "every day with time":
-                time_alarm = calendar.getTimeInMillis() + 86400000;
-                break;
-            case "select day not time":
-            case "select day with time":
-                time_alarm = calendar.getTimeInMillis() + 604800000;
-                break;
+    @SuppressLint("SimpleDateFormat")
+    private void addRepeatToNextWeek(MyTarget target, Calendar calendar){
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        target.setTime_alarm(calendar.getTimeInMillis());
+        target.setDate(format.format(target.getTime_alarm()));
+        try {
+            addNewTarget(target);
+        } catch (SQLiteConstraintException ignored) {
         }
-
-        return time_alarm;
     }
 
-    private void writeTarget(MyTarget target, Cursor cursor) {
+
+    private MyTarget writeTargets(Cursor cursor) {
+        MyTarget target = new MyTarget();
         target.setName(cursor.getString(1));
         target.setStatus(Boolean.parseBoolean(cursor.getString(2)));
         target.setRepeat_sunday(Boolean.parseBoolean(cursor.getString(3)));
@@ -328,6 +318,26 @@ public class TargetData extends SQLiteOpenHelper {
         target.setDescription(cursor.getString(11));
         target.setDate(cursor.getString(12));
         target.setTime_alarm(cursor.getLong(13));
+
+        return target;
+    }
+    private MyTarget writeTarget(MyTarget target, Cursor cursor) {
+
+        target.setName(cursor.getString(1));
+        target.setStatus(Boolean.parseBoolean(cursor.getString(2)));
+        target.setRepeat_sunday(Boolean.parseBoolean(cursor.getString(3)));
+        target.setRepeat_saturday(Boolean.parseBoolean(cursor.getString(4)));
+        target.setRepeat_friday(Boolean.parseBoolean(cursor.getString(5)));
+        target.setRepeat_thursday(Boolean.parseBoolean(cursor.getString(6)));
+        target.setRepeat_wednesday(Boolean.parseBoolean(cursor.getString(7)));
+        target.setRepeat_tuesday(Boolean.parseBoolean(cursor.getString(8)));
+        target.setRepeat_monday(Boolean.parseBoolean(cursor.getString(9)));
+        target.setRepeat(cursor.getString(10));
+        target.setDescription(cursor.getString(11));
+        target.setDate(cursor.getString(12));
+        target.setTime_alarm(cursor.getLong(13));
+
+        return target;
     }
 
     @SuppressLint("SimpleDateFormat")
