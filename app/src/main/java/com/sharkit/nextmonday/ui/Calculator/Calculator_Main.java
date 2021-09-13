@@ -228,14 +228,6 @@ public class Calculator_Main extends Fragment implements View.OnClickListener{
         int h = metrics.heightPixels;
         int w = metrics.widthPixels;
         //створення додаткових змінних
-        Log.d(TAG, "log" + h + w );
-
-//        Toast toast = Toast.makeText(getApplicationContext(),
-//                "Значення" + h, Toast.LENGTH_LONG);
-//        toast.show();
-
-        //Лог
-
         if(h >= 2000 ){//Встановлення параметрів FrameLayout
             int p = (int)(h/4.1);
             int c = (int)(h/2);
