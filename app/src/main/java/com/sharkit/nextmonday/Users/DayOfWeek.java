@@ -3,7 +3,7 @@ package com.sharkit.nextmonday.Users;
 public class DayOfWeek {
     private static int monday_numeric, tuesday_numeric, wednesday_numeric, thursday_numeric, friday_numeric, saturday_numeric, sunday_numeric,
              monday_year, tuesday_year,wednesday_year, thursday_year, friday_year, saturday_year, sunday_year;
-    private static long millis;
+    private static long millis, addUserMillis;
 
     private static String monday_mouth, tuesday_month, wednesday_month, thursday_month, friday_month, saturday_month, sunday_month, month;
 
@@ -22,6 +22,14 @@ public class DayOfWeek {
 
     public static void setMonday_numeric(int monday_numeric) {
         DayOfWeek.monday_numeric = monday_numeric;
+    }
+
+    public static long getAddUserMillis() {
+        return addUserMillis;
+    }
+
+    public static void setAddUserMillis(long addUserMillis) {
+        DayOfWeek.addUserMillis = addUserMillis;
     }
 
     public static int getTuesday_numeric() {

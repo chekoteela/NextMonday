@@ -28,6 +28,7 @@ import com.sharkit.nextmonday.Exception.InternetException;
 import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.Users.DayOfWeek;
 import com.sharkit.nextmonday.Users.Days;
 import com.sharkit.nextmonday.Users.MyTarget;
 import com.sharkit.nextmonday.Users.Target;
@@ -117,6 +118,9 @@ public class DiaryList extends BaseExpandableListAdapter {
 
         plus.setOnClickListener(v -> {
             if (validation.isValidYesterday(groupPosition)) {
+                Target.setDay(mDay.get(groupPosition).getDay());
+                Target.setMonth(mDay.get(groupPosition).getMonth());
+                Target.setYear(mDay.get(groupPosition).getYear());
                 navController.navigate(R.id.nav_plus_target);
             } else {
                 try {

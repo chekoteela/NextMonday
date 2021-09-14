@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,7 +90,6 @@ public class DiaryCreateNewTarget extends Fragment{
             calendar.set(Target.getYear(),
                     Target.getMonth(),
                     Target.getDay());
-            myTarget.setTime_alarm(instance.getTimeInMillis());
         }else{
             calendar.set(Target.getYear(),
                     Target.getMonth(),
@@ -104,12 +102,11 @@ public class DiaryCreateNewTarget extends Fragment{
                 }
                 return;
             }
-            myTarget.setTime_alarm(calendar.getTimeInMillis());
         }
+            myTarget.setTime_alarm(calendar.getTimeInMillis());
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
             myTarget.setDate(dateFormat.format(calendar.getTimeInMillis()));
-            Log.d("qwerty", myTarget.getTime_alarm()+"");
             TargetData targetData = new TargetData(getContext());
             TargetEntity targetEntity = new TargetEntity();
             targetEntity.createNewTarget(myTarget);
