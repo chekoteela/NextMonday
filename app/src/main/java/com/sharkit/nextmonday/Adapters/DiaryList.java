@@ -41,7 +41,7 @@ import java.util.Calendar;
 
 public class DiaryList extends BaseExpandableListAdapter {
 
-    private LinearLayout linearLayout, lin;
+    private LinearLayout linear_parent, lin;
     private TextView day, number, month, before, after, text_target, time_target;
     private CheckBox status;
     private ImageView plus;
@@ -104,14 +104,13 @@ public class DiaryList extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
 
-
-
-
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.custom_diary, null);
         }
-        findView(convertView);
+//        findView(convertView);
+        findViewGroup(convertView);
+        Adaptive();
 
         if (SelectToday(mData.get(groupPosition).getNumber()) == groupPosition) {
             lin.setBackgroundResource(R.drawable.dairy_exp_list_task_color);
@@ -137,8 +136,29 @@ public class DiaryList extends BaseExpandableListAdapter {
                 }
             }
         });
+
         return convertView;
+
     }
+
+    private void findViewGroup(View convertView) {
+        lin = convertView.findViewById(R.id.linear);
+        linear_parent = convertView.findViewById(R.id.linear_parent);
+        day = convertView.findViewById(R.id.day_xml);
+        number = convertView.findViewById(R.id.num_x);
+        month = convertView.findViewById(R.id.month_xml);
+        before = convertView.findViewById(R.id.before_xml);
+        after = convertView.findViewById(R.id.after_xml);
+        progressBar = convertView.findViewById(R.id.progress_bar_xml);
+        plus = convertView.findViewById(R.id.plus_xml);
+
+    }
+
+
+
+
+
+
 
     private int setProgress(int after, int before) {
         int a = 0;
@@ -200,14 +220,11 @@ public class DiaryList extends BaseExpandableListAdapter {
 
         Log.d(TAG, "log high " + h + "  log width " + w ); // лог для висоти і ширини об'єкта
 
-        RelativeLayout.LayoutParams l_params = new RelativeLayout.LayoutParams(-1, height);
-        linearLayout.setLayoutParams(l_params);
-
         if (h >= 2000){
             int height_high = (int)(h/8.25);
 
             RelativeLayout.LayoutParams lh_params = new RelativeLayout.LayoutParams(-1, height_high);
-            linearLayout.setLayoutParams(lh_params);
+            linear_parent.setLayoutParams(lh_params);
         }
     }
 
@@ -351,22 +368,22 @@ public class DiaryList extends BaseExpandableListAdapter {
     }
 
     private void findView(View convertView) {
-        lin = convertView.findViewById(R.id.linear);
-        linearLayout = convertView.findViewById(R.id.lin_xml);
-        day = convertView.findViewById(R.id.day_xml);
-        number = convertView.findViewById(R.id.num_x);
-        month = convertView.findViewById(R.id.month_xml);
-        before = convertView.findViewById(R.id.before_xml);
-        after = convertView.findViewById(R.id.after_xml);
-        progressBar = convertView.findViewById(R.id.progress_bar_xml);
-        plus = convertView.findViewById(R.id.plus_xml);
+//        lin = convertView.findViewById(R.id.linear);
+//        linear_parent = convertView.findViewById(R.id.linear_parent);
+//        day = convertView.findViewById(R.id.day_xml);
+//        number = convertView.findViewById(R.id.num_x);
+//        month = convertView.findViewById(R.id.month_xml);
+//        before = convertView.findViewById(R.id.before_xml);
+//        after = convertView.findViewById(R.id.after_xml);
+//        progressBar = convertView.findViewById(R.id.progress_bar_xml);
+//        plus = convertView.findViewById(R.id.plus_xml);
 
         status = convertView.findViewById(R.id.completeTarget);
         text_target = convertView.findViewById(R.id.textTarget);
         time_target = convertView.findViewById(R.id.timeTarget);
         item = convertView.findViewById(R.id.create_child_item);
 
-        Adaptive();
+
 
     }
 
