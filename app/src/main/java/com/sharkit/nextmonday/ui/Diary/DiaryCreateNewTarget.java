@@ -159,7 +159,7 @@ public class DiaryCreateNewTarget extends Fragment{
             add_description.setLayoutParams(params);
             tv_add_descr.setTextSize(10);
         }
-
+//Влад поц
     }
 
     private void notRepeat() {
