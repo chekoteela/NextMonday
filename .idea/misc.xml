@@ -3,9 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/calculator_alert_add_meal.xml" value="0.30932971014492755" />
-        <entry key="app/src/main/res/layout/calculator_find_food_by_name.xml" value="0.3203125" />
-        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/custom_diary.xml" value="0.17395833333333333" />
       </map>
     </option>
   </component>

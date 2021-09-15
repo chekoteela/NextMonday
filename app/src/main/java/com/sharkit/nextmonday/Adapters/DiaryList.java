@@ -323,7 +323,6 @@ public class DiaryList extends BaseExpandableListAdapter {
         after = convertView.findViewById(R.id.after_xml);
         progressBar = convertView.findViewById(R.id.progress_bar_xml);
         plus = convertView.findViewById(R.id.plus_xml);
-
         status = convertView.findViewById(R.id.completeTarget);
         text_target = convertView.findViewById(R.id.textTarget);
         time_target = convertView.findViewById(R.id.timeTarget);
