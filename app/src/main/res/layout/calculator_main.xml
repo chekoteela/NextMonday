@@ -564,7 +564,7 @@
                         android:text="@string/water"/>
 
                     <LinearLayout
-                        android:id="@+id/orange_linear_b2"
+                        android:id="@+id/black_linear_b2"
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"
@@ -591,7 +591,7 @@
                         android:layout_marginRight="10dp" />
 
                     <LinearLayout
-                        android:id="@+id/black_linear_b2"
+                        android:id="@+id/orange_linear_b2"
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:layout_gravity="right|bottom"

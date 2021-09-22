@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.util.DisplayMetrics;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,6 @@ import com.sharkit.nextmonday.Exception.InternetException;
 import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MySQL.TargetData;
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.Users.DayOfWeek;
 import com.sharkit.nextmonday.Users.Days;
 import com.sharkit.nextmonday.Users.MyTarget;
 import com.sharkit.nextmonday.Users.Target;
@@ -40,7 +40,7 @@ import java.util.Calendar;
 
 public class DiaryList extends BaseExpandableListAdapter {
 
-    private LinearLayout linearLayout, lin;
+    private LinearLayout linear_parent, lin;
     private TextView day, number, month, before, after, text_target, time_target;
     private CheckBox status;
     private ImageView plus;
@@ -52,11 +52,14 @@ public class DiaryList extends BaseExpandableListAdapter {
     private final ArrayList<Days> mDay;
     private Validation validation;
 
+
     public DiaryList(Context mContext, ArrayList<ArrayList<MyTarget>> mGroup, ArrayList<Week> mData, ArrayList<Days> mDay) {
         this.mContext = mContext;
         this.mGroup = mGroup;
         this.mData = mData;
         this.mDay = mDay;
+
+
     }
 
     @Override
@@ -97,11 +100,13 @@ public class DiaryList extends BaseExpandableListAdapter {
     @SuppressLint("InflateParams")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.custom_diary, null);
         }
-        findView(convertView);
+        findViewGroup(convertView);
+        setAdaptive();
 
         if (SelectToday(mData.get(groupPosition).getNumber()) == groupPosition) {
             lin.setBackgroundResource(R.drawable.dairy_exp_list_task_color);
@@ -130,8 +135,23 @@ public class DiaryList extends BaseExpandableListAdapter {
                 }
             }
         });
+
         return convertView;
     }
+
+    private void findViewGroup(View convertView) {
+        lin = convertView.findViewById(R.id.linear);
+        linear_parent = convertView.findViewById(R.id.linear_parent);
+        day = convertView.findViewById(R.id.day_xml);
+        number = convertView.findViewById(R.id.num_x);
+        month = convertView.findViewById(R.id.month_xml);
+        before = convertView.findViewById(R.id.before_xml);
+        after = convertView.findViewById(R.id.after_xml);
+        progressBar = convertView.findViewById(R.id.progress_bar_xml);
+        plus = convertView.findViewById(R.id.plus_xml);
+
+    }
+
 
     private int setProgress(int after, int before) {
         int a = 0;
@@ -180,6 +200,15 @@ public class DiaryList extends BaseExpandableListAdapter {
         });
         return convertView;
     }
+
+    private void setAdaptive() {
+        DisplayMetrics metrics = mContext.getResources().getDisplayMetrics();
+        int h = metrics.heightPixels;
+        int height_high = (int) (h / 8.25);
+        RelativeLayout.LayoutParams lh_params = new RelativeLayout.LayoutParams(-1, height_high);
+        linear_parent.setLayoutParams(lh_params);
+    }
+
 
     private void createContextMenu(ContextMenu menu, int groupPosition, int childPosition, NavController navController) {
         menu.add("Изменить").setOnMenuItemClickListener(item -> {
@@ -314,19 +343,12 @@ public class DiaryList extends BaseExpandableListAdapter {
     }
 
     private void findView(View convertView) {
-        lin = convertView.findViewById(R.id.linear);
-        linearLayout = convertView.findViewById(R.id.lin_xml);
-        day = convertView.findViewById(R.id.day_xml);
-        number = convertView.findViewById(R.id.num_x);
-        month = convertView.findViewById(R.id.month_xml);
-        before = convertView.findViewById(R.id.before_xml);
-        after = convertView.findViewById(R.id.after_xml);
-        progressBar = convertView.findViewById(R.id.progress_bar_xml);
-        plus = convertView.findViewById(R.id.plus_xml);
         status = convertView.findViewById(R.id.completeTarget);
         text_target = convertView.findViewById(R.id.textTarget);
         time_target = convertView.findViewById(R.id.timeTarget);
         item = convertView.findViewById(R.id.create_child_item);
+
+
     }
 
 }

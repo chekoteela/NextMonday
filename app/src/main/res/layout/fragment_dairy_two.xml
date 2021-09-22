@@ -7,7 +7,9 @@
     android:id="@+id/rootParent"
     android:background="@color/calculator_auto_edittext"
     >
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,6 +116,39 @@
                     tools:ignore="UseSwitchCompatOrMaterialXml" />
             </LinearLayout>
 
+
+
+
+            <LinearLayout
+                android:id="@+id/lin"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_ad_description_xml"
+                    android:layout_gravity="start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_descr"
+                    android:layout_margin="5dp"
+                    style="@style/StandartTextView"/>
+                <EditText
+                    android:id="@+id/add_description_xml"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    style="@style/EditText_change_food_white"
+                    android:elegantTextHeight="true"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="5"
+                    android:padding="10dp"
+                    android:scrollHorizontally="true"
+                    android:textColor="@color/white"
+                    android:textCursorDrawable="@null" />
+            </LinearLayout>
+
             <Button
                 style="@style/button_setting_style"
                 android:layout_marginHorizontal="60dp"
@@ -131,7 +166,9 @@
         </LinearLayout>
 
 
+
     </LinearLayout>
+    </ScrollView>
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"

@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -227,13 +228,6 @@ public class Calculator_Main extends Fragment implements View.OnClickListener{
         int h = metrics.heightPixels;
         int w = metrics.widthPixels;
         //створення додаткових змінних
-
-//        Toast toast = Toast.makeText(getApplicationContext(),
-//                "Значення" + h, Toast.LENGTH_LONG);
-//        toast.show();
-
-        //Лог
-
         if(h >= 2000 ){//Встановлення параметрів FrameLayout
             int p = (int)(h/4.1);
             int c = (int)(h/2);
@@ -267,7 +261,7 @@ public class Calculator_Main extends Fragment implements View.OnClickListener{
             w_layout.setLayoutParams(frame_cv);
             p_layout.setLayoutParams(frame_cv);
         }
-        else if (h <= 2000 && h >= 1000) {//Встановлення параметрів FrameLayout для ммого HuaweiP8-line2017 за розширенням
+        else if (h <= 2000 && h >= 1000) {//Встановлення параметрів FrameLayout для мого HuaweiP8-line2017 за розширенням
             int c = (int)(h/3.5);
             int v = (int)(h/4.1);
             LinearLayout.LayoutParams c_params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, c);
@@ -600,10 +594,10 @@ if(h >= 2000){ // створення адаптів для h = 2000
             eat_fat.setTextSize(14);
             all_fat.setTextSize(14);
 
-            text_p.setTextSize(16);
-            text_f.setTextSize(16);
-            text_c.setTextSize(16);
-            text_w.setTextSize(16);
+            text_p.setTextSize(14);
+            text_f.setTextSize(14);
+            text_c.setTextSize(14);
+            text_w.setTextSize(14);
 
             eat_c.setTextSize(32);
             percent_calorie.setTextSize(32);

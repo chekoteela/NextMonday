@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:contentDescription="@string/list2"
-        android:id="@+id/lin_xml"
+        android:id="@+id/linear_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

@@ -69,6 +69,17 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+
+
+
+
+
+
+
+
+
+
+
     <style name="MainMenu" parent="Theme.AppCompat">
         <item name="colorPrimary">@android:color/darker_gray</item>
         <item name="colorSwitchThumbNormal">@color/white</item>

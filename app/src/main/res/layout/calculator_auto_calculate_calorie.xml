@@ -85,6 +85,8 @@
 
 
                 <EditText
+                    android:hint="лет"
+                    android:gravity="center"
                     android:inputType="numberDecimal"
                     android:id="@+id/age"
                     style="@style/EditText_change_food_white"
@@ -213,15 +215,30 @@
             android:background="@color/calculator_auto_edittext"
             android:orientation="vertical"
             android:padding="10dp">
-
-            <TextView
-                android:id="@+id/form"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/StandartTextView"
-                android:textSize="18sp"
-                android:text="@string/check_F"
-                />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/form"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/StandartTextView"
+                    android:textSize="18sp"
+                    android:text="@string/check_F"
+                    />
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/StandartTextView"
+                    android:textSize="20sp"
+                    android:text=" ?"
+                    />
+            </LinearLayout>
+
+
 
             <RadioGroup
                 android:id="@+id/formula"

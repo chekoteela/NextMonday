@@ -314,6 +314,9 @@ public class Weight extends Fragment {
         graph_params.setMargins(0, 20, 0, 10);
         graphView.setPadding(10,10,10,10);
         graphView.setLayoutParams(graph_params);
+        if (h > 2000){
+            graphView.setPadding(30,30,30,30);
+        }
         //Параметри кнопки
         RelativeLayout.LayoutParams but_params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h / 16);
         but_params.setMargins(h / 32, h / 84, 32, h / 84);

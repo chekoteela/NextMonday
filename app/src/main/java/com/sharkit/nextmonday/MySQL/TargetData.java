@@ -16,11 +16,21 @@ import com.sharkit.nextmonday.Configuration.AlarmDiary;
 import com.sharkit.nextmonday.FirebaseEntity.TargetEntity;
 import com.sharkit.nextmonday.MainMenu;
 import com.sharkit.nextmonday.Users.MyTarget;
+import com.sharkit.nextmonday.impl.WriteToDB;
+import com.sharkit.nextmonday.impl.days.Friday;
+import com.sharkit.nextmonday.impl.days.Monday;
+import com.sharkit.nextmonday.impl.days.Saturday;
+import com.sharkit.nextmonday.impl.days.Sunday;
+import com.sharkit.nextmonday.impl.days.Thursday;
+import com.sharkit.nextmonday.impl.days.Tuesday;
+import com.sharkit.nextmonday.impl.days.Wednesday;
 import com.sharkit.nextmonday.ui.Diary.MainDiary;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import static android.content.Context.ALARM_SERVICE;
@@ -234,43 +244,45 @@ public class TargetData extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " +
                 COLUMN_DATE + " = '" + format.format(calendar.getTimeInMillis()) + "' AND " +
                 COLUMN_STATUS + " = '" + false + "'", null);
-
+        ArrayList<Boolean> repeat = new ArrayList<>();
         while (cursor.moveToNext()) {
             MyTarget target = writeTargets(cursor);
             calendar.setTimeInMillis(target.getTime_alarm());
-            for (int i = 3; i < 10; i++) {
-                if (Boolean.parseBoolean(cursor.getString(i))) {
-                    writeRepeat(i, target, calendar);
-                }
-                calendar.add(Calendar.DAY_OF_WEEK, 1);
-            }
+            Map<String, Boolean> mapRepeats = new HashMap<>();
+            mapRepeats.put("Monday", Boolean.parseBoolean(cursor.getString(9)));
+            mapRepeats.put("Tuesday", Boolean.parseBoolean(cursor.getString(8)));
+            mapRepeats.put("Wednesday", Boolean.parseBoolean(cursor.getString(7)));
+            mapRepeats.put("Thursday", Boolean.parseBoolean(cursor.getString(6)));
+            mapRepeats.put("Friday", Boolean.parseBoolean(cursor.getString(5)));
+            mapRepeats.put("Saturday", Boolean.parseBoolean(cursor.getString(4)));
+            mapRepeats.put("Sunday", Boolean.parseBoolean(cursor.getString(3)));
+            writeRepeat(calendar.get(Calendar.DAY_OF_WEEK), target, mapRepeats, calendar);
         }
     }
 
+    private void writeRepeat(int i, MyTarget target, Map<String, Boolean> mapRepeats, Calendar calendar) {
 
-    private void writeRepeat(int i, MyTarget target, Calendar calendar) {
         switch (i) {
+            case 1:
+                new Sunday().writeToDB(target, mapRepeats,this, calendar);
+                break;
+            case 2:
+                new Monday().writeToDB(target, mapRepeats,this, calendar);
+                break;
             case 3:
-                findDayOfWeek(Calendar.SUNDAY, target, calendar);
+                new Tuesday().writeToDB(target, mapRepeats,this, calendar);
                 break;
             case 4:
-                findDayOfWeek(Calendar.SATURDAY, target,calendar);
+                new Wednesday().writeToDB(target, mapRepeats, this, calendar);
                 break;
             case 5:
-                findDayOfWeek(Calendar.FRIDAY, target,calendar);
+                new Thursday().writeToDB(target, mapRepeats,this, calendar);
                 break;
             case 6:
-                findDayOfWeek(Calendar.THURSDAY, target,calendar);
+                new Friday().writeToDB(target, mapRepeats,this, calendar);
                 break;
             case 7:
-                findDayOfWeek(Calendar.WEDNESDAY, target,calendar);
-                break;
-            case 8:
-                findDayOfWeek(Calendar.TUESDAY, target,calendar);
-                break;
-            case 9:
-                findDayOfWeek(Calendar.MONDAY, target,calendar);
-
+                new Saturday().writeToDB(target, mapRepeats,this, calendar);
                 break;
         }
     }
@@ -280,6 +292,7 @@ public class TargetData extends SQLiteOpenHelper {
 
         if (calendar.get(Calendar.DAY_OF_WEEK) == day) {
             addRepeatToNextWeek(target, calendar);
+            return;
         }
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         target.setTime_alarm(calendar.getTimeInMillis());
@@ -289,12 +302,14 @@ public class TargetData extends SQLiteOpenHelper {
             addNewTarget(target);
         } catch (SQLiteConstraintException ignored) {
         }
+        calendar.add(Calendar.DAY_OF_WEEK, 1);
+
     }
 
     @SuppressLint("SimpleDateFormat")
     private void addRepeatToNextWeek(MyTarget target, Calendar calendar){
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        target.setTime_alarm(calendar.getTimeInMillis());
+        target.setTime_alarm(calendar.getTimeInMillis() + 604800000);
         target.setDate(format.format(target.getTime_alarm()));
         try {
             addNewTarget(target);
