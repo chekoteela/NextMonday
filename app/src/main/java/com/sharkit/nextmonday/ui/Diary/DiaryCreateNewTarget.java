@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,7 @@ public class DiaryCreateNewTarget extends Fragment {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     public Switch take_time, repeat;
     public Button add;
-    public TextView tv_add_descr;
+    public TextView tv_add_description;
     public RadioButton selectDay, everyDay;
     public CheckBox monday, tuesday, wednesday,
             thursday, friday, saturday, sunday;
@@ -89,7 +88,7 @@ public class DiaryCreateNewTarget extends Fragment {
             Calendar instance = Calendar.getInstance();
             Calendar calendar = Calendar.getInstance();
             myTarget.setRepeat(repeatString + timeString);
-            myTarget.setDescription("");
+            myTarget.setDescription(tv_add_description.getText().toString());
             myTarget.setName(text_target.getText().toString());
         if (minutes == -1 && hour == -1){
             calendar.set(Target.getYear(),
@@ -130,27 +129,25 @@ public class DiaryCreateNewTarget extends Fragment {
     private void setAdaptive() {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int h = metrics.heightPixels;
-        Log.d("qwerty", "Adaptive:" + h);
-
 
         if (h >= 2000) {//Встановлення параметрів FrameLayout
-            tv_add_descr.setTextSize(14);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, (int) (h / 4));
+            tv_add_description.setTextSize(14);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, (h / 4));
             params.setMargins(50, 10, 50, 10);
             add_description.setLayoutParams(params);
 
 
         } else if (h < 1999 & h >= 1000) {//Встановлення параметрів FrameLayout для мого HuaweiP8-line2017 за розширенням
-            tv_add_descr.setTextSize(12);
+            tv_add_description.setTextSize(12);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, 150);
             params.setMargins(20, 10, 20, 10);
             add_description.setLayoutParams(params);
         } else if (h <= 999) {
-            tv_add_descr.setPadding(0, 0, 0, 0);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, (int) (h / 4));
+            tv_add_description.setPadding(0, 0, 0, 0);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, (h / 4));
             params.setMargins(20, 10, 20, 10);
             add_description.setLayoutParams(params);
-            tv_add_descr.setTextSize(10);
+            tv_add_description.setTextSize(10);
         }
 //Влад поц
     }
@@ -250,7 +247,7 @@ public class DiaryCreateNewTarget extends Fragment {
         take_time = root.findViewById(R.id.take_time_xml);
         add = root.findViewById(R.id.add_xml);
         repeat = root.findViewById(R.id.repeat_xml);
-        tv_add_descr = root.findViewById(R.id.tv_ad_description_xml);
+        tv_add_description = root.findViewById(R.id.tv_ad_description_xml);
         add_description = root.findViewById(R.id.add_description_xml);
 
 

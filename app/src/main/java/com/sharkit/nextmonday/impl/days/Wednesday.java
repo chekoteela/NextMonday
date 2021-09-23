@@ -35,7 +35,7 @@ public class Wednesday implements WriteToDB {
             }
         }
         calendar.add(Calendar.DAY_OF_WEEK, 1);
-        if (Calendar.getInstance().getTimeInMillis() + 518400000 > calendar.getTimeInMillis()) {
+        if (Calendar.getInstance().getTimeInMillis() + 604800000 > calendar.getTimeInMillis()) {
             new Thursday().writeToDB(target, mapRepeat, targetData, calendar);
         }
     }
