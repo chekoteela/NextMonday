@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -17,8 +16,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -37,42 +34,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.EventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
-import com.sharkit.nextmonday.MySQL.DataBasePFC;
-import com.sharkit.nextmonday.Users.DayOfWeek;
-import com.sharkit.nextmonday.Users.Target;
-import com.sharkit.nextmonday.Users.Users;
-import com.sharkit.nextmonday.variables.LocalDataPFC;
-import com.sharkit.nextmonday.variables.PFC_today;
+import com.sharkit.nextmonday.db.DataBasePFC;
 
 import java.util.Calendar;
 
 public class MainMenu extends AppCompatActivity {
 
-     AppBarConfiguration mAppBarConfiguration;
-     TextView email, nameProfile;
-     FirebaseAuth mAuth;
-     FirebaseDatabase fdb;
-     DatabaseReference users;
-    SQLiteDatabase sdb;
-    final String TAG = "qwerty";
+     private AppBarConfiguration mAppBarConfiguration;
+     private TextView email, nameProfile;
+     private DataBasePFC dataBasePFC;
+     private SQLiteDatabase db;
+     private BottomNavigationView bar;
 
-    DataBasePFC dataBasePFC;
-    SQLiteDatabase db;
-    BottomNavigationView bar;
-    Menu menu;
-    MenuItem home, ration, calendar1, weight;
 
 
 
@@ -87,13 +62,6 @@ public class MainMenu extends AppCompatActivity {
         bar = findViewById(R.id.bar);
 
         setSupportActionBar(toolbar);
-        mAuth = FirebaseAuth.getInstance();
-        fdb = FirebaseDatabase.getInstance();
-        users = fdb.getReference("Users");
-
-        dataBasePFC = new DataBasePFC(getApplicationContext());
-        db = dataBasePFC.getReadableDatabase();
-        dataBasePFC.onCreate(db);
 
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_settings_24);
         toolbar.setOverflowIcon(drawable);
@@ -111,11 +79,6 @@ public class MainMenu extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Calendar calendar = Calendar.getInstance();
-        DayOfWeek.setMillis(calendar.getTimeInMillis());
-
-        UpDateUser();
-
     }
 
 
@@ -129,8 +92,6 @@ public class MainMenu extends AppCompatActivity {
         navController.navigate(R.id.nav_cal_calendar);
     }
     public void OnClickRation(MenuItem item){
-        java.util.Calendar calendar = java.util.Calendar.getInstance();
-        DayOfWeek.setMillis(calendar.getTimeInMillis());
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.navigate(R.id.nav_cal_ration);
     }
@@ -174,7 +135,6 @@ public class MainMenu extends AppCompatActivity {
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY){
             calendar.add(Calendar.DAY_OF_WEEK, -1);
         }
-        DayOfWeek.setMillis(calendar.getTimeInMillis());
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         navController.navigate(R.id.nav_diary);
     }
@@ -193,28 +153,6 @@ public class MainMenu extends AppCompatActivity {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
         }
 
-    }
-
-    public void UpDateUser() {
-        users.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Target.setModerator("1");
-                email = findViewById(R.id.email);
-                nameProfile =findViewById(R.id.nameProfile);
-                Users us = snapshot.getValue(Users.class);
-                try{
-
-                    Target.setModerator(us.getModerator());
-                    email.setText(us.getEmail());
-                    nameProfile.setText((us.getName()));
-                }catch (NullPointerException e){}
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
     }
 
     @Override
@@ -238,8 +176,6 @@ public class MainMenu extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
 
         if (result.getContents() != null) {
-            PFC_today.setBar_code(result.getContents());
-            ReadFireStore();
 
 
         } else {
@@ -247,32 +183,8 @@ public class MainMenu extends AppCompatActivity {
             navController.navigate(R.id.nav_cal_find_food_by_name);
             Toast.makeText(getBaseContext(), "error", Toast.LENGTH_SHORT).show();
         }
-
-        // додати додаткову провірку на наявність запису в SQL
     }
-    private void ReadFireStore(){
-         FirebaseFirestore db = FirebaseFirestore.getInstance();
-         CollectionReference docRef = db.collection("DB Product");
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-        docRef.whereEqualTo("bar_code", PFC_today.getBar_code())
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if(!value.isEmpty()){
-                            navController.navigate(R.id.nav_cal_my_food);
-                        }else{
-                            if (!isExistSQLite(PFC_today.getBar_code())) {
-                                PFC_today.setPage("MainMenu.LocalSQLite");
-                                navController.navigate(R.id.nav_cal_my_food);
-                            }else{
-                                AlertExistProduct();
-                            }
-                        }
-                    }
-                });
-
-    }
 
     private void AlertExistProduct() {
         android.app.AlertDialog.Builder dialog = new AlertDialog.Builder(MainMenu.this, R.style.CustomAlertDialog);
@@ -282,7 +194,6 @@ public class MainMenu extends AppCompatActivity {
         dialog.setPositiveButton("Создать новый", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                NullList();
                 navController.navigate(R.id.nav_cal_change_food);
             }
         });
@@ -303,44 +214,4 @@ public class MainMenu extends AppCompatActivity {
         dialog.show();
 
     }
-
-    private boolean isExistSQLite(String code) {
-        db = dataBasePFC.getReadableDatabase();
-
-       Cursor query = db.rawQuery("SELECT * FROM " + dataBasePFC.TABLE + " WHERE " + dataBasePFC.COLUMN_ID + " = '" + mAuth.getCurrentUser().getUid() + "' AND "
-                + dataBasePFC.COLUMN_BAR_CODE + " = '" + code + "'", null);
-
-        return (!query.moveToNext());
-
-    }
-
-    private void NullList() {
-        LocalDataPFC.setName(null);
-        LocalDataPFC.setPortion(null);
-        LocalDataPFC.setCalorie(null);
-        LocalDataPFC.setProtein(null);
-        LocalDataPFC.setWhey_protein(null);
-        LocalDataPFC.setSoy_protein(null);
-        LocalDataPFC.setAgg_protein(null);
-        LocalDataPFC.setCasein_protein(null);
-        LocalDataPFC.setCarbohydrate(null);
-        LocalDataPFC.setSimple_carbohydrates(null);
-        LocalDataPFC.setComplex_carbohydrate(null);
-        LocalDataPFC.setFat(null);
-        LocalDataPFC.setSaturated_fat(null);
-        LocalDataPFC.setTrans_fat(null);
-        LocalDataPFC.setOmega_9(null);
-        LocalDataPFC.setOmega_6(null);
-        LocalDataPFC.setOmega_3(null);
-        LocalDataPFC.setAla(null);
-        LocalDataPFC.setDha(null);
-        LocalDataPFC.setEpa(null);
-        LocalDataPFC.setWatter(null);
-        LocalDataPFC.setCellulose(null);
-        LocalDataPFC.setSalt(null);
-        LocalDataPFC.setCalcium(null);
-        LocalDataPFC.setPotassium(null);
-    }
-
-
 }
