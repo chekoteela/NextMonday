@@ -38,7 +38,7 @@
 
         <EditText
             style="@style/EditText_change_food_white"
-            android:id="@+id/SignEmail"
+            android:id="@+id/sign_email_xml"
             android:contentDescription="@string/name2"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -54,7 +54,7 @@
         <EditText
             style="@style/EditText_change_food_white"
             android:contentDescription="@string/SignEmail2"
-            android:id="@+id/SignPass"
+            android:id="@+id/sign_pass_xml"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
@@ -71,7 +71,7 @@
 
         <TextView
             style="@style/StandartTextView"
-            android:id="@+id/forgotPass"
+            android:id="@+id/forgot_pass_xml"
             android:contentDescription="@string/ForgotPass2"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -85,7 +85,7 @@
             android:textAlignment="center" />
         
         <Button
-            android:id="@+id/SignIn"
+            android:id="@+id/sign_in_xml"
             android:contentDescription="@string/SignIn2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
             android:textAlignment="center"/>
         <Button
             style="@style/button_setting_style"
-            android:id="@+id/CreateAcc"
+            android:id="@+id/create_account_xml"
             android:contentDescription="@string/haveAcc2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -142,14 +142,14 @@
 
             <ImageView
                 android:visibility="gone"
-                android:id="@+id/fb"
+                android:id="@+id/facebook_xml"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:clickable="true"
                 app:srcCompat="@drawable/facebook" />
 
             <ImageView
-                android:id="@+id/google"
+                android:id="@+id/google_xml"
                 android:contentDescription="@string/google"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="50dp"
