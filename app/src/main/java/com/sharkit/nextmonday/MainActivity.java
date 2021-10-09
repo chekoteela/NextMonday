@@ -160,7 +160,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .addOnFailureListener(e -> Toast.makeText(getApplication(), EMAIL_NOT_FOUND, Toast.LENGTH_SHORT).show()));
         dialog.setView(forgotPass);
         dialog.show();
-
     }
 
     public void handleFacebookAccessToken(AccessToken token) {
