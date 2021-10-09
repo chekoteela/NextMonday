@@ -39,13 +39,14 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
     private CheckBox policy;
 
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_menu);
         getWindow().setNavigationBarColor(getResources().getColor(R.color.back));
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         findView();
         onClickListener();
     }
