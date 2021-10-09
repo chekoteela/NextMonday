@@ -45,6 +45,11 @@ public class ValidationField {
                 .hasNoSpace(HAS_NOT_SPACE + editText.getHint().toString())
                 .build();
     }
-
+    public static boolean isValidField(EditText editText, Context context){
+        return new BuildValidation(context)
+                .setWidget(editText)
+                .notEmpty(NOT_EMPTY)
+                .build();
+    }
 }
 
