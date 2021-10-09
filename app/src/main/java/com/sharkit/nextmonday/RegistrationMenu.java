@@ -1,5 +1,9 @@
 package com.sharkit.nextmonday;
 
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.AGREE_POLICY;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.AGREE_WITH_POLICY;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.USER_WITH_EMAIL_EXIST;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -18,6 +22,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.sharkit.nextmonday.configuration.constant.ToastMessage;
+import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
 import com.sharkit.nextmonday.db.firestore.UserFirestore;
 import com.sharkit.nextmonday.entity.enums.Role;
@@ -54,7 +60,7 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
         AlertDialog.Builder dialog = new AlertDialog.Builder(RegistrationMenu.this);
         LayoutInflater layoutInflater = LayoutInflater.from(getBaseContext());
         View forgotPass = layoutInflater.inflate(R.layout.policy, null);
-        dialog.setPositiveButton("Я ознакомлен(а)", (dialog1, which) -> dialog1.dismiss());
+        dialog.setPositiveButton(AGREE_POLICY, (dialog1, which) -> dialog1.dismiss());
         dialog.setView(forgotPass);
         dialog.show();
     }
@@ -85,7 +91,7 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
             return;
         }
         if (!policy.isChecked()){
-            Toast.makeText(getApplicationContext(), "Согласитесь с политикой конфиденциальности", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), AGREE_WITH_POLICY, Toast.LENGTH_SHORT).show();
             return;
         }
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -101,7 +107,7 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
 
                     new UserFirestore().setUser(new User().transform(userDTO))
                             .addOnSuccessListener(unused -> startActivity(new Intent(RegistrationMenu.this, MainActivity.class)));
-                }).addOnFailureListener(e -> Toast.makeText(getApplication(), "Пользователь с такой почтой уже зарегистрируван", Toast.LENGTH_SHORT).show());
+                }).addOnFailureListener(e -> Toast.makeText(getApplication(), USER_WITH_EMAIL_EXIST, Toast.LENGTH_SHORT).show());
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -112,6 +118,7 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(RegistrationMenu.this, MainActivity.class));
                 break;
             case R.id.create_account_xml:
+                if (Configuration.hesConnection(getApplicationContext()))
                 createAccount();
                 break;
             case R.id.policy_text:
