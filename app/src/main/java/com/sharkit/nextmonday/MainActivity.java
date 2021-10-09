@@ -96,6 +96,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         forgotPass.setOnClickListener(this);
         facebook.setOnClickListener(this);
 
+        if (mAuth.getCurrentUser() != null){
+            startActivity(new Intent(MainActivity.this, MainMenu.class));
+        }
+
         loginButton.registerCallback(CM, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
