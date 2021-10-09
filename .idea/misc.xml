@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2164855072463768" />
         <entry key="app/src/main/res/layout/activity_registration_menu.xml" value="0.29483695652173914" />
         <entry key="app/src/main/res/layout/custom_diary.xml" value="0.17395833333333333" />
+        <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/fragment_dairy_four.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/fragment_dairy_two.xml" value="0.3203125" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3203125" />

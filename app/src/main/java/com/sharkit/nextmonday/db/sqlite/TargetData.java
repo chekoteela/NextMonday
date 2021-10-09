@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.db;
+package com.sharkit.nextmonday.db.sqlite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
