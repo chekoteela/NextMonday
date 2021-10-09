@@ -15,7 +15,7 @@
         <ExpandableListView
             android:divider="@color/back"
             android:dividerHeight="1dp"
-            android:id="@+id/expListView"
+            android:id="@+id/expandable_list_xml"
             android:groupIndicator="@color/Prozorui"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
