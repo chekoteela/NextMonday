@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.entity.transformer;
 
+import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
 import com.sharkit.nextmonday.entity.diary.TargetDiaryDTO;
 import com.sharkit.nextmonday.entity.user.FacebookUserDTO;
@@ -51,5 +52,13 @@ public class Transformer {
         targetDiary.setRepeatThursday(targetDiaryDTO.isRepeatThursday());
         targetDiary.setTimeForAlarm(targetDiaryDTO.getTimeForAlarm());
         return targetDiary;
+    }
+    protected ChildItemTargetDTO transformer(TargetDiary targetDiary){
+        ChildItemTargetDTO itemTargetDTO = new ChildItemTargetDTO();
+        itemTargetDTO.setDate(targetDiary.getTimeForAlarm());
+        itemTargetDTO.setDescription(targetDiary.getDescription());
+        itemTargetDTO.setStatus(targetDiary.isStatus());
+        itemTargetDTO.setText(targetDiary.getText());
+        return itemTargetDTO;
     }
 }

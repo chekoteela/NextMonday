@@ -2,19 +2,15 @@ package com.sharkit.nextmonday.service.diary.main_diary_service.builder;
 
 import android.view.View;
 
-import com.sharkit.nextmonday.entity.diary.TargetDiary;
-import com.sharkit.nextmonday.service.builder.LayoutChildBuilder;
+import com.sharkit.nextmonday.entity.diary.ParentItemData;
 import com.sharkit.nextmonday.service.builder.LayoutParentBuild;
-import com.sharkit.nextmonday.service.diary.main_diary_service.ChildService;
 import com.sharkit.nextmonday.service.diary.main_diary_service.ParentService;
-
-import java.util.ArrayList;
 
 public class MainDiaryParentChildBuilder implements LayoutParentBuild {
     private final ParentService parentService;
 
-    public MainDiaryParentChildBuilder() {
-        parentService = new ParentService();
+    public MainDiaryParentChildBuilder(ParentItemData parentItemData) {
+        parentService = new ParentService(parentItemData);
     }
 
     @Override

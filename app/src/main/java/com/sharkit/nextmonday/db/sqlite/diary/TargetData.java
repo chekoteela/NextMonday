@@ -7,12 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
 import com.sharkit.nextmonday.entity.diary.TargetDiaryDTO;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+@SuppressLint("Recycle")
 public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     public static final String DATABASE_NAME = "UserTarget.db"; // название бд
     private static final int SCHEMA = 6; // версия базы данных
@@ -62,17 +64,16 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         return null;
     }
 
-    @SuppressLint("Recycle")
-    public ArrayList<TargetDiary> findAllByDate(String date) {
-        ArrayList<TargetDiary> listByDate = new ArrayList<>();
+    public ArrayList<ChildItemTargetDTO> findAllByDate(String date) {
+        ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date + "'", null);
         while (cursor.moveToNext()){
-            listByDate.add(getResult(cursor));
+            itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
         }
-        return listByDate;
+        return itemTargetDTOS;
     }
 
-    public TargetDiary getResult(Cursor cursor) {
+    private TargetDiary getResult(Cursor cursor) {
         TargetDiaryDTO targetDiary = new TargetDiaryDTO();
         targetDiary.setId(cursor.getString(0));
         targetDiary.setText(cursor.getString(1));
@@ -88,5 +89,11 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         targetDiary.setDate(cursor.getString(11));
         targetDiary.setTimeForAlarm(cursor.getLong(12));
         return new TargetDiary().transform(targetDiary);
+    }
+
+    public int getCompleteTarget(String date) {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date +
+                "' AND " + COLUMN_STATUS + " = '" + true + "'", null);
+        return cursor.getCount();
     }
 }
