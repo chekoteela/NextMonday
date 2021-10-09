@@ -49,6 +49,7 @@ public class Transformer {
         targetDiary.setRepeatTuesday(targetDiaryDTO.isRepeatTuesday());
         targetDiary.setRepeatWednesday(targetDiaryDTO.isRepeatWednesday());
         targetDiary.setRepeatThursday(targetDiaryDTO.isRepeatThursday());
+        targetDiary.setTimeForAlarm(targetDiaryDTO.getTimeForAlarm());
         return targetDiary;
     }
 }

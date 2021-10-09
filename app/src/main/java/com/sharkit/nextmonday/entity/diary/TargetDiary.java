@@ -16,6 +16,15 @@ public class TargetDiary extends Transformer implements TransformTarget {
     private boolean repeatFriday;
     private boolean repeatSaturday;
     private boolean repeatSunday;
+    private long timeForAlarm;
+
+    public long getTimeForAlarm() {
+        return timeForAlarm;
+    }
+
+    public void setTimeForAlarm(long timeForAlarm) {
+        this.timeForAlarm = timeForAlarm;
+    }
 
     public String getId() {
         return id;

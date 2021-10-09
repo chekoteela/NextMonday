@@ -11,16 +11,25 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.adapter.diary.MainDiaryAdapter;
+import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 
 import org.jetbrains.annotations.NotNull;
 
 public class MainDiary extends Fragment {
     private ExpandableListView listView;
+    private TargetDataService dataService;
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-      View root = inflater.inflate(R.layout.fragment_dairy,container, false );
-      findView(root);
-      return root;
+        View root = inflater.inflate(R.layout.fragment_dairy, container, false);
+        findView(root);
+        dataService = new TargetDataService(getContext());
+        setAdapter();
+        return root;
+    }
+
+    private void setAdapter() {
+        listView.setAdapter(new MainDiaryAdapter(getContext(), dataService.getAllList()));
     }
 
     private void findView(View root) {
