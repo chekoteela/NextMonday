@@ -9,7 +9,7 @@ import com.sharkit.nextmonday.configuration.constant.ToastMessage;
 
 public class Configuration {
 
-    public static boolean hesConnection(Context context){
+    public static boolean hasConnection(Context context){
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         if (wifiInfo != null && wifiInfo.isConnected()) {

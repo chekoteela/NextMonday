@@ -1,5 +1,11 @@
 package com.sharkit.nextmonday;
 
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.CHECK_YOUR_EMAIL;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.EMAIL_AND_PASS_FAIL;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.EMAIL_NOT_FOUND;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.ERROR_AUTHORIZE;
+import static com.sharkit.nextmonday.configuration.validation.Configuration.hasConnection;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -150,8 +156,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         View forgotPass = layoutInflater.inflate(R.layout.resetpassword, null);
 
         btnEmailReset.setOnClickListener(v -> mAuth.sendPasswordResetEmail(emailReset.getText().toString())
-                .addOnSuccessListener(aVoid -> Toast.makeText(getApplication(), "Проверте вашу почту", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e -> Toast.makeText(getApplication(), "Почта не найдена", Toast.LENGTH_SHORT).show()));
+                .addOnSuccessListener(aVoid -> Toast.makeText(getApplication(), CHECK_YOUR_EMAIL, Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Toast.makeText(getApplication(), EMAIL_NOT_FOUND, Toast.LENGTH_SHORT).show()));
         dialog.setView(forgotPass);
         dialog.show();
 
@@ -177,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     startActivity(new Intent(MainActivity.this, MainMenu.class));
                                 });
                     } else {
-                        Toast.makeText(getApplication(), "Ошибка авторизации", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplication(), ERROR_AUTHORIZE, Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -214,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     startActivity(new Intent(MainActivity.this, MainMenu.class));
                                 });
                     } else {
-                        Toast.makeText(getApplication(), "Ошибка авторизации", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplication(), ERROR_AUTHORIZE, Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -224,18 +230,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.google_xml:
+                if (hasConnection(getApplicationContext()))
                 signIn();
                 break;
             case R.id.create_account_xml:
                 startActivity(new Intent(MainActivity.this, RegistrationMenu.class));
                 break;
             case R.id.sign_in_xml:
+                if (hasConnection(getApplicationContext()))
                 signINWithEmailAndPassword();
                 break;
             case R.id.forgot_pass_xml:
+                if (hasConnection(getApplicationContext()))
                 showForgotPassForm();
                 break;
             case R.id.facebook_xml:
+                if (hasConnection(getApplicationContext()))
                 facebookAuthorize();
                 break;
         }
@@ -266,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         mAuth.signInWithEmailAndPassword(signEmail.getText().toString(), signPass.getText().toString())
                 .addOnSuccessListener(authResult -> startActivity(new Intent(MainActivity.this, MainMenu.class)))
-                .addOnFailureListener(e -> Toast.makeText(getApplication(), "Вы ввели не верный пароль или почту", Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e -> Toast.makeText(getApplication(), EMAIL_AND_PASS_FAIL, Toast.LENGTH_SHORT).show());
     }
 
     @Override
