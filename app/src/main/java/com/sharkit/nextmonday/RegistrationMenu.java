@@ -1,12 +1,10 @@
 package com.sharkit.nextmonday;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,21 +18,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
 import com.sharkit.nextmonday.db.firestore.UserFirestore;
 import com.sharkit.nextmonday.entity.enums.Role;
 import com.sharkit.nextmonday.entity.user.User;
 import com.sharkit.nextmonday.entity.user.UserDTO;
 
 import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegistrationMenu extends AppCompatActivity implements View.OnClickListener {
     private EditText lastName, name, password, email;
     private TextView policy_text;
     private Button signIn, createAccount;
     private CheckBox policy;
-    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -43,7 +40,6 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_registration_menu);
         getWindow().setNavigationBarColor(getResources().getColor(R.color.back));
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-
         findView();
         onClickListener();
     }
@@ -58,12 +54,7 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
         AlertDialog.Builder dialog = new AlertDialog.Builder(RegistrationMenu.this);
         LayoutInflater layoutInflater = LayoutInflater.from(getBaseContext());
         View forgotPass = layoutInflater.inflate(R.layout.policy, null);
-        dialog.setPositiveButton("Я ознакомлен(а)", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        dialog.setPositiveButton("Я ознакомлен(а)", (dialog1, which) -> dialog1.dismiss());
         dialog.setView(forgotPass);
         dialog.show();
     }
@@ -79,43 +70,38 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
         policy_text = findViewById(R.id.policy_text);
     }
 
-
-    public boolean Validator(String s) {
-        Pattern num = Pattern.compile("[0-9]");
-        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,`]°•○●□■♤♡◇♧☆▪¤《》¡¿,.]");
-        Pattern space = Pattern.compile(" ");
-        Matcher hasSpace = space.matcher(s);
-        Matcher hasNum = num.matcher(s);
-        Matcher hasSigns = sign.matcher(s);
-
-        return (hasSigns.find() || hasNum.find() || hasSpace.find());
-    }
-
-    public boolean ValidatorPass(String s) {
-        Pattern cyrillic = Pattern.compile("[а-яА-Я]");
-        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,`]°•○●□■♤♡◇♧☆▪¤《》¡¿,.]");
-        Pattern space = Pattern.compile(" ");
-        Matcher hasSign = sign.matcher(s);
-        Matcher hasCyrillic = cyrillic.matcher(s);
-        Matcher hasSpace = space.matcher(s);
-        return (hasCyrillic.find() || hasSpace.find() || hasSign.find());
-    }
-
     private void createAccount() {
 
+        if (!ValidationField.isValidName(name, getApplicationContext())){
+            return;
+        }
+        if (!ValidationField.isValidName(lastName, getApplicationContext())) {
+            return;
+        }
+        if (!ValidationField.isValidEmail(email, getApplicationContext())){
+            return;
+        }
+        if (!ValidationField.isValidPassword(password, getApplicationContext())){
+            return;
+        }
+        if (!policy.isChecked()){
+            Toast.makeText(getApplicationContext(), "Согласитесь с политикой конфиденциальности", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnSuccessListener(authResult -> {
                     UserDTO userDTO = new UserDTO();
-                    userDTO.setEmail(email.getText().toString());
+                    userDTO.setEmail(email.getText().toString().trim());
                     userDTO.setId(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
-                    userDTO.setName(name.getText().toString());
+                    userDTO.setName(name.getText().toString().trim());
                     userDTO.setRole(Role.USER);
-                    userDTO.setPassword(password.getText().toString());
-                    userDTO.setLastName(lastName.getText().toString());
+                    userDTO.setPassword(password.getText().toString().trim());
+                    userDTO.setLastName(lastName.getText().toString().trim());
 
                     new UserFirestore().setUser(new User().transform(userDTO))
                             .addOnSuccessListener(unused -> startActivity(new Intent(RegistrationMenu.this, MainActivity.class)));
-                }).addOnFailureListener(e -> Toast.makeText(getApplication(), "Ошибка регистрации", Toast.LENGTH_SHORT).show());
+                }).addOnFailureListener(e -> Toast.makeText(getApplication(), "Пользователь с такой почтой уже зарегистрируван", Toast.LENGTH_SHORT).show());
     }
 
 
