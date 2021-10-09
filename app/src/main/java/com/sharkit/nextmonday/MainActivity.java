@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void onClickListener() {
         google.setOnClickListener(this);
         createAcc.setOnClickListener(this);
-        signIn.setOnClickListener(this);
+//        signIn.setOnClickListener(this);
         forgotPass.setOnClickListener(this);
         facebook.setOnClickListener(this);
 

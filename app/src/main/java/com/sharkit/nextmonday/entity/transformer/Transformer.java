@@ -13,6 +13,8 @@ public class Transformer {
         user.setId(userDTO.getId());
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
+        user.setLastName(userDTO.getLastName());
+        user.setPassword(userDTO.getPassword());
         return user;
     }
     protected User transformer(GoogleUserDTO googleUserDTO){
