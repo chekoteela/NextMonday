@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.configuration;
+package com.sharkit.nextmonday.configuration.else_conf;
 
 import com.journeyapps.barcodescanner.CaptureActivity;
 

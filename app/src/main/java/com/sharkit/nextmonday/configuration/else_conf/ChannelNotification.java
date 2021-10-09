@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.configuration;
+package com.sharkit.nextmonday.configuration.else_conf;
 
 import android.app.Application;
 import android.app.NotificationChannel;

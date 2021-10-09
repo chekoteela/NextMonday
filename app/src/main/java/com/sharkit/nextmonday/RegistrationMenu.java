@@ -104,7 +104,6 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
                 }).addOnFailureListener(e -> Toast.makeText(getApplication(), "Пользователь с такой почтой уже зарегистрируван", Toast.LENGTH_SHORT).show());
     }
 
-
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {

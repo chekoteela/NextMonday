@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.configuration;
+package com.sharkit.nextmonday.configuration.else_conf;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -13,7 +13,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.sharkit.nextmonday.R;
 
-import static com.sharkit.nextmonday.configuration.ChannelNotification.CHANNEL_1_ID;
+import static com.sharkit.nextmonday.configuration.else_conf.ChannelNotification.CHANNEL_1_ID;
 
 public class AlarmDiary extends BroadcastReceiver {
     @Override

@@ -38,6 +38,7 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
 import com.sharkit.nextmonday.db.firestore.UserFirestore;
 import com.sharkit.nextmonday.entity.enums.Role;
 import com.sharkit.nextmonday.entity.user.FacebookUserDTO;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void onClickListener() {
         google.setOnClickListener(this);
         createAcc.setOnClickListener(this);
-//        signIn.setOnClickListener(this);
+        signIn.setOnClickListener(this);
         forgotPass.setOnClickListener(this);
         facebook.setOnClickListener(this);
 
@@ -254,6 +255,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void signINWithEmailAndPassword() {
+        if (!ValidationField.isValidField(signEmail, getApplicationContext()) ||
+                !ValidationField.isValidField(signPass, getApplicationContext())){
+            return;
+        }
         mAuth.signInWithEmailAndPassword(signEmail.getText().toString(), signPass.getText().toString())
                 .addOnSuccessListener(authResult -> startActivity(new Intent(MainActivity.this, MainMenu.class)))
                 .addOnFailureListener(e -> Toast.makeText(getApplication(), "Вы ввели не верный пароль или почту", Toast.LENGTH_SHORT).show());
