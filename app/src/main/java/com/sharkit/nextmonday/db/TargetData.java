@@ -32,9 +32,6 @@ public class TargetData extends SQLiteOpenHelper {
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
     private final String id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
 
-
-    final String TAG = "qwerty";
-
     public TargetData(Context context) {
         super(context, DATABASE_NAME, null, SCHEMA);
         String DB_PATH = context.getFilesDir().getPath() + DATABASE_NAME;
