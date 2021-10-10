@@ -26,6 +26,7 @@ public class ParentService implements LayoutService {
         month.setText(parentItemData.getMonth());
         before.setText(String.valueOf(parentItemData.getCompleteTargets()));
         after.setText(String.valueOf(parentItemData.getAllTargets()));
+        progressBar.setProgress(getProgress());
     }
 
     @Override
@@ -47,5 +48,13 @@ public class ParentService implements LayoutService {
     @Override
     public void activity() {
 
+    }
+
+    private int getProgress() {
+        if (parentItemData.getAllTargets() == 0) {
+            return 0;
+        } else {
+            return 100 * parentItemData.getCompleteTargets() / parentItemData.getAllTargets();
+        }
     }
 }
