@@ -1,10 +1,10 @@
 package com.sharkit.nextmonday.entity.user;
 
 import com.sharkit.nextmonday.entity.enums.Role;
-import com.sharkit.nextmonday.entity.transformer.TransformToUser;
-import com.sharkit.nextmonday.entity.transformer.Transformer;
+import com.sharkit.nextmonday.entity.transformer.TransformerDiary;
+import com.sharkit.nextmonday.entity.transformer.TransformerUser;
 
-public class User extends Transformer implements TransformToUser {
+public class User extends TransformerUser {
     private String name;
     private String email;
     private Enum<Role> role;
@@ -60,17 +60,17 @@ public class User extends Transformer implements TransformToUser {
         this.password = password;
     }
 
-    @Override
+
     public User transform(GoogleUserDTO googleUserDTO) {
         return transformer(googleUserDTO);
     }
 
-    @Override
+
     public User transform(UserDTO userDTO) {
         return transformer(userDTO);
     }
 
-    @Override
+
     public User transform(FacebookUserDTO facebookUserDTO) {
         return transformer(facebookUserDTO);
     }

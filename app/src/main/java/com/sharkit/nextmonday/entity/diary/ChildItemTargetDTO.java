@@ -1,9 +1,8 @@
 package com.sharkit.nextmonday.entity.diary;
 
-import com.sharkit.nextmonday.entity.transformer.TransformToChildItemDTO;
-import com.sharkit.nextmonday.entity.transformer.Transformer;
+import com.sharkit.nextmonday.entity.transformer.TransformerDiary;
 
-public class ChildItemTargetDTO extends Transformer implements TransformToChildItemDTO {
+public class ChildItemTargetDTO extends TransformerDiary {
     private String text;
     private String description;
     private long date;
@@ -41,8 +40,7 @@ public class ChildItemTargetDTO extends Transformer implements TransformToChildI
         this.status = status;
     }
 
-    @Override
-    public ChildItemTargetDTO transform(TargetDiary targetDiary) {
+    public ChildItemTargetDTO transform (TargetDiary targetDiary){
         return transformer(targetDiary);
     }
 }

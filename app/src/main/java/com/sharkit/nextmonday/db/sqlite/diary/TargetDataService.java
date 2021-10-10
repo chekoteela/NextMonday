@@ -50,15 +50,14 @@ public class TargetDataService implements TargetServiceMethod{
             parentItemData.setDay(getNameOfDay(calendar.get(Calendar.DAY_OF_WEEK)));
             parentItemData.setMonth(getNameOfMonth(calendar.get(Calendar.MONTH)));
             parentItemData.setNumber(calendar.get(Calendar.DATE));
+            parentItemData.setDate(calendar.getTimeInMillis());
             parentItemData.setCompleteTargets(targetData.getCompleteTarget(new SimpleDateFormat("dd.MM.yyyy")
                     .format(calendar.getTimeInMillis())));
-            dayTargets.setParentItemData(parentItemData);
-            dayTargets.setTargetDTOs(targetData.
-                    findAllByDate(new SimpleDateFormat("dd.MM.yyyy")
-                            .format(calendar.getTimeInMillis())));
+            dayTargets.setTargetDTOs(targetData.findAllByDate(new SimpleDateFormat("dd.MM.yyyy")
+                    .format(calendar.getTimeInMillis())));
             parentItemData.setAllTargets(dayTargets.getTargetDTOs().size());
+            dayTargets.setParentItemData(parentItemData);
             targets.add(dayTargets);
-
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
         return targets;
@@ -112,6 +111,4 @@ public class TargetDataService implements TargetServiceMethod{
         }
         return null;
     }
-
-
 }

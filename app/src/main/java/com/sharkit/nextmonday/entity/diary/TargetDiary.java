@@ -1,9 +1,8 @@
 package com.sharkit.nextmonday.entity.diary;
 
-import com.sharkit.nextmonday.entity.transformer.TransformToTargetDiary;
-import com.sharkit.nextmonday.entity.transformer.Transformer;
+import com.sharkit.nextmonday.entity.transformer.TransformerDiary;
 
-public class TargetDiary extends Transformer implements TransformToTargetDiary {
+public class TargetDiary extends TransformerDiary {
     private String id;
     private String text;
     private String description;
@@ -122,8 +121,10 @@ public class TargetDiary extends Transformer implements TransformToTargetDiary {
         this.repeatSunday = repeatSunday;
     }
 
-    @Override
-    public TargetDiary transform(TargetDiaryDTO targetDiaryDTO) {
+    public TargetDiary transform(TargetDiaryDTO targetDiaryDTO){
         return transformer(targetDiaryDTO);
+    }
+    public TargetDiary transform(TargetDateForAlarmDTO date){
+        return transformer(date);
     }
 }

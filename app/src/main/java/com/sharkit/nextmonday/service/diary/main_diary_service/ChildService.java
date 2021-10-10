@@ -7,11 +7,9 @@ import android.widget.TextView;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
-import com.sharkit.nextmonday.entity.diary.TargetDiary;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ChildService implements LayoutService {

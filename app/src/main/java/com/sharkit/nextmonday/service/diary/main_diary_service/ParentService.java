@@ -1,19 +1,27 @@
 package com.sharkit.nextmonday.service.diary.main_diary_service;
 
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.DATE_FOR_CHANGE;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.navigation.Navigation;
+
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
-public class ParentService implements LayoutService {
+public class ParentService implements LayoutService{
     private final ParentItemData parentItemData;
     private ProgressBar progressBar;
     private TextView day, number, month, before, after;
     private ImageView create;
+    private Context context;
 
     public ParentService(ParentItemData parentItemData) {
         this.parentItemData = parentItemData;
@@ -31,6 +39,7 @@ public class ParentService implements LayoutService {
 
     @Override
     public void findById(View root) {
+        context = root.getContext();
         day = root.findViewById(R.id.day_xml);
         number = root.findViewById(R.id.num_xml);
         month = root.findViewById(R.id.month_xml);
@@ -47,7 +56,11 @@ public class ParentService implements LayoutService {
 
     @Override
     public void activity() {
-
+        create.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putLong(DATE_FOR_CHANGE, parentItemData.getDate());
+            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_plus_target, bundle);
+        });
     }
 
     private int getProgress() {

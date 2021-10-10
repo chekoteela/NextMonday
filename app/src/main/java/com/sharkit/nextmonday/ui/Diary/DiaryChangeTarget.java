@@ -1,6 +1,9 @@
 package com.sharkit.nextmonday.ui.Diary;
 
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.DATE_FOR_CHANGE;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

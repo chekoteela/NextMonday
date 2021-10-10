@@ -30,7 +30,7 @@ public class MainDiaryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return mGroup.size();
+        return mGroup.get(groupPosition).getTargetDTOs().size();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MainDiaryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return mGroup.get(groupPosition).getTargetDTOs().size();
+        return mGroup.get(groupPosition).getTargetDTOs().get(childPosition);
     }
 
     @Override
@@ -70,7 +70,6 @@ public class MainDiaryAdapter extends BaseExpandableListAdapter {
                 .activity()
                 .build();
 
-
         return convertView;
     }
 
@@ -79,12 +78,12 @@ public class MainDiaryAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             convertView = LayoutInflater.from(mContext).inflate(R.layout.lst_view_castom, null);
         }
-        new MainDiaryChildChildBuilder(mGroup.get(groupPosition).getTargetDTOs().get(childPosition))
-                .findById(convertView)
-                .writeToField()
-                .setAdaptive()
-                .activity()
-                .build();
+            new MainDiaryChildChildBuilder(mGroup.get(groupPosition).getTargetDTOs().get(childPosition))
+                    .findById(convertView)
+                    .writeToField()
+                    .setAdaptive()
+                    .activity()
+                    .build();
 
         return convertView;
     }
