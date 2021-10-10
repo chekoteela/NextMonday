@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.entity.diary.DayTargets;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
-import com.sharkit.nextmonday.service.diary.main_diary_service.ParentService;
 import com.sharkit.nextmonday.service.diary.main_diary_service.builder.MainDiaryChildChildBuilder;
 import com.sharkit.nextmonday.service.diary.main_diary_service.builder.MainDiaryParentChildBuilder;
 
@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 public class MainDiaryAdapter extends BaseExpandableListAdapter {
     private final Context mContext;
-    private final ArrayList<ArrayList<TargetDiary>> mGroup;
+    private final ArrayList<DayTargets> mGroup;
 
-    public MainDiaryAdapter(Context mContext, ArrayList<ArrayList<TargetDiary>> mGroup) {
+    public MainDiaryAdapter(Context mContext, ArrayList<DayTargets> mGroup) {
         this.mContext = mContext;
         this.mGroup = mGroup;
     }
@@ -30,7 +30,7 @@ public class MainDiaryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return mGroup.get(groupPosition).size();
+        return mGroup.size();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MainDiaryAdapter extends BaseExpandableListAdapter {
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return mGroup.get(groupPosition).get(childPosition);
+        return mGroup.get(groupPosition).getTargetDTOs().size();
     }
 
     @Override
@@ -63,7 +63,7 @@ public class MainDiaryAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             convertView = LayoutInflater.from(mContext).inflate(R.layout.custom_diary, null);
         }
-        new MainDiaryParentChildBuilder()
+        new MainDiaryParentChildBuilder(mGroup.get(groupPosition).getParentItemData())
                 .findById(convertView)
                 .writeToField()
                 .setAdaptive()
@@ -79,7 +79,7 @@ public class MainDiaryAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             convertView = LayoutInflater.from(mContext).inflate(R.layout.lst_view_castom, null);
         }
-        new MainDiaryChildChildBuilder(mGroup.get(groupPosition).get(childPosition))
+        new MainDiaryChildChildBuilder(mGroup.get(groupPosition).getTargetDTOs().get(childPosition))
                 .findById(convertView)
                 .writeToField()
                 .setAdaptive()

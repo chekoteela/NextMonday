@@ -1,10 +1,10 @@
 package com.sharkit.nextmonday.entity.user;
 
 import com.sharkit.nextmonday.entity.enums.Role;
-import com.sharkit.nextmonday.entity.transformer.TransformUser;
+import com.sharkit.nextmonday.entity.transformer.TransformToUser;
 import com.sharkit.nextmonday.entity.transformer.Transformer;
 
-public class User extends Transformer implements TransformUser{
+public class User extends Transformer implements TransformToUser {
     private String name;
     private String email;
     private Enum<Role> role;

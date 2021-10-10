@@ -29,7 +29,7 @@ public class MainDiary extends Fragment {
     }
 
     private void setAdapter() {
-        listView.setAdapter(new MainDiaryAdapter(getContext(), dataService.getAllList()));
+        listView.setAdapter(new MainDiaryAdapter(getContext(), dataService.getWeekList()));
     }
 
     private void findView(View root) {

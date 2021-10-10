@@ -1,9 +1,9 @@
 package com.sharkit.nextmonday.entity.diary;
 
-import com.sharkit.nextmonday.entity.transformer.TransformTarget;
+import com.sharkit.nextmonday.entity.transformer.TransformToTargetDiary;
 import com.sharkit.nextmonday.entity.transformer.Transformer;
 
-public class TargetDiary extends Transformer implements TransformTarget {
+public class TargetDiary extends Transformer implements TransformToTargetDiary {
     private String id;
     private String text;
     private String description;

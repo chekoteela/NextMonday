@@ -6,20 +6,27 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.entity.diary.ParentItemData;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
 public class ParentService implements LayoutService {
+    private final ParentItemData parentItemData;
     private ProgressBar progressBar;
     private TextView day, number, month, before, after;
     private ImageView create;
 
-    public ParentService() {
-
+    public ParentService(ParentItemData parentItemData) {
+        this.parentItemData = parentItemData;
     }
 
     @Override
     public void writeToField() {
-
+        day.setText(parentItemData.getDay());
+        number.setText(String.valueOf(parentItemData.getNumber()));
+        month.setText(parentItemData.getMonth());
+        before.setText(String.valueOf(parentItemData.getCompleteTargets()));
+        after.setText(String.valueOf(parentItemData.getAllTargets()));
+        progressBar.setProgress(getProgress());
     }
 
     @Override
@@ -41,5 +48,13 @@ public class ParentService implements LayoutService {
     @Override
     public void activity() {
 
+    }
+
+    private int getProgress() {
+        if (parentItemData.getAllTargets() == 0) {
+            return 0;
+        } else {
+            return 100 * parentItemData.getCompleteTargets() / parentItemData.getAllTargets();
+        }
     }
 }
