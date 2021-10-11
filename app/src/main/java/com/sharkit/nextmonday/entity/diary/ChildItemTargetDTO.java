@@ -2,7 +2,9 @@ package com.sharkit.nextmonday.entity.diary;
 
 import com.sharkit.nextmonday.entity.transformer.TransformerDiary;
 
-public class ChildItemTargetDTO extends TransformerDiary {
+import java.io.Serializable;
+
+public class ChildItemTargetDTO extends TransformerDiary implements Serializable {
     private String text;
     private String description;
     private long date;

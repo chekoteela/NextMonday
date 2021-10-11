@@ -117,4 +117,8 @@ public class TargetDataService implements TargetServiceMethod{
     public void create(TargetDiary targetDiary) {
         targetData.create(targetDiary);
     }
+
+    public void delete(long date) {
+        targetData.delete(date);
+    }
 }

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/create_child_item"
+    android:id="@+id/child_item_xml"
     android:clickable="true"
     android:background="@color/calculator_color">
 

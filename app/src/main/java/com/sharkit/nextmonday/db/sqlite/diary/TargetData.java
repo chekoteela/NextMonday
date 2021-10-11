@@ -106,4 +106,8 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "' AND " + COLUMN_STATUS + " = '" + true + "'", null);
         return cursor.getCount();
     }
+
+    public void delete(long date) {
+        db.execSQL("DELETE ");
+    }
 }
