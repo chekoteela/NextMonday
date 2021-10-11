@@ -22,9 +22,11 @@ import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.WEDNESDA
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import com.sharkit.nextmonday.entity.diary.DayTargets;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
+import com.sharkit.nextmonday.entity.diary.TargetDiary;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,29 +67,29 @@ public class TargetDataService implements TargetServiceMethod{
 
     private String getNameOfMonth(int month) {
         switch (month) {
-            case 1:
+            case 0:
                 return JANUARY;
-            case 2:
+            case 1:
                 return FEBRUARY;
-            case 3:
+            case 2:
                 return MARCH;
-            case 4:
+            case 3:
                 return APRIL;
-            case 5:
+            case 4:
                 return MAY;
-            case 6:
+            case 5:
                 return JULY;
-            case 7:
+            case 6:
                 return JUNE;
-            case 8:
+            case 7:
                 return AUGUST;
-            case 9:
+            case 8:
                 return SEPTEMBER;
-            case 10:
+            case 9:
                 return OCTOBER;
-            case 11:
+            case 10:
                 return NOVEMBER;
-            case 12:
+            case 11:
                 return DECEMBER;
         }
         return null;
@@ -110,5 +112,9 @@ public class TargetDataService implements TargetServiceMethod{
                 return SATURDAY;
         }
         return null;
+    }
+
+    public void create(TargetDiary targetDiary) {
+        targetData.create(targetDiary);
     }
 }

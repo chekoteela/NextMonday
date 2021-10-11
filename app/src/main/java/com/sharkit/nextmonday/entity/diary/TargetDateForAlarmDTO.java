@@ -67,4 +67,7 @@ public class TargetDateForAlarmDTO extends TransformerDiary {
         this.repeatSunday = repeatSunday;
     }
 
+    public TargetDiary transform (TargetDiary targetDiary){
+        return transformer(this, targetDiary);
+    }
 }

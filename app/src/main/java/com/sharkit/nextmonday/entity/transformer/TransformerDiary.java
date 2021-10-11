@@ -36,8 +36,7 @@ public class TransformerDiary {
         itemTargetDTO.setText(targetDiary.getText());
         return itemTargetDTO;
     }
-    protected TargetDiary transformer(TargetDateForAlarmDTO date){
-        TargetDiary targetDiary = new TargetDiary();
+    protected TargetDiary transformer(TargetDateForAlarmDTO date, TargetDiary targetDiary){
         targetDiary.setRepeatMonday(date.isRepeatMonday());
         targetDiary.setRepeatTuesday(date.isRepeatTuesday());
         targetDiary.setRepeatWednesday(date.isRepeatWednesday());

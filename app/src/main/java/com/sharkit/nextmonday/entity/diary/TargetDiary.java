@@ -124,7 +124,4 @@ public class TargetDiary extends TransformerDiary {
     public TargetDiary transform(TargetDiaryDTO targetDiaryDTO){
         return transformer(targetDiaryDTO);
     }
-    public TargetDiary transform(TargetDateForAlarmDTO date){
-        return transformer(date);
-    }
 }

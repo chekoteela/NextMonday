@@ -59,6 +59,14 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE);
         onCreate(db);
     }
+    public void create(TargetDiary targetDiary){
+        db.execSQL("INSERT INTO " + TABLE + " VALUES ('" + id + "','" + targetDiary.getText() + "','" + targetDiary.isStatus() +
+                "','" + targetDiary.isRepeatSunday() + "','" + targetDiary.isRepeatSaturday() +
+                "','" + targetDiary.isRepeatFriday() + "','" + targetDiary.isRepeatThursday() +
+                "','" + targetDiary.isRepeatWednesday() + "','" + targetDiary.isRepeatTuesday() +
+                "','" + targetDiary.isRepeatMonday() + "','" + targetDiary.getDescription() +
+                "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "');");
+    }
 
     @Override
     public Object findById(long id) {
@@ -91,6 +99,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         targetDiaryDTO.setTimeForAlarm(cursor.getLong(12));
         return new TargetDiary().transform(targetDiaryDTO);
     }
+
 
     public int getCompleteTarget(String date) {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date +
