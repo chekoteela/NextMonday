@@ -26,6 +26,7 @@ import android.util.Log;
 
 import com.sharkit.nextmonday.entity.diary.DayTargets;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
+import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
 
 import java.text.SimpleDateFormat;
@@ -120,5 +121,13 @@ public class TargetDataService implements TargetServiceMethod{
 
     public void delete(long date) {
         targetData.delete(date);
+    }
+
+    public void setCheckedTarget(long date, boolean isChecked) {
+        targetData.setCheckedTarget(date, isChecked);
+    }
+
+    public TargetDateForAlarmDTO getRepeatForAlarmDTO(long date) {
+       return targetData.getRepeatForAlarmDTO(date);
     }
 }

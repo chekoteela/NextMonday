@@ -7,6 +7,7 @@ public class TargetDiary extends TransformerDiary {
     private String text;
     private String description;
     private String date;
+    private boolean alarm;
     private boolean status;
     private boolean repeatMonday;
     private boolean repeatTuesday;
@@ -16,6 +17,14 @@ public class TargetDiary extends TransformerDiary {
     private boolean repeatSaturday;
     private boolean repeatSunday;
     private long timeForAlarm;
+
+    public boolean isAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(boolean alarm) {
+        this.alarm = alarm;
+    }
 
     public long getTimeForAlarm() {
         return timeForAlarm;
@@ -123,5 +132,8 @@ public class TargetDiary extends TransformerDiary {
 
     public TargetDiary transform(TargetDiaryDTO targetDiaryDTO){
         return transformer(targetDiaryDTO);
+    }
+    public TargetDateForAlarmDTO transform(TargetDateForAlarmDTO alarmDTO){
+        return transformToAlarmDTO(this, alarmDTO);
     }
 }

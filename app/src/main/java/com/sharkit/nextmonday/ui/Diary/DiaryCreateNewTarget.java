@@ -24,10 +24,10 @@ public class DiaryCreateNewTarget extends Fragment {
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_dairy_two, container, false);
         CreateNewTargetService service = new CreateNewTargetService(requireArguments().getLong(DATE_FOR_CHANGE));
-        service.findById(root);
-        service.writeToField();
-        service.activity();
-        service.setAdaptive();
+        service.findById(root)
+        .writeToField()
+        .activity()
+        .setAdaptive();
         return root;
     }
 }

@@ -26,6 +26,7 @@ public class TransformerDiary {
         targetDiary.setRepeatWednesday(targetDiaryDTO.isRepeatWednesday());
         targetDiary.setRepeatThursday(targetDiaryDTO.isRepeatThursday());
         targetDiary.setTimeForAlarm(targetDiaryDTO.getTimeForAlarm());
+        targetDiary.setAlarm(targetDiaryDTO.isAlarm());
         return targetDiary;
     }
     protected ChildItemTargetDTO transformer(TargetDiary targetDiary){
@@ -34,6 +35,7 @@ public class TransformerDiary {
         itemTargetDTO.setDescription(targetDiary.getDescription());
         itemTargetDTO.setStatus(targetDiary.isStatus());
         itemTargetDTO.setText(targetDiary.getText());
+        itemTargetDTO.setAlarm(targetDiary.isAlarm());
         return itemTargetDTO;
     }
     protected TargetDiary transformer(TargetDateForAlarmDTO date, TargetDiary targetDiary){
@@ -45,5 +47,15 @@ public class TransformerDiary {
         targetDiary.setRepeatSaturday(date.isRepeatSaturday());
         targetDiary.setRepeatSunday(date.isRepeatSunday());
         return targetDiary;
+    }
+    protected TargetDateForAlarmDTO transformToAlarmDTO(TargetDiary targetDiary, TargetDateForAlarmDTO date){
+        date.setRepeatMonday(targetDiary.isRepeatMonday());
+        date.setRepeatTuesday(targetDiary.isRepeatTuesday());
+        date.setRepeatWednesday(targetDiary.isRepeatWednesday());
+        date.setRepeatThursday(targetDiary.isRepeatThursday());
+        date.setRepeatFriday(targetDiary.isRepeatFriday());
+        date.setRepeatSaturday(targetDiary.isRepeatSaturday());
+        date.setRepeatSunday(targetDiary.isRepeatSunday());
+        return date;
     }
 }

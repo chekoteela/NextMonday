@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
+import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
 import com.sharkit.nextmonday.entity.diary.TargetDiaryDTO;
 
@@ -34,6 +35,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     private static final String COLUMN_REPEAT_TUESDAY = "tuesday";
     private static final String COLUMN_REPEAT_MONDAY = "monday";
     private static final String COLUMN_ALARM = "time_alarm";
+    private static final String COLUMN_IS_ALARM = "alarm";
 
 
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -50,7 +52,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "" + COLUMN_REPEAT_SUNDAY + " BOOL, " + COLUMN_REPEAT_SATURDAY + " BOOL," +
                 "" + COLUMN_REPEAT_FRIDAY + " BOOL, " + COLUMN_REPEAT_THURSDAY + " BOOL, " +
                 "" + COLUMN_REPEAT_WEDNESDAY + " BOOL, " + COLUMN_REPEAT_TUESDAY + " BOOL," +
-                "" + COLUMN_REPEAT_MONDAY + " BOOL, " +
+                "" + COLUMN_REPEAT_MONDAY + " BOOL, " + COLUMN_IS_ALARM + " BOOL, " +
                 "" + COLUMN_DESCRIPTION + " TEXT, " + COLUMN_DATE + " TEXT, " + COLUMN_ALARM + " INTEGER UNIQUE)");
     }
 
@@ -64,7 +66,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "','" + targetDiary.isRepeatSunday() + "','" + targetDiary.isRepeatSaturday() +
                 "','" + targetDiary.isRepeatFriday() + "','" + targetDiary.isRepeatThursday() +
                 "','" + targetDiary.isRepeatWednesday() + "','" + targetDiary.isRepeatTuesday() +
-                "','" + targetDiary.isRepeatMonday() + "','" + targetDiary.getDescription() +
+                "','" + targetDiary.isRepeatMonday() + "','" + targetDiary.isAlarm() + "','" + targetDiary.getDescription() +
                 "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "');");
     }
 
@@ -94,9 +96,10 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         targetDiaryDTO.setRepeatWednesday(Boolean.parseBoolean(cursor.getString(7)));
         targetDiaryDTO.setRepeatTuesday(Boolean.parseBoolean(cursor.getString(8)));
         targetDiaryDTO.setRepeatMonday(Boolean.parseBoolean(cursor.getString(9)));
-        targetDiaryDTO.setDescription(cursor.getString(10));
-        targetDiaryDTO.setDate(cursor.getString(11));
-        targetDiaryDTO.setTimeForAlarm(cursor.getLong(12));
+        targetDiaryDTO.setAlarm(Boolean.parseBoolean(cursor.getString(10)));
+        targetDiaryDTO.setDescription(cursor.getString(11));
+        targetDiaryDTO.setDate(cursor.getString(12));
+        targetDiaryDTO.setTimeForAlarm(cursor.getLong(13));
         return new TargetDiary().transform(targetDiaryDTO);
     }
 
@@ -108,6 +111,20 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     }
 
     public void delete(long date) {
-        db.execSQL("DELETE ");
+        db.execSQL("DELETE FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'");
+    }
+
+    public void setCheckedTarget(long date, boolean isChecked) {
+        db.execSQL(("UPDATE " + TABLE + " SET " + COLUMN_STATUS + " = '" + isChecked + "' " +
+                "WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'"));
+    }
+
+    public TargetDateForAlarmDTO getRepeatForAlarmDTO(long date) {
+        TargetDateForAlarmDTO alarmDTO = new TargetDateForAlarmDTO();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'", null);
+        while (cursor.moveToNext()) {
+            alarmDTO = getResult(cursor).transform(alarmDTO);
+        }
+        return alarmDTO;
     }
 }

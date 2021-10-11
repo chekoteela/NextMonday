@@ -9,6 +9,15 @@ public class ChildItemTargetDTO extends TransformerDiary implements Serializable
     private String description;
     private long date;
     private boolean status;
+    private boolean alarm;
+
+    public boolean isAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(boolean alarm) {
+        this.alarm = alarm;
+    }
 
     public String getText() {
         return text;

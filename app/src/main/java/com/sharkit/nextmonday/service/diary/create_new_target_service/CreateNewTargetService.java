@@ -49,27 +49,28 @@ public class CreateNewTargetService implements LayoutService {
     }
 
     @Override
-    public void writeToField() {
-
+    public LayoutService writeToField() {
+        return this;
     }
 
     @Override
-    public void findById(View root) {
+    public LayoutService findById(View root) {
         context = root.getContext();
         textTarget = root.findViewById(R.id.write_target_xml);
         takeTime = root.findViewById(R.id.take_time_xml);
         repeat = root.findViewById(R.id.repeat_xml);
         description = root.findViewById(R.id.add_description_xml);
         create = root.findViewById(R.id.add_xml);
+        return this;
     }
 
     @Override
-    public void setAdaptive() {
-
+    public LayoutService setAdaptive() {
+    return this;
     }
 
     @Override
-    public void activity() {
+    public LayoutService activity() {
         create.setOnClickListener(v -> createTarget());
         takeTime.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
@@ -88,7 +89,9 @@ public class CreateNewTargetService implements LayoutService {
                 new TargetDateForAlarmDTO().transform(targetDiary);
             }
         });
+        return this;
     }
+
 
     private void createAlertTimePicker() {
         TimePickerDialog dialog = new TimePickerDialog(context, (view, hourOfDay, minute) -> {
@@ -139,6 +142,7 @@ public class CreateNewTargetService implements LayoutService {
     @SuppressLint("SimpleDateFormat")
     private void createTarget() {
         TargetDataService service = new TargetDataService(context);
+        targetDiary.setAlarm(takeTime.isChecked());
         targetDiary.setText(textTarget.getText().toString());
         targetDiary.setDescription(description.getText().toString());
         targetDiary.setDate(new SimpleDateFormat("dd.MM.yyyy").format(dateForCreate));
