@@ -61,7 +61,8 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE);
         onCreate(db);
     }
-    public void create(TargetDiary targetDiary){
+
+    public void create(TargetDiary targetDiary) {
         db.execSQL("INSERT INTO " + TABLE + " VALUES ('" + id + "','" + targetDiary.getText() + "','" + targetDiary.isStatus() +
                 "','" + targetDiary.isRepeatSunday() + "','" + targetDiary.isRepeatSaturday() +
                 "','" + targetDiary.isRepeatFriday() + "','" + targetDiary.isRepeatThursday() +
@@ -70,15 +71,39 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "');");
     }
 
+    public void update(TargetDiary targetDiary, long date) {
+        Log.d("qwerty", targetDiary.getText());
+
+        db.execSQL(("UPDATE " + TABLE + " SET " + COLUMN_TEXT_TARGET + " = '" + targetDiary.getText() + "' , " +
+                COLUMN_REPEAT_SUNDAY + " = '" + targetDiary.isRepeatSunday() + "' , " +
+                COLUMN_REPEAT_SATURDAY + " = '" + targetDiary.isRepeatSaturday() + "' , " +
+                COLUMN_REPEAT_FRIDAY + " = '" + targetDiary.isRepeatFriday() + "' , " +
+                COLUMN_REPEAT_THURSDAY + " = '" + targetDiary.isRepeatThursday() + "' , " +
+                COLUMN_REPEAT_WEDNESDAY + " = '" + targetDiary.isRepeatWednesday() + "' , " +
+                COLUMN_REPEAT_TUESDAY + " = '" + targetDiary.isRepeatTuesday() + "' , " +
+                COLUMN_REPEAT_MONDAY + " = '" + targetDiary.isRepeatMonday() + "' , " +
+                COLUMN_IS_ALARM + " = '" + targetDiary.isAlarm() + "' , " +
+                COLUMN_DESCRIPTION + " = '" + targetDiary.getDescription() + "' , " +
+                COLUMN_DATE + " = '" + targetDiary.getDate() + "' , " +
+                COLUMN_ALARM + " = '" + targetDiary.getTimeForAlarm() +
+                "' WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'"));
+    }
+
     @Override
     public Object findById(long id) {
         return null;
     }
 
+    public TargetDiary findByDate(long date) {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'", null);
+        cursor.moveToNext();
+        return getResult(cursor);
+    }
+
     public ArrayList<ChildItemTargetDTO> findAllByDate(String date) {
         ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date + "'", null);
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
         }
         return itemTargetDTOS;
@@ -127,4 +152,6 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         }
         return alarmDTO;
     }
+
+
 }

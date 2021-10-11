@@ -9,6 +9,8 @@ import com.sharkit.nextmonday.entity.user.GoogleUserDTO;
 import com.sharkit.nextmonday.entity.user.User;
 import com.sharkit.nextmonday.entity.user.UserDTO;
 
+import java.util.ArrayList;
+
 public class TransformerDiary {
 
     protected TargetDiary transformer(TargetDiaryDTO targetDiaryDTO){
@@ -57,5 +59,16 @@ public class TransformerDiary {
         date.setRepeatSaturday(targetDiary.isRepeatSaturday());
         date.setRepeatSunday(targetDiary.isRepeatSunday());
         return date;
+    }
+    protected ArrayList<Boolean> transformToArray(TargetDateForAlarmDTO alarmDTO){
+        ArrayList<Boolean> list = new ArrayList<>();
+        list.add(alarmDTO.isRepeatMonday());
+        list.add(alarmDTO.isRepeatTuesday());
+        list.add(alarmDTO.isRepeatWednesday());
+        list.add(alarmDTO.isRepeatThursday());
+        list.add(alarmDTO.isRepeatFriday());
+        list.add(alarmDTO.isRepeatSaturday());
+        list.add(alarmDTO.isRepeatSunday());
+        return list;
     }
 }

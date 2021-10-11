@@ -22,7 +22,6 @@ import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.WEDNESDA
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 
 import com.sharkit.nextmonday.entity.diary.DayTargets;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
@@ -128,6 +127,14 @@ public class TargetDataService implements TargetServiceMethod{
     }
 
     public TargetDateForAlarmDTO getRepeatForAlarmDTO(long date) {
-       return targetData.getRepeatForAlarmDTO(date);
+        return targetData.getRepeatForAlarmDTO(date);
+    }
+
+    public TargetDiary findByDate(long date) {
+        return targetData.findByDate(date);
+    }
+
+    public void update(TargetDiary targetDiary, long date) {
+        targetData.update(targetDiary, date);
     }
 }

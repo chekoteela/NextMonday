@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -71,19 +70,21 @@ public class CreateNewTargetService implements LayoutService {
 
     @Override
     public LayoutService activity() {
-        create.setOnClickListener(v -> createTarget());
+        create.setOnClickListener(v -> {
+            if (!ValidationField.isValidCreateNewTargetField(textTarget, context)) {
+                return;
+            }
+            createTarget();
+        });
         takeTime.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 createAlertTimePicker();
-            }else {
+            } else {
                 targetDiary.setTimeForAlarm(Calendar.getInstance().getTimeInMillis());
             }
         });
         repeat.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                if (!ValidationField.isValidCreateNewTargetField(textTarget, context)) {
-                    return;
-                }
                 createAlertDialog();
             } else {
                 new TargetDateForAlarmDTO().transform(targetDiary);
@@ -102,8 +103,11 @@ public class CreateNewTargetService implements LayoutService {
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
             calendar.set(Calendar.MINUTE, minute);
             targetDiary.setTimeForAlarm(calendar.getTimeInMillis());
-        },hour, minutes, true);
-        dialog.setOnDismissListener(DialogInterface::dismiss);
+        }, hour, minutes, true);
+        dialog.setOnCancelListener(dialog12 -> {
+            takeTime.setChecked(false);
+            dialog12.dismiss();
+        });
         dialog.show();
     }
 
@@ -136,6 +140,9 @@ public class CreateNewTargetService implements LayoutService {
             date.setRepeatSaturday(true);
             date.setRepeatSunday(true);
         }
+        if (!date.toArray().contains(true)) {
+            repeat.setChecked(false);
+        }
         return date;
     }
 
@@ -146,6 +153,9 @@ public class CreateNewTargetService implements LayoutService {
         targetDiary.setText(textTarget.getText().toString());
         targetDiary.setDescription(description.getText().toString());
         targetDiary.setDate(new SimpleDateFormat("dd.MM.yyyy").format(dateForCreate));
+        if (targetDiary.getTimeForAlarm() == 0) {
+            targetDiary.setTimeForAlarm(Calendar.getInstance().getTimeInMillis());
+        }
         service.create(targetDiary);
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_diary);
     }
@@ -164,7 +174,10 @@ public class CreateNewTargetService implements LayoutService {
     }
 
     private void setOnClick(AlertDialog.Builder dialog) {
-        dialog.setOnDismissListener(DialogInterface::dismiss);
+        dialog.setOnCancelListener(dialog12 -> {
+            repeat.setChecked(false);
+            dialog12.dismiss();
+        });
         dialog.setPositiveButton(ACCEPT, (dialog1, which) -> {
             writeSelectedDay().transform(targetDiary);
             dialog1.dismiss();

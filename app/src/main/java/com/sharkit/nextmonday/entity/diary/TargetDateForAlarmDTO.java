@@ -2,6 +2,8 @@ package com.sharkit.nextmonday.entity.diary;
 
 import com.sharkit.nextmonday.entity.transformer.TransformerDiary;
 
+import java.util.ArrayList;
+
 public class TargetDateForAlarmDTO extends TransformerDiary {
     private boolean repeatMonday;
     private boolean repeatTuesday;
@@ -69,5 +71,8 @@ public class TargetDateForAlarmDTO extends TransformerDiary {
 
     public TargetDiary transform (TargetDiary targetDiary){
         return transformer(this, targetDiary);
+    }
+    public ArrayList<Boolean> toArray(){
+       return transformToArray(this);
     }
 }
