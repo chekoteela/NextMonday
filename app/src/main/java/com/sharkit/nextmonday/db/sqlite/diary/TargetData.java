@@ -5,9 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
+import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
 import com.sharkit.nextmonday.entity.diary.TargetDiaryDTO;
 
@@ -33,6 +35,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     private static final String COLUMN_REPEAT_TUESDAY = "tuesday";
     private static final String COLUMN_REPEAT_MONDAY = "monday";
     private static final String COLUMN_ALARM = "time_alarm";
+    private static final String COLUMN_IS_ALARM = "alarm";
 
 
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -49,7 +52,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "" + COLUMN_REPEAT_SUNDAY + " BOOL, " + COLUMN_REPEAT_SATURDAY + " BOOL," +
                 "" + COLUMN_REPEAT_FRIDAY + " BOOL, " + COLUMN_REPEAT_THURSDAY + " BOOL, " +
                 "" + COLUMN_REPEAT_WEDNESDAY + " BOOL, " + COLUMN_REPEAT_TUESDAY + " BOOL," +
-                "" + COLUMN_REPEAT_MONDAY + " BOOL, " +
+                "" + COLUMN_REPEAT_MONDAY + " BOOL, " + COLUMN_IS_ALARM + " BOOL, " +
                 "" + COLUMN_DESCRIPTION + " TEXT, " + COLUMN_DATE + " TEXT, " + COLUMN_ALARM + " INTEGER UNIQUE)");
     }
 
@@ -59,41 +62,96 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         onCreate(db);
     }
 
+    public void create(TargetDiary targetDiary) {
+        db.execSQL("INSERT INTO " + TABLE + " VALUES ('" + id + "','" + targetDiary.getText() + "','" + targetDiary.isStatus() +
+                "','" + targetDiary.isRepeatSunday() + "','" + targetDiary.isRepeatSaturday() +
+                "','" + targetDiary.isRepeatFriday() + "','" + targetDiary.isRepeatThursday() +
+                "','" + targetDiary.isRepeatWednesday() + "','" + targetDiary.isRepeatTuesday() +
+                "','" + targetDiary.isRepeatMonday() + "','" + targetDiary.isAlarm() + "','" + targetDiary.getDescription() +
+                "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "');");
+    }
+
+    public void update(TargetDiary targetDiary, long date) {
+        Log.d("qwerty", targetDiary.getText());
+
+        db.execSQL(("UPDATE " + TABLE + " SET " + COLUMN_TEXT_TARGET + " = '" + targetDiary.getText() + "' , " +
+                COLUMN_REPEAT_SUNDAY + " = '" + targetDiary.isRepeatSunday() + "' , " +
+                COLUMN_REPEAT_SATURDAY + " = '" + targetDiary.isRepeatSaturday() + "' , " +
+                COLUMN_REPEAT_FRIDAY + " = '" + targetDiary.isRepeatFriday() + "' , " +
+                COLUMN_REPEAT_THURSDAY + " = '" + targetDiary.isRepeatThursday() + "' , " +
+                COLUMN_REPEAT_WEDNESDAY + " = '" + targetDiary.isRepeatWednesday() + "' , " +
+                COLUMN_REPEAT_TUESDAY + " = '" + targetDiary.isRepeatTuesday() + "' , " +
+                COLUMN_REPEAT_MONDAY + " = '" + targetDiary.isRepeatMonday() + "' , " +
+                COLUMN_IS_ALARM + " = '" + targetDiary.isAlarm() + "' , " +
+                COLUMN_DESCRIPTION + " = '" + targetDiary.getDescription() + "' , " +
+                COLUMN_DATE + " = '" + targetDiary.getDate() + "' , " +
+                COLUMN_ALARM + " = '" + targetDiary.getTimeForAlarm() +
+                "' WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'"));
+    }
+
     @Override
     public Object findById(long id) {
         return null;
     }
 
+    public TargetDiary findByDate(long date) {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'", null);
+        cursor.moveToNext();
+        return getResult(cursor);
+    }
+
     public ArrayList<ChildItemTargetDTO> findAllByDate(String date) {
         ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date + "'", null);
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
         }
         return itemTargetDTOS;
     }
 
     private TargetDiary getResult(Cursor cursor) {
-        TargetDiaryDTO targetDiary = new TargetDiaryDTO();
-        targetDiary.setId(cursor.getString(0));
-        targetDiary.setText(cursor.getString(1));
-        targetDiary.setStatus(Boolean.parseBoolean(cursor.getString(2)));
-        targetDiary.setRepeatSunday(Boolean.parseBoolean(cursor.getString(3)));
-        targetDiary.setRepeatSaturday(Boolean.parseBoolean(cursor.getString(4)));
-        targetDiary.setRepeatFriday(Boolean.parseBoolean(cursor.getString(5)));
-        targetDiary.setRepeatThursday(Boolean.parseBoolean(cursor.getString(6)));
-        targetDiary.setRepeatWednesday(Boolean.parseBoolean(cursor.getString(7)));
-        targetDiary.setRepeatTuesday(Boolean.parseBoolean(cursor.getString(8)));
-        targetDiary.setRepeatMonday(Boolean.parseBoolean(cursor.getString(9)));
-        targetDiary.setDescription(cursor.getString(10));
-        targetDiary.setDate(cursor.getString(11));
-        targetDiary.setTimeForAlarm(cursor.getLong(12));
-        return new TargetDiary().transform(targetDiary);
+        TargetDiaryDTO targetDiaryDTO = new TargetDiaryDTO();
+        targetDiaryDTO.setId(cursor.getString(0));
+        targetDiaryDTO.setText(cursor.getString(1));
+        targetDiaryDTO.setStatus(Boolean.parseBoolean(cursor.getString(2)));
+        targetDiaryDTO.setRepeatSunday(Boolean.parseBoolean(cursor.getString(3)));
+        targetDiaryDTO.setRepeatSaturday(Boolean.parseBoolean(cursor.getString(4)));
+        targetDiaryDTO.setRepeatFriday(Boolean.parseBoolean(cursor.getString(5)));
+        targetDiaryDTO.setRepeatThursday(Boolean.parseBoolean(cursor.getString(6)));
+        targetDiaryDTO.setRepeatWednesday(Boolean.parseBoolean(cursor.getString(7)));
+        targetDiaryDTO.setRepeatTuesday(Boolean.parseBoolean(cursor.getString(8)));
+        targetDiaryDTO.setRepeatMonday(Boolean.parseBoolean(cursor.getString(9)));
+        targetDiaryDTO.setAlarm(Boolean.parseBoolean(cursor.getString(10)));
+        targetDiaryDTO.setDescription(cursor.getString(11));
+        targetDiaryDTO.setDate(cursor.getString(12));
+        targetDiaryDTO.setTimeForAlarm(cursor.getLong(13));
+        return new TargetDiary().transform(targetDiaryDTO);
     }
+
 
     public int getCompleteTarget(String date) {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date +
                 "' AND " + COLUMN_STATUS + " = '" + true + "'", null);
         return cursor.getCount();
     }
+
+    public void delete(long date) {
+        db.execSQL("DELETE FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'");
+    }
+
+    public void setCheckedTarget(long date, boolean isChecked) {
+        db.execSQL(("UPDATE " + TABLE + " SET " + COLUMN_STATUS + " = '" + isChecked + "' " +
+                "WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'"));
+    }
+
+    public TargetDateForAlarmDTO getRepeatForAlarmDTO(long date) {
+        TargetDateForAlarmDTO alarmDTO = new TargetDateForAlarmDTO();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'", null);
+        while (cursor.moveToNext()) {
+            alarmDTO = getResult(cursor).transform(alarmDTO);
+        }
+        return alarmDTO;
+    }
+
+
 }

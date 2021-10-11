@@ -6,6 +6,15 @@ public class ParentItemData {
     private String day;
     private int completeTargets;
     private int allTargets;
+    private long date;
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
+    }
 
     public int getAllTargets() {
         return allTargets;

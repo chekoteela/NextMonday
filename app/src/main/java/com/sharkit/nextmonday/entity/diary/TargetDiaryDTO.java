@@ -5,6 +5,7 @@ public class TargetDiaryDTO {
     private String text;
     private String description;
     private String date;
+    private boolean alarm;
     private boolean status;
     private boolean repeatMonday;
     private boolean repeatTuesday;
@@ -17,6 +18,14 @@ public class TargetDiaryDTO {
 
     public long getTimeForAlarm() {
         return timeForAlarm;
+    }
+
+    public boolean isAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(boolean alarm) {
+        this.alarm = alarm;
     }
 
     public void setTimeForAlarm(long timeForAlarm) {

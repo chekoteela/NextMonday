@@ -1,13 +1,13 @@
 package com.sharkit.nextmonday.configuration.constant;
 
 public class DayAndMonth {
-    public static final String MONDAY = "Пн";
-    public static final String TUESDAY = "Вт";
-    public static final String WEDNESDAY = "Ср";
-    public static final String THURSDAY = "Чт";
-    public static final String FRIDAY = "Пт";
-    public static final String SATURDAY = "Сб";
-    public static final String SUNDAY = "Вс";
+    public static final String MONDAY = " Пн ";
+    public static final String TUESDAY = " Вт ";
+    public static final String WEDNESDAY = " Ср ";
+    public static final String THURSDAY = " Чт ";
+    public static final String FRIDAY = " Пт ";
+    public static final String SATURDAY = " Сб ";
+    public static final String SUNDAY = " Вс ";
 
     public static final String JANUARY = "Янв";
     public static final String FEBRUARY = "Фев";

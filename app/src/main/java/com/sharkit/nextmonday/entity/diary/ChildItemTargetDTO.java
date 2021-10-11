@@ -1,13 +1,23 @@
 package com.sharkit.nextmonday.entity.diary;
 
-import com.sharkit.nextmonday.entity.transformer.TransformToChildItemDTO;
-import com.sharkit.nextmonday.entity.transformer.Transformer;
+import com.sharkit.nextmonday.entity.transformer.TransformerDiary;
 
-public class ChildItemTargetDTO extends Transformer implements TransformToChildItemDTO {
+import java.io.Serializable;
+
+public class ChildItemTargetDTO extends TransformerDiary implements Serializable {
     private String text;
     private String description;
     private long date;
     private boolean status;
+    private boolean alarm;
+
+    public boolean isAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(boolean alarm) {
+        this.alarm = alarm;
+    }
 
     public String getText() {
         return text;
@@ -41,8 +51,7 @@ public class ChildItemTargetDTO extends Transformer implements TransformToChildI
         this.status = status;
     }
 
-    @Override
-    public ChildItemTargetDTO transform(TargetDiary targetDiary) {
+    public ChildItemTargetDTO transform (TargetDiary targetDiary){
         return transformer(targetDiary);
     }
 }
