@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cal"
     android:orientation="vertical"
-    tools:context="Fragments.Calendar"
     android:background="@color/calculator_auto_edittext">
 
     <LinearLayout
@@ -14,10 +12,9 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/date_xml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next_monday"
             android:fontFamily="@font/play"
             android:layout_marginHorizontal="70dp"
             android:textSize="18sp"
@@ -31,7 +28,7 @@
 
     <CalendarView
         android:contentDescription="@string/calendar2"
-        android:id="@+id/calendarView"
+        android:id="@+id/calendar_xml"
         android:layout_marginTop="50dp"
         android:unfocusedMonthDateColor="@color/white"
         android:layout_width="match_parent"

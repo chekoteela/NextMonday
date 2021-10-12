@@ -40,9 +40,10 @@ public class TargetDataService implements TargetServiceMethod{
     }
 
     @SuppressLint("SimpleDateFormat")
-    public ArrayList<DayTargets> getWeekList() {
+    public ArrayList<DayTargets> getWeekList(long date) {
         ArrayList<DayTargets> targets = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(date);
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
         }
@@ -65,7 +66,7 @@ public class TargetDataService implements TargetServiceMethod{
         return targets;
     }
 
-    private String getNameOfMonth(int month) {
+    public String getNameOfMonth(int month) {
         switch (month) {
             case 0:
                 return JANUARY;
@@ -94,7 +95,7 @@ public class TargetDataService implements TargetServiceMethod{
         }
         return null;
     }
-    private String getNameOfDay(int day) {
+    public String getNameOfDay(int day) {
         switch (day) {
             case 1:
                 return SUNDAY;
