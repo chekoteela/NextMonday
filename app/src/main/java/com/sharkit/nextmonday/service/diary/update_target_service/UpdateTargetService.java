@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.service.diary.update_target_service;
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.ACCEPT;
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.NOT_REPEAT;
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.WITHOUT_TIME;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.ERROR_PAST_TIME;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 
@@ -201,6 +203,12 @@ public class UpdateTargetService extends DayAndMonth implements LayoutService {
             calendar.setTimeInMillis(childItemTargetDTO.getDate());
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
             calendar.set(Calendar.MINUTE, minute);
+            if (calendar.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()){
+                Toast.makeText(context, ERROR_PAST_TIME, Toast.LENGTH_SHORT).show();
+                takeTime.setChecked(false);
+                targetDiary.setTimeForAlarm(0);
+                return;
+            }
             time.setText(new SimpleDateFormat("HH:mm").format(calendar.getTimeInMillis()));
             targetDiary.setTimeForAlarm(calendar.getTimeInMillis());
         }, hour, minutes, true);
