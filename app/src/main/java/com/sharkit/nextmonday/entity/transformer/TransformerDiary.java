@@ -4,10 +4,6 @@ import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
 import com.sharkit.nextmonday.entity.diary.TargetDiaryDTO;
-import com.sharkit.nextmonday.entity.user.FacebookUserDTO;
-import com.sharkit.nextmonday.entity.user.GoogleUserDTO;
-import com.sharkit.nextmonday.entity.user.User;
-import com.sharkit.nextmonday.entity.user.UserDTO;
 
 import java.util.ArrayList;
 

@@ -99,6 +99,14 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         cursor.moveToNext();
         return getResult(cursor);
     }
+    public ArrayList<TargetDiary> findAllTargetForDay(String date){
+        ArrayList<TargetDiary> targetDiaries = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE+ " = '" + date + "'", null);
+        while (cursor.moveToNext()){
+            targetDiaries.add(getResult(cursor));
+        }
+        return targetDiaries;
+    }
 
     public ArrayList<ChildItemTargetDTO> findAllByDate(String date) {
         ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
