@@ -218,4 +218,7 @@ public class TargetDataService implements TargetServiceMethod{
         targetData.update(targetDiary, date);
     }
 
+    public void deleteSimilar(boolean alarm, String text, String description) {
+        targetData.deleteSimilar(alarm, text, description);
+    }
 }
