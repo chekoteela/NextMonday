@@ -22,30 +22,44 @@ import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.WEDNESDA
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
+import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.DayTargets;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
 import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
+import com.sharkit.nextmonday.service.diary.folowing_repeat.days.Friday;
+import com.sharkit.nextmonday.service.diary.folowing_repeat.days.Monday;
+import com.sharkit.nextmonday.service.diary.folowing_repeat.days.Saturday;
+import com.sharkit.nextmonday.service.diary.folowing_repeat.days.Sunday;
+import com.sharkit.nextmonday.service.diary.folowing_repeat.days.Thursday;
+import com.sharkit.nextmonday.service.diary.folowing_repeat.days.Tuesday;
+import com.sharkit.nextmonday.service.diary.folowing_repeat.days.Wednesday;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
+@SuppressLint("SimpleDateFormat")
 public class TargetDataService implements TargetServiceMethod{
     private final TargetData targetData;
+
     public TargetDataService(Context context) {
         targetData = new TargetData(context);
         targetData.onCreate(targetData.getReadableDatabase());
     }
 
-    @SuppressLint("SimpleDateFormat")
-    public ArrayList<DayTargets> getWeekList() {
+    public ArrayList<DayTargets> getWeekList(long date) {
         ArrayList<DayTargets> targets = new ArrayList<>();
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(date);
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
         }
+        setFollowingRepeat();
         for (int i = 0; i < 7; i++) {
             DayTargets dayTargets = new DayTargets();
             ParentItemData parentItemData = new ParentItemData();
@@ -62,10 +76,76 @@ public class TargetDataService implements TargetServiceMethod{
             targets.add(dayTargets);
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
+
         return targets;
     }
 
-    private String getNameOfMonth(int month) {
+    private void setFollowingRepeat() {
+        ArrayList<TargetDiary> targetDiaries = targetData
+                .findAllTargetForDay(new SimpleDateFormat("dd.MM.yyyy")
+                        .format(Calendar.getInstance().getTimeInMillis()));
+
+        for (int i = 0; i < targetDiaries.size(); i++) {
+            TargetDateForAlarmDTO alarmDTO = new TargetDateForAlarmDTO();
+            ArrayList<Boolean> list = targetDiaries.get(i).transform(alarmDTO).toArray();
+            Map<String, Boolean> map = new HashMap<>();
+            for (int j = 0; j < list.size(); j++) {
+                map.put(getRepeat(j), list.get(j));
+            }
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(targetDiaries.get(i).getTimeForAlarm());
+            Log.d("qwerty", map.values().toString());
+            setFollowing(Calendar.getInstance().get(Calendar.DAY_OF_WEEK), map, targetDiaries.get(i), calendar);
+        }
+    }
+
+    private void setFollowing(int day, Map<String, Boolean> map, TargetDiary targetDiary, Calendar calendar) {
+        switch (day) {
+            case 1:
+                new Sunday().writeToDB(targetDiary, map, this, calendar);
+                break;
+            case 2:
+                new Monday().writeToDB(targetDiary, map, this, calendar);
+                break;
+            case 3:
+                new Tuesday().writeToDB(targetDiary, map, this, calendar);
+                break;
+            case 4:
+                new Wednesday().writeToDB(targetDiary, map, this, calendar);
+                break;
+            case 5:
+                new Thursday().writeToDB(targetDiary, map, this, calendar);
+                break;
+            case 6:
+                new Friday().writeToDB(targetDiary, map, this, calendar);
+                break;
+            case 7:
+                new Saturday().writeToDB(targetDiary, map, this, calendar);
+                break;
+        }
+    }
+
+    private String getRepeat(int position) {
+        switch (position) {
+            case 0:
+                return MONDAY;
+            case 1:
+                return TUESDAY;
+            case 2:
+                return WEDNESDAY;
+            case 3:
+                return THURSDAY;
+            case 4:
+                return FRIDAY;
+            case 5:
+                return SATURDAY;
+            case 6:
+                return SUNDAY;
+        }
+        return null;
+    }
+
+    public String getNameOfMonth(int month) {
         switch (month) {
             case 0:
                 return JANUARY;
@@ -94,7 +174,8 @@ public class TargetDataService implements TargetServiceMethod{
         }
         return null;
     }
-    private String getNameOfDay(int day) {
+
+    public String getNameOfDay(int day) {
         switch (day) {
             case 1:
                 return SUNDAY;
@@ -136,5 +217,17 @@ public class TargetDataService implements TargetServiceMethod{
 
     public void update(TargetDiary targetDiary, long date) {
         targetData.update(targetDiary, date);
+    }
+
+    public void deleteSimilar(boolean alarm, String text, String description) {
+        targetData.deleteSimilar(alarm, text, description);
+    }
+
+    public ArrayList<ChildItemTargetDTO> getChildItem() {
+        return targetData.findAll();
+    }
+
+    public ArrayList<ChildItemTargetDTO> getChildFromName(String tag) {
+        return targetData.findByText(tag);
     }
 }

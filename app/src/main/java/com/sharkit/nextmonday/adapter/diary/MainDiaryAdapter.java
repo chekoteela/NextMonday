@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.adapter.diary;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +9,12 @@ import android.widget.BaseExpandableListAdapter;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.entity.diary.DayTargets;
-import com.sharkit.nextmonday.entity.diary.TargetDiary;
 import com.sharkit.nextmonday.service.diary.main_diary_service.builder.MainDiaryChildChildBuilder;
 import com.sharkit.nextmonday.service.diary.main_diary_service.builder.MainDiaryParentChildBuilder;
 
 import java.util.ArrayList;
 
+@SuppressLint("InflateParams")
 public class MainDiaryAdapter extends BaseExpandableListAdapter {
     private final Context mContext;
     private final ArrayList<DayTargets> mGroup;

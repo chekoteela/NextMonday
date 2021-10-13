@@ -36,6 +36,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     private static final String COLUMN_REPEAT_MONDAY = "monday";
     private static final String COLUMN_ALARM = "time_alarm";
     private static final String COLUMN_IS_ALARM = "alarm";
+    private static final String COLUMN_VISIBLE = "visible";
 
 
     private final FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -53,7 +54,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "" + COLUMN_REPEAT_FRIDAY + " BOOL, " + COLUMN_REPEAT_THURSDAY + " BOOL, " +
                 "" + COLUMN_REPEAT_WEDNESDAY + " BOOL, " + COLUMN_REPEAT_TUESDAY + " BOOL," +
                 "" + COLUMN_REPEAT_MONDAY + " BOOL, " + COLUMN_IS_ALARM + " BOOL, " +
-                "" + COLUMN_DESCRIPTION + " TEXT, " + COLUMN_DATE + " TEXT, " + COLUMN_ALARM + " INTEGER UNIQUE)");
+                "" + COLUMN_DESCRIPTION + " TEXT, " + COLUMN_DATE + " TEXT, " + COLUMN_ALARM + " INTEGER UNIQUE, " + COLUMN_VISIBLE + " BOOL)");
     }
 
     @Override
@@ -68,7 +69,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "','" + targetDiary.isRepeatFriday() + "','" + targetDiary.isRepeatThursday() +
                 "','" + targetDiary.isRepeatWednesday() + "','" + targetDiary.isRepeatTuesday() +
                 "','" + targetDiary.isRepeatMonday() + "','" + targetDiary.isAlarm() + "','" + targetDiary.getDescription() +
-                "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "');");
+                "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "' , '" + true + "');");
     }
 
     public void update(TargetDiary targetDiary, long date) {
@@ -95,14 +96,25 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     }
 
     public TargetDiary findByDate(long date) {
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +
+                "' AND " + COLUMN_ALARM + " = '" + date + "' AND " + COLUMN_VISIBLE + " = '" + true + "'", null);
         cursor.moveToNext();
         return getResult(cursor);
+    }
+    public ArrayList<TargetDiary> findAllTargetForDay(String date){
+        ArrayList<TargetDiary> targetDiaries = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE+ " = '" + date +
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "'", null);
+        while (cursor.moveToNext()){
+            targetDiaries.add(getResult(cursor));
+        }
+        return targetDiaries;
     }
 
     public ArrayList<ChildItemTargetDTO> findAllByDate(String date) {
         ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date +
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "'", null);
         while (cursor.moveToNext()) {
             itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
         }
@@ -136,8 +148,8 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     }
 
     public void delete(long date) {
-        db.execSQL("DELETE FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'");
-    }
+        db.execSQL(("UPDATE " + TABLE + " SET " + COLUMN_VISIBLE + " = '" + false + "' " +
+                "WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'"));    }
 
     public void setCheckedTarget(long date, boolean isChecked) {
         db.execSQL(("UPDATE " + TABLE + " SET " + COLUMN_STATUS + " = '" + isChecked + "' " +
@@ -146,12 +158,37 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
 
     public TargetDateForAlarmDTO getRepeatForAlarmDTO(long date) {
         TargetDateForAlarmDTO alarmDTO = new TargetDateForAlarmDTO();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date +
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "'", null);
         while (cursor.moveToNext()) {
             alarmDTO = getResult(cursor).transform(alarmDTO);
         }
         return alarmDTO;
     }
 
+    public void deleteSimilar(boolean alarm, String text, String description) {
+        db.execSQL("DELETE FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_TEXT_TARGET + " = '" + text + "' AND " +
+                COLUMN_IS_ALARM + " = '" + alarm + "' AND " + COLUMN_DESCRIPTION + " = '" + description + "'");
 
+    }
+
+    public ArrayList<ChildItemTargetDTO> findAll() {
+        ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_STATUS + " = '" + false + "'", null);
+        while (cursor.moveToNext()) {
+            itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
+        }
+        return itemTargetDTOS;
+    }
+
+    public ArrayList<ChildItemTargetDTO> findByText(String tag) {
+        ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_TEXT_TARGET + " LIKE '" + tag + "%' AND " + COLUMN_ID + " = '" + id +
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_STATUS + " = '" + false + "'", null);
+        while (cursor.moveToNext()) {
+            itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
+        }
+        return itemTargetDTOS;
+    }
 }

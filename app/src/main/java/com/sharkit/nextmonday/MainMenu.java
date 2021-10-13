@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday;
 
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.DATE_FOR_MAIN_DIARY_LIST;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -59,6 +61,9 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController.navigate(R.id.nav_diary);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Toolbar toolbar = findViewById(R.id.toolbar_core);
         bar = findViewById(R.id.bar);
@@ -77,10 +82,8 @@ public class MainMenu extends AppCompatActivity {
                 R.id.nav_diary, R.id.nav_target, R.id.nav_feedback,R.id.nav_calculator_main)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-
     }
 
 
@@ -138,6 +141,8 @@ public class MainMenu extends AppCompatActivity {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
         }
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        Bundle bundle = new Bundle();
+        bundle.putLong(DATE_FOR_MAIN_DIARY_LIST, Calendar.getInstance().getTimeInMillis());
         navController.navigate(R.id.nav_diary);
     }
     public void Share(MenuItem item){

@@ -4,15 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2164855072463768" />
+        <entry key="app/src/main/res/layout/activity_main_menu.xml" value="0.17395833333333333" />
         <entry key="app/src/main/res/layout/activity_registration_menu.xml" value="0.29483695652173914" />
+        <entry key="app/src/main/res/layout/alert_simple_text.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/custom_diary.xml" value="0.17395833333333333" />
+        <entry key="app/src/main/res/layout/fragment_calendar.xml" value="0.17395833333333333" />
         <entry key="app/src/main/res/layout/fragment_dairy.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/fragment_dairy_four.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/fragment_dairy_three.xml" value="0.6490850376749193" />
         <entry key="app/src/main/res/layout/fragment_dairy_two.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/list_custom_find.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/list_radio_button.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/lst_view_castom.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/reset_password_dialog.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/resetpassword.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/set_list_moderation.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/set_moderator_change.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/settings.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/spinner_item.xml" value="0.3203125" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.3203125" />
       </map>
     </option>

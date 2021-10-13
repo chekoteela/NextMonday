@@ -1,6 +1,7 @@
 package com.sharkit.nextmonday.service.diary.create_new_target_service;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.ACCEPT;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.ERROR_PAST_TIME;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 
@@ -102,6 +104,12 @@ public class CreateNewTargetService implements LayoutService {
             calendar.setTimeInMillis(dateForCreate);
             calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
             calendar.set(Calendar.MINUTE, minute);
+            if (calendar.getTimeInMillis() < Calendar.getInstance().getTimeInMillis()){
+                Toast.makeText(context, ERROR_PAST_TIME, Toast.LENGTH_SHORT).show();
+                takeTime.setChecked(false);
+                targetDiary.setTimeForAlarm(0);
+                return;
+            }
             targetDiary.setTimeForAlarm(calendar.getTimeInMillis());
         }, hour, minutes, true);
         dialog.setOnCancelListener(dialog12 -> {
