@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.configuration.validation.impl;
 
+import android.view.View;
 import android.widget.EditText;
 
 public interface BuildMethod {
@@ -21,7 +22,7 @@ public interface BuildMethod {
     boolean hasNotCyrillic(String toastMessage);
 
 
-    EditText getWidget();
+    View getWidget();
     void setWidget(EditText editText);
 
 }

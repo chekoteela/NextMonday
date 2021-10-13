@@ -7,7 +7,7 @@
 
 
     <CheckBox
-        android:id="@+id/checkFind"
+        android:id="@+id/completeTarget_xml"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -20,31 +20,31 @@
 
     <TextView
         style="@style/StandartTextView"
-        android:id="@+id/textT"
+        android:id="@+id/text_xml"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/checkFind"
+        android:layout_toRightOf="@id/completeTarget_xml"
         android:textSize="18sp" />
 
 
     <TextView
         style="@style/StandartTextView"
-        android:id="@+id/timeT"
+        android:id="@+id/time_xml"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textT"
+        android:layout_below="@+id/text_xml"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/checkFind"
+        android:layout_toRightOf="@id/completeTarget_xml"
          />
 
 
     <TextView
         style="@style/StandartTextView"
-        android:id="@+id/dateT"
+        android:id="@+id/date_xml"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textT"
+        android:layout_below="@+id/text_xml"
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp" />

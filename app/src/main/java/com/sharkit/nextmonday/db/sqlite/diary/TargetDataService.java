@@ -24,6 +24,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
+import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.DayTargets;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
 import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
@@ -220,5 +221,13 @@ public class TargetDataService implements TargetServiceMethod{
 
     public void deleteSimilar(boolean alarm, String text, String description) {
         targetData.deleteSimilar(alarm, text, description);
+    }
+
+    public ArrayList<ChildItemTargetDTO> getChildItem() {
+        return targetData.findAll();
+    }
+
+    public ArrayList<ChildItemTargetDTO> getChildFromName(String tag) {
+        return targetData.findByText(tag);
     }
 }

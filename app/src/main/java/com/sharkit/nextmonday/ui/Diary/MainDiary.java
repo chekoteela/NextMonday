@@ -36,6 +36,4 @@ public class MainDiary extends Fragment {
 
         return root;
     }
-
-
 }

@@ -171,4 +171,24 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 COLUMN_IS_ALARM + " = '" + alarm + "' AND " + COLUMN_DESCRIPTION + " = '" + description + "'");
 
     }
+
+    public ArrayList<ChildItemTargetDTO> findAll() {
+        ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_STATUS + " = '" + false + "'", null);
+        while (cursor.moveToNext()) {
+            itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
+        }
+        return itemTargetDTOS;
+    }
+
+    public ArrayList<ChildItemTargetDTO> findByText(String tag) {
+        ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_TEXT_TARGET + " LIKE '" + tag + "%' AND " + COLUMN_ID + " = '" + id +
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_STATUS + " = '" + false + "'", null);
+        while (cursor.moveToNext()) {
+            itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
+        }
+        return itemTargetDTOS;
+    }
 }

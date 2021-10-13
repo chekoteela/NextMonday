@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.adaptive.linear.LinearAdaptive;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
@@ -63,6 +64,10 @@ public class ParentService implements LayoutService {
         if (Calendar.getInstance().get(Calendar.DATE) == parentItemData.getNumber()) {
             parentLayout.setBackgroundColor(context.getColor(R.color.black));           //задасиш нормальний колір для цього елемента, щоб він заливав весь елемент, а не тільки робив чорну рамку, зробиш, і вадали цей комент
         }
+        new LinearAdaptive(context)
+                .setWidget(day)
+                .build();
+
         return this;
     }
 

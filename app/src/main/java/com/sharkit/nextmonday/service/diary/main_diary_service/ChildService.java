@@ -90,7 +90,10 @@ public class ChildService implements LayoutService {
                 return true;
             });
         });
-        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> service.setCheckedTarget(targetDiary.getDate(), isChecked));
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            service.setCheckedTarget(targetDiary.getDate(), isChecked);
+            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_diary);
+        });
         return this;
     }
 

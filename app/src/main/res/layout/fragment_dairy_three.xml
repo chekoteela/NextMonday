@@ -39,12 +39,11 @@
 
 
     <ExpandableListView
-
-        android:id="@+id/listFind"
+        android:id="@+id/list_of_item_xml"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ll"
-        android:layout_above="@+id/adView"/>
+        android:layout_above="@+id/adView"
+        android:layout_below="@+id/ll" />
 
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
