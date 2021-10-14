@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
         onClickListener();
     }
-
+    @SuppressLint("CommitPrefEdits")
     private void onClickListener() {
         google.setOnClickListener(this);
         createAcc.setOnClickListener(this);

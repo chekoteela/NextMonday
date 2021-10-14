@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/calculator_auto_edittext"
     android:orientation="vertical"
-    tools:context=".ui.Calculator.Weight">
+    tools:context=".ui.calculator.Weight">
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">

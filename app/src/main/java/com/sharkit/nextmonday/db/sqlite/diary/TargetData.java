@@ -114,7 +114,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     public ArrayList<ChildItemTargetDTO> findAllByDate(String date) {
         ArrayList<ChildItemTargetDTO> itemTargetDTOS = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date +
-                "' AND " + COLUMN_VISIBLE + " = '" + true + "'", null);
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_VISIBLE + " = '" + true + "'", null);
         while (cursor.moveToNext()) {
             itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
         }
@@ -190,5 +190,16 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
             itemTargetDTOS.add(new ChildItemTargetDTO().transform(getResult(cursor)));
         }
         return itemTargetDTOS;
+    }
+    public int getCountForDate(String date){
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + date +
+                "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_IS_ALARM + " = '" + true + "'", null);
+        return cursor.getCount();
+    }
+
+    public long getTargetFromIndex(int index) {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_IS_ALARM + " = '" + true + "'", null);
+        cursor.moveToPosition(index);
+        return cursor.getLong(13);
     }
 }

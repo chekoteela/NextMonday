@@ -13,7 +13,7 @@
         android:padding="10dp">
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinner_xml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
              />
@@ -28,7 +28,7 @@
 
         <EditText
             style="@style/EditText_change_food_white"
-            android:id="@+id/name"
+            android:id="@+id/name_xml"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -45,7 +45,7 @@
 
         <EditText
             style="@style/EditText_change_food_white"
-            android:id="@+id/email"
+            android:id="@+id/email_xml"
             android:layout_width="match_parent"
             android:layout_height="144px"
             android:layout_gravity="center"
@@ -63,7 +63,7 @@
 
         <EditText
             style="@style/EditText_change_food_white"
-            android:id="@+id/text_sms"
+            android:id="@+id/text_xml"
             android:layout_width="match_parent"
             android:layout_height="300px"
             android:layout_gravity="center_vertical"

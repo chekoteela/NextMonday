@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/calculator_auto_edittext"
-    tools:context=".ui.Calculator.ChangeFood">
+    tools:context=".ui.calculator.ChangeFood">
 
 <LinearLayout
     android:id="@+id/change_food_linear"

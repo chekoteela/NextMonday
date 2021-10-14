@@ -21,9 +21,13 @@ import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.TUESDAY;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.WEDNESDAY;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import com.sharkit.nextmonday.configuration.else_conf.AlarmDiary;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.DayTargets;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
@@ -46,8 +50,10 @@ import java.util.Map;
 @SuppressLint("SimpleDateFormat")
 public class TargetDataService implements TargetServiceMethod{
     private final TargetData targetData;
+    private final Context context;
 
     public TargetDataService(Context context) {
+        this.context = context;
         targetData = new TargetData(context);
         targetData.onCreate(targetData.getReadableDatabase());
     }
@@ -94,7 +100,6 @@ public class TargetDataService implements TargetServiceMethod{
             }
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(targetDiaries.get(i).getTimeForAlarm());
-            Log.d("qwerty", map.values().toString());
             setFollowing(Calendar.getInstance().get(Calendar.DAY_OF_WEEK), map, targetDiaries.get(i), calendar);
         }
     }
@@ -229,5 +234,16 @@ public class TargetDataService implements TargetServiceMethod{
 
     public ArrayList<ChildItemTargetDTO> getChildFromName(String tag) {
         return targetData.findByText(tag);
+    }
+
+    @SuppressLint("UnspecifiedImmutableFlag")
+    public void getAlarm(String date) {
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmDiary.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
+
+        for (int i = 0; i < targetData.getCountForDate(date); i++) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, targetData.getTargetFromIndex(i), pendingIntent);
+        }
     }
 }

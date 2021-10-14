@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/calculator_auto_edittext"
 
-    tools:context=".ui.Calculator.FindMyFood">
+    tools:context=".ui.calculator.FindMyFood">
 
     <LinearLayout
         android:layout_width="match_parent"
