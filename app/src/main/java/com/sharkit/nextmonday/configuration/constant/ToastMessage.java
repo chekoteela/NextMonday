@@ -11,5 +11,6 @@ public class ToastMessage {
     public static final String EMAIL_AND_PASS_FAIL = "Вы ввели не верный пароль или почту";
     public static final String ERROR_PAST_DATE = "Вы не можете добавить задачу задним числом";
     public static final String ERROR_PAST_TIME = "Вы не можете задать прошедшее время";
+    public static final String SEND_FEEDBACK = "Отзыв отправлен";
 
 }
