@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.service.diary.main_diary_service;
 
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_EMAIl;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_ID;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_LAST_NAME;
@@ -15,9 +16,7 @@ import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ExpandableListView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.adapter.diary.MainDiaryAdapter;
@@ -63,22 +62,19 @@ public class MainDiaryService implements LayoutService {
         SharedPreferences sharedPreferences = ((Activity) context).getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         FirebaseFirestore.getInstance().collection(USERS)
-                .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
                 .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        UserPreferenceDTO userDTO = documentSnapshot.toObject(UserPreferenceDTO.class);
-                        editor.putString(USER_ID, Objects.requireNonNull(userDTO).getId());
-                        editor.putString(USER_LAST_NAME, Objects.requireNonNull(userDTO).getLastName());
-                        editor.putString(USER_NAME, Objects.requireNonNull(userDTO).getName());
-                        editor.putString(USER_EMAIl, Objects.requireNonNull(userDTO).getEmail());
-                        editor.putString(USER_PASSWORD, Objects.requireNonNull(userDTO).getPassword());
-                        editor.putString(USER_ROLE, Objects.requireNonNull(userDTO).getRole());
-                        editor.apply();
-                    }
+                .addOnSuccessListener(documentSnapshot -> {
+                    UserPreferenceDTO userDTO = documentSnapshot.toObject(UserPreferenceDTO.class);
+                    editor.putString(USER_ID, Objects.requireNonNull(userDTO).getId());
+                    editor.putString(USER_LAST_NAME, Objects.requireNonNull(userDTO).getLastName());
+                    editor.putString(USER_NAME, Objects.requireNonNull(userDTO).getName());
+                    editor.putString(USER_EMAIl, Objects.requireNonNull(userDTO).getEmail());
+                    editor.putString(USER_PASSWORD, Objects.requireNonNull(userDTO).getPassword());
+                    editor.putString(USER_ROLE, Objects.requireNonNull(userDTO).getRole());
+                    editor.apply();
                 });
-        dataService.getAlarm(new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTimeInMillis()));
+        dataService.getAlarm(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
         listView.setAdapter(new MainDiaryAdapter(context, dataService.getWeekList(date)));
         return this;
     }

@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.db.sqlite.diary;
 
+import static android.content.Context.ALARM_SERVICE;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.APRIL;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.AUGUST;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.DECEMBER;
@@ -19,13 +20,16 @@ import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.SUNDAY;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.THURSDAY;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.TUESDAY;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.WEDNESDAY;
+import static com.sharkit.nextmonday.configuration.constant.Notification.BIG_TEXT;
+import static com.sharkit.nextmonday.configuration.constant.Notification.CHANNEL_1;
+import static com.sharkit.nextmonday.configuration.constant.Notification.CONTENT_TITLE;
+import static com.sharkit.nextmonday.configuration.constant.Notification.SUMMARY_TEXT;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import com.sharkit.nextmonday.configuration.else_conf.AlarmDiary;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
@@ -238,12 +242,28 @@ public class TargetDataService implements TargetServiceMethod{
 
     @SuppressLint("UnspecifiedImmutableFlag")
     public void getAlarm(String date) {
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmDiary.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 1, intent, 0);
 
         for (int i = 0; i < targetData.getCountForDate(date); i++) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, targetData.getTargetFromIndex(i), pendingIntent);
+            startAlarm(i);
+        }
+    }
+
+    @SuppressLint("UnspecifiedImmutableFlag")
+    private void startAlarm(int count) {
+        ChildItemTargetDTO targetDTO = targetData.getTargetFromIndex(count);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTimeInMillis(targetDTO.getDate());
+        calendar1.set(Calendar.SECOND, 0);
+        Intent intent = new Intent(context, AlarmDiary.class);
+        intent.putExtra(SUMMARY_TEXT, CHANNEL_1)
+                .putExtra(CONTENT_TITLE, targetDTO.getText())
+                .putExtra(BIG_TEXT, targetDTO.getDescription());
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, count, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar1.getTimeInMillis(), pendingIntent);
+        Calendar calendar = Calendar.getInstance();
+        if (calendar1.getTimeInMillis() < calendar.getTimeInMillis() + 5000) {
+            alarmManager.cancel(pendingIntent);
         }
     }
 }

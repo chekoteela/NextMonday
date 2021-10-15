@@ -197,9 +197,9 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         return cursor.getCount();
     }
 
-    public long getTargetFromIndex(int index) {
+    public ChildItemTargetDTO getTargetFromIndex(int index) {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_IS_ALARM + " = '" + true + "'", null);
         cursor.moveToPosition(index);
-        return cursor.getLong(13);
+        return new ChildItemTargetDTO().transform(getResult(cursor));
     }
 }
