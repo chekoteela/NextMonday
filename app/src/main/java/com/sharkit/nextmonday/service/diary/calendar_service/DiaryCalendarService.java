@@ -11,7 +11,9 @@ import android.widget.CalendarView;
 
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.ads.AdView;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
 import java.util.Calendar;
@@ -19,6 +21,7 @@ import java.util.Calendar;
 public class DiaryCalendarService implements LayoutService {
     private CalendarView calendarView;
     private Context context;
+    private AdView adView;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -29,6 +32,7 @@ public class DiaryCalendarService implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
+        adView = root.findViewById(R.id.adView);
         calendarView = root.findViewById(R.id.calendar_xml);
         return this;
     }
@@ -40,6 +44,7 @@ public class DiaryCalendarService implements LayoutService {
 
     @Override
     public LayoutService activity() {
+        Configuration.showAdView(adView);
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year, month, dayOfMonth);

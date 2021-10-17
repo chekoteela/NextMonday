@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.ads.AdView;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
 import com.sharkit.nextmonday.db.firestore.diary.DiaryFirestore;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
@@ -42,6 +44,7 @@ public class CreateNewTargetService implements LayoutService {
     private RadioButton everyDay, selectDay;
     private CheckBox mon, tus, wed, thd, fri, sat, sun;
     private LinearLayout checkBoxList;
+    private AdView adView;
     private final TargetDiary targetDiary = new TargetDiary();
     private int hour, minutes;
 
@@ -58,6 +61,7 @@ public class CreateNewTargetService implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
+        adView = root.findViewById(R.id.adView);
         textTarget = root.findViewById(R.id.write_target_xml);
         takeTime = root.findViewById(R.id.take_time_xml);
         repeat = root.findViewById(R.id.repeat_xml);
@@ -73,6 +77,7 @@ public class CreateNewTargetService implements LayoutService {
 
     @Override
     public LayoutService activity() {
+        Configuration.showAdView(adView);
         create.setOnClickListener(v -> {
             if (!ValidationField.isValidCreateNewTargetField(textTarget, context)) {
                 return;

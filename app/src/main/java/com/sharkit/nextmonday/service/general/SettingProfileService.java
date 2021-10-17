@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,6 +49,7 @@ public class SettingProfileService implements LayoutService {
     private EditText name, email, lastName, newPassword, confirmPassword, password;
     private Button save, changePassword;
     private Context context;
+    private AdView adView;
 
     @Override
     public LayoutService writeToField() {
@@ -61,6 +63,7 @@ public class SettingProfileService implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
+        adView = root.findViewById(R.id.adView);
         name = root.findViewById(R.id.name_xml);
         email = root.findViewById(R.id.email_xml);
         lastName = root.findViewById(R.id.last_name_xml);
@@ -77,6 +80,7 @@ public class SettingProfileService implements LayoutService {
 
     @Override
     public LayoutService activity() {
+        Configuration.showAdView(adView);
         save.setOnClickListener(v -> {
             if (!Configuration.hasConnection(context)){
                 return;

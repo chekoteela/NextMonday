@@ -21,8 +21,10 @@ import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.entity.feadback.FeedbackDTO;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
@@ -32,6 +34,7 @@ public class FeedbackService implements LayoutService {
     private Spinner spinner;
     private EditText text;
     private Button send;
+    private AdView adView;
     private Context context;
 
     @SuppressLint("ResourceType")
@@ -45,6 +48,7 @@ public class FeedbackService implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
+        adView = root.findViewById(R.id.adView);
         send = root.findViewById(R.id.send_sms_xml);
         spinner = root.findViewById(R.id.spinner_xml);
         text = root.findViewById(R.id.text_xml);
@@ -58,6 +62,7 @@ public class FeedbackService implements LayoutService {
 
     @Override
     public LayoutService activity() {
+        Configuration.showAdView(adView);
         send.setOnClickListener(v -> {
             FeedbackDTO feedbackDTO = new FeedbackDTO();
             SharedPreferences sharedPreferences = ((Activity) context).getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);

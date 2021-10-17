@@ -70,7 +70,7 @@
             android:layout_marginBottom="10dp"
             android:elevation="5dp"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+            ads:adUnitId="@string/banner_ad_unit_id" />
 
     </LinearLayout>
 </RelativeLayout>

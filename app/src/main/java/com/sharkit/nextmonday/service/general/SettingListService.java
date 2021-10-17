@@ -8,11 +8,14 @@ import android.widget.Button;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.ads.AdView;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
 public class SettingListService implements LayoutService {
     private Button profile, calculator;
+    private AdView adView;
     private Context context;
 
     @Override
@@ -23,6 +26,7 @@ public class SettingListService implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
+        adView = root.findViewById(R.id.adView);
         profile = root.findViewById(R.id.profile_xml);
         calculator = root.findViewById(R.id.calculator_xml);
         return this;
@@ -35,6 +39,7 @@ public class SettingListService implements LayoutService {
 
     @Override
     public LayoutService activity() {
+        Configuration.showAdView(adView);
         NavController navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment);
 
         profile.setOnClickListener(v -> navController.navigate(R.id.nav_profile));
