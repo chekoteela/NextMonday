@@ -7,10 +7,10 @@ import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_LAST_
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_NAME;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_PASSWORD;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_ROLE;
+import static com.sharkit.nextmonday.configuration.constant.CollectionUser.TARGETS;
 import static com.sharkit.nextmonday.configuration.constant.CollectionUser.USERS;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.View;
@@ -20,6 +20,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.adapter.diary.MainDiaryAdapter;
+import com.sharkit.nextmonday.db.firestore.diary.DiaryFirestore;
+import com.sharkit.nextmonday.db.sqlite.diary.TargetData;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 import com.sharkit.nextmonday.entity.user.UserPreferenceDTO;
 import com.sharkit.nextmonday.service.builder.LayoutService;
@@ -56,10 +58,24 @@ public class MainDiaryService implements LayoutService {
         return this;
     }
 
-    @SuppressLint("SimpleDateFormat")
     @Override
     public LayoutService activity() {
-        SharedPreferences sharedPreferences = ((Activity) context).getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);
+        setSharedPreference();
+        synchronizedDB();
+        listView.setAdapter(new MainDiaryAdapter(context, dataService.getWeekList(date)));
+        return this;
+    }
+
+    private void synchronizedDB() {
+        TargetDataService service = new TargetDataService(context);
+        DiaryFirestore diaryFirestore = new DiaryFirestore();
+        diaryFirestore.synchronizedDB(service);
+        service.synchronizedDB();
+    }
+
+    @SuppressLint("SimpleDateFormat")
+    private void setSharedPreference() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         FirebaseFirestore.getInstance().collection(USERS)
                 .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
@@ -75,8 +91,6 @@ public class MainDiaryService implements LayoutService {
                     editor.apply();
                 });
         dataService.getAlarm(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
-        listView.setAdapter(new MainDiaryAdapter(context, dataService.getWeekList(date)));
-        return this;
     }
 
 }

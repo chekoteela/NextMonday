@@ -26,6 +26,7 @@ import androidx.navigation.Navigation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.constant.DayAndMonth;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
+import com.sharkit.nextmonday.db.firestore.diary.DiaryFirestore;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
@@ -149,14 +150,17 @@ public class UpdateTargetService extends DayAndMonth implements LayoutService {
     @SuppressLint("SimpleDateFormat")
     private void saveUpdates() {
         TargetDataService service = new TargetDataService(context);
+        DiaryFirestore diaryFirestore = new DiaryFirestore();
         targetDiary.setAlarm(takeTime.isChecked());
         targetDiary.setText(textTarget.getText().toString());
         targetDiary.setDescription(description.getText().toString());
+
         targetDiary.setDate(new SimpleDateFormat("dd.MM.yyyy").format(childItemTargetDTO.getDate()));
         if (targetDiary.getTimeForAlarm() == 0) {
             targetDiary.setTimeForAlarm(Calendar.getInstance().getTimeInMillis());
         }
         service.update(targetDiary, childItemTargetDTO.getDate());
+        diaryFirestore.update(targetDiary, childItemTargetDTO.getDate());
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_diary);
     }
 

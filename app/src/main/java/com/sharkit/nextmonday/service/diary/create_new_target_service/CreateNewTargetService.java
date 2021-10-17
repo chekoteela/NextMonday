@@ -22,6 +22,7 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
+import com.sharkit.nextmonday.db.firestore.diary.DiaryFirestore;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
@@ -157,13 +158,16 @@ public class CreateNewTargetService implements LayoutService {
     @SuppressLint("SimpleDateFormat")
     private void createTarget() {
         TargetDataService service = new TargetDataService(context);
+        DiaryFirestore diaryFirestore = new DiaryFirestore();
         targetDiary.setAlarm(takeTime.isChecked());
+        targetDiary.setVisible(true);
         targetDiary.setText(textTarget.getText().toString());
         targetDiary.setDescription(description.getText().toString());
         targetDiary.setDate(new SimpleDateFormat("dd.MM.yyyy").format(dateForCreate));
         if (targetDiary.getTimeForAlarm() == 0) {
             targetDiary.setTimeForAlarm(Calendar.getInstance().getTimeInMillis());
         }
+        diaryFirestore.create(targetDiary);
         service.create(targetDiary);
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_diary);
     }

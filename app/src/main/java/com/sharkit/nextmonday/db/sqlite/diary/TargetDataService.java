@@ -30,6 +30,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 
 import com.sharkit.nextmonday.configuration.else_conf.AlarmDiary;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
@@ -205,7 +206,9 @@ public class TargetDataService implements TargetServiceMethod{
     }
 
     public void create(TargetDiary targetDiary) {
-        targetData.create(targetDiary);
+        try {
+            targetData.create(targetDiary);
+        }catch (SQLiteConstraintException ignored){}
     }
 
     public void delete(long date) {
@@ -265,5 +268,10 @@ public class TargetDataService implements TargetServiceMethod{
         if (calendar1.getTimeInMillis() < calendar.getTimeInMillis() + 5000) {
             alarmManager.cancel(pendingIntent);
         }
+    }
+
+    public void synchronizedDB() {
+        targetData.synchronizedDB();
+
     }
 }

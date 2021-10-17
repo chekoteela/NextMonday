@@ -25,6 +25,7 @@ public class TransformerDiary {
         targetDiary.setRepeatThursday(targetDiaryDTO.isRepeatThursday());
         targetDiary.setTimeForAlarm(targetDiaryDTO.getTimeForAlarm());
         targetDiary.setAlarm(targetDiaryDTO.isAlarm());
+        targetDiary.setVisible(targetDiaryDTO.isVisible());
         return targetDiary;
     }
     protected ChildItemTargetDTO transformer(TargetDiary targetDiary){

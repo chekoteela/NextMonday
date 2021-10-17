@@ -55,7 +55,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
-import com.sharkit.nextmonday.db.firestore.UserFirestore;
+import com.sharkit.nextmonday.db.firestore.user.UserFirestore;
 import com.sharkit.nextmonday.entity.enums.Role;
 import com.sharkit.nextmonday.entity.user.FacebookUserDTO;
 import com.sharkit.nextmonday.entity.user.GoogleUserDTO;

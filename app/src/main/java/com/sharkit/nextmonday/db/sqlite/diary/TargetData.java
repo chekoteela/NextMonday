@@ -2,6 +2,7 @@ package com.sharkit.nextmonday.db.sqlite.diary;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_ID;
+import static com.sharkit.nextmonday.configuration.constant.CollectionUser.TARGETS;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
@@ -69,7 +71,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "','" + targetDiary.isRepeatFriday() + "','" + targetDiary.isRepeatThursday() +
                 "','" + targetDiary.isRepeatWednesday() + "','" + targetDiary.isRepeatTuesday() +
                 "','" + targetDiary.isRepeatMonday() + "','" + targetDiary.isAlarm() + "','" + targetDiary.getDescription() +
-                "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "' , '" + true + "');");
+                "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "' , '" + targetDiary.isVisible() + "');");
     }
 
     public void update(TargetDiary targetDiary, long date) {
@@ -137,6 +139,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         targetDiaryDTO.setDescription(cursor.getString(11));
         targetDiaryDTO.setDate(cursor.getString(12));
         targetDiaryDTO.setTimeForAlarm(cursor.getLong(13));
+        targetDiaryDTO.setVisible(Boolean.parseBoolean(cursor.getString(14)));
         return new TargetDiary().transform(targetDiaryDTO);
     }
 
@@ -201,5 +204,15 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_VISIBLE + " = '" + true + "' AND " + COLUMN_IS_ALARM + " = '" + true + "'", null);
         cursor.moveToPosition(index);
         return new ChildItemTargetDTO().transform(getResult(cursor));
+    }
+
+    public void synchronizedDB() {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "'", null);
+        while (cursor.moveToNext()){
+            FirebaseFirestore.getInstance()
+                    .collection(TARGETS)
+                    .document(String.valueOf(cursor.getLong(13)))
+                    .set(getResult(cursor));
+        }
     }
 }
