@@ -4,6 +4,7 @@ public class AlertButton {
     public static final String ACCEPT = "Принять";
     public static final String CANCEL = "Отмена";
     public static final String CONFIRM = "Подтвердить";
+    public static final String SEND = "Отправить";
     public static final String NOT_REPEAT = "Не повторять";
     public static final String WITHOUT_TIME = "--:--";
     public static final String SHOW_HOUR_FORMAT = "HH:mm";

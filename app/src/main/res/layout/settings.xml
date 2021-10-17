@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_auto_edittext"
-    tools:context=".ui.settings.Settings">
+    android:background="@color/calculator_auto_edittext">
 
 
     <LinearLayout
@@ -29,7 +28,7 @@
         <Button
             android:contentDescription="@string/descr_profile_settings"
             android:layout_margin="15dp"
-            android:id="@+id/profile"
+            android:id="@+id/profile_xml"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
         <Button
             android:contentDescription="@string/descr_calculator_settings"
             android:layout_margin="15dp"
-            android:id="@+id/calculator"
+            android:id="@+id/calculator_xml"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

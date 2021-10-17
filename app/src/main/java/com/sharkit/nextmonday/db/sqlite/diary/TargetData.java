@@ -1,5 +1,8 @@
 package com.sharkit.nextmonday.db.sqlite.diary;
 
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_ID;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
@@ -7,14 +10,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDiary;
 import com.sharkit.nextmonday.entity.diary.TargetDiaryDTO;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 @SuppressLint("Recycle")
 public class TargetData extends SQLiteOpenHelper implements TargetMethod {
@@ -38,13 +39,12 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
     private static final String COLUMN_IS_ALARM = "alarm";
     private static final String COLUMN_VISIBLE = "visible";
 
-
-    private final FirebaseAuth auth = FirebaseAuth.getInstance();
-    private final String id = Objects.requireNonNull(auth.getCurrentUser()).getUid();
     private final SQLiteDatabase db = this.getReadableDatabase();
+    private final String id;
 
     public TargetData(Context context) {
         super(context, DATABASE_NAME, null, SCHEMA);
+        id = context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_ID, DEFAULT);
     }
 
     @Override

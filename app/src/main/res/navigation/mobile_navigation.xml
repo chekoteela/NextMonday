@@ -47,12 +47,12 @@
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.sharkit.nextmonday.ui.setting.Setting"
+        android:name="com.sharkit.nextmonday.ui.setting.SettingList"
         tools:layout="@layout/settings" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.sharkit.nextmonday.ui.settings.FragmentEdit"
+        android:name="com.sharkit.nextmonday.ui.setting.SettingProfile"
         tools:layout="@layout/fragment_edit" />
 
     <fragment

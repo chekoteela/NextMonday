@@ -9,8 +9,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -21,6 +20,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:hint="@string/name"
                     android:contentDescription="@string/name2"
                     android:id="@+id/name_xml"
                     android:layout_width="match_parent"
@@ -38,8 +38,9 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:hint="@string/lastName"
                     android:contentDescription="@string/lastName2"
-                    android:id="@+id/last_name"
+                    android:id="@+id/last_name_xml"
                     android:layout_width="match_parent"
                     android:textSize="18sp"
                     android:padding="5dp"
@@ -55,6 +56,7 @@
                     android:layout_height="wrap_content"/>
 
                 <EditText
+                    android:hint="@string/email_hint"
                     style="@style/EditText_change_food_white"
                     android:id="@+id/email_xml"
                     android:contentDescription="@string/SignEmail2"
@@ -67,7 +69,7 @@
 
                 <EditText
                     android:visibility="gone"
-                    android:id="@+id/pass"
+                    android:id="@+id/password_xml"
                     android:layout_width="match_parent"
                     android:padding="5dp"
                     android:textSize="18sp"
@@ -93,7 +95,7 @@
                     android:inputType="textEmailAddress"/>
 
                 <Button
-                    android:id="@+id/change_pass"
+                    android:id="@+id/change_password_xml"
                     android:contentDescription="@string/changePass"
                     android:layout_width="match_parent"
                     android:layout_marginHorizontal="60dp"
