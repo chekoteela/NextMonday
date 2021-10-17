@@ -14,6 +14,9 @@
         <entry key="app/src/main/res/layout/fragment_dairy_four.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/fragment_dairy_three.xml" value="0.6490850376749193" />
         <entry key="app/src/main/res/layout/fragment_dairy_two.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/fragment_edit.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/fragment_feedback.xml" value="0.3203125" />
+        <entry key="app/src/main/res/layout/general_setting.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/list_custom_find.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/list_radio_button.xml" value="0.3203125" />
         <entry key="app/src/main/res/layout/lst_view_castom.xml" value="0.3203125" />

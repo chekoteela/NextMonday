@@ -1,13 +1,21 @@
 package com.sharkit.nextmonday;
 
-import static com.sharkit.nextmonday.configuration.constant.ToastMessage.CHECK_YOUR_EMAIL;
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SEND;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_EMAIl;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_ID;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_PASSWORD;
+import static com.sharkit.nextmonday.configuration.constant.CollectionUser.USERS;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.EMAIL_AND_PASS_FAIL;
-import static com.sharkit.nextmonday.configuration.constant.ToastMessage.EMAIL_NOT_FOUND;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.ERROR_AUTHORIZE;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.PASSWORDS_NOT_THE_SAME;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.SUCCESSFUL_UPDATE;
+import static com.sharkit.nextmonday.configuration.constant.firebase_entity.UserFirebaseEntity.PASSWORD;
 import static com.sharkit.nextmonday.configuration.validation.Configuration.hasConnection;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
@@ -41,11 +49,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
-import com.sharkit.nextmonday.db.firestore.UserFirestore;
+import com.sharkit.nextmonday.db.firestore.user.UserFirestore;
 import com.sharkit.nextmonday.entity.enums.Role;
 import com.sharkit.nextmonday.entity.user.FacebookUserDTO;
 import com.sharkit.nextmonday.entity.user.GoogleUserDTO;
@@ -58,9 +68,9 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView facebook, google;
     private TextView forgotPass;
-    private Button createAcc, signIn, btnEmailReset;
+    private Button createAcc, signIn;
     private LoginButton loginButton;
-    private EditText signPass, signEmail, emailReset;
+    private EditText signPass, signEmail, confirmPassword, newPassword;
 
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private CallbackManager CM;
@@ -95,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
         onClickListener();
     }
-
+    @SuppressLint("CommitPrefEdits")
     private void onClickListener() {
         google.setOnClickListener(this);
         createAcc.setOnClickListener(this);
@@ -146,20 +156,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         signIn = findViewById(R.id.sign_in_xml);
         signPass = findViewById(R.id.sign_pass_xml);
         signEmail = findViewById(R.id.sign_email_xml);
-        btnEmailReset = forgotPass.findViewById(R.id.btnResetPassword);
-        emailReset = forgotPass.findViewById(R.id.EmailReset);
     }
 
     public void showForgotPassForm() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this, R.style.CustomAlertDialog);
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View forgotPass = layoutInflater.inflate(R.layout.resetpassword, null);
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        View root = LayoutInflater.from(this).inflate(R.layout.resetpassword, null);
+        findViewOnDialog(root);
+        dialog.setPositiveButton(SEND, (dialog1, which) -> {
+            if (!ValidationField.isValidField(newPassword, this) || !ValidationField.isValidField(confirmPassword, this)) {
+                return;
+            }
+            if (!confirmPassword.getText().toString().equals(newPassword.getText().toString())) {
+                Toast.makeText(this, PASSWORDS_NOT_THE_SAME, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            AuthCredential credential = EmailAuthProvider
+                    .getCredential(this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIl, DEFAULT),
+                            this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_PASSWORD, DEFAULT));
 
-        btnEmailReset.setOnClickListener(v -> mAuth.sendPasswordResetEmail(emailReset.getText().toString())
-                .addOnSuccessListener(aVoid -> Toast.makeText(getApplication(), CHECK_YOUR_EMAIL, Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e -> Toast.makeText(getApplication(), EMAIL_NOT_FOUND, Toast.LENGTH_SHORT).show()));
-        dialog.setView(forgotPass);
+            Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser())
+                    .reauthenticate(credential)
+                    .addOnSuccessListener(unused -> FirebaseAuth.getInstance()
+                            .getCurrentUser()
+                            .updatePassword(newPassword.getText().toString())
+                            .addOnSuccessListener(unused1 -> {
+                                FirebaseFirestore.getInstance().collection(USERS)
+                                        .document(this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_ID, DEFAULT))
+                                        .update(PASSWORD, newPassword.getText().toString().trim());
+                                Toast.makeText(this, SUCCESSFUL_UPDATE, Toast.LENGTH_SHORT).show();
+                            }));
+        });
+        dialog.setView(root);
         dialog.show();
+    }
+
+    private void findViewOnDialog(View root) {
+        newPassword = root.findViewById(R.id.password_xml);
+        confirmPassword = root.findViewById(R.id.confirm_password_xml);
     }
 
     public void handleFacebookAccessToken(AccessToken token) {

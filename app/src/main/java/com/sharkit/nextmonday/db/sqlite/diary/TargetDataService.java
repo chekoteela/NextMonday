@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.db.sqlite.diary;
 
+import static android.content.Context.ALARM_SERVICE;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.APRIL;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.AUGUST;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.DECEMBER;
@@ -19,11 +20,19 @@ import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.SUNDAY;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.THURSDAY;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.TUESDAY;
 import static com.sharkit.nextmonday.configuration.constant.DayAndMonth.WEDNESDAY;
+import static com.sharkit.nextmonday.configuration.constant.Notification.BIG_TEXT;
+import static com.sharkit.nextmonday.configuration.constant.Notification.CHANNEL_1;
+import static com.sharkit.nextmonday.configuration.constant.Notification.CONTENT_TITLE;
+import static com.sharkit.nextmonday.configuration.constant.Notification.SUMMARY_TEXT;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 
+import com.sharkit.nextmonday.configuration.else_conf.AlarmDiary;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.DayTargets;
 import com.sharkit.nextmonday.entity.diary.ParentItemData;
@@ -46,8 +55,10 @@ import java.util.Map;
 @SuppressLint("SimpleDateFormat")
 public class TargetDataService implements TargetServiceMethod{
     private final TargetData targetData;
+    private final Context context;
 
     public TargetDataService(Context context) {
+        this.context = context;
         targetData = new TargetData(context);
         targetData.onCreate(targetData.getReadableDatabase());
     }
@@ -94,7 +105,6 @@ public class TargetDataService implements TargetServiceMethod{
             }
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(targetDiaries.get(i).getTimeForAlarm());
-            Log.d("qwerty", map.values().toString());
             setFollowing(Calendar.getInstance().get(Calendar.DAY_OF_WEEK), map, targetDiaries.get(i), calendar);
         }
     }
@@ -196,7 +206,9 @@ public class TargetDataService implements TargetServiceMethod{
     }
 
     public void create(TargetDiary targetDiary) {
-        targetData.create(targetDiary);
+        try {
+            targetData.create(targetDiary);
+        }catch (SQLiteConstraintException ignored){}
     }
 
     public void delete(long date) {
@@ -229,5 +241,37 @@ public class TargetDataService implements TargetServiceMethod{
 
     public ArrayList<ChildItemTargetDTO> getChildFromName(String tag) {
         return targetData.findByText(tag);
+    }
+
+    @SuppressLint("UnspecifiedImmutableFlag")
+    public void getAlarm(String date) {
+
+        for (int i = 0; i < targetData.getCountForDate(date); i++) {
+            startAlarm(i);
+        }
+    }
+
+    @SuppressLint("UnspecifiedImmutableFlag")
+    private void startAlarm(int count) {
+        ChildItemTargetDTO targetDTO = targetData.getTargetFromIndex(count);
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.setTimeInMillis(targetDTO.getDate());
+        calendar1.set(Calendar.SECOND, 0);
+        Intent intent = new Intent(context, AlarmDiary.class);
+        intent.putExtra(SUMMARY_TEXT, CHANNEL_1)
+                .putExtra(CONTENT_TITLE, targetDTO.getText())
+                .putExtra(BIG_TEXT, targetDTO.getDescription());
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, count, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar1.getTimeInMillis(), pendingIntent);
+        Calendar calendar = Calendar.getInstance();
+        if (calendar1.getTimeInMillis() < calendar.getTimeInMillis() + 5000) {
+            alarmManager.cancel(pendingIntent);
+        }
+    }
+
+    public void synchronizedDB() {
+        targetData.synchronizedDB();
+
     }
 }

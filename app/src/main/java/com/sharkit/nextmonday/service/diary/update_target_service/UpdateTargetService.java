@@ -23,9 +23,12 @@ import android.widget.Toast;
 
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.ads.AdView;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.constant.DayAndMonth;
+import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
+import com.sharkit.nextmonday.db.firestore.diary.DiaryFirestore;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.entity.diary.TargetDateForAlarmDTO;
@@ -46,6 +49,7 @@ public class UpdateTargetService extends DayAndMonth implements LayoutService {
     private TargetDiary targetDiary;
     private RadioButton everyDay, selectDay;
     private CheckBox mon, tus, wed, thd, fri, sat, sun;
+    private AdView adView;
     private LinearLayout checkBoxList;
     private int hour, minutes;
 
@@ -105,6 +109,7 @@ public class UpdateTargetService extends DayAndMonth implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
+        adView = root.findViewById(R.id.adView);
         description = root.findViewById(R.id.description_xml);
         textTarget = root.findViewById(R.id.textTarget_xml);
         repeatDay = root.findViewById(R.id.repeat_day_xml);
@@ -122,6 +127,7 @@ public class UpdateTargetService extends DayAndMonth implements LayoutService {
 
     @Override
     public LayoutService activity() {
+        Configuration.showAdView(adView);
         save.setOnClickListener(v -> {
             if (!ValidationField.isValidCreateNewTargetField(textTarget, context)) {
                 return;
@@ -149,14 +155,17 @@ public class UpdateTargetService extends DayAndMonth implements LayoutService {
     @SuppressLint("SimpleDateFormat")
     private void saveUpdates() {
         TargetDataService service = new TargetDataService(context);
+        DiaryFirestore diaryFirestore = new DiaryFirestore();
         targetDiary.setAlarm(takeTime.isChecked());
         targetDiary.setText(textTarget.getText().toString());
         targetDiary.setDescription(description.getText().toString());
+
         targetDiary.setDate(new SimpleDateFormat("dd.MM.yyyy").format(childItemTargetDTO.getDate()));
         if (targetDiary.getTimeForAlarm() == 0) {
             targetDiary.setTimeForAlarm(Calendar.getInstance().getTimeInMillis());
         }
         service.update(targetDiary, childItemTargetDTO.getDate());
+        diaryFirestore.update(targetDiary, childItemTargetDTO.getDate());
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_diary);
     }
 

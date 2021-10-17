@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/calculator_auto_edittext"
     android:orientation="vertical"
-    tools:context=".ui.Calculator.Find_food_by_name">
+    tools:context=".ui.calculator.Find_food_by_name">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

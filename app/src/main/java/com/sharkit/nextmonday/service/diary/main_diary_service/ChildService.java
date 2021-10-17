@@ -24,6 +24,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.db.firestore.diary.DiaryFirestore;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.service.builder.LayoutService;
@@ -37,6 +38,7 @@ public class ChildService implements LayoutService {
     private RelativeLayout childItem;
     private final ChildItemTargetDTO targetDiary;
     private TargetDataService service;
+    private DiaryFirestore diaryFirestore;
 
     public ChildService(ChildItemTargetDTO targetDiary) {
         this.targetDiary = targetDiary;
@@ -73,6 +75,7 @@ public class ChildService implements LayoutService {
     @Override
     public LayoutService activity() {
         service = new TargetDataService(context);
+        diaryFirestore = new DiaryFirestore();
         childItem.setOnCreateContextMenuListener((menu, v, menuInfo) -> {
             menu.add(CHANGE).setOnMenuItemClickListener(item -> {
                 Bundle bundle = new Bundle();
@@ -81,10 +84,12 @@ public class ChildService implements LayoutService {
                 return true;
             });
             menu.add(DELETE).setOnMenuItemClickListener(item -> {
+
                 if (service.getRepeatForAlarmDTO(targetDiary.getDate()).toArray().contains(true)) {
                     createDeleteAlertDialog();
                 } else {
                     service.delete(targetDiary.getDate());
+                    diaryFirestore.deleteById(targetDiary.getDate());
                 }
                 Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_diary);
                 return true;
@@ -92,6 +97,7 @@ public class ChildService implements LayoutService {
         });
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             service.setCheckedTarget(targetDiary.getDate(), isChecked);
+            diaryFirestore.updateStatus(isChecked, targetDiary.getDate());
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_diary);
         });
         return this;
@@ -106,10 +112,11 @@ public class ChildService implements LayoutService {
         textDelete.setText(ALERT_DELETE_TEXT);
         dialog.setPositiveButton(DELETE_EVERYTHING_SIMILAR, (dialog1, which) -> {
             service.deleteSimilar(targetDiary.isAlarm(), targetDiary.getText(), targetDiary.getDescription());
-            navController.navigate(R.id.nav_diary);
+            diaryFirestore.deleteSimilar(targetDiary.isAlarm(), targetDiary.getText(), targetDiary.getDescription(),navController);
         });
                 dialog.setNegativeButton(DELETE_ONE, (dialog12, which) -> {
                     service.delete(targetDiary.getDate());
+                    diaryFirestore.deleteById(targetDiary.getDate());
                     navController.navigate(R.id.nav_diary);
                 });
                 dialog.setView(view);

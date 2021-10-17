@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/calculator_auto_edittext"
     android:orientation="vertical"
-    tools:context=".ui.Calculator.Calculator_Main">
+    tools:context=".ui.calculator.Calculator_Main">
 
     <LinearLayout
         android:id="@+id/linear_dima"

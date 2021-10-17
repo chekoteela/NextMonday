@@ -24,7 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
-import com.sharkit.nextmonday.db.firestore.UserFirestore;
+import com.sharkit.nextmonday.db.firestore.user.UserFirestore;
 import com.sharkit.nextmonday.entity.enums.Role;
 import com.sharkit.nextmonday.entity.user.User;
 import com.sharkit.nextmonday.entity.user.UserDTO;

@@ -23,7 +23,6 @@ public class Monday implements WriteToDB {
     @Override
     public void writeToDB(TargetDiary targetDiary, Map<String, Boolean> mapRepeats, TargetDataService service, Calendar calendar) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-        Log.d("qwerty", TODAY + " " + mapRepeats.get(TODAY) + " ," + dateFormat.format(calendar.getTimeInMillis()));
 
         if (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY && Objects.requireNonNull(mapRepeats.get(TODAY)).equals(true)) {
             targetDiary.setTimeForAlarm(calendar.getTimeInMillis() + 604800000);

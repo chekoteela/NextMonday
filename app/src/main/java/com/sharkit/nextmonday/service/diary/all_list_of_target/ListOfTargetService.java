@@ -7,8 +7,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 
+import com.google.android.gms.ads.AdView;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.adapter.diary.AllListOfItem;
+import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
@@ -16,6 +18,7 @@ public class ListOfTargetService implements LayoutService {
     private EditText find;
     private ExpandableListView listOfItem;
     private Context context;
+    private AdView adView;
     private TargetDataService service;
 
     @Override
@@ -26,6 +29,7 @@ public class ListOfTargetService implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
+        adView = root.findViewById(R.id.adView);
         find = root.findViewById(R.id.find_xml);
         listOfItem = root.findViewById(R.id.list_of_item_xml);
         service = new TargetDataService(context);
@@ -39,6 +43,7 @@ public class ListOfTargetService implements LayoutService {
 
     @Override
     public LayoutService activity() {
+        Configuration.showAdView(adView);
         setAdapter();
         find.addTextChangedListener(new TextWatcher() {
             @Override

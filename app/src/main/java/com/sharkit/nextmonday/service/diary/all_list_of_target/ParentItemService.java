@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.db.firestore.diary.DiaryFirestore;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 import com.sharkit.nextmonday.entity.diary.ChildItemTargetDTO;
 import com.sharkit.nextmonday.service.builder.LayoutService;
@@ -50,7 +51,11 @@ public class ParentItemService implements LayoutService {
     @Override
     public LayoutService activity() {
         TargetDataService service = new TargetDataService(context);
-        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> service.setCheckedTarget(itemTargetDTO.getDate(), isChecked));
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            new DiaryFirestore().updateStatus(isChecked, itemTargetDTO.getDate());
+            service.setCheckedTarget(itemTargetDTO.getDate(), isChecked);
+
+        });
         return this;
     }
 }

@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.sharkit.nextmonday.configuration.constant.ToastMessage;
 
 public class Configuration {
@@ -27,4 +29,8 @@ public class Configuration {
         return false;
     }
 
+    public static void showAdView(AdView adView){
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+    }
 }

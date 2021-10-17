@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/nav_diary"
-        android:name="com.sharkit.nextmonday.ui.Diary.MainDiary"
+        android:name="com.sharkit.nextmonday.ui.diary.MainDiary"
         tools:layout="@layout/fragment_dairy" />
 
     <fragment
         android:id="@+id/nav_calculator_main"
-        android:name="com.sharkit.nextmonday.ui.Calculator.Calculator_Main"
+        android:name="com.sharkit.nextmonday.ui.calculator.Calculator_Main"
         tools:layout="@layout/calculator_main" />
 
     <fragment
@@ -22,37 +22,37 @@
 
     <fragment
         android:id="@+id/nav_calendar"
-        android:name="com.sharkit.nextmonday.ui.Diary.DiaryCalendar"
+        android:name="com.sharkit.nextmonday.ui.diary.DiaryCalendar"
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/nav_search"
-        android:name="com.sharkit.nextmonday.ui.Diary.DiaryFindAllTarget"
+        android:name="com.sharkit.nextmonday.ui.diary.DiaryFindAllTarget"
         tools:layout="@layout/fragment_dairy_three" />
 
     <fragment
         android:id="@+id/nav_plus_target"
-        android:name="com.sharkit.nextmonday.ui.Diary.DiaryCreateNewTarget"
+        android:name="com.sharkit.nextmonday.ui.diary.DiaryCreateNewTarget"
         tools:layout="@layout/fragment_dairy_two" />
 
     <fragment
         android:id="@+id/nav_change_target"
-        android:name="com.sharkit.nextmonday.ui.Diary.DiaryUpdateTarget"
+        android:name="com.sharkit.nextmonday.ui.diary.DiaryUpdateTarget"
         tools:layout="@layout/fragment_dairy_four" />
 
     <fragment
         android:id="@+id/nav_feedback"
-        android:name="com.sharkit.nextmonday.ui.settings.Feedback"
+        android:name="com.sharkit.nextmonday.ui.general.Feedback"
         tools:layout="@layout/fragment_feedback" />
 
     <fragment
         android:id="@+id/nav_settings"
-        android:name="com.sharkit.nextmonday.ui.settings.Settings"
+        android:name="com.sharkit.nextmonday.ui.setting.SettingList"
         tools:layout="@layout/settings" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.sharkit.nextmonday.ui.settings.FragmentEdit"
+        android:name="com.sharkit.nextmonday.ui.setting.SettingProfile"
         tools:layout="@layout/fragment_edit" />
 
     <fragment
@@ -62,32 +62,32 @@
 
     <fragment
         android:id="@+id/nav_cal_find_food_by_name"
-        android:name="com.sharkit.nextmonday.ui.Calculator.Find_food_by_name"
+        android:name="com.sharkit.nextmonday.ui.calculator.Find_food_by_name"
         tools:layout="@layout/calculator_find_food_by_name" />
 
     <fragment
         android:id="@+id/nav_cal_change_food"
-        android:name="com.sharkit.nextmonday.ui.Calculator.ChangeFood"
+        android:name="com.sharkit.nextmonday.ui.calculator.ChangeFood"
         tools:layout="@layout/calculator_change_food" />
 
     <fragment
         android:id="@+id/nav_cal_calendar"
-        android:name="com.sharkit.nextmonday.ui.Calculator.CalculatorCalendar"
+        android:name="com.sharkit.nextmonday.ui.calculator.CalculatorCalendar"
         tools:layout="@layout/calculator_calendar" />
 
     <fragment
         android:id="@+id/nav_cal_weight"
-        android:name="com.sharkit.nextmonday.ui.Calculator.Weight"
+        android:name="com.sharkit.nextmonday.ui.calculator.Weight"
         tools:layout="@layout/calculator_weight" />
 
     <fragment
         android:id="@+id/nav_cal_ration"
-        android:name="com.sharkit.nextmonday.ui.Calculator.Ration"
+        android:name="com.sharkit.nextmonday.ui.calculator.Ration"
         tools:layout="@layout/calculator_ration" />
 
     <fragment
         android:id="@+id/nav_cal_my_food"
-        android:name="com.sharkit.nextmonday.ui.Calculator.FindMyFood"
+        android:name="com.sharkit.nextmonday.ui.calculator.FindMyFood"
         tools:layout="@layout/calculator_find_my_food" />
 
     <fragment

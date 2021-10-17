@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_auto_edittext"
-    tools:context=".ui.settings.Settings">
+    android:background="@color/calculator_auto_edittext">
 
 
     <LinearLayout
@@ -29,7 +28,7 @@
         <Button
             android:contentDescription="@string/descr_profile_settings"
             android:layout_margin="15dp"
-            android:id="@+id/profile"
+            android:id="@+id/profile_xml"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
         <Button
             android:contentDescription="@string/descr_calculator_settings"
             android:layout_margin="15dp"
-            android:id="@+id/calculator"
+            android:id="@+id/calculator_xml"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,9 +71,15 @@
             android:paddingVertical="5dp"
             android:text="@string/moderator" />
 
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id" />
     </LinearLayout>
 
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
+
 </RelativeLayout>
