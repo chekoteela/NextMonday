@@ -74,7 +74,7 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 "','" + targetDiary.getDate() + "','" + targetDiary.getTimeForAlarm() + "' , '" + targetDiary.isVisible() + "');");
     }
 
-    public void update(TargetDiary targetDiary, long date) {
+    public void update(TargetDiary targetDiary) {
         Log.d("qwerty", targetDiary.getText());
 
         db.execSQL(("UPDATE " + TABLE + " SET " + COLUMN_TEXT_TARGET + " = '" + targetDiary.getText() + "' , " +
@@ -89,7 +89,10 @@ public class TargetData extends SQLiteOpenHelper implements TargetMethod {
                 COLUMN_DESCRIPTION + " = '" + targetDiary.getDescription() + "' , " +
                 COLUMN_DATE + " = '" + targetDiary.getDate() + "' , " +
                 COLUMN_ALARM + " = '" + targetDiary.getTimeForAlarm() +
-                "' WHERE " + COLUMN_ID + " = '" + id + "' AND " + COLUMN_ALARM + " = '" + date + "'"));
+                "' WHERE "+ COLUMN_ID + " = '" + id + "' AND " +
+                COLUMN_TEXT_TARGET + " = '" + targetDiary.getText() + "' AND " +
+                COLUMN_IS_ALARM + " = '" + targetDiary.isAlarm() + "' AND " +
+                COLUMN_DESCRIPTION + " = '" + targetDiary.getDescription() + "'"));
     }
 
     @Override

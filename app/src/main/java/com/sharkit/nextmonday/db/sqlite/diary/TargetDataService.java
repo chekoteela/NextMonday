@@ -227,8 +227,8 @@ public class TargetDataService implements TargetServiceMethod{
         return targetData.findByDate(date);
     }
 
-    public void update(TargetDiary targetDiary, long date) {
-        targetData.update(targetDiary, date);
+    public void update(TargetDiary targetDiary) {
+        targetData.update(targetDiary);
     }
 
     public void deleteSimilar(boolean alarm, String text, String description) {
