@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/calculator_auto_edittext"
-    tools:context=".ui.calculator.ChangeFood">
+    tools:context=".ui.calculator.CreateFood">
 
 <LinearLayout
     android:id="@+id/change_food_linear"
@@ -24,7 +24,7 @@
         android:visibility="gone" />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/name_xml"
         style="@style/EditText_change_food_white"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -35,7 +35,7 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/portion"
+        android:id="@+id/portion_xml"
         style="@style/EditText_change_food_white"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -47,7 +47,7 @@
 
 
     <EditText
-        android:id="@+id/calorie"
+        android:id="@+id/calorie_xml"
         style="@style/EditText_change_food_white"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -91,7 +91,7 @@
 
                 <EditText
 
-                    android:id="@+id/protein"
+                    android:id="@+id/protein_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -101,7 +101,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/whey_protein"
+                    android:id="@+id/whey_protein_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -112,7 +112,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/soy_protein"
+                    android:id="@+id/soy_protein_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -123,7 +123,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/agg_protein"
+                    android:id="@+id/agg_protein_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -134,7 +134,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/casein_protein"
+                    android:id="@+id/casein_protein_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -161,7 +161,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/carbohydrate"
+                    android:id="@+id/carbohydrate_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -170,7 +170,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/simple_carbohydrates"
+                    android:id="@+id/simple_carbohydrates_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -181,7 +181,7 @@
 
                 <EditText
 
-                    android:id="@+id/complex_carbohydrate"
+                    android:id="@+id/complex_carbohydrate_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -209,7 +209,7 @@
 
                 <EditText
 
-                    android:id="@+id/fat"
+                    android:id="@+id/fat_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -218,7 +218,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/saturated_fat"
+                    android:id="@+id/saturated_fat_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -228,7 +228,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/trans_fat"
+                    android:id="@+id/trans_fat_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -238,7 +238,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/omega9"
+                    android:id="@+id/omega9_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -248,7 +248,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/omega6"
+                    android:id="@+id/omega6_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -263,7 +263,7 @@
                     android:orientation="vertical">
 
                     <EditText
-                        android:id="@+id/omega3"
+                        android:id="@+id/omega3_xml"
                         style="@style/EditText_change_food_white"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -273,7 +273,7 @@
                         android:inputType="numberDecimal" />
 
                     <EditText
-                        android:id="@+id/ala"
+                        android:id="@+id/ala_xml"
                         style="@style/EditText_change_food_white"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -285,7 +285,7 @@
                         android:inputType="numberDecimal" />
 
                     <EditText
-                        android:id="@+id/dha"
+                        android:id="@+id/dha_xml"
                         style="@style/EditText_change_food_white"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -297,7 +297,7 @@
                         android:inputType="numberDecimal" />
 
                     <EditText
-                        android:id="@+id/epa"
+                        android:id="@+id/epa_xml"
                         style="@style/EditText_change_food_white"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -327,7 +327,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/cellulose"
+                    android:id="@+id/cellulose_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -337,7 +337,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/watter"
+                    android:id="@+id/watter_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -347,7 +347,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/salt"
+                    android:id="@+id/salt_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -357,7 +357,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/calcium"
+                    android:id="@+id/calcium_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -367,7 +367,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/potassium"
+                    android:id="@+id/potassium_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"

@@ -1,14 +1,13 @@
 package com.sharkit.nextmonday.service.diary.main_diary_service;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_EMAIl;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_ID;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_LAST_NAME;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_NAME;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_PASSWORD;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_ROLE;
-import static com.sharkit.nextmonday.configuration.constant.CollectionUser.TARGETS;
 import static com.sharkit.nextmonday.configuration.constant.CollectionUser.USERS;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIl;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_LAST_NAME;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_NAME;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_PASSWORD;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ROLE;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,7 +20,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.adapter.diary.MainDiaryAdapter;
 import com.sharkit.nextmonday.db.firestore.diary.DiaryFirestore;
-import com.sharkit.nextmonday.db.sqlite.diary.TargetData;
 import com.sharkit.nextmonday.db.sqlite.diary.TargetDataService;
 import com.sharkit.nextmonday.entity.user.UserPreferenceDTO;
 import com.sharkit.nextmonday.service.builder.LayoutService;
