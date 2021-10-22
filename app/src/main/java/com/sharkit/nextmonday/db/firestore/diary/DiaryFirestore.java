@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.db.firestore.diary;
 
-import static com.sharkit.nextmonday.configuration.constant.CollectionUser.TARGETS;
+import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.TARGETS;
 import static com.sharkit.nextmonday.configuration.constant.firebase_entity.TargetFirebaseEntity.ALARM;
 import static com.sharkit.nextmonday.configuration.constant.firebase_entity.TargetFirebaseEntity.DESCRIPTION;
 import static com.sharkit.nextmonday.configuration.constant.firebase_entity.TargetFirebaseEntity.STATUS;

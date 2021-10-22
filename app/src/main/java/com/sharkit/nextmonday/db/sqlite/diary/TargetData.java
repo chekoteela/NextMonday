@@ -1,7 +1,7 @@
 package com.sharkit.nextmonday.db.sqlite.diary;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
-import static com.sharkit.nextmonday.configuration.constant.CollectionUser.TARGETS;
+import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.TARGETS;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
 
 import android.annotation.SuppressLint;

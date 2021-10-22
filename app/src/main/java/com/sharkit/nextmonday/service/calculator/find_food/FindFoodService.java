@@ -1,11 +1,13 @@
 package com.sharkit.nextmonday.service.calculator.find_food;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD_ID;
 import static com.sharkit.nextmonday.configuration.constant.BundleVariable.CREATE_NEW_FOOD;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +20,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.service.builder.LayoutService;
+
+import java.util.UUID;
 
 public class FindFoodService implements LayoutService {
     private Context context;
@@ -43,7 +47,8 @@ public class FindFoodService implements LayoutService {
         create.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString(FRAGMENT_CREATE_FOOD, CREATE_NEW_FOOD);
-            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_create_food);
+            bundle.putString(FRAGMENT_CREATE_FOOD_ID, UUID.randomUUID().toString());
+            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_create_food, bundle);
         });
         return this;
     }

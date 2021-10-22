@@ -2,7 +2,7 @@ package com.sharkit.nextmonday;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.SEND;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
-import static com.sharkit.nextmonday.configuration.constant.CollectionUser.USERS;
+import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USERS;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.EMAIL_AND_PASS_FAIL;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.ERROR_AUTHORIZE;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.PASSWORDS_NOT_THE_SAME;

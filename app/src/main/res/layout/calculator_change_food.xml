@@ -66,7 +66,7 @@
         android:id="@+id/scrool"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/save_change"
+        android:layout_above="@+id/save_xml"
         android:layout_below="@+id/change_food_linear">
 
         <LinearLayout
@@ -337,7 +337,7 @@
                     android:inputType="numberDecimal" />
 
                 <EditText
-                    android:id="@+id/watter_xml"
+                    android:id="@+id/water_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -383,7 +383,7 @@
 
 
     <Button
-        android:id="@+id/save_change"
+        android:id="@+id/save_xml"
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

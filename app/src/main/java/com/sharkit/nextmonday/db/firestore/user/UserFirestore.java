@@ -4,10 +4,10 @@ package com.sharkit.nextmonday.db.firestore.user;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.sharkit.nextmonday.configuration.constant.CollectionUser;
+import com.sharkit.nextmonday.configuration.constant.FirebaseCollection;
 import com.sharkit.nextmonday.entity.user.User;
 
-public class UserFirestore extends CollectionUser {
+public class UserFirestore extends FirebaseCollection {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public Task<Void> setUser(User user){

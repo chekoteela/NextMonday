@@ -1,7 +1,7 @@
 package com.sharkit.nextmonday.service.diary.main_diary_service;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
-import static com.sharkit.nextmonday.configuration.constant.CollectionUser.USERS;
+import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USERS;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIl;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_LAST_NAME;

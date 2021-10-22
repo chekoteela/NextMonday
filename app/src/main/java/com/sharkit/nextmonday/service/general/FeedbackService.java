@@ -1,7 +1,7 @@
 package com.sharkit.nextmonday.service.general;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
-import static com.sharkit.nextmonday.configuration.constant.CollectionUser.FEEDBACK;
+import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.FEEDBACK;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.SEND_FEEDBACK;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIl;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
