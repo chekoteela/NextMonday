@@ -1,12 +1,11 @@
 package com.sharkit.nextmonday.service.general;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_EMAIl;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_ID;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.USER_NAME;
-import static com.sharkit.nextmonday.configuration.constant.CollectionUser.FEEDBACK;
-import static com.sharkit.nextmonday.configuration.constant.StyleWidget.SPINNER_DROPDOWN_STYLE;
+import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.FEEDBACK;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.SEND_FEEDBACK;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIl;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_NAME;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -65,7 +64,7 @@ public class FeedbackService implements LayoutService {
         Configuration.showAdView(adView);
         send.setOnClickListener(v -> {
             FeedbackDTO feedbackDTO = new FeedbackDTO();
-            SharedPreferences sharedPreferences = ((Activity) context).getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = context.getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);
             feedbackDTO.setId(sharedPreferences.getString(USER_ID, DEFAULT));
             feedbackDTO.setEmail(sharedPreferences.getString(USER_EMAIl, DEFAULT));
             feedbackDTO.setName(sharedPreferences.getString(USER_NAME, DEFAULT));

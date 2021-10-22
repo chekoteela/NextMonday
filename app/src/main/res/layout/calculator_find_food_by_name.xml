@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/calculator_auto_edittext"
     android:orientation="vertical"
-    tools:context=".ui.calculator.Find_food_by_name">
+    tools:context=".ui.calculator.FindFood">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+        android:id="@+id/tab_layout_xml"
         android:background="@color/calculator_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,11 +42,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/add"
+        android:layout_above="@+id/create_new_food_xml"
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/find_food"
+            android:id="@+id/find_food_xml"
             style="@style/EditText_change_food_white"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -58,7 +58,7 @@
 
 
         <ExpandableListView
-            android:id="@+id/list_item"
+            android:id="@+id/list_of_item_xml"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -66,20 +66,21 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/add"
+        android:id="@+id/create_new_food_xml"
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/adView"
-        android:layout_marginHorizontal="60dp"
+        android:layout_above="@+id/adView_xml"
         android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="60dp"
         android:layout_marginVertical="10dp"
         android:contentDescription="@string/descr_add_food"
         android:padding="10dp"
         android:text="@string/add_food" />
+
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
+        android:id="@+id/adView_xml"
         android:elevation="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

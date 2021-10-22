@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_diary">
+    app:startDestination="@+id/nav_calculator_main">
 
     <fragment
         android:id="@+id/nav_diary"
@@ -12,7 +12,7 @@
 
     <fragment
         android:id="@+id/nav_calculator_main"
-        android:name="com.sharkit.nextmonday.ui.calculator.Calculator_Main"
+        android:name="com.sharkit.nextmonday.ui.calculator.CalculatorMain"
         tools:layout="@layout/calculator_main" />
 
     <fragment
@@ -62,12 +62,12 @@
 
     <fragment
         android:id="@+id/nav_cal_find_food_by_name"
-        android:name="com.sharkit.nextmonday.ui.calculator.Find_food_by_name"
+        android:name="com.sharkit.nextmonday.ui.calculator.FindFood"
         tools:layout="@layout/calculator_find_food_by_name" />
 
     <fragment
-        android:id="@+id/nav_cal_change_food"
-        android:name="com.sharkit.nextmonday.ui.calculator.ChangeFood"
+        android:id="@+id/nav_cal_create_food"
+        android:name="com.sharkit.nextmonday.ui.calculator.CreateFood"
         tools:layout="@layout/calculator_change_food" />
 
     <fragment
@@ -87,7 +87,7 @@
 
     <fragment
         android:id="@+id/nav_cal_my_food"
-        android:name="com.sharkit.nextmonday.ui.calculator.FindMyFood"
+        android:name="com.sharkit.nextmonday.ui.calculator.AddNewFood"
         tools:layout="@layout/calculator_find_my_food" />
 
     <fragment

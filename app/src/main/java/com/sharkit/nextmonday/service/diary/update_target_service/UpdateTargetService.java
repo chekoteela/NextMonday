@@ -164,7 +164,7 @@ public class UpdateTargetService extends DayAndMonth implements LayoutService {
         if (targetDiary.getTimeForAlarm() == 0) {
             targetDiary.setTimeForAlarm(Calendar.getInstance().getTimeInMillis());
         }
-        service.update(targetDiary, childItemTargetDTO.getDate());
+        service.update(targetDiary);
         diaryFirestore.update(targetDiary, childItemTargetDTO.getDate());
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_diary);
     }

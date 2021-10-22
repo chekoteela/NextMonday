@@ -201,7 +201,7 @@ public class MainMenu extends AppCompatActivity {
         dialog.setPositiveButton("Создать новый", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                navController.navigate(R.id.nav_cal_change_food);
+                navController.navigate(R.id.nav_cal_create_food);
             }
         });
         dialog.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
