@@ -14,7 +14,6 @@
         <item name="android:layout_marginBottom">10dp</item>
     </style>
     <style name="styleTextView" parent="Theme.AppCompat.DayNight">
-        <item name="colorAccent">@color/white</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/play</item>
         <item name="android:textColor">@color/white</item>
@@ -27,7 +26,33 @@
     <style name="colorCheckBox" parent="Theme.AppCompat.DayNight">
         <item name="colorAccent">@color/global__Button_background</item>
     </style>
+    <style name="styleCalendarView" parent="Theme.AppCompat.DayNight">
+        <item name="android:fontFamily">@font/play</item>
+        <item name="android:unfocusedMonthDateColor">@color/purple_500</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="colorAccent">@color/dairy__calendar_focus_date</item>
+        <item name="colorControlHighlight">@color/black</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorSwitchThumbNormal">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+        <style name="CalenderViewCustom" parent="Theme.AppCompat">
+            <item name="colorPrimary">@android:color/darker_gray</item>
+            <item name="android:background">@color/dairy__calendar_background_accent</item>
+            <item name="android:fontFamily">@font/play</item>
+            <item name="android:unfocusedMonthDateColor">@color/purple_500</item>
+            <item name="android:textColor">@color/white</item>
+            <item name="colorAccent">@color/dairy__calendar_background_accent</item>
+            <item name="colorControlHighlight">@color/black</item>
+            <item name="colorSwitchThumbNormal">@color/white</item>
+            <item name="android:textSize">20sp</item>
+        </style>
 
+        <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+            <item name="android:textColor">@color/white</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:textSize">12sp</item>
+        </style>
 
 
 
@@ -44,38 +69,6 @@
 <!--    </style>-->
 
 
-
-    <style name="styleCalendarView" parent="Theme.AppCompat.DayNight">
-        <item name="android:fontFamily">@font/play</item>
-        <item name="android:unfocusedMonthDateColor">@color/purple_500</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="colorAccent">@color/calendar_focuse_date</item>
-        <item name="colorControlHighlight">@color/black</item>
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="colorSwitchThumbNormal">@color/white</item>
-        <item name="android:textSize">20sp</item>
-
-    </style>
-
-
-
-<!--    <style name="CalenderViewCustom" parent="Theme.AppCompat">-->
-<!--        <item name="colorPrimary">@android:color/darker_gray</item>-->
-<!--        <item name="android:background">@color/dairy__calendar_background_accent</item>-->
-<!--        <item name="android:fontFamily">@font/play</item>-->
-<!--        <item name="android:unfocusedMonthDateColor">@color/purple_500</item>-->
-<!--        <item name="android:textColor">@color/white</item>-->
-<!--        <item name="colorAccent">@color/dairy__calendar_background_accent</item>-->
-<!--        <item name="colorControlHighlight">@color/black</item>-->
-<!--        <item name="colorSwitchThumbNormal">@color/white</item>-->
-<!--        <item name="android:textSize">20sp</item>-->
-<!--    </style>-->
-
-<!--    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">-->
-<!--        <item name="android:textColor">@color/white</item>-->
-<!--        <item name="android:textStyle">bold</item>-->
-<!--        <item name="android:textSize">12sp</item>-->
-<!--    </style>-->
 
     <style name="styleSwitch" parent="Theme.AppCompat.DayNight">
         <item name="colorControlActivated">@color/global__Button_background</item>

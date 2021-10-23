@@ -16,7 +16,7 @@
     <color name="global__Button_stroke">#CF6319</color>
 
     <color name="dairy__calendar_background_accent">#4C4D52</color>
-
+    <color name="dairy__calendar_focus_date">#38424C</color>
 
 
 
@@ -122,7 +122,7 @@
 <!--    &lt;!&ndash;Колір для EditText в калькуляторі калорій &ndash;&gt;-->
 <!--    &lt;!&ndash;Колір калькулятор&ndash;&gt;-->
 <!--    <color name="calculator_color">#232D37</color>-->
-<!--    <color name="calendar_focuse_date">#38424C</color>-->
+<!--    -->
 <!--    <color name="calculator_button_ripple">#7E8388</color>-->
 <!--    <color name="calculator_color_linear">#2C3640</color>-->
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->

@@ -32,9 +32,9 @@
         android:layout_marginTop="50dp"
         android:unfocusedMonthDateColor="@color/white"
         android:layout_width="match_parent"
-        android:theme="@style/StyleCalendarView"
+        android:theme="@style/styleCalendarView"
         android:weekDayTextAppearance="@style/CalenderViewDateCustomText"
-        android:dateTextAppearance="@style/StyleCalendarView"
+        android:dateTextAppearance="@style/styleCalendarView"
         android:focusedMonthDateColor="@color/white"
         android:layout_height="wrap_content"/>
 

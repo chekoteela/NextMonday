@@ -21,10 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Start_changes_now"
-            android:textColor="@color/white"
+            style="@style/styleTextView"
             android:textSize="24sp"
-            android:fontFamily="@font/play"
-
             android:layout_gravity="center"/>
 
         <Button
