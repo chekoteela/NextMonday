@@ -87,6 +87,7 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+
     <style name="styleMainMenu" parent="Theme.AppCompat.DayNight">
         <item name="colorPrimary">@android:color/darker_gray</item>
         <item name="colorSwitchThumbNormal">@color/white</item>
