@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:color="@color/color_button_ripple"
+    android:color="@color/global__Button_ripple"
     tools:targetApi="lollipop">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/color_button"></solid>
-            <stroke android:color="@color/btn_obv"></stroke>
+            <solid android:color="@color/global__Button_background"></solid>
+            <stroke android:color="@color/global__Button_stroke"></stroke>
             <corners android:radius="12dp"></corners>
 
 
