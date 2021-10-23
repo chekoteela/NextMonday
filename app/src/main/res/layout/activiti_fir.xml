@@ -29,26 +29,12 @@
 
         <Button
             android:id="@+id/Sign_In_activity_fir"
-            android:layout_width="match_parent"
-            android:layout_margin="15dp"
-            android:background="@drawable/button_login"
-            android:fontFamily="@font/play"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:layout_height="wrap_content"
+            style="@style/styleButton"
             android:text="@string/Sign_In" />
-
-
 
         <Button
             android:id="@+id/Sign_Up_activity_fir"
-            android:layout_width="match_parent"
-            android:fontFamily="@font/play"
-            android:textSize="14sp"
-            android:textColor="@color/white"
-            android:layout_margin="12dp"
-            android:background="@drawable/button_login"
-            android:layout_height="wrap_content"
+            style="@style/styleButton"
             android:text="@string/Sign_Up" />
 
     </LinearLayout>

@@ -11,9 +11,9 @@
 
     <color name="global__TextField_background">#192229</color>
 
-    <color name="global__Button_background">#F46F12</color>
+    <color name="global__Button_background">#F9883A</color>
     <color name="global__Button_ripple">#8E4C1E</color>
-    <color name="global__Button_stroke">#6b3419</color>
+    <color name="global__Button_stroke">#CF6319</color>
 
     <color name="dairy__calendar_background_accent">#4C4D52</color>
 
