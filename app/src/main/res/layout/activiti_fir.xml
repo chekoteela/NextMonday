@@ -48,7 +48,6 @@
             android:textColor="@color/white"
             android:layout_margin="12dp"
             android:background="@drawable/button_login"
-
             android:layout_height="wrap_content"
             android:text="@string/Sign_Up" />
 

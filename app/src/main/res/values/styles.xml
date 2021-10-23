@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:windowBackground">@color/calculator_auto_edittext</item>
+    <style name="styleButton" parent="Theme.AppCompat.DayNight">
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/play</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:background">@drawable/calculator_button</item>
     </style>
-
-    <style name="StandartTV" parent="Theme.AppCompat.DayNight">
-    <item name="colorAccent">@color/white</item>
-    <item name="android:fontFamily">@font/play</item>
-    <item name="android:textColor">@color/white</item>
-    <item name="android:textSize">14sp</item>
+    <style name="styleTextView" parent="Theme.AppCompat.DayNight">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/play</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
     </style>
-
-    <style name="MyCheckBox" parent="custom_check_box">
+    <style name="styleCheckBox" parent="Theme.AppCompat.DayNight">
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/white</item>
     </style>
+    <style name="colorCheckBox" parent="Theme.AppCompat.DayNight">
+        <item name="colorAccent">@color/global__Button_background</item>
+    </style>
 
-    <style name="StyleCalendarView" parent="Theme.AppCompat.Light.Dialog.Alert">
+
+
+
+    <style name="styleAlertDialog" parent="Theme.AppCompat.DayNight">
+        <item name="android:windowBackground">@color/global__TextField_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+<!--    <style name="StandartTV" parent="Theme.AppCompat.DayNight">-->
+<!--    <item name="colorAccent">@color/white</item>-->
+<!--    <item name="android:fontFamily">@font/play</item>-->
+<!--    <item name="android:textColor">@color/white</item>-->
+<!--    <item name="android:textSize">14sp</item>-->
+<!--    </style>-->
+
+
+
+    <style name="styleCalendarView" parent="Theme.AppCompat.DayNight">
         <item name="android:fontFamily">@font/play</item>
         <item name="android:unfocusedMonthDateColor">@color/purple_500</item>
         <item name="android:textColor">@color/white</item>
@@ -30,33 +51,31 @@
 
     </style>
 
-    <style name="colorCheckBox" parent="Theme.MaterialComponents">
-        <item name="colorAccent">@color/color_button_grad</item>
-    </style>
-    <style name="CalenderViewCustom" parent="Theme.AppCompat">
-        <item name="colorPrimary">@android:color/darker_gray</item>
-        <item name="android:background">@color/dairy_navigation_view_gradient_one</item>
-        <item name="android:fontFamily">@font/play</item>
-        <item name="android:unfocusedMonthDateColor">@color/purple_500</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="colorAccent">@color/dairy_navigation_view_gradient_one</item>
-        <item name="colorControlHighlight">@color/black</item>
-        <item name="colorSwitchThumbNormal">@color/white</item>
-        <item name="android:textSize">20sp</item>
-    </style>
 
-    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">12sp</item>
 
-    </style>
+<!--    <style name="CalenderViewCustom" parent="Theme.AppCompat">-->
+<!--        <item name="colorPrimary">@android:color/darker_gray</item>-->
+<!--        <item name="android:background">@color/dairy__calendar_background_accent</item>-->
+<!--        <item name="android:fontFamily">@font/play</item>-->
+<!--        <item name="android:unfocusedMonthDateColor">@color/purple_500</item>-->
+<!--        <item name="android:textColor">@color/white</item>-->
+<!--        <item name="colorAccent">@color/dairy__calendar_background_accent</item>-->
+<!--        <item name="colorControlHighlight">@color/black</item>-->
+<!--        <item name="colorSwitchThumbNormal">@color/white</item>-->
+<!--        <item name="android:textSize">20sp</item>-->
+<!--    </style>-->
 
-    <style name="CustomSwitch" parent="Theme.AppCompat.Light.Dialog">
-        <item name="colorControlActivated">@color/color_button_grad</item>
+<!--    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">-->
+<!--        <item name="android:textColor">@color/white</item>-->
+<!--        <item name="android:textStyle">bold</item>-->
+<!--        <item name="android:textSize">12sp</item>-->
+<!--    </style>-->
+
+    <style name="styleSwitch" parent="Theme.AppCompat.DayNight">
+        <item name="colorControlActivated">@color/global__Button_background</item>
     </style>
 
-    <style name="TimePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+    <style name="styleTimePicker" parent="Theme.AppCompat.DayNight">
         <item name="colorAccent">@color/dairy_create_task_linear_layout_gradient_one</item>
         <item name="colorControlActivated">@color/dairy_create_task_linear_layout_gradient_two</item>
         <item name="android:textColorPrimary">@color/black</item>
@@ -69,26 +88,14 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-
-
-
-
-
-
-
-
-
-
-
-    <style name="MainMenu" parent="Theme.AppCompat">
+    <style name="styleMainMenu" parent="Theme.AppCompat.DayNight">
         <item name="colorPrimary">@android:color/darker_gray</item>
         <item name="colorSwitchThumbNormal">@color/white</item>
         <item name="android:textSize">14sp</item>
     </style>
 
 
-    <style name="CustomShapeAppearance">
-
+    <style name="CustomShapeAppearance" parent="Theme.AppCompat.DayNight">
         <item name="neumorph_cornerSize">100dp</item>
         <!-- Or if wants different radii depending on the corner. -->
         <item name="neumorph_cornerSizeTopLeft">16dp</item>
@@ -97,13 +104,7 @@
         <item name="neumorph_cornerSizeBottomRight">16dp</item>
     </style>
 
-    <style name="StandartTextView" parent="Theme.AppCompat.DayNight">
-        <item name="colorAccent">@color/white</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">@font/play</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">14sp</item>
-    </style>
+
     <style name="EditText_change_food_white" parent="Theme.AppCompat.DayNight">
         <item name="android:textSize">14sp</item>
         <item name="android:background">@drawable/calculator_auto_calculate_edittext</item>
@@ -114,13 +115,6 @@
     </style>
 
 
-    <style name="button_setting_style" parent="Theme.AppCompat.DayNight">
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">@font/play</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:background">@drawable/calculator_button</item>
 
-    </style>
 
 </resources>

@@ -6,14 +6,6 @@
     <item>
         <shape android:shape="rectangle">
             <solid android:color="@color/color_button"></solid>
-            <gradient
-
-                android:centerColor="@color/color_button"
-                android:endColor="@color/color_button_grad"
-                android:startColor="@color/color_button">
-
-
-            </gradient>
             <stroke android:color="@color/btn_obv"></stroke>
             <corners android:radius="12dp"></corners>
 
