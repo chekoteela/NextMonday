@@ -1,6 +1,11 @@
 package com.sharkit.nextmonday;
 
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.CANCEL;
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.CREATE_NEW;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DATE_FOR_MAIN_DIARY_LIST;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD_ID;
+import static com.sharkit.nextmonday.configuration.constant.BundleVariable.CREATE_NEW_FOOD;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -12,6 +17,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,7 +41,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -61,8 +66,6 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        navController.navigate(R.id.nav_diary);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Toolbar toolbar = findViewById(R.id.toolbar_core);
@@ -73,17 +76,6 @@ public class MainMenu extends AppCompatActivity {
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_settings_24);
         toolbar.setOverflowIcon(drawable);
 
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_diary, R.id.nav_target, R.id.nav_feedback,R.id.nav_calculator_main)
-                .setDrawerLayout(drawer)
-                .build();
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
     }
 
 
@@ -183,39 +175,27 @@ public class MainMenu extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
 
         if (result.getContents() != null) {
-
-
+            AlertExistProduct(result.getContents());
         } else {
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
             navController.navigate(R.id.nav_cal_find_food_by_name);
-            Toast.makeText(getBaseContext(), "error", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    private void AlertExistProduct() {
+    private void AlertExistProduct(String code) {
         android.app.AlertDialog.Builder dialog = new AlertDialog.Builder(MainMenu.this, R.style.CustomAlertDialog);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View existProduct = layoutInflater.inflate(R.layout.calculator_alert_exist, null);
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        dialog.setPositiveButton("Создать новый", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                navController.navigate(R.id.nav_cal_create_food);
-            }
+        dialog.setPositiveButton(CREATE_NEW, (dialog13, which) -> {
+            Bundle bundle = new Bundle();
+            bundle.putString(FRAGMENT_CREATE_FOOD_ID, code);
+            bundle.putString(FRAGMENT_CREATE_FOOD, CREATE_NEW_FOOD);
+            navController.navigate(R.id.nav_cal_create_food);
         });
-        dialog.setNegativeButton("Отмена", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                navController.navigate(R.id.nav_cal_find_food_by_name);
-            }
-        });
-        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                navController.navigate(R.id.nav_cal_find_food_by_name);
-            }
-        });
+        dialog.setNegativeButton(CANCEL, (dialog12, which) -> navController.navigate(R.id.nav_cal_find_food_by_name));
+        dialog.setOnCancelListener(dialog1 -> navController.navigate(R.id.nav_cal_find_food_by_name));
 
         dialog.setView(existProduct);
         dialog.show();

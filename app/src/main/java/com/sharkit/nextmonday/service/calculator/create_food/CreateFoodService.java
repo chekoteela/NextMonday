@@ -1,14 +1,13 @@
 package com.sharkit.nextmonday.service.calculator.create_food;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleVariable.CREATE_NEW_FOOD;
-import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.MODERATION_FOOD;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
@@ -105,10 +104,8 @@ public class CreateFoodService implements LayoutService {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseFirestore.getInstance()
-                        .collection(MODERATION_FOOD)
-                        .document(id)
-                        .set(writeFromField());
+                FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
+                foodInfoFirebase.create(writeFromField());
             }
         });
         return this;

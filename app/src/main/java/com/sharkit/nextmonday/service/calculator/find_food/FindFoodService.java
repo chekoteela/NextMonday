@@ -7,7 +7,6 @@ import static com.sharkit.nextmonday.configuration.constant.BundleVariable.CREAT
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +16,9 @@ import androidx.navigation.Navigation;
 
 import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.else_conf.CaptureAct;
 import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
@@ -49,6 +50,29 @@ public class FindFoodService implements LayoutService {
             bundle.putString(FRAGMENT_CREATE_FOOD, CREATE_NEW_FOOD);
             bundle.putString(FRAGMENT_CREATE_FOOD_ID, UUID.randomUUID().toString());
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_create_food, bundle);
+        });
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()){
+                    case 2:
+                        new IntentIntegrator((Activity) context)
+                                .setCaptureActivity(CaptureAct.class)
+                                .initiateScan();
+                        break;
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
         });
         return this;
     }
