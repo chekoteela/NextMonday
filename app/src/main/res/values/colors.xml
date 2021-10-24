@@ -20,8 +20,12 @@
 
     <color name="dairy__TimePicker_multiply">#212121</color>
     <color name="dairy__TimePicker_Accent">#4C4D52</color>
-
     <color name="dairy_TimePicker_ControlActivated">#24252A</color>
+
+    <color name="calculator__progress_line">#F9883A</color>
+
+
+
 
 
 
@@ -65,7 +69,7 @@
 
 
 <!--    -->
-<!--    <color name="hintColor">#918c86</color>-->
+
 <!--    <color name="back">@color/layout_gradient_three</color>-->
 <!--    <color name="btn">#3E2214</color>-->
 
@@ -125,7 +129,7 @@
 
 <!--    &lt;!&ndash;Колір для EditText в калькуляторі калорій &ndash;&gt;-->
 <!--    &lt;!&ndash;Колір калькулятор&ndash;&gt;-->
-<!--    <color name="calculator_color">#232D37</color>-->
+
 <!--    -->
 <!--    <color name="calculator_button_ripple">#7E8388</color>-->
 <!--    <color name="calculator_color_linear">#2C3640</color>-->
@@ -137,9 +141,9 @@
 <!--    <color name="background_calculator">#0F173C</color>-->
 <!--    <color name="background_layout_calculator">#1C214B</color>-->
 <!--    <color name="bar_calor_color_rim">#192229</color>-->
-<!--    <color name="bar_calor_color_progress">#F9883A</color>-->
+
 <!--    <color name="bar_fat_carbs_color_rim">#192229</color>-->
-<!--    <color name="bar_fat_carbs_color_progress">#F9883A</color>-->
+
 <!--    <color name="bar_prot_water_color_rim">#192229</color>-->
 <!--    <color name="bar_prot_water_color_progress">#F9883A</color>-->
 <!--    <color name="tool_bar_color">#131C23</color>-->

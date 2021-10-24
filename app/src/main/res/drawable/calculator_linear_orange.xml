@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle" xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/bar_calor_color_progress"/>
-    <size android:width="5dp" android:height="5dp"/>
-    <corners android:radius="33dp"/>
-    <stroke android:color="@color/bar_fat_carbs_color_progress" android:width="5dp"/>
-</shape>
