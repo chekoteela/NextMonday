@@ -75,14 +75,14 @@
     </style>
 
     <style name="styleTimePicker" parent="Theme.AppCompat.DayNight">
-        <item name="colorAccent">@color/dairy_create_task_linear_layout_gradient_one</item>
-        <item name="colorControlActivated">@color/dairy_create_task_linear_layout_gradient_two</item>
+        <item name="colorAccent">@color/dairy__TimePicker_Accent</item>
+        <item name="colorControlActivated">@color/dairy_TimePicker_ControlActivated</item>
         <item name="android:textColorPrimary">@color/black</item>
-        <item name="android:headerBackground">@color/style_datepiker_header</item>
-        <item name="android:dayOfWeekBackground">@color/style_datepiker_header</item>
-        <item name="android:backgroundSplit">@color/style_datepiker_header</item>
+        <item name="android:headerBackground">@color/dairy__TimePicker_multiply</item>
+        <item name="android:dayOfWeekBackground">@color/dairy__TimePicker_multiply</item>
+        <item name="android:backgroundSplit">@color/dairy__TimePicker_multiply</item>
         <!--Calender Background color -->
-        <item name="android:windowBackground">@color/style_datepiker_header</item>
+        <item name="android:windowBackground">@color/dairy__TimePicker_multiply</item>
         <!-- Ok Cancel Color-->
         <item name="android:textColor">@color/white</item>
     </style>

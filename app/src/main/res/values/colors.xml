@@ -18,6 +18,11 @@
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
 
+    <color name="dairy__TimePicker_multiply">#212121</color>
+    <color name="dairy__TimePicker_Accent">#4C4D52</color>
+
+    <color name="dairy_TimePicker_ControlActivated">#24252A</color>
+
 
 
 
@@ -102,15 +107,14 @@
 <!--    &lt;!&ndash;Колір List View&ndash;&gt;-->
 <!--    <color name="lst_view_custom_color">#0D414141</color>-->
 <!--    &lt;!&ndash;Колір для градієнту Linear Layout в щоденнику при створенні/редагуванні задачі &ndash;&gt;-->
-<!--    <color name="dairy_create_task_linear_layout_gradient_one">#4C4D52</color>-->
-<!--    <color name="dairy_create_task_linear_layout_gradient_two">#24252A</color>-->
+
 <!--    &lt;!&ndash;Колір для Calendar date pick &ndash;&gt;-->
 <!--    <color name="calendar_date_picker">#23282C</color>-->
 <!--    &lt;!&ndash;Колір для Toolbar &ndash;&gt;-->
 <!--    <color name="color_toolbar">#212121</color>-->
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
 
-<!--    <color name="style_datepiker_header">#212121</color>-->
+
 <!--    &lt;!&ndash;Колір для тіней CardView&ndash;&gt;-->
 <!--    <color name="shadowColorLight">#D542474C</color>-->
 <!--    <color name="shadowColorDark">#24272C</color>-->
