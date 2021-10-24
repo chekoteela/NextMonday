@@ -16,11 +16,6 @@
         tools:layout="@layout/calculator_main" />
 
     <fragment
-        android:id="@+id/nav_target"
-        android:name="com.sharkit.nextmonday.ui.slideshow.SlideshowFragment"
-        tools:layout="@layout/fragment_slideshow" />
-
-    <fragment
         android:id="@+id/nav_calendar"
         android:name="com.sharkit.nextmonday.ui.diary.DiaryCalendar"
         tools:layout="@layout/fragment_calendar" />
@@ -86,7 +81,7 @@
         tools:layout="@layout/calculator_ration" />
 
     <fragment
-        android:id="@+id/nav_cal_my_food"
+        android:id="@+id/nav_cal_add_my_food"
         android:name="com.sharkit.nextmonday.ui.calculator.AddNewFood"
         tools:layout="@layout/calculator_find_my_food" />
 

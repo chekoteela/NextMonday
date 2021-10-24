@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/to_do_list"
+        android:id="@+id/list_target_item"
         android:icon="@drawable/icon_todo_list"
-        android:onClick="OnClickTarget"
+        android:onClick="onMenuItemClick"
         android:title="@string/to_do_list">
-
     </item>
 
     <item
         android:contentDescription="@string/calendar2"
-        android:id="@+id/calendar"
+        android:id="@+id/diary_calendar_item"
         android:icon="@drawable/icon_calendar"
-        android:onClick="OnClickCalendar"
+        android:onClick="onMenuItemClick"
         android:title="@string/calendar"/>
 
     <item
         android:contentDescription="@string/find"
-        android:id="@+id/action_search"
+        android:id="@+id/dairy_search_item"
         android:icon="@drawable/baseline_search_black_24"
-        android:onClick="OnClickSearch"
+        android:onClick="onMenuItemClick"
         android:title="@string/search" />
 
 </menu>

@@ -8,7 +8,7 @@ import static com.sharkit.nextmonday.configuration.constant.ToastMessage.PASSWOR
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.PASSWORD_NOT_CORRECT;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.SUCCESSFUL_UPDATE;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.USER_WITH_EMAIL_EXIST;
-import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIl;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIL;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_LAST_NAME;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_NAME;
@@ -55,7 +55,7 @@ public class SettingProfileService implements LayoutService {
     public LayoutService writeToField() {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE);
         name.setText(sharedPreferences.getString(USER_NAME, DEFAULT));
-        email.setText(sharedPreferences.getString(USER_EMAIl, DEFAULT));
+        email.setText(sharedPreferences.getString(USER_EMAIL, DEFAULT));
         lastName.setText(sharedPreferences.getString(USER_LAST_NAME, DEFAULT));
         return this;
     }
@@ -102,7 +102,7 @@ public class SettingProfileService implements LayoutService {
         if (!ValidationField.isValidEmail(email, context)) {
             return;
         }
-        if (!email.getText().toString().equals(context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIl, DEFAULT))) {
+        if (!email.getText().toString().equals(context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIL, DEFAULT))) {
             if (!ValidationField.isValidField(password, context)) {
                 return;
             }
@@ -111,7 +111,7 @@ public class SettingProfileService implements LayoutService {
                 return;
             }
             AuthCredential credential = EmailAuthProvider
-                    .getCredential(context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIl, DEFAULT),
+                    .getCredential(context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIL, DEFAULT),
                             context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_PASSWORD, DEFAULT));
 
                     Objects.requireNonNull(FirebaseAuth.getInstance()
@@ -151,7 +151,7 @@ public class SettingProfileService implements LayoutService {
                     save.setVisibility(View.VISIBLE);
                 } else if (name.getText().toString().equals(sharedPreferences.getString(USER_NAME, DEFAULT)) &&
                         lastName.getText().toString().equals(sharedPreferences.getString(USER_LAST_NAME, DEFAULT)) &&
-                        email.getText().toString().equals(sharedPreferences.getString(USER_EMAIl, DEFAULT))) {
+                        email.getText().toString().equals(sharedPreferences.getString(USER_EMAIL, DEFAULT))) {
                     save.setVisibility(View.GONE);
                     password.setVisibility(View.GONE);
                 }
@@ -169,12 +169,12 @@ public class SettingProfileService implements LayoutService {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!email.getText().toString().equals(sharedPreferences.getString(USER_EMAIl, DEFAULT))) {
+                if (!email.getText().toString().equals(sharedPreferences.getString(USER_EMAIL, DEFAULT))) {
                     save.setVisibility(View.VISIBLE);
                     password.setVisibility(View.VISIBLE);
                 } else if (name.getText().toString().equals(sharedPreferences.getString(USER_NAME, DEFAULT)) &&
                         lastName.getText().toString().equals(sharedPreferences.getString(USER_LAST_NAME, DEFAULT)) &&
-                        email.getText().toString().equals(sharedPreferences.getString(USER_EMAIl, DEFAULT))) {
+                        email.getText().toString().equals(sharedPreferences.getString(USER_EMAIL, DEFAULT))) {
                     save.setVisibility(View.GONE);
                     password.setVisibility(View.GONE);
                 }
@@ -196,7 +196,7 @@ public class SettingProfileService implements LayoutService {
                     save.setVisibility(View.VISIBLE);
                 } else if (name.getText().toString().equals(sharedPreferences.getString(USER_NAME, DEFAULT)) &&
                         lastName.getText().toString().equals(sharedPreferences.getString(USER_LAST_NAME, DEFAULT)) &&
-                        email.getText().toString().equals(sharedPreferences.getString(USER_EMAIl, DEFAULT))) {
+                        email.getText().toString().equals(sharedPreferences.getString(USER_EMAIL, DEFAULT))) {
                     save.setVisibility(View.GONE);
                     password.setVisibility(View.GONE);
                 }
@@ -226,7 +226,7 @@ public class SettingProfileService implements LayoutService {
                 return;
             }
             AuthCredential credential = EmailAuthProvider
-                    .getCredential(context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIl, DEFAULT),
+                    .getCredential(context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIL, DEFAULT),
                             context.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_PASSWORD, DEFAULT));
 
             Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser())

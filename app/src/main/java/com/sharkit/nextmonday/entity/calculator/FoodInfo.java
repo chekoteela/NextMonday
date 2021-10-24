@@ -1,6 +1,8 @@
 package com.sharkit.nextmonday.entity.calculator;
 
-public class FoodInfo {
+import java.io.Serializable;
+
+public class FoodInfo implements Serializable {
     private String name, id;
     private float portion;
     private int calorie;

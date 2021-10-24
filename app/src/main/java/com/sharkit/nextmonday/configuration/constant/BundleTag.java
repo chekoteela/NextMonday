@@ -7,4 +7,5 @@ public class BundleTag {
     public static final String FRAGMENT_CREATE_FOOD = "fragment_create_food";
     public static final String DEFAULT = "not found";
     public static final String FRAGMENT_CREATE_FOOD_ID = "food_id";
+    public static final String ADD_FOOD = "add_food";
 }
