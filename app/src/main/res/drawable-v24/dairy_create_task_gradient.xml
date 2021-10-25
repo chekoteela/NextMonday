@@ -2,11 +2,9 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <stroke android:width="5px"
-                android:color="@color/dairy_create_task_linear_layout_gradient_two"></stroke>
+            <stroke android:width="5px" android:color="@color/dairy__drawable_create_task" />
             <gradient
-                android:endColor="@color/dairy_create_task_linear_layout_gradient_one"
-                android:startColor="@color/dairy_create_task_linear_layout_gradient_two"
+                android:startColor="@color/dairy__drawable_create_task"
                 android:type="linear"
                 android:angle="135"
                 />

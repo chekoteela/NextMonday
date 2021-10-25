@@ -20,6 +20,7 @@
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
 
+    <color name="dairy__drawable_create_task">#24252A</color>
 
 
     <color name="dairy__styleTimePicker_multiply">#212121</color>
@@ -28,9 +29,6 @@
     <!--CALCULATOR-->
     <color name="calculator__progress_line">#F9883B</color>
     <color name="calculator__weight_linear">#232D37</color>   <!-- main_calculator  -->
-
-
-
 
 
 
