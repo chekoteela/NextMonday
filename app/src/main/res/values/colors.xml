@@ -8,7 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
         <!--GLOBAL-->
+    <color name="global__transparent">#00000000</color> <!--prozory-->
     <color name="global__background">#192229</color> <!--calculator_auto_edittext-->
 
     <color name="global__styleButton_background">#F9883A</color>
@@ -19,9 +21,9 @@
     <!--DAIRY-->
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
-
-    <color name="dairy__drawable_create_task">#24252A</color>
-
+    <!--DAIRY__drawable-->
+    <color name="dairy__drawable_create_task">#24252A</color>  <!-- gradient color two  -->
+    <color name="dairy__drawable_expandable_list_view">#192229</color>
 
     <color name="dairy__styleTimePicker_multiply">#212121</color>
     <color name="dairy__styleTimePicker_Accent">#4C4D52</color>
@@ -39,40 +41,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--    -->
 
 <!--    <color name="back">@color/layout_gradient_three</color>-->
 <!--    <color name="btn">#3E2214</color>-->
@@ -127,7 +95,7 @@
 <!--    <color name="shadowColorLight">#D542474C</color>-->
 <!--    <color name="shadowColorDark">#24272C</color>-->
 <!--    &lt;!&ndash;Прозорий колір для необхідності&ndash;&gt;-->
-<!--    <color name="Prozorui">#0024272C</color>-->
+
 <!--    &lt;!&ndash;Колір для EditText в калькуляторі калорій &ndash;&gt;-->
 
 
