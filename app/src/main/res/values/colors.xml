@@ -8,20 +8,20 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
-    <color name="global__TextField_background">#192229</color>
+        <!--GLOBAL-->
+    <color name="global__background">#192229</color>
 
     <color name="global__Button_background">#F9883A</color>
     <color name="global__Button_ripple">#8E4C1E</color>
     <color name="global__Button_stroke">#CF6319</color>
-
+    <!--DAIRY-->
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
 
     <color name="dairy__TimePicker_multiply">#212121</color>
     <color name="dairy__TimePicker_Accent">#4C4D52</color>
     <color name="dairy_TimePicker_ControlActivated">#24252A</color>
-
+    <!--CALCULATOR-->
     <color name="calculator__progress_line">#F9883A</color>
 
 

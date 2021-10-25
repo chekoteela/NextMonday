@@ -57,7 +57,7 @@
 
 
     <style name="styleAlertDialog" parent="Theme.AppCompat.DayNight">
-        <item name="android:windowBackground">@color/global__TextField_background</item>
+        <item name="android:windowBackground">@color/global__background</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
