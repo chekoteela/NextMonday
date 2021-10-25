@@ -24,13 +24,14 @@
     <!--DAIRY__drawable-->
     <color name="dairy__drawable_create_task">#24252A</color>  <!-- gradient color two  -->
     <color name="dairy__drawable_expandable_list_view">#192229</color>
+    <color name="dairy__drawable_expandable_list_task">#232D37</color>
 
     <color name="dairy__styleTimePicker_multiply">#212121</color>
     <color name="dairy__styleTimePicker_Accent">#4C4D52</color>
     <color name="dairy_styleTimePicker_ControlActivated">#24252A</color>
     <!--CALCULATOR-->
     <color name="calculator__progress_line">#F9883B</color>
-    <color name="calculator__weight_linear">#232D37</color>   <!-- main_calculator  -->
+    <color name="calculator__weight_linear">#232D37</color>   <!-- calculator_color  -->
 
 
 
@@ -41,7 +42,7 @@
 
 
 
-
+<!--    <color name="calculator_color">#232D37</color>-->
 <!--    <color name="back">@color/layout_gradient_three</color>-->
 <!--    <color name="btn">#3E2214</color>-->
 

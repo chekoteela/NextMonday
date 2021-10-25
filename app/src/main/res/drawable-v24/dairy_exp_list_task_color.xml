@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <stroke android:width="10px" android:color="@color/Prozorui"></stroke>
+            <stroke android:width="10px" android:color="@color/global__transparent" />
             <gradient
-                android:endColor="@color/calculator_color"
-                android:startColor="@color/calculator_color"
+                android:endColor="@color/dairy__drawable_expandable_list_task"
+                android:startColor="@color/dairy__drawable_expandable_list_task"
                 android:type="linear"
                 android:angle="135"
                 />
