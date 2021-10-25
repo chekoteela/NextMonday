@@ -14,9 +14,13 @@
     <color name="global__styleButton_background">#F9883A</color>
     <color name="global__styleButton_ripple">#8E4C1E</color>
     <color name="global__styleButton_stroke">#CF6319</color>
+
+
     <!--DAIRY-->
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
+
+
 
     <color name="dairy__styleTimePicker_multiply">#212121</color>
     <color name="dairy__styleTimePicker_Accent">#4C4D52</color>
@@ -132,7 +136,6 @@
 <!--    &lt;!&ndash;Колір для EditText в калькуляторі калорій &ndash;&gt;-->
 <!--    &lt;!&ndash;Колір калькулятор&ndash;&gt;-->
 
-<!--    -->
 <!--    <color name="calculator_button_ripple">#7E8388</color>-->
 
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
@@ -150,11 +153,5 @@
 <!--    <color name="bar_prot_water_color_progress">#F9883A</color>-->
 <!--    <color name="tool_bar_color">#131C23</color>-->
 <!--    <color name="exp_list">#0D1217</color>-->
-
-
-
-
-
-
 
 </resources>
