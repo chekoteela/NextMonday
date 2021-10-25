@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/add_meal_xml"
-        style="@style/button_setting_style"
+        style="@style/styleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/adView"

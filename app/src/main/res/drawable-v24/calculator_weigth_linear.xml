@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:color="@color/main_calculator"
+    android:color="@color/calculator__weight_linear"
     tools:targetApi="lollipop">
     <item>
+
+
         <shape android:shape="rectangle">
             <solid android:color="@color/calculator_color"></solid>
-            <corners android:radius="10dp"/>
-            <stroke android:color="@color/black" android:width="1px"/>
-
-
-
-
+            <corners android:radius="10dp" />
+            <stroke
+                android:width="1px"
+                android:color="@color/black" />
         </shape>
-
-
     </item>
+
 
 </ripple>

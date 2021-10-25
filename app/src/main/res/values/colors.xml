@@ -9,20 +9,22 @@
     <color name="white">#FFFFFFFF</color>
 
         <!--GLOBAL-->
-    <color name="global__background">#192229</color>
+    <color name="global__background">#192229</color> <!--calculator_auto_edittext-->
 
-    <color name="global__Button_background">#F9883A</color>
-    <color name="global__Button_ripple">#8E4C1E</color>
-    <color name="global__Button_stroke">#CF6319</color>
+    <color name="global__styleButton_background">#F9883A</color>
+    <color name="global__styleButton_ripple">#8E4C1E</color>
+    <color name="global__styleButton_stroke">#CF6319</color>
     <!--DAIRY-->
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
 
-    <color name="dairy__TimePicker_multiply">#212121</color>
-    <color name="dairy__TimePicker_Accent">#4C4D52</color>
-    <color name="dairy_TimePicker_ControlActivated">#24252A</color>
+    <color name="dairy__styleTimePicker_multiply">#212121</color>
+    <color name="dairy__styleTimePicker_Accent">#4C4D52</color>
+    <color name="dairy_styleTimePicker_ControlActivated">#24252A</color>
     <!--CALCULATOR-->
-    <color name="calculator__progress_line">#F9883A</color>
+    <color name="calculator__progress_line">#F9883B</color>
+    <color name="calculator__weight_linear">#232D37</color>   <!-- main_calculator  -->
+
 
 
 
@@ -83,7 +85,7 @@
 
 <!--    <color name="colorRipple">#000000</color>-->
 <!--    <color name="tlo">#0A113F</color>-->
-<!--    <color name="main_calculator">#232D37</color>-->
+
 <!--    <color name="btnn">#E61C214B</color>-->
 <!--    <color name="color_button_dialog">#38424C</color>-->
 
@@ -132,7 +134,7 @@
 
 <!--    -->
 <!--    <color name="calculator_button_ripple">#7E8388</color>-->
-<!--    <color name="calculator_color_linear">#2C3640</color>-->
+
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
