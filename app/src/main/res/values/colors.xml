@@ -28,12 +28,12 @@
 
     <color name="dairy__styleTimePicker_multiply">#212121</color>
     <color name="dairy__styleTimePicker_Accent">#4C4D52</color>
-    <color name="dairy_styleTimePicker_ControlActivated">#24252A</color>
+    <color name="dairy__styleTimePicker_ControlActivated">#24252A</color>
     <!--CALCULATOR-->
     <color name="calculator__progress_line">#F9883B</color>
     <color name="calculator__weight_linear">#232D37</color>   <!-- calculator_color  -->
 
-
+    <!--    <color name="dairy_navigation_view_gradient_two">#24252A</color>-->
 
 
 
@@ -77,7 +77,7 @@
 <!--    <color name="dairy_exp_list_task_gradient_two">#17181D</color>-->
 <!--    &lt;!&ndash;Градієнт для Navigation View&ndash;&gt;-->
 <!--    -->
-<!--    <color name="dairy_navigation_view_gradient_two">#24252A</color>-->
+
 <!--    &lt;!&ndash;Колір Navigation Bottom Bar&ndash;&gt;-->
 <!--    <color name="dairy_navigation_bottom_bar">#212121</color>-->
 <!--    <color name="dairy_navigation_bottom_bar_stroke">#1AFFFFFF</color>-->
