@@ -24,6 +24,7 @@
 
     <color name="dairy_header">#24252A</color>
 
+    <color name="dairy_navigation_view">#24252A</color>
 
     <!--DAIRY__drawable-->
     <color name="dairy__drawable_create_task">#24252A</color>  <!-- gradient color two  -->
