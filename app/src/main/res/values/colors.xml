@@ -21,6 +21,10 @@
     <!--DAIRY-->
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
+
+    <color name="dairy_header">#24252A</color>
+
+
     <!--DAIRY__drawable-->
     <color name="dairy__drawable_create_task">#24252A</color>  <!-- gradient color two  -->
     <color name="dairy__drawable_expandable_list_view">#192229</color>
@@ -34,6 +38,7 @@
     <color name="calculator__weight_linear">#232D37</color>   <!-- calculator_color  -->
 
     <!--    <color name="dairy_navigation_view_gradient_two">#24252A</color>-->
+    <!--    <color name="dairy_navigation_view_gradient_one">#4C4D52</color>-->
 
 
 
@@ -116,6 +121,95 @@
 
 <!--    <color name="bar_fat_carbs_color_rim">#192229</color>-->
 
+<!--    <color name="bar_prot_water_color_rim">#192229</color>-->
+<!--    <color name="bar_prot_water_color_progress">#F9883A</color>-->
+<!--    <color name="tool_bar_color">#131C23</color>-->
+<!--    <color name="exp_list">#0D1217</color>-->
+
+
+<!--    <color name="purple_200">#FFBB86FC</color>-->
+<!--    <color name="purple_500">#FF6200EE</color>-->
+<!--    <color name="purple_700">#FF3700B3</color>-->
+<!--    <color name="teal_200">#FF03DAC5</color>-->
+<!--    <color name="teal_700">#FF018786</color>-->
+<!--    <color name="black">#FF000000</color>-->
+<!--    <color name="white">#FFFFFFFF</color>-->
+<!--    <color name="hintColor">#918c86</color>-->
+<!--    <color name="back">@color/layout_gradient_three</color>-->
+<!--    <color name="btn">#3E2214</color>-->
+<!--    <color name="btn_obv">#6b3419</color>-->
+<!--    <color name="back_calendar">#8c807a</color>-->
+<!--    <color name="color_linear">#5c321d</color>-->
+<!--    <color name="red">#a83232</color>-->
+<!--    <color name="linnn">#733e24</color>-->
+<!--    <color name="menu">#554137</color>-->
+<!--    <color name="edit_two">#E0E0E0</color>-->
+<!--    <color name="vladic">#080d69</color>-->
+
+<!--    <color name="colorRipple">#000000</color>-->
+<!--    <color name="tlo">#0A113F</color>-->
+<!--    <color name="main_calculator">#232D37</color>-->
+<!--    <color name="btnn">#E61C214B</color>-->
+<!--    <color name="color_button_dialog">#38424C</color>-->
+
+
+<!--    &lt;!&ndash;Кольори для activity нової розмальовки&ndash;&gt;-->
+<!--    &lt;!&ndash;Колір до градієнтів Актівіті Реєстрації, Входу&ndash;&gt;-->
+<!--    <color name="layout_gradient">#474A5A</color>-->
+<!--    <color name="layout_gradient_two">#252837</color>-->
+<!--    <color name="layout_gradient_three">#191A1F</color>-->
+<!--    <color name="color_button">#F9883A</color>-->
+<!--    <color name="color_button_grad">#F46F12</color>-->
+<!--    <color name="color_button_ripple">#C86622</color>-->
+<!--    &lt;!&ndash;Градієнт для Layout де знаходиться день в щоденнику&ndash;&gt;-->
+<!--    <color name="dairy_exp_list_den_gradient_one">#4C4D52</color>-->
+<!--    <color name="dairy_exp_list_den_gradient_two">#24252A</color>-->
+<!--    &lt;!&ndash;Градієнт для Layout де знаходяться задачі в щоденнику&ndash;&gt;-->
+<!--    <color name="dairy_exp_list_task_gradient_one">#23282C</color>-->
+<!--    <color name="dairy_exp_list_task_gradient_two">#17181D</color>-->
+<!--    &lt;!&ndash;Градієнт для Navigation View&ndash;&gt;-->
+<!--    <color name="dairy_navigation_view_gradient_one">#4C4D52</color>-->
+<!--    <color name="dairy_navigation_view_gradient_two">#24252A</color>-->
+<!--    &lt;!&ndash;Колір Navigation Bottom Bar&ndash;&gt;-->
+<!--    <color name="dairy_navigation_bottom_bar">#212121</color>-->
+<!--    <color name="dairy_navigation_bottom_bar_stroke">#1AFFFFFF</color>-->
+<!--    &lt;!&ndash;Колір List View&ndash;&gt;-->
+<!--    <color name="lst_view_custom_color">#0D414141</color>-->
+<!--    &lt;!&ndash;Колір для градієнту Linear Layout в щоденнику при створенні/редагуванні задачі &ndash;&gt;-->
+<!--    <color name="dairy_create_task_linear_layout_gradient_one">#4C4D52</color>-->
+<!--    <color name="dairy_create_task_linear_layout_gradient_two">#24252A</color>-->
+<!--    &lt;!&ndash;Колір для Calendar date pick &ndash;&gt;-->
+<!--    <color name="calendar_date_picker">#23282C</color>-->
+<!--    &lt;!&ndash;Колір для Toolbar &ndash;&gt;-->
+<!--    <color name="color_toolbar">#212121</color>-->
+<!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
+
+<!--    <color name="style_datepiker_header">#212121</color>-->
+<!--    &lt;!&ndash;Колір для тіней CardView&ndash;&gt;-->
+<!--    <color name="shadowColorLight">#D542474C</color>-->
+<!--    <color name="shadowColorDark">#24272C</color>-->
+<!--    &lt;!&ndash;Прозорий колір для необхідності&ndash;&gt;-->
+<!--    <color name="Prozorui">#0024272C</color>-->
+<!--    &lt;!&ndash;Колір для EditText в калькуляторі калорій &ndash;&gt;-->
+<!--    <color name="calculator_auto_edittext">#192229</color>-->
+
+<!--    &lt;!&ndash;Колір для EditText в калькуляторі калорій &ndash;&gt;-->
+<!--    &lt;!&ndash;Колір калькулятор&ndash;&gt;-->
+<!--    <color name="calculator_color">#232D37</color>-->
+<!--    <color name="calendar_focuse_date">#38424C</color>-->
+<!--    <color name="calculator_button_ripple">#7E8388</color>-->
+<!--    <color name="calculator_color_linear">#2C3640</color>-->
+<!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
+<!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
+<!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
+<!--    <color name="food_item_list">#38424C</color>-->
+
+<!--    <color name="background_calculator">#0F173C</color>-->
+<!--    <color name="background_layout_calculator">#1C214B</color>-->
+<!--    <color name="bar_calor_color_rim">#192229</color>-->
+<!--    <color name="bar_calor_color_progress">#F9883A</color>-->
+<!--    <color name="bar_fat_carbs_color_rim">#192229</color>-->
+<!--    <color name="bar_fat_carbs_color_progress">#F9883A</color>-->
 <!--    <color name="bar_prot_water_color_rim">#192229</color>-->
 <!--    <color name="bar_prot_water_color_progress">#F9883A</color>-->
 <!--    <color name="tool_bar_color">#131C23</color>-->
