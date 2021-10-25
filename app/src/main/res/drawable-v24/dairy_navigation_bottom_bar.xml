@@ -3,13 +3,11 @@
     <item>
         <shape android:shape="rectangle">
 
-            <stroke
-             android:width="2px"
-                android:color="@color/dairy_navigation_bottom_bar"
-                ></stroke>
+            <stroke android:width="2px"
+                android:color="@color/dairy_drawable_navigation_bottom_bar" />
             <gradient
-                android:endColor="@color/dairy_navigation_bottom_bar"
-                android:startColor="@color/dairy_navigation_bottom_bar"
+                android:endColor="@color/dairy_drawable_navigation_bottom_bar"
+                android:startColor="@color/dairy_drawable_navigation_bottom_bar"
                 android:type="linear"
                 android:angle="135"
                 />

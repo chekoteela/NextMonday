@@ -22,14 +22,18 @@
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
 
-    <color name="dairy_header">#24252A</color>
 
-    <color name="dairy_navigation_view">#24252A</color>
 
     <!--DAIRY__drawable-->
     <color name="dairy__drawable_create_task">#24252A</color>  <!-- gradient color two  -->
     <color name="dairy__drawable_expandable_list_view">#192229</color>
     <color name="dairy__drawable_expandable_list_task">#232D37</color>
+
+    <color name="dairy_drawable_header">#24252A</color>
+
+    <color name="dairy_drawable_navigation_view">#24252A</color>
+
+    <color name="dairy_drawable_navigation_bottom_bar">#212121</color>
 
     <color name="dairy__styleTimePicker_multiply">#212121</color>
     <color name="dairy__styleTimePicker_Accent">#4C4D52</color>
@@ -40,6 +44,7 @@
 
     <!--    <color name="dairy_navigation_view_gradient_two">#24252A</color>-->
     <!--    <color name="dairy_navigation_view_gradient_one">#4C4D52</color>-->
+    <!--    <color name="dairy_navigation_bottom_bar">#212121</color>-->
 
 
 
@@ -85,7 +90,7 @@
 <!--    -->
 
 <!--    &lt;!&ndash;Колір Navigation Bottom Bar&ndash;&gt;-->
-<!--    <color name="dairy_navigation_bottom_bar">#212121</color>-->
+
 <!--    <color name="dairy_navigation_bottom_bar_stroke">#1AFFFFFF</color>-->
 <!--    &lt;!&ndash;Колір List View&ndash;&gt;-->
 <!--    <color name="lst_view_custom_color">#0D414141</color>-->

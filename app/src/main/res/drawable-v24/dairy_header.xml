@@ -4,7 +4,7 @@
         <shape>
 
             <gradient
-                android:startColor="@color/dairy_header"
+                android:startColor="@color/dairy_drawable_header"
                 android:type="linear"
                 android:angle="270"
                 />

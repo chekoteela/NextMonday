@@ -4,7 +4,7 @@
         <shape>
 
             <gradient
-                android:startColor="@color/dairy_navigation_view"
+                android:startColor="@color/dairy_drawable_navigation_view"
                 android:type="linear"
                 android:angle="90"
                 />
