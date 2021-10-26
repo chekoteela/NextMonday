@@ -101,12 +101,9 @@ public class CreateFoodService implements LayoutService {
 
     @Override
     public LayoutService activity() {
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
-                foodInfoFirebase.create(writeFromField());
-            }
+        save.setOnClickListener(v -> {
+            FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
+            foodInfoFirebase.create(writeFromField());
         });
         return this;
     }
