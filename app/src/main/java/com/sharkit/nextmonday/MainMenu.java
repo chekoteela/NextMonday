@@ -41,6 +41,7 @@ import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -157,7 +158,7 @@ public class MainMenu extends AppCompatActivity {
             foodInfoFirebase.findFoodById(result.getContents())
                     .addOnSuccessListener(documentSnapshot -> {
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable(ADD_FOOD, documentSnapshot.toObject(FoodInfo.class));
+                        bundle.putSerializable(ADD_FOOD, Objects.requireNonNull(documentSnapshot.toObject(FoodInfo.class)).getId());
                         Navigation.findNavController(MainMenu.this, R.id.nav_host_fragment).navigate(R.id.nav_cal_add_my_food, bundle);
                     }).addOnFailureListener(e -> AlertExistProduct(result.getContents()));
         } else {
