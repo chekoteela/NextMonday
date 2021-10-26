@@ -2,7 +2,7 @@ package com.sharkit.nextmonday.service.diary.main_diary_service;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USERS;
-import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIl;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIL;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_LAST_NAME;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_NAME;
@@ -83,12 +83,11 @@ public class MainDiaryService implements LayoutService {
                     editor.putString(USER_ID, Objects.requireNonNull(userDTO).getId());
                     editor.putString(USER_LAST_NAME, Objects.requireNonNull(userDTO).getLastName());
                     editor.putString(USER_NAME, Objects.requireNonNull(userDTO).getName());
-                    editor.putString(USER_EMAIl, Objects.requireNonNull(userDTO).getEmail());
+                    editor.putString(USER_EMAIL, Objects.requireNonNull(userDTO).getEmail());
                     editor.putString(USER_PASSWORD, Objects.requireNonNull(userDTO).getPassword());
                     editor.putString(USER_ROLE, Objects.requireNonNull(userDTO).getRole());
                     editor.apply();
                 });
         dataService.getAlarm(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
     }
-
 }

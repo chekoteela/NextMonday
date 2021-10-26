@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <item
-        android:id="@+id/main"
+        android:id="@+id/main_item"
         android:icon="@drawable/ic_home_24"
-        android:onClick="OnClickCalculatorMain"
+        android:onClick="onMenuItemClick"
         app:showAsAction="ifRoom"
         android:title="Главная">
     </item>
 
     <item
-        android:id="@+id/ration"
+        android:id="@+id/ration_item"
         android:icon="@drawable/meal"
-        android:onClick="OnClickRation"
+        android:onClick="onMenuItemClick"
         android:title="Рацион" >
     </item>
 
     <item
-        android:id="@+id/calendar"
+        android:id="@+id/calendar_item"
         android:contentDescription="@string/calendar2"
         android:icon="@drawable/ic_calendar"
-        android:onClick="OnClickCalculatorCalendar"
+        android:onClick="onMenuItemClick"
         android:title="Календарь"/>
 
     <item
-        android:id="@+id/weight"
+        android:id="@+id/weight_item"
         android:icon="@drawable/ic_monitor_weight"
-        android:onClick="OnClickWeight"
+        android:onClick="onMenuItemClick"
         android:title="Вес" >
     </item>
 

@@ -7,7 +7,7 @@ import static com.sharkit.nextmonday.configuration.constant.ToastMessage.EMAIL_A
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.ERROR_AUTHORIZE;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.PASSWORDS_NOT_THE_SAME;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.SUCCESSFUL_UPDATE;
-import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIl;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIL;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_PASSWORD;
 import static com.sharkit.nextmonday.configuration.constant.firebase_entity.UserFirebaseEntity.PASSWORD;
@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
             AuthCredential credential = EmailAuthProvider
-                    .getCredential(this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIl, DEFAULT),
+                    .getCredential(this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIL, DEFAULT),
                             this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_PASSWORD, DEFAULT));
 
             Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser())

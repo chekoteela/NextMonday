@@ -3,7 +3,7 @@ package com.sharkit.nextmonday.service.general;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.FEEDBACK;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.SEND_FEEDBACK;
-import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIl;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIL;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_NAME;
 
@@ -66,7 +66,7 @@ public class FeedbackService implements LayoutService {
             FeedbackDTO feedbackDTO = new FeedbackDTO();
             SharedPreferences sharedPreferences = context.getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);
             feedbackDTO.setId(sharedPreferences.getString(USER_ID, DEFAULT));
-            feedbackDTO.setEmail(sharedPreferences.getString(USER_EMAIl, DEFAULT));
+            feedbackDTO.setEmail(sharedPreferences.getString(USER_EMAIL, DEFAULT));
             feedbackDTO.setName(sharedPreferences.getString(USER_NAME, DEFAULT));
             feedbackDTO.setDate(Calendar.getInstance().getTimeInMillis());
             feedbackDTO.setReason(spinner.getSelectedItemPosition());

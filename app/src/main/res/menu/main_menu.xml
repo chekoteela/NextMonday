@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/setting_item"
         android:contentDescription="@string/action_settings2"
-        android:id="@+id/settings"
-        android:onClick="OnClickSettings"
-        android:orderInCategory="100"
         android:icon="@drawable/ic_baseline_settings_24"
-        app:showAsAction="ifRoom"
-        android:title="TODO" />
+        android:onClick="onMenuItemClick"
+        android:orderInCategory="100"
+        android:title="TODO"
+        app:showAsAction="ifRoom" />
 
 </menu>
