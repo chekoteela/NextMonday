@@ -8,7 +8,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 
 public class FoodInfoFirebase {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public void create(FoodInfo foodInfo) {
         db.collection(MODERATION_FOOD)
