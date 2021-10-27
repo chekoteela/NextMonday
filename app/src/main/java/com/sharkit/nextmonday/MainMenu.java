@@ -2,8 +2,8 @@ package com.sharkit.nextmonday;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.CANCEL;
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.CREATE_NEW;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.ADD_FOOD;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DATE_FOR_MAIN_DIARY_LIST;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FOOD_INFO_S;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD_ID;
 import static com.sharkit.nextmonday.configuration.constant.BundleVariable.CREATE_NEW_FOOD;
@@ -41,7 +41,6 @@ import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 
 import java.util.Calendar;
-import java.util.Objects;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -158,7 +157,7 @@ public class MainMenu extends AppCompatActivity {
             foodInfoFirebase.findFoodById(result.getContents())
                     .addOnSuccessListener(documentSnapshot -> {
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable(ADD_FOOD, Objects.requireNonNull(documentSnapshot.toObject(FoodInfo.class)).getId());
+                        bundle.putSerializable(FOOD_INFO_S, documentSnapshot.toObject(FoodInfo.class));
                         Navigation.findNavController(MainMenu.this, R.id.nav_host_fragment).navigate(R.id.nav_cal_add_my_food, bundle);
                     }).addOnFailureListener(e -> AlertExistProduct(result.getContents()));
         } else {

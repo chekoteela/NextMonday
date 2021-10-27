@@ -5,6 +5,7 @@ import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.M
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 
 public class FoodInfoFirebase {
@@ -19,6 +20,11 @@ public class FoodInfoFirebase {
     public Task<DocumentSnapshot> findFoodById(String id) {
         return db.collection(MODERATION_FOOD)
                 .document(id)
+                .get();
+    }
+
+    public Task<QuerySnapshot> findAll() {
+        return db.collection("DB Product")
                 .get();
     }
 }

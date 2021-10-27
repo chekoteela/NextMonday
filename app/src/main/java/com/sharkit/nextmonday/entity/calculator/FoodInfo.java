@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday.entity.calculator;
 
+import com.sharkit.nextmonday.entity.transformer.TransformerFood;
+
 import java.io.Serializable;
 
 public class FoodInfo implements Serializable {
@@ -218,5 +220,16 @@ public class FoodInfo implements Serializable {
 
     public void setPotassium(String potassium) {
         this.potassium = potassium;
+    }
+
+
+    public LinkFoodDTO transform(LinkFoodDTO linkFoodDTO){
+        return TransformerFood.transformToFoodInfo(this, linkFoodDTO);
+    }
+    public GeneralDataPFCDTO transform (GeneralDataPFCDTO generalDataPFCDTO){
+        return TransformerFood.transformToGeneralDataPFCDTO(this, generalDataPFCDTO);
+    }
+    public PFC transform(PFC pfc){
+        return TransformerFood.transformToPFC(this, pfc);
     }
 }

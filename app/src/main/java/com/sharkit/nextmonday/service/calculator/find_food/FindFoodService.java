@@ -15,13 +15,23 @@ import android.widget.ExpandableListView;
 import androidx.navigation.Navigation;
 
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.adapter.calculator.FindFoodAdapter;
 import com.sharkit.nextmonday.configuration.else_conf.CaptureAct;
 import com.sharkit.nextmonday.configuration.validation.Configuration;
+import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
+import com.sharkit.nextmonday.entity.calculator.FoodInfo;
+import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
+import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
+import com.sharkit.nextmonday.entity.calculator.PFC;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class FindFoodService implements LayoutService {
@@ -34,7 +44,25 @@ public class FindFoodService implements LayoutService {
 
     @Override
     public LayoutService writeToField() {
+        getListPFC();
         return this;
+    }
+
+    private void getListPFC() {
+        FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
+        ArrayList<PFC> pfcList = new ArrayList<>();
+        ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS = new ArrayList<>();
+        foodInfoFirebase.findAll()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (QueryDocumentSnapshot queryDocumentSnapshot : queryDocumentSnapshots){
+                            pfcList.add(queryDocumentSnapshot.toObject(FoodInfo.class).transform(new PFC()));
+                            generalDataPFCDTOS.add(queryDocumentSnapshot.toObject(FoodInfo.class).transform(new GeneralDataPFCDTO()));
+                        }
+                        listView.setAdapter(new FindFoodAdapter(pfcList, generalDataPFCDTOS, context));
+                    }
+                });
     }
 
     @Override
@@ -66,12 +94,9 @@ public class FindFoodService implements LayoutService {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
         return this;
