@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
@@ -33,7 +34,7 @@ public class AddNewFoodService implements LayoutService {
             water, cellulose, salt, calcium, potassium;
     private ImageView favoriteFood;
     private EditText portions;
-    private Switch weight;
+    private SwitchCompat weight;
     private Spinner mealSpinner;
     private Button save, update;
 
@@ -45,28 +46,28 @@ public class AddNewFoodService implements LayoutService {
     public LayoutService writeToField() {
         name.setText(foodInfo.getName());
         calorie.setText(foodInfo.getCalorie());
-        protein.setText(foodInfo.getProtein());
-        whey_protein.setText(foodInfo.getWheyProtein());
-        soyProtein.setText(foodInfo.getSoyProtein());
-        aggProtein.setText(foodInfo.getAggProtein());
-        caseinProtein.setText(foodInfo.getCaseinProtein());
-        carbohydrate.setText(foodInfo.getCarbohydrate());
-        simpleCarbohydrate.setText(foodInfo.getSimpleCarbohydrate());
-        complexCarbohydrate.setText(foodInfo.getComplexCarbohydrate());
-        fat.setText(foodInfo.getFat());
-        saturatedFat.setText(foodInfo.getSaturatedFat());
-        transFat.setText(foodInfo.getTransFat());
-        omega9.setText(foodInfo.getOmega9());
-        omega6.setText(foodInfo.getOmega6());
-        omega3.setText(foodInfo.getOmega3());
-        ala.setText(foodInfo.getAla());
-        dha.setText(foodInfo.getDha());
-        epa.setText(foodInfo.getEpa());
-        water.setText(foodInfo.getWater());
-        cellulose.setText(foodInfo.getCellulose());
-        salt.setText(foodInfo.getSalt());
-        calcium.setText(foodInfo.getCalcium());
-        potassium.setText(foodInfo.getPotassium());
+        protein.setText(String.valueOf(foodInfo.getProtein()));
+        whey_protein.setText(String.valueOf(foodInfo.getWheyProtein()));
+        soyProtein.setText(String.valueOf(foodInfo.getSoyProtein()));
+        aggProtein.setText(String.valueOf(foodInfo.getAggProtein()));
+        caseinProtein.setText(String.valueOf(foodInfo.getCaseinProtein()));
+        carbohydrate.setText(String.valueOf(foodInfo.getCarbohydrate()));
+        simpleCarbohydrate.setText(String.valueOf(foodInfo.getSimpleCarbohydrate()));
+        complexCarbohydrate.setText(String.valueOf(foodInfo.getComplexCarbohydrate()));
+        fat.setText(String.valueOf(foodInfo.getFat()));
+        saturatedFat.setText(String.valueOf(foodInfo.getSaturatedFat()));
+        transFat.setText(String.valueOf(foodInfo.getTransFat()));
+        omega9.setText(String.valueOf(foodInfo.getOmega9()));
+        omega6.setText(String.valueOf(foodInfo.getOmega6()));
+        omega3.setText(String.valueOf(foodInfo.getOmega3()));
+        ala.setText(String.valueOf(foodInfo.getAla()));
+        dha.setText(String.valueOf(foodInfo.getDha()));
+        epa.setText(String.valueOf(foodInfo.getEpa()));
+        water.setText(String.valueOf(foodInfo.getWater()));
+        cellulose.setText(String.valueOf(foodInfo.getCellulose()));
+        salt.setText(String.valueOf(foodInfo.getSalt()));
+        calcium.setText(String.valueOf(foodInfo.getCalcium()));
+        potassium.setText(String.valueOf(foodInfo.getPotassium()));
         return this;
     }
 

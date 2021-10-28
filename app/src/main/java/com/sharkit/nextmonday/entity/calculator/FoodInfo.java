@@ -9,10 +9,11 @@ public class FoodInfo implements Serializable {
     private float portion;
     private int calorie;
 
-    private String protein, wheyProtein, soyProtein, aggProtein, caseinProtein;
-    private String carbohydrate, simpleCarbohydrate, complexCarbohydrate;
-    private String fat, saturatedFat, transFat, omega3, omega6, omega9, dha, ala, epa;
-    private String cellulose, water, salt, calcium, potassium;
+    private float protein, wheyProtein, soyProtein, aggProtein, caseinProtein;
+    private float carbohydrate, simpleCarbohydrate, complexCarbohydrate;
+    private float fat, saturatedFat, transFat, omega3, omega6, omega9, dha, ala, epa;
+    private float cellulose, water, salt, calcium, potassium;
+
 
     public String getName() {
         return name;
@@ -46,182 +47,181 @@ public class FoodInfo implements Serializable {
         this.calorie = calorie;
     }
 
-    public String getProtein() {
+    public float getProtein() {
         return protein;
     }
 
-    public void setProtein(String protein) {
+    public void setProtein(float protein) {
         this.protein = protein;
     }
 
-    public String getWheyProtein() {
+    public float getWheyProtein() {
         return wheyProtein;
     }
 
-    public void setWheyProtein(String wheyProtein) {
+    public void setWheyProtein(float wheyProtein) {
         this.wheyProtein = wheyProtein;
     }
 
-    public String getSoyProtein() {
+    public float getSoyProtein() {
         return soyProtein;
     }
 
-    public void setSoyProtein(String soyProtein) {
+    public void setSoyProtein(float soyProtein) {
         this.soyProtein = soyProtein;
     }
 
-    public String getAggProtein() {
+    public float getAggProtein() {
         return aggProtein;
     }
 
-    public void setAggProtein(String aggProtein) {
+    public void setAggProtein(float aggProtein) {
         this.aggProtein = aggProtein;
     }
 
-    public String getCaseinProtein() {
+    public float getCaseinProtein() {
         return caseinProtein;
     }
 
-    public void setCaseinProtein(String caseinProtein) {
+    public void setCaseinProtein(float caseinProtein) {
         this.caseinProtein = caseinProtein;
     }
 
-    public String getCarbohydrate() {
+    public float getCarbohydrate() {
         return carbohydrate;
     }
 
-    public void setCarbohydrate(String carbohydrate) {
+    public void setCarbohydrate(float carbohydrate) {
         this.carbohydrate = carbohydrate;
     }
 
-    public String getSimpleCarbohydrate() {
+    public float getSimpleCarbohydrate() {
         return simpleCarbohydrate;
     }
 
-    public void setSimpleCarbohydrate(String simpleCarbohydrate) {
+    public void setSimpleCarbohydrate(float simpleCarbohydrate) {
         this.simpleCarbohydrate = simpleCarbohydrate;
     }
 
-    public String getComplexCarbohydrate() {
+    public float getComplexCarbohydrate() {
         return complexCarbohydrate;
     }
 
-    public void setComplexCarbohydrate(String complexCarbohydrate) {
+    public void setComplexCarbohydrate(float complexCarbohydrate) {
         this.complexCarbohydrate = complexCarbohydrate;
     }
 
-    public String getFat() {
+    public float getFat() {
         return fat;
     }
 
-    public void setFat(String fat) {
+    public void setFat(float fat) {
         this.fat = fat;
     }
 
-    public String getSaturatedFat() {
+    public float getSaturatedFat() {
         return saturatedFat;
     }
 
-    public void setSaturatedFat(String saturatedFat) {
+    public void setSaturatedFat(float saturatedFat) {
         this.saturatedFat = saturatedFat;
     }
 
-    public String getTransFat() {
+    public float getTransFat() {
         return transFat;
     }
 
-    public void setTransFat(String transFat) {
+    public void setTransFat(float transFat) {
         this.transFat = transFat;
     }
 
-    public String getOmega3() {
+    public float getOmega3() {
         return omega3;
     }
 
-    public void setOmega3(String omega3) {
+    public void setOmega3(float omega3) {
         this.omega3 = omega3;
     }
 
-    public String getOmega6() {
+    public float getOmega6() {
         return omega6;
     }
 
-    public void setOmega6(String omega6) {
+    public void setOmega6(float omega6) {
         this.omega6 = omega6;
     }
 
-    public String getOmega9() {
+    public float getOmega9() {
         return omega9;
     }
 
-    public void setOmega9(String omega9) {
+    public void setOmega9(float omega9) {
         this.omega9 = omega9;
     }
 
-    public String getDha() {
+    public float getDha() {
         return dha;
     }
 
-    public void setDha(String dha) {
+    public void setDha(float dha) {
         this.dha = dha;
     }
 
-    public String getAla() {
+    public float getAla() {
         return ala;
     }
 
-    public void setAla(String ala) {
+    public void setAla(float ala) {
         this.ala = ala;
     }
 
-    public String getEpa() {
+    public float getEpa() {
         return epa;
     }
 
-    public void setEpa(String epa) {
+    public void setEpa(float epa) {
         this.epa = epa;
     }
 
-    public String getCellulose() {
+    public float getCellulose() {
         return cellulose;
     }
 
-    public void setCellulose(String cellulose) {
+    public void setCellulose(float cellulose) {
         this.cellulose = cellulose;
     }
 
-    public String getWater() {
+    public float getWater() {
         return water;
     }
 
-    public void setWater(String water) {
+    public void setWater(float water) {
         this.water = water;
     }
 
-    public String getSalt() {
+    public float getSalt() {
         return salt;
     }
 
-    public void setSalt(String salt) {
+    public void setSalt(float salt) {
         this.salt = salt;
     }
 
-    public String getCalcium() {
+    public float getCalcium() {
         return calcium;
     }
 
-    public void setCalcium(String calcium) {
+    public void setCalcium(float calcium) {
         this.calcium = calcium;
     }
 
-    public String getPotassium() {
+    public float getPotassium() {
         return potassium;
     }
 
-    public void setPotassium(String potassium) {
+    public void setPotassium(float potassium) {
         this.potassium = potassium;
     }
-
 
     public LinkFoodDTO transform(LinkFoodDTO linkFoodDTO){
         return TransformerFood.transformToFoodInfo(this, linkFoodDTO);

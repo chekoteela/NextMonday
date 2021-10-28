@@ -156,17 +156,21 @@ public class MainMenu extends AppCompatActivity {
             FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
             foodInfoFirebase.findFoodById(result.getContents())
                     .addOnSuccessListener(documentSnapshot -> {
+                        if (!documentSnapshot.exists()) {
+                            AlertEmptyProduct(result.getContents());
+                            return;
+                        }
                         Bundle bundle = new Bundle();
                         bundle.putSerializable(FOOD_INFO_S, documentSnapshot.toObject(FoodInfo.class));
                         Navigation.findNavController(MainMenu.this, R.id.nav_host_fragment).navigate(R.id.nav_cal_add_my_food, bundle);
-                    }).addOnFailureListener(e -> AlertExistProduct(result.getContents()));
+                    });
         } else {
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
             navController.navigate(R.id.nav_cal_find_food_by_name);
         }
     }
 
-    private void AlertExistProduct(String code) {
+    private void AlertEmptyProduct(String code) {
         android.app.AlertDialog.Builder dialog = new AlertDialog.Builder(MainMenu.this, R.style.CustomAlertDialog);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View existProduct = layoutInflater.inflate(R.layout.calculator_alert_exist, null);
@@ -175,7 +179,7 @@ public class MainMenu extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putString(FRAGMENT_CREATE_FOOD_ID, code);
             bundle.putString(FRAGMENT_CREATE_FOOD, CREATE_NEW_FOOD);
-            navController.navigate(R.id.nav_cal_create_food);
+            navController.navigate(R.id.nav_cal_create_food, bundle);
         });
         dialog.setNegativeButton(CANCEL, (dialog12, which) -> navController.navigate(R.id.nav_cal_find_food_by_name));
         dialog.setOnCancelListener(dialog1 -> navController.navigate(R.id.nav_cal_find_food_by_name));

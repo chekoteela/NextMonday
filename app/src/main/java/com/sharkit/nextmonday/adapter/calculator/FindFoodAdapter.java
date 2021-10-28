@@ -10,6 +10,8 @@ import android.widget.BaseExpandableListAdapter;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
 import com.sharkit.nextmonday.entity.calculator.PFC;
+import com.sharkit.nextmonday.service.calculator.find_food.ChildItemService;
+import com.sharkit.nextmonday.service.calculator.find_food.ParentItemService;
 
 import java.util.ArrayList;
 
@@ -65,6 +67,11 @@ public class FindFoodAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.calculator_food_item_list, null);
         }
+        new ParentItemService(generalDataPFCDTOS.get(groupPosition))
+                .findById(convertView)
+                .writeToField()
+                .activity()
+                .setAdaptive();
 
         return convertView;
     }
@@ -74,6 +81,11 @@ public class FindFoodAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.calculator_child_info, null);
         }
+        new ChildItemService(pfcList.get(groupPosition))
+                .findById(convertView)
+                .writeToField()
+                .activity()
+                .setAdaptive();
 
         return convertView;
     }

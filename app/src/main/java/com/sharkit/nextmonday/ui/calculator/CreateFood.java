@@ -5,7 +5,6 @@ import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_C
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD_ID;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,7 @@ public class CreateFood extends Fragment {
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.calculator_change_food, container, false);
+
         new CreateFoodService(requireArguments().getString(FRAGMENT_CREATE_FOOD),
                 requireArguments().getString(FRAGMENT_CREATE_FOOD_ID),
                 (FoodInfo) requireArguments().getSerializable(FOOD_INFO_S))

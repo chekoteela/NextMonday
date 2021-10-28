@@ -1,6 +1,7 @@
 package com.sharkit.nextmonday.db.firestore.calculator;
 
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.MODERATION_FOOD;
+import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USERS;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,7 +25,7 @@ public class FoodInfoFirebase {
     }
 
     public Task<QuerySnapshot> findAll() {
-        return db.collection("DB Product")
+        return db.collection(MODERATION_FOOD)
                 .get();
     }
 }
