@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.service.calculator.RationService;
+import com.sharkit.nextmonday.service.calculator.ration_service.RationService;
 
 
 public class Ration extends Fragment {

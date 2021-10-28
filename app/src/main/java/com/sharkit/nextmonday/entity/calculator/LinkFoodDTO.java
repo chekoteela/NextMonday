@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 public class LinkFoodDTO {
     private final long id = Calendar.getInstance().getTimeInMillis();
-    private String meal;
+    private String name;
     private String link;
     private boolean visible;
 
@@ -12,12 +12,12 @@ public class LinkFoodDTO {
         return id;
     }
 
-    public String getMeal() {
-        return meal;
+    public String getName() {
+        return name;
     }
 
-    public void setMeal(String meal) {
-        this.meal = meal;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLink() {
