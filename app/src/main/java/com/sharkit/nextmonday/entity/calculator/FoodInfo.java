@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class FoodInfo implements Serializable {
     private String name, id;
-    private float portion;
+    private int portion;
     private int calorie;
 
     private float protein, wheyProtein, soyProtein, aggProtein, caseinProtein;
@@ -31,11 +31,11 @@ public class FoodInfo implements Serializable {
         this.id = id;
     }
 
-    public float getPortion() {
+    public int getPortion() {
         return portion;
     }
 
-    public void setPortion(float portion) {
+    public void setPortion(int portion) {
         this.portion = portion;
     }
 

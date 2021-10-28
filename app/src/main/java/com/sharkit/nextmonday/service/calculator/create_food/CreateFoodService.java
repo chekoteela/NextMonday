@@ -38,7 +38,7 @@ public class CreateFoodService implements LayoutService {
         FoodInfo foodInfo = new FoodInfo();
         foodInfo.setId(id);
         foodInfo.setName(name.getText().toString().trim());
-        foodInfo.setPortion(Float.parseFloat(portion.getText().toString().trim()));
+        foodInfo.setPortion(Integer.parseInt(portion.getText().toString().trim()));
         foodInfo.setCalorie(Integer.parseInt(calorie.getText().toString().trim()));
 
         foodInfo.setProtein(getValue(protein));

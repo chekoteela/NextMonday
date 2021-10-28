@@ -18,6 +18,7 @@ public class TransformerFood {
         generalDataPFCDTO.setProtein(foodInfo.getProtein());
         generalDataPFCDTO.setFat(foodInfo.getFat());
         generalDataPFCDTO.setName(foodInfo.getName());
+        generalDataPFCDTO.setPortion(foodInfo.getPortion());
         return generalDataPFCDTO;
     }
 

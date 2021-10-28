@@ -2,7 +2,7 @@ package com.sharkit.nextmonday.entity.calculator;
 
 public class GeneralDataPFCDTO {
     private String name;
-    private int weight, calorie;
+    private int portion, calorie;
     private float protein, carbohydrate, fat;
 
     public String getName() {
@@ -13,12 +13,12 @@ public class GeneralDataPFCDTO {
         this.name = name;
     }
 
-    public int getWeight() {
-        return weight;
+    public int getPortion() {
+        return portion;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setPortion(int portion) {
+        this.portion = portion;
     }
 
     public int getCalorie() {
