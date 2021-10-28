@@ -6,6 +6,7 @@ import static com.sharkit.nextmonday.configuration.constant.BundleTag.DATE_FOR_M
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FOOD_INFO_S;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD_ID;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_RATION_DATE;
 import static com.sharkit.nextmonday.configuration.constant.BundleVariable.CREATE_NEW_FOOD;
 
 import android.annotation.SuppressLint;
@@ -40,6 +41,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainMenu extends AppCompatActivity {
@@ -58,7 +60,7 @@ public class MainMenu extends AppCompatActivity {
     }
     //new title to share
 
-    @SuppressLint("NonConstantResourceId")
+    @SuppressLint({"NonConstantResourceId", "SimpleDateFormat"})
     public void onMenuItemClick(MenuItem item) {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         switch (item.getItemId()) {
@@ -69,7 +71,9 @@ public class MainMenu extends AppCompatActivity {
                 navController.navigate(R.id.nav_cal_calendar);
                 break;
             case R.id.ration_item:
-                navController.navigate(R.id.nav_cal_ration);
+                Bundle bundle = new Bundle();
+                bundle.putString(FRAGMENT_RATION_DATE, new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTimeInMillis()));
+                navController.navigate(R.id.nav_cal_ration, bundle);
                 break;
             case R.id.main_item:
                 navController.navigate(R.id.nav_calculator_main);

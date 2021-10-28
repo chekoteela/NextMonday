@@ -1,13 +1,24 @@
 package com.sharkit.nextmonday.configuration.constant;
 
+import android.annotation.SuppressLint;
+
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
+@SuppressLint("SimpleDateFormat")
 public class FirebaseCollection {
+    private final static String ID = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+    private static final String DATE = new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTimeInMillis());
     public final static String USERS = "Users";
     public final static String FEEDBACK = "Feedback";
-    public static final String TARGETS = USERS + "/" + Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid() + "/Targets";
+    public static final String TARGETS = USERS + "/" + ID + "/Targets";
     public static final String MODERATION_FOOD = "DB/Food/Moderation";
     public static final String RELEASE_FOO = "DB/Food/Release";
+    public static final String USER_RATION = USERS + "/" + ID + "/Calculator/Meal/Ration";
+    public static final String USER_MEAL = USERS + "/" + ID + "/Calculator/Meal/" + DATE;
+    public static final String USER_LINK_RATIO = USERS + "/" + ID + "/Calculator/Meal/LinkRation";
+    public static final String RATION = "DB/Calculator/Ration";
 }

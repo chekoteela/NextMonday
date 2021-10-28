@@ -13,4 +13,5 @@ public class AlertButton {
     public static final String DELETE_EVERYTHING_SIMILAR = "Удалить все подобные";
     public static final String DELETE_ONE = "Удалить только эту";
     public static final String CREATE_NEW = "Створити новий";
+    public static final String ADD = "Додати";
 }
