@@ -34,17 +34,23 @@
     <color name="dairy_drawable_navigation_view">#24252A</color>
 
     <color name="dairy_drawable_navigation_bottom_bar">#212121</color>
-
+    <!--GLOBAL__STYLE-->
     <color name="dairy__styleTimePicker_multiply">#212121</color>
     <color name="dairy__styleTimePicker_Accent">#4C4D52</color>
     <color name="dairy__styleTimePicker_ControlActivated">#24252A</color>
     <!--CALCULATOR-->
     <color name="calculator__progress_line">#F9883B</color>
     <color name="calculator__weight_linear">#232D37</color>   <!-- calculator_color  -->
+    <color name="calculator__food_item_list_parent">#232D37</color>
+    <color name="calculator__food_item_list">#38424C</color>
+
+    <!--    <color name="food_item_list">#38424C</color>-->
+    <!--    <color name="main_calculator">#232D37</color>-->
 
     <!--    <color name="dairy_navigation_view_gradient_two">#24252A</color>-->
     <!--    <color name="dairy_navigation_view_gradient_one">#4C4D52</color>-->
     <!--    <color name="dairy_navigation_bottom_bar">#212121</color>-->
+    <!--    <color name="color_button">#F9883A</color>-->
 
 
 
@@ -119,7 +125,7 @@
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
-<!--    <color name="food_item_list">#38424C</color>-->
+
 
 <!--    <color name="background_calculator">#0F173C</color>-->
 <!--    <color name="background_layout_calculator">#1C214B</color>-->
@@ -154,7 +160,7 @@
 
 <!--    <color name="colorRipple">#000000</color>-->
 <!--    <color name="tlo">#0A113F</color>-->
-<!--    <color name="main_calculator">#232D37</color>-->
+
 <!--    <color name="btnn">#E61C214B</color>-->
 <!--    <color name="color_button_dialog">#38424C</color>-->
 
