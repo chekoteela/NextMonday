@@ -4,15 +4,14 @@
     android:layout_height="wrap_content">
 
     <TextView
+        style="@style/styleTextView"
         android:id="@+id/text_xml"
         android:layout_width="wrap_content"
         android:layout_gravity="center|top"
-        android:textColor="@color/white"
         android:padding="5dp"
-        android:fontFamily="@font/play"
         android:textSize="18sp"
         android:layout_height="wrap_content"
-        android:text="Продукт отсутствует" />
+        android:text="@string/product_is_out" />
 
 
 </LinearLayout>
