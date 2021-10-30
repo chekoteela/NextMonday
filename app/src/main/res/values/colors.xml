@@ -24,6 +24,7 @@
     <!--DAIRY-->
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
+    <color name="dairy__navigation_view_background">#232D37</color>
 
 
 

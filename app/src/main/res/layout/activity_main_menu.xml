@@ -22,7 +22,7 @@
         android:theme="@style/MainMenu"
         app:itemTextAppearance="@style/MainMenu"
         android:fitsSystemWindows="true"
-        android:background="@color/calculator_color"
+        android:background="@color/dairy__navigation_view_background"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
