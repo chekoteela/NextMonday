@@ -17,6 +17,9 @@
     <color name="global__styleButton_ripple">#8E4C1E</color>
     <color name="global__styleButton_stroke">#CF6319</color>
 
+    <color name="global__styleEditText_hint">#8F8E8E</color>
+    <color name="global__drawable_edittext">#232D37</color>
+
 
     <!--DAIRY-->
     <color name="dairy__calendar_background_accent">#4C4D52</color>
@@ -42,6 +45,7 @@
     <color name="calculator__progress_line">#F9883B</color>
     <color name="calculator__weight_linear">#232D37</color>   <!-- calculator_color  -->
     <color name="calculator__food_item_list_parent">#232D37</color>
+
     <color name="calculator__food_item_list">#38424C</color>
 
     <!--    <color name="calculator_auto_edittext">#192229</color>-->

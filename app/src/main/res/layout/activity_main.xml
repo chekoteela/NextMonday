@@ -47,37 +47,32 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
-            style="@style/EditText_change_food_white"
+            style="@style/styleEditText"
             android:contentDescription="@string/SignEmail2"
             android:id="@+id/sign_pass_xml"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="30dp"
-            android:ems="10"
             android:hint="@string/SignPassword"
             android:inputType="textPassword"
-            android:textAlignment="center"
-            android:textColorHint="@color/hintColor" />
+            android:textAlignment="center" />
 
 
 
         <TextView
-            style="@style/StandartTextView"
+            style="@style/styleTextView"
             android:id="@+id/forgot_pass_xml"
             android:contentDescription="@string/ForgotPass2"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:textColor="@color/color_button_grad"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="30dp"
-            android:clickable="true"
             android:gravity="center"
             android:text="@string/ForgotPass"
-            android:textAlignment="center" />
+            android:focusable="true" />
         
         <Button
             android:id="@+id/sign_in_xml"
@@ -89,18 +84,17 @@
 
 
         <TextView
-            style="@style/StandartTextView"
+            style="@style/styleTextView"
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
-            android:gravity="center_horizontal"
             android:text="@string/DontHaveAcc"
             android:textAlignment="center"/>
         <Button
-            style="@style/button_setting_style"
+            style="@style/styleButton"
             android:id="@+id/create_account_xml"
             android:contentDescription="@string/haveAcc2"
             android:layout_width="match_parent"
@@ -112,12 +106,11 @@
 
 
         <TextView
-            style="@style/StandartTextView"
+            style="@style/styleTextView"
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
             android:text="@string/OrContinue"
             android:textAlignment="center" />
 
@@ -136,13 +129,12 @@
                 android:id="@+id/facebook_xml"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:clickable="true"
-                app:srcCompat="@drawable/facebook" />
+                app:srcCompat="@drawable/facebook"
+                android:focusable="true" />
 
             <ImageView
                 android:id="@+id/google_xml"
                 android:contentDescription="@string/google"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="1dp"
