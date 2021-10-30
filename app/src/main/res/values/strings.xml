@@ -309,6 +309,7 @@
     <string name="agree">Соглашаюсь</string>
     <string name="with_pr_pol">с политикой конфиденциальности</string>
     <string name="add_descr">Добавить описание</string>
+    <string name="desc_logo">logo</string>
 
 
 </resources>

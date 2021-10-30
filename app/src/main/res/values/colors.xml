@@ -26,6 +26,8 @@
     <color name="dairy__calendar_focus_date">#38424C</color>
     <color name="dairy__navigation_view_background">#232D37</color>
 
+    <color name="dairy__text_color_privacy">#F46F12</color>
+
 
 
     <!--DAIRY__drawable-->
@@ -178,7 +180,7 @@
 <!--    <color name="layout_gradient_two">#252837</color>-->
 <!--    <color name="layout_gradient_three">#191A1F</color>-->
 <!--    <color name="color_button">#F9883A</color>-->
-<!--    <color name="color_button_grad">#F46F12</color>-->
+
 <!--    <color name="color_button_ripple">#C86622</color>-->
 <!--    &lt;!&ndash;Градієнт для Layout де знаходиться день в щоденнику&ndash;&gt;-->
 <!--    <color name="dairy_exp_list_den_gradient_one">#4C4D52</color>-->
