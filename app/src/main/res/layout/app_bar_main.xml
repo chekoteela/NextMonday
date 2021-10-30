@@ -21,7 +21,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/btn">
+                >
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar_core"
@@ -31,7 +31,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:background="@color/tool_bar_color"
+                    android:background="@color/dairy__app_bar_main_toolbar"
                     app:popupTheme="@style/Theme.NextMonday.PopupOverlay"
                     app:titleMarginStart="60dp"
                     app:title="@string/next_monday"
@@ -41,7 +41,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@drawable/logo_white"
-                    android:layout_marginLeft="55dp"
+                    android:layout_marginStart="55dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/toolbar_core"
                     app:layout_constraintHorizontal_bias="0.0"

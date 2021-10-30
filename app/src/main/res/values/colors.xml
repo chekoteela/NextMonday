@@ -28,7 +28,7 @@
 
     <color name="dairy__text_color_privacy">#F46F12</color>
 
-
+    <color name="dairy__app_bar_main_toolbar">#131C23</color>
 
     <!--DAIRY__drawable-->
     <color name="dairy__drawable_create_task">#24252A</color>  <!-- gradient color two  -->
@@ -51,6 +51,10 @@
 
     <color name="calculator__food_item_list">#38424C</color>
 
+    <!--    -->
+
+
+
     <!--    <color name="calculator_auto_edittext">#192229</color>-->
     <!--    <color name="layout_gradient_two">#252837</color>-->
     <!--    <color name="food_item_list">#38424C</color>-->
@@ -70,7 +74,7 @@
 
 <!--    <color name="calculator_color">#232D37</color>-->
 <!--    <color name="back">@color/layout_gradient_three</color>-->
-<!--    <color name="btn">#3E2214</color>-->
+
 
 <!--    <color name="back_calendar">#8c807a</color>-->
 <!--    <color name="color_linear">#5c321d</color>-->
@@ -144,7 +148,7 @@
 
 <!--    <color name="bar_prot_water_color_rim">#192229</color>-->
 <!--    <color name="bar_prot_water_color_progress">#F9883A</color>-->
-<!--    <color name="tool_bar_color">#131C23</color>-->
+
 <!--    <color name="exp_list">#0D1217</color>-->
 
 
