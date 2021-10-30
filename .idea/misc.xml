@@ -12,6 +12,9 @@
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable-v24/dairy_header.xml" value="0.16145833333333334" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable-v24/dairy_navigarionview_gradient.xml" value="0.16145833333333334" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable-v24/dairy_navigation_bottom_bar.xml" value="0.16145833333333334" />
+        <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable-v24/gradient_layout.xml" value="0.16145833333333334" />
+        <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable-v24/layout_reset.xml" value="0.16145833333333334" />
+        <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable-v24/popup_background.xml" value="0.16145833333333334" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable/backgroundd.xml" value="0.16145833333333334" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable/button_login.xml" value="0.16145833333333334" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable/calculator__main_dot_black.xml" value="0.22685185185185186" />
@@ -21,10 +24,12 @@
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable/calculator_linear_white.xml" value="0.16145833333333334" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable/calculator_ration_parent.xml" value="0.16145833333333334" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable/food_item_list.xml" value="0.16145833333333334" />
+        <entry key="..\:/project/Android/NextMonday/app/src/main/res/drawable/gradient_layout.xml" value="0.16145833333333334" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/font/play.xml" value="0.23148148148148148" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/layout/activiti_fir.xml" value="0.264" />
-        <entry key="..\:/project/Android/NextMonday/app/src/main/res/layout/activity_main.xml" value="0.24818840579710144" />
+        <entry key="..\:/project/Android/NextMonday/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/layout/calculator_find_my_food.xml" value="0.24818840579710144" />
+        <entry key="..\:/project/Android/NextMonday/app/src/main/res/layout/calculator_food_item_list.xml" value="0.23641304347826086" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/layout/calculator_main.xml" value="0.6" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/layout/calculator_ration.xml" value="0.1" />
         <entry key="..\:/project/Android/NextMonday/app/src/main/res/layout/calculator_weight.xml" value="0.152" />

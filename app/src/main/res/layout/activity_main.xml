@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root"
-    android:background="@color/calculator_auto_edittext"
+    android:background="@color/global__background"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -36,20 +36,15 @@
 
        >
 
-        <EditText
-            style="@style/EditText_change_food_white"
-            android:id="@+id/sign_email_xml"
-            android:contentDescription="@string/name2"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="4dp"
-            android:ems="10"
-            android:hint="@string/SignEmail"
-            android:inputType="textEmailAddress"
-            android:textAlignment="center"
-            android:textColorHint="@color/hintColor" />
+            android:layout_height="wrap_content"
+            app:hintAnimationEnabled="true"
+            app:helperText="@string/email_hint">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
             style="@style/EditText_change_food_white"
@@ -87,11 +82,8 @@
         <Button
             android:id="@+id/sign_in_xml"
             android:contentDescription="@string/SignIn2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:layout_marginHorizontal=""
-            style="@style/button_setting_style"
+            style="@style/styleButton"
             android:text="@string/SignIn" />
 
 
