@@ -15,15 +15,20 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.adapter.calculator.RationAdapter;
 import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
+import com.sharkit.nextmonday.entity.calculator.FoodInfo;
+import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
+import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
 import com.sharkit.nextmonday.entity.calculator.Meal;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class RationService implements LayoutService {
     private final String dateRation;
@@ -31,6 +36,7 @@ public class RationService implements LayoutService {
     private TextView date;
     private ExpandableListView listView;
     private Button createMeal;
+    private ArrayList<ArrayList<GeneralDataPFCDTO>> linkFoodDTOs;
 
     public RationService(String dateRation) {
         this.dateRation = dateRation;
@@ -47,16 +53,26 @@ public class RationService implements LayoutService {
         FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
         foodInfoFirebase.getMealList()
                 .addOnSuccessListener(querySnapshots -> {
-                    for (QuerySnapshot querySnapshot : querySnapshots){
-                        if (!querySnapshot.isEmpty()){
-                            ArrayList<Meal> meals = new ArrayList<>();
-                            for (QueryDocumentSnapshot queryDocumentSnapshot : querySnapshot){
-                                meals.add(queryDocumentSnapshot.toObject(Meal.class));
-                            }
-                            listView.setAdapter(new RationAdapter(meals, context));
-                            return;
-                        }
+                    linkFoodDTOs = new ArrayList<>();
+
+                    for (QueryDocumentSnapshot queryDocumentSnapshot : querySnapshots) {
+                        ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS = new ArrayList<>();
+                        foodInfoFirebase.getCurrentMeal(queryDocumentSnapshot.toObject(Meal.class).getName())
+                                .addOnSuccessListener(queryDocumentSnapshots -> {
+                                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                        foodInfoFirebase.findFoodById(documentSnapshot.toObject(LinkFoodDTO.class).getLink())
+                                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                        generalDataPFCDTOS.add(Objects.requireNonNull(documentSnapshot.toObject(FoodInfo.class)).transform(new GeneralDataPFCDTO()));
+                                                    }
+                                                });
+                                    }
+                                });
+                        linkFoodDTOs.add(generalDataPFCDTOS);
                     }
+                    listView.setAdapter(new RationAdapter(linkFoodDTOs, context));
+
                 });
     }
 

@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.adapter.calculator;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,38 +8,41 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.entity.calculator.Meal;
+import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
+import com.sharkit.nextmonday.service.calculator.ration_service.ChildItemService;
 
 import java.util.ArrayList;
 
+@SuppressLint("InflateParams")
 public class RationAdapter extends BaseExpandableListAdapter {
 
-    private ArrayList<Meal> meals;
-    private Context context;
+    private final ArrayList<ArrayList<GeneralDataPFCDTO>> dataDTOs;
+    private final Context context;
 
-    public RationAdapter(ArrayList<Meal> meals, Context context) {
-        this.meals = meals;
+    public RationAdapter(ArrayList<ArrayList<GeneralDataPFCDTO>> dataDTOs, Context context) {
+        this.dataDTOs = dataDTOs;
         this.context = context;
     }
 
+
     @Override
     public int getGroupCount() {
-        return meals.size();
+        return dataDTOs.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return 0;
+        return dataDTOs.get(groupPosition).size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return meals.get(groupPosition);
+        return dataDTOs.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        return null;
+        return dataDTOs.get(groupPosition).get(childPosition);
     }
 
     @Override
@@ -62,16 +66,20 @@ public class RationAdapter extends BaseExpandableListAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.calculator_food_parent_list, null);
         }
 
-
         return convertView;
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if (convertView == null){
-            convertView = LayoutInflater.from(context).inflate(R.layout.calculator_child_info, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.calculator_food_item_list, null);
         }
 
+        new ChildItemService(dataDTOs.get(groupPosition).get(childPosition))
+                .findById(convertView)
+                .writeToField()
+                .activity()
+                .setAdaptive();
         return convertView;
     }
 

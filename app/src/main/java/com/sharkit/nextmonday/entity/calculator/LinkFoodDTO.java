@@ -4,20 +4,28 @@ import java.util.Calendar;
 
 public class LinkFoodDTO {
     private final long id = Calendar.getInstance().getTimeInMillis();
-    private String name;
-    private String link;
+    private String link, meal;
     private boolean visible;
+    private float portion;
+
+    public String getMeal() {
+        return meal;
+    }
+
+    public void setMeal(String meal) {
+        this.meal = meal;
+    }
+
+    public float getPortion() {
+        return portion;
+    }
+
+    public void setPortion(float portion) {
+        this.portion = portion;
+    }
 
     public long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getLink() {

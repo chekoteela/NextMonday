@@ -1,8 +1,10 @@
 package com.sharkit.nextmonday.service.calculator.add_my_food;
 
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FOOD_INFO_S;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD_ID;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_RATION_DATE;
 import static com.sharkit.nextmonday.configuration.constant.BundleVariable.UPDATE_FOOD;
 
 import android.annotation.SuppressLint;
@@ -10,19 +12,27 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.navigation.Navigation;
 
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
+import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
+import com.sharkit.nextmonday.entity.calculator.Meal;
 import com.sharkit.nextmonday.service.builder.LayoutService;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 @SuppressLint("UseSwitchCompatOrMaterialCode")
 public class AddNewFoodService implements LayoutService {
@@ -44,8 +54,9 @@ public class AddNewFoodService implements LayoutService {
 
     @Override
     public LayoutService writeToField() {
+        setSpinnerAdapter();
         name.setText(foodInfo.getName());
-        calorie.setText(foodInfo.getCalorie());
+        calorie.setText(String.valueOf(foodInfo.getCalorie()));
         protein.setText(String.valueOf(foodInfo.getProtein()));
         whey_protein.setText(String.valueOf(foodInfo.getWheyProtein()));
         soyProtein.setText(String.valueOf(foodInfo.getSoyProtein()));
@@ -71,22 +82,51 @@ public class AddNewFoodService implements LayoutService {
         return this;
     }
 
+    private void setSpinnerAdapter() {
+        new FoodInfoFirebase()
+                .getMealList()
+                .addOnSuccessListener(querySnapshots -> {
+                    ArrayList<String> meals = new ArrayList<>();
+                    for (QueryDocumentSnapshot queryDocumentSnapshot : querySnapshots) {
+                        meals.add(queryDocumentSnapshot.toObject(Meal.class).getName());
+                    }
+                    mealSpinner.setAdapter(new ArrayAdapter<>(context, R.layout.spinner_item, meals));
+                });
+    }
+
     @Override
     public LayoutService setAdaptive() {
         return this;
     }
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     public LayoutService activity() {
-        update.setOnClickListener(new View.OnClickListener() {
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(FOOD_INFO_S, foodInfo);
-                bundle.putString(FRAGMENT_CREATE_FOOD_ID, foodInfo.getId());
-                bundle.putString(FRAGMENT_CREATE_FOOD, UPDATE_FOOD);
-                Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_create_food, bundle);
+            public void onClick(View view) {
+                LinkFoodDTO linkFoodDTO = new LinkFoodDTO();
+                linkFoodDTO.setVisible(true);
+                linkFoodDTO.setLink(foodInfo.getId());
+                linkFoodDTO.setPortion(Float.parseFloat(portions.getText().toString()));
+                linkFoodDTO.setMeal(mealSpinner.getSelectedItem().toString());
+
+                new FoodInfoFirebase()
+                        .addNewMyFood(linkFoodDTO)
+                        .addOnSuccessListener(unused -> {
+                            Bundle bundle = new Bundle();
+                            bundle.putString(FRAGMENT_RATION_DATE, new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
+                            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_ration, bundle);
+                        });
             }
+        });
+
+        update.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(FOOD_INFO_S, foodInfo);
+            bundle.putString(FRAGMENT_CREATE_FOOD_ID, foodInfo.getId());
+            bundle.putString(FRAGMENT_CREATE_FOOD, UPDATE_FOOD);
+            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_create_food, bundle);
         });
         return this;
     }
@@ -94,7 +134,6 @@ public class AddNewFoodService implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
-
         name = root.findViewById(R.id.name_xml);
         meal = root.findViewById(R.id.meal_xml);
         calorie = root.findViewById(R.id.calorie_xml);
@@ -126,7 +165,7 @@ public class AddNewFoodService implements LayoutService {
         favoriteFood = root.findViewById(R.id.favorite_xml);
         portions = root.findViewById(R.id.number_xml);
         weight = root.findViewById(R.id.weight_xml);
-        mealSpinner = root.findViewById(R.id.spinner_xml);
+        mealSpinner = root.findViewById(R.id.meal_spinner_xml);
         save = root.findViewById(R.id.save_xml);
         return this;
     }

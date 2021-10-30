@@ -3,8 +3,6 @@ package com.sharkit.nextmonday.entity.transformer;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
 import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
-import com.sharkit.nextmonday.entity.calculator.Meal;
-import com.sharkit.nextmonday.entity.calculator.MealTodayDTO;
 import com.sharkit.nextmonday.entity.calculator.PFC;
 
 public class TransformerFood {
@@ -15,6 +13,7 @@ public class TransformerFood {
     }
 
     public static GeneralDataPFCDTO transformToGeneralDataPFCDTO(FoodInfo foodInfo, GeneralDataPFCDTO generalDataPFCDTO) {
+        generalDataPFCDTO.setId(foodInfo.getId());
         generalDataPFCDTO.setCalorie(foodInfo.getCalorie());
         generalDataPFCDTO.setCarbohydrate(foodInfo.getCarbohydrate());
         generalDataPFCDTO.setProtein(foodInfo.getProtein());
@@ -51,8 +50,4 @@ public class TransformerFood {
         return pfc;
     }
 
-    public static MealTodayDTO transformToMealTodayDTO(Meal meal, MealTodayDTO mealTodayDTO) {
-        mealTodayDTO.setName(meal.getName());
-        return mealTodayDTO;
-    }
 }

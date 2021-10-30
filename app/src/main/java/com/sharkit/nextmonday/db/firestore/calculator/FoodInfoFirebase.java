@@ -2,21 +2,21 @@ package com.sharkit.nextmonday.db.firestore.calculator;
 
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.MODERATION_FOOD;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.RATION;
+import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USER_LINK_RATION;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USER_MEAL;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USER_RATION;
+import static com.sharkit.nextmonday.configuration.constant.firebase_entity.MealTodayEntity.MEAL;
 
 import android.annotation.SuppressLint;
 
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
+import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
 import com.sharkit.nextmonday.entity.calculator.Meal;
-
-import java.util.List;
 
 public class FoodInfoFirebase {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -48,7 +48,7 @@ public class FoodInfoFirebase {
         db.collection(RATION)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    for (QueryDocumentSnapshot queryDocumentSnapshot : queryDocumentSnapshots){
+                    for (QueryDocumentSnapshot queryDocumentSnapshot : queryDocumentSnapshots) {
                         createMeal(queryDocumentSnapshot.toObject(Meal.class));
                     }
                     createTodayMeal();
@@ -62,7 +62,7 @@ public class FoodInfoFirebase {
                         for (QueryDocumentSnapshot queryDocumentSnapshot : queryDocumentSnapshots) {
                             createTodayMeal(queryDocumentSnapshot.toObject(Meal.class));
                         }
-                    }else {
+                    } else {
                         createUserRation();
                     }
                 });
@@ -75,6 +75,12 @@ public class FoodInfoFirebase {
                 .set(meal);
     }
 
+    public Task<Void> addNewMyFood(LinkFoodDTO linkFoodDTO) {
+        return db.collection(USER_LINK_RATION)
+                .document()
+                .set(linkFoodDTO);
+    }
+
     private Task<QuerySnapshot> getUserRation() {
         return db.collection(USER_RATION)
                 .get();
@@ -85,15 +91,19 @@ public class FoodInfoFirebase {
         return db.collection(USER_MEAL)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (queryDocumentSnapshots.isEmpty()){
+                    if (queryDocumentSnapshots.isEmpty()) {
                         createTodayMeal();
                     }
                 });
     }
 
-    public Task<List<QuerySnapshot>> getMealList() {
-        return Tasks.whenAllSuccess(getTodayMeal(),
-                getUserRation(),
-                db.collection(RATION).get());
+    public Task<QuerySnapshot> getMealList() {
+        return getTodayMeal();
+    }
+
+    public Task<QuerySnapshot> getCurrentMeal(String meal) {
+        return db.collection(USER_LINK_RATION)
+                .whereEqualTo(MEAL, meal)
+                .get();
     }
 }

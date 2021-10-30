@@ -17,8 +17,8 @@ public class FirebaseCollection {
     public static final String TARGETS = USERS + "/" + ID + "/Targets";
     public static final String MODERATION_FOOD = "DB/Food/Moderation";
     public static final String RELEASE_FOO = "DB/Food/Release";
-    public static final String USER_RATION = USERS + "/" + ID + "/Calculator/Meal/Ration";
-    public static final String USER_MEAL = USERS + "/" + ID + "/Calculator/Meal/" + DATE;
-    public static final String USER_LINK_RATIO = USERS + "/" + ID + "/Calculator/Meal/LinkRation";
+    public static final String USER_RATION = USERS + "/" + ID + "/Settings/Meal/Ration";
+    public static final String USER_MEAL = USERS + "/" + ID + "/Settings/Meal/" + DATE;
+    public static final String USER_LINK_RATION = USERS + "/" + ID + "/Calculator/Meal/" + DATE;
     public static final String RATION = "DB/Calculator/Ration";
 }
