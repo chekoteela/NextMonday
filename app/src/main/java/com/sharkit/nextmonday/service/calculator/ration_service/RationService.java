@@ -22,6 +22,7 @@ import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.db.sqlite.calculator.product.ProductPFCDataService;
 import com.sharkit.nextmonday.db.sqlite.calculator.ration_list.RationLinkDataService;
 import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
+import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
 import com.sharkit.nextmonday.entity.calculator.Meal;
 import com.sharkit.nextmonday.entity.calculator.RationNutrition;
 import com.sharkit.nextmonday.service.builder.LayoutService;
@@ -61,12 +62,12 @@ public class RationService implements LayoutService {
                         ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS = new ArrayList<>();
                         RationNutrition nutrition = new RationNutrition();
                         nutrition.setNameMeal(queryDocumentSnapshot.toObject(Meal.class).getName());
-                        ArrayList<String> links = new RationLinkDataService(context)
-                                .findByMealAndDate(queryDocumentSnapshot.toObject(Meal.class).getName(), dateRation);
+                        ArrayList<LinkFoodDTO> links = new RationLinkDataService(context)
+                                .findAllLinkByMealAndDate(queryDocumentSnapshot.toObject(Meal.class).getName(), dateRation);
 
                         for (int i = 0; i < links.size(); i++) {
-                           generalDataPFCDTOS.add(new ProductPFCDataService(context)
-                                   .findByID(links.get(i)).transform(new GeneralDataPFCDTO()));
+                            generalDataPFCDTOS.add(new ProductPFCDataService(context)
+                                    .findByID(links.get(i).getLink()).transform(new GeneralDataPFCDTO()));
                         }
                         rationNutrition.add(getAllNutrition(generalDataPFCDTOS, nutrition));
                         linkFoodDTOs.add(generalDataPFCDTOS);

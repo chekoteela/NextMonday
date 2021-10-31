@@ -1,7 +1,5 @@
 package com.sharkit.nextmonday.service.calculator.ration_service;
 
-import android.util.Log;
-
 import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
 
 import java.util.ArrayList;

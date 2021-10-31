@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 
 import com.progress.progressview.ProgressView;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.entity.calculator.PFC;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
 public class CalculatorMainService implements LayoutService {
@@ -21,9 +22,24 @@ public class CalculatorMainService implements LayoutService {
             drinkWater, percentWater, allDrinkWater, allWater;
     private ProgressView calorieProgress, fatProgress, carbohydrateProgress, proteinProgress, waterProgress;
     private ImageView plus;
+    private final PFC allNutrition;
+
+    public CalculatorMainService(PFC allNutrition) {
+        this.allNutrition = allNutrition;
+    }
 
     @Override
     public LayoutService writeToField() {
+        eatCalorie.setText(String.valueOf(allNutrition.getCalorie()));
+        allEatCalorie.setText(String.valueOf(allNutrition.getCalorie()));
+        eatProtein.setText(String.valueOf(allNutrition.getProtein()));
+        allEatProtein.setText(String.valueOf(allNutrition.getProtein()));
+        eatCarbohydrate.setText(String.valueOf(allNutrition.getCarbohydrate()));
+        allEatCarbohydrate.setText(String.valueOf(allNutrition.getCarbohydrate()));
+        eatFat.setText(String.valueOf(allNutrition.getFat()));
+        allEatFat.setText(String.valueOf(allNutrition.getFat()));
+        drinkWater.setText(String.valueOf(allNutrition.getWater()));
+        allDrinkWater.setText(String.valueOf(allNutrition.getWater()));
         return this;
     }
 

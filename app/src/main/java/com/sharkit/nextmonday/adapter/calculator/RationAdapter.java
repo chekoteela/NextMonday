@@ -2,7 +2,6 @@ package com.sharkit.nextmonday.adapter.calculator;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,6 @@ public class RationAdapter extends BaseExpandableListAdapter {
         this.context = context;
         this.rationNutrition = rationNutrition;
     }
-
 
     @Override
     public int getGroupCount() {
@@ -67,7 +65,7 @@ public class RationAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        if (convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.calculator_food_parent_list, null);
         }
 
@@ -82,7 +80,7 @@ public class RationAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        if (convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.calculator_food_item_list, null);
         }
 

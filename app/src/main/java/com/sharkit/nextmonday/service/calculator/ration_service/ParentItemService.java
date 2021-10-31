@@ -10,9 +10,10 @@ import com.sharkit.nextmonday.service.builder.LayoutService;
 
 public class ParentItemService implements LayoutService {
 
-    public ParentItemService(RationNutrition rationNutrition){
+    public ParentItemService(RationNutrition rationNutrition) {
         this.rationNutrition = rationNutrition;
     }
+
     private final RationNutrition rationNutrition;
     private TextView name, protein, carbohydrate, fat, calorie;
     private ImageView addFood;
@@ -41,7 +42,7 @@ public class ParentItemService implements LayoutService {
     public LayoutService findById(View root) {
         addFood = root.findViewById(R.id.create_my_food_xml);
         name = root.findViewById(R.id.meal_name_xml);
-        protein =root.findViewById(R.id.all_protein_xml);
+        protein = root.findViewById(R.id.all_protein_xml);
         carbohydrate = root.findViewById(R.id.all_carbohydrate_xml);
         fat = root.findViewById(R.id.all_fat_xml);
         calorie = root.findViewById(R.id.all_calorie_xml);

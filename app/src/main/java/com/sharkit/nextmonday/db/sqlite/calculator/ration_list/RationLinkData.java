@@ -42,7 +42,7 @@ public class RationLinkData extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE + "( " + COLUMN_ID + " TEXT," + COLUMN_LINK + " TEXT , " + COLUMN_NAME_MEAL + " BOOL," +
-                "" + COLUMN_VISIBLE + " BOOL, " + COLUMN_PORTION + " INTEGER," +
+                "" + COLUMN_VISIBLE + " BOOL, " + COLUMN_PORTION + " REAL," +
                 "" + COLUMN_LINK_ID + " INTEGER UNIQUE, " + COLUMN_DATE + " TEXT)");
     }
 
@@ -60,14 +60,34 @@ public class RationLinkData extends SQLiteOpenHelper {
                 "','" + linkFoodDTO.getId() + "','" + new SimpleDateFormat(SHOW_DATE_FORMAT).format(linkFoodDTO.getId()) + "');");
     }
 
-    public ArrayList<String> findByMealAndDate(String meal, String date) {
+    public ArrayList<LinkFoodDTO> findByMealAndDate(String meal, String date) {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +
                 "' AND " + COLUMN_NAME_MEAL + " = '" + meal + "' AND " + COLUMN_VISIBLE + " = '" + true +
                 "' AND " + COLUMN_DATE + " = '" + date + "'", null);
-        ArrayList<String> links = new ArrayList<>();
+        ArrayList<LinkFoodDTO> links = new ArrayList<>();
         while (cursor.moveToNext()){
-            links.add(cursor.getString(1));
+            links.add(getResult(cursor));
         }
         return links;
+    }
+
+    public ArrayList<LinkFoodDTO> findAllByDate(String date) {
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +
+                "' AND " + COLUMN_VISIBLE + " = '" + true +
+                "' AND " + COLUMN_DATE + " = '" + date + "'", null);
+        ArrayList<LinkFoodDTO> linkFoodDTOS = new ArrayList<>();
+        while (cursor.moveToNext()){
+            linkFoodDTOS.add(getResult(cursor));
+        }
+        return linkFoodDTOS;
+    }
+
+    private LinkFoodDTO getResult(Cursor cursor){
+        LinkFoodDTO linkFoodDTO = new LinkFoodDTO();
+        linkFoodDTO.setLink(cursor.getString(1));
+        linkFoodDTO.setMeal(cursor.getString(2));
+        linkFoodDTO.setVisible(Boolean.parseBoolean(cursor.getString(3)));
+        linkFoodDTO.setPortion(cursor.getFloat(4));
+        return linkFoodDTO;
     }
 }
