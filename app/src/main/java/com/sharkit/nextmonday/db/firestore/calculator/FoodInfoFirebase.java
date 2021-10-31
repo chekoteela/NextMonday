@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.db.firestore.calculator;
 
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.MODERATION_FOOD;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.RATION;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USER_LINK_RATION;
@@ -17,6 +18,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
 import com.sharkit.nextmonday.entity.calculator.Meal;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class FoodInfoFirebase {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -70,7 +74,7 @@ public class FoodInfoFirebase {
 
     @SuppressLint("SimpleDateFormat")
     private void createTodayMeal(Meal meal) {
-        db.collection(USER_MEAL)
+        db.collection(USER_MEAL + new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()))
                 .document(meal.getName())
                 .set(meal);
     }
@@ -87,8 +91,8 @@ public class FoodInfoFirebase {
     }
 
     @SuppressLint("SimpleDateFormat")
-    private Task<QuerySnapshot> getTodayMeal() {
-        return db.collection(USER_MEAL)
+    private Task<QuerySnapshot> getTodayMeal(String date) {
+        return db.collection(USER_MEAL + date)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (queryDocumentSnapshots.isEmpty()) {
@@ -97,8 +101,8 @@ public class FoodInfoFirebase {
                 });
     }
 
-    public Task<QuerySnapshot> getMealList() {
-        return getTodayMeal();
+    public Task<QuerySnapshot> getMealList(String date) {
+        return getTodayMeal(date);
     }
 
     public Task<QuerySnapshot> getCurrentMeal(String meal) {

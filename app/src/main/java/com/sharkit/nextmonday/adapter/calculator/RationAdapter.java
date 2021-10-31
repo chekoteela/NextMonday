@@ -2,6 +2,7 @@ package com.sharkit.nextmonday.adapter.calculator;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,9 @@ import android.widget.BaseExpandableListAdapter;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
+import com.sharkit.nextmonday.entity.calculator.RationNutrition;
 import com.sharkit.nextmonday.service.calculator.ration_service.ChildItemService;
+import com.sharkit.nextmonday.service.calculator.ration_service.ParentItemService;
 
 import java.util.ArrayList;
 
@@ -17,11 +20,13 @@ import java.util.ArrayList;
 public class RationAdapter extends BaseExpandableListAdapter {
 
     private final ArrayList<ArrayList<GeneralDataPFCDTO>> dataDTOs;
+    private final ArrayList<RationNutrition> rationNutrition;
     private final Context context;
 
-    public RationAdapter(ArrayList<ArrayList<GeneralDataPFCDTO>> dataDTOs, Context context) {
+    public RationAdapter(ArrayList<RationNutrition> rationNutrition, ArrayList<ArrayList<GeneralDataPFCDTO>> dataDTOs, Context context) {
         this.dataDTOs = dataDTOs;
         this.context = context;
+        this.rationNutrition = rationNutrition;
     }
 
 
@@ -65,6 +70,12 @@ public class RationAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.calculator_food_parent_list, null);
         }
+
+        new ParentItemService(rationNutrition.get(groupPosition))
+                .findById(convertView)
+                .writeToField()
+                .setAdaptive()
+                .activity();
 
         return convertView;
     }

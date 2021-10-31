@@ -25,6 +25,7 @@ import androidx.navigation.Navigation;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
+import com.sharkit.nextmonday.db.sqlite.calculator.ration_list.RationLinkDataService;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
 import com.sharkit.nextmonday.entity.calculator.Meal;
@@ -82,9 +83,10 @@ public class AddNewFoodService implements LayoutService {
         return this;
     }
 
+    @SuppressLint("SimpleDateFormat")
     private void setSpinnerAdapter() {
         new FoodInfoFirebase()
-                .getMealList()
+                .getMealList(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()))
                 .addOnSuccessListener(querySnapshots -> {
                     ArrayList<String> meals = new ArrayList<>();
                     for (QueryDocumentSnapshot queryDocumentSnapshot : querySnapshots) {
@@ -110,7 +112,7 @@ public class AddNewFoodService implements LayoutService {
                 linkFoodDTO.setLink(foodInfo.getId());
                 linkFoodDTO.setPortion(Float.parseFloat(portions.getText().toString()));
                 linkFoodDTO.setMeal(mealSpinner.getSelectedItem().toString());
-
+                new RationLinkDataService(context).create(linkFoodDTO);
                 new FoodInfoFirebase()
                         .addNewMyFood(linkFoodDTO)
                         .addOnSuccessListener(unused -> {

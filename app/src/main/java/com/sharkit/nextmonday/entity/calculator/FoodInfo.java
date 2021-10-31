@@ -232,4 +232,5 @@ public class FoodInfo implements Serializable {
     public PFC transform(PFC pfc){
         return TransformerFood.transformToPFC(this, pfc);
     }
+
 }

@@ -15,20 +15,18 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.adapter.calculator.RationAdapter;
 import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
-import com.sharkit.nextmonday.entity.calculator.FoodInfo;
+import com.sharkit.nextmonday.db.sqlite.calculator.product.ProductPFCDataService;
+import com.sharkit.nextmonday.db.sqlite.calculator.ration_list.RationLinkDataService;
 import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
-import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
 import com.sharkit.nextmonday.entity.calculator.Meal;
+import com.sharkit.nextmonday.entity.calculator.RationNutrition;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class RationService implements LayoutService {
     private final String dateRation;
@@ -37,6 +35,7 @@ public class RationService implements LayoutService {
     private ExpandableListView listView;
     private Button createMeal;
     private ArrayList<ArrayList<GeneralDataPFCDTO>> linkFoodDTOs;
+    private ArrayList<RationNutrition> rationNutrition;
 
     public RationService(String dateRation) {
         this.dateRation = dateRation;
@@ -50,30 +49,39 @@ public class RationService implements LayoutService {
     }
 
     private void getRation() {
+
         FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
-        foodInfoFirebase.getMealList()
+        foodInfoFirebase.getMealList(dateRation)
                 .addOnSuccessListener(querySnapshots -> {
                     linkFoodDTOs = new ArrayList<>();
+                    rationNutrition = new ArrayList<>();
 
                     for (QueryDocumentSnapshot queryDocumentSnapshot : querySnapshots) {
+
                         ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS = new ArrayList<>();
-                        foodInfoFirebase.getCurrentMeal(queryDocumentSnapshot.toObject(Meal.class).getName())
-                                .addOnSuccessListener(queryDocumentSnapshots -> {
-                                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                                        foodInfoFirebase.findFoodById(documentSnapshot.toObject(LinkFoodDTO.class).getLink())
-                                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                                        generalDataPFCDTOS.add(Objects.requireNonNull(documentSnapshot.toObject(FoodInfo.class)).transform(new GeneralDataPFCDTO()));
-                                                    }
-                                                });
-                                    }
-                                });
+                        RationNutrition nutrition = new RationNutrition();
+                        nutrition.setNameMeal(queryDocumentSnapshot.toObject(Meal.class).getName());
+                        ArrayList<String> links = new RationLinkDataService(context)
+                                .findByMealAndDate(queryDocumentSnapshot.toObject(Meal.class).getName(), dateRation);
+
+                        for (int i = 0; i < links.size(); i++) {
+                           generalDataPFCDTOS.add(new ProductPFCDataService(context)
+                                   .findByID(links.get(i)).transform(new GeneralDataPFCDTO()));
+                        }
+                        rationNutrition.add(getAllNutrition(generalDataPFCDTOS, nutrition));
                         linkFoodDTOs.add(generalDataPFCDTOS);
                     }
-                    listView.setAdapter(new RationAdapter(linkFoodDTOs, context));
-
+                    listView.setAdapter(new RationAdapter(rationNutrition, linkFoodDTOs, context));
                 });
+    }
+
+    private RationNutrition getAllNutrition(ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS, RationNutrition nutrition) {
+        NutritionService nutritionService = new NutritionService(generalDataPFCDTOS);
+        nutrition.setCalorie(nutritionService.getCalorie());
+        nutrition.setCarbohydrate(nutritionService.getCarbohydrate());
+        nutrition.setFat(nutritionService.getFat());
+        nutrition.setProtein(nutritionService.getProtein());
+        return nutrition;
     }
 
     @Override
