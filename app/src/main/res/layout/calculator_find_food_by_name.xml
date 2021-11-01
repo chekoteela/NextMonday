@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_auto_edittext"
+    android:background="@color/global__background"
     android:orientation="vertical"
     tools:context=".ui.calculator.FindFood">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_xml"
-        android:background="@color/calculator_color"
+        android:background="@color/calculator__find_food_Tab_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="@color/bar_calor_color_progress"
+        app:tabIndicatorColor="@color/calculator__find_food_name_Tab_layout"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/white">
 
@@ -47,7 +47,7 @@
 
         <EditText
             android:id="@+id/find_food_xml"
-            style="@style/EditText_change_food_white"
+            style="@style/styleEditText"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginHorizontal="10dp"
@@ -67,13 +67,11 @@
 
     <Button
         android:id="@+id/create_new_food_xml"
-        style="@style/button_setting_style"
+        style="@style/styleButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/adView_xml"
         android:layout_centerHorizontal="true"
-        android:layout_marginHorizontal="60dp"
-        android:layout_marginVertical="10dp"
         android:contentDescription="@string/descr_add_food"
         android:padding="10dp"
         android:text="@string/add_food" />
