@@ -206,10 +206,10 @@
                 style="@style/button_setting_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/descr_calculate"
+                android:contentDescription="@string/desc_calculate"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp"
-                android:text="@string/rozrahunok" />
+                android:text="@string/calculation" />
 
 
             <LinearLayout

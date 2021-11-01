@@ -135,9 +135,9 @@
     <string name="weight_plus">Набор веса</string>
     <string name="weight_stab">Удержание веса</string>
     <string name="weight_def">Сброс веса</string>
-    <string name="F_harryson_benedict">Формула Харрисона-Бенедикта</string>
+    <string name="F_garrison_benedict">Формула Харрисона-Бенедикта</string>
     <string name="F_mifflin_san_geor">Формула Миффлина - Сан-Жеора</string>
-    <string name="rozrahunok">Рассчитать</string>
+    <string name="calculation">Рассчитать</string>
     <string name="Sum">Итого:</string>
     <string name="check_F">Формула подсчета калорий</string>
 
@@ -263,13 +263,13 @@
     <string name="descr_age">Age</string>
     <string name="descr_desired_weight">Desired weight</string>
     <string name="descr_height">Height</string>
-    <string name="descr_male">Male</string>
-    <string name="descr_female">Female</string>
-    <string name="descr_harris_benedict_equation">Harris-Benedict equation</string>
-    <string name="descr_mifflin_st_jeor_formula">Mifflin-St Jeor formula</string>
+    <string name="desc_male">Male</string>
+    <string name="desc_female">Female</string>
+    <string name="desc_harris_benedict_equation">Harris-Benedict equation</string>
+    <string name="desc_mifflin_st_jeor_formula">Mifflin-St Jeor formula</string>
     <string name="descr_your_aim">Your aim</string>
     <string name="descr_choose_activity">Select an activity</string>
-    <string name="descr_calculate">Calculate</string>
+    <string name="desc_calculate">Calculate</string>
     <string name="descr_general_settings">General settings</string>
     <string name="descr_profile_settings">Profile settings</string>
     <string name="descr_diary_settings">Diary settings</string>
@@ -315,6 +315,7 @@
     <string name="auto_tuning">Автонастройка</string>
     <string name="manual_setting">Ручная настройка</string>
     <string name="how_much_age">лет</string>
+    <string name="question_mark">\?</string>
 
 
 </resources>

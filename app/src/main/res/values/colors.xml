@@ -24,6 +24,7 @@
     <!--DAIRY-->
     <color name="dairy__calendar_background_accent">#4C4D52</color>
     <color name="dairy__calendar_focus_date">#38424C</color>
+
     <color name="dairy__navigation_view_background">#232D37</color>
 
     <color name="dairy__text_color_privacy">#F46F12</color>
@@ -32,13 +33,13 @@
 
     <!--DAIRY__drawable-->
     <color name="dairy__drawable_create_task">#24252A</color>  <!-- gradient color two  -->
+
     <color name="dairy__drawable_expandable_list_view">#192229</color>
     <color name="dairy__drawable_expandable_list_task">#232D37</color>
 
     <color name="dairy_drawable_header">#24252A</color>
 
     <color name="dairy_drawable_navigation_view">#24252A</color>
-
     <color name="dairy_drawable_navigation_bottom_bar">#212121</color>
     <!--GLOBAL__STYLE-->
     <color name="dairy__styleTimePicker_multiply">#212121</color>
@@ -47,11 +48,12 @@
     <!--CALCULATOR-->
     <color name="calculator__progress_line">#F9883B</color>
     <color name="calculator__weight_linear">#232D37</color>   <!-- calculator_color  -->
-    <color name="calculator__food_item_list_parent">#232D37</color>
 
+    <color name="calculator__food_item_list_parent">#232D37</color>
     <color name="calculator__food_item_list">#38424C</color>
 
     <color name="calculator__auto_tab_layout_border_bottom">#F9883A</color>
+    <color name="calculator__auto_color_linear">#2C3640</color>
 
 
 
@@ -223,7 +225,7 @@
 <!--    <color name="calculator_color">#232D37</color>-->
 <!--    <color name="calendar_focuse_date">#38424C</color>-->
 <!--    <color name="calculator_button_ripple">#7E8388</color>-->
-<!--    <color name="calculator_color_linear">#2C3640</color>-->
+
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
 <!--    &lt;!&ndash;Градієнти для кнопок і layout елементів&ndash;&gt;-->
