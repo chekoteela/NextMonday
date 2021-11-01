@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_auto_edittext"
+    android:background="@color/global__background"
     tools:context=".ui.calculator.CreateFood">
 
 <LinearLayout
     android:id="@+id/change_food_linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="0dp"
+    android:layout_marginEnd="20dp"
     android:orientation="vertical">
     <TextView
         android:id="@+id/text"
-        style="@style/StandartTextView"
+        style="@style/styleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -25,36 +27,27 @@
 
     <EditText
         android:id="@+id/name_xml"
-        style="@style/EditText_change_food_white"
+        style="@style/styleEditText"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@+id/text"
-        android:layout_marginHorizontal="20sp"
-        android:layout_marginVertical="9dp"
         android:hint="@string/name_product_hint"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/portion_xml"
-        style="@style/EditText_change_food_white"
+        style="@style/styleEditText"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/name"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="9dp"
         android:hint="@string/portion_hint"
         android:inputType="number" />
 
 
     <EditText
         android:id="@+id/calorie_xml"
-        style="@style/EditText_change_food_white"
+        style="@style/styleEditText"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/portion"
-        android:layout_marginHorizontal="20sp"
         android:layout_marginVertical="9dp"
-
         android:hint="@string/calor_hint"
         android:inputType="number" />
 
@@ -77,70 +70,57 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/text_protein"
-                    style="@style/StandartTextView"
+                    style="@style/styleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="5dp"
-                    android:text="Белки"
-                    android:textSize="18dp" />
+                    android:text="@string/Protein"
+                    android:textSize="18sp" />
 
                 <EditText
-
                     android:id="@+id/protein_xml"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginHorizontal="20sp"
-                    android:layout_marginVertical="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="30dp"
                     android:hint="@string/amount_protein_hint"
                     android:inputType="numberDecimal" />
 
                 <EditText
                     android:id="@+id/whey_protein_xml"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
                     android:hint="@string/whey_protein_hint"
                     android:inputType="numberDecimal" />
 
                 <EditText
                     android:id="@+id/soy_protein_xml"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
                     android:hint="@string/soy_protein_hint"
                     android:inputType="numberDecimal" />
 
                 <EditText
                     android:id="@+id/agg_protein_xml"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
                     android:hint="@string/egg_protein_hint"
                     android:inputType="numberDecimal" />
 
                 <EditText
                     android:id="@+id/casein_protein_xml"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="20dp"
                     android:hint="@string/casein_protein_hint"
                     android:inputType="numberDecimal" />
 
@@ -149,44 +129,41 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/text_carbohydrate"
-                    style="@style/StandartTextView"
+                    style="@style/styleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Углеводы"
+                    android:text="@string/Carbs"
                     android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/carbohydrate_xml"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginVertical="5dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="30dp"
                     android:hint="@string/amount_carbs_hint"
                     android:inputType="numberDecimal" />
 
                 <EditText
                     android:id="@+id/simple_carbohydrates_xml"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginLeft="40dp"
                     android:hint="@string/simple_hint"
                     android:inputType="numberDecimal" />
 
                 <EditText
-
                     android:id="@+id/complex_carbohydrate_xml"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginVertical="5dp"
-                    android:layout_marginLeft="40dp"
                     android:hint="@string/complicated_carbs_hint"
                     android:inputType="numberDecimal" />
 
@@ -196,24 +173,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/text_fat"
-                    style="@style/StandartTextView"
+                    style="@style/styleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fat"
                     android:textSize="18dp" />
 
                 <EditText
-
                     android:id="@+id/fat_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginVertical="5dp"
+                    android:layout_marginStart="0dp"
                     android:hint="@string/amount_fat_hint"
                     android:inputType="numberDecimal" />
 
@@ -223,7 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginVertical="5dp"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
                     android:hint="@string/saturated_fatty_acids_hint"
                     android:inputType="numberDecimal" />
 
