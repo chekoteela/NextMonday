@@ -316,6 +316,8 @@
     <string name="manual_setting">Ручная настройка</string>
     <string name="how_much_age">лет</string>
     <string name="question_mark">\?</string>
+    <string name="quantity">Количество</string>
+    <string name="nutrients_per">Количество нутриентов на:</string>
 
 
 </resources>

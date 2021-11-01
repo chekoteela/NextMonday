@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_auto_edittext"
+    android:background="@color/global__background"
 
     tools:context=".ui.calculator.AddNewFood">
 
@@ -20,7 +20,7 @@
 
             <TextView
                 android:id="@+id/name"
-                style="@style/StandartTextView"
+                style="@style/styleTextView"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -46,7 +46,7 @@
             <EditText
                 android:inputType="numberDecimal"
                 android:id="@+id/number_xml"
-                style="@style/EditText_change_food_white"
+                style="@style/styleEditText"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="20dp"
@@ -55,22 +55,23 @@
 
             <TextView
                 android:id="@+id/num_xml"
-                style="@style/StandartTextView"
+                style="@style/styleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Количество"
-                android:textColor="@color/white"
+                android:text="@string/quantity"
+                android:layout_marginTop="10dp"
                 android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal">
 
             <TextView
-                style="@style/StandartTextView"
+                style="@style/styleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -81,10 +82,10 @@
                 android:id="@+id/weight_xml"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:theme="@style/CustomSwitch" />
+                android:theme="@style/styleSwitch" />
 
             <TextView
-                style="@style/StandartTextView"
+                style="@style/styleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -101,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:padding="8dp"
-            android:popupBackground="@color/color_button_dialog"
+            android:popupBackground="@color/calculator__find_my_food"
             android:spinnerMode="dialog" />
 
         <TextView
@@ -109,13 +110,13 @@
             android:layout_marginHorizontal="60dp"
             android:layout_marginVertical="10dp"
             android:id="@+id/meal"
-            style="@style/StandartTextView"
+            style="@style/styleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/save_xml"
-            style="@style/button_setting_style"
+            style="@style/styleButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -127,13 +128,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="8dp"
-            android:background="@color/calculator_color_linear" />
+            android:background="@color/calculator__auto_color_linear" />
 
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/calculator_auto_edittext">
+            android:background="@color/global__background">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -150,28 +151,27 @@
 
                     <TextView
                         android:id="@+id/calorie_text"
-                        style="@style/StandartTextView"
+                        style="@style/styleTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:text="@string/energ_price" />
 
                     <TextView
-                        android:text="456"
                         android:id="@+id/calorie"
-                        style="@style/StandartTextView"
+                        style="@style/styleTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
-                        android:text="Количество нутриентов на:"
+                        android:text="@string/nutrients_per"
                         android:padding="10dp"
-                        style="@style/StandartTextView"
+                        style="@style/styleTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
                         android:id="@+id/gram"
                         android:padding="10dp"
-                        style="@style/StandartTextView"
+                        style="@style/styleTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
@@ -194,17 +194,17 @@
 
                             <TextView
                                 android:id="@+id/protein_text"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginVertical="5dp"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginStart="15dp"
                                 android:paddingVertical="3dp"
                                 android:text="@string/Protein" />
 
                             <TextView
                                 android:id="@+id/protein"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -221,15 +221,16 @@
                             <TextView
                                 android:paddingStart="40dp"
                                 android:id="@+id/whey_protein_text"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingVertical="2dp"
-                                android:text="@string/whey_protein_hint" />
+                                android:text="@string/whey_protein_hint"
+                                tools:ignore="RtlSymmetry" />
 
                             <TextView
                                 android:id="@+id/whey_protein"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -245,15 +246,16 @@
                             <TextView
                                 android:paddingStart="40dp"
                                 android:id="@+id/soy_protein_text"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingVertical="2dp"
-                                android:text="@string/soy_protein_hint" />
+                                android:text="@string/soy_protein_hint"
+                                tools:ignore="RtlSymmetry" />
 
                             <TextView
                                 android:id="@+id/soy_protein"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -268,15 +270,16 @@
                             <TextView
                                 android:paddingStart="40dp"
                                 android:id="@+id/agg_protein_text"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingVertical="2dp"
-                                android:text="@string/egg_protein_hint" />
+                                android:text="@string/egg_protein_hint"
+                                tools:ignore="RtlSymmetry" />
 
                             <TextView
                                 android:id="@+id/agg_protein"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -292,15 +295,16 @@
                             <TextView
                                 android:paddingStart="40dp"
                                 android:id="@+id/casein_protein_text"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingVertical="2dp"
-                                android:text="@string/casein_protein_hint" />
+                                android:text="@string/casein_protein_hint"
+                                tools:ignore="RtlSymmetry" />
 
                             <TextView
                                 android:id="@+id/casein_protein"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -325,18 +329,18 @@
 
                             <TextView
                                 android:id="@+id/carbohydrate_text"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginVertical="5dp"
-                                android:layout_marginLeft="15dp"
+                                android:layout_marginStart="15dp"
                                 android:paddingVertical="3dp"
 
                                 android:text="@string/Carbs" />
 
                             <TextView
                                 android:id="@+id/carbohydrate"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -351,15 +355,16 @@
                             <TextView
                                 android:paddingStart="40dp"
                                 android:id="@+id/simple_carbohydrates_text"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingVertical="2dp"
-                                android:text="@string/simple_hint" />
+                                android:text="@string/simple_hint"
+                                tools:ignore="RtlSymmetry" />
 
                             <TextView
                                 android:id="@+id/simple_carbohydrates"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -374,16 +379,17 @@
                             <TextView
                                 android:paddingStart="40dp"
                                 android:id="@+id/complex_carbohydrate_text"
-                                style="@style/StandartTextView"
+                                style="@style/styleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingVertical="2dp"
-                                android:text="@string/complicated_carbs_hint" />
+                                android:text="@string/complicated_carbs_hint"
+                                tools:ignore="RtlSymmetry" />
 
                             <TextView
                                 android:id="@+id/complex_carbohydrate"
-                                style="@style/StandartTextView"
-                                android:layout_width="wrap_content"
+                                style="@style/styleTextView"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:paddingVertical="2dp"
@@ -396,27 +402,27 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"></LinearLayout>
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="3dp"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="5dp"
-                        android:layout_marginLeft="20dp">
+                        android:layout_marginStart="20dp">
 
                         <TextView
                             android:id="@+id/fat_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="3dp"
-
                             android:text="@string/Fat" />
 
                         <TextView
                             android:id="@+id/fat"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="3dp"
@@ -431,16 +437,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/saturated_fat_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/saturated_fatty_acids_hint" />
+                            android:text="@string/saturated_fatty_acids_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/saturated_fat"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -454,16 +461,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/trans_fat_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/trans_fats_hint" />
+                            android:text="@string/trans_fats_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/trans_fat"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -477,16 +485,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/omega9_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/omega9_hint" />
+                            android:text="@string/omega9_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/omega9"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -500,16 +509,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/omega6_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/omega6_hint" />
+                            android:text="@string/omega6_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/omega6"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -524,16 +534,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/omega3_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="5dp"
-                            android:text="@string/omega3_hint" />
+                            android:text="@string/omega3_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/omega3"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="5dp"
@@ -546,17 +557,18 @@
 
                         <TextView
                             android:id="@+id/ala_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
                             android:paddingStart="50dp"
-                            android:text="@string/ala_hint" />
+                            android:text="@string/ala_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/ala"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -569,17 +581,18 @@
 
                         <TextView
                             android:id="@+id/epa_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
                             android:paddingStart="50dp"
-                            android:text="@string/epa_hint" />
+                            android:text="@string/epa_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/epa"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -593,17 +606,18 @@
 
                         <TextView
                             android:id="@+id/dha_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
                             android:paddingStart="50dp"
-                            android:text="@string/dha_hint" />
+                            android:text="@string/dha_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/dha"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -620,12 +634,11 @@
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/StandartTextView"
+                        style="@style/styleTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="5dp"
-                        android:layout_marginLeft="15dp"
-
+                        android:layout_marginStart="15dp"
                         android:text="@string/extra" />
 
                     <LinearLayout
@@ -635,16 +648,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/watter_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/water_hint" />
+                            android:text="@string/water_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/watter"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -658,16 +672,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/cellulose_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/cellulose_hint" />
+                            android:text="@string/cellulose_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/cellulose"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -681,16 +696,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/salt_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/salt_hint" />
+                            android:text="@string/salt_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/salt"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -705,16 +721,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/calcium_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/ca_hint" />
+                            android:text="@string/ca_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/calcium"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -730,16 +747,17 @@
                         <TextView
                             android:paddingStart="40dp"
                             android:id="@+id/potassium_text"
-                            style="@style/StandartTextView"
+                            style="@style/styleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingVertical="2dp"
-                            android:text="@string/k_hint" />
+                            android:text="@string/k_hint"
+                            tools:ignore="RtlSymmetry" />
 
                         <TextView
                             android:id="@+id/potassium"
-                            style="@style/StandartTextView"
-                            android:layout_width="wrap_content"
+                            style="@style/styleTextView"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:paddingVertical="2dp"
@@ -761,15 +779,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/adView"
-        android:background="@color/calculator_auto_edittext">
+        android:background="@color/global__background">
 
         <Button
             android:id="@+id/change_food"
-            style="@style/button_setting_style"
+            style="@style/styleButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="60dp"
-            android:layout_marginVertical="10dp"
             android:contentDescription="@string/descr_edit"
             android:padding="10dp"
             android:text="@string/edit_hint" />

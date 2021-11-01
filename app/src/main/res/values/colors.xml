@@ -54,9 +54,11 @@
 
     <color name="calculator__find_food_Tab_layout">#232D37</color>
     <color name="calculator__find_food_name_Tab_layout">#F9883A</color>
+    <color name="calculator__find_my_food">#38424C</color>
 
     <color name="calculator__auto_tab_layout_border_bottom">#F9883A</color>
     <color name="calculator__auto_color_linear">#2C3640</color>
+
 
 
 
