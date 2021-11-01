@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_color"
-    tools:context=".ui.settings.Auto_calculate_calorie">
+    android:background="@color/global__background">
 
     <com.google.android.material.tabs.TabLayout
 
         android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/calculator_color"
-        app:tabIndicatorColor="@color/bar_calor_color_progress"
+        android:background="@color/global__background"
+        app:tabIndicatorColor="@color/calculator__auto_tab_layout_border_bottom"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/white">
 
@@ -21,13 +19,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/descr_automatic_tuning"
-            android:text="Автонастройка" />
+            android:text="@string/auto_tuning" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/descr_manual_setting"
-            android:text="Ручная настройка" />
+            android:text="@string/manual_setting" />
 
 
     </com.google.android.material.tabs.TabLayout>
@@ -39,7 +37,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tab"
         android:orientation="vertical">
 
 
@@ -47,18 +44,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/calculator_auto_edittext"
+                android:background="@color/global__background"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/styleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/your_weigth"
@@ -70,14 +68,13 @@
                     android:id="@+id/this_weight"
                     android:gravity="center"
                     android:hint="@string/kg"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
-                    android:layout_margin="5dp"
-                    android:contentDescription="@string/descr_your_current_weight" />
+                    android:layout_margin="5dp" />
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/styleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/age"
@@ -85,15 +82,14 @@
 
 
                 <EditText
-                    android:hint="лет"
+                    android:hint="@string/how_much_age"
                     android:gravity="center"
                     android:inputType="numberDecimal"
                     android:id="@+id/age"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
                     android:layout_margin="5dp"
-                    android:contentDescription="@string/descr_age"
                     android:padding="5dp" />
 
 
@@ -103,15 +99,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/calculator_auto_edittext"
+                android:background="@color/global__background"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/styleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/desired_weigth"
+                    android:text="@string/desired_weight"
                     android:textSize="18sp" />
 
 
@@ -120,18 +116,17 @@
                     android:hint="@string/kg"
                     android:inputType="numberDecimal"
                     android:id="@+id/desired_weight"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
                     android:layout_margin="5dp"
-                    android:contentDescription="@string/descr_desired_weight"
                     android:padding="5dp" />
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/styleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/heigth"
+                    android:text="@string/height"
                     android:textSize="18sp" />
 
 
@@ -140,11 +135,10 @@
                     android:hint="@string/sm"
                     android:inputType="numberDecimal"
                     android:id="@+id/height"
-                    style="@style/EditText_change_food_white"
+                    style="@style/styleEditText"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
                     android:layout_margin="5dp"
-                    android:contentDescription="@string/descr_height"
                     android:padding="5dp" />
 
 
@@ -156,7 +150,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
-            android:background="@color/calculator_color_linear" />
+            android:background="@color/global__background" />
 
         <LinearLayout
             android:layout_width="match_parent"

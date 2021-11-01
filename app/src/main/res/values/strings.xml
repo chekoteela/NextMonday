@@ -196,8 +196,8 @@
     <string name="calculator">Калькулятор</string>
     <string name="moderator">Модератор</string>
     <string name="your_weigth">Текущий вес</string>
-    <string name="heigth">Рост</string>
-    <string name="desired_weigth">Желаемый вес</string>
+    <string name="height">Рост</string>
+    <string name="desired_weight">Желаемый вес</string>
     <string name="choose_gender">Выберите ваш пол</string>
     <string name="your_aim">Ваша цель</string>
     <string name="choose_activity">Выберите активность</string>
@@ -312,6 +312,9 @@
     <string name="desc_logo">logo</string>
     <string name="add_meal_name">Ведите название приема</string>
     <string name="product_is_out">Продукт отсутствует</string>
+    <string name="auto_tuning">Автонастройка</string>
+    <string name="manual_setting">Ручная настройка</string>
+    <string name="how_much_age">лет</string>
 
 
 </resources>

@@ -51,7 +51,7 @@
 
     <color name="calculator__food_item_list">#38424C</color>
 
-    <!--    -->
+    <color name="calculator__auto_tab_layout_border_bottom">#F9883A</color>
 
 
 
@@ -232,7 +232,7 @@
 <!--    <color name="background_calculator">#0F173C</color>-->
 <!--    <color name="background_layout_calculator">#1C214B</color>-->
 <!--    <color name="bar_calor_color_rim">#192229</color>-->
-<!--    <color name="bar_calor_color_progress">#F9883A</color>-->
+
 <!--    <color name="bar_fat_carbs_color_rim">#192229</color>-->
 <!--    <color name="bar_fat_carbs_color_progress">#F9883A</color>-->
 <!--    <color name="bar_prot_water_color_rim">#192229</color>-->
