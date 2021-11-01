@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_auto_edittext"
+    android:background="@color/global__background"
     tools:context=".ui.calculator.CalculatorCalendar">
 
     <CalendarView
@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:contentDescription="@string/calendar2"
-        android:dateTextAppearance="@style/StyleCalendarView"
+        android:dateTextAppearance="@style/styleCalendarView"
         android:focusedMonthDateColor="@color/white"
-        android:theme="@style/StyleCalendarView"
+        android:theme="@style/styleCalendarView"
         android:unfocusedMonthDateColor="@color/white"
         android:weekDayTextAppearance="@style/CalenderViewDateCustomText" />
 
