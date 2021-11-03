@@ -9,19 +9,17 @@
 
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/calculator_ration_parent"
         android:orientation="vertical">
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/meal_name"
+                android:id="@+id/meal_name_xml"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +30,7 @@
                 android:textSize="18sp" />
 
             <ImageView
-                android:id="@+id/plus"
+                android:id="@+id/create_my_food_xml"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
@@ -52,50 +50,46 @@
             android:background="@color/calculator_auto_edittext" />
 
         <LinearLayout
-            android:weightSum="4"
             android:id="@+id/parent_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="bottom">
-            
-
-            <TextView
-                android:layout_weight="1"
-                android:id="@+id/all_protein"
-                style="@style/StandartTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="9999" />
+            android:gravity="bottom"
+            android:weightSum="4">
 
 
             <TextView
-                android:layout_weight="1"
-                android:id="@+id/all_carbohydrate"
+                android:id="@+id/all_protein_xml"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="9999" />
+                android:layout_weight="1"
+                android:padding="5dp" />
 
 
             <TextView
-                android:layout_weight="1"
-                android:text="9999"
-                android:id="@+id/all_fat"
+                android:id="@+id/all_carbohydrate_xml"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:id="@+id/all_fat_xml"
+                style="@style/StandartTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:padding="5dp" />
 
             <TextView
-                android:layout_weight="1"
-                android:text="1900"
-                android:id="@+id/all_calorie"
+                android:id="@+id/all_calorie_xml"
                 style="@style/StandartTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_weight="1"
                 android:padding="5dp" />
         </LinearLayout>
 

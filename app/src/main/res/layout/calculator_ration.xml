@@ -9,10 +9,9 @@
 
 
     <LinearLayout
-        android:id="@+id/linerka"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/add_meal_xml"
+        android:layout_above="@+id/create_meal_xml"
         android:orientation="vertical">
 
         <TextView
@@ -32,7 +31,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/add_meal_xml"
+        android:id="@+id/create_meal_xml"
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

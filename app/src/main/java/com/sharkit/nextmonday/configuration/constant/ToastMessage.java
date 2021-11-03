@@ -17,4 +17,6 @@ public class ToastMessage {
     public static final String SUCCESSFUL_UPDATE = "Изменения сохранены";
     public static final String PASSWORDS_NOT_THE_SAME = "Паролти не совпадают";
 
+    public static final String CREATE_NEW_MEAL = "Прийом їжі створений";
+
 }

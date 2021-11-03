@@ -19,6 +19,7 @@ public class FindFood extends Fragment {
         View root = inflater.inflate(R.layout.calculator_find_food_by_name, container, false);
         new FindFoodService()
                 .findById(root)
+                .writeToField()
                 .activity()
                 .setAdaptive();
         return root;

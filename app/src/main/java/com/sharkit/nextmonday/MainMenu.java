@@ -2,10 +2,11 @@ package com.sharkit.nextmonday;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.CANCEL;
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.CREATE_NEW;
-import static com.sharkit.nextmonday.configuration.constant.BundleTag.ADD_FOOD;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DATE_FOR_MAIN_DIARY_LIST;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FOOD_INFO_S;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD_ID;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_RATION_DATE;
 import static com.sharkit.nextmonday.configuration.constant.BundleVariable.CREATE_NEW_FOOD;
 
 import android.annotation.SuppressLint;
@@ -40,6 +41,7 @@ import com.google.zxing.integration.android.IntentResult;
 import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class MainMenu extends AppCompatActivity {
@@ -58,7 +60,7 @@ public class MainMenu extends AppCompatActivity {
     }
     //new title to share
 
-    @SuppressLint("NonConstantResourceId")
+    @SuppressLint({"NonConstantResourceId", "SimpleDateFormat"})
     public void onMenuItemClick(MenuItem item) {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         switch (item.getItemId()) {
@@ -69,7 +71,9 @@ public class MainMenu extends AppCompatActivity {
                 navController.navigate(R.id.nav_cal_calendar);
                 break;
             case R.id.ration_item:
-                navController.navigate(R.id.nav_cal_ration);
+                Bundle bundle = new Bundle();
+                bundle.putString(FRAGMENT_RATION_DATE, new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTimeInMillis()));
+                navController.navigate(R.id.nav_cal_ration, bundle);
                 break;
             case R.id.main_item:
                 navController.navigate(R.id.nav_calculator_main);
@@ -156,17 +160,21 @@ public class MainMenu extends AppCompatActivity {
             FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
             foodInfoFirebase.findFoodById(result.getContents())
                     .addOnSuccessListener(documentSnapshot -> {
+                        if (!documentSnapshot.exists()) {
+                            AlertEmptyProduct(result.getContents());
+                            return;
+                        }
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable(ADD_FOOD, documentSnapshot.toObject(FoodInfo.class));
+                        bundle.putSerializable(FOOD_INFO_S, documentSnapshot.toObject(FoodInfo.class));
                         Navigation.findNavController(MainMenu.this, R.id.nav_host_fragment).navigate(R.id.nav_cal_add_my_food, bundle);
-                    }).addOnFailureListener(e -> AlertExistProduct(result.getContents()));
+                    });
         } else {
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
             navController.navigate(R.id.nav_cal_find_food_by_name);
         }
     }
 
-    private void AlertExistProduct(String code) {
+    private void AlertEmptyProduct(String code) {
         android.app.AlertDialog.Builder dialog = new AlertDialog.Builder(MainMenu.this, R.style.CustomAlertDialog);
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View existProduct = layoutInflater.inflate(R.layout.calculator_alert_exist, null);
@@ -175,7 +183,7 @@ public class MainMenu extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putString(FRAGMENT_CREATE_FOOD_ID, code);
             bundle.putString(FRAGMENT_CREATE_FOOD, CREATE_NEW_FOOD);
-            navController.navigate(R.id.nav_cal_create_food);
+            navController.navigate(R.id.nav_cal_create_food, bundle);
         });
         dialog.setNegativeButton(CANCEL, (dialog12, which) -> navController.navigate(R.id.nav_cal_find_food_by_name));
         dialog.setOnCancelListener(dialog1 -> navController.navigate(R.id.nav_cal_find_food_by_name));

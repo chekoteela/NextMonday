@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_color"
-    tools:context=".ui.settings.Auto_calculate_calorie">
+    android:background="@color/calculator_color">
 
     <com.google.android.material.tabs.TabLayout
 
-        android:id="@+id/tab"
+        android:id="@+id/tab_layout_xml"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/calculator_color"
@@ -33,7 +31,7 @@
     </com.google.android.material.tabs.TabLayout>
 
 <ScrollView
-    android:layout_below="@+id/tab"
+    android:layout_below="@+id/tab_layout_xml"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -67,7 +65,7 @@
 
                 <EditText
                     android:inputType="numberDecimal"
-                    android:id="@+id/this_weight"
+                    android:id="@+id/current_weight_xml"
                     android:gravity="center"
                     android:hint="@string/kg"
                     style="@style/EditText_change_food_white"
@@ -88,7 +86,7 @@
                     android:hint="лет"
                     android:gravity="center"
                     android:inputType="numberDecimal"
-                    android:id="@+id/age"
+                    android:id="@+id/age_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -119,7 +117,7 @@
                     android:gravity="center"
                     android:hint="@string/kg"
                     android:inputType="numberDecimal"
-                    android:id="@+id/desired_weight"
+                    android:id="@+id/desired_weight_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -139,7 +137,7 @@
                     android:gravity="center"
                     android:hint="@string/sm"
                     android:inputType="numberDecimal"
-                    android:id="@+id/height"
+                    android:id="@+id/height_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -182,7 +180,7 @@
                 android:padding="10dp">
 
                 <RadioButton
-                    android:id="@+id/male"
+                    android:id="@+id/male_xml"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -192,7 +190,7 @@
                     android:text="@string/male" />
 
                 <RadioButton
-                    android:id="@+id/female"
+                    android:id="@+id/female_xml"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -215,10 +213,12 @@
             android:background="@color/calculator_auto_edittext"
             android:orientation="vertical"
             android:padding="10dp">
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/form"
                     android:layout_width="wrap_content"
@@ -238,15 +238,13 @@
                     />
             </LinearLayout>
 
-
-
             <RadioGroup
-                android:id="@+id/formula"
+                android:id="@+id/formula_xml"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/harrison_formula"
+                    android:id="@+id/harrison_formula_xml"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -256,7 +254,7 @@
                     android:text="@string/F_harryson_benedict" />
 
                 <RadioButton
-                    android:id="@+id/miffin_formula"
+                    android:id="@+id/miffin_formula_xml"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -276,7 +274,7 @@
 
 
         <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
-            android:id="@+id/spinner_target"
+            android:id="@+id/spinner_target_xml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/descr_your_aim"
@@ -289,7 +287,7 @@
 
 
         <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
-            android:id="@+id/spinner"
+            android:id="@+id/activity_xml"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/descr_choose_activity"
@@ -310,7 +308,7 @@
 
 
             <Button
-                android:id="@+id/to_calculate"
+                android:id="@+id/calculate_xml"
                 style="@style/button_setting_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -335,7 +333,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/conclusion"
+                    android:id="@+id/conclusion_xml"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/play"
@@ -348,7 +346,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/save"
+            android:id="@+id/save_xml"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

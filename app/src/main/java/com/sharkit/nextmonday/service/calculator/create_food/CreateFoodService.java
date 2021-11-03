@@ -2,11 +2,14 @@ package com.sharkit.nextmonday.service.calculator.create_food;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleVariable.CREATE_NEW_FOOD;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.validation.build_validation.Validation;
+import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
 import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 import com.sharkit.nextmonday.service.builder.LayoutService;
@@ -35,31 +38,40 @@ public class CreateFoodService implements LayoutService {
         FoodInfo foodInfo = new FoodInfo();
         foodInfo.setId(id);
         foodInfo.setName(name.getText().toString().trim());
-        foodInfo.setPortion(Float.parseFloat(portion.getText().toString().trim()));
+        foodInfo.setPortion(Integer.parseInt(portion.getText().toString().trim()));
         foodInfo.setCalorie(Integer.parseInt(calorie.getText().toString().trim()));
-        foodInfo.setProtein(protein.getText().toString().trim());
-        foodInfo.setWheyProtein(wheyProtein.getText().toString().trim());
-        foodInfo.setSoyProtein(soyProtein.getText().toString().trim());
-        foodInfo.setAggProtein(aggProtein.getText().toString().trim());
-        foodInfo.setCaseinProtein(caseinProtein.getText().toString().trim());
-        foodInfo.setCarbohydrate(carbohydrate.getText().toString().trim());
-        foodInfo.setSimpleCarbohydrate(simpleCarbohydrate.getText().toString().trim());
-        foodInfo.setComplexCarbohydrate(complexCarbohydrate.getText().toString().trim());
-        foodInfo.setFat(fat.getText().toString().trim());
-        foodInfo.setSaturatedFat(saturatedFat.getText().toString().trim());
-        foodInfo.setTransFat(transFat.getText().toString().trim());
-        foodInfo.setOmega3(omega3.getText().toString().trim());
-        foodInfo.setOmega6(omega6.getText().toString().trim());
-        foodInfo.setOmega9(omega9.getText().toString().trim());
-        foodInfo.setDha(dha.getText().toString().trim());
-        foodInfo.setEpa(epa.getText().toString().trim());
-        foodInfo.setAla(ala.getText().toString().trim());
-        foodInfo.setCellulose(cellulose.getText().toString().trim());
-        foodInfo.setWater(water.getText().toString().trim());
-        foodInfo.setSalt(salt.getText().toString().trim());
-        foodInfo.setCalcium(calcium.getText().toString().trim());
-        foodInfo.setPotassium(potassium.getText().toString().trim());
+
+        foodInfo.setProtein(getValue(protein));
+        foodInfo.setWheyProtein(getValue(wheyProtein));
+        foodInfo.setSoyProtein(getValue(soyProtein));
+        foodInfo.setAggProtein(getValue(aggProtein));
+        foodInfo.setCaseinProtein(getValue(caseinProtein));
+        foodInfo.setCarbohydrate(getValue(carbohydrate));
+        foodInfo.setSimpleCarbohydrate(getValue(simpleCarbohydrate));
+        foodInfo.setComplexCarbohydrate(getValue(complexCarbohydrate));
+        foodInfo.setFat(getValue(fat));
+        foodInfo.setSaturatedFat(getValue(saturatedFat));
+        foodInfo.setTransFat(getValue(transFat));
+        foodInfo.setOmega3(getValue(omega3));
+        foodInfo.setOmega6(getValue(omega6));
+        foodInfo.setOmega9(getValue(omega9));
+        foodInfo.setDha(getValue(dha));
+        foodInfo.setEpa(getValue(epa));
+        foodInfo.setAla(getValue(ala));
+        foodInfo.setCellulose(getValue(cellulose));
+        foodInfo.setWater(getValue(water));
+        foodInfo.setSalt(getValue(salt));
+        foodInfo.setCalcium(getValue(calcium));
+        foodInfo.setPotassium(getValue(potassium));
         return foodInfo;
+    }
+
+    private float getValue(EditText editText){
+        if(!TextUtils.isEmpty(editText.getText())){
+            return Float.parseFloat(editText.getText().toString());
+        }else {
+            return 0;
+        }
     }
 
     @Override
@@ -101,12 +113,9 @@ public class CreateFoodService implements LayoutService {
 
     @Override
     public LayoutService activity() {
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
-                foodInfoFirebase.create(writeFromField());
-            }
+        save.setOnClickListener(v -> {
+            FoodInfoFirebase foodInfoFirebase = new FoodInfoFirebase();
+            foodInfoFirebase.create(writeFromField());
         });
         return this;
     }

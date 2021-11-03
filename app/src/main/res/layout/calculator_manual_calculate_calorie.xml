@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/calculator_auto_edittext"
-    tools:context=".ui.settings.Manual_calculate_calorie">
+    android:background="@color/calculator_auto_edittext">
 
     <com.google.android.material.tabs.TabLayout
 
