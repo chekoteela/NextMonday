@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import androidx.navigation.Navigation;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.progress.progressview.ProgressView;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.db.firestore.calculator.SettingFirebase;
@@ -52,17 +50,32 @@ public class CalculatorMainService implements LayoutService {
     public LayoutService getGeneralNutrition() {
         new SettingFirebase()
                 .getGeneralNutrition()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            if (documentSnapshot.exists()) {
-                                writeToField(Objects.requireNonNull(documentSnapshot.toObject(GeneralNutrition.class)));
-                            }else {
-                                writeToField(new GeneralNutrition());
-                            }
-                    }
+                .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            writeToField(Objects.requireNonNull(documentSnapshot.toObject(GeneralNutrition.class)));
+                            calculatePercent(Objects.requireNonNull(documentSnapshot.toObject(GeneralNutrition.class)));
+                        }else {
+                            writeToField(new GeneralNutrition());
+                        }
                 });
         return this;
+    }
+
+    private void calculatePercent(GeneralNutrition generalNutrition) {
+        percentCalorie.setText(String.valueOf((int) getPercent(generalNutrition.getCalorie(), (float) allNutrition.getCalorie())));
+        calorieProgress.setProgress(getPercent(generalNutrition.getCalorie(), allNutrition.getCalorie()) / 100);
+        percentFat.setText(String.valueOf((int) getPercent(generalNutrition.getFat(), allNutrition.getFat())));
+        fatProgress.setProgress(getPercent(generalNutrition.getFat(), allNutrition.getFat()) / 100);
+        percentCarbohydrate.setText(String.valueOf((int) getPercent(generalNutrition.getCarbohydrate(), allNutrition.getCarbohydrate())));
+        carbohydrateProgress.setProgress(getPercent(generalNutrition.getCarbohydrate(), allNutrition.getCarbohydrate()) / 100);
+        percentProtein.setText(String.valueOf((int) getPercent(generalNutrition.getProtein(), allNutrition.getProtein())));
+        proteinProgress.setProgress(getPercent(generalNutrition.getProtein(), allNutrition.getProtein()) / 100);
+        percentWater.setText(String.valueOf((int) getPercent(generalNutrition.getWater(), allNutrition.getWater())));
+        waterProgress.setProgress(getPercent(generalNutrition.getWater(), allNutrition.getWater()) / 100);
+    }
+
+    private float getPercent(int i, float j) {
+        return (j * 100 / i);
     }
 
     private void writeToField(GeneralNutrition generalNutrition) {

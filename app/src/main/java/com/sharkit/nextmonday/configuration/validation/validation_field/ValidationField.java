@@ -73,7 +73,7 @@ public class ValidationField extends ValidationMessage {
     public static boolean isValidHeight(EditText editText, Context context){
         return new BuildValidation(context)
                 .setWidget(editText)
-                .notEmpty()
+                .notEmpty(NOT_EMPTY)
                 .tooSmallValue(50, TOO_SMALL_VALUE)
                 .tooBigValue(350, TOO_BIG_VALUE)
                 .build();
@@ -98,6 +98,22 @@ public class ValidationField extends ValidationMessage {
         }else {
             return false;
         }
+    }
+
+    public static boolean isValidNutritionValue(EditText editText, Context context) {
+        return new BuildValidation(context)
+                .setWidget(editText)
+                .notEmpty(NOT_EMPTY)
+                .tooBigValue(20, TOO_BIG_VALUE)
+                .build();
+    }
+    public static boolean isValidWaterValue(EditText water, Context context) {
+        return new BuildValidation(context)
+                .setWidget(water)
+                .notEmpty(NOT_EMPTY)
+                .tooBigValue(300, TOO_BIG_VALUE)
+                .tooSmallValue(5, TOO_SMALL_VALUE)
+                .build();
     }
 }
 

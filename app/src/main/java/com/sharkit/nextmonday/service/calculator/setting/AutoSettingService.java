@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.service.calculator.setting;
 import static com.sharkit.nextmonday.configuration.constant.UserSetting.PERCENT_CARBOHYDRATE;
 import static com.sharkit.nextmonday.configuration.constant.UserSetting.PERCENT_FAT;
 import static com.sharkit.nextmonday.configuration.constant.UserSetting.PERCENT_PROTEIN;
+import static com.sharkit.nextmonday.configuration.constant.UserSetting.WATER_ON_KG;
 import static com.sharkit.nextmonday.configuration.constant.ValidationMessage.EMPTY_CONCLUSION;
 import static com.sharkit.nextmonday.entity.transformer.TransformerFood.transform;
 
@@ -32,6 +33,8 @@ import com.sharkit.nextmonday.entity.calculator.MetabolismDTO;
 import com.sharkit.nextmonday.entity.enums.Sex;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
+import java.util.Objects;
+
 public class AutoSettingService implements LayoutService {
     private TabLayout tabLayout;
     private EditText currentWeight, age, desireWeight, height;
@@ -58,6 +61,22 @@ public class AutoSettingService implements LayoutService {
 
     @Override
     public LayoutService activity() {
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
+        Objects.requireNonNull(tab).select();
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_settings_manual_calculate);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
         activity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -195,7 +214,7 @@ public class AutoSettingService implements LayoutService {
         generalNutrition.setCarbohydrate(getNutritionByPercent(metabolismDTO.getCalorie(),PERCENT_CARBOHYDRATE, 4));
         generalNutrition.setProtein(getNutritionByPercent(metabolismDTO.getCalorie(), PERCENT_PROTEIN, 4));
         generalNutrition.setFat(getNutritionByPercent(metabolismDTO.getCalorie(),PERCENT_FAT,8));
-        generalNutrition.setWater((int)(metabolismDTO.getWeight() * 35));
+        generalNutrition.setWater((int)(metabolismDTO.getWeight() * WATER_ON_KG));
         new SettingFirebase()
                 .create(generalNutrition);
     }

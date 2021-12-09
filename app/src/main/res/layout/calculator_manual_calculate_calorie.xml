@@ -8,7 +8,7 @@
 
     <com.google.android.material.tabs.TabLayout
 
-        android:id="@+id/tab"
+        android:id="@+id/tab_layout_xml"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/calculator_color"
@@ -31,13 +31,13 @@
     </com.google.android.material.tabs.TabLayout>
 
 <ScrollView
-    android:layout_below="@+id/tab"
+    android:layout_below="@+id/tab_layout_xml"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tab"
+        android:layout_below="@+id/tab_layout_xml"
         android:layout_marginVertical="10dp"
         android:orientation="vertical">
 
@@ -62,7 +62,7 @@
         <EditText
             android:gravity="center"
             android:inputType="numberDecimal"
-            android:id="@+id/weight"
+            android:id="@+id/weight_xml"
             android:hint="@string/kg"
             android:padding="10dp"
             android:layout_gravity="center"
@@ -99,7 +99,7 @@
                     android:gravity="center"
                     android:hint="@string/gramm"
                     android:inputType="numberDecimal"
-                    android:id="@+id/protein"
+                    android:id="@+id/protein_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -119,7 +119,7 @@
                     android:gravity="center"
                     android:hint="@string/gramm"
                     android:inputType="numberDecimal"
-                    android:id="@+id/fat"
+                    android:id="@+id/fat_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -150,7 +150,7 @@
                     android:gravity="center"
                     android:hint="@string/gramm"
                     android:inputType="numberDecimal"
-                    android:id="@+id/carbohydrate"
+                    android:id="@+id/carbohydrate_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -171,7 +171,7 @@
                     android:gravity="center"
                     android:hint="@string/litr"
                     android:inputType="number"
-                    android:id="@+id/watter"
+                    android:id="@+id/water_xml"
                     style="@style/EditText_change_food_white"
                     android:layout_width="100dp"
                     android:layout_height="43dp"
@@ -201,7 +201,7 @@
 
 
             <Button
-                android:id="@+id/to_calculate"
+                android:id="@+id/calculate_xml"
                 style="@style/button_setting_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -224,7 +224,7 @@
                     android:text="@string/Sum" />
 
                 <TextView
-                    android:id="@+id/conclusion"
+                    android:id="@+id/conclusion_xml"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -233,7 +233,7 @@
 
         </LinearLayout>
         <Button
-            android:id="@+id/save"
+            android:id="@+id/save_xml"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -248,16 +248,13 @@
             android:text="@string/save"
             />
 
-
-
-
     </LinearLayout>
 </ScrollView>
 
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
+        android:id="@+id/adView_xml"
         android:elevation="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

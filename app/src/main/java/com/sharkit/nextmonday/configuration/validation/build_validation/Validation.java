@@ -25,12 +25,17 @@ public class Validation implements BuildMethod {
 
     @Override
     public boolean tooSmallValue(float size, String toastMessage) {
-        if (Float.parseFloat(getWidget().getText().toString()) < size) {
-            setToastMessage(toastMessage);
+        try {
+            if (Float.parseFloat(getWidget().getText().toString()) < size) {
+                setToastMessage(toastMessage);
+                return false;
+            } else {
+                return true;
+            }
+        }catch (NumberFormatException e){
             return false;
-        }else {
-            return true;
-        }    }
+        }
+    }
 
     @Override
     public boolean tooSmallValue(int size) {
@@ -39,11 +44,15 @@ public class Validation implements BuildMethod {
 
     @Override
     public boolean tooSmallValue(int size, String toastMessage) {
-        if (Integer.parseInt(getWidget().getText().toString()) < size) {
-            setToastMessage(toastMessage);
+        try {
+            if (Integer.parseInt(getWidget().getText().toString()) < size) {
+                setToastMessage(toastMessage);
+                return false;
+            } else {
+                return true;
+            }
+        }catch (NumberFormatException e){
             return false;
-        }else {
-            return true;
         }
     }
 
@@ -54,11 +63,15 @@ public class Validation implements BuildMethod {
 
     @Override
     public boolean tooBigValue(int size, String toastMessage) {
-        if (Integer.parseInt(getWidget().getText().toString()) > size) {
-            setToastMessage(toastMessage);
+        try {
+            if (Integer.parseInt(getWidget().getText().toString()) > size) {
+                setToastMessage(toastMessage);
+                return false;
+            } else {
+                return true;
+            }
+        }catch (NumberFormatException e){
             return false;
-        }else {
-            return true;
         }
     }
 
