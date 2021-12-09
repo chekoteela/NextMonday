@@ -15,6 +15,55 @@ public class BuildValidation implements ValidationMethod {
     }
     private final Validation validation;
     private final List<Boolean> isValid = new ArrayList<>();
+
+    @Override
+    public ValidationMethod tooSmallValue(int size) {
+        isValid.add(validation.tooSmallValue(size));
+        return this;
+    }
+
+    @Override
+    public ValidationMethod tooSmallValue(int size, String toastMessage) {
+        isValid.add(validation.tooSmallValue(size, toastMessage));
+        return this;
+    }
+
+    @Override
+    public ValidationMethod tooSmallValue(float size) {
+        isValid.add(validation.tooSmallValue(size));
+        return this;
+    }
+
+    @Override
+    public ValidationMethod tooSmallValue(float size, String toastMessage) {
+        isValid.add(validation.tooSmallValue(size,toastMessage));
+        return this;
+    }
+
+    @Override
+    public ValidationMethod tooBigValue(int size) {
+        isValid.add(validation.tooBigValue(size));
+        return this;
+    }
+
+    @Override
+    public ValidationMethod tooBigValue(int size, String toastMessage) {
+        isValid.add(validation.tooBigValue(size, toastMessage));
+        return this;
+    }
+
+    @Override
+    public ValidationMethod tooBigValue(float size) {
+        isValid.add(validation.tooBigValue(size));
+        return this;
+    }
+
+    @Override
+    public ValidationMethod tooBigValue(float size, String toastMessage) {
+        isValid.add(validation.tooBigValue(size, toastMessage));
+        return this;
+    }
+
     @Override
     public ValidationMethod isValidEmail() {
         isValid.add(validation.isValidEmail());

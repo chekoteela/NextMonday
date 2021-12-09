@@ -22,9 +22,12 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0b7d43ceb3e72e44a56efe2a7c559d93/transformed/jetified-firebase-ui-auth-0.6.2/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0b7d43ceb3e72e44a56efe2a7c559d93/transformed/jetified-firebase-ui-auth-0.6.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0b7d43ceb3e72e44a56efe2a7c559d93/transformed/jetified-firebase-ui-auth-0.6.2/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/014c5f45ee15d72396c500a2af7c6ab3/transformed/jetified-firebase-ui-auth-0.6.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/014c5f45ee15d72396c500a2af7c6ab3/transformed/jetified-firebase-ui-auth-0.6.2/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/014c5f45ee15d72396c500a2af7c6ab3/transformed/jetified-firebase-ui-auth-0.6.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ffad7f0a6a5707f1cd3e3e78afe2c990/transformed/jetified-firebase-ui-auth-0.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ffad7f0a6a5707f1cd3e3e78afe2c990/transformed/jetified-firebase-ui-auth-0.6.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ffad7f0a6a5707f1cd3e3e78afe2c990/transformed/jetified-firebase-ui-auth-0.6.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/63a5dd33f7cab05078b842a1d0545f29/transformed/jetified-firebase-ui-auth-0.6.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/63a5dd33f7cab05078b842a1d0545f29/transformed/jetified-firebase-ui-auth-0.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/63a5dd33f7cab05078b842a1d0545f29/transformed/jetified-firebase-ui-auth-0.6.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebaseui/firebase-ui-auth/0.6.2/d9039467a3de489d6275ca97597659fb23fdcf1f/firebase-ui-auth-0.6.2-javadoc.jar!/" />

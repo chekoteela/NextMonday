@@ -19,6 +19,64 @@ public class Validation implements BuildMethod {
     }
 
     @Override
+    public boolean tooSmallValue(float size) {
+        return Float.parseFloat(getWidget().getText().toString()) < size;
+    }
+
+    @Override
+    public boolean tooSmallValue(float size, String toastMessage) {
+        if (Float.parseFloat(getWidget().getText().toString()) < size) {
+            setToastMessage(toastMessage);
+            return false;
+        }else {
+            return true;
+        }    }
+
+    @Override
+    public boolean tooSmallValue(int size) {
+        return Integer.parseInt(getWidget().getText().toString()) < size;
+    }
+
+    @Override
+    public boolean tooSmallValue(int size, String toastMessage) {
+        if (Integer.parseInt(getWidget().getText().toString()) < size) {
+            setToastMessage(toastMessage);
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    @Override
+    public boolean tooBigValue(int size) {
+        return Integer.parseInt(getWidget().getText().toString()) > size;
+    }
+
+    @Override
+    public boolean tooBigValue(int size, String toastMessage) {
+        if (Integer.parseInt(getWidget().getText().toString()) > size) {
+            setToastMessage(toastMessage);
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    @Override
+    public boolean tooBigValue(float size) {
+        return Float.parseFloat(getWidget().getText().toString()) > size;
+    }
+
+    @Override
+    public boolean tooBigValue(float size, String toastMessage) {
+        if (Float.parseFloat(getWidget().getText().toString()) > size) {
+            setToastMessage(toastMessage);
+            return false;
+        }else {
+            return true;
+        }      }
+
+    @Override
     public boolean isValidEmail() {
         return !TextUtils.isEmpty(getWidget().getText().toString()) &&
                 android.util.Patterns.EMAIL_ADDRESS.matcher(getWidget().getText().toString()).matches();

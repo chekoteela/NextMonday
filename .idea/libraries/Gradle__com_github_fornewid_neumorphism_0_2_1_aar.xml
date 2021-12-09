@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.fornewid:neumorphism:0.2.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4f1f145d56590f18d0434dbfc96748dc/transformed/jetified-neumorphism-0.2.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4f1f145d56590f18d0434dbfc96748dc/transformed/jetified-neumorphism-0.2.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4f1f145d56590f18d0434dbfc96748dc/transformed/jetified-neumorphism-0.2.1/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1e8c170c7fdd2a3c5ac897dde1ff64f0/transformed/jetified-neumorphism-0.2.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1e8c170c7fdd2a3c5ac897dde1ff64f0/transformed/jetified-neumorphism-0.2.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1e8c170c7fdd2a3c5ac897dde1ff64f0/transformed/jetified-neumorphism-0.2.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -22,9 +22,12 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/28f734a0452e5bc237898b44d7d5e7c7/transformed/jetified-vector-compat-1.0.5/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/28f734a0452e5bc237898b44d7d5e7c7/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/28f734a0452e5bc237898b44d7d5e7c7/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f40b0ea228e8afc59fc1487944eedeac/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f40b0ea228e8afc59fc1487944eedeac/transformed/jetified-vector-compat-1.0.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f40b0ea228e8afc59fc1487944eedeac/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4be789423f93ec32157affcec1af8c28/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4be789423f93ec32157affcec1af8c28/transformed/jetified-vector-compat-1.0.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4be789423f93ec32157affcec1af8c28/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4587e714feaa41bf9c1cb1134f0c3b99/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4587e714feaa41bf9c1cb1134f0c3b99/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4587e714feaa41bf9c1cb1134f0c3b99/transformed/jetified-vector-compat-1.0.5/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.wnafee/vector-compat/1.0.5/c5a9fd0f805726cc21b036fccb08f62a7b1f1ec/vector-compat-1.0.5-javadoc.jar!/" />

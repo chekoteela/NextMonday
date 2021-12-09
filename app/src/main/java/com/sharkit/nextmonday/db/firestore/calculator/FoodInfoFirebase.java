@@ -105,9 +105,4 @@ public class FoodInfoFirebase {
         return getTodayMeal(date);
     }
 
-    public Task<QuerySnapshot> getCurrentMeal(String meal) {
-        return db.collection(USER_LINK_RATION)
-                .whereEqualTo(MEAL, meal)
-                .get();
-    }
 }

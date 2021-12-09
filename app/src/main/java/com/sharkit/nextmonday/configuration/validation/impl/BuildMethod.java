@@ -4,6 +4,14 @@ import android.view.View;
 import android.widget.EditText;
 
 public interface BuildMethod {
+    boolean tooSmallValue(float size);
+    boolean tooSmallValue(float size, String toastMessage);
+    boolean tooSmallValue(int size);
+    boolean tooSmallValue(int size, String toastMessage);
+    boolean tooBigValue(int size);
+    boolean tooBigValue(int size, String toastMessage);
+    boolean tooBigValue(float size);
+    boolean tooBigValue(float size, String toastMessage);
     boolean isValidEmail();
     boolean hasNoSymbols();
     boolean notEmpty();

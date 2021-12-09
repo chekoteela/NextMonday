@@ -61,15 +61,4 @@ public class RationNutrition {
         }
         return sum;
     }
-
-    @Override
-    public String toString() {
-        return "RationNutrition{" +
-                "nameMeal='" + nameMeal + '\'' +
-                ", carbohydrate=" + carbohydrate +
-                ", protein=" + protein +
-                ", fat=" + fat +
-                ", calorie=" + calorie +
-                '}';
-    }
 }

@@ -8,10 +8,16 @@ import android.widget.TextView;
 
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.progress.progressview.ProgressView;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.db.firestore.calculator.SettingFirebase;
+import com.sharkit.nextmonday.entity.calculator.GeneralNutrition;
 import com.sharkit.nextmonday.entity.calculator.PFC;
 import com.sharkit.nextmonday.service.builder.LayoutService;
+
+import java.util.Objects;
 
 public class CalculatorMainService implements LayoutService {
     private Context context;
@@ -41,6 +47,30 @@ public class CalculatorMainService implements LayoutService {
         drinkWater.setText(String.valueOf(allNutrition.getWater()));
         allDrinkWater.setText(String.valueOf(allNutrition.getWater()));
         return this;
+    }
+
+    public LayoutService getGeneralNutrition() {
+        new SettingFirebase()
+                .getGeneralNutrition()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()) {
+                                writeToField(Objects.requireNonNull(documentSnapshot.toObject(GeneralNutrition.class)));
+                            }else {
+                                writeToField(new GeneralNutrition());
+                            }
+                    }
+                });
+        return this;
+    }
+
+    private void writeToField(GeneralNutrition generalNutrition) {
+        allCalorie.setText(String.valueOf(generalNutrition.getCalorie()));
+        allProtein.setText(String.valueOf(generalNutrition.getProtein()));
+        allCarbohydrate.setText(String.valueOf(generalNutrition.getCarbohydrate()));
+        allFat.setText(String.valueOf(generalNutrition.getFat()));
+        allWater.setText(String.valueOf(generalNutrition.getWater()));
     }
 
     @Override

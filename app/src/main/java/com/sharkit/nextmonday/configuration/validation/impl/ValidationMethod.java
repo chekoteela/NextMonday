@@ -3,6 +3,14 @@ package com.sharkit.nextmonday.configuration.validation.impl;
 import android.widget.EditText;
 
 public interface ValidationMethod {
+    ValidationMethod tooSmallValue(int size);
+    ValidationMethod tooSmallValue(int size, String toastMessage);
+    ValidationMethod tooSmallValue(float size);
+    ValidationMethod tooSmallValue(float size, String toastMessage);
+    ValidationMethod tooBigValue(int size);
+    ValidationMethod tooBigValue(int size, String toastMessage);
+    ValidationMethod tooBigValue(float size);
+    ValidationMethod tooBigValue(float size, String toastMessage);
     ValidationMethod isValidEmail();
     ValidationMethod hasNoSymbols();
     ValidationMethod notEmpty();
@@ -20,7 +28,6 @@ public interface ValidationMethod {
     ValidationMethod hasNoNumber();
     ValidationMethod hasNotCyrillic();
     ValidationMethod hasNotCyrillic(String toastMessage);
-
 
     boolean build();
 }

@@ -29,11 +29,11 @@ public class CalculatorMain extends Fragment {
         View root = inflater.inflate(R.layout.calculator_main, container, false);
 
         new CalculatorMainService(getAllNutrition())
+                .getGeneralNutrition()
                 .findById(root)
                 .writeToField()
                 .activity()
                 .setAdaptive();
-
         synchronizedDB();
         return root;
     }

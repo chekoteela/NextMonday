@@ -22,9 +22,12 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6d1b48b5c6431e05b3e13d3a294323f5/transformed/jetified-progressview-1.0.1/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6d1b48b5c6431e05b3e13d3a294323f5/transformed/jetified-progressview-1.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6d1b48b5c6431e05b3e13d3a294323f5/transformed/jetified-progressview-1.0.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2cb58aaf81d8ef7489944797c619e282/transformed/jetified-progressview-1.0.1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/2cb58aaf81d8ef7489944797c619e282/transformed/jetified-progressview-1.0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2cb58aaf81d8ef7489944797c619e282/transformed/jetified-progressview-1.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f07a0f7e5287c3f3921c5e033e198c2d/transformed/jetified-progressview-1.0.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f07a0f7e5287c3f3921c5e033e198c2d/transformed/jetified-progressview-1.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f07a0f7e5287c3f3921c5e033e198c2d/transformed/jetified-progressview-1.0.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fc708d30546b1ae50c9f07df0705f242/transformed/jetified-progressview-1.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fc708d30546b1ae50c9f07df0705f242/transformed/jetified-progressview-1.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fc708d30546b1ae50c9f07df0705f242/transformed/jetified-progressview-1.0.1/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.shimaami.android/progressview/1.0.1/bcbd44876b0fe711d89a5a5ce29655cd78da1d5a/progressview-1.0.1-javadoc.jar!/" />

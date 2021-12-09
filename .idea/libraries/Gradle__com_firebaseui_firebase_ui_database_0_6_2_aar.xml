@@ -26,9 +26,13 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/429709923242be63fed80bff4c02fa77/transformed/jetified-firebase-ui-database-0.6.2/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/429709923242be63fed80bff4c02fa77/transformed/jetified-firebase-ui-database-0.6.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/429709923242be63fed80bff4c02fa77/transformed/jetified-firebase-ui-database-0.6.2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6613d4082ebc77f6673a257aaa5874a5/transformed/jetified-firebase-ui-database-0.6.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6613d4082ebc77f6673a257aaa5874a5/transformed/jetified-firebase-ui-database-0.6.2/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6613d4082ebc77f6673a257aaa5874a5/transformed/jetified-firebase-ui-database-0.6.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/874c898ad7a756ce18d6bd05ac396d5c/transformed/jetified-firebase-ui-database-0.6.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/874c898ad7a756ce18d6bd05ac396d5c/transformed/jetified-firebase-ui-database-0.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/874c898ad7a756ce18d6bd05ac396d5c/transformed/jetified-firebase-ui-database-0.6.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a0cc5ca412c5e233daa727f02410a298/transformed/jetified-firebase-ui-database-0.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a0cc5ca412c5e233daa727f02410a298/transformed/jetified-firebase-ui-database-0.6.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a0cc5ca412c5e233daa727f02410a298/transformed/jetified-firebase-ui-database-0.6.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebaseui/firebase-ui-database/0.6.2/a31b3b5dac6528b57aa3c820fa27b1827198d867/firebase-ui-database-0.6.2-javadoc.jar!/" />

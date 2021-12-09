@@ -7,7 +7,9 @@
     android:background="@color/calculator_auto_edittext"
     android:orientation="vertical"
     tools:context=".ui.calculator.CalculatorMain">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/linear_dima"
         android:layout_width="match_parent"
@@ -651,8 +653,8 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
+</ScrollView>
 
 
 

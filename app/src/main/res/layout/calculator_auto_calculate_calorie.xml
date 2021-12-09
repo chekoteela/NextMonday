@@ -181,6 +181,7 @@
 
                 <RadioButton
                     android:id="@+id/male_xml"
+                    android:checked="true"
                     style="@style/StandartTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
