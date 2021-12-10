@@ -25,8 +25,9 @@ public class CalculatorMainService implements LayoutService {
             eatProtein, percentProtein, allEatProtein, allProtein,
             drinkWater, percentWater, allDrinkWater, allWater;
     private ProgressView calorieProgress, fatProgress, carbohydrateProgress, proteinProgress, waterProgress;
-    private ImageView plus;
+    private ImageView plus, addWater, addFood, addWeight;
     private final PFC allNutrition;
+    private boolean isVisible = true;
 
     public CalculatorMainService(PFC allNutrition) {
         this.allNutrition = allNutrition;
@@ -93,12 +94,20 @@ public class CalculatorMainService implements LayoutService {
 
     @Override
     public LayoutService activity() {
-        plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_find_food_by_name);
+        plus.setOnClickListener(v -> {
+            if (isVisible) {
+                addFood.setVisibility(View.VISIBLE);
+                addWater.setVisibility(View.VISIBLE);
+                addWeight.setVisibility(View.VISIBLE);
+                isVisible = false;
+            } else {
+                addFood.setVisibility(View.GONE);
+                addWater.setVisibility(View.GONE);
+                addWeight.setVisibility(View.GONE);
+                isVisible = true;
             }
         });
+        addFood.setOnClickListener(v -> Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_find_food_by_name));
         return this;
     }
 
@@ -106,6 +115,9 @@ public class CalculatorMainService implements LayoutService {
     public LayoutService findById(View root) {
         context = root.getContext();
         plus = root.findViewById(R.id.plus_xml);
+        addFood = root.findViewById(R.id.add_food_xml);
+        addWater = root.findViewById(R.id.add_watter_xml);
+        addWeight = root.findViewById(R.id.add_weight_xml);
 
         drinkWater = root.findViewById(R.id.drink_water_xml);
         percentWater = root.findViewById(R.id.percent_water_xml);
