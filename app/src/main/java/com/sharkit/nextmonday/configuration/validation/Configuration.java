@@ -1,6 +1,8 @@
 package com.sharkit.nextmonday.configuration.validation;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.widget.Toast;
@@ -32,5 +34,12 @@ public class Configuration {
     public static void showAdView(AdView adView){
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+    }
+
+    public static Activity unwrap(Context context) {
+        while (!(context instanceof Activity) && context instanceof ContextWrapper) {
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+        return (Activity) context;
     }
 }

@@ -1,6 +1,7 @@
 package com.sharkit.nextmonday.service.calculator.find_food;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FOOD_INFO_S;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_MEAL;
 
 import android.app.Activity;
 import android.content.Context;
@@ -22,9 +23,12 @@ public class ParentItemService implements LayoutService {
     private final GeneralDataPFCDTO generalDataPFCDTO;
     private TextView name, weight, protein, carbohydrate, fat, calorie;
     private LinearLayout addFood;
+    private final String mealName;
 
-    public ParentItemService(GeneralDataPFCDTO generalDataPFCDTO) {
+
+    public ParentItemService(GeneralDataPFCDTO generalDataPFCDTO, String mealName) {
         this.generalDataPFCDTO = generalDataPFCDTO;
+        this.mealName = mealName;
     }
 
     @Override
@@ -49,8 +53,12 @@ public class ParentItemService implements LayoutService {
                 .findFoodById(generalDataPFCDTO.getId())
                 .addOnSuccessListener(documentSnapshot -> {
                     Bundle bundle = new Bundle();
+                    if (!(mealName == null)){
+                        bundle.putString(FRAGMENT_MEAL, mealName);
+                    }
                     bundle.putSerializable(FOOD_INFO_S, documentSnapshot.toObject(FoodInfo.class));
-                    Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_add_my_food, bundle);
+                    Navigation.findNavController((Activity) context, R.id.nav_host_fragment)
+                            .navigate(R.id.nav_cal_add_my_food, bundle);
                 }));
         return this;
     }

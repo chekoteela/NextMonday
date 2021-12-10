@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday.ui.calculator;
 
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_MEAL;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +19,16 @@ public class FindFood extends Fragment {
                              Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.calculator_find_food_by_name, container, false);
-        new FindFoodService()
-                .findById(root)
-                .writeToField()
-                .activity()
-                .setAdaptive();
+        FindFoodService foodService;
+        try {
+            foodService = new FindFoodService(requireArguments().getString(FRAGMENT_MEAL));
+        }catch (IllegalStateException e){
+            foodService = new FindFoodService();
+        }
+           foodService.findById(root)
+                   .writeToField()
+                   .activity()
+                   .setAdaptive();
         return root;
     }
 }

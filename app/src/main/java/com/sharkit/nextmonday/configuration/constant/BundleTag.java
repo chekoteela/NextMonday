@@ -9,4 +9,5 @@ public class BundleTag {
     public static final String FRAGMENT_CREATE_FOOD_ID = "food_id";
     public static final String FRAGMENT_RATION_DATE = "fragment_ration_date";
     public static final String FOOD_INFO_S = "add_food";
+    public static final String FRAGMENT_MEAL = "meal";
 }

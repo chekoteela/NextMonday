@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,13 +49,24 @@ public class AddNewFoodService implements LayoutService {
     private SwitchCompat weight;
     private Spinner mealSpinner;
     private Button save, update;
+    private String mealName;
 
     public AddNewFoodService(FoodInfo findFood) {
         this.foodInfo = findFood;
     }
 
+    public AddNewFoodService(FoodInfo foodInfo, String mealName) {
+        this.foodInfo = foodInfo;
+        this.mealName = mealName;
+    }
+
     @Override
     public LayoutService writeToField() {
+        if (!(mealName == null)){
+            mealSpinner.setVisibility(View.GONE);
+            meal.setVisibility(View.VISIBLE);
+            meal.setText(mealName);
+        }
         setSpinnerAdapter();
         name.setText(foodInfo.getName());
         calorie.setText(String.valueOf(foodInfo.getCalorie()));
@@ -104,6 +116,17 @@ public class AddNewFoodService implements LayoutService {
     @SuppressLint("SimpleDateFormat")
     @Override
     public LayoutService activity() {
+        mealSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mealName = parent.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                mealName = parent.getSelectedItem().toString();
+            }
+        });
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +134,7 @@ public class AddNewFoodService implements LayoutService {
                 linkFoodDTO.setVisible(true);
                 linkFoodDTO.setLink(foodInfo.getId());
                 linkFoodDTO.setPortion(Float.parseFloat(portions.getText().toString()));
-                linkFoodDTO.setMeal(mealSpinner.getSelectedItem().toString());
+                linkFoodDTO.setMeal(mealName);
                 new RationLinkDataService(context).create(linkFoodDTO);
                 new FoodInfoFirebase()
                         .addNewMyFood(linkFoodDTO)

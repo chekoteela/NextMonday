@@ -20,11 +20,19 @@ public class FindFoodAdapter extends BaseExpandableListAdapter {
     private final ArrayList<PFC> pfcList;
     private final ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS;
     private final Context context;
+    private String mealName;
 
     public FindFoodAdapter(ArrayList<PFC> pfcList, ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS, Context context) {
         this.pfcList = pfcList;
         this.generalDataPFCDTOS = generalDataPFCDTOS;
         this.context = context;
+    }
+
+    public FindFoodAdapter(ArrayList<PFC> pfcList, ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS, Context context, String mealName) {
+        this.pfcList = pfcList;
+        this.generalDataPFCDTOS = generalDataPFCDTOS;
+        this.context = context;
+        this.mealName = mealName;
     }
 
     @Override
@@ -67,7 +75,7 @@ public class FindFoodAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.calculator_food_item_list, null);
         }
-        new ParentItemService(generalDataPFCDTOS.get(groupPosition))
+        new ParentItemService(generalDataPFCDTOS.get(groupPosition), mealName)
                 .findById(convertView)
                 .writeToField()
                 .activity()

@@ -2,6 +2,7 @@ package com.sharkit.nextmonday;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.CANCEL;
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.CREATE_NEW;
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DATE_FOR_MAIN_DIARY_LIST;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FOOD_INFO_S;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_CREATE_FOOD;
@@ -72,7 +73,7 @@ public class MainMenu extends AppCompatActivity {
                 break;
             case R.id.ration_item:
                 Bundle bundle = new Bundle();
-                bundle.putString(FRAGMENT_RATION_DATE, new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTimeInMillis()));
+                bundle.putString(FRAGMENT_RATION_DATE, new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
                 navController.navigate(R.id.nav_cal_ration, bundle);
                 break;
             case R.id.main_item:

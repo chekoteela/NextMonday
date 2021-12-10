@@ -1,8 +1,10 @@
 package com.sharkit.nextmonday.ui.calculator;
 
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.FOOD_INFO_S;
+import static com.sharkit.nextmonday.configuration.constant.BundleTag.FRAGMENT_MEAL;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +21,14 @@ public class AddNewFood extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.calculator_find_my_food, container, false);
-        new AddNewFoodService((FoodInfo) requireArguments().getSerializable(FOOD_INFO_S))
-                .findById(root)
+        AddNewFoodService addNewFoodService;
+        try {
+           addNewFoodService = new AddNewFoodService((FoodInfo) requireArguments().getSerializable(FOOD_INFO_S),
+                   requireArguments().getString(FRAGMENT_MEAL));
+        }catch (IllegalStateException e){
+            addNewFoodService = new AddNewFoodService((FoodInfo) requireArguments().getSerializable(FOOD_INFO_S));
+        }
+                addNewFoodService.findById(root)
                 .writeToField()
                 .setAdaptive()
                 .activity();

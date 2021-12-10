@@ -4,6 +4,7 @@ import static com.sharkit.nextmonday.configuration.constant.AlertButton.ADD;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.CREATE_NEW_MEAL;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.navigation.Navigation;
 
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sharkit.nextmonday.R;
@@ -105,6 +108,7 @@ public class RationService implements LayoutService {
             Meal meal = new Meal(text.getText().toString().trim());
             new FoodInfoFirebase().createMeal(meal)
                     .addOnSuccessListener(unused -> Toast.makeText(context, CREATE_NEW_MEAL, Toast.LENGTH_SHORT).show());
+            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_ration);
         }).setOnCancelListener(DialogInterface::dismiss)
                 .setView(view)
                 .show();

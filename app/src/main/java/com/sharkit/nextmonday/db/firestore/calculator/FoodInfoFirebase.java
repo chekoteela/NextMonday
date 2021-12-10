@@ -6,7 +6,6 @@ import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.R
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USER_LINK_RATION;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USER_MEAL;
 import static com.sharkit.nextmonday.configuration.constant.FirebaseCollection.USER_RATION;
-import static com.sharkit.nextmonday.configuration.constant.firebase_entity.MealTodayEntity.MEAL;
 
 import android.annotation.SuppressLint;
 
@@ -22,6 +21,7 @@ import com.sharkit.nextmonday.entity.calculator.Meal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+@SuppressLint("SimpleDateFormat")
 public class FoodInfoFirebase {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -43,6 +43,9 @@ public class FoodInfoFirebase {
     }
 
     public Task<Void> createMeal(Meal meal) {
+        db.collection(USER_MEAL + new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()))
+                .document(meal.getName())
+                .set(meal);
         return db.collection(USER_RATION)
                 .document(meal.getName())
                 .set(meal);
@@ -72,7 +75,6 @@ public class FoodInfoFirebase {
                 });
     }
 
-    @SuppressLint("SimpleDateFormat")
     private void createTodayMeal(Meal meal) {
         db.collection(USER_MEAL + new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()))
                 .document(meal.getName())
@@ -105,4 +107,12 @@ public class FoodInfoFirebase {
         return getTodayMeal(date);
     }
 
+    public void deleteMeal(String meal){
+        db.collection(USER_RATION)
+                .document(meal)
+                .delete();
+        db.collection(USER_MEAL + new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()))
+                .document(meal)
+                .delete();
+    }
 }
