@@ -1,15 +1,17 @@
 package com.sharkit.nextmonday.service.calculator.ration_service;
 
 import com.sharkit.nextmonday.entity.calculator.GeneralDataPFCDTO;
+import com.sharkit.nextmonday.entity.calculator.LinkFoodDTO;
 
 import java.util.ArrayList;
 
 public class NutritionService {
-    private final ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS;
+    private ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS;
 
     public NutritionService(ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS){
         this.generalDataPFCDTOS = generalDataPFCDTOS;
     }
+    public NutritionService(){}
 
     public ArrayList<Integer> getCalorie() {
         ArrayList<Integer> calorie = new ArrayList<>();
@@ -39,5 +41,18 @@ public class NutritionService {
             carbohydrate.add(generalDataPFCDTOS.get(i).getCarbohydrate());
         }
         return carbohydrate;
+    }
+
+    public int getCalorie(GeneralDataPFCDTO generalDataPFCDTO, float portion) {
+        return (int) (generalDataPFCDTO.getCalorie() / generalDataPFCDTO.getPortion() * portion);
+    }
+    public float getCarbohydrate(GeneralDataPFCDTO generalDataPFCDTO, float portion) {
+        return generalDataPFCDTO.getCarbohydrate() / generalDataPFCDTO.getPortion() * portion;
+    }
+    public float getFat(GeneralDataPFCDTO generalDataPFCDTO, float portion) {
+        return generalDataPFCDTO.getFat() / generalDataPFCDTO.getPortion() * portion;
+    }
+    public float getProtein(GeneralDataPFCDTO generalDataPFCDTO, float portion) {
+        return generalDataPFCDTO.getProtein() / generalDataPFCDTO.getPortion() * portion;
     }
 }

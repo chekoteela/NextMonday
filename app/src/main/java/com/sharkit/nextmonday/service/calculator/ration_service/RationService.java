@@ -69,14 +69,23 @@ public class RationService implements LayoutService {
                                 .findAllLinkByMealAndDate(queryDocumentSnapshot.toObject(Meal.class).getName(), dateRation);
 
                         for (int i = 0; i < links.size(); i++) {
-                            generalDataPFCDTOS.add(new ProductPFCDataService(context)
-                                    .findByID(links.get(i).getLink()).transform(new GeneralDataPFCDTO()));
+                            generalDataPFCDTOS.add(getItemNutrition(new ProductPFCDataService(context)
+                                    .findByID(links.get(i).getLink()).transform(new GeneralDataPFCDTO()),links.get(i).getPortion()));
                         }
                         rationNutrition.add(getAllNutrition(generalDataPFCDTOS, nutrition));
                         linkFoodDTOs.add(generalDataPFCDTOS);
                     }
                     listView.setAdapter(new RationAdapter(rationNutrition, linkFoodDTOs, context));
                 });
+    }
+
+    private GeneralDataPFCDTO getItemNutrition(GeneralDataPFCDTO generalDataPFCDTO, float portion) {
+        NutritionService nutritionService = new NutritionService();
+        generalDataPFCDTO.setCalorie(nutritionService.getCalorie(generalDataPFCDTO, portion));
+        generalDataPFCDTO.setCarbohydrate(nutritionService.getCarbohydrate(generalDataPFCDTO, portion));
+        generalDataPFCDTO.setFat(nutritionService.getFat(generalDataPFCDTO, portion));
+        generalDataPFCDTO.setProtein(nutritionService.getProtein(generalDataPFCDTO, portion));
+        return generalDataPFCDTO;
     }
 
     private RationNutrition getAllNutrition(ArrayList<GeneralDataPFCDTO> generalDataPFCDTOS, RationNutrition nutrition) {

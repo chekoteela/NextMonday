@@ -60,17 +60,4 @@ public class GeneralDataPFCDTO {
     public void setFat(float fat) {
         this.fat = fat;
     }
-
-    @Override
-    public String toString() {
-        return "GeneralDataPFCDTO{" +
-                "name='" + name + '\'' +
-                ", id='" + id + '\'' +
-                ", portion=" + portion +
-                ", calorie=" + calorie +
-                ", protein=" + protein +
-                ", carbohydrate=" + carbohydrate +
-                ", fat=" + fat +
-                '}';
-    }
 }

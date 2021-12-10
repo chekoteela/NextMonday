@@ -12,8 +12,8 @@ public class ChildItemService implements LayoutService {
     public ChildItemService(GeneralDataPFCDTO generalDataPFCDTO){
         this.generalDataPFCDTO = generalDataPFCDTO;
     }
-
     private TextView name, protein, carbohydrate, fat, calorie;
+
     @Override
     public LayoutService writeToField() {
         name.setText(generalDataPFCDTO.getName());
