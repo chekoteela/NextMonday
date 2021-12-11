@@ -87,7 +87,7 @@ public class RationLinkData extends SQLiteOpenHelper {
         linkFoodDTO.setLink(cursor.getString(1));
         linkFoodDTO.setMeal(cursor.getString(2));
         linkFoodDTO.setVisible(Boolean.parseBoolean(cursor.getString(3)));
-        linkFoodDTO.setPortion(cursor.getFloat(4));
+        linkFoodDTO.setPortion(cursor.getInt(4));
         return linkFoodDTO;
     }
 }

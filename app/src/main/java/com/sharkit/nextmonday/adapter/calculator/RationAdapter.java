@@ -74,7 +74,6 @@ public class RationAdapter extends BaseExpandableListAdapter {
                 .writeToField()
                 .setAdaptive()
                 .activity();
-
         return convertView;
     }
 

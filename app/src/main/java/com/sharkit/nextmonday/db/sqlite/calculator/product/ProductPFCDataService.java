@@ -7,13 +7,11 @@ import com.sharkit.nextmonday.entity.calculator.FoodInfo;
 
 public class ProductPFCDataService {
 
-    private final Context context;
     private final ProductPFCData productPFCData;
 
     public ProductPFCDataService(Context context) {
         productPFCData = new ProductPFCData(context);
         productPFCData.onCreate(productPFCData.getReadableDatabase());
-        this.context = context;
     }
 
     public void create(FoodInfo foodInfo){

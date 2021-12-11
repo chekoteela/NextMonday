@@ -1,11 +1,13 @@
 package com.sharkit.nextmonday.service.calculator.calculator_main;
 
 import com.sharkit.nextmonday.entity.calculator.PFC;
+import com.sharkit.nextmonday.entity.calculator.PortionDTO;
 
 import java.util.ArrayList;
 
 public class AllNutritionService {
     private ArrayList<PFC> pfc;
+    private ArrayList<PortionDTO> portionDTOS;
     private int calorie;
 
     private float protein, wheyProtein, soyProtein, aggProtein, caseinProtein;
@@ -13,15 +15,11 @@ public class AllNutritionService {
     private float fat, saturatedFat, transFat, omega3, omega6, omega9, dha, ala, epa;
     private float cellulose, water, salt, calcium, potassium;
 
-    public AllNutritionService() {
-    }
 
-    public AllNutritionService(ArrayList<PFC> pfc) {
-        this.pfc = pfc;
-    }
 
-    public PFC getAll(ArrayList<PFC> pfc) {
+    public PFC getAll(ArrayList<PFC> pfc, ArrayList<PortionDTO> portionDTOS) {
         this.pfc = pfc;
+        this.portionDTOS = portionDTOS;
         PFC product = new PFC();
         product.setCalorie(getCalorie());
         product.setWheyProtein(getWheyProtein());
@@ -51,161 +49,161 @@ public class AllNutritionService {
 
     public float getProtein() {
         for (int i = 0; i < pfc.size(); i++) {
-            protein += pfc.get(i).getProtein();
+            protein += pfc.get(i).getProtein() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return protein;
     }
 
     public int getCalorie() {
         for (int i = 0; i < pfc.size(); i++) {
-            calorie += pfc.get(i).getCalorie();
+            calorie += pfc.get(i).getCalorie() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return calorie;
     }
 
     public float getWheyProtein() {
         for (int i = 0; i < pfc.size(); i++) {
-            wheyProtein += pfc.get(i).getWheyProtein();
+            wheyProtein += pfc.get(i).getWheyProtein() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return wheyProtein;
     }
 
     public float getSoyProtein() {
         for (int i = 0; i < pfc.size(); i++) {
-            soyProtein += pfc.get(i).getSoyProtein();
+            soyProtein += pfc.get(i).getSoyProtein() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return soyProtein;
     }
 
     public float getAggProtein() {
         for (int i = 0; i < pfc.size(); i++) {
-            aggProtein += pfc.get(i).getAggProtein();
+            aggProtein += pfc.get(i).getAggProtein() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return aggProtein;
     }
 
     public float getCaseinProtein() {
         for (int i = 0; i < pfc.size(); i++) {
-            caseinProtein += pfc.get(i).getCaseinProtein();
+            caseinProtein += pfc.get(i).getCaseinProtein() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return caseinProtein;
     }
 
     public float getCarbohydrate() {
         for (int i = 0; i < pfc.size(); i++) {
-            carbohydrate += pfc.get(i).getCarbohydrate();
+            carbohydrate += pfc.get(i).getCarbohydrate() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return carbohydrate;
     }
 
     public float getSimpleCarbohydrate() {
         for (int i = 0; i < pfc.size(); i++) {
-            simpleCarbohydrate += pfc.get(i).getSimpleCarbohydrate();
+            simpleCarbohydrate += pfc.get(i).getSimpleCarbohydrate() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return simpleCarbohydrate;
     }
 
     public float getComplexCarbohydrate() {
         for (int i = 0; i < pfc.size(); i++) {
-            complexCarbohydrate += pfc.get(i).getComplexCarbohydrate();
+            complexCarbohydrate += pfc.get(i).getComplexCarbohydrate() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return complexCarbohydrate;
     }
 
     public float getFat() {
         for (int i = 0; i < pfc.size(); i++) {
-            fat += pfc.get(i).getFat();
+            fat += pfc.get(i).getFat() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return fat;
     }
 
     public float getSaturatedFat() {
         for (int i = 0; i < pfc.size(); i++) {
-            saturatedFat += pfc.get(i).getSaturatedFat();
+            saturatedFat += pfc.get(i).getSaturatedFat() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return saturatedFat;
     }
 
     public float getTransFat() {
         for (int i = 0; i < pfc.size(); i++) {
-            transFat += pfc.get(i).getTransFat();
+            transFat += pfc.get(i).getTransFat() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return transFat;
     }
 
     public float getOmega3() {
         for (int i = 0; i < pfc.size(); i++) {
-            omega3 += pfc.get(i).getOmega3();
+            omega3 += pfc.get(i).getOmega3() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return omega3;
     }
 
     public float getOmega6() {
         for (int i = 0; i < pfc.size(); i++) {
-            omega6 += pfc.get(i).getOmega6();
+            omega6 += pfc.get(i).getOmega6() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return omega6;
     }
 
     public float getOmega9() {
         for (int i = 0; i < pfc.size(); i++) {
-            omega9 += pfc.get(i).getOmega9();
+            omega9 += pfc.get(i).getOmega9() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return omega9;
     }
 
     public float getDha() {
         for (int i = 0; i < pfc.size(); i++) {
-            dha += pfc.get(i).getDha();
+            dha += pfc.get(i).getDha() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return dha;
     }
 
     public float getAla() {
         for (int i = 0; i < pfc.size(); i++) {
-            ala += pfc.get(i).getAla();
+            ala += pfc.get(i).getAla() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return ala;
     }
 
     public float getEpa() {
         for (int i = 0; i < pfc.size(); i++) {
-            epa += pfc.get(i).getEpa();
+            epa += pfc.get(i).getEpa() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return epa;
     }
 
     public float getCellulose() {
         for (int i = 0; i < pfc.size(); i++) {
-            cellulose += pfc.get(i).getCellulose();
+            cellulose += pfc.get(i).getCellulose() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return cellulose;
     }
 
     public float getWater() {
         for (int i = 0; i < pfc.size(); i++) {
-            water += pfc.get(i).getWater();
+            water += pfc.get(i).getWater() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return water;
     }
 
     public float getSalt() {
         for (int i = 0; i < pfc.size(); i++) {
-            salt += pfc.get(i).getSalt();
+            salt += pfc.get(i).getSalt() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return salt;
     }
 
     public float getCalcium() {
         for (int i = 0; i < pfc.size(); i++) {
-            calcium += pfc.get(i).getCalcium();
+            calcium += pfc.get(i).getCalcium() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return calcium;
     }
 
     public float getPotassium() {
         for (int i = 0; i < pfc.size(); i++) {
-            potassium += pfc.get(i).getPotassium();
+            potassium += pfc.get(i).getPotassium() / portionDTOS.get(i).getGeneralPortion() * portionDTOS.get(i).getFoodPortion();
         }
         return potassium;
     }

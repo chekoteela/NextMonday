@@ -6,7 +6,7 @@ public class LinkFoodDTO {
     private final long id = Calendar.getInstance().getTimeInMillis();
     private String link, meal;
     private boolean visible;
-    private float portion;
+    private int portion;
 
     public String getMeal() {
         return meal;
@@ -16,11 +16,11 @@ public class LinkFoodDTO {
         this.meal = meal;
     }
 
-    public float getPortion() {
+    public int getPortion() {
         return portion;
     }
 
-    public void setPortion(float portion) {
+    public void setPortion(int portion) {
         this.portion = portion;
     }
 

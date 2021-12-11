@@ -133,7 +133,7 @@ public class AddNewFoodService implements LayoutService {
                 LinkFoodDTO linkFoodDTO = new LinkFoodDTO();
                 linkFoodDTO.setVisible(true);
                 linkFoodDTO.setLink(foodInfo.getId());
-                linkFoodDTO.setPortion(Float.parseFloat(portions.getText().toString()));
+                linkFoodDTO.setPortion(Integer.parseInt(portions.getText().toString()));
                 linkFoodDTO.setMeal(mealName);
                 new RationLinkDataService(context).create(linkFoodDTO);
                 new FoodInfoFirebase()

@@ -42,7 +42,9 @@ public class CalculatorMain extends Fragment {
     private PFC getAllNutrition() {
         AllNutritionService nutritionService = new AllNutritionService();
         return nutritionService.getAll(new RationLinkDataService(getContext())
-                .findLAllSumByDate(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis())));
+                .findLAllSumByDate(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis())),
+                new RationLinkDataService(getContext())
+                        .findGeneralAndFoodPortion(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis())));
     }
 
     private void synchronizedDB() {
