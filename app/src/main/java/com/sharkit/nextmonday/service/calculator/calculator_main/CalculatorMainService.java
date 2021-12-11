@@ -39,6 +39,13 @@ public class CalculatorMainService implements LayoutService {
         this.allNutrition = allNutrition;
     }
 
+    @SuppressLint("SimpleDateFormat")
+    public CalculatorMainService writeAllNeededField(){
+        new FoodInfoFirebase()
+                .getMealList(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
+        return this;
+    }
+
     @Override
     public LayoutService writeToField() {
         eatCalorie.setText(String.valueOf(allNutrition.getCalorie()));
@@ -54,7 +61,6 @@ public class CalculatorMainService implements LayoutService {
         return this;
     }
 
-    @SuppressLint("SimpleDateFormat")
     public LayoutService getGeneralNutrition() {
         new SettingFirebase()
                 .getGeneralNutrition()
@@ -66,8 +72,6 @@ public class CalculatorMainService implements LayoutService {
                             writeToField(new GeneralNutrition());
                         }
                 });
-        new FoodInfoFirebase()
-                .getMealList(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
         return this;
     }
 

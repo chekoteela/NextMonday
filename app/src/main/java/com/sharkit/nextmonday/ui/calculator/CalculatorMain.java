@@ -29,6 +29,7 @@ public class CalculatorMain extends Fragment {
         View root = inflater.inflate(R.layout.calculator_main, container, false);
 
         new CalculatorMainService(getAllNutrition())
+                .writeAllNeededField()
                 .getGeneralNutrition()
                 .findById(root)
                 .writeToField()
