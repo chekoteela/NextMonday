@@ -1,5 +1,8 @@
 package com.sharkit.nextmonday.service.calculator.calculator_main;
 
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.view.View;
@@ -10,11 +13,14 @@ import androidx.navigation.Navigation;
 
 import com.progress.progressview.ProgressView;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.db.firestore.calculator.FoodInfoFirebase;
 import com.sharkit.nextmonday.db.firestore.calculator.SettingFirebase;
 import com.sharkit.nextmonday.entity.calculator.GeneralNutrition;
 import com.sharkit.nextmonday.entity.calculator.PFC;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class CalculatorMainService implements LayoutService {
@@ -48,6 +54,7 @@ public class CalculatorMainService implements LayoutService {
         return this;
     }
 
+    @SuppressLint("SimpleDateFormat")
     public LayoutService getGeneralNutrition() {
         new SettingFirebase()
                 .getGeneralNutrition()
@@ -59,6 +66,8 @@ public class CalculatorMainService implements LayoutService {
                             writeToField(new GeneralNutrition());
                         }
                 });
+        new FoodInfoFirebase()
+                .getMealList(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
         return this;
     }
 
