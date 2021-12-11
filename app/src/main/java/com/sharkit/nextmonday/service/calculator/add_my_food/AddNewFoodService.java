@@ -11,6 +11,9 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -68,31 +71,35 @@ public class AddNewFoodService implements LayoutService {
             meal.setText(mealName);
         }
         setSpinnerAdapter();
-        name.setText(foodInfo.getName());
-        calorie.setText(String.valueOf(foodInfo.getCalorie()));
-        protein.setText(String.valueOf(foodInfo.getProtein()));
-        whey_protein.setText(String.valueOf(foodInfo.getWheyProtein()));
-        soyProtein.setText(String.valueOf(foodInfo.getSoyProtein()));
-        aggProtein.setText(String.valueOf(foodInfo.getAggProtein()));
-        caseinProtein.setText(String.valueOf(foodInfo.getCaseinProtein()));
-        carbohydrate.setText(String.valueOf(foodInfo.getCarbohydrate()));
-        simpleCarbohydrate.setText(String.valueOf(foodInfo.getSimpleCarbohydrate()));
-        complexCarbohydrate.setText(String.valueOf(foodInfo.getComplexCarbohydrate()));
-        fat.setText(String.valueOf(foodInfo.getFat()));
-        saturatedFat.setText(String.valueOf(foodInfo.getSaturatedFat()));
-        transFat.setText(String.valueOf(foodInfo.getTransFat()));
-        omega9.setText(String.valueOf(foodInfo.getOmega9()));
-        omega6.setText(String.valueOf(foodInfo.getOmega6()));
-        omega3.setText(String.valueOf(foodInfo.getOmega3()));
-        ala.setText(String.valueOf(foodInfo.getAla()));
-        dha.setText(String.valueOf(foodInfo.getDha()));
-        epa.setText(String.valueOf(foodInfo.getEpa()));
-        water.setText(String.valueOf(foodInfo.getWater()));
-        cellulose.setText(String.valueOf(foodInfo.getCellulose()));
-        salt.setText(String.valueOf(foodInfo.getSalt()));
-        calcium.setText(String.valueOf(foodInfo.getCalcium()));
-        potassium.setText(String.valueOf(foodInfo.getPotassium()));
+        getNutritionValue(foodInfo.getPortion());
         return this;
+    }
+
+    private void getNutritionValue(int portion){
+        name.setText(foodInfo.getName());
+        calorie.setText(String.valueOf(foodInfo.getCalorie() / foodInfo.getPortion() * portion));
+        protein.setText(String.valueOf(foodInfo.getProtein() / foodInfo.getPortion() * portion));
+        whey_protein.setText(String.valueOf(foodInfo.getWheyProtein() / foodInfo.getPortion() * portion));
+        soyProtein.setText(String.valueOf(foodInfo.getSoyProtein() / foodInfo.getPortion() * portion));
+        aggProtein.setText(String.valueOf(foodInfo.getAggProtein() / foodInfo.getPortion() * portion));
+        caseinProtein.setText(String.valueOf(foodInfo.getCaseinProtein() / foodInfo.getPortion() * portion));
+        carbohydrate.setText(String.valueOf(foodInfo.getCarbohydrate() / foodInfo.getPortion() * portion));
+        simpleCarbohydrate.setText(String.valueOf(foodInfo.getSimpleCarbohydrate() / foodInfo.getPortion() * portion));
+        complexCarbohydrate.setText(String.valueOf(foodInfo.getComplexCarbohydrate() / foodInfo.getPortion() * portion));
+        fat.setText(String.valueOf(foodInfo.getFat() / foodInfo.getPortion() * portion));
+        saturatedFat.setText(String.valueOf(foodInfo.getSaturatedFat() / foodInfo.getPortion() * portion));
+        transFat.setText(String.valueOf(foodInfo.getTransFat() / foodInfo.getPortion() * portion));
+        omega9.setText(String.valueOf(foodInfo.getOmega9() / foodInfo.getPortion() * portion));
+        omega6.setText(String.valueOf(foodInfo.getOmega6() / foodInfo.getPortion() * portion));
+        omega3.setText(String.valueOf(foodInfo.getOmega3() / foodInfo.getPortion() * portion));
+        ala.setText(String.valueOf(foodInfo.getAla() / foodInfo.getPortion() * portion));
+        dha.setText(String.valueOf(foodInfo.getDha() / foodInfo.getPortion() * portion));
+        epa.setText(String.valueOf(foodInfo.getEpa() / foodInfo.getPortion() * portion));
+        water.setText(String.valueOf(foodInfo.getWater() / foodInfo.getPortion() * portion));
+        cellulose.setText(String.valueOf(foodInfo.getCellulose() / foodInfo.getPortion() * portion));
+        salt.setText(String.valueOf(foodInfo.getSalt() / foodInfo.getPortion() * portion));
+        calcium.setText(String.valueOf(foodInfo.getCalcium() / foodInfo.getPortion() * portion));
+        potassium.setText(String.valueOf(foodInfo.getPotassium() / foodInfo.getPortion() * portion));
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -116,6 +123,56 @@ public class AddNewFoodService implements LayoutService {
     @SuppressLint("SimpleDateFormat")
     @Override
     public LayoutService activity() {
+        weight.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked){
+                if (TextUtils.isEmpty(portions.getText())) {
+                    getNutritionValue(foodInfo.getPortion());
+                    gram.setText(String.valueOf(foodInfo.getPortion()));
+                } else {
+                    getNutritionValue(foodInfo.getPortion() * Integer.parseInt(portions.getText().toString()));
+                    gram.setText(String.valueOf(foodInfo.getPortion() * Integer.parseInt(portions.getText().toString())));
+                }
+            } else {
+                if (TextUtils.isEmpty(portions.getText())) {
+                    getNutritionValue(foodInfo.getPortion());
+                    gram.setText(String.valueOf(foodInfo.getPortion()));
+                } else {
+                    getNutritionValue(Integer.parseInt(portions.getText().toString()));
+                    gram.setText(portions.getText().toString());
+                }
+            }
+        });
+        portions.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!weight.isChecked()) {
+                    if (TextUtils.isEmpty(portions.getText())) {
+                        getNutritionValue(foodInfo.getPortion());
+                        gram.setText(String.valueOf(foodInfo.getPortion()));
+                    } else {
+                        getNutritionValue(Integer.parseInt(s.toString()));
+                        gram.setText(s.toString());
+                    }
+                } else {
+                   if (TextUtils.isEmpty(portions.getText())) {
+                       getNutritionValue(foodInfo.getPortion());
+                       gram.setText(String.valueOf(foodInfo.getPortion()));
+                   } else {
+                       getNutritionValue(Integer.parseInt(s.toString()) * foodInfo.getPortion());
+                       gram.setText(String.valueOf(Integer.parseInt(s.toString()) * foodInfo.getPortion()));
+                   }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         mealSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -127,23 +184,24 @@ public class AddNewFoodService implements LayoutService {
                 mealName = parent.getSelectedItem().toString();
             }
         });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LinkFoodDTO linkFoodDTO = new LinkFoodDTO();
-                linkFoodDTO.setVisible(true);
-                linkFoodDTO.setLink(foodInfo.getId());
+        save.setOnClickListener(view -> {
+            LinkFoodDTO linkFoodDTO = new LinkFoodDTO();
+            linkFoodDTO.setVisible(true);
+            linkFoodDTO.setLink(foodInfo.getId());
+            if (weight.isChecked()){
+                linkFoodDTO.setPortion(Integer.parseInt(portions.getText().toString()) * foodInfo.getPortion());
+            } else {
                 linkFoodDTO.setPortion(Integer.parseInt(portions.getText().toString()));
-                linkFoodDTO.setMeal(mealName);
-                new RationLinkDataService(context).create(linkFoodDTO);
-                new FoodInfoFirebase()
-                        .addNewMyFood(linkFoodDTO)
-                        .addOnSuccessListener(unused -> {
-                            Bundle bundle = new Bundle();
-                            bundle.putString(FRAGMENT_RATION_DATE, new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
-                            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_ration, bundle);
-                        });
             }
+            linkFoodDTO.setMeal(mealName);
+            new RationLinkDataService(context).create(linkFoodDTO);
+            new FoodInfoFirebase()
+                    .addNewMyFood(linkFoodDTO)
+                    .addOnSuccessListener(unused -> {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(FRAGMENT_RATION_DATE, new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
+                        Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_cal_ration, bundle);
+                    });
         });
 
         update.setOnClickListener(v -> {
