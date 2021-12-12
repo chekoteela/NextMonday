@@ -4,6 +4,14 @@ public class Weight {
     private float weight;
     private long date;
 
+    public Weight() {
+    }
+
+    public Weight(float weight, long date) {
+        this.weight = weight;
+        this.date = date;
+    }
+
     public long getDate() {
         return date;
     }

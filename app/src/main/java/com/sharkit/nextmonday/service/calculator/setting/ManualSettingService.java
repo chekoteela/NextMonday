@@ -16,9 +16,12 @@ import androidx.navigation.Navigation;
 import com.google.android.material.tabs.TabLayout;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.db.firestore.calculator.SettingFirebase;
+import com.sharkit.nextmonday.db.firestore.calculator.WeightFirebase;
 import com.sharkit.nextmonday.entity.calculator.GeneralNutrition;
+import com.sharkit.nextmonday.entity.calculator.Weight;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
+import java.util.Calendar;
 import java.util.Objects;
 
 public class ManualSettingService implements LayoutService {
@@ -73,6 +76,9 @@ public class ManualSettingService implements LayoutService {
             new SettingFirebase()
                     .create(generalNutrition)
                     .addOnSuccessListener(unused -> Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.nav_calculator_main));
+            new WeightFirebase()
+                    .create(new Weight(Float.parseFloat(currentWeight.getText().toString()),
+                            Calendar.getInstance().getTimeInMillis()));
         });
         return this;
     }

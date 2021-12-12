@@ -25,5 +25,5 @@ public class FirebaseCollection {
     public static final String RATION = "DB/Calculator/Ration";
     public static final String USER_METABOLISM = USERS + "/" + ID + "/Setting/";
     public static final String USER_GENERAL_NUTRITION = USERS + "/" + ID + "/Calculator/";
-    public static final String USER_WEIGHT = USERS + "/" + ID + "/Calculator/Weight/" + DATE;
+    public static final String USER_WEIGHT = USERS + "/" + ID + "/Weight/";
 }
