@@ -2,21 +2,21 @@ package com.sharkit.nextmonday.entity.calculator;
 
 public class Weight {
     private float weight;
-    private long date;
+    private String date;
 
     public Weight() {
     }
 
-    public Weight(float weight, long date) {
+    public Weight(float weight, String date) {
         this.weight = weight;
         this.date = date;
     }
 
-    public long getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

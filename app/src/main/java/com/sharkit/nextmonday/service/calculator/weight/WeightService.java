@@ -1,6 +1,7 @@
 package com.sharkit.nextmonday.service.calculator.weight;
 
 import static com.sharkit.nextmonday.configuration.constant.AlertButton.ACCEPT;
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.UPDATE_WEIGHT;
 
 import android.annotation.SuppressLint;
@@ -21,15 +22,17 @@ import androidx.navigation.Navigation;
 import com.google.android.gms.ads.AdView;
 import com.jjoe64.graphview.GraphView;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.adapter.calculator.WeightAdapter;
 import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.db.firestore.calculator.WeightFirebase;
-import com.sharkit.nextmonday.db.sqlite.calculator.weight.WeightData;
 import com.sharkit.nextmonday.db.sqlite.calculator.weight.WeightDataService;
 import com.sharkit.nextmonday.entity.calculator.Weight;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+@SuppressLint("SimpleDateFormat")
 public class WeightService implements LayoutService {
     private Context context;
     private TextView currentWeight, desiredWeight;
@@ -41,7 +44,13 @@ public class WeightService implements LayoutService {
     @Override
     public LayoutService writeToField() {
         Configuration.showAdView(adView);
+        currentWeight.setText(String.valueOf(new WeightDataService(context).getWeight()));
+        getWeightList();
         return this;
+    }
+
+    private void getWeightList() {
+        listView.setAdapter(new WeightAdapter(new WeightDataService(context).getAll(), context));
     }
 
     @Override
@@ -75,7 +84,7 @@ public class WeightService implements LayoutService {
         dialog.setPositiveButton(ACCEPT, (dialog1, which) -> {
             Weight weight = new Weight();
             weight.setWeight(Float.parseFloat(editText.getText().toString()));
-            weight.setDate(Calendar.getInstance().getTimeInMillis());
+            weight.setDate(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
             new WeightDataService(context)
                     .create(weight);
             new WeightFirebase()

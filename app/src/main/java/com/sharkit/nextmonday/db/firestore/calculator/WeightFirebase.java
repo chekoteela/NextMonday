@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.configuration.constant.FirebaseCollection;
 import com.sharkit.nextmonday.entity.calculator.Weight;
 
@@ -21,4 +22,5 @@ public class WeightFirebase extends FirebaseCollection {
                 .document(new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()))
                 .set(weight);
     }
+
 }

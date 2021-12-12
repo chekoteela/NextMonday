@@ -6,8 +6,10 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.sharkit.nextmonday.entity.calculator.Weight;
+import com.sharkit.nextmonday.entity.calculator.WeightDTO;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 @SuppressLint("SimpleDateFormat")
 public class WeightDataService extends WeightData{
@@ -27,4 +29,11 @@ public class WeightDataService extends WeightData{
         }
     }
 
+    public ArrayList<WeightDTO> getAll() {
+        return weightData.getAllWeightDTO();
+    }
+
+    public float getWeight() {
+        return weightData.getWeight();
+    }
 }

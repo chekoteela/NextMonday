@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.service.calculator.setting;
 
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
 import static com.sharkit.nextmonday.configuration.constant.UserSetting.PERCENT_CARBOHYDRATE;
 import static com.sharkit.nextmonday.configuration.constant.UserSetting.PERCENT_FAT;
 import static com.sharkit.nextmonday.configuration.constant.UserSetting.PERCENT_PROTEIN;
@@ -7,6 +8,7 @@ import static com.sharkit.nextmonday.configuration.constant.UserSetting.WATER_ON
 import static com.sharkit.nextmonday.configuration.constant.ValidationMessage.EMPTY_CONCLUSION;
 import static com.sharkit.nextmonday.entity.transformer.TransformerFood.transform;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
@@ -28,6 +30,7 @@ import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
 import com.sharkit.nextmonday.db.firestore.calculator.SettingFirebase;
 import com.sharkit.nextmonday.db.firestore.calculator.WeightFirebase;
+import com.sharkit.nextmonday.db.sqlite.calculator.weight.WeightDataService;
 import com.sharkit.nextmonday.entity.calculator.GeneralNutrition;
 import com.sharkit.nextmonday.entity.calculator.Metabolism;
 import com.sharkit.nextmonday.entity.calculator.MetabolismDTO;
@@ -39,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
 
+@SuppressLint("SimpleDateFormat")
 public class AutoSettingService implements LayoutService {
     private TabLayout tabLayout;
     private EditText currentWeight, age, desireWeight, height;
@@ -162,13 +166,16 @@ public class AutoSettingService implements LayoutService {
             dto.setCurrentWeight(Float.parseFloat(currentWeight.getText().toString()));
             dto.setDesireWeight(Float.parseFloat(desireWeight.getText().toString()));
             dto.setHeight(Integer.parseInt(height.getText().toString()));
+
+             Weight weight = new Weight(Float.parseFloat(currentWeight.getText().toString()),
+                   new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
             new SettingFirebase()
                     .create(dto)
                     .addOnSuccessListener(unused -> Navigation
                             .findNavController((Activity) context, R.id.nav_host_fragment)
                             .navigate(R.id.nav_calculator_main));
-            new WeightFirebase().create(new Weight(Float.parseFloat(currentWeight.getText().toString()),
-                    Calendar.getInstance().getTimeInMillis()));
+            new WeightFirebase().create(weight);
+            new WeightDataService(context).create(weight);
 
             anotherSetting();
         });
