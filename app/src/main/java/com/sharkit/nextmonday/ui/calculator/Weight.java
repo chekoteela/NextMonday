@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.service.calculator.weight.WeightService;
 
 
 public class Weight extends Fragment {
@@ -17,6 +18,11 @@ public class Weight extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.calculator_weight, container, false);
+        new WeightService()
+                .findById(root)
+                .writeToField()
+                .activity()
+                .setAdaptive();
         return root;
     }
 }

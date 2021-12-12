@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday.configuration.constant;
 
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
+
 import android.annotation.SuppressLint;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -11,7 +13,7 @@ import java.util.Objects;
 @SuppressLint("SimpleDateFormat")
 public class FirebaseCollection {
     private final static String ID = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-    private static final String DATE = new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTimeInMillis());
+    private static final String DATE = new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis());
     public final static String USERS = "Users";
     public final static String FEEDBACK = "Feedback";
     public static final String TARGETS = USERS + "/" + ID + "/Targets";
@@ -23,4 +25,5 @@ public class FirebaseCollection {
     public static final String RATION = "DB/Calculator/Ration";
     public static final String USER_METABOLISM = USERS + "/" + ID + "/Setting/";
     public static final String USER_GENERAL_NUTRITION = USERS + "/" + ID + "/Calculator/";
+    public static final String USER_WEIGHT = USERS + "/" + ID + "/Calculator/Weight/" + DATE;
 }

@@ -34,7 +34,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/text_weight_xml"
                     style="@style/StandartTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -44,13 +43,12 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/my_weight"
+                    android:id="@+id/current_weight_xml"
                     style="@style/StandartTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:text="85кг"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -65,7 +63,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/text_current_weight_xml"
                     style="@style/StandartTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,13 +72,12 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/current_weight"
+                    android:id="@+id/desired_weight_xml"
                     style="@style/StandartTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:text="111кг"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -89,13 +85,13 @@
         </LinearLayout>
 
         <com.jjoe64.graphview.GraphView
-            android:id="@+id/graph"
+            android:id="@+id/graph_view_xml"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="10dp" />
 
         <ListView
-            android:id="@+id/list_item"
+            android:id="@+id/list_weight_xml"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginVertical="10dp" />
@@ -108,7 +104,7 @@
     <Button
         android:layout_marginVertical="10dp"
         android:layout_above="@+id/adView"
-        android:id="@+id/add_weight"
+        android:id="@+id/add_weight_xml"
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
