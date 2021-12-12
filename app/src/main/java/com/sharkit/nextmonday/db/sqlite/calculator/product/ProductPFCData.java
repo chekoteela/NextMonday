@@ -9,13 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.sharkit.nextmonday.entity.calculator.FoodInfo;
-import com.sharkit.nextmonday.entity.diary.TargetDiary;
 
 public class ProductPFCData extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "UserTarget.db"; // название бд
     private static final int SCHEMA = 6; // версия базы данных
     public static final String TABLE = "product" ; // название таблицы в бд
-    private static String DB_PATH;
 
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";

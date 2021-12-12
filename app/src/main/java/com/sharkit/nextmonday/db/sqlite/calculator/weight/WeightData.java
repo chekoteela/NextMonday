@@ -1,14 +1,19 @@
 package com.sharkit.nextmonday.db.sqlite.calculator.weight;
 
+import static com.sharkit.nextmonday.configuration.constant.AlertButton.SHOW_DATE_FORMAT;
 import static com.sharkit.nextmonday.configuration.constant.BundleTag.DEFAULT;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.sharkit.nextmonday.entity.calculator.Weight;
 
+import java.text.SimpleDateFormat;
+
+@SuppressLint({"Recycle","SimpleDateFormat"})
 public class WeightData extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "UserTarget.db"; // название бд
     private static final int SCHEMA = 6; // версия базы данных
@@ -38,8 +43,20 @@ public class WeightData extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    protected void create (Weight weight){
+    protected void create(Weight weight) {
         db.execSQL("INSERT INTO " + TABLE + " VALUES ('" + id +
-                "','" + weight.getWeight() + "','" + weight.getDate() + "');");
+                "','" + weight.getWeight() +
+                "','" + new SimpleDateFormat(SHOW_DATE_FORMAT).format(weight.getDate()) + "');");
+    }
+
+    protected boolean exist(String date){
+       return db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id +
+               "' AND " + COLUMN_DATE + " = '" + date + "'", null).moveToNext();
+    }
+
+    protected void update(Weight weight) {
+        db.execSQL("UPDATE " + TABLE + " SET " +
+                COLUMN_WEIGHT + " = '" + weight.getWeight() + "' WHERE " +
+                COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + new SimpleDateFormat(SHOW_DATE_FORMAT).format(weight.getDate()) + "'");
     }
 }

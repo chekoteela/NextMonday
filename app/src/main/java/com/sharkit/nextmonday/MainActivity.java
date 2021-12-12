@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         facebook.setOnClickListener(this);
 
         if (mAuth.getCurrentUser() != null){
+            setSharedPreference();
             startActivity(new Intent(MainActivity.this, MainMenu.class));
         }
 
