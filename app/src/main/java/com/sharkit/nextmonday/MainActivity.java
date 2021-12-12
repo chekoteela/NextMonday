@@ -9,7 +9,10 @@ import static com.sharkit.nextmonday.configuration.constant.ToastMessage.PASSWOR
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.SUCCESSFUL_UPDATE;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_EMAIL;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ID;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_LAST_NAME;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_NAME;
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_PASSWORD;
+import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ROLE;
 import static com.sharkit.nextmonday.configuration.constant.firebase_entity.UserFirebaseEntity.PASSWORD;
 import static com.sharkit.nextmonday.configuration.validation.Configuration.hasConnection;
 
@@ -17,6 +20,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -60,6 +64,7 @@ import com.sharkit.nextmonday.entity.enums.Role;
 import com.sharkit.nextmonday.entity.user.FacebookUserDTO;
 import com.sharkit.nextmonday.entity.user.GoogleUserDTO;
 import com.sharkit.nextmonday.entity.user.User;
+import com.sharkit.nextmonday.entity.user.UserPreferenceDTO;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -212,6 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                                         userFirestore.setUser(new User().transform(facebookUserDTO));
                                     }
+                                    setSharedPreference();
                                     startActivity(new Intent(MainActivity.this, MainMenu.class));
                                 });
                     } else {
@@ -249,6 +255,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         userFirestore.setUser(new User()
                                                 .transform(googleUserDTO));
                                     }
+                                    setSharedPreference();
                                     startActivity(new Intent(MainActivity.this, MainMenu.class));
                                 });
                     } else {
@@ -306,6 +313,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 !ValidationField.isValidField(signPass, getApplicationContext())){
             return;
         }
+        setSharedPreference();
         mAuth.signInWithEmailAndPassword(signEmail.getText().toString(), signPass.getText().toString())
                 .addOnSuccessListener(authResult -> startActivity(new Intent(MainActivity.this, MainMenu.class)))
                 .addOnFailureListener(e -> Toast.makeText(getApplication(), EMAIL_AND_PASS_FAIL, Toast.LENGTH_SHORT).show());
@@ -334,5 +342,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+    private void setSharedPreference() {
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        FirebaseFirestore.getInstance().collection(USERS)
+                .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    UserPreferenceDTO userDTO = documentSnapshot.toObject(UserPreferenceDTO.class);
+                    editor.putString(USER_ID, Objects.requireNonNull(userDTO).getId());
+                    editor.putString(USER_LAST_NAME, Objects.requireNonNull(userDTO).getLastName());
+                    editor.putString(USER_NAME, Objects.requireNonNull(userDTO).getName());
+                    editor.putString(USER_EMAIL, Objects.requireNonNull(userDTO).getEmail());
+                    editor.putString(USER_PASSWORD, Objects.requireNonNull(userDTO).getPassword());
+                    editor.putString(USER_ROLE, Objects.requireNonNull(userDTO).getRole());
+                    editor.apply();
+                });
     }
 }

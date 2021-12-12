@@ -12,7 +12,9 @@ import android.widget.CalendarView;
 
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.ads.AdView;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.validation.Configuration;
 import com.sharkit.nextmonday.service.builder.LayoutService;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +22,7 @@ import java.util.Calendar;
 
 public class CalendarService implements LayoutService {
     private CalendarView calendarView;
+    private AdView adView;
     private Context context;
 
     @Override
@@ -35,6 +38,8 @@ public class CalendarService implements LayoutService {
     @SuppressLint("SimpleDateFormat")
     @Override
     public LayoutService activity() {
+        Configuration.showAdView(adView);
+
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             Calendar calendar = Calendar.getInstance();
             calendar.set(year,month,dayOfMonth);
@@ -48,6 +53,7 @@ public class CalendarService implements LayoutService {
     @Override
     public LayoutService findById(View root) {
         context = root.getContext();
+        adView = root.findViewById(R.id.adView);
         calendarView = root.findViewById(R.id.calendar_xml);
         return this;
     }
