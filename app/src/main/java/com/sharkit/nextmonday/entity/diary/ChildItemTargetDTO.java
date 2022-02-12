@@ -4,52 +4,15 @@ import com.sharkit.nextmonday.entity.transformer.TransformerDiary;
 
 import java.io.Serializable;
 
+import lombok.Data;
+
+@Data
 public class ChildItemTargetDTO extends TransformerDiary implements Serializable {
     private String text;
     private String description;
     private long date;
     private boolean status;
     private boolean alarm;
-
-    public boolean isAlarm() {
-        return alarm;
-    }
-
-    public void setAlarm(boolean alarm) {
-        this.alarm = alarm;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public long getDate() {
-        return date;
-    }
-
-    public void setDate(long date) {
-        this.date = date;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 
     public ChildItemTargetDTO transform (TargetDiary targetDiary){
         return transformer(targetDiary);

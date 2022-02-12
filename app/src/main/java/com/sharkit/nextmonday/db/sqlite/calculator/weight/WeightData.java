@@ -10,6 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.sharkit.nextmonday.entity.calculator.Weight;
 import com.sharkit.nextmonday.entity.calculator.WeightDTO;
@@ -50,7 +51,7 @@ public class WeightData extends SQLiteOpenHelper {
     protected void create(Weight weight) {
         db.execSQL("INSERT INTO " + TABLE + " VALUES ('" + id +
                 "','" + weight.getWeight() +
-                "','" + new SimpleDateFormat(SHOW_DATE_FORMAT).format(weight.getDate()) + "');");
+                "','" + weight.getDate() + "');");
     }
 
     protected boolean exist(String date) {
@@ -61,17 +62,22 @@ public class WeightData extends SQLiteOpenHelper {
     protected void update(Weight weight) {
         db.execSQL("UPDATE " + TABLE + " SET " +
                 COLUMN_WEIGHT + " = '" + weight.getWeight() + "' WHERE " +
-                COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" + new SimpleDateFormat(SHOW_DATE_FORMAT).format(weight.getDate()) + "'");
+                COLUMN_ID + " = '" + id + "' AND " + COLUMN_DATE + " = '" +weight.getDate() + "'");
     }
 
     protected ArrayList<WeightDTO> getAllWeightDTO() {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE + " WHERE " + COLUMN_ID + " = '" + id + "'", null);
-        float previousWeight;
+        float previousWeight = 0;
         ArrayList<WeightDTO> weightDTOS = new ArrayList<>();
         while (cursor.moveToNext()) {
             WeightDTO weightDTO = transform(getResult(cursor));
-            previousWeight = cursor.getFloat(2);
-            weightDTO.setDifference(cursor.getFloat(2) - previousWeight);
+            Log.d("qwerty", previousWeight + "");
+            if (previousWeight == 0){
+                weightDTO.setDifference(0);
+            }else {
+                weightDTO.setDifference(cursor.getFloat(1) - previousWeight);
+            }
+            previousWeight = cursor.getFloat(1);
             weightDTOS.add(weightDTO);
         }
         return weightDTOS;

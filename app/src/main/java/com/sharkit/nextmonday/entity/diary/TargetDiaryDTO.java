@@ -1,5 +1,8 @@
 package com.sharkit.nextmonday.entity.diary;
 
+import lombok.Data;
+
+@Data
 public class TargetDiaryDTO {
     private String id;
     private String text;
@@ -17,123 +20,4 @@ public class TargetDiaryDTO {
     private long timeForAlarm;
     private boolean visible;
 
-    public boolean isVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
-    public long getTimeForAlarm() {
-        return timeForAlarm;
-    }
-
-    public boolean isAlarm() {
-        return alarm;
-    }
-
-    public void setAlarm(boolean alarm) {
-        this.alarm = alarm;
-    }
-
-    public void setTimeForAlarm(long timeForAlarm) {
-        this.timeForAlarm = timeForAlarm;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public void setRepeatMonday(boolean repeatMonday) {
-        this.repeatMonday = repeatMonday;
-    }
-
-    public void setRepeatTuesday(boolean repeatTuesday) {
-        this.repeatTuesday = repeatTuesday;
-    }
-
-    public void setRepeatWednesday(boolean repeatWednesday) {
-        this.repeatWednesday = repeatWednesday;
-    }
-
-    public void setRepeatThursday(boolean repeatThursday) {
-        this.repeatThursday = repeatThursday;
-    }
-
-    public void setRepeatFriday(boolean repeatFriday) {
-        this.repeatFriday = repeatFriday;
-    }
-
-    public void setRepeatSaturday(boolean repeatSaturday) {
-        this.repeatSaturday = repeatSaturday;
-    }
-
-    public void setRepeatSunday(boolean repeatSunday) {
-        this.repeatSunday = repeatSunday;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public boolean isRepeatMonday() {
-        return repeatMonday;
-    }
-
-    public boolean isRepeatTuesday() {
-        return repeatTuesday;
-    }
-
-    public boolean isRepeatWednesday() {
-        return repeatWednesday;
-    }
-
-    public boolean isRepeatThursday() {
-        return repeatThursday;
-    }
-
-    public boolean isRepeatFriday() {
-        return repeatFriday;
-    }
-
-    public boolean isRepeatSaturday() {
-        return repeatSaturday;
-    }
-
-    public boolean isRepeatSunday() {
-        return repeatSunday;
-    }
 }

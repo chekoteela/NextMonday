@@ -22,7 +22,7 @@ public class WeightDataService extends WeightData{
     }
 
     public void create(Weight weight){
-        if (weightData.exist(new SimpleDateFormat(SHOW_DATE_FORMAT).format(weight.getDate()))) {
+        if (weightData.exist(weight.getDate())) {
             weightData.update(weight);
         }else {
             weightData.create(weight);

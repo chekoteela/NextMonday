@@ -28,6 +28,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fc708d30546b1ae50c9f07df0705f242/transformed/jetified-progressview-1.0.1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fc708d30546b1ae50c9f07df0705f242/transformed/jetified-progressview-1.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fc708d30546b1ae50c9f07df0705f242/transformed/jetified-progressview-1.0.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d73fda2a02672f4049f2c04955ceb080/transformed/jetified-progressview-1.0.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d73fda2a02672f4049f2c04955ceb080/transformed/jetified-progressview-1.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d73fda2a02672f4049f2c04955ceb080/transformed/jetified-progressview-1.0.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.shimaami.android/progressview/1.0.1/bcbd44876b0fe711d89a5a5ce29655cd78da1d5a/progressview-1.0.1-javadoc.jar!/" />

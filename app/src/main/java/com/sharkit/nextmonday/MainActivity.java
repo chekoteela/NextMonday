@@ -15,6 +15,7 @@ import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_
 import static com.sharkit.nextmonday.configuration.constant.UserServiceTag.USER_ROLE;
 import static com.sharkit.nextmonday.configuration.constant.firebase_entity.UserFirebaseEntity.PASSWORD;
 import static com.sharkit.nextmonday.configuration.validation.Configuration.hasConnection;
+import static com.sharkit.nextmonday.entity.transformer.UserTransformer.transform;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -61,6 +62,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
 import com.sharkit.nextmonday.db.firestore.user.UserFirestore;
 import com.sharkit.nextmonday.entity.enums.Role;
+import com.sharkit.nextmonday.entity.transformer.UserTransformer;
 import com.sharkit.nextmonday.entity.user.FacebookUserDTO;
 import com.sharkit.nextmonday.entity.user.GoogleUserDTO;
 import com.sharkit.nextmonday.entity.user.User;
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
         onClickListener();
     }
+
     @SuppressLint("CommitPrefEdits")
     private void onClickListener() {
         google.setOnClickListener(this);
@@ -118,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         forgotPass.setOnClickListener(this);
         facebook.setOnClickListener(this);
 
-        if (mAuth.getCurrentUser() != null){
+        if (mAuth.getCurrentUser() != null) {
             setSharedPreference();
             startActivity(new Intent(MainActivity.this, MainMenu.class));
         }
@@ -143,6 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         });
             }
+
             @Override
             public void onCancel() {
             }
@@ -210,13 +214,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         userFirestore.getDocument(Objects.requireNonNull(mAuth.getCurrentUser()).getUid())
                                 .addOnSuccessListener(documentSnapshot -> {
                                     if (!documentSnapshot.exists()) {
-                                        FacebookUserDTO facebookUserDTO = new FacebookUserDTO();
-                                        facebookUserDTO.setEmail(Objects.requireNonNull(mAuth.getCurrentUser()).getEmail());
-                                        facebookUserDTO.setName(mAuth.getCurrentUser().getDisplayName());
-                                        facebookUserDTO.setId(mAuth.getCurrentUser().getUid());
-                                        facebookUserDTO.setRole(Role.USER);
 
-                                        userFirestore.setUser(new User().transform(facebookUserDTO));
+                                        FacebookUserDTO facebookUserDTO = FacebookUserDTO.builder()
+                                                .email(Objects.requireNonNull(mAuth.getCurrentUser()).getEmail())
+                                                .id(mAuth.getCurrentUser().getUid())
+                                                .name(mAuth.getCurrentUser().getDisplayName())
+                                                .role(Role.USER)
+                                                .build();
+
+                                        userFirestore.setUser(transform(facebookUserDTO));
                                     }
                                     setSharedPreference();
                                     startActivity(new Intent(MainActivity.this, MainMenu.class));
@@ -247,14 +253,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 .addOnSuccessListener(documentSnapshot -> {
                                     if (!documentSnapshot.exists()) {
 
-                                        GoogleUserDTO googleUserDTO = new GoogleUserDTO();
-                                        googleUserDTO.setEmail(Objects.requireNonNull(mAuth.getCurrentUser()).getEmail());
-                                        googleUserDTO.setName(mAuth.getCurrentUser().getDisplayName());
-                                        googleUserDTO.setId(mAuth.getCurrentUser().getUid());
-                                        googleUserDTO.setRole(Role.USER);
+                                        GoogleUserDTO googleUserDTO = GoogleUserDTO.builder()
+                                                .email(Objects.requireNonNull(mAuth.getCurrentUser()).getEmail())
+                                                .id(mAuth.getCurrentUser().getUid())
+                                                .role(Role.USER)
+                                                .name(mAuth.getCurrentUser().getDisplayName())
+                                                .build();
 
-                                        userFirestore.setUser(new User()
-                                                .transform(googleUserDTO));
+                                        userFirestore.setUser(transform(googleUserDTO));
                                     }
                                     setSharedPreference();
                                     startActivity(new Intent(MainActivity.this, MainMenu.class));
@@ -271,22 +277,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.google_xml:
                 if (hasConnection(getApplicationContext()))
-                signIn();
+                    signIn();
                 break;
             case R.id.create_account_xml:
                 startActivity(new Intent(MainActivity.this, RegistrationMenu.class));
                 break;
             case R.id.sign_in_xml:
                 if (hasConnection(getApplicationContext()))
-                signINWithEmailAndPassword();
+                    signINWithEmailAndPassword();
                 break;
             case R.id.forgot_pass_xml:
                 if (hasConnection(getApplicationContext()))
-                showForgotPassForm();
+                    showForgotPassForm();
                 break;
             case R.id.facebook_xml:
                 if (hasConnection(getApplicationContext()))
-                facebookAuthorize();
+                    facebookAuthorize();
                 break;
         }
     }
@@ -299,6 +305,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onSuccess(LoginResult loginResult) {
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
+
             @Override
             public void onCancel() {
             }
@@ -311,7 +318,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void signINWithEmailAndPassword() {
         if (!ValidationField.isValidField(signEmail, getApplicationContext()) ||
-                !ValidationField.isValidField(signPass, getApplicationContext())){
+                !ValidationField.isValidField(signPass, getApplicationContext())) {
             return;
         }
         setSharedPreference();
@@ -344,8 +351,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     private void setSharedPreference() {
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(Context.ACCOUNT_SERVICE,Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         FirebaseFirestore.getInstance().collection(USERS)
                 .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())

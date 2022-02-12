@@ -27,7 +27,6 @@ import com.sharkit.nextmonday.configuration.validation.validation_field.Validati
 import com.sharkit.nextmonday.db.firestore.user.UserFirestore;
 import com.sharkit.nextmonday.entity.enums.Role;
 import com.sharkit.nextmonday.entity.user.User;
-import com.sharkit.nextmonday.entity.user.UserDTO;
 
 import java.util.Objects;
 
@@ -78,34 +77,35 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
 
     private void createAccount() {
 
-        if (!ValidationField.isValidName(name, getApplicationContext())){
+        if (!ValidationField.isValidName(name, getApplicationContext())) {
             return;
         }
         if (!ValidationField.isValidName(lastName, getApplicationContext())) {
             return;
         }
-        if (!ValidationField.isValidEmail(email, getApplicationContext())){
+        if (!ValidationField.isValidEmail(email, getApplicationContext())) {
             return;
         }
-        if (!ValidationField.isValidPassword(password, getApplicationContext())){
+        if (!ValidationField.isValidPassword(password, getApplicationContext())) {
             return;
         }
-        if (!policy.isChecked()){
+        if (!policy.isChecked()) {
             Toast.makeText(getApplicationContext(), AGREE_WITH_POLICY, Toast.LENGTH_SHORT).show();
             return;
         }
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                 .addOnSuccessListener(authResult -> {
-                    UserDTO userDTO = new UserDTO();
-                    userDTO.setEmail(email.getText().toString().trim());
-                    userDTO.setId(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
-                    userDTO.setName(name.getText().toString().trim());
-                    userDTO.setRole(Role.USER);
-                    userDTO.setPassword(password.getText().toString().trim());
-                    userDTO.setLastName(lastName.getText().toString().trim());
+                    User user = User.builder()
+                            .id(Objects.requireNonNull(mAuth.getCurrentUser()).getUid())
+                            .email(email.getText().toString().trim())
+                            .name(name.getText().toString().trim())
+                            .lastName(lastName.getText().toString().trim())
+                            .password(password.getText().toString().trim())
+                            .role(Role.USER)
+                            .build();
 
-                    new UserFirestore().setUser(new User().transform(userDTO))
+                    new UserFirestore().setUser(user)
                             .addOnSuccessListener(unused -> startActivity(new Intent(RegistrationMenu.this, MainActivity.class)));
                 }).addOnFailureListener(e -> Toast.makeText(getApplication(), USER_WITH_EMAIL_EXIST, Toast.LENGTH_SHORT).show());
     }
@@ -119,7 +119,7 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.create_account_xml:
                 if (hasConnection(getApplicationContext()))
-                createAccount();
+                    createAccount();
                 break;
             case R.id.policy_text:
                 createPolicy();

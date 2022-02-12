@@ -21,6 +21,7 @@ import androidx.navigation.Navigation;
 
 import com.google.android.gms.ads.AdView;
 import com.jjoe64.graphview.GraphView;
+
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.adapter.calculator.WeightAdapter;
 import com.sharkit.nextmonday.configuration.validation.Configuration;
@@ -62,6 +63,7 @@ public class WeightService implements LayoutService {
     @Override
     public LayoutService activity() {
         addWeight.setOnClickListener(v -> createWeightDialog());
+        getGraph();
         return this;
     }
 
@@ -96,5 +98,9 @@ public class WeightService implements LayoutService {
         });
         dialog.setView(view);
         dialog.show();
+    }
+
+    private void getGraph(){
+
     }
 }
