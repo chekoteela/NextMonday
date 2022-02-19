@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.activity.service.Authorisation;
+import com.sharkit.nextmonday.configuration.adaptive.dimmension.template.TemplateAdaptive;
+import com.sharkit.nextmonday.configuration.adaptive.service.AdaptiveService;
 import com.sharkit.nextmonday.configuration.widget_finder.Widget;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -33,10 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getWindow().setNavigationBarColor(getResources().getColor(R.color.back));
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         widget = Widget.findByView(this.getWindow().getDecorView());
+        AdaptiveService.setMainActivityAdaptive(TemplateAdaptive.MAIN_ACTIVITY, this, widget);
+
         authorisation = new Authorisation(this);
         authorisation.createRequest();
         onClickListener();
@@ -49,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         widget.getButton().getForgotPassword().setOnClickListener(this);
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-//            setSharedPreference();
 //            startActivity(new Intent(MainActivity.this, MainMenu.class));
         }
     }
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.forgot_password_xml:
                 if (hasConnection(getApplicationContext()))
-//                    showForgotPassForm();
+                    authorisation.showForgotPassForm();
                 break;
         }
     }

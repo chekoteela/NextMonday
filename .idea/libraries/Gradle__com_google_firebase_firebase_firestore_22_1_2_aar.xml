@@ -1,13 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-firestore:22.1.2@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b0cb62c76e324db49ec32f2c8c13ccf4/jetified-firebase-firestore-22.1.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/46a126bd8de12ad70f89dbc91af5f9ed/jetified-firebase-firestore-22.1.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1675559c56b0e76d95259aa315cdf1db/jetified-firebase-firestore-22.1.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/377e311bda42c5e4614993bc93410da6/transformed/jetified-firebase-firestore-22.1.2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e330f5ff3b73f08807ca49c7f1ff44b4/transformed/jetified-firebase-firestore-22.1.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e330f5ff3b73f08807ca49c7f1ff44b4/transformed/jetified-firebase-firestore-22.1.2/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e330f5ff3b73f08807ca49c7f1ff44b4/transformed/jetified-firebase-firestore-22.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ac35c37df73ac3d7f503fc0f0294aa31/transformed/jetified-firebase-firestore-22.1.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f67e6363a8f72cb93160c1dae3da444e/jetified-firebase-firestore-22.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f67e6363a8f72cb93160c1dae3da444e/jetified-firebase-firestore-22.1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f67e6363a8f72cb93160c1dae3da444e/jetified-firebase-firestore-22.1.2/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-firestore/22.1.2/ed7305df6401c5d56db3ed73e13c770f78859284/firebase-firestore-22.1.2-javadoc.jar!/" />

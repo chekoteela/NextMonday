@@ -1,15 +1,15 @@
 package com.sharkit.nextmonday.configuration.validation;
 
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.NOT_CONNECTION;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
-import com.sharkit.nextmonday.configuration.constant.ToastMessage;
 
 public class Configuration {
 
@@ -27,7 +27,7 @@ public class Configuration {
         if (wifiInfo != null && wifiInfo.isConnected()) {
             return true;
         }
-        Toast.makeText(context, ToastMessage.NOT_CONNECTION, Toast.LENGTH_SHORT).show();
+        NOT_CONNECTION(context);
         return false;
     }
 

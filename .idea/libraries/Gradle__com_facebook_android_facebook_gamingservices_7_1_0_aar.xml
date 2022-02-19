@@ -1,13 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.android:facebook-gamingservices:7.1.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cd9843b5ac07d51070c38a2a0cf36c3d/jetified-facebook-gamingservices-7.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b380044e5ebba1d3c73ee88be9a12d54/jetified-facebook-gamingservices-7.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/527a393810600963b2a2851617428d40/jetified-facebook-gamingservices-7.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b8b955e19eb6d1a0c0b78bacbc8099e3/transformed/jetified-facebook-gamingservices-7.1.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a95f26a9819446561289647c14336173/transformed/jetified-facebook-gamingservices-7.1.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a95f26a9819446561289647c14336173/transformed/jetified-facebook-gamingservices-7.1.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a95f26a9819446561289647c14336173/transformed/jetified-facebook-gamingservices-7.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a50d58f6d879431ba7a2c434393fad10/transformed/jetified-facebook-gamingservices-7.1.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a8e6a4adfd81aac2ab6eb98c267a1681/jetified-facebook-gamingservices-7.1.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a8e6a4adfd81aac2ab6eb98c267a1681/jetified-facebook-gamingservices-7.1.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a8e6a4adfd81aac2ab6eb98c267a1681/jetified-facebook-gamingservices-7.1.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-gamingservices/7.1.0/d088dcffe4ae5c07ee882bf172e377dc927abd25/facebook-gamingservices-7.1.0-javadoc.jar!/" />

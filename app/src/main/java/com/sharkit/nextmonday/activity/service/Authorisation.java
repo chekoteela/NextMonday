@@ -1,12 +1,18 @@
 package com.sharkit.nextmonday.activity.service;
 
 import static com.sharkit.nextmonday.activity.transformer.UserTransformer.toUser;
-import static com.sharkit.nextmonday.configuration.constant.ToastMessage.EMAIL_AND_PASS_FAIL;
-import static com.sharkit.nextmonday.configuration.constant.ToastMessage.ERROR_AUTHORIZE;
+import static com.sharkit.nextmonday.configuration.constant.ButtonText.SEND;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.EMAIL_OR_PASS_FAIL;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.ERROR_AUTHORISE;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.PASSWORDS_NOT_THE_SAME;
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.SUCCESSFUL_UPDATE;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.widget.Toast;
+import android.view.LayoutInflater;
+import android.view.View;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -16,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.activity.MainMenu;
-import com.sharkit.nextmonday.activity.db.firebase.FirebaseUser;
+import com.sharkit.nextmonday.activity.db.firebase.UserRepository;
 import com.sharkit.nextmonday.configuration.validation.validation_field.ValidationField;
 import com.sharkit.nextmonday.configuration.widget_finder.Widget;
 
@@ -27,12 +33,14 @@ public class Authorisation {
     private GoogleSignInClient mGoogleSignInClient;
     private final Widget widget;
     private final Activity activity;
+    private final UserRepository userRepository;
 
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static final int RC_SIGN_IN = 1;
 
-    public Authorisation(Activity activity){
+    public Authorisation(Activity activity) {
         this.activity = activity;
+        userRepository = new UserRepository(activity.getApplicationContext());
         widget = Widget.findByView(activity.getWindow().getDecorView());
     }
 
@@ -58,7 +66,7 @@ public class Authorisation {
         mAuth.signInWithEmailAndPassword(widget.getTextField().getEmail().getText().toString(),
                 widget.getTextField().getPassword().getText().toString())
                 .addOnSuccessListener(authResult -> activity.startActivity(new Intent(activity, MainMenu.class)))
-                .addOnFailureListener(e -> Toast.makeText(activity.getApplicationContext(), EMAIL_AND_PASS_FAIL, Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e -> EMAIL_OR_PASS_FAIL(activity));
     }
 
     public void firebaseAuthWithGoogle(String idToken) {
@@ -66,72 +74,42 @@ public class Authorisation {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(activity, task -> {
                     if (task.isSuccessful()) {
-                        FirebaseUser userFirestore = new FirebaseUser(activity.getApplicationContext());
-                        userFirestore.getUser(Objects.requireNonNull(mAuth.getCurrentUser()).getUid())
+                        userRepository.getUser(Objects.requireNonNull(mAuth.getCurrentUser()).getUid())
                                 .addOnSuccessListener(documentSnapshot -> {
                                     if (!documentSnapshot.exists()) {
-
-                                        userFirestore.create(toUser(mAuth.getCurrentUser().getUid(),
-                                                mAuth.getCurrentUser().getEmail(),
-                                                mAuth.getCurrentUser().getDisplayName()
-                                        ));
+                                        userRepository.create(toUser(mAuth.getCurrentUser()));
                                     }
-//                                    setSharedPreference();
 //                                    startActivity(new Intent(MainActivity.this, MainMenu.class));
                                 });
                     } else {
-                        Toast.makeText(activity.getApplicationContext(), ERROR_AUTHORIZE, Toast.LENGTH_SHORT).show();
+                        ERROR_AUTHORISE(activity);
                     }
                 });
     }
 
-//    private void setSharedPreference() {
-//        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        FirebaseFirestore.getInstance().collection(USERS)
-//                .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-//                .get()
-//                .addOnSuccessListener(documentSnapshot -> {
-//                    UserPreferenceDTO userDTO = documentSnapshot.toObject(UserPreferenceDTO.class);
-//                    editor.putString(USER_ID, Objects.requireNonNull(userDTO).getId());
-//                    editor.putString(USER_LAST_NAME, Objects.requireNonNull(userDTO).getLastName());
-//                    editor.putString(USER_NAME, Objects.requireNonNull(userDTO).getName());
-//                    editor.putString(USER_EMAIL, Objects.requireNonNull(userDTO).getEmail());
-//                    editor.putString(USER_PASSWORD, Objects.requireNonNull(userDTO).getPassword());
-//                    editor.putString(USER_ROLE, Objects.requireNonNull(userDTO).getRole());
-//                    editor.apply();
-//                });
-//    }
-//
-//    public void showForgotPassForm() {
-//        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-//        View root = LayoutInflater.from(this).inflate(R.layout.resetpassword, null);
-//        findViewOnDialog(root);
-//        dialog.setPositiveButton(SEND, (dialog1, which) -> {
-//            if (!ValidationField.isValidField(newPassword, this) || !ValidationField.isValidField(confirmPassword, this)) {
-//                return;
-//            }
-//            if (!confirmPassword.getText().toString().equals(newPassword.getText().toString())) {
-//                Toast.makeText(this, PASSWORDS_NOT_THE_SAME, Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//            AuthCredential credential = EmailAuthProvider
-//                    .getCredential(this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_EMAIL, DEFAULT),
-//                            this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_PASSWORD, DEFAULT));
-//
-//            Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser())
-//                    .reauthenticate(credential)
-//                    .addOnSuccessListener(unused -> FirebaseAuth.getInstance()
-//                            .getCurrentUser()
-//                            .updatePassword(newPassword.getText().toString())
-//                            .addOnSuccessListener(unused1 -> {
-//                                FirebaseFirestore.getInstance().collection(USERS)
-//                                        .document(this.getSharedPreferences(Context.ACCOUNT_SERVICE, Context.MODE_PRIVATE).getString(USER_ID, DEFAULT))
-//                                        .update(PASSWORD, newPassword.getText().toString().trim());
-//                                Toast.makeText(this, SUCCESSFUL_UPDATE, Toast.LENGTH_SHORT).show();
-//                            }));
-//        });
-//        dialog.setView(root);
-//        dialog.show();
-//    }
+    public void showForgotPassForm() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
+        View root = LayoutInflater.from(activity).inflate(R.layout.alert_reset_password, null);
+        Widget widget = Widget.findByView(root);
+        dialog.setPositiveButton(SEND(activity), (dialog1, which) -> {
+            if (!ValidationField.isValidField(widget.getTextField().getPassword(), activity) ||
+                    !ValidationField.isValidField(widget.getTextField().getConfirmPassword(), activity)) {
+                return;
+            }
+            if (!widget.getTextField().getConfirmPassword().getText().toString()
+                    .equals(widget.getTextField().getPassword().getText().toString())) {
+                PASSWORDS_NOT_THE_SAME(activity);
+                return;
+            }
+            Objects.requireNonNull(mAuth.getCurrentUser())
+                    .updatePassword(widget.getTextField().getConfirmPassword().getText().toString())
+                    .addOnSuccessListener(unused -> {
+                        userRepository.updatePassword(widget.getTextField().getConfirmPassword().getText().toString(),
+                                mAuth.getCurrentUser().getUid());
+                        SUCCESSFUL_UPDATE(activity);
+                    });
+        });
+        dialog.setView(root);
+        dialog.show();
+    }
 }

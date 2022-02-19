@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--MAIN_ACTIVITY_DIMENSIONS-->
+<!--    BUTTON DIMENSION-->
+    <dimen name="main_activity_button_height_coefficient">14.4</dimen>
+    <dimen name="main_activity_button_width_coefficient">1.17</dimen>
+    <dimen name="main_activity_button_margin_right_coefficient">14.4</dimen>
+    <dimen name="main_activity_button_margin_left_coefficient">14.4</dimen>
+    <dimen name="main_activity_button_margin_top_coefficient">47.8</dimen>
+    <dimen name="main_activity_button_margin_bottom_coefficient">47.8</dimen>
+
+<!--    EDIT_TEXT DIMENSION-->
+    <dimen name="main_actyvity_edit_text_height_coefficient">14.4</dimen>
+    <dimen name="main_actyvity_edit_text_width_coefficient">1.17</dimen>
+    <dimen name="main_actyvity_edit_text_margin_right_coefficient">14.4</dimen>
+    <dimen name="main_actyvity_edit_text_margin_left_coefficient">14.4</dimen>
+    <dimen name="main_actyvity_edit_text_margin_top_coefficient">43.29</dimen>
+    <dimen name="main_actyvity_edit_text_margin_bottom_coefficient">43.29</dimen>
+
+    -------------------------------
+
+
+</resources>

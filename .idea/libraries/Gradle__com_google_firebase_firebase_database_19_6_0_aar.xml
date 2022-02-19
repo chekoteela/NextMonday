@@ -1,13 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.firebase:firebase-database:19.6.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/f820e3cdf5524f5905c0bd0b836c9605/jetified-firebase-database-19.6.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ed2b9b0397802b9a0ebac1a66d3e775e/jetified-firebase-database-19.6.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/728e2b46f3292d4e7bcf907841cdf4c5/jetified-firebase-database-19.6.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/03c9183ff3e0029039b587fd85d22fe1/transformed/jetified-firebase-database-19.6.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ffbcde570b72bc9850a2920c1ce0897e/transformed/jetified-firebase-database-19.6.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ffbcde570b72bc9850a2920c1ce0897e/transformed/jetified-firebase-database-19.6.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ffbcde570b72bc9850a2920c1ce0897e/transformed/jetified-firebase-database-19.6.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ab82768a7360896284de416cad1092c3/transformed/jetified-firebase-database-19.6.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5ec7d64531a54912edd8de6245c1f249/jetified-firebase-database-19.6.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5ec7d64531a54912edd8de6245c1f249/jetified-firebase-database-19.6.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5ec7d64531a54912edd8de6245c1f249/jetified-firebase-database-19.6.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-database/19.6.0/5cea49e3c3c9e76a1636c953a845eeb0b5fe0788/firebase-database-19.6.0-javadoc.jar!/" />

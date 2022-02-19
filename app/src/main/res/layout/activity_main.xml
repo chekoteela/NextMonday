@@ -8,6 +8,7 @@
     android:background="@color/calculator_auto_edittext"
     tools:context=".activity.MainActivity">
 
+
     <LinearLayout
         android:id="@+id/lin"
         android:layout_width="match_parent"
@@ -26,15 +27,12 @@
     </LinearLayout>
 
     <LinearLayout
-
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
-        android:orientation="vertical"
-
-        >
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/email_xml"
@@ -43,7 +41,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginVertical="13dp"
             android:contentDescription="@string/name2"
             android:ems="10"
             android:hint="@string/SignEmail"
@@ -57,9 +55,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="13dp"
             android:contentDescription="@string/SignEmail2"
             android:ems="10"
             android:hint="@string/SignPassword"
@@ -73,15 +70,14 @@
             style="@style/StandartTextView"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginHorizontal="30dp"
             android:clickable="true"
             android:contentDescription="@string/ForgotPass2"
             android:gravity="center"
             android:text="@string/ForgotPass"
             android:textAlignment="center"
-            android:textColor="@color/color_button_grad" />
+            android:textColor="@color/color_button_grad"
+            android:focusable="true" />
 
         <Button
             android:id="@+id/sign_in_xml"

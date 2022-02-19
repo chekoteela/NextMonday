@@ -1,39 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.wnafee:vector-compat:1.0.5@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/feb3ac5f5c44494e37b9b952d19b2115/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/feb3ac5f5c44494e37b9b952d19b2115/jetified-vector-compat-1.0.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/feb3ac5f5c44494e37b9b952d19b2115/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4343f2410c65db90eea91523813f9417/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4343f2410c65db90eea91523813f9417/jetified-vector-compat-1.0.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4343f2410c65db90eea91523813f9417/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61d07eb31374b929c605f80eb4ae699f/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61d07eb31374b929c605f80eb4ae699f/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/61d07eb31374b929c605f80eb4ae699f/jetified-vector-compat-1.0.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3af614e7451251f15edad909ab5a05d8/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3af614e7451251f15edad909ab5a05d8/jetified-vector-compat-1.0.5/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3af614e7451251f15edad909ab5a05d8/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3a6b0f4db1642eede3d6729986943442/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3a6b0f4db1642eede3d6729986943442/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/3a6b0f4db1642eede3d6729986943442/jetified-vector-compat-1.0.5/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7b29d89b20cb88b2436f0ea1149ad802/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7b29d89b20cb88b2436f0ea1149ad802/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7b29d89b20cb88b2436f0ea1149ad802/transformed/jetified-vector-compat-1.0.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/28f734a0452e5bc237898b44d7d5e7c7/transformed/jetified-vector-compat-1.0.5/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/28f734a0452e5bc237898b44d7d5e7c7/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/28f734a0452e5bc237898b44d7d5e7c7/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4be789423f93ec32157affcec1af8c28/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4be789423f93ec32157affcec1af8c28/transformed/jetified-vector-compat-1.0.5/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4be789423f93ec32157affcec1af8c28/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4587e714feaa41bf9c1cb1134f0c3b99/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4587e714feaa41bf9c1cb1134f0c3b99/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4587e714feaa41bf9c1cb1134f0c3b99/transformed/jetified-vector-compat-1.0.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a376f833b7dbbddef07a4a6f5ae5d829/transformed/jetified-vector-compat-1.0.5/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a376f833b7dbbddef07a4a6f5ae5d829/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a376f833b7dbbddef07a4a6f5ae5d829/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8ed2aa76e2afd9cd5a3340762bf8fb66/transformed/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8ed2aa76e2afd9cd5a3340762bf8fb66/transformed/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8ed2aa76e2afd9cd5a3340762bf8fb66/transformed/jetified-vector-compat-1.0.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/18f2b2cae76acf54076abb6e10bbf5a3/jetified-vector-compat-1.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/18f2b2cae76acf54076abb6e10bbf5a3/jetified-vector-compat-1.0.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/18f2b2cae76acf54076abb6e10bbf5a3/jetified-vector-compat-1.0.5/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.wnafee/vector-compat/1.0.5/c5a9fd0f805726cc21b036fccb08f62a7b1f1ec/vector-compat-1.0.5-javadoc.jar!/" />

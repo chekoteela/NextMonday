@@ -21,5 +21,13 @@ public class EditTextWidget {
         return view.findViewById(R.id.email_xml);
     }
 
+    public EditText getConfirmPassword(){
+        return view.findViewById(R.id.confirm_password_xml);
+    }
+
+    public EditText getCalorie(){
+        return view.findViewById(R.id.calorie_xml);
+    }
+
 
 }

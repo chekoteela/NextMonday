@@ -1,13 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: com.firebaseui:firebase-ui-storage:0.6.2@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c6fdbcce017f1a7b5e24c6852d65e1fe/jetified-firebase-ui-storage-0.6.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5c5a0c8fbf90c56888a50efff2a38c44/jetified-firebase-ui-storage-0.6.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d86642acb418ef9ccc4608dc900e4be5/jetified-firebase-ui-storage-0.6.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8bce150f41a9d4ad4b561af2ff47ad58/transformed/jetified-firebase-ui-storage-0.6.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3d723dd564db03f2acdbf129abce6c67/transformed/jetified-firebase-ui-storage-0.6.2/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/3d723dd564db03f2acdbf129abce6c67/transformed/jetified-firebase-ui-storage-0.6.2/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/3d723dd564db03f2acdbf129abce6c67/transformed/jetified-firebase-ui-storage-0.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/88bf28d66ca4196f7e0a7c11a15ef1c8/transformed/jetified-firebase-ui-storage-0.6.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a7c21729cf683e2c58d22d2427365d74/jetified-firebase-ui-storage-0.6.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a7c21729cf683e2c58d22d2427365d74/jetified-firebase-ui-storage-0.6.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a7c21729cf683e2c58d22d2427365d74/jetified-firebase-ui-storage-0.6.2/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebaseui/firebase-ui-storage/0.6.2/a1e45b6e1a85fba5a2853cfa0cfde7cf383abf9/firebase-ui-storage-0.6.2-javadoc.jar!/" />
