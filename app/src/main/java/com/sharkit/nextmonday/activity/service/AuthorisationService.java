@@ -28,7 +28,7 @@ import com.sharkit.nextmonday.configuration.widget_finder.Widget;
 
 import java.util.Objects;
 
-public class Authorisation {
+public class AuthorisationService {
 
     private GoogleSignInClient mGoogleSignInClient;
     private final Widget widget;
@@ -38,10 +38,10 @@ public class Authorisation {
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private static final int RC_SIGN_IN = 1;
 
-    public Authorisation(Activity activity) {
+    public AuthorisationService(Activity activity, Widget widget) {
+        this.widget = widget;
         this.activity = activity;
         userRepository = new UserRepository(activity.getApplicationContext());
-        widget = Widget.findByView(activity.getWindow().getDecorView());
     }
 
     public void createRequest() {

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="button_send">Отправить</string>
+    <string name="button_agree_policy">I agree</string>
+
 </resources>

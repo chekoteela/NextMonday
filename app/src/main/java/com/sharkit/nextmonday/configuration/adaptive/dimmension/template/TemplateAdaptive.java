@@ -11,6 +11,12 @@ public enum TemplateAdaptive implements TemplateWidgetSize{
         public WidgetSize getWidgetSize(Dimmension dimmension) {
             return MainActivityDimmension.valueOf(dimmension.name());
         }
+    },
+    REGISTRATION_MENU {
+        @Override
+        public WidgetSize getWidgetSize(Dimmension dimmension) {
+            return MainActivityDimmension.valueOf(dimmension.name());
+        }
     }
 
 }

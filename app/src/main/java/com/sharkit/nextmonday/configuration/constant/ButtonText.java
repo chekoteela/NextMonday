@@ -10,4 +10,7 @@ public class ButtonText {
         return context.getString(R.string.button_send);
     }
 
+    public static String AGREE_POLICY(Context context) {
+        return context.getString(R.string.button_agree_policy);
+    }
 }

@@ -315,6 +315,9 @@
     <string name="button_send">Send</string>
     <string name="password_is_not_the_same">Passwords isn\'t the same</string>
     <string name="successful_update">Changes was keep</string>
+    <string name="button_agree_policy">I agree</string>
+    <string name="agree_with_privacy_policy">Agree with privacy policy</string>
+    <string name="user_with_email_created">User with such email was create</string>
 
 
 </resources>

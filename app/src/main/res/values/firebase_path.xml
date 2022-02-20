@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="path_to_user" translatable="false">/User/%s/Information</string>
+    <string name="path_to_user" translatable="false">/User/%s</string>
 </resources>

@@ -29,5 +29,13 @@ public class EditTextWidget {
         return view.findViewById(R.id.calorie_xml);
     }
 
+    public EditText getUserLastName(){
+        return view.findViewById(R.id.user_last_name_xml);
+    }
+
+    public EditText getUserName(){
+        return view.findViewById(R.id.user_name_xml);
+    }
+
 
 }
