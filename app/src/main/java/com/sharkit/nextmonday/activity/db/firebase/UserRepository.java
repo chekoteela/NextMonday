@@ -1,7 +1,6 @@
 package com.sharkit.nextmonday.activity.db.firebase;
 
 import android.content.Context;
-import android.content.res.Resources;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -20,8 +19,8 @@ public class UserRepository {
         this.path = context.getResources().getString(R.string.path_to_user);
     }
 
-    public void create(User user) {
-        db.document(String.format(path, user.getId()))
+    public Task<Void> create(User user) {
+        return db.document(String.format(path, user.getId()))
                 .set(user);
     }
 

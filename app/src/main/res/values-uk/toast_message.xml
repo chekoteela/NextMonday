@@ -5,5 +5,7 @@
     <string name="fail_email_or_pass">Ви ввели не вірний пароль або пошту</string>
     <string name="password_is_not_the_same">Паролі не співпадают</string>
     <string name="successful_update">Зміни збережені</string>
+    <string name="agree_with_privacy_policy">Погодьтесь з політикою конфіденційності</string>
+    <string name="user_with_email_created">Користувач з такою поштою вже зареєстрований</string>
 
 </resources>

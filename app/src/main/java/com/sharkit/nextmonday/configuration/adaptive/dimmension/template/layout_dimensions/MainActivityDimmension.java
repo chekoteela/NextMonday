@@ -72,32 +72,32 @@ public enum MainActivityDimmension implements WidgetSize {
 
         @Override
         public int getHeight() {
-            return (int) (HEIGHT / getCoefficient(R.dimen.main_actyvity_edit_text_height_coefficient));
+            return (int) (HEIGHT / getCoefficient(R.dimen.main_activity_edit_text_height_coefficient));
         }
 
         @Override
         public int getWidth() {
-            return (int) (WIDTH / getCoefficient(R.dimen.main_actyvity_edit_text_width_coefficient));
+            return (int) (WIDTH / getCoefficient(R.dimen.main_activity_edit_text_width_coefficient));
         }
 
         @Override
         public int getMarginTop() {
-            return (int) (HEIGHT / getCoefficient(R.dimen.main_actyvity_edit_text_margin_top_coefficient));
+            return (int) (HEIGHT / getCoefficient(R.dimen.main_activity_edit_text_margin_top_coefficient));
         }
 
         @Override
         public int getMarginBottom() {
-            return (int) (HEIGHT / getCoefficient(R.dimen.main_actyvity_edit_text_margin_bottom_coefficient));
+            return (int) (HEIGHT / getCoefficient(R.dimen.main_activity_edit_text_margin_bottom_coefficient));
         }
 
         @Override
         public int getMarginLeft() {
-            return (int) (WIDTH / getCoefficient(R.dimen.main_actyvity_edit_text_margin_left_coefficient));
+            return (int) (WIDTH / getCoefficient(R.dimen.main_activity_edit_text_margin_left_coefficient));
         }
 
         @Override
         public int getMarginRight() {
-            return (int) (WIDTH / getCoefficient(R.dimen.main_actyvity_edit_text_margin_right_coefficient));
+            return (int) (WIDTH / getCoefficient(R.dimen.main_activity_edit_text_margin_right_coefficient));
         }
 
         @SuppressLint("ResourceType")

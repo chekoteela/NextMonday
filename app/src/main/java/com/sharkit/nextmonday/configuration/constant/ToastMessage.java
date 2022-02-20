@@ -22,14 +22,17 @@ public class ToastMessage {
     public static void SUCCESSFUL_UPDATE(Context context) {
         toastMessage(context, R.string.successful_update);
     }
+    public static void AGREE_WITH_POLICY(Context context) {
+        toastMessage(context, R.string.agree_with_privacy_policy);
+    }
+    public static void USER_WITH_EMAIL_EXIST(Context context) {
+        toastMessage(context, R.string.successful_update);
+    }
 
     private static void toastMessage(Context context, int idRes){
         Toast.makeText(context, context.getString(idRes), Toast.LENGTH_SHORT).show();
     }
 
-    public static final String AGREE_POLICY = "Я ознакомлен(а)";
-    public static final String AGREE_WITH_POLICY = "Согласитесь с политикой конфиденциальности";
-    public static final String USER_WITH_EMAIL_EXIST = "Пользователь с такой почтой уже зарегистрируван";
     public static final String CHECK_YOUR_EMAIL = "Проверте вашу почту";
     public static final String EMAIL_NOT_FOUND = "Почта не найдена";
     public static final String ERROR_PAST_DATE = "Вы не можете добавить задачу задним числом";

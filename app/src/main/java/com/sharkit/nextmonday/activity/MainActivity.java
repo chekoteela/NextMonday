@@ -18,14 +18,14 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.activity.service.Authorisation;
+import com.sharkit.nextmonday.activity.service.AuthorisationService;
 import com.sharkit.nextmonday.configuration.adaptive.dimmension.template.TemplateAdaptive;
 import com.sharkit.nextmonday.configuration.adaptive.service.AdaptiveService;
 import com.sharkit.nextmonday.configuration.widget_finder.Widget;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Authorisation authorisation;
+    private AuthorisationService authorisationService;
     private Widget widget;
     private static final int RC_SIGN_IN = 1;
 
@@ -40,16 +40,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         widget = Widget.findByView(this.getWindow().getDecorView());
         AdaptiveService.setMainActivityAdaptive(TemplateAdaptive.MAIN_ACTIVITY, this, widget);
 
-        authorisation = new Authorisation(this);
-        authorisation.createRequest();
+        authorisationService = new AuthorisationService(this, widget);
+        authorisationService.createRequest();
         onClickListener();
     }
 
     private void onClickListener() {
-        widget.getButton().getGoogle().setOnClickListener(this);
+        widget.getImageView().getGoogle().setOnClickListener(this);
         widget.getButton().getCreateAccount().setOnClickListener(this);
         widget.getButton().getSignIn().setOnClickListener(this);
-        widget.getButton().getForgotPassword().setOnClickListener(this);
+        widget.getTextView().getForgotPassword().setOnClickListener(this);
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
 //            startActivity(new Intent(MainActivity.this, MainMenu.class));
@@ -62,18 +62,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.google_xml:
                 if (hasConnection(getApplicationContext()))
-                    authorisation.signIn();
+                    authorisationService.signIn();
                 break;
             case R.id.create_account_xml:
                 startActivity(new Intent(MainActivity.this, RegistrationMenu.class));
                 break;
             case R.id.sign_in_xml:
                 if (hasConnection(getApplicationContext()))
-                    authorisation.signInWithEmailAndPassword();
+                    authorisationService.signInWithEmailAndPassword();
                 break;
             case R.id.forgot_password_xml:
                 if (hasConnection(getApplicationContext()))
-                    authorisation.showForgotPassForm();
+                    authorisationService.showForgotPassForm();
                 break;
         }
     }
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
-                authorisation.firebaseAuthWithGoogle(task.getResult(ApiException.class).getIdToken());
+                authorisationService.firebaseAuthWithGoogle(task.getResult(ApiException.class).getIdToken());
             } catch (ApiException e) {
                 throw new RuntimeException(e.getMessage());
             }
