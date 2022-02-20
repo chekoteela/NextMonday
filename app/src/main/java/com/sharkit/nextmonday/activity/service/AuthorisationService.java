@@ -62,7 +62,6 @@ public class AuthorisationService {
                 !ValidationField.isValidField(widget.getTextField().getPassword(), activity.getApplicationContext())) {
             return;
         }
-//        setSharedPreference();
         mAuth.signInWithEmailAndPassword(widget.getTextField().getEmail().getText().toString(),
                 widget.getTextField().getPassword().getText().toString())
                 .addOnSuccessListener(authResult -> activity.startActivity(new Intent(activity, MainMenu.class)))
@@ -79,7 +78,7 @@ public class AuthorisationService {
                                     if (!documentSnapshot.exists()) {
                                         userRepository.create(toUser(mAuth.getCurrentUser()));
                                     }
-//                                    startActivity(new Intent(MainActivity.this, MainMenu.class));
+                                    activity.startActivity(new Intent(activity, MainMenu.class));
                                 });
                     } else {
                         ERROR_AUTHORISE(activity);

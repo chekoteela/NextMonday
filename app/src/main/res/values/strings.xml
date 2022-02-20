@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NextMonday</string>
+    <string name="app_name" translatable="false">NextMonday</string>
     <string name="SignEmail">Почта</string>
     <string name="SignPassword">Пароль</string>
     <string name="DontHaveAcc">Не имеете аккаунта?</string>
@@ -318,6 +318,25 @@
     <string name="button_agree_policy">I agree</string>
     <string name="agree_with_privacy_policy">Agree with privacy policy</string>
     <string name="user_with_email_created">User with such email was create</string>
+    <string name="field_must_be_not_empty">Field must be not empty : %s</string>
+    <string name="field_value_to_long">Field value too long : %s</string>
+    <string name="field_has_symbols">Field value has symbols : %s</string>
+    <string name="field_has_space">Field value has space : %s</string>
+    <string name="email_is_not_valid">Email isn\'t valid</string>
+    <string name="field_has_number">Field value has numbers : %s</string>
+    <string name="field_has_cyrillic">Field value has cyrillic : %s</string>
+    <string name="field_value_to_short">Field value too short : %s</string>
+    <string name="null_spinner_position">Field must be selected : %s</string>
+    <string name="field_value_to_big">Field value too big : %s</string>
+    <string name="field_value_to_small">Field value too small : %s</string>
+    <string name="button_create_new_account">Create new account</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="text_field_email">Email</string>
+    <string name="text_field_password">Password</string>
+    <string name="text_view_continue_with">Continue with</string>
+    <string name="text_forgot_password">Forgot password?</string>
+    <string name="text_view_forgot_password">Forgot password?</string>
+    <string name="text_view_not_have_account">Does not have an account?</string>
 
 
 </resources>

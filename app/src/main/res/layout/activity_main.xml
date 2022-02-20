@@ -21,7 +21,7 @@
             android:id="@+id/imageView2"
             android:layout_width="170dp"
             android:layout_height="170dp"
-            android:contentDescription="logo"
+            android:contentDescription="@string/description_logo"
             app:srcCompat="@drawable/logo_white" />
 
     </LinearLayout>
@@ -42,12 +42,12 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
             android:layout_marginVertical="13dp"
-            android:contentDescription="@string/name2"
             android:ems="10"
-            android:hint="@string/SignEmail"
+            android:hint="@string/text_field_email"
             android:inputType="textEmailAddress"
             android:textAlignment="center"
-            android:textColorHint="@color/hintColor" />
+            android:textColorHint="@color/hintColor"
+            android:autofillHints="@string/text_field_email" />
 
         <EditText
             android:id="@+id/password_xml"
@@ -57,12 +57,12 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginHorizontal="30dp"
             android:layout_marginVertical="13dp"
-            android:contentDescription="@string/SignEmail2"
             android:ems="10"
-            android:hint="@string/SignPassword"
+            android:hint="@string/text_field_password"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColorHint="@color/hintColor" />
+            android:textColorHint="@color/hintColor"
+            android:autofillHints="@string/text_field_password" />
 
 
         <TextView
@@ -72,12 +72,12 @@
             android:layout_height="48dp"
             android:layout_marginHorizontal="30dp"
             android:clickable="true"
-            android:contentDescription="@string/ForgotPass2"
+            android:contentDescription="@string/description_forgot_password"
+            android:focusable="true"
             android:gravity="center"
-            android:text="@string/ForgotPass"
+            android:text="@string/text_view_forgot_password"
             android:textAlignment="center"
-            android:textColor="@color/color_button_grad"
-            android:focusable="true" />
+            android:textColor="@color/color_button_grad" />
 
         <Button
             android:id="@+id/sign_in_xml"
@@ -87,8 +87,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="30dp"
-            android:contentDescription="@string/SignIn2"
-            android:text="@string/SignIn" />
+            android:contentDescription="@string/description_sign_in"
+            android:text="@string/button_sign_in" />
 
         <TextView
             android:id="@+id/textView"
@@ -98,8 +98,9 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
+            android:contentDescription="@string/description_not_have_account"
             android:gravity="center_horizontal"
-            android:text="@string/DontHaveAcc"
+            android:text="@string/text_view_not_have_account"
             android:textAlignment="center" />
 
         <Button
@@ -110,8 +111,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
-            android:contentDescription="@string/haveAcc2"
-            android:text="@string/Register" />
+            android:contentDescription="@string/description_create_account"
+            android:text="@string/button_create_new_account" />
 
 
         <TextView
@@ -120,8 +121,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:contentDescription="@string/description_continue_with"
             android:gravity="center_horizontal"
-            android:text="@string/OrContinue"
+            android:text="@string/text_view_continue_with"
             android:textAlignment="center" />
 
 
@@ -140,7 +142,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="1dp"
-                android:contentDescription="@string/google"
+                android:contentDescription="@string/description_sign_in_with_google"
                 app:srcCompat="@drawable/goggle" />
 
         </LinearLayout>

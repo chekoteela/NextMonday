@@ -7,5 +7,18 @@
     <string name="successful_update">Зміни збережені</string>
     <string name="agree_with_privacy_policy">Погодьтесь з політикою конфіденційності</string>
     <string name="user_with_email_created">Користувач з такою поштою вже зареєстрований</string>
+    <string name="field_must_be_not_empty">Поле не повино бути пустим : %s</string>
+    <string name="field_value_to_long">Дуже довге значення поля : %s</string>
+    <string name="field_value_to_short">Дуже коротке значення поля : %s</string>
+    <string name="field_has_symbols">Поле не повино містити символів : %s</string>
+    <string name="field_has_space">Поле не повино містити пробілів : %s</string>
+    <string name="email_is_not_valid">Введіть коректний електроний адрес</string>
+    <string name="field_has_number">Поле не повино містити цифер : %s</string>
+    <string name="field_has_cyrillic">Поле не повино містити кирилиці : %s</string>
+    <string name="null_spinner_position">Поле повино бути вибрано : %s</string>
+    <string name="field_value_to_big">Дуже велике значення поля : %s</string>
+    <string name="field_value_to_small">Дуже маленьке значення поля : %s</string>
+
+
 
 </resources>

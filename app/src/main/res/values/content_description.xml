@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description_logo" translatable="false">Logo</string>
+    <string name="description_forgot_password" translatable="false">Forgot password</string>
+    <string name="description_sign_in" translatable="false">Sign in</string>
+    <string name="description_not_have_account" translatable="false">Does not have an account?</string>
+    <string name="description_create_account" translatable="false">Create account</string>
+    <string name="description_continue_with" translatable="false">Continue with</string>
+    <string name="description_sign_in_with_google" translatable="false">Sign in with google</string>
+
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_view_continue_with">Продовжити з</string>
+    <string name="text_view_forgot_password">Забули пароль?</string>
+    <string name="text_view_not_have_account">Не маєте аккаунта?</string>
+
+</resources>

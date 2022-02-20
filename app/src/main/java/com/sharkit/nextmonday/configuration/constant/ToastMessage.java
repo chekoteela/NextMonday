@@ -28,19 +28,17 @@ public class ToastMessage {
     public static void USER_WITH_EMAIL_EXIST(Context context) {
         toastMessage(context, R.string.successful_update);
     }
+    public static void IS_NULL_SPINNER_POSITION(Context context) {
+        toastMessage(context, R.string.successful_update);
+    }
 
     private static void toastMessage(Context context, int idRes){
         Toast.makeText(context, context.getString(idRes), Toast.LENGTH_SHORT).show();
     }
 
-    public static final String CHECK_YOUR_EMAIL = "Проверте вашу почту";
-    public static final String EMAIL_NOT_FOUND = "Почта не найдена";
-    public static final String ERROR_PAST_DATE = "Вы не можете добавить задачу задним числом";
-    public static final String ERROR_PAST_TIME = "Вы не можете задать прошедшее время";
-    public static final String SEND_FEEDBACK = "Отзыв отправлен";
-    public static final String PASSWORD_NOT_CORRECT = "Введите правельный пароль";
-    public static final String EMAIL_UPDATED = "Почта обновлена";
-    public static final String CREATE_NEW_MEAL = "Прийом їжі створений";
-    public static final String UPDATE_WEIGHT = "Current weight is updated";
+
+    protected static final String TOO_BIG_VALUE = "Too big value";
+    protected static final String TOO_SMALL_VALUE = "Too small value";
+    protected static final String IS_NOT_VALID_DESIRED_WEIGHT = "Is not valid desired weight";
 
 }
