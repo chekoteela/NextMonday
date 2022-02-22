@@ -3,6 +3,7 @@
     <string name="text_view_continue_with">Продолжить с</string>
     <string name="text_view_forgot_password">Забыли пароль?</string>
     <string name="text_view_not_have_account">Не имеете аккаунта?</string>
-
+    <string name="text_view_privacy_policy">Политика конфиденциальности</string>
+    <string name="text_view_have_account">Имеете аккаунт?</string>
 
 </resources>

@@ -3,5 +3,7 @@
     <string name="text_view_continue_with">Continue with</string>
     <string name="text_view_forgot_password">Forgot password?</string>
     <string name="text_view_not_have_account">Does not have an account?</string>
+    <string name="text_view_privacy_policy">Privacy Policy</string>
+    <string name="text_view_have_account">Does have an account?</string>
 
 </resources>

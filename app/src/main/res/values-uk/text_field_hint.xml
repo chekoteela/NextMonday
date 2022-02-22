@@ -2,4 +2,7 @@
 <resources>
     <string name="text_field_email">Пошта</string>
     <string name="text_field_password">Пароль</string>
+    <string name="text_field_name">І\'мя</string>
+    <string name="text_field_last_name">Фамілія</string>
+
 </resources>

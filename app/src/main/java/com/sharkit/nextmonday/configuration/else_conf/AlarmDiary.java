@@ -30,7 +30,7 @@ public class AlarmDiary extends BroadcastReceiver {
         Bitmap imageDiary = BitmapFactory.decodeResource(context.getResources(), R.drawable.notification_diary);
 
         Notification notification = new NotificationCompat.Builder(context, CHANNEL_1)
-                .setSmallIcon(R.drawable.logo_white)
+                .setSmallIcon(R.drawable.logotype_next_monday)
                 .setLargeIcon(imageDiary)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .setSummaryText(intent.getStringExtra(SUMMARY_TEXT))

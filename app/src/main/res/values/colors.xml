@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="authorisation_background_color">#192229</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
+    <color name="authorisation_menu_background_color">#192229</color>
+    <color name="registration_menu_background_color">#192229</color>
+
     <color name="text_field_background">#232D37</color>
     <color name="text_field_hint">#8F8E8E</color>
+    <color name="text_field_background_ripple">#232D37</color>
+
+    <color name="button_background">#232D37</color>
+    <color name="button_background_ripple">#7E8388</color>
+
+    <color name="check_box_accent">#F46F12</color>
+
+    <color name="text_view_select">#F46F12</color>
+
+
+
+
+
 
 
 
@@ -21,8 +39,6 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
     <color name="hintColor">#918c86</color>
     <color name="back">@color/layout_gradient_three</color>
     <color name="btn">#3E2214</color>
