@@ -124,7 +124,7 @@
             android:contentDescription="@string/privacy_policy"
             android:id="@+id/policy_text_xml"
             android:layout_width="wrap_content"
-            style="@style/StandartTextView"
+            style="@style/StandardTextView"
             android:layout_height="wrap_content"
             android:textColor="@color/color_button_grad"
             android:text="@string/with_pr_pol"
@@ -156,7 +156,7 @@
             tools:layout_editor_absoluteX="-16dp" />
 
         <TextView
-            style="@style/StandartTextView"
+            style="@style/StandardTextView"
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

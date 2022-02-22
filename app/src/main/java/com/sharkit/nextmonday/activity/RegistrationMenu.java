@@ -28,7 +28,7 @@ public class RegistrationMenu extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration_menu);
+        setContentView(R.layout.registration_menu);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         widget = Widget.findByView(getWindow().getDecorView());
         AdaptiveService.setRegistrationLayoutAdaptive(TemplateAdaptive.REGISTRATION_MENU, this, widget);

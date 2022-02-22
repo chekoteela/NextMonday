@@ -39,7 +39,7 @@
 
             <TextView
                 android:id="@+id/percent_calorie_xml"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -61,7 +61,7 @@
 
             <TextView
                 android:id="@+id/eat_calorie_xml"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -72,7 +72,7 @@
                 tools:layout_editor_absoluteY="249dp" />
 
             <TextView
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

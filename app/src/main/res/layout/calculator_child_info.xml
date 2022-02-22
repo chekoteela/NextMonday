@@ -18,7 +18,7 @@
 
             <TextView
                 android:id="@+id/calorie_text"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -27,7 +27,7 @@
 
             <TextView
                 android:id="@+id/calorie_xml"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -53,7 +53,7 @@
 
                     <TextView
                         android:id="@+id/protein_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -63,7 +63,7 @@
 
                     <TextView
                         android:id="@+id/protein_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -79,7 +79,7 @@
 
                     <TextView
                         android:id="@+id/whey_protein_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -87,7 +87,7 @@
 
                     <TextView
                         android:id="@+id/whey_protein_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -102,7 +102,7 @@
 
                     <TextView
                         android:id="@+id/soy_protein_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -110,7 +110,7 @@
 
                     <TextView
                         android:id="@+id/soy_protein_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -124,7 +124,7 @@
 
                     <TextView
                         android:id="@+id/agg_protein_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -132,7 +132,7 @@
 
                     <TextView
                         android:id="@+id/agg_protein_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -147,7 +147,7 @@
 
                     <TextView
                         android:id="@+id/casein_protein_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -155,7 +155,7 @@
 
                     <TextView
                         android:id="@+id/casein_protein_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -180,7 +180,7 @@
 
                     <TextView
                         android:id="@+id/carbohydrate_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -190,7 +190,7 @@
 
                     <TextView
                         android:id="@+id/carbohydrate_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -204,7 +204,7 @@
 
                     <TextView
                         android:id="@+id/simple_carbohydrates_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -212,7 +212,7 @@
 
                     <TextView
                         android:id="@+id/simple_carbohydrates_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -226,7 +226,7 @@
 
                     <TextView
                         android:id="@+id/complex_carbohydrate_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -234,7 +234,7 @@
 
                     <TextView
                         android:id="@+id/complex_carbohydrate_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -257,7 +257,7 @@
 
                     <TextView
                         android:id="@+id/fat_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -267,7 +267,7 @@
 
                     <TextView
                         android:id="@+id/fat_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -282,7 +282,7 @@
 
                     <TextView
                         android:id="@+id/saturated_fat_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -290,7 +290,7 @@
 
                     <TextView
                         android:id="@+id/saturated_fat_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -304,7 +304,7 @@
 
                     <TextView
                         android:id="@+id/trans_fat_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -312,7 +312,7 @@
 
                     <TextView
                         android:id="@+id/trans_fat_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -326,7 +326,7 @@
 
                     <TextView
                         android:id="@+id/omega9_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -334,7 +334,7 @@
 
                     <TextView
                         android:id="@+id/omega9_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -348,7 +348,7 @@
 
                     <TextView
                         android:id="@+id/omega6_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -356,7 +356,7 @@
 
                     <TextView
                         android:id="@+id/omega6_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -371,7 +371,7 @@
 
                     <TextView
                         android:id="@+id/omega3_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="7dp"
@@ -379,7 +379,7 @@
 
                     <TextView
                         android:id="@+id/omega3_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -393,7 +393,7 @@
 
                     <TextView
                         android:id="@+id/ala_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -402,7 +402,7 @@
 
                     <TextView
                         android:id="@+id/ala_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -416,7 +416,7 @@
 
                     <TextView
                         android:id="@+id/epa_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -425,7 +425,7 @@
 
                     <TextView
                         android:id="@+id/epa_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -440,7 +440,7 @@
 
                     <TextView
                         android:id="@+id/dha_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -449,7 +449,7 @@
 
                     <TextView
                         android:id="@+id/dha_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -465,7 +465,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingVertical="2dp"
@@ -479,7 +479,7 @@
 
                     <TextView
                         android:id="@+id/water_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -487,7 +487,7 @@
 
                     <TextView
                         android:id="@+id/water_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -501,7 +501,7 @@
 
                     <TextView
                         android:id="@+id/cellulose_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -509,7 +509,7 @@
 
                     <TextView
                         android:id="@+id/cellulose_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -523,7 +523,7 @@
 
                     <TextView
                         android:id="@+id/salt_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -531,7 +531,7 @@
 
                     <TextView
                         android:id="@+id/salt_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -546,7 +546,7 @@
 
                     <TextView
                         android:id="@+id/calcium_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -554,7 +554,7 @@
 
                     <TextView
                         android:id="@+id/calcium_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -570,7 +570,7 @@
 
                     <TextView
                         android:id="@+id/potassium_text"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingVertical="2dp"
@@ -578,7 +578,7 @@
 
                     <TextView
                         android:id="@+id/potassium_xml"
-                        style="@style/StandartTextView"
+                        style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
