@@ -7,7 +7,11 @@ import com.sharkit.nextmonday.configuration.widget_finder.widget.AdViewWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.ButtonWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.CheckBoxWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.EditTextWidget;
+import com.sharkit.nextmonday.configuration.widget_finder.widget.ExpandableListWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.ImageViewWidget;
+import com.sharkit.nextmonday.configuration.widget_finder.widget.LinearLayoutWidget;
+import com.sharkit.nextmonday.configuration.widget_finder.widget.RadioButtonWidget;
+import com.sharkit.nextmonday.configuration.widget_finder.widget.RadioGroupWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.SwitchWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.TextViewWidget;
 
@@ -57,6 +61,26 @@ public class Widget implements WidgetFinder {
     @Override
     public AdViewWidget getAdView() {
         return new AdViewWidget(view);
+    }
+
+    @Override
+    public ExpandableListWidget getExpandableList() {
+        return new ExpandableListWidget(view);
+    }
+
+    @Override
+    public RadioButtonWidget getRadioButton() {
+        return new RadioButtonWidget(view);
+    }
+
+    @Override
+    public LinearLayoutWidget getLinearLayout() {
+        return new LinearLayoutWidget(view);
+    }
+
+    @Override
+    public RadioGroupWidget getRadioGroup() {
+        return new RadioGroupWidget(view);
     }
 
 }

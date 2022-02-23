@@ -40,6 +40,7 @@ public class EditTextWidget {
     public EditText getNameOfTask(){
         return view.findViewById(R.id.name_of_task_xml);
     }
+
     public EditText getDescription(){
         return view.findViewById(R.id.description_xml);
     }

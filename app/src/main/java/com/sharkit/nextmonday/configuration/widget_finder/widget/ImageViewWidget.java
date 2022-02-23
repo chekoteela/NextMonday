@@ -15,4 +15,7 @@ public class ImageViewWidget {
     public ImageView getGoogle() {
         return view.findViewById(R.id.google_xml);
     }
+    public ImageView getPlus() {
+        return view.findViewById(R.id.plus_xml);
+    }
 }

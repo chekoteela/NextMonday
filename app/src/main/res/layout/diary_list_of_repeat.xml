@@ -46,21 +46,22 @@
             </LinearLayout>
 
             <RadioGroup
+                android:id="@+id/repeat_radio_group_xml"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:contentDescription="@string/everyDay"
-                    android:id="@+id/everyday_xml"
-                    android:checked="true"
+                    android:id="@+id/repeat_everyday_xml"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:buttonTint="@color/white"
-                    android:layout_height="wrap_content" />
+                    android:checked="true"
+                    android:contentDescription="@string/everyDay" />
 
 
                 <RadioButton
                     android:contentDescription="@string/selectDay"
-                    android:id="@+id/selectDay_xml"
+                    android:id="@+id/select_day_xml"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content" />
@@ -70,7 +71,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/checkboxList_xml"
+            android:id="@+id/checkbox_list_xml"
             android:layout_width="wrap_content"
             android:layout_marginBottom="15dp"
             android:layout_height="wrap_content"
@@ -137,6 +138,7 @@
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
                     android:text="@string/Wednesday" />
+
                 <CheckBox
                     android:contentDescription="@string/wednesday"
                     android:id="@+id/wednesday_xml"

@@ -341,6 +341,7 @@
     <string name="text_field_last_name">Last Name</string>
     <string name="text_view_privacy_policy">Privacy Policy</string>
     <string name="text_view_have_account">Does have an account?</string>
+    <string name="button_accept">Accept</string>
 
 
 </resources>

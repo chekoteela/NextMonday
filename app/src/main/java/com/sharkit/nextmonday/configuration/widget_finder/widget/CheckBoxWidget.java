@@ -17,4 +17,31 @@ public class CheckBoxWidget {
         return view.findViewById(R.id.policy_xml);
     }
 
+    public CheckBox isMonday() {
+        return view.findViewById(R.id.monday_xml);
+    }
+
+    public CheckBox isTuesday() {
+        return view.findViewById(R.id.tuesday_xml);
+    }
+
+    public CheckBox isWednesday() {
+        return view.findViewById(R.id.wednesday_xml);
+    }
+
+    public CheckBox isThursday() {
+        return view.findViewById(R.id.thursday_xml);
+    }
+
+    public CheckBox isFriday() {
+        return view.findViewById(R.id.friday_xml);
+    }
+
+    public CheckBox isSaturday() {
+        return view.findViewById(R.id.saturday_xml);
+    }
+
+    public CheckBox isSunday() {
+        return view.findViewById(R.id.sunday_xml);
+    }
 }
