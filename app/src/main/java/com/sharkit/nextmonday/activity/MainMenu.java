@@ -48,7 +48,7 @@ public class MainMenu extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main_menu);
+        setContentView(R.layout.activity_main_menu);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Toolbar toolbar = findViewById(R.id.toolbar_core);
         setSupportActionBar(toolbar);
@@ -86,15 +86,15 @@ public class MainMenu extends AppCompatActivity {
             case R.id.setting_item:
                 navController.navigate(R.id.nav_settings);
                 break;
-            case R.id.diary_calendar_item:
-                navController.navigate(R.id.nav_calendar);
+            case R.id.item_diary_calendar:
+                navController.navigate(R.id.navigation_diary_calendar);
                 break;
-            case R.id.dairy_search_item:
-                navController.navigate(R.id.nav_search);
+            case R.id.item_diary_list_of_task:
+                navController.navigate(R.id.navigation_diary_list_of_task);
                 break;
-            case R.id.list_target_item:
+            case R.id.item_diary_main:
                 listTarget();
-                navController.navigate(R.id.nav_diary);
+                navController.navigate(R.id.navigation_diary_main);
                 break;
             case R.id.share_item:
                 share();

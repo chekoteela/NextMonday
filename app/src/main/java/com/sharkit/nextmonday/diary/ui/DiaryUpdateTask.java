@@ -11,12 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
 
-public class DiaryMain extends Fragment {
-
+public class DiaryUpdateTask extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.diary_main, container, false);
+        View view = inflater.inflate(R.layout.diary_update_task, container, false);
         return view;
     }
 }

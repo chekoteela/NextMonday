@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         widget.getTextView().getForgotPassword().setOnClickListener(this);
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-//            startActivity(new Intent(MainActivity.this, MainMenu.class));
+            startActivity(new Intent(MainActivity.this, MainMenu.class));
         }
     }
 
