@@ -35,7 +35,7 @@
                 android:src="@drawable/ic_pencil" />
 
             <EditText
-                android:id="@+id/write_target_xml"
+                android:id="@+id/name_of_task_xml"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
@@ -134,7 +134,7 @@
                     android:layout_margin="5dp"
                     style="@style/StandartTextView"/>
                 <EditText
-                    android:id="@+id/add_description_xml"
+                    android:id="@+id/description_xml"
                     android:layout_marginHorizontal="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
@@ -172,7 +172,7 @@
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/adView"
+        android:id="@+id/ad_view_xml"
         android:elevation="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

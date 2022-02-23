@@ -21,4 +21,8 @@ public class ButtonWidget {
         return view.findViewById(R.id.sign_in_xml);
     }
 
+    public Button getAdd() {
+        return view.findViewById(R.id.add_xml);
+    }
+
 }
