@@ -1,22 +1,24 @@
 package com.sharkit.nextmonday.diary.ui;
 
+import static com.sharkit.nextmonday.configuration.constant.ToastMessage.TASK_IS_ADDED;
+import static com.sharkit.nextmonday.diary.constant.DiaryConstant.DATA_FOR_CREATE;
+import static com.sharkit.nextmonday.diary.transformer.DiaryTransformer.toDiaryTask;
+
+import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.widget_finder.Widget;
-import com.sharkit.nextmonday.diary.entity.DayOfAlarm;
+import com.sharkit.nextmonday.diary.db.firebase.DiaryTaskRepository;
 import com.sharkit.nextmonday.diary.service.DiaryCreateTaskService;
-
-import java.util.ArrayList;
 
 public class DiaryCreateTask extends Fragment {
 
@@ -27,25 +29,25 @@ public class DiaryCreateTask extends Fragment {
         Widget widget = Widget.findByView(view);
         DiaryCreateTaskService service = new DiaryCreateTaskService(getContext(), widget);
 
-        widget.getSwitch().getRepeat().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    service.showDayForRepeat();
-                }
+        widget.getSwitch().getRepeat().setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                service.showDayForRepeat();
             }
         });
 
-        widget.getButton().getAdd().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (widget.getSwitch().getRepeat().isChecked()) {
-                    Log.i("TAGA", service.getDaysOfAlarm() + "");
-                }else {
-                    Log.i("TAGA", new ArrayList<DayOfAlarm>() + "");
-                }
+        widget.getSwitch().getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                service.showTimePicker();
             }
         });
+
+        widget.getButton().getAdd().setOnClickListener(v -> new DiaryTaskRepository(requireContext()).create(toDiaryTask(requireArguments().getString(DATA_FOR_CREATE), service, widget.getTextField()))
+                .addOnSuccessListener(unused -> {
+                    TASK_IS_ADDED(requireContext());
+                    Navigation.findNavController((Activity) requireContext(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
+                }));
         return view;
     }
+
+
 }

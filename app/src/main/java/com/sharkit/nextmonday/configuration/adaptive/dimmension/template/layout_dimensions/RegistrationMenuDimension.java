@@ -6,8 +6,7 @@ import android.content.Context;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.adaptive.dimmension.WidgetSize;
 
-public enum RegistrationMenuDimmension implements WidgetSize {
-
+public enum RegistrationMenuDimension implements WidgetSize {
 
     BUTTON {
         private Context context;

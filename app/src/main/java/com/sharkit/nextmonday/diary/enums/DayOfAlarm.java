@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.diary.entity;
+package com.sharkit.nextmonday.diary.enums;
 
 public enum DayOfAlarm {
     MONDAY,

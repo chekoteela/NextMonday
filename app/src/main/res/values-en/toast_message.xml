@@ -7,6 +7,9 @@
     <string name="successful_update">Changes was keep</string>
     <string name="agree_with_privacy_policy">Agree with privacy policy</string>
     <string name="user_with_email_created">User with such email was create</string>
+    <string name="task_added_successfully">Task added successfully</string>
+
+<!--    VALIDATION-->
     <string name="field_must_be_not_empty">Field must be not empty : %s</string>
     <string name="field_value_to_short">Field value too short : %s</string>
     <string name="field_value_to_long">Field value too long : %s</string>

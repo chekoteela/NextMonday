@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 
 import com.sharkit.nextmonday.configuration.adaptive.dimmension.WidgetSize;
 import com.sharkit.nextmonday.configuration.adaptive.dimmension.template.TemplateAdaptive;
-import com.sharkit.nextmonday.configuration.adaptive.dimmension.template.layout_dimensions.Dimmension;
+import com.sharkit.nextmonday.configuration.adaptive.dimmension.template.layout_dimensions.Dimension;
 import com.sharkit.nextmonday.configuration.adaptive.layout.LinearLayoutAdaptive;
 
 public class ButtonLinearAdaptive implements LinearLayoutAdaptive {
@@ -29,7 +29,7 @@ public class ButtonLinearAdaptive implements LinearLayoutAdaptive {
     @Override
     public LinearLayoutAdaptive setTemplateContext(TemplateAdaptive template, Context context) {
         this.context = context;
-        size = template.getWidgetSize(Dimmension.BUTTON).setContext(context);
+        size = template.getWidgetSize(Dimension.BUTTON).setContext(context);
         return this;
     }
 

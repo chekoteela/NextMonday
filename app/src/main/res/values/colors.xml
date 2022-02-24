@@ -17,6 +17,17 @@
 
     <color name="text_view_select">#F46F12</color>
 
+    <color name="time_picker_color_accent">#4C4D52</color>
+    <color name="time_picker_control_activated">#24252A</color>
+    <color name="time_picker_background">#212121</color>
+
+
+
+
+
+
+
+
 
 
 

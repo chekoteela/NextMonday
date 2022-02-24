@@ -37,6 +37,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.adaptive.Adaptive;
+import com.sharkit.nextmonday.configuration.adaptive.widget_adaptive.linear.ButtonLinearAdaptive;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -54,6 +56,7 @@ public class MainMenu extends AppCompatActivity {
         setSupportActionBar(toolbar);
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_settings_24);
 //        toolbar.setOverflowIcon(drawable);
+
     }
     //new title to share
 

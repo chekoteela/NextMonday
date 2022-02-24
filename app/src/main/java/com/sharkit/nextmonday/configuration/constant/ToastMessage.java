@@ -32,13 +32,12 @@ public class ToastMessage {
         toastMessage(context, R.string.successful_update);
     }
 
+    public static void TASK_IS_ADDED(Context context){
+        toastMessage(context, R.string.task_added_successfully);
+    }
+
     private static void toastMessage(Context context, int idRes){
         Toast.makeText(context, context.getString(idRes), Toast.LENGTH_SHORT).show();
     }
-
-
-    protected static final String TOO_BIG_VALUE = "Too big value";
-    protected static final String TOO_SMALL_VALUE = "Too small value";
-    protected static final String IS_NOT_VALID_DESIRED_WEIGHT = "Is not valid desired weight";
 
 }

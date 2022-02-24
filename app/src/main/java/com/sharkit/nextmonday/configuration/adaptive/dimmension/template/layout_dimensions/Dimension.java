@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.configuration.adaptive.dimmension.template.layout_dimensions;
 
-public enum Dimmension {
+public enum Dimension {
     BUTTON,
     EDIT_TEXT
 }

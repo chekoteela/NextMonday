@@ -342,6 +342,7 @@
     <string name="text_view_privacy_policy">Privacy Policy</string>
     <string name="text_view_have_account">Does have an account?</string>
     <string name="button_accept">Accept</string>
+    <string name="task_added_successfully">Task added successfully</string>
 
 
 </resources>

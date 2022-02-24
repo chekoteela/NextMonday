@@ -7,6 +7,9 @@
     <string name="successful_update">Зміни збережені</string>
     <string name="agree_with_privacy_policy">Погодьтесь з політикою конфіденційності</string>
     <string name="user_with_email_created">Користувач з такою поштою вже зареєстрований</string>
+    <string name="task_added_successfully">Задача додана</string>
+
+<!--    VALIDATION-->
     <string name="field_must_be_not_empty">Поле не повино бути пустим : %s</string>
     <string name="field_value_to_long">Дуже довге значення поля : %s</string>
     <string name="field_value_to_short">Дуже коротке значення поля : %s</string>
