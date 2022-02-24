@@ -5,5 +5,9 @@
     <string name="text_view_not_have_account">Does not have an account?</string>
     <string name="text_view_privacy_policy">Privacy Policy</string>
     <string name="text_view_have_account">Does have an account?</string>
+    <string name="text_view_choose_time">Choose time</string>
+    <string name="text_view_repeat">Repeat</string>
+    <string name="text_view_add_description">Add description</string>
+
 
 </resources>

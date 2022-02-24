@@ -6,5 +6,6 @@
     <string name="button_agree_policy">Я ознайомлений(а)</string>
     <string name="button_sign_in">Увійти</string>
     <string name="button_create_new_account">Створити новий аккаунт</string>
+    <string name="button_create">Створити</string>
 
 </resources>

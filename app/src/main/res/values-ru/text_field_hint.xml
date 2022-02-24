@@ -4,6 +4,7 @@
     <string name="text_field_password">Пароль</string>
     <string name="text_field_name">Имя</string>
     <string name="text_field_last_name">Фамилия</string>
-
+    <string name="text_field_task_name">Назвние задачи</string>
+    <string name="text_field_description">Описание</string>
 
 </resources>

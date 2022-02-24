@@ -1,8 +1,8 @@
 package com.sharkit.nextmonday.configuration.widget_finder.widget;
 
 import android.view.View;
-import android.widget.Switch;
 
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.sharkit.nextmonday.R;
 
 public class SwitchWidget {
@@ -13,11 +13,11 @@ public class SwitchWidget {
         this.view = view;
     }
 
-    public Switch getTakeTime(){
+    public SwitchMaterial getTakeTime(){
         return view.findViewById(R.id.take_time_xml);
     }
 
-    public Switch getRepeat(){
+    public SwitchMaterial getRepeat(){
         return view.findViewById(R.id.repeat_xml);
     }
 

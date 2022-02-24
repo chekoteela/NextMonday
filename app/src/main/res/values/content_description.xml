@@ -8,5 +8,10 @@
     <string name="description_continue_with" translatable="false">Continue with</string>
     <string name="description_sign_in_with_google" translatable="false">Sign in with google</string>
     <string name="description_agree_with_policy" translatable="false">I agree</string>
+    <string name="description_pencil_image" translatable="false">Pencil image</string>
+    <string name="description_diary_task_name" translatable="false">Diary task name</string>
+    <string name="description_choose_time" translatable="false">Choose time switch</string>
+    <string name="description_repeat" translatable="false">Repeat switch</string>
+    <string name="description_create" translatable="false">Create</string>
 
 </resources>

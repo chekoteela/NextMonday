@@ -6,4 +6,6 @@
     <string name="button_agree_policy">I agree</string>
     <string name="button_sign_in">Sign In</string>
     <string name="button_create_new_account">Create new account</string>
+    <string name="button_create">Create</string>
+
 </resources>

@@ -5,5 +5,9 @@
     <string name="text_view_not_have_account">Не имеете аккаунта?</string>
     <string name="text_view_privacy_policy">Политика конфиденциальности</string>
     <string name="text_view_have_account">Имеете аккаунт?</string>
+    <string name="text_view_choose_time">Установить время</string>
+    <string name="text_view_repeat">Повторять</string>
+    <string name="text_view_add_description">Добавить описание</string>
+
 
 </resources>

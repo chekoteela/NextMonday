@@ -6,5 +6,7 @@
     <string name="button_agree_policy">Я ознакомлен(а)</string>
     <string name="button_sign_in">Войти</string>
     <string name="button_create_new_account">Создать новый аккаунт</string>
+    <string name="button_create">Создать</string>
+
 
 </resources>
