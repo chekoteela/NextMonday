@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday.activity;
 
+import static com.sharkit.nextmonday.configuration.service.SharedPreference.USER_ID;
+import static com.sharkit.nextmonday.configuration.service.SharedPreference.USER_PREFERENCES;
 import static com.sharkit.nextmonday.configuration.validation.Configuration.hasConnection;
 
 import android.annotation.SuppressLint;
@@ -21,7 +23,11 @@ import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.activity.service.AuthorisationService;
 import com.sharkit.nextmonday.configuration.adaptive.dimmension.template.TemplateAdaptive;
 import com.sharkit.nextmonday.configuration.adaptive.service.AdaptiveService;
+import com.sharkit.nextmonday.configuration.service.SharedPreference;
 import com.sharkit.nextmonday.configuration.widget_finder.Widget;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,6 +58,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         widget.getTextView().getForgotPassword().setOnClickListener(this);
 
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Map<String, String> map = new HashMap<>();
+            map.put(USER_ID, FirebaseAuth.getInstance().getCurrentUser().getUid());
+            SharedPreference.getPreferences(getBaseContext(), USER_PREFERENCES)
+                    .setValueShared(map);
             startActivity(new Intent(MainActivity.this, MainMenu.class));
         }
     }

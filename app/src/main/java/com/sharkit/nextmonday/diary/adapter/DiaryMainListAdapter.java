@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.diary.adapter;
 
-import static com.sharkit.nextmonday.diary.constant.DiaryConstant.DATA_FOR_CREATE;
+import static com.sharkit.nextmonday.diary.constant.DiaryConstant.DATE_FOR_CREATE;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,21 +14,25 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.widget_finder.Widget;
+import com.sharkit.nextmonday.diary.entity.DiaryTask;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 public class DiaryMainListAdapter extends BaseExpandableListAdapter {
 
     private final Context context;
+    private final List<List<DiaryTask>> diaryTasks;
 
-    public DiaryMainListAdapter(Context context) {
+    public DiaryMainListAdapter(Context context, List<List<DiaryTask>> diaryTasks) {
         this.context = context;
+        this.diaryTasks = diaryTasks;
     }
 
     @Override
     public int getGroupCount() {
-        return 7;
+        return diaryTasks.size();
     }
 
     @Override
@@ -69,7 +73,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         Widget widget = Widget.findByView(convertView);
 
         Bundle bundle = new Bundle();
-        bundle.putString(DATA_FOR_CREATE, new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTimeInMillis()));
+        bundle.putString(DATE_FOR_CREATE, new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTimeInMillis()));
 
 
         widget.getImageView().getPlus().setOnClickListener(v -> Navigation.findNavController((Activity) context, R.id.nav_host_fragment)

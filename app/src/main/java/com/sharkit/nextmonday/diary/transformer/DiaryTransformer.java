@@ -6,9 +6,8 @@ import com.sharkit.nextmonday.diary.service.DiaryCreateTaskService;
 
 public class DiaryTransformer {
 
-    public static DiaryTask toDiaryTask(String date, DiaryCreateTaskService service, EditTextWidget widget){
+    public static DiaryTask toDiaryTask(DiaryCreateTaskService service, EditTextWidget widget){
         return DiaryTask.builder()
-                .date(date)
                 .daysOfAlarm(service.getDaysOfAlarm())
                 .hour(service.getHour())
                 .minute(service.getMinute())
