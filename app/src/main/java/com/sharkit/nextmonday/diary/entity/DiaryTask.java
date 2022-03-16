@@ -29,9 +29,11 @@ public class DiaryTask {
     private final String id = UUID.randomUUID().toString();
     private final String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
     private final String date = SimpleDateFormat.getDateInstance().format(Calendar.getInstance().getTimeInMillis());
+    private final int week = SimpleDateFormat.WEEK_OF_YEAR_FIELD;
     private String nameOfTask;
     private String description;
     private List<DayOfAlarm> daysOfAlarm;
     private int hour;
     private int minute;
+    private boolean status;
 }

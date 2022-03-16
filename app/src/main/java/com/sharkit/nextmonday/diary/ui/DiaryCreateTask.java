@@ -52,14 +52,12 @@ public class DiaryCreateTask extends Fragment {
                 .create(toDiaryTask(service, widget.getTextField()),
                         String.format(DATE_FORMAT, calendar.get(Calendar.WEEK_OF_YEAR), calendar.get(Calendar.YEAR)))
                 .addOnSuccessListener(unused -> {
-
-                    DiaryTaskRepo diaryTaskRepo = new DiaryTaskRepo(getContext());
-                    diaryTaskRepo.onCreate(diaryTaskRepo.getReadableDatabase());
+                    DiaryTaskRepo diaryTaskRepo = DiaryTaskRepo.getInstance(getContext());
                     diaryTaskRepo.create(toDiaryTask(service, widget.getTextField()));
-
-                    TASK_IS_ADDED(requireContext());
                     Navigation.findNavController((Activity) requireContext(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
+                    TASK_IS_ADDED(requireContext());
                 }));
+
         return view;
     }
 

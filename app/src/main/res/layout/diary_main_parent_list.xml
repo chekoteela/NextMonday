@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:id="@+id/parent_xml"
     android:layout_height="match_parent"
-    android:background="@color/Prozorui"
-    >
+    android:background="@color/Prozorui">
 
     <LinearLayout
         android:contentDescription="@string/list2"
@@ -17,14 +16,13 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
-            android:id="@+id/linear"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@drawable/dairy_exp_list_den_color"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/day_xml"
+                android:id="@+id/day_name_xml"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -34,7 +32,7 @@
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/num_xml"
+                android:id="@+id/day_number_xml"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

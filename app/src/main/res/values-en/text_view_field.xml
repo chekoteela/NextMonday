@@ -9,5 +9,24 @@
     <string name="text_view_repeat">Repeat</string>
     <string name="text_view_add_description">Add description</string>
 
+    <string name="text_view_monday">Mon</string>
+    <string name="text_view_tusday">Tus</string>
+    <string name="text_view_wednesday">Wed</string>
+    <string name="text_view_thursday">Thr</string>
+    <string name="text_view_friday">Fri</string>
+    <string name="text_view_saturday">Sat</string>
+    <string name="text_view_sunday">Sun</string>
 
+    <string name="text_view_january">Jan</string>
+    <string name="text_view_february">Feb</string>
+    <string name="text_view_march">Mar</string>
+    <string name="text_view_april">Apr</string>
+    <string name="text_view_may">May</string>
+    <string name="text_view_june">Jun</string>
+    <string name="text_view_jule">Jul</string>
+    <string name="text_view_august">Aug</string>
+    <string name="text_view_september">Sep</string>
+    <string name="text_view_october">Oct</string>
+    <string name="text_view_november">Nov</string>
+    <string name="text_view_december">Dec</string>
 </resources>

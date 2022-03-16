@@ -21,4 +21,22 @@ public class TextViewWidget {
         return view.findViewById(R.id.policy_text_xml);
     }
 
+    public TextView getDayName(){
+        return view.findViewById(R.id.day_name_xml);
+    }
+
+    public TextView getMonth(){
+        return view.findViewById(R.id.month_xml);
+    }
+
+    public TextView getDayNumber(){
+        return view.findViewById(R.id.day_number_xml);
+    }
+
+    public TextView getTextTask(){
+        return view.findViewById(R.id.text_task_xml);
+    }
+    public TextView getTimeTask(){
+        return view.findViewById(R.id.time_task_xml);
+    }
 }

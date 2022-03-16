@@ -44,4 +44,8 @@ public class CheckBoxWidget {
     public CheckBox isSunday() {
         return view.findViewById(R.id.sunday_xml);
     }
+
+    public CheckBox isCompleteTask(){
+        return view.findViewById(R.id.complete_task_xml);
+    }
 }

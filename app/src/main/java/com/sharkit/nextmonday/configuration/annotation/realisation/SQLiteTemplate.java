@@ -19,14 +19,17 @@ import android.util.Log;
 
 import com.sharkit.nextmonday.configuration.annotation.Collection;
 import com.sharkit.nextmonday.configuration.annotation.Id;
+import com.sharkit.nextmonday.configuration.annotation.Query;
 import com.sharkit.nextmonday.configuration.service.SharedPreference;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class SQLiteTemplate<O> extends SQLiteOpenHelper {
+public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteRepository<O> {
 
     public static final String DATABASE_NAME = "NextMonday.db";
     private static final int SCHEMA = 1;
@@ -35,6 +38,8 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper {
     private static final String TYPE_STRING = "java.lang.String";
     private static final String TYPE_INTEGER = "java.lang.Integer";
     private static final String TYPE_INT = "int";
+    private static final String TYPE_BOOLEAN = "java.lang.Boolean";
+    private static final String TYPE_BOOL = "boolean";
     private static final String SQL_STRING = "TEXT";
     private static final String SQL_INTEGER = "INTEGER";
     private static final String SQL_BLOB = "BLOB";
@@ -50,7 +55,7 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper {
     private final String userId;
     private final String collection;
 
-    public SQLiteTemplate(Context context, Class<O> oClass) {
+    protected SQLiteTemplate(Context context, Class<O> oClass) {
         super(context, DATABASE_NAME, null, SCHEMA);
         this.oClass = oClass;
         userId = (String) SharedPreference.getPreferences(context, SharedPreference.USER_PREFERENCES).getValueShared().get(USER_ID);
@@ -61,14 +66,15 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper {
         } catch (IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String request = "CREATE TABLE IF NOT EXISTS " +
                 Optional.ofNullable(oClass.getAnnotation(Collection.class))
-                        .orElseThrow(() -> new RuntimeException("Entity is not collection")).collection() +
-                "(%s%s)";
+                        .orElseThrow(() -> new RuntimeException("Entity is not collection"))
+                        .collection() + "(%s%s)";
         StringBuilder requestBody = new StringBuilder();
 
         Arrays.stream(oClass.getDeclaredFields()).forEach(f -> {
@@ -99,7 +105,8 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper {
         db.insertOrThrow(collection, null, data);
     }
 
-    public O findById(String id) {
+    @Override
+    public Optional<O> findById(String id) {
         Arrays.stream(oClass.getDeclaredFields())
                 .filter(field -> field.isAnnotationPresent(Id.class))
                 .forEach(field -> cursor = db.rawQuery("SELECT * FROM " + collection
@@ -115,10 +122,56 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper {
                     throw new RuntimeException(e.getMessage());
                 }
             });
-            return object;
+            return Optional.ofNullable(object);
         }
+
         cursor.close();
-        return null;
+        return Optional.empty();
+    }
+
+    private boolean updateByQuery(Query annotation, Object... args) {
+        String request = String.format("UPDATE %s SET %s AND userId = '%s';",
+                collection,
+                String.format(String.format("%s WHERE %s", annotation.value(),
+                        annotation.condition()),
+                        args),
+                userId);
+        db.execSQL(request);
+        return true;
+    }
+
+    private List<O> findByQuery(String query, Object... args) {
+        String request = String.format("SELECT * FROM %s WHERE userId = '%s' AND %s", collection, userId, String.format(query, args));
+        cursor = db.rawQuery(request, null);
+        List<O> list = new ArrayList<>();
+
+        while (cursor.moveToNext()) {
+            Arrays.stream(oClass.getDeclaredFields()).forEach(f -> {
+                f.setAccessible(true);
+                try {
+                    getValue(f);
+                } catch (IllegalAccessException e) {
+                    Log.e(LOG, e.getMessage(), e);
+                    throw new RuntimeException(e.getMessage());
+                }
+            });
+            list.add(object);
+        }
+        return list;
+    }
+
+    protected <K> Optional<List<O>> find(Class<K> repositoryClass, String methodName, Object... args) {
+        return Arrays.stream(repositoryClass.getMethods())
+                .filter(method -> method.getName().equals(methodName))
+                .map(method -> findByQuery(Objects.requireNonNull(method.getAnnotation(Query.class)).condition(), args))
+                .findAny();
+    }
+
+    protected <K> Optional<Boolean> update(Class<K> repositoryClass, String methodName, Object... args) {
+        return Arrays.stream(repositoryClass.getMethods())
+                .filter(method -> method.getName().equals(methodName))
+                .map(method -> updateByQuery(Objects.requireNonNull(method.getAnnotation(Query.class)), args))
+                .findAny();
     }
 
     private void getValue(Field field) throws IllegalAccessException {
@@ -133,14 +186,19 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper {
                 field.set(object, cursor.getFloat(cursor.getColumnIndex(field.getName())));
                 break;
             case FIELD_TYPE_STRING:
-                field.set(object, cursor.getString(cursor.getColumnIndex(field.getName())));
+                if (field.getType().getName().equals(TYPE_BOOL) || field.getType().getName().equals(TYPE_BOOLEAN)) {
+                    field.set(object, Boolean.parseBoolean(cursor.getString(cursor.getColumnIndex(field.getName()))));
+                } else {
+                    field.set(object, cursor.getString(cursor.getColumnIndex(field.getName())));
+                }
                 break;
             case FIELD_TYPE_BLOB:
                 field.set(object, toObject(cursor.getBlob(cursor.getColumnIndex(field.getName()))));
         }
     }
 
-    private void setContentValues(Field field, ContentValues values, O entity) throws IllegalAccessException {
+    private void setContentValues(Field field, ContentValues values, O entity) throws
+            IllegalAccessException {
         switch (field.getType().getName()) {
             case TYPE_STRING:
                 values.put(field.getName(), (String) field.get(entity));
@@ -148,6 +206,10 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper {
             case TYPE_INT:
             case TYPE_INTEGER:
                 values.put(field.getName(), (Integer) Optional.ofNullable(field.get(entity)).orElse(null));
+                break;
+            case TYPE_BOOL:
+            case TYPE_BOOLEAN:
+                values.put(field.getName(), (Boolean) Optional.ofNullable(field.get(entity)).orElse(false));
                 break;
             default:
                 values.put(field.getName(), toByteArray(field.get(entity)));
@@ -165,8 +227,11 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper {
             case ID:
                 return SQL_UNIQUE;
             case TYPE_STRING:
+            case TYPE_BOOL:
+            case TYPE_BOOLEAN:
                 return SQL_STRING;
             case TYPE_INT:
+            case TYPE_INTEGER:
                 return SQL_INTEGER;
             default:
                 return SQL_BLOB;
