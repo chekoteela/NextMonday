@@ -38,6 +38,7 @@ public class DiaryCreateTaskService {
             hour = hourOfDay;
             minute = minuteOfHour;
         }, hour, minute, true);
+        timePickerDialog.setOnCancelListener(dialog -> widget.getSwitch().getTakeTime().setChecked(false));
         timePickerDialog.show();
     }
 
