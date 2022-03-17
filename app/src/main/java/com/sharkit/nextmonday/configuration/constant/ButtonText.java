@@ -17,4 +17,12 @@ public class ButtonText {
     public static String ACCEPT(Context context){
         return context.getString(R.string.button_accept);
     }
+
+    public static String DELETE(Context context){
+        return context.getString(R.string.button_delete);
+    }
+
+    public static String CHANGE(Context context){
+        return context.getString(R.string.button_change);
+    }
 }

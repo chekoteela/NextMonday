@@ -1,6 +1,7 @@
 package com.sharkit.nextmonday.diary.ui;
 
 import static com.sharkit.nextmonday.configuration.constant.ToastMessage.TASK_IS_ADDED;
+import static com.sharkit.nextmonday.diary.constant.DiaryConstant.DATE_FOR_CREATE;
 import static com.sharkit.nextmonday.diary.transformer.DiaryTransformer.toDiaryTask;
 
 import android.app.Activity;
@@ -49,11 +50,11 @@ public class DiaryCreateTask extends Fragment {
         });
 
         widget.getButton().getAdd().setOnClickListener(v -> new DiaryTaskRepository(requireContext())
-                .create(toDiaryTask(service, widget.getTextField()),
+                .create(toDiaryTask(service, widget.getTextField(), requireArguments().getString(DATE_FOR_CREATE)),
                         String.format(DATE_FORMAT, calendar.get(Calendar.WEEK_OF_YEAR), calendar.get(Calendar.YEAR)))
                 .addOnSuccessListener(unused -> {
                     DiaryTaskRepo diaryTaskRepo = DiaryTaskRepo.getInstance(getContext());
-                    diaryTaskRepo.create(toDiaryTask(service, widget.getTextField()));
+                    diaryTaskRepo.create(toDiaryTask(service, widget.getTextField(), requireArguments().getString(DATE_FOR_CREATE)));
                     Navigation.findNavController((Activity) requireContext(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
                     TASK_IS_ADDED(requireContext());
                 }));

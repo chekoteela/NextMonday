@@ -10,8 +10,10 @@ import com.sharkit.nextmonday.configuration.widget_finder.widget.EditTextWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.ExpandableListWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.ImageViewWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.LinearLayoutWidget;
+import com.sharkit.nextmonday.configuration.widget_finder.widget.ProgressBarWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.RadioButtonWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.RadioGroupWidget;
+import com.sharkit.nextmonday.configuration.widget_finder.widget.RelativeLayoutWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.SwitchWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.TextViewWidget;
 
@@ -79,8 +81,18 @@ public class Widget implements WidgetFinder {
     }
 
     @Override
+    public RelativeLayoutWidget getRelativeLayout() {
+        return new RelativeLayoutWidget(view);
+    }
+
+    @Override
     public RadioGroupWidget getRadioGroup() {
         return new RadioGroupWidget(view);
+    }
+
+    @Override
+    public ProgressBarWidget getProgressBar() {
+        return new ProgressBarWidget(view);
     }
 
 }

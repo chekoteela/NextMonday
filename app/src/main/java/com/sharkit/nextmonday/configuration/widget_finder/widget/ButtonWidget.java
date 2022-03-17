@@ -25,4 +25,8 @@ public class ButtonWidget {
         return view.findViewById(R.id.add_xml);
     }
 
+    public Button getSave() {
+        return view.findViewById(R.id.save_xml);
+    }
+
 }

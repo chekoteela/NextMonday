@@ -33,7 +33,6 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteReposit
 
     public static final String DATABASE_NAME = "NextMonday.db";
     private static final int SCHEMA = 1;
-    private static final String LOG = "SQLiteTemplate";
 
     private static final String TYPE_STRING = "java.lang.String";
     private static final String TYPE_INTEGER = "java.lang.Integer";
@@ -61,12 +60,6 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteReposit
         userId = (String) SharedPreference.getPreferences(context, SharedPreference.USER_PREFERENCES).getValueShared().get(USER_ID);
         collection = Optional.of(Objects.requireNonNull(oClass.getAnnotation(Collection.class)).collection())
                 .orElseThrow(() -> new RuntimeException("Entity is not collection"));
-        try {
-            this.object = oClass.newInstance();
-        } catch (IllegalAccessException | InstantiationException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Override
@@ -91,6 +84,7 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteReposit
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
+    @Override
     public void create(O entity) {
         ContentValues data = new ContentValues();
         Arrays.stream(oClass.getDeclaredFields()).forEach(field -> {
@@ -98,11 +92,34 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteReposit
                 field.setAccessible(true);
                 setContentValues(field, data, entity);
             } catch (IllegalAccessException e) {
-                Log.e(LOG, e.getMessage(), e);
+                Log.e(this.getClass().getName(), e.getMessage(), e);
                 throw new RuntimeException(e.getMessage());
             }
         });
         db.insertOrThrow(collection, null, data);
+    }
+
+    @Override
+    public boolean update(O entity, String id) {
+        ContentValues data = new ContentValues();
+        Arrays.stream(oClass.getDeclaredFields()).forEach(field -> {
+            try {
+                field.setAccessible(true);
+                setContentValues(field, data, entity);
+            } catch (IllegalAccessException e) {
+                Log.e(this.getClass().getName(), e.getMessage(), e);
+                throw new RuntimeException(e.getMessage());
+            }
+        });
+        db.update(collection, data, "id = ?", new String[]{id});
+        return true;
+    }
+
+
+    @Override
+    public boolean delete(String id) {
+        db.execSQL(String.format("DELETE FROM %s WHERE userId = '%s' AND id = '%s';", collection, userId, id));
+        return true;
     }
 
     @Override
@@ -113,16 +130,7 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteReposit
                         + " WHERE " + field.getName() + " = '" + id + "' AND userId = '" + userId + "'", null));
 
         if (cursor.moveToNext()) {
-            Arrays.stream(oClass.getDeclaredFields()).forEach(f -> {
-                f.setAccessible(true);
-                try {
-                    getValue(f);
-                } catch (IllegalAccessException e) {
-                    Log.e(LOG, e.getMessage(), e);
-                    throw new RuntimeException(e.getMessage());
-                }
-            });
-            return Optional.ofNullable(object);
+            return Optional.ofNullable(getObject());
         }
 
         cursor.close();
@@ -146,18 +154,28 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteReposit
         List<O> list = new ArrayList<>();
 
         while (cursor.moveToNext()) {
-            Arrays.stream(oClass.getDeclaredFields()).forEach(f -> {
-                f.setAccessible(true);
-                try {
-                    getValue(f);
-                } catch (IllegalAccessException e) {
-                    Log.e(LOG, e.getMessage(), e);
-                    throw new RuntimeException(e.getMessage());
-                }
-            });
-            list.add(object);
+            list.add(getObject());
         }
         return list;
+    }
+
+    private O getObject() {
+        try {
+            object = oClass.newInstance();
+        } catch (IllegalAccessException | InstantiationException e) {
+            Log.e(this.getClass().getName(), e.getMessage(), e);
+            throw new RuntimeException(e.getMessage());
+        }
+        Arrays.stream(oClass.getDeclaredFields()).forEach(f -> {
+            f.setAccessible(true);
+            try {
+                getValue(f);
+            } catch (IllegalAccessException e) {
+                Log.e(this.getClass().getName(), e.getMessage(), e);
+                throw new RuntimeException(e.getMessage());
+            }
+        });
+        return object;
     }
 
     protected <K> Optional<List<O>> find(Class<K> repositoryClass, String methodName, Object... args) {

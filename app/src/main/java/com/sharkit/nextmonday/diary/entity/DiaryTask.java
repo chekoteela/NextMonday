@@ -5,8 +5,8 @@ import com.sharkit.nextmonday.configuration.annotation.Collection;
 import com.sharkit.nextmonday.configuration.annotation.Id;
 import com.sharkit.nextmonday.diary.enums.DayOfAlarm;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -23,13 +23,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Collection(collection = "diary_task")
-public class DiaryTask {
+public class DiaryTask implements Serializable {
 
     @Id
     private final String id = UUID.randomUUID().toString();
     private final String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-    private final String date = SimpleDateFormat.getDateInstance().format(Calendar.getInstance().getTimeInMillis());
     private final int week = SimpleDateFormat.WEEK_OF_YEAR_FIELD;
+    private String date;
     private String nameOfTask;
     private String description;
     private List<DayOfAlarm> daysOfAlarm;

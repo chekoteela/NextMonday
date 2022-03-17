@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.diary.transformer;
 import android.content.Context;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.diary.enums.DayOfAlarm;
 
 public class DateTransformer {
 
@@ -53,6 +54,25 @@ public class DateTransformer {
             case 1:
                 return getValue(context, R.string.text_view_sunday);
             default: throw new RuntimeException("Untyped value " + day);
+        }
+    }
+    public static String toDayName(Context context, DayOfAlarm dayOfAlarm){
+        switch (dayOfAlarm) {
+            case MONDAY:
+                return getValue(context, R.string.text_view_monday);
+            case TUESDAY:
+                return getValue(context, R.string.text_view_tusday);
+            case WEDNESDAY:
+                return getValue(context, R.string.text_view_wednesday);
+            case THURSDAY:
+                return getValue(context, R.string.text_view_thursday);
+            case FRIDAY:
+                return getValue(context, R.string.text_view_friday);
+            case SATURDAY:
+                return getValue(context, R.string.text_view_saturday);
+            case SUNDAY:
+                return getValue(context, R.string.text_view_sunday);
+            default: throw new RuntimeException("Untyped value " + dayOfAlarm);
         }
     }
 

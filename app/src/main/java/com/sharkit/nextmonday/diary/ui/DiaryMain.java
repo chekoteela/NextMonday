@@ -34,16 +34,15 @@ public class DiaryMain extends Fragment {
         Calendar calendar = Calendar.getInstance();
 
         List<TaskOfDay> taskOfDays = new ArrayList<>();
-
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
         }
-
         for (int i = 0; i < 7; i++) {
             taskOfDays.add(toTaskOfDay(DiaryTaskRepo.getInstance(getContext())
                     .findAllByWeekAndDate(calendar.get(Calendar.WEEK_OF_YEAR),
                             SimpleDateFormat.getDateInstance().format(calendar.getTimeInMillis()))
                     .orElse(null), calendar));
+
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
 
