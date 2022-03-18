@@ -28,7 +28,7 @@ public class DiaryTask implements Serializable {
     @Id
     private final String id = UUID.randomUUID().toString();
     private final String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-    private final int week = SimpleDateFormat.WEEK_OF_YEAR_FIELD;
+    private int week;
     private String date;
     private String nameOfTask;
     private String description;

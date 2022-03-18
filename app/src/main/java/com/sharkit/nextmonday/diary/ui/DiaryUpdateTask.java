@@ -50,7 +50,7 @@ public class DiaryUpdateTask extends Fragment {
 
         widget.getButton().getSave().setOnClickListener(v -> {
             DiaryTaskRepo.getInstance(getContext())
-                    .update(toDiaryTask(service, widget.getTextField(), diaryTask.getDate()), diaryTask.getId());
+                    .update(toDiaryTask(service, widget.getTextField(), diaryTask), diaryTask.getId());
             Navigation.findNavController((Activity) requireContext(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
             TASK_IS_ADDED(requireContext());
         });

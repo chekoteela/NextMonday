@@ -10,8 +10,5 @@ import lombok.Data;
 public class TaskOfDay {
 
     private List<DiaryTask> diaryTasks;
-    private String date;
-    private int dayNumber;
-    private int dayName;
-    private int month;
+    private Long timeInMillis;
 }

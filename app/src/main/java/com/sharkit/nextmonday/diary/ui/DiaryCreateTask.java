@@ -34,6 +34,7 @@ public class DiaryCreateTask extends Fragment {
         Widget widget = Widget.findByView(view);
 
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(requireArguments().getLong(DATE_FOR_CREATE));
 
         DiaryCreateTaskService service = new DiaryCreateTaskService(getContext(), widget);
 
@@ -50,12 +51,12 @@ public class DiaryCreateTask extends Fragment {
         });
 
         widget.getButton().getAdd().setOnClickListener(v -> new DiaryTaskRepository(requireContext())
-                .create(toDiaryTask(service, widget.getTextField(), requireArguments().getString(DATE_FOR_CREATE)),
+                .create(toDiaryTask(service, widget.getTextField(), calendar),
                         String.format(DATE_FORMAT, calendar.get(Calendar.WEEK_OF_YEAR), calendar.get(Calendar.YEAR)))
                 .addOnSuccessListener(unused -> {
 
                     DiaryTaskRepo diaryTaskRepo = DiaryTaskRepo.getInstance(getContext());
-                    diaryTaskRepo.create(toDiaryTask(service, widget.getTextField(), requireArguments().getString(DATE_FOR_CREATE)));
+                    diaryTaskRepo.create(toDiaryTask(service, widget.getTextField(), calendar));
 
                     Navigation.findNavController((Activity) requireContext(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
                     TASK_IS_ADDED(requireContext());

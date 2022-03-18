@@ -83,10 +83,12 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         }
         Widget widget = Widget.findByView(convertView);
         onClick(widget, groupPosition);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(taskOfDays.get(groupPosition).getTimeInMillis());
 
-        widget.getTextView().getDayNumber().setText(String.valueOf(taskOfDays.get(groupPosition).getDayNumber()));
-        widget.getTextView().getMonth().setText(toMonthName(context, taskOfDays.get(groupPosition).getMonth()));
-        widget.getTextView().getDayName().setText(toDayName(context, taskOfDays.get(groupPosition).getDayName()));
+        widget.getTextView().getDayNumber().setText(String.valueOf(calendar.get(Calendar.DATE)));
+        widget.getTextView().getMonth().setText(toMonthName(context, calendar.get(Calendar.MONTH)));
+        widget.getTextView().getDayName().setText(toDayName(context, calendar.get(Calendar.DAY_OF_WEEK)));
         widget.getTextView().getCompleteTask().setText(String.valueOf(taskOfDays.get(groupPosition)
                 .getDiaryTasks()
                 .stream()
@@ -159,7 +161,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     private void onClick(Widget widget, int groupPosition) {
         widget.getImageView().getPlus().setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putString(DATE_FOR_CREATE, taskOfDays.get(groupPosition).getDate());
+            bundle.putLong(DATE_FOR_CREATE, taskOfDays.get(groupPosition).getTimeInMillis());
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment)
                     .navigate(R.id.navigation_diary_create_task, bundle);
         });

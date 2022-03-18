@@ -1,10 +1,12 @@
 package com.sharkit.nextmonday.configuration.widget_finder;
 
 import android.view.View;
+import android.widget.CalendarView;
 
 import com.sharkit.nextmonday.configuration.widget_finder.impl.WidgetFinder;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.AdViewWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.ButtonWidget;
+import com.sharkit.nextmonday.configuration.widget_finder.widget.CalendarWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.CheckBoxWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.EditTextWidget;
 import com.sharkit.nextmonday.configuration.widget_finder.widget.ExpandableListWidget;
@@ -93,6 +95,11 @@ public class Widget implements WidgetFinder {
     @Override
     public ProgressBarWidget getProgressBar() {
         return new ProgressBarWidget(view);
+    }
+
+    @Override
+    public CalendarWidget getCalendarView() {
+        return new CalendarWidget(view);
     }
 
 }

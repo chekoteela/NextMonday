@@ -12,20 +12,22 @@ import java.util.List;
 
 public class DiaryTransformer {
 
-    public static DiaryTask toDiaryTask(DiaryCreateTaskService service, EditTextWidget widget, String date){
+    public static DiaryTask toDiaryTask(DiaryCreateTaskService service, EditTextWidget widget, Calendar calendar){
         return DiaryTask.builder()
                 .daysOfAlarm(service.getDaysOfAlarm())
-                .date(date)
+                .date(SimpleDateFormat.getDateInstance().format(calendar.getTimeInMillis()))
+                .week(calendar.get(Calendar.WEEK_OF_YEAR))
                 .hour(service.getHour())
                 .minute(service.getMinute())
                 .nameOfTask(widget.getNameOfTask().getText().toString())
                 .description(widget.getDescription().getText().toString())
                 .build();
     }
-    public static DiaryTask toDiaryTask(DiaryUpdateTaskService service, EditTextWidget widget, String date){
+    public static DiaryTask toDiaryTask(DiaryUpdateTaskService service, EditTextWidget widget, DiaryTask diaryTask){
         return DiaryTask.builder()
                 .daysOfAlarm(service.getDaysOfAlarm())
-                .date(date)
+                .date(diaryTask.getDate())
+                .week(diaryTask.getWeek())
                 .hour(service.getHour())
                 .minute(service.getMinutes())
                 .nameOfTask(widget.getNameOfTask().getText().toString())
@@ -35,10 +37,7 @@ public class DiaryTransformer {
 
     public static TaskOfDay toTaskOfDay(List<DiaryTask> diaryTasks, Calendar calendar){
         return TaskOfDay.builder()
-                .date(SimpleDateFormat.getDateInstance().format(calendar.getTimeInMillis()))
-                .dayNumber(calendar.get(Calendar.DATE))
-                .dayName(calendar.get(Calendar.DAY_OF_WEEK))
-                .month(calendar.get(Calendar.MONTH))
+                .timeInMillis(calendar.getTimeInMillis())
                 .diaryTasks(diaryTasks)
                 .build();
     }
