@@ -373,6 +373,9 @@
     <string name="text_view_december">Dec</string>
     <string name="button_delete">Delete</string>
     <string name="button_change">Change</string>
+    <string name="text_view_tuesday">Tus</string>
+    <string name="text_view_time">Time:</string>
+    <string name="button_save">Save</string>
 
 
 </resources>

@@ -13,5 +13,7 @@
     <string name="description_choose_time" translatable="false">Choose time switch</string>
     <string name="description_repeat" translatable="false">Repeat switch</string>
     <string name="description_create" translatable="false">Create</string>
+    <string name="description_save" translatable="false">Save</string>
+    <string name="description_description" translatable="false">Description</string>
 
 </resources>

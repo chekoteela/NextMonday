@@ -8,9 +8,10 @@
     <string name="text_view_choose_time">Установить время</string>
     <string name="text_view_repeat">Повторять</string>
     <string name="text_view_add_description">Добавить описание</string>
+    <string name="text_view_time">Время:</string>
 
     <string name="text_view_monday">Пн</string>
-    <string name="text_view_tusday">Вт</string>
+    <string name="text_view_tuesday">Вт</string>
     <string name="text_view_wednesday">Ср</string>
     <string name="text_view_thursday">Чт</string>
     <string name="text_view_friday">Пт</string>

@@ -5,9 +5,10 @@
 
     <color name="authorisation_menu_background_color">#192229</color>
     <color name="registration_menu_background_color">#192229</color>
-    <color name="diary_create_task_background_color">#232D37</color>
+    <color name="diary_create_task_background_color">#192229</color>
 
 
+    <color name="diary_create_task_widget_color">#232D37</color>
     <color name="text_field_background">#232D37</color>
     <color name="text_field_hint">#8F8E8E</color>
     <color name="text_field_background_ripple">#232D37</color>

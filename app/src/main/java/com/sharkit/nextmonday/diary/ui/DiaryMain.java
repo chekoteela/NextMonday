@@ -51,8 +51,6 @@ public class DiaryMain extends Fragment {
                             SimpleDateFormat.getDateInstance().format(calendar.getTimeInMillis()))
                     .orElse(null), calendar));
 
-            Log.i("TAGA", taskOfDays.get(i).toString());
-
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
 

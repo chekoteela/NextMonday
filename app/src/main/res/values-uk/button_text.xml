@@ -9,5 +9,7 @@
     <string name="button_create">Створити</string>
     <string name="button_delete">Видалити</string>
     <string name="button_change">Змінити</string>
+    <string name="button_save">Зберегти</string>
+
 
 </resources>
