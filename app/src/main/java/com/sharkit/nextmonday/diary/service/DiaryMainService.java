@@ -35,7 +35,6 @@ public class DiaryMainService {
 
     private void repeatTasks(List<DiaryTask> diaryTasks) {
         diaryTasks.forEach(diaryTask -> {
-
             diaryTask.getDaysOfAlarm()
                     .stream()
                     .filter(dayOfAlarm -> toDayOfWeek(dayOfAlarm) != Calendar.DAY_OF_WEEK && !diaryTask.isRewriteRepeater())
@@ -44,6 +43,7 @@ public class DiaryMainService {
                         dayOfAlarm.repeat(toDayOfWeek(dayOfAlarm), calendar, diaryTask, context);
                     });
             DiaryTaskRepo.getInstance(context).updateRewriteRepeater(true, diaryTask.getId());
+
         });
     }
 
