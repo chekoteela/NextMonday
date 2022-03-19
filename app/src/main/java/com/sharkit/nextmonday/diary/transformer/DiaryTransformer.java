@@ -23,6 +23,19 @@ public class DiaryTransformer {
                 .description(widget.getDescription().getText().toString())
                 .build();
     }
+
+    public static DiaryTask toNewDiaryTask(DiaryTask diaryTask, Calendar calendar){
+        return DiaryTask.builder()
+                .nameOfTask(diaryTask.getNameOfTask())
+                .week(calendar.get(Calendar.WEEK_OF_YEAR))
+                .date(SimpleDateFormat.getDateInstance().format(calendar.getTimeInMillis()))
+                .description(diaryTask.getDescription())
+                .minute(diaryTask.getMinute())
+                .hour(diaryTask.getHour())
+                .daysOfAlarm(diaryTask.getDaysOfAlarm())
+                .build();
+    }
+
     public static DiaryTask toDiaryTask(DiaryUpdateTaskService service, EditTextWidget widget, DiaryTask diaryTask){
         return DiaryTask.builder()
                 .daysOfAlarm(service.getDaysOfAlarm())

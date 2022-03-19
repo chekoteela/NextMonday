@@ -26,7 +26,7 @@ import lombok.ToString;
 public class DiaryTask implements Serializable {
 
     @Id
-    private final String id = UUID.randomUUID().toString();
+    private String id;
     private final String userId = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
     private int week;
     private String date;
@@ -36,4 +36,5 @@ public class DiaryTask implements Serializable {
     private int hour;
     private int minute;
     private boolean status;
+    private boolean rewriteRepeater;
 }

@@ -17,7 +17,6 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.widget_finder.Widget;
-import com.sharkit.nextmonday.diary.db.firebase.DiaryTaskRepository;
 import com.sharkit.nextmonday.diary.db.sqlite.DiaryTaskRepo;
 import com.sharkit.nextmonday.diary.service.DiaryCreateTaskService;
 
@@ -50,17 +49,13 @@ public class DiaryCreateTask extends Fragment {
             }
         });
 
-        widget.getButton().getAdd().setOnClickListener(v -> new DiaryTaskRepository(requireContext())
-                .create(toDiaryTask(service, widget.getTextField(), calendar),
-                        String.format(DATE_FORMAT, calendar.get(Calendar.WEEK_OF_YEAR), calendar.get(Calendar.YEAR)))
-                .addOnSuccessListener(unused -> {
-
+        widget.getButton().getAdd().setOnClickListener(v ->{
                     DiaryTaskRepo diaryTaskRepo = DiaryTaskRepo.getInstance(getContext());
                     diaryTaskRepo.create(toDiaryTask(service, widget.getTextField(), calendar));
 
                     Navigation.findNavController((Activity) requireContext(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
                     TASK_IS_ADDED(requireContext());
-                }));
+                });
 
         return view;
     }

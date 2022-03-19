@@ -18,7 +18,9 @@ import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.widget_finder.Widget;
 import com.sharkit.nextmonday.diary.adapter.DiaryMainListAdapter;
 import com.sharkit.nextmonday.diary.db.sqlite.DiaryTaskRepo;
+import com.sharkit.nextmonday.diary.entity.DiaryTask;
 import com.sharkit.nextmonday.diary.entity.TaskOfDay;
+import com.sharkit.nextmonday.diary.service.DiaryMainService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,22 +42,7 @@ public class DiaryMain extends Fragment {
             calendar.setTimeInMillis(Optional.of(getArguments().getLong(DATE_FOR_DIARY_MAIN))
                     .orElse(Calendar.getInstance().getTimeInMillis()));
         }
-
-        List<TaskOfDay> taskOfDays = new ArrayList<>();
-        while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
-            calendar.add(Calendar.DAY_OF_WEEK, -1);
-        }
-        for (int i = 0; i < 7; i++) {
-            taskOfDays.add(toTaskOfDay(DiaryTaskRepo.getInstance(getContext())
-                    .findAllByWeekAndDate(calendar.get(Calendar.WEEK_OF_YEAR),
-                            SimpleDateFormat.getDateInstance().format(calendar.getTimeInMillis()))
-                    .orElse(null), calendar));
-
-            calendar.add(Calendar.DAY_OF_WEEK, 1);
-        }
-
-        DiaryMainListAdapter adapter = new DiaryMainListAdapter(getContext(), taskOfDays);
-        widget.getExpandableList().getExpandableListView().setAdapter(adapter);
+        DiaryMainService.getInstance(getContext(), calendar, widget);
 
         return view;
     }

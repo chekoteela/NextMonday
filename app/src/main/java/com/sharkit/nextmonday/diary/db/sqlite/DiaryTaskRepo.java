@@ -30,6 +30,14 @@ public class DiaryTaskRepo extends SQLiteTemplate<DiaryTask> implements DiaryTas
     @Override
     public boolean updateStatus(boolean isComplete, String id) {
         return update(DiaryTaskRepository.class, Objects.requireNonNull(new Object() {}
-                .getClass().getEnclosingMethod()).getName(), isComplete, id).orElse(false);
+                .getClass().getEnclosingMethod()).getName(), isComplete, id)
+                .orElse(false);
+    }
+
+    @Override
+    public boolean updateRewriteRepeater(boolean isRewriteRepeater, String id) {
+        return update(DiaryTaskRepository.class, Objects.requireNonNull(new Object() {}
+                .getClass().getEnclosingMethod()).getName(), isRewriteRepeater, id)
+                .orElse(false);
     }
 }

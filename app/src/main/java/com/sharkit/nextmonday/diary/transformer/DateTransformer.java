@@ -5,6 +5,8 @@ import android.content.Context;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.diary.enums.DayOfAlarm;
 
+import java.util.Calendar;
+
 public class DateTransformer {
 
     public static String toMonthName(Context context, int month) {
@@ -73,6 +75,26 @@ public class DateTransformer {
             case SUNDAY:
                 return getValue(context, R.string.text_view_sunday);
             default: throw new RuntimeException("Untyped value " + dayOfAlarm);
+        }
+    }
+
+    public static int toDayOfWeek(DayOfAlarm dayOfAlarm){
+        switch (dayOfAlarm){
+            case MONDAY:
+                return Calendar.MONDAY;
+            case TUESDAY:
+                return Calendar.TUESDAY;
+            case WEDNESDAY:
+                return Calendar.WEDNESDAY;
+            case THURSDAY:
+                return Calendar.THURSDAY;
+            case FRIDAY:
+                return Calendar.FRIDAY;
+            case SATURDAY:
+                return Calendar.SATURDAY;
+            case SUNDAY:
+                return Calendar.SUNDAY;
+            default: throw new RuntimeException("Unsupported type");
         }
     }
 

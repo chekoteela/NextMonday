@@ -14,4 +14,7 @@ public interface DiaryTaskRepository extends SQLiteRepository<DiaryTask> {
 
     @Query(value = "status = '%s'", condition = "id = '%s'")
     boolean updateStatus(boolean isComplete, String id);
+
+    @Query(value = "rewriteRepeater = '%s'", condition = "id = '%s'")
+    boolean updateRewriteRepeater(boolean isRewriteRepeater, String id);
 }

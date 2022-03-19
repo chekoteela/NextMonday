@@ -28,6 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteRepository<O> {
 
@@ -90,6 +91,9 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteReposit
         Arrays.stream(oClass.getDeclaredFields()).forEach(field -> {
             try {
                 field.setAccessible(true);
+                if (field.isAnnotationPresent(Id.class)){
+                    field.set(entity, UUID.randomUUID().toString());
+                }
                 setContentValues(field, data, entity);
             } catch (IllegalAccessException e) {
                 Log.e(this.getClass().getName(), e.getMessage(), e);
@@ -105,6 +109,9 @@ public class SQLiteTemplate<O> extends SQLiteOpenHelper implements SQLiteReposit
         Arrays.stream(oClass.getDeclaredFields()).forEach(field -> {
             try {
                 field.setAccessible(true);
+                if (field.isAnnotationPresent(Id.class)){
+                    field.set(entity, UUID.randomUUID().toString());
+                }
                 setContentValues(field, data, entity);
             } catch (IllegalAccessException e) {
                 Log.e(this.getClass().getName(), e.getMessage(), e);
