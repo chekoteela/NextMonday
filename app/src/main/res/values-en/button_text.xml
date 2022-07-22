@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="button_send">Send</string>
-    <string name="button_agree_policy">Я ознакомлен(а)</string>
+    <string name="button_accept">Accept</string>
+
+    <string name="button_agree_policy">I agree</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="button_create_new_account">Create new account</string>
+    <string name="button_create">Create</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_change">Change</string>
+    <string name="button_save">Save</string>
+    <string name="button_register">Register</string>
+
 </resources>

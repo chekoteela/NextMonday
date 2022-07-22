@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_field_email">Пошта</string>
+    <string name="text_field_password">Пароль</string>
+    <string name="text_field_name">І\'мя</string>
+    <string name="text_field_last_name">Фамілія</string>
+    <string name="text_field_task_name">Назва задачі</string>
+    <string name="text_field_description">Опис</string>
+
+</resources>

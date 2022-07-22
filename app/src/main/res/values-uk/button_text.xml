@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="button_send">Відправити</string>
+    <string name="button_accept">Прийняти</string>
+
     <string name="button_agree_policy">Я ознайомлений(а)</string>
+    <string name="button_sign_in">Увійти</string>
+    <string name="button_create_new_account">Створити новий аккаунт</string>
+    <string name="button_create">Створити</string>
+    <string name="button_delete">Видалити</string>
+    <string name="button_change">Змінити</string>
+    <string name="button_save">Зберегти</string>
+    <string name="button_register">Зареєструвати</string>
 
 </resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_view_continue_with">Продовжити з</string>
+    <string name="text_view_forgot_password">Забули пароль?</string>
+    <string name="text_view_not_have_account">Не маєте аккаунта?</string>
+    <string name="text_view_privacy_policy">Політика конфіденційності</string>
+    <string name="text_view_have_account">Вже маєте аккаунт?</string>
+    <string name="text_view_choose_time">Встановити час</string>
+    <string name="text_view_repeat">Повторювати</string>
+    <string name="text_view_add_description">Додати опис</string>
+    <string name="text_view_time">Час:</string>
+
+    <string name="text_view_monday">Пн</string>
+    <string name="text_view_tuesday">Вт</string>
+    <string name="text_view_wednesday">Ср</string>
+    <string name="text_view_thursday">Чт</string>
+    <string name="text_view_friday">Пт</string>
+    <string name="text_view_saturday">Сб</string>
+    <string name="text_view_sunday">Нд</string>
+
+    <string name="text_view_january">Січ</string>
+    <string name="text_view_february">Лют</string>
+    <string name="text_view_march">Бер</string>
+    <string name="text_view_april">Кві</string>
+    <string name="text_view_may">Тра</string>
+    <string name="text_view_june">Чер</string>
+    <string name="text_view_jule">Лип</string>
+    <string name="text_view_august">Сер</string>
+    <string name="text_view_september">Вер</string>
+    <string name="text_view_october">Жов</string>
+    <string name="text_view_november">Лис</string>
+    <string name="text_view_december">Гру</string>
+</resources>

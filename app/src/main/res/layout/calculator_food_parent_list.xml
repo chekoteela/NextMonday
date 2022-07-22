@@ -19,7 +19,7 @@
 
             <TextView
                 android:id="@+id/meal_name_xml"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
@@ -58,7 +58,7 @@
 
             <TextView
                 android:id="@+id/all_protein_xml"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -67,7 +67,7 @@
 
             <TextView
                 android:id="@+id/all_carbohydrate_xml"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -76,7 +76,7 @@
 
             <TextView
                 android:id="@+id/all_fat_xml"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -84,7 +84,7 @@
 
             <TextView
                 android:id="@+id/all_calorie_xml"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

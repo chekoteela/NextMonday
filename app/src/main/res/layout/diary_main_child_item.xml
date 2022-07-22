@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/child_item_xml"
+    android:background="@color/calculator_color">
+
+
+    <CheckBox
+        android:id="@+id/complete_task_xml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="15dp"
+        android:contentDescription="@string/checkTarget"
+        android:focusable="false"
+        android:theme="@style/MyCheckBox" />
+
+    <TextView
+        android:id="@+id/text_task_xml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/complete_task_xml"
+        android:fontFamily="@font/play"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/time_task_xml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_task_xml"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/complete_task_xml"
+        android:fontFamily="@font/play"
+        android:text=""
+        android:theme="@style/MyCheckBox"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

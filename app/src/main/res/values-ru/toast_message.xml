@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="not_connection_to_internet">Нет соединения с интернетом</string>
-    <string name="error_authorise">Ошибка авторизации</string>
-    <string name="fail_email_or_pass">Вы ввели не верный пароль или почту</string>
-    <string name="password_is_not_the_same">Пароли не совпадают</string>
-    <string name="successful_update">Изменения сохранены</string>
-    <string name="agree_with_privacy_policy">Согласитесь с политикой конфиденциальности</string>
-    <string name="user_with_email_created">Пользователь с такой почтой уже зарегистрируван</string>
+    <string name="toast_not_connection_to_internet">Нет соединения с интернетом</string>
+    <string name="toast_error_authorise">Ошибка авторизации</string>
+    <string name="toast_fail_email_or_pass">Вы ввели не верный пароль или почту</string>
+    <string name="toast_password_is_not_the_same">Пароли не совпадают</string>
+    <string name="toast_successful_update">Изменения сохранены</string>
+    <string name="toast_agree_with_privacy_policy">Согласитесь с политикой конфиденциальности</string>
+    <string name="toast_user_with_email_created">Пользователь с такой почтой уже зарегистрируван</string>
+    <string name="toast_task_added_successfully">Задача добавлена</string>
+
+    <!--    VALIDATION-->
+    <string name="toast_field_must_be_not_empty">Поле не должно быть пустым : %s</string>
+    <string name="toast_field_value_to_long">Слишком длинное значение поля : %s</string>
+    <string name="toast_field_value_to_short">Слишком короткое значение поля : %s</string>
+    <string name="toast_field_has_symbols">Поле не должно иметь символов : %s</string>
+    <string name="toast_field_has_space">Поле не должно иметь пробелов : %s</string>
+    <string name="toast_email_is_not_valid">Введите корректный электроный адрес</string>
+    <string name="toast_field_has_number">Поле не должно иметь цифер : %s</string>
+    <string name="toast_field_has_cyrillic">Поле не должно иметь кирилици : %s</string>
+    <string name="toast_null_spinner_position">Поле должно быть выбрано : %s</string>
+    <string name="toast_field_value_to_big">Слишком большое значение поля : %s</string>
+    <string name="toast_field_value_to_small">Слишком маленькое значение поля : %s</string>
+
+
 
 </resources>

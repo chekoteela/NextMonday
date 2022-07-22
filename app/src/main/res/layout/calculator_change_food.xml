@@ -14,7 +14,7 @@
     android:orientation="vertical">
     <TextView
         android:id="@+id/text"
-        style="@style/StandartTextView"
+        style="@style/StandardTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -81,7 +81,7 @@
 
                 <TextView
                     android:id="@+id/text_protein"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -154,7 +154,7 @@
 
                 <TextView
                     android:id="@+id/text_carbohydrate"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Углеводы"
@@ -201,7 +201,7 @@
 
                 <TextView
                     android:id="@+id/text_fat"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fat"
@@ -320,7 +320,7 @@
 
                 <TextView
                     android:id="@+id/text_els"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/extra"

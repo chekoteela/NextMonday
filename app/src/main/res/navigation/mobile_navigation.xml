@@ -3,37 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_calculator_main">
+    app:startDestination="@+id/navigation_diary_main">
+
+<!--    DIARY-->
+    <fragment
+        android:id="@+id/navigation_diary_main"
+        android:name="com.sharkit.nextmonday.diary.ui.DiaryMain"
+        tools:layout="@layout/diary_main" />
 
     <fragment
-        android:id="@+id/nav_diary"
-        android:name="com.sharkit.nextmonday.ui.diary.MainDiary"
-        tools:layout="@layout/fragment_dairy" />
+        android:id="@+id/navigation_diary_calendar"
+        android:name="com.sharkit.nextmonday.diary.ui.DiaryCalendar"
+        tools:layout="@layout/diary_calendar" />
+
+    <fragment
+        android:id="@+id/navigation_diary_list_of_task"
+        android:name="com.sharkit.nextmonday.diary.ui.DiaryListOfTask"
+        tools:layout="@layout/diary_list_of_task" />
+
+    <fragment
+        android:id="@+id/navigation_diary_create_task"
+        android:name="com.sharkit.nextmonday.diary.ui.DiaryCreateTask"
+        tools:layout="@layout/diary_create_task" />
+
+    <fragment
+        android:id="@+id/navigation_diary_update_task"
+        android:name="com.sharkit.nextmonday.diary.ui.DiaryUpdateTask"
+        tools:layout="@layout/diary_update_task" />
+
+<!--    END-->
 
     <fragment
         android:id="@+id/nav_calculator_main"
         android:name="com.sharkit.nextmonday.ui.calculator.CalculatorMain"
         tools:layout="@layout/calculator_main" />
-
-    <fragment
-        android:id="@+id/nav_calendar"
-        android:name="com.sharkit.nextmonday.ui.diary.DiaryCalendar"
-        tools:layout="@layout/fragment_calendar" />
-
-    <fragment
-        android:id="@+id/nav_search"
-        android:name="com.sharkit.nextmonday.ui.diary.DiaryFindAllTarget"
-        tools:layout="@layout/fragment_dairy_three" />
-
-    <fragment
-        android:id="@+id/nav_plus_target"
-        android:name="com.sharkit.nextmonday.ui.diary.DiaryCreateNewTarget"
-        tools:layout="@layout/fragment_dairy_two" />
-
-    <fragment
-        android:id="@+id/nav_change_target"
-        android:name="com.sharkit.nextmonday.ui.diary.DiaryUpdateTarget"
-        tools:layout="@layout/fragment_dairy_four" />
 
     <fragment
         android:id="@+id/nav_feedback"

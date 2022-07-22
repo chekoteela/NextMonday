@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NextMonday</string>
+    <string name="app_name" translatable="false">NextMonday</string>
     <string name="SignEmail">Почта</string>
     <string name="SignPassword">Пароль</string>
     <string name="DontHaveAcc">Не имеете аккаунта?</string>
@@ -207,8 +207,8 @@
     <string name="change_weight">Изменить вес</string>
 
 
-                                                                <!--Description   -->
-                                                                <!--Description   -->
+    <!--Description   -->
+    <!--Description   -->
     <string name="action_settings2">Setting</string>
     <string name="reset_password2">Reset password</string>
     <string name="send_code_again2">Send code again</string>
@@ -289,12 +289,6 @@
     <string name="descr_change_weight">Change weight</string>
 
 
-
-
-
-
-
-
     <string name="theme">Темы</string>
     <string name="bright">Светлая</string>
     <string name="dark">Темная</string>
@@ -318,6 +312,84 @@
     <string name="button_agree_policy">I agree</string>
     <string name="agree_with_privacy_policy">Agree with privacy policy</string>
     <string name="user_with_email_created">User with such email was create</string>
+    <string name="field_must_be_not_empty">Field must be not empty : %s</string>
+    <string name="field_value_to_long">Field value too long : %s</string>
+    <string name="field_has_symbols">Field value has symbols : %s</string>
+    <string name="field_has_space">Field value has space : %s</string>
+    <string name="email_is_not_valid">Email isn\'t valid</string>
+    <string name="field_has_number">Field value has numbers : %s</string>
+    <string name="field_has_cyrillic">Field value has cyrillic : %s</string>
+    <string name="field_value_to_short">Field value too short : %s</string>
+    <string name="null_spinner_position">Field must be selected : %s</string>
+    <string name="field_value_to_big">Field value too big : %s</string>
+    <string name="field_value_to_small">Field value too small : %s</string>
+    <string name="button_create_new_account">Create new account</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="text_field_email">Email</string>
+    <string name="text_field_password">Password</string>
+    <string name="text_view_continue_with">Continue with</string>
+    <string name="text_forgot_password">Forgot password?</string>
+    <string name="text_view_forgot_password">Forgot password?</string>
+    <string name="text_view_not_have_account">Does not have an account?</string>
+    <string name="text_field_name">Name</string>
+    <string name="text_field_last_name">Last Name</string>
+    <string name="text_view_privacy_policy">Privacy Policy</string>
+    <string name="text_view_have_account">Does have an account?</string>
+    <string name="button_accept">Accept</string>
+    <string name="task_added_successfully">Task added successfully</string>
+    <string name="text_view_take_time">Choose time</string>
+    <string name="text_view_choose_time">Choose time</string>
+    <string name="text_view_repeat">Repeat</string>
+    <string name="text_view_add_description">Add description</string>
+    <string name="button_add">Create</string>
+    <string name="button_create">Create</string>
+    <string name="text_field_task_name">Name of task</string>
+    <string name="text_field_description">Description</string>
+    <string name="text_view_monday">Mon</string>
+    <string name="text_view_tusday">Tus</string>
+    <string name="text_view_wednesday">Wed</string>
+    <string name="text_view_thursday">Thr</string>
+    <string name="text_view_friday">Fri</string>
+    <string name="text_view_saturday">Sat</string>
+    <string name="text_view_sunday">Sun</string>
+    <string name="text_view_january">Jan</string>
+    <string name="text_view_february">Feb</string>
+    <string name="text_view_march">Mar</string>
+    <string name="text_view_april">Apr</string>
+    <string name="text_view_may">May</string>
+    <string name="text_view_june">Jun</string>
+    <string name="text_view_jule">Jul</string>
+    <string name="text_view_august">Aug</string>
+    <string name="text_view_september">Sep</string>
+    <string name="text_view_october">Oct</string>
+    <string name="text_view_november">Nov</string>
+    <string name="text_view_December">Dec</string>
+    <string name="text_view_december">Dec</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_change">Change</string>
+    <string name="text_view_tuesday">Tus</string>
+    <string name="text_view_time">Time:</string>
+    <string name="button_save">Save</string>
+    <string name="button_register">Register</string>
+    <string name="toast_task_added_successfully">Task added successfully</string>
+    <string name="toast_user_with_email_created">User with such email was create</string>
+    <string name="toast_agree_with_privacy_policy">Agree with privacy policy</string>
+    <string name="toast_successful_update">Changes was keep</string>
+    <string name="toast_password_is_not_the_same">Passwords isn\'t the same</string>
+    <string name="toast_fail_email_or_pass">Fail email or password</string>
+    <string name="toast_error_authorise">Error authorise</string>
+    <string name="toast_not_connection_to_internet">Not connection to Internet</string>
+    <string name="toast_field_value_to_small">Field value too small : %s</string>
+    <string name="toast_field_value_to_big">Field value too big : %s</string>
+    <string name="toast_null_spinner_position">Field must be selected : %s</string>
+    <string name="toast_field_has_cyrillic">Field value has cyrillic : %s</string>
+    <string name="toast_field_has_number">Field value has numbers : %s</string>
+    <string name="toast_email_is_not_valid">Email isn\'t valid</string>
+    <string name="toast_field_has_space">Field value has space : %s</string>
+    <string name="toast_field_has_symbols">Field value has symbols : %s</string>
+    <string name="toast_field_value_to_long">Field value too long : %s</string>
+    <string name="toast_field_value_to_short">Field value too short : %s</string>
+    <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
 
 
 </resources>

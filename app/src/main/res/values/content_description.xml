@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description_logo" translatable="false">Logo</string>
+    <string name="description_forgot_password" translatable="false">Forgot password</string>
+    <string name="description_sign_in" translatable="false">Sign in</string>
+    <string name="description_register" translatable="false">Register</string>
+    <string name="description_not_have_account" translatable="false">Does not have an account?</string>
+    <string name="description_create_account" translatable="false">Create account</string>
+    <string name="description_continue_with" translatable="false">Continue with</string>
+    <string name="description_sign_in_with_google" translatable="false">Sign in with google</string>
+    <string name="description_agree_with_policy" translatable="false">I agree</string>
+    <string name="description_pencil_image" translatable="false">Pencil image</string>
+    <string name="description_diary_task_name" translatable="false">Diary task name</string>
+    <string name="description_choose_time" translatable="false">Choose time switch</string>
+    <string name="description_repeat" translatable="false">Repeat switch</string>
+    <string name="description_create" translatable="false">Create</string>
+    <string name="description_save" translatable="false">Save</string>
+    <string name="description_description" translatable="false">Description</string>
+
+</resources>

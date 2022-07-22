@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/parent_xml"
+    android:layout_height="match_parent"
+    android:background="@color/Prozorui">
+
+    <LinearLayout
+        android:contentDescription="@string/list2"
+        android:id="@+id/linear_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/vrec"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/dairy_exp_list_den_color"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/day_name_xml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_gravity="center|left"
+                style="@style/StandartTextView"
+                android:text="@string/pn"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/day_number_xml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                style="@style/StandartTextView"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/StandartTextView"
+                android:id="@+id/month_xml"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="month"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/calculator_color"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/spisok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24sp"
+                android:layout_gravity="center|left"
+                android:layout_marginTop="10dp"
+                android:text="@string/list"
+                style="@style/StandartTextView" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginRight="80dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/StandartTextView"
+                    android:id="@+id/completed_task_xml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="10dp"
+                    android:text="0" />
+
+                <TextView
+                    style="@style/StandartTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="/" />
+
+                <TextView
+                    android:id="@+id/all_tasks_xml"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    style="@style/StandartTextView"
+                    android:text="0" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_xml"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:layout_marginStart="21dp"
+                    android:layout_marginTop="15dp"
+                    android:progressDrawable="@drawable/drawable_progress_bar" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:contentDescription="@string/plus2"
+        android:id="@+id/plus_xml"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/plus" />
+
+</RelativeLayout>

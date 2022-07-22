@@ -55,7 +55,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/your_weigth"
@@ -74,7 +74,7 @@
                     android:contentDescription="@string/descr_your_current_weight" />
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/age"
@@ -105,7 +105,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/desired_weigth"
@@ -125,7 +125,7 @@
                     android:padding="5dp" />
 
                 <TextView
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/heigth"
@@ -168,7 +168,7 @@
                 android:layout_gravity="left"
                 android:padding="5dp"
                 android:text="@string/choose_gender"
-                style="@style/StandartTextView"
+                style="@style/StandardTextView"
                 android:textSize="18sp"/>
 
             <RadioGroup
@@ -181,7 +181,7 @@
                 <RadioButton
                     android:id="@+id/male_xml"
                     android:checked="true"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -191,7 +191,7 @@
 
                 <RadioButton
                     android:id="@+id/female_xml"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -223,7 +223,7 @@
                     android:id="@+id/form"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:textSize="18sp"
                     android:text="@string/check_F"
                     />
@@ -232,7 +232,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:textSize="20sp"
                     android:text=" ?"
                     />
@@ -245,7 +245,7 @@
 
                 <RadioButton
                     android:id="@+id/harrison_formula_xml"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/white"
@@ -255,7 +255,7 @@
 
                 <RadioButton
                     android:id="@+id/miffin_formula_xml"
-                    style="@style/StandartTextView"
+                    style="@style/StandardTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/white"
