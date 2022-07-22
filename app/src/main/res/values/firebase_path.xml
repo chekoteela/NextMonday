@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="path_to_user" translatable="false">/User/%s</string> //userId
-    <string name="path_to_diary_task" translatable="false">/User/%s/Diary/Task/%s</string> //userId//date
+    <string name="path_to_user" translatable="false">/User/{userId}</string> //userId
+    <string name="path_to_diary_task" translatable="false">/User/{userId}/Diary/Task/date</string>
 </resources>

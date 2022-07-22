@@ -207,8 +207,8 @@
     <string name="change_weight">Изменить вес</string>
 
 
-                                                                <!--Description   -->
-                                                                <!--Description   -->
+    <!--Description   -->
+    <!--Description   -->
     <string name="action_settings2">Setting</string>
     <string name="reset_password2">Reset password</string>
     <string name="send_code_again2">Send code again</string>
@@ -287,12 +287,6 @@
     <string name="descr_auto_tuning">Auto tuning</string>
     <string name="descr_add_meal">Add meal</string>
     <string name="descr_change_weight">Change weight</string>
-
-
-
-
-
-
 
 
     <string name="theme">Темы</string>
@@ -376,6 +370,26 @@
     <string name="text_view_tuesday">Tus</string>
     <string name="text_view_time">Time:</string>
     <string name="button_save">Save</string>
+    <string name="button_register">Register</string>
+    <string name="toast_task_added_successfully">Task added successfully</string>
+    <string name="toast_user_with_email_created">User with such email was create</string>
+    <string name="toast_agree_with_privacy_policy">Agree with privacy policy</string>
+    <string name="toast_successful_update">Changes was keep</string>
+    <string name="toast_password_is_not_the_same">Passwords isn\'t the same</string>
+    <string name="toast_fail_email_or_pass">Fail email or password</string>
+    <string name="toast_error_authorise">Error authorise</string>
+    <string name="toast_not_connection_to_internet">Not connection to Internet</string>
+    <string name="toast_field_value_to_small">Field value too small : %s</string>
+    <string name="toast_field_value_to_big">Field value too big : %s</string>
+    <string name="toast_null_spinner_position">Field must be selected : %s</string>
+    <string name="toast_field_has_cyrillic">Field value has cyrillic : %s</string>
+    <string name="toast_field_has_number">Field value has numbers : %s</string>
+    <string name="toast_email_is_not_valid">Email isn\'t valid</string>
+    <string name="toast_field_has_space">Field value has space : %s</string>
+    <string name="toast_field_has_symbols">Field value has symbols : %s</string>
+    <string name="toast_field_value_to_long">Field value too long : %s</string>
+    <string name="toast_field_value_to_short">Field value too short : %s</string>
+    <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
 
 
 </resources>

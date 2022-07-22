@@ -10,6 +10,6 @@
     <string name="button_delete">Видалити</string>
     <string name="button_change">Змінити</string>
     <string name="button_save">Зберегти</string>
-
+    <string name="button_register">Зареєструвати</string>
 
 </resources>

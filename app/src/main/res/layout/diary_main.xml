@@ -17,8 +17,8 @@
             android:divider="@color/back"
             android:dividerHeight="1dp"
             android:groupIndicator="@color/Prozorui"/>
-    </LinearLayout>
 
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/registration_menu_background_color"
-    android:orientation="vertical"
-    tools:context=".activity.RegistrationMenu">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +28,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/user_name_xml"
+            android:id="@+id/user_name_id"
             style="@style/text_field_style"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -45,7 +43,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/user_last_name_xml"
+            android:id="@+id/user_last_name_id"
             style="@style/text_field_style"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -60,7 +58,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/email_xml"
+            android:id="@+id/email_id"
             style="@style/text_field_style"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -75,7 +73,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/password_xml"
+            android:id="@+id/password_id"
             style="@style/text_field_style"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -90,7 +88,7 @@
             android:textAlignment="center" />
 
         <CheckBox
-            android:id="@+id/policy_xml"
+            android:id="@+id/policy_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/description_agree_with_policy"
@@ -99,7 +97,7 @@
             android:theme="@style/check_box_style" />
 
         <TextView
-            android:id="@+id/policy_text_xml"
+            android:id="@+id/policy_text_id"
             style="@style/text_view_select_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -115,7 +113,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/create_account_xml"
+            android:id="@+id/create_account_id"
             style="@style/button_setting_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,7 +124,6 @@
             android:text="@string/button_create_new_account" />
 
         <TextView
-            android:id="@+id/textView"
             style="@style/text_view_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,7 +134,7 @@
             android:textAlignment="center" />
 
         <Button
-            android:id="@+id/sign_in_xml"
+            android:id="@+id/sign_in_id"
             style="@style/button_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

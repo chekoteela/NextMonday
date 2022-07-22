@@ -10,5 +10,6 @@
     <string name="button_delete">Delete</string>
     <string name="button_change">Change</string>
     <string name="button_save">Save</string>
+    <string name="button_register">Register</string>
 
 </resources>
