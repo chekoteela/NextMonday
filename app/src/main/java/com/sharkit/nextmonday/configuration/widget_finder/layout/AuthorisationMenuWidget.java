@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.configuration.widget_finder.layout;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.sharkit.nextmonday.R;
 
@@ -28,5 +29,9 @@ public class AuthorisationMenuWidget {
 
     public EditText password() {
         return view.findViewById(R.id.password_id);
+    }
+
+    public ImageView google() {
+        return view.findViewById(R.id.google_id);
     }
 }
