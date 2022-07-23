@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.auth.fragment.register;
 
+import static com.sharkit.nextmonday.auth.fragment.UserTransformer.toUser;
 import static com.sharkit.nextmonday.configuration.validation.field_validation.RegisterMenuValidator.isNameValid;
 import static com.sharkit.nextmonday.configuration.validation.field_validation.RegisterMenuValidator.isPasswordValid;
 import static com.sharkit.nextmonday.configuration.validation.field_validation.RegisterMenuValidator.isValidEmail;
@@ -11,10 +12,8 @@ import androidx.annotation.RequiresApi;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
-import com.sharkit.nextmonday.configuration.utils.CryptoAES;
 import com.sharkit.nextmonday.configuration.widget_finder.layout.RegisterMenuWidget;
-import com.sharkit.nextmonday.entity.auth.User;
-import com.sharkit.nextmonday.entity.auth.enums.UserRole;
+import com.sharkit.nextmonday.auth.entity.User;
 
 import java.util.Objects;
 
@@ -34,7 +33,11 @@ public class EmailAndPasswordService {
         }
 
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        final User user = buildUser(Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
+        final User user = toUser(Objects.requireNonNull(mAuth.getCurrentUser()).getUid(),
+                widgetContainer.email().getText().toString(),
+                widgetContainer.userName().getText().toString(),
+                widgetContainer.userLastName().getText().toString(),
+                widgetContainer.password().getText().toString());
 
         mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnSuccessListener(authResult -> {
@@ -52,16 +55,5 @@ public class EmailAndPasswordService {
                 isPasswordValid(widgetContainer.password().getText().toString());
     }
 
-    private User buildUser(String uId) {
-        final CryptoAES aes = CryptoAES.getInstance();
 
-        return User.builder()
-                .id(uId)
-                .email(widgetContainer.email().getText().toString().trim())
-                .name(widgetContainer.userName().getText().toString().trim())
-                .lastName(widgetContainer.userLastName().getText().toString().trim())
-                .password(aes.encrypt(widgetContainer.password().getText().toString().trim()))
-                .role(UserRole.USER)
-                .build();
-    }
 }

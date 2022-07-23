@@ -42,7 +42,7 @@ public class AuthFragment extends Fragment {
 
         widgetContainer.createAccount().setOnClickListener(v -> createAccount());
         widgetContainer.signIn().setOnClickListener(v -> authByEmailAndPassword());
-        widgetContainer.google().setOnClickListener(v -> new GoogleRegistration(widgetContainer).googleAuth());
+        widgetContainer.google().setOnClickListener(v -> new GoogleRegistration(getActivity()).signIn());
         return view;
     }
 

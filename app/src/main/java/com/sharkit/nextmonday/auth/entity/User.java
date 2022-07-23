@@ -1,6 +1,6 @@
-package com.sharkit.nextmonday.entity.auth;
+package com.sharkit.nextmonday.auth.entity;
 
-import com.sharkit.nextmonday.entity.auth.enums.UserRole;
+import com.sharkit.nextmonday.auth.entity.enums.UserRole;
 
 import lombok.Builder;
 import lombok.Data;

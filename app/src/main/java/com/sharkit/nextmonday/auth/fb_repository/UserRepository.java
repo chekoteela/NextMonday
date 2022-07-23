@@ -3,7 +3,7 @@ package com.sharkit.nextmonday.auth.fb_repository;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.entity.auth.User;
+import com.sharkit.nextmonday.auth.entity.User;
 
 public class UserRepository {
 
