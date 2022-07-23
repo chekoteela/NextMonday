@@ -14,8 +14,12 @@
     <!--    <string name="facebook_app_id">1086653145137007</string>-->
     <!--    <string name="fb_login_protocol_scheme">fb1086653145137007</string>-->
 
-    <string name="facebook_app_id">822596168332514</string>
-    <string name="fb_login_protocol_scheme">fb822596168332514</string>
+<!--        <string name="facebook_app_id">822596168332514</string>-->
+<!--    <string name="fb_login_protocol_scheme">fb822596168332514</string>-->
+
+    <string name="facebook_app_id">1086653145137007</string>
+    <string name="fb_login_protocol_scheme">fb1086653145137007</string>
+    <string name="facebook_client_token">56789</string>
 
     <string name="title_activity_main_menu">Menu</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -390,6 +394,7 @@
     <string name="toast_field_value_to_long">Field value too long : %s</string>
     <string name="toast_field_value_to_short">Field value too short : %s</string>
     <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
+    <string name="title_activity_main_meny">MainMeny</string>
 
 
 </resources>

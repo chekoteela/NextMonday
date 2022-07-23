@@ -19,6 +19,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
 import com.sharkit.nextmonday.configuration.utils.CryptoAES;
 import com.sharkit.nextmonday.configuration.utils.ToastMenuMessage;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
@@ -41,6 +42,7 @@ public class AuthFragment extends Fragment {
 
         widgetContainer.createAccount().setOnClickListener(v -> createAccount());
         widgetContainer.signIn().setOnClickListener(v -> authByEmailAndPassword());
+        widgetContainer.google().setOnClickListener(v -> new GoogleRegistration(getActivity()).signIn());
         return view;
     }
 
@@ -53,7 +55,7 @@ public class AuthFragment extends Fragment {
             return;
         }
 
-        CryptoAES aes = CryptoAES.getInstance();
+        final CryptoAES aes = CryptoAES.getInstance();
 
         mAuth.signInWithEmailAndPassword(widgetContainer.email().getText().toString(), aes.encrypt(widgetContainer.password().getText().toString().trim()))
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
