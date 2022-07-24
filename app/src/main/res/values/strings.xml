@@ -395,6 +395,7 @@
     <string name="toast_field_value_to_short">Field value too short : %s</string>
     <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
     <string name="title_activity_main_meny">MainMeny</string>
+    <string name="title_activity_main">MainActivity</string>
 
 
 </resources>

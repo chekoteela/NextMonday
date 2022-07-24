@@ -2,6 +2,7 @@ package com.sharkit.nextmonday.auth.fragment;
 
 import static com.sharkit.nextmonday.configuration.validation.field_validation.AuthValidation.isValidAuthField;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,8 +16,6 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
@@ -24,6 +23,7 @@ import com.sharkit.nextmonday.configuration.utils.CryptoAES;
 import com.sharkit.nextmonday.configuration.utils.ToastMenuMessage;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.configuration.widget_finder.layout.AuthorisationMenuWidget;
+import com.sharkit.nextmonday.main_menu.NavigationMenu;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class AuthFragment extends Fragment {
@@ -58,12 +58,7 @@ public class AuthFragment extends Fragment {
         final CryptoAES aes = CryptoAES.getInstance();
 
         mAuth.signInWithEmailAndPassword(widgetContainer.email().getText().toString(), aes.encrypt(widgetContainer.password().getText().toString().trim()))
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        Log.i("TAGA", "success");
-                    }
-                }).addOnFailureListener(e -> {
+                .addOnSuccessListener(authResult -> startActivity(new Intent(getActivity(), NavigationMenu.class))).addOnFailureListener(e -> {
             ToastMenuMessage.trowToastMessage();
             Log.i(TAG, e.getMessage(), e);
         });
@@ -78,7 +73,7 @@ public class AuthFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
-            ToastMenuMessage.trowToastMessage();
+            startActivity(new Intent(getActivity(), NavigationMenu.class));
         }
     }
 }
