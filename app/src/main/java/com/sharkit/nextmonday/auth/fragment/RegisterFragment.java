@@ -16,7 +16,6 @@ import androidx.navigation.Navigation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.fragment.register.EmailAndPasswordService;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
-import com.sharkit.nextmonday.configuration.widget_finder.layout.RegisterMenuWidget;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class RegisterFragment extends Fragment {
@@ -28,10 +27,10 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.registration_menu, container, false);
-        final RegisterMenuWidget widgetContainer = WidgetContainer.newInstance(view).getRegisterMenuWidget();
+        final WidgetContainer.RegisterMenuWidget widgetContainer = WidgetContainer.newInstance(view).getRegisterMenuWidget();
 
-        widgetContainer.signIn().setOnClickListener(v -> returnToAuthFragment());
-        widgetContainer.createAccount().setOnClickListener(v -> createAccountByEmailAndPassword(widgetContainer));
+        widgetContainer.getSignIn().setOnClickListener(v -> returnToAuthFragment());
+        widgetContainer.getCreateAccount().setOnClickListener(v -> createAccountByEmailAndPassword(widgetContainer));
 
         return view;
     }
@@ -41,7 +40,7 @@ public class RegisterFragment extends Fragment {
         Navigation.findNavController(requireActivity(), R.id.start_navigation).navigate(R.id.nav_auth_fragment);
     }
 
-    private void createAccountByEmailAndPassword(RegisterMenuWidget widget) {
+    private void createAccountByEmailAndPassword(WidgetContainer.RegisterMenuWidget widget) {
         EmailAndPasswordService service = new EmailAndPasswordService(widget);
         Log.i(TAG, "Moving to creation user by email and password");
         service.createAccountByEmailAndPassword();

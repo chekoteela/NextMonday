@@ -28,7 +28,6 @@
                 android:orientation="vertical">
                 <TextView
                     style="@style/StandartTextView"
-                    android:id="@+id/textView13"
                     android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:text="@string/everyday"
@@ -46,12 +45,12 @@
             </LinearLayout>
 
             <RadioGroup
-                android:id="@+id/repeat_radio_group_xml"
+                android:id="@+id/repeat_radio_group_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/repeat_everyday_xml"
+                    android:id="@+id/repeat_everyday_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:buttonTint="@color/white"
@@ -61,7 +60,7 @@
 
                 <RadioButton
                     android:contentDescription="@string/selectDay"
-                    android:id="@+id/select_day_xml"
+                    android:id="@+id/select_day_id"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content" />
@@ -71,7 +70,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/checkbox_list_xml"
+            android:id="@+id/checkbox_list_id"
             android:layout_width="wrap_content"
             android:layout_marginBottom="15dp"
             android:layout_height="wrap_content"
@@ -95,7 +94,7 @@
 
                 <CheckBox
                     android:contentDescription="@string/monday"
-                    android:id="@+id/monday_xml"
+                    android:id="@+id/monday_id"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content" />
@@ -118,7 +117,7 @@
 
                 <CheckBox
                     android:contentDescription="@string/tuesday"
-                    android:id="@+id/tuesday_xml"
+                    android:id="@+id/tuesday_id"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content" />
@@ -141,7 +140,7 @@
 
                 <CheckBox
                     android:contentDescription="@string/wednesday"
-                    android:id="@+id/wednesday_xml"
+                    android:id="@+id/wednesday_id"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content"
@@ -162,10 +161,9 @@
                     android:layout_height="wrap_content"
                     android:text="@string/Thursday" />
 
-
                 <CheckBox
                     android:contentDescription="@string/thursday"
-                    android:id="@+id/thursday_xml"
+                    android:id="@+id/thursday_id"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content"
@@ -190,7 +188,7 @@
 
                 <CheckBox
                     android:contentDescription="@string/friday"
-                    android:id="@+id/friday_xml"
+                    android:id="@+id/friday_id"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content"
@@ -214,7 +212,7 @@
 
                 <CheckBox
                     android:contentDescription="@string/saturday"
-                    android:id="@+id/saturday_xml"
+                    android:id="@+id/saturday_id"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content"
@@ -237,7 +235,7 @@
 
                 <CheckBox
                     android:contentDescription="@string/sunday"
-                    android:id="@+id/sunday_xml"
+                    android:id="@+id/sunday_id"
                     android:layout_width="wrap_content"
                     android:buttonTint="@color/white"
                     android:layout_height="wrap_content"

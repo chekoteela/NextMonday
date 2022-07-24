@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_diary_main">
+    app:startDestination="@+id/navigation_diary_create_task">
 
 <!--    DIARY-->
     <fragment
         android:id="@+id/navigation_diary_main"
-        android:name="com.sharkit.nextmonday.main_menu.diary.DiaryFragment"
-        tools:layout="@layout/diary_main" />
+        android:name="com.sharkit.nextmonday.main_menu.diary.fragment.DiaryMainFragment" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_diary_calendar"-->
@@ -21,10 +19,9 @@
 <!--        android:name="com.sharkit.nextmonday.diary.ui.DiaryListOfTask"-->
 <!--        tools:layout="@layout/diary_list_of_task" />-->
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_diary_create_task"-->
-<!--        android:name="com.sharkit.nextmonday.diary.ui.DiaryCreateTask"-->
-<!--        tools:layout="@layout/diary_create_task" />-->
+    <fragment
+        android:id="@+id/navigation_diary_create_task"
+        android:name="com.sharkit.nextmonday.main_menu.diary.fragment.DiaryTaskCreator" />
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_diary_update_task"-->

@@ -11,9 +11,9 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
-import com.sharkit.nextmonday.configuration.widget_finder.layout.RegisterMenuWidget;
 import com.sharkit.nextmonday.auth.entity.User;
+import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
+import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 
 import java.util.Objects;
 
@@ -21,9 +21,9 @@ import java.util.Objects;
 public class EmailAndPasswordService {
 
     private static final String TAG = EmailAndPasswordService.class.getCanonicalName();
-    private final RegisterMenuWidget widgetContainer;
+    private final WidgetContainer.RegisterMenuWidget widgetContainer;
 
-    public EmailAndPasswordService(RegisterMenuWidget widgetContainer) {
+    public EmailAndPasswordService(WidgetContainer.RegisterMenuWidget widgetContainer) {
         this.widgetContainer = widgetContainer;
     }
 
@@ -34,10 +34,10 @@ public class EmailAndPasswordService {
 
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final User user = toUser(Objects.requireNonNull(mAuth.getCurrentUser()).getUid(),
-                widgetContainer.email().getText().toString(),
-                widgetContainer.userName().getText().toString(),
-                widgetContainer.userLastName().getText().toString(),
-                widgetContainer.password().getText().toString());
+                widgetContainer.getEmail().getText().toString(),
+                widgetContainer.getUserName().getText().toString(),
+                widgetContainer.getUserLastName().getText().toString(),
+                widgetContainer.getPassword().getText().toString());
 
         mAuth.createUserWithEmailAndPassword(user.getEmail(), user.getPassword())
                 .addOnSuccessListener(authResult -> {
@@ -49,10 +49,10 @@ public class EmailAndPasswordService {
 
     private Boolean validateField() {
 
-        return isValidEmail(widgetContainer.email().getText().toString()) &&
-                isNameValid(widgetContainer.userName().getText().toString()) &&
-                isNameValid(widgetContainer.userLastName().getText().toString()) &&
-                isPasswordValid(widgetContainer.password().getText().toString());
+        return isValidEmail(widgetContainer.getEmail().getText().toString()) &&
+                isNameValid(widgetContainer.getUserName().getText().toString()) &&
+                isNameValid(widgetContainer.getUserLastName().getText().toString()) &&
+                isPasswordValid(widgetContainer.getPassword().getText().toString());
     }
 
 

@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary;
+package com.sharkit.nextmonday.main_menu.diary.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
 
-public class DiaryFragment extends Fragment {
+public class DiaryMainFragment extends Fragment {
 
     @Nullable
     @Override
