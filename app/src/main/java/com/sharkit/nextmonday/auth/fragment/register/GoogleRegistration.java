@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
+import com.sharkit.nextmonday.main_menu.NavigationMenu;
 
 import java.util.Objects;
 
@@ -25,8 +26,8 @@ public class GoogleRegistration {
     private GoogleSignInClient mGoogleSignInClient;
     private static final String TAG = GoogleRegistration.class.getCanonicalName();
 
-    public GoogleRegistration(Activity activity1) {
-        this.activity = activity1;
+    public GoogleRegistration(Activity activity) {
+        this.activity = activity;
     }
 
     private void createRequest() {
@@ -54,13 +55,20 @@ public class GoogleRegistration {
 
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(activity, task -> {
-                        new UserRepository().create(toUser(
-                                Objects.requireNonNull(mAuth.getCurrentUser()).getUid(),
-                                Objects.requireNonNull(mAuth.getCurrentUser().getEmail()),
-                                Objects.requireNonNull(mAuth.getCurrentUser().getDisplayName())));
+                    if (Boolean.TRUE.equals(Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser())){
+                        createNewUser(mAuth);
+                    }
+                  moveToMainMenu();
                 });
     }
     private void moveToMainMenu(){
+        activity.startActivity(new Intent(activity, NavigationMenu.class));
+    }
 
+    private void createNewUser(FirebaseAuth mAuth) {
+        new UserRepository().create(toUser(
+                Objects.requireNonNull(mAuth.getCurrentUser()).getUid(),
+                Objects.requireNonNull(mAuth.getCurrentUser().getEmail()),
+                Objects.requireNonNull(mAuth.getCurrentUser().getDisplayName())));
     }
 }

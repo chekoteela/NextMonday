@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_diary_main">
+
+<!--    DIARY-->
+    <fragment
+        android:id="@+id/navigation_diary_main"
+        android:name="com.sharkit.nextmonday.main_menu.diary.DiaryFragment"
+        tools:layout="@layout/diary_main" />
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_diary_calendar"-->
+<!--        android:name="com.sharkit.nextmonday.diary.ui.DiaryCalendar"-->
+<!--        tools:layout="@layout/diary_calendar" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_diary_list_of_task"-->
+<!--        android:name="com.sharkit.nextmonday.diary.ui.DiaryListOfTask"-->
+<!--        tools:layout="@layout/diary_list_of_task" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_diary_create_task"-->
+<!--        android:name="com.sharkit.nextmonday.diary.ui.DiaryCreateTask"-->
+<!--        tools:layout="@layout/diary_create_task" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/navigation_diary_update_task"-->
+<!--        android:name="com.sharkit.nextmonday.diary.ui.DiaryUpdateTask"-->
+<!--        tools:layout="@layout/diary_update_task" />-->
+
+<!--&lt;!&ndash;    END&ndash;&gt;-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_calculator_main"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.CalculatorMain"-->
+<!--        tools:layout="@layout/calculator_main" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_feedback"-->
+<!--        android:name="com.sharkit.nextmonday.ui.general.Feedback"-->
+<!--        tools:layout="@layout/fragment_feedback" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_settings"-->
+<!--        android:name="com.sharkit.nextmonday.ui.setting.SettingList"-->
+<!--        tools:layout="@layout/settings" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_profile"-->
+<!--        android:name="com.sharkit.nextmonday.ui.setting.SettingProfile"-->
+<!--        tools:layout="@layout/fragment_edit" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_cal_auto_calculate_calorie"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.AutoSetting"-->
+<!--        tools:layout="@layout/calculator_auto_calculate_calorie" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_cal_find_food_by_name"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.FindFood"-->
+<!--        tools:layout="@layout/calculator_find_food_by_name" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_cal_create_food"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.CreateFood"-->
+<!--        tools:layout="@layout/calculator_change_food" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_cal_calendar"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.CalculatorCalendar"-->
+<!--        tools:layout="@layout/calculator_calendar" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_cal_weight"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.Weight"-->
+<!--        tools:layout="@layout/calculator_weight" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_cal_ration"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.Ration"-->
+<!--        tools:layout="@layout/calculator_ration" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_cal_add_my_food"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.AddNewFood"-->
+<!--        tools:layout="@layout/calculator_find_my_food" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_settings_general"-->
+<!--        android:name="com.sharkit.nextmonday.ui.settings.GeneralSetting"-->
+<!--        tools:layout="@layout/general_setting" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_settings_list_moderation"-->
+<!--        android:name="com.sharkit.nextmonday.ui.settings.ListModeration"-->
+<!--        tools:layout="@layout/set_list_moderation" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_settings_manual_calculate"-->
+<!--        android:name="com.sharkit.nextmonday.ui.calculator.ManualSetting"-->
+<!--        tools:layout="@layout/calculator_manual_calculate_calorie" />-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_settings_moderator_change"-->
+<!--        android:name="com.sharkit.nextmonday.ui.settings.ModeratorChange"-->
+<!--        tools:layout="@layout/set_moderator_change" />-->
+
+
+</navigation>

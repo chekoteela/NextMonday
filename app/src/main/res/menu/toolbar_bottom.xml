@@ -4,21 +4,21 @@
     <item
         android:id="@+id/item_diary_main"
         android:icon="@drawable/icon_todo_list"
-        android:onClick="onMenuItemClick"
+        android:onClick="diaryMenuClickListener"
         android:title="@string/to_do_list"/>
 
     <item
         android:contentDescription="@string/calendar2"
         android:id="@+id/item_diary_calendar"
         android:icon="@drawable/icon_calendar"
-        android:onClick="onMenuItemClick"
+        android:onClick="diaryMenuClickListener"
         android:title="@string/calendar"/>
 
     <item
         android:contentDescription="@string/find"
         android:id="@+id/item_diary_list_of_task"
         android:icon="@drawable/baseline_search_black_24"
-        android:onClick="onMenuItemClick"
+        android:onClick="diaryMenuClickListener"
         android:title="@string/search" />
 
 </menu>
