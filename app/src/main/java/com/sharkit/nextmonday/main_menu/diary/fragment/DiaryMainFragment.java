@@ -1,8 +1,9 @@
 package com.sharkit.nextmonday.main_menu.diary.fragment;
 
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_CALENDAR;
-import static com.sharkit.nextmonday.main_menu.diary.fragment.DayInfoTransformer.toDayName;
-import static com.sharkit.nextmonday.main_menu.diary.fragment.DayInfoTransformer.toMonthName;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.DayInfoTransformer.toDayName;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.DayInfoTransformer.toDayOfWeek;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.DayInfoTransformer.toMonthName;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.DiaryTaskTransformer.toDiaryTasks;
 
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.adapter.DiaryMainListAdapter;
 import com.sharkit.nextmonday.main_menu.diary.domain.DayInfo;
+import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
+import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -48,19 +51,32 @@ public class DiaryMainFragment extends Fragment {
 
         for (int i = 0; i < 7; i++) {
 
+            List<DiaryTask> diaryTask = toDiaryTasks(db.dairyTaskDAO()
+                    .findAllByDate(DateFormat.getDateInstance().format(calendar.getTime())));
             daysInfo.add(DayInfo.builder()
                     .dayOfWeek(toDayName(calendar.get(Calendar.DAY_OF_WEEK)))
                     .month(toMonthName(calendar.get(Calendar.MONTH)))
                     .dayNumber(calendar.get(Calendar.DATE))
                     .dataTime(calendar.getTimeInMillis())
-                    .diaryTasks(toDiaryTasks(db.dairyTaskDAO()
-                            .findAllByDate(DateFormat.getDateInstance().format(calendar.getTime()))))
+                    .diaryTasks(diaryTask)
                     .build());
+
+            Optional.of(daysInfo.get(i).getDiaryTasks())
+                    .filter(f -> calendar.get(Calendar.DATE) == Calendar.getInstance().get(Calendar.DATE))
+                    .ifPresent(diaryTasks -> diaryTasks
+                            .stream().filter(f -> !f.isRepeated())
+                            .forEach(task -> repeat(task.getRepeats(), task)));
+
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
 
         widget.getExpandableListView().setAdapter(new DiaryMainListAdapter(daysInfo, getContext()));
 
         return view;
+    }
+
+    private void repeat(List<DayOfRepeat> repeats, DiaryTask diaryTask) {
+        Optional.ofNullable(repeats)
+                .ifPresent(repeat -> repeat.forEach(dayOfRepeat -> dayOfRepeat.repeat(diaryTask, toDayOfWeek(dayOfRepeat))));
     }
 }

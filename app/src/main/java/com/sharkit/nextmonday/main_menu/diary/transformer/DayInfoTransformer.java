@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary.fragment;
+package com.sharkit.nextmonday.main_menu.diary.transformer;
 
 import static com.sharkit.nextmonday.main_menu.NavigationMenu.getContext;
 
@@ -7,6 +7,10 @@ import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
 
 import java.util.Calendar;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class DayInfoTransformer {
 
     public static String toMonthName(int month) {

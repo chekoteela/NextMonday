@@ -15,6 +15,7 @@ import lombok.Data;
 public class DiaryTaskDTO {
 
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private Integer id;
 
     @ColumnInfo(name = "name_of_task")
@@ -34,4 +35,7 @@ public class DiaryTaskDTO {
 
     @ColumnInfo(name = "is_completed")
     private Boolean completed;
+
+    @ColumnInfo(name = "repeated")
+    private Boolean repeated;
 }

@@ -78,7 +78,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         final Long allCompleted = daysInfo.get(groupPosition)
                 .getDiaryTasks()
                 .stream()
-                .filter(DiaryTask::getCompleted)
+                .filter(DiaryTask::isCompleted)
                 .count();
 
         widget.getDayName().setText(daysInfo.get(groupPosition).getDayOfWeek());
@@ -108,7 +108,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
 
         calendar.setTimeInMillis(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getTimeForRepeat());
 
-        widget.getGetByTask().setChecked(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getCompleted());
+        widget.getGetByTask().setChecked(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).isCompleted());
         widget.getTextTask().setText(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getName());
         widget.getTimeTask().setText(DateFormat.getTimeInstance().format(calendar.getTime()));
 

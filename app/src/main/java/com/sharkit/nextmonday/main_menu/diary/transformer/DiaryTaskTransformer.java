@@ -11,7 +11,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,16 +23,17 @@ public class DiaryTaskTransformer {
 
     private static final String TAG = DiaryTaskTransformer.class.getCanonicalName();
 
-    public static DiaryTaskDTO toDiaryTaskDTO(DiaryTask diaryTask, Calendar calendar) {
+    public static DiaryTaskDTO toDiaryTaskDTO(DiaryTask diaryTask) {
 
         return DiaryTaskDTO.builder()
                 .id(diaryTask.getId())
                 .daysOfRepeat(toByteArray(diaryTask.getRepeats()))
                 .name(diaryTask.getName())
                 .description(diaryTask.getDescription())
-                .timeForRepeat(calendar.getTimeInMillis())
-                .date(DateFormat.getDateInstance().format(calendar.getTime()))
-                .completed(diaryTask.getCompleted())
+                .timeForRepeat(diaryTask.getTimeForRepeat())
+                .date(diaryTask.getDate())
+                .completed(diaryTask.isCompleted())
+                .repeated(diaryTask.isRepeated())
                 .build();
     }
 
@@ -54,6 +54,8 @@ public class DiaryTaskTransformer {
                 .timeForRepeat(diaryTaskDTO.getTimeForRepeat())
                 .repeats(toList(diaryTaskDTO.getDaysOfRepeat()))
                 .completed(diaryTaskDTO.getCompleted())
+                .repeated(diaryTaskDTO.getRepeated())
+                .date(diaryTaskDTO.getDate())
                 .build();
     }
 
@@ -77,4 +79,5 @@ public class DiaryTaskTransformer {
             throw new RuntimeException(e.getMessage());
         }
     }
+
 }

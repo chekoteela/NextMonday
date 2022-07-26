@@ -4,7 +4,6 @@ import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTa
 import static com.sharkit.nextmonday.main_menu.diary.transformer.DiaryTaskTransformer.toDiaryTaskDTO;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 
 import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Optional;
 
 public class DiaryTaskCreator extends Fragment {
 
@@ -50,9 +48,10 @@ public class DiaryTaskCreator extends Fragment {
     private void createTask() {
         diaryTask.setDescription(widget.getDescription().getText().toString());
         diaryTask.setName(widget.getNameOfTask().getText().toString());
-        diaryTask.setCompleted(Boolean.FALSE);
+        diaryTask.setDate(DateFormat.getDateInstance().format(calendar.getTime()));
+        diaryTask.setTimeForRepeat(calendar.getTimeInMillis());
 
-        NextMondayDatabase.getInstance().dairyTaskDAO().create(toDiaryTaskDTO(diaryTask, calendar));
+        NextMondayDatabase.getInstance().dairyTaskDAO().create(toDiaryTaskDTO(diaryTask));
     }
 
 }

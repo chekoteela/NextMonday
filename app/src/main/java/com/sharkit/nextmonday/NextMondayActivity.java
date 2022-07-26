@@ -25,6 +25,7 @@ public class NextMondayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         context = getApplicationContext();
         setContentView(R.layout.start_activity);
+        getContext().deleteDatabase("NextMonday");
 
     }
 

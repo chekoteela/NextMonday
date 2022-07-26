@@ -18,7 +18,9 @@ public class DiaryTask {
     private Integer id;
     private String name;
     private String description;
+    private String date;
     private List<DayOfRepeat> repeats;
     private Long timeForRepeat;
-    private Boolean completed;
+    private boolean completed;
+    private boolean repeated;
 }
