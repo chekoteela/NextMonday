@@ -15,9 +15,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DiaryTask {
 
+    private Integer id;
     private String name;
     private String description;
     private List<DayOfRepeat> repeats;
-    private Integer hour;
-    private Integer minute;
+    private Long timeForRepeat;
+    private Boolean completed;
 }

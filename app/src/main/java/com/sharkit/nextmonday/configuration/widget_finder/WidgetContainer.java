@@ -5,8 +5,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -18,23 +20,85 @@ import com.sharkit.nextmonday.R;
 import lombok.Getter;
 
 @SuppressLint("StaticFieldLeak")
-@Getter
 public final class WidgetContainer {
 
     private final View view;
-    private final RegisterMenuWidget registerMenuWidget;
-    private final AuthorisationMenuWidget authorisationMenuWidget;
-    private final TaskCreatorWidget taskCreatorWidget;
 
     private WidgetContainer(View view) {
         this.view = view;
-        this.registerMenuWidget = new RegisterMenuWidget();
-        this.authorisationMenuWidget = new AuthorisationMenuWidget();
-        this.taskCreatorWidget = new TaskCreatorWidget();
+    }
+
+    public RegisterMenuWidget getRegisterMenuWidget() {
+        return new RegisterMenuWidget();
+    }
+
+    public AuthorisationMenuWidget getAuthorisationMenuWidget() {
+        return new AuthorisationMenuWidget();
+    }
+
+    public TaskCreatorWidget getTaskCreatorWidget() {
+        return new TaskCreatorWidget();
+    }
+
+    public DiaryMainWidget getDiaryMainWidget() {
+        return new DiaryMainWidget();
     }
 
     public static WidgetContainer newInstance(View view) {
         return new WidgetContainer(view);
+    }
+
+    @Getter
+    public class DiaryMainWidget {
+
+        private final ExpandableListView expandableListView;
+        private final DiaryMainParentWidget parentWidget;
+
+        public DiaryMainWidget() {
+            this.expandableListView = view.findViewById(R.id.diary_main_list_id);
+
+            this.parentWidget = new DiaryMainParentWidget();
+        }
+
+        @Getter
+        public class DiaryMainParentWidget {
+
+            private final DiaryMainChildWidget childWidget;
+            private final TextView dayName;
+            private final TextView dayNumber;
+            private final TextView monthName;
+            private final TextView completedTask;
+            private final TextView allTask;
+            private final ProgressBar taskProgress;
+            private final ImageView create;
+
+            public DiaryMainParentWidget() {
+                this.dayName = view.findViewById(R.id.day_name_id);
+                this.dayNumber = view.findViewById(R.id.day_number_id);
+                this.monthName = view.findViewById(R.id.month_name_id);
+                this.completedTask = view.findViewById(R.id.completed_task_id);
+                this.allTask = view.findViewById(R.id.all_tasks_id);
+                this.taskProgress = view.findViewById(R.id.task_progress_id);
+                this.create = view.findViewById(R.id.create_id);
+
+                this.childWidget = new DiaryMainChildWidget();
+            }
+
+            @Getter
+            public class DiaryMainChildWidget {
+
+                private final CheckBox getByTask;
+                private final TextView textTask;
+                private final TextView timeTask;
+
+                public DiaryMainChildWidget() {
+                    this.getByTask = view.findViewById(R.id.complete_task_id);
+                    this.textTask = view.findViewById(R.id.text_task_id);
+                    this.timeTask = view.findViewById(R.id.time_task_id);
+                }
+            }
+        }
+
     }
 
     @Getter

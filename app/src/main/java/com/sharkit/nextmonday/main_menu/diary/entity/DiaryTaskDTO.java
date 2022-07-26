@@ -31,4 +31,7 @@ public class DiaryTaskDTO {
 
     @ColumnInfo(name = "date")
     private String date;
+
+    @ColumnInfo(name = "is_completed")
+    private Boolean completed;
 }

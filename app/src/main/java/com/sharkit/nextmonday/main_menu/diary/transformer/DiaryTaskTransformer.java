@@ -6,12 +6,15 @@ import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 import com.sharkit.nextmonday.main_menu.diary.entity.DiaryTaskDTO;
 import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -24,22 +27,43 @@ public class DiaryTaskTransformer {
     public static DiaryTaskDTO toDiaryTaskDTO(DiaryTask diaryTask, Calendar calendar) {
 
         return DiaryTaskDTO.builder()
+                .id(diaryTask.getId())
                 .daysOfRepeat(toByteArray(diaryTask.getRepeats()))
                 .name(diaryTask.getName())
                 .description(diaryTask.getDescription())
-                .timeForRepeat(getTimeInMillis(calendar, diaryTask.getHour(), diaryTask.getMinute()))
-                .date(DateFormat.getDateInstance().format(calendar))
+                .timeForRepeat(calendar.getTimeInMillis())
+                .date(DateFormat.getDateInstance().format(calendar.getTime()))
+                .completed(diaryTask.getCompleted())
                 .build();
     }
 
-    private static Long getTimeInMillis(Calendar calendar, Integer hour, Integer minute) {
-        if (hour == null || minute == null) {
-            return 0L;
-        } else {
-            calendar.set(Calendar.HOUR, hour);
-            calendar.set(Calendar.MINUTE, minute);
-            calendar.set(Calendar.SECOND, 0);
-            return calendar.getTimeInMillis();
+    public static List<DiaryTask> toDiaryTasks(List<DiaryTaskDTO> list) {
+        return list.stream()
+                .map(DiaryTaskTransformer::toDiaryTask)
+                .collect(Collectors.toList());
+    }
+
+    private static DiaryTask toDiaryTask(DiaryTaskDTO diaryTaskDTO) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(diaryTaskDTO.getTimeForRepeat());
+
+        return DiaryTask.builder()
+                .id(diaryTaskDTO.getId())
+                .description(diaryTaskDTO.getDescription())
+                .name(diaryTaskDTO.getName())
+                .timeForRepeat(diaryTaskDTO.getTimeForRepeat())
+                .repeats(toList(diaryTaskDTO.getDaysOfRepeat()))
+                .completed(diaryTaskDTO.getCompleted())
+                .build();
+    }
+
+    private static List<DayOfRepeat> toList(byte[] bytes) {
+        try (ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+             ObjectInputStream is = new ObjectInputStream(in)) {
+            return (List<DayOfRepeat>) is.readObject();
+        } catch (ClassNotFoundException | IOException e) {
+            Log.e(TAG, e.getMessage(), e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
