@@ -9,10 +9,9 @@
         android:id="@+id/navigation_diary_main"
         android:name="com.sharkit.nextmonday.main_menu.diary.fragment.DiaryMainFragment" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_diary_calendar"-->
-<!--        android:name="com.sharkit.nextmonday.diary.ui.DiaryCalendar"-->
-<!--        tools:layout="@layout/diary_calendar" />-->
+    <fragment
+        android:id="@+id/navigation_diary_calendar"
+        android:name="com.sharkit.nextmonday.main_menu.diary.fragment.DiaryCalendarFragment"/>
 
 <!--    <fragment-->
 <!--        android:id="@+id/navigation_diary_list_of_task"-->

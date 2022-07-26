@@ -88,7 +88,7 @@ public class NavigationMenu extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         switch (item.getItemId()) {
             case R.id.item_diary_calendar:
-//                navController.navigate(R.id.navigation_diary_calendar);
+                navController.navigate(R.id.navigation_diary_calendar);
                 break;
             case R.id.item_diary_list_of_task:
 //                navController.navigate(R.id.navigation_diary_list_of_task);

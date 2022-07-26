@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.configuration.widget_finder;
 import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -44,8 +45,24 @@ public final class WidgetContainer {
         return new DiaryMainWidget();
     }
 
+    public DiaryCalendarWidget getDiaryCalendarWidget() {
+        return new DiaryCalendarWidget();
+    }
+
     public static WidgetContainer newInstance(View view) {
         return new WidgetContainer(view);
+    }
+
+    @Getter
+    public class DiaryCalendarWidget {
+
+        private final CalendarView calendarView;
+        private final TextView dateText;
+
+        public DiaryCalendarWidget() {
+            this.calendarView = view.findViewById(R.id.calendar_id);
+            this.dateText = view.findViewById(R.id.date_id);
+        }
     }
 
     @Getter
