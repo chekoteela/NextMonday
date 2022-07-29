@@ -2,6 +2,7 @@ package com.sharkit.nextmonday.main_menu.diary.entity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import lombok.AllArgsConstructor;
@@ -10,13 +11,16 @@ import lombok.Data;
 
 @Data
 @Builder
-@Entity(tableName = "diary_task")
+@Entity(tableName = "diary_task", indices = {@Index(value = {"time_of_alarm"}, unique = true)})
 @AllArgsConstructor
 public class DiaryTaskDTO {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     private Integer id;
+
+    @ColumnInfo(name = "group_id")
+    private String groupId;
 
     @ColumnInfo(name = "name_of_task")
     private String name;
@@ -38,4 +42,7 @@ public class DiaryTaskDTO {
 
     @ColumnInfo(name = "repeated")
     private Boolean repeated;
+
+    @ColumnInfo(name = "alarm")
+    private Boolean alarm;
 }

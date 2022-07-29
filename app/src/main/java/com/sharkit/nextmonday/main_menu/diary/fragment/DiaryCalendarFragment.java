@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.main_menu.diary.fragment;
 
-import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_CALENDAR;
+import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_DAY_OF_WEEK;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -34,7 +34,7 @@ public class DiaryCalendarFragment extends Fragment {
 
             Bundle bundle = new Bundle();
 
-            bundle.putLong(DIARY_CALENDAR, calendar.getTimeInMillis());
+            bundle.putLong(DIARY_DAY_OF_WEEK, calendar.getTimeInMillis());
 
             Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main, bundle);
         });

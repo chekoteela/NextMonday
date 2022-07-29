@@ -12,5 +12,8 @@
     <string name="button_save">Сохранить</string>
     <string name="button_register">Зарегистрирувать</string>
 
-
+    <string name="button_delete_one">Удалить один</string>
+    <string name="button_delete_all">Удалить все</string>
+    <string name="button_change_one">Изменить один</string>
+    <string name="button_change_all">Изменить все</string>
 </resources>

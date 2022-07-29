@@ -8,7 +8,6 @@ import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 
 import java.util.Calendar;
-import java.util.Optional;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,10 +20,11 @@ public class DialogTimePicker {
     private final Calendar calendar;
 
     public void showIfChecked(Boolean isChecked){
+        diaryTask.setAlarm(isChecked);
         if (Boolean.TRUE.equals(isChecked)) {
             showTimePicker();
         } else {
-            diaryTask.setTimeForRepeat(0L);
+            diaryTask.setTimeForRepeat(Calendar.getInstance().getTimeInMillis());
         }
     }
 

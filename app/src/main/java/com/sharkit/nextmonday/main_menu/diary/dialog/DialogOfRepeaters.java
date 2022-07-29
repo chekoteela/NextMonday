@@ -23,7 +23,7 @@ public class DialogOfRepeaters {
     private final Context context;
     private final DiaryTask diaryTask;
 
-    public void showIfChecked(Boolean isChecked){
+    public void showIfChecked(Boolean isChecked) {
         if (Boolean.TRUE.equals(isChecked)) {
             showDialogOfRepeaters();
         } else {
@@ -36,7 +36,7 @@ public class DialogOfRepeaters {
         final View view = LayoutInflater.from(context).inflate(R.layout.diary_list_of_repeat, null);
         final AlertDialog.Builder dialog = new AlertDialog.Builder(context).setView(view);
 
-        final WidgetContainer.TaskCreatorWidget.RepeatersWidget dialogWidget = WidgetContainer.newInstance(view).getTaskCreatorWidget().getRepeatersWidget();
+        final WidgetContainer.Dialog.RepeatersWidget dialogWidget = WidgetContainer.newInstance(view).getDialog().getRepeatersWidget();
 
         dialogWidget.getRadioGroup().setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
@@ -59,7 +59,7 @@ public class DialogOfRepeaters {
                 (dialog1, which) -> {
                     if (Boolean.TRUE.equals(dialogWidget.getEveryDay().isChecked())) {
                         diaryTask.setRepeats(Arrays.asList(DayOfRepeat.values()));
-                    } else if (Boolean.TRUE.equals(diaryTask.getRepeats().isEmpty())){
+                    } else if (Boolean.TRUE.equals(diaryTask.getRepeats().isEmpty())) {
                         diaryTask.setRepeats(null);
                     }
                     dialog1.dismiss();
@@ -67,7 +67,7 @@ public class DialogOfRepeaters {
         dialog.show();
     }
 
-    private void setCheckBoxActivity(WidgetContainer.TaskCreatorWidget.RepeatersWidget.EveryDayWidget widget) {
+    private void setCheckBoxActivity(WidgetContainer.Dialog.RepeatersWidget.EveryDayWidget widget) {
         setOnChecked(widget.getMonday(), DayOfRepeat.MONDAY);
         setOnChecked(widget.getTuesday(), DayOfRepeat.TUESDAY);
         setOnChecked(widget.getWednesday(), DayOfRepeat.WEDNESDAY);

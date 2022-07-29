@@ -11,8 +11,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import lombok.AccessLevel;
@@ -30,10 +32,12 @@ public class DiaryTaskTransformer {
                 .daysOfRepeat(toByteArray(diaryTask.getRepeats()))
                 .name(diaryTask.getName())
                 .description(diaryTask.getDescription())
-                .timeForRepeat(diaryTask.getTimeForRepeat())
+                .timeForRepeat(Optional.ofNullable(diaryTask.getTimeForRepeat()).orElse(Calendar.getInstance().getTimeInMillis()))
                 .date(diaryTask.getDate())
-                .completed(diaryTask.isCompleted())
-                .repeated(diaryTask.isRepeated())
+                .completed(Optional.ofNullable(diaryTask.getCompleted()).orElse(Boolean.FALSE))
+                .repeated(Optional.ofNullable(diaryTask.getRepeated()).orElse(Boolean.FALSE))
+                .alarm(Optional.ofNullable(diaryTask.getAlarm()).orElse(Boolean.FALSE))
+                .groupId(diaryTask.getGroupId())
                 .build();
     }
 
@@ -44,9 +48,6 @@ public class DiaryTaskTransformer {
     }
 
     private static DiaryTask toDiaryTask(DiaryTaskDTO diaryTaskDTO) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(diaryTaskDTO.getTimeForRepeat());
-
         return DiaryTask.builder()
                 .id(diaryTaskDTO.getId())
                 .description(diaryTaskDTO.getDescription())
@@ -56,6 +57,8 @@ public class DiaryTaskTransformer {
                 .completed(diaryTaskDTO.getCompleted())
                 .repeated(diaryTaskDTO.getRepeated())
                 .date(diaryTaskDTO.getDate())
+                .groupId(diaryTaskDTO.getGroupId())
+                .alarm(diaryTaskDTO.getAlarm())
                 .build();
     }
 
@@ -80,4 +83,14 @@ public class DiaryTaskTransformer {
         }
     }
 
+    public static DiaryTask toDiaryTask(DiaryTask diaryTask, Calendar calendar) {
+        return DiaryTask.builder()
+                .timeForRepeat(calendar.getTimeInMillis())
+                .date(DateFormat.getDateInstance().format(calendar.getTime()))
+                .name(diaryTask.getName())
+                .repeats(diaryTask.getRepeats())
+                .description(diaryTask.getDescription())
+                .groupId(diaryTask.getGroupId())
+                .build();
+    }
 }

@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.main_menu.diary.fragment;
 
-import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_CALENDAR;
+import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_DAY_OF_WEEK;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.DayInfoTransformer.toDayName;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.DayInfoTransformer.toDayOfWeek;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.DayInfoTransformer.toMonthName;
@@ -43,7 +43,7 @@ public class DiaryMainFragment extends Fragment {
 
         Optional.ofNullable(getArguments())
                 .filter(Objects::nonNull)
-                .ifPresent(arg -> calendar.setTimeInMillis(arg.getLong(DIARY_CALENDAR)));
+                .ifPresent(arg -> calendar.setTimeInMillis(arg.getLong(DIARY_DAY_OF_WEEK)));
 
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
@@ -61,10 +61,10 @@ public class DiaryMainFragment extends Fragment {
                     .diaryTasks(diaryTask)
                     .build());
 
-            Optional.of(daysInfo.get(i).getDiaryTasks())
+            Optional.of(diaryTask)
                     .filter(f -> calendar.get(Calendar.DATE) == Calendar.getInstance().get(Calendar.DATE))
                     .ifPresent(diaryTasks -> diaryTasks
-                            .stream().filter(f -> !f.isRepeated())
+                            .stream().filter(f -> !f.getRepeated())
                             .forEach(task -> repeat(task.getRepeats(), task)));
 
             calendar.add(Calendar.DAY_OF_WEEK, 1);

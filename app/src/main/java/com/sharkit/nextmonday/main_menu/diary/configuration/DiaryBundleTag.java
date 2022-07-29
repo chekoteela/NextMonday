@@ -6,5 +6,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryBundleTag {
 
-    public static final String DIARY_CALENDAR = "diary_calendar";
+    public static final String DIARY_DAY_OF_WEEK = "diary_day_of_week";
+    public static final String DIARY_TASK_FOR_CHANGE = "diary_task_for_change";
 }

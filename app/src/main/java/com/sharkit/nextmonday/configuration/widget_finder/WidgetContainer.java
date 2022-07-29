@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdView;
@@ -27,6 +28,10 @@ public final class WidgetContainer {
 
     private WidgetContainer(View view) {
         this.view = view;
+    }
+
+    public Dialog getDialog(){
+        return new Dialog();
     }
 
     public RegisterMenuWidget getRegisterMenuWidget() {
@@ -49,8 +54,34 @@ public final class WidgetContainer {
         return new DiaryCalendarWidget();
     }
 
+    public DiaryUpdateTaskWidget getDiaryUpdateTaskWidget() {
+        return new DiaryUpdateTaskWidget();
+    }
+
     public static WidgetContainer newInstance(View view) {
         return new WidgetContainer(view);
+    }
+
+    @Getter
+    public class DiaryUpdateTaskWidget {
+
+        private final EditText nameOfTask;
+        private final EditText description;
+        private final TextView listOfDays;
+        private final TextView currentAlarm;
+        private final SwitchMaterial takeTime;
+        private final SwitchMaterial repeat;
+        private final Button save;
+
+        public DiaryUpdateTaskWidget() {
+            this.nameOfTask = view.findViewById(R.id.name_of_task_id);
+            this.listOfDays = view.findViewById(R.id.list_of_days_id);
+            this.currentAlarm = view.findViewById(R.id.rang_time_id);
+            this.takeTime = view.findViewById(R.id.take_time_id);
+            this.repeat = view.findViewById(R.id.repeat_id);
+            this.description = view.findViewById(R.id.description_id);
+            this.save = view.findViewById(R.id.save_id);
+        }
     }
 
     @Getter
@@ -104,6 +135,7 @@ public final class WidgetContainer {
             @Getter
             public class DiaryMainChildWidget {
 
+                private final RelativeLayout childItem;
                 private final CheckBox getByTask;
                 private final TextView textTask;
                 private final TextView timeTask;
@@ -112,6 +144,7 @@ public final class WidgetContainer {
                     this.getByTask = view.findViewById(R.id.complete_task_id);
                     this.textTask = view.findViewById(R.id.text_task_id);
                     this.timeTask = view.findViewById(R.id.time_task_id);
+                    this.childItem = view.findViewById(R.id.child_item_id);
                 }
             }
         }
@@ -170,7 +203,6 @@ public final class WidgetContainer {
         private final EditText description;
         private final Button create;
         private final AdView adView;
-        private final RepeatersWidget repeatersWidget;
 
         public TaskCreatorWidget() {
 
@@ -180,8 +212,42 @@ public final class WidgetContainer {
             this.description = view.findViewById(R.id.description_id);
             this.create = view.findViewById(R.id.create_id);
             this.adView = view.findViewById(R.id.ad_view_id);
+        }
 
+    }
+
+    @Getter
+    public class Dialog {
+
+        private final RepeatersWidget repeatersWidget;
+        private final DialogChangeSubjectWidget dialogChangeSubjectWidget;
+        private final DialogDeleteSubjectWidget dialogDeleteSubjectWidget;
+
+        public Dialog() {
             this.repeatersWidget = new RepeatersWidget();
+            this.dialogChangeSubjectWidget = new DialogChangeSubjectWidget();
+            this.dialogDeleteSubjectWidget = new DialogDeleteSubjectWidget();
+        }
+
+        @Getter
+        public class DialogChangeSubjectWidget {
+             private final Button changeAll;
+             private final Button changeOne;
+
+            public DialogChangeSubjectWidget() {
+                this.changeAll = view.findViewById(R.id.change_all_id);
+                this.changeOne = view.findViewById(R.id.change_one_id);
+            }
+        }
+        @Getter
+        public class DialogDeleteSubjectWidget {
+             private final Button deleteAll;
+             private final Button deleteOne;
+
+            public DialogDeleteSubjectWidget() {
+                this.deleteAll = view.findViewById(R.id.delete_all_id);
+                this.deleteOne = view.findViewById(R.id.delete_one_id);
+            }
         }
 
         @Getter

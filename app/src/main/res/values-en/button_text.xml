@@ -12,4 +12,9 @@
     <string name="button_save">Save</string>
     <string name="button_register">Register</string>
 
+    <string name="button_delete_one">Delete one</string>
+    <string name="button_delete_all">Delete all</string>
+    <string name="button_change_one">Modify one</string>
+    <string name="button_change_all">Modify all</string>
+
 </resources>

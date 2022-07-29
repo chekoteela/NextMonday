@@ -396,6 +396,12 @@
     <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
     <string name="title_activity_main_meny">MainMeny</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="button_delete_one">Delete one</string>
+    <string name="button_delete_all">Delete all</string>
+    <string name="button_change_one">Modify one</string>
+    <string name="button_change_all">Modify all</string>
+    <string name="text_view_change_diary_task">What do you want to change?</string>
+    <string name="text_view_delete_diary_task">What do you want to delete?</string>
 
 
 </resources>

@@ -22,10 +22,9 @@
         android:id="@+id/navigation_diary_create_task"
         android:name="com.sharkit.nextmonday.main_menu.diary.fragment.DiaryTaskCreator" />
 
-<!--    <fragment-->
-<!--        android:id="@+id/navigation_diary_update_task"-->
-<!--        android:name="com.sharkit.nextmonday.diary.ui.DiaryUpdateTask"-->
-<!--        tools:layout="@layout/diary_update_task" />-->
+    <fragment
+        android:id="@+id/navigation_diary_update_task"
+        android:name="com.sharkit.nextmonday.main_menu.diary.fragment.DiaryModifyTask" />
 
 <!--&lt;!&ndash;    END&ndash;&gt;-->
 

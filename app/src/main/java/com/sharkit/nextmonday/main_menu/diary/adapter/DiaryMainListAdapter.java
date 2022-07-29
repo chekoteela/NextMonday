@@ -1,13 +1,15 @@
 package com.sharkit.nextmonday.main_menu.diary.adapter;
 
 import static com.sharkit.nextmonday.main_menu.NavigationMenu.getContext;
-import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_CALENDAR;
+import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_DAY_OF_WEEK;
+import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_TASK_FOR_CHANGE;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
@@ -17,6 +19,7 @@ import androidx.navigation.Navigation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.main_menu.diary.dialog.DialogChangeTask;
 import com.sharkit.nextmonday.main_menu.diary.domain.DayInfo;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 
@@ -78,7 +81,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         final Long allCompleted = daysInfo.get(groupPosition)
                 .getDiaryTasks()
                 .stream()
-                .filter(DiaryTask::isCompleted)
+                .filter(DiaryTask::getCompleted)
                 .count();
 
         widget.getDayName().setText(daysInfo.get(groupPosition).getDayOfWeek());
@@ -90,8 +93,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
 
         Optional.of(allCompleted)
                 .filter(aLong -> { widget.getTaskProgress().setProgress(0);
-                    return aLong != 0;
-                })
+                    return aLong != 0; })
                 .ifPresent(aLong -> widget.getTaskProgress().setProgress((int) (daysInfo.get(groupPosition).getDiaryTasks().size() / aLong * 100)));
 
         widget.getCreate().setOnClickListener(v -> moveToCreateTask(groupPosition));
@@ -108,7 +110,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
 
         calendar.setTimeInMillis(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getTimeForRepeat());
 
-        widget.getGetByTask().setChecked(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).isCompleted());
+        widget.getGetByTask().setChecked(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getCompleted());
         widget.getTextTask().setText(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getName());
         widget.getTimeTask().setText(DateFormat.getTimeInstance().format(calendar.getTime()));
 
@@ -118,13 +120,30 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
             notifyDataSetChanged();
         });
 
+        widget.getChildItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> showContextMenu(menu, groupPosition, childPosition));
         return convertView;
     }
 
     private void moveToCreateTask(int groupPosition) {
         Bundle time = new Bundle();
-        time.putLong(DIARY_CALENDAR, daysInfo.get(groupPosition).getDataTime());
+        time.putLong(DIARY_DAY_OF_WEEK, daysInfo.get(groupPosition).getDataTime());
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_create_task, time);
+    }
+
+    private void showContextMenu(Menu menu, int groupPosition, int childPosition){
+        menu.add(context.getString(R.string.button_change)).setOnMenuItemClickListener(item -> {
+            Bundle bundle = new Bundle();
+
+            bundle.putSerializable(DIARY_TASK_FOR_CHANGE, daysInfo.get(groupPosition).getDiaryTasks().get(childPosition));
+            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_update_task, bundle);
+            return true;
+        });
+        menu.add(context.getString(R.string.button_delete)).setOnMenuItemClickListener(item -> {
+            new DialogChangeTask().showDialogDelete(context, daysInfo.get(groupPosition).getDiaryTasks().get(childPosition));
+            daysInfo.get(groupPosition).getDiaryTasks().remove(childPosition);
+            notifyDataSetChanged();
+            return true;
+        });
     }
 
     @Override

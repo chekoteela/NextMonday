@@ -2,6 +2,7 @@ package com.sharkit.nextmonday.main_menu.diary.domain;
 
 import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -13,14 +14,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DiaryTask {
+public class DiaryTask implements Serializable {
 
     private Integer id;
+    private String groupId;
     private String name;
     private String description;
     private String date;
     private List<DayOfRepeat> repeats;
     private Long timeForRepeat;
-    private boolean completed;
-    private boolean repeated;
+    private Boolean completed;
+    private Boolean repeated;
+    private Boolean alarm;
 }
