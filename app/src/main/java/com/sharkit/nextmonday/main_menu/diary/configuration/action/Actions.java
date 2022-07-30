@@ -28,7 +28,6 @@ public enum Actions implements INotificationAction {
             final long newTime = Calendar.getInstance().getTimeInMillis() + 10000;
             alarmManager.set(AlarmManager.RTC_WAKEUP, newTime, pendingIntent);
             NextMondayDatabase.getInstance(context).dairyTaskDAO().updateTimeOfAlarm(taskId, newTime);
-
         }
     },
     CANCEL {

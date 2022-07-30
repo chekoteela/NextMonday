@@ -59,14 +59,11 @@ public class DiaryMainFragment extends Fragment {
         }
 
         for (int i = 0; i < 7; i++) {
-
             fillOutList(daysInfo, calendar);
-
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
 
         widget.getExpandableListView().setAdapter(new DiaryMainListAdapter(daysInfo, getContext()));
-
         return view;
     }
 

@@ -91,7 +91,7 @@ public class NavigationMenu extends AppCompatActivity {
                 navController.navigate(R.id.navigation_diary_calendar);
                 break;
             case R.id.item_diary_list_of_task:
-//                navController.navigate(R.id.navigation_diary_list_of_task);
+                navController.navigate(R.id.navigation_diary_notate);
                 break;
             case R.id.item_diary_main:
                 listTarget();
