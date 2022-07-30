@@ -11,6 +11,9 @@
     <string name="button_change">Change</string>
     <string name="button_save">Save</string>
     <string name="button_register">Register</string>
+    <string name="button_already_performed">Already performed</string>
+    <string name="button_put_off">Notify later</string>
+    <string name="button_cancel">Cancel</string>
 
     <string name="button_delete_one">Delete one</string>
     <string name="button_delete_all">Delete all</string>

@@ -45,6 +45,7 @@ public class DiaryTaskCreator extends Fragment {
 
         calendar.setTimeInMillis(requireArguments().getLong(DIARY_DAY_OF_WEEK));
 
+
         return view;
     }
 
@@ -54,7 +55,8 @@ public class DiaryTaskCreator extends Fragment {
         this.diaryTask.setDate(DateFormat.getDateInstance().format(this.calendar.getTime()));
         this.diaryTask.setGroupId(UUID.randomUUID().toString());
 
-        NextMondayDatabase.getInstance().dairyTaskDAO().create(toDiaryTaskDTO(this.diaryTask));
+
+        NextMondayDatabase.getInstance(getContext()).dairyTaskDAO().create(toDiaryTaskDTO(this.diaryTask));
         moveToMainMenu();
     }
 

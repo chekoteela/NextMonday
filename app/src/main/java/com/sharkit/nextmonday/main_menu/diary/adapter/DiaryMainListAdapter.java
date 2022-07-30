@@ -16,6 +16,7 @@ import android.widget.BaseExpandableListAdapter;
 
 import androidx.navigation.Navigation;
 
+import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
@@ -115,7 +116,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         widget.getTimeTask().setText(DateFormat.getTimeInstance().format(calendar.getTime()));
 
         widget.getGetByTask().setOnCheckedChangeListener((buttonView, isChecked) -> {
-            NextMondayDatabase.getInstance().dairyTaskDAO().updateStatus(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getId(), isChecked);
+            NextMondayDatabase.getInstance(NextMondayActivity.getContext()).dairyTaskDAO().updateStatus(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getId(), isChecked);
             daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).setCompleted(isChecked);
             notifyDataSetChanged();
         });

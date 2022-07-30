@@ -22,13 +22,16 @@ public interface DairyTaskDAO {
     @Update
     void updateOne(DiaryTaskDTO diaryTaskDTO);
 
+    @Query("UPDATE diary_task SET time_of_alarm = :timeOfAlarm WHERE id = :id")
+    void updateTimeOfAlarm(Integer id, Long timeOfAlarm);
+
     @Query("UPDATE diary_task SET is_completed = :status WHERE diary_task.id = :id")
     void updateStatus(Integer id, Boolean status);
 
     @Query("UPDATE diary_task SET repeated = 1 WHERE diary_task.id = :id")
     void updateRepeat(Integer id);
 
-    @Query("DELETE FROM diary_task WHERE group_id = :groupId AND is_completed = false")
+    @Query("DELETE FROM diary_task WHERE group_id = :groupId AND is_completed = 0")
     void deleteAllByGroupId(String groupId);
 
     @Query("UPDATE diary_task SET alarm = :status WHERE id = :id")
@@ -36,5 +39,4 @@ public interface DairyTaskDAO {
 
     @Query("SELECT * FROM diary_task WHERE diary_task.date = :date")
     List<DiaryTaskDTO> findAllByDate(String date);
-
 }

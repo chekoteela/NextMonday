@@ -26,7 +26,7 @@ public class DialogChangeTask {
         final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_change_item, null);
         final WidgetContainer.Dialog.DialogChangeSubjectWidget widget = WidgetContainer.newInstance(view).getDialog().getDialogChangeSubjectWidget();
         final DiaryTaskDTO diaryTaskDTO = toDiaryTaskDTO(diaryTask);
-        final NextMondayDatabase db = NextMondayDatabase.getInstance();
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
 
         widget.getChangeAll().setOnClickListener(v -> {
             db.dairyTaskDAO().deleteAllByGroupId(diaryTaskDTO.getGroupId());
@@ -50,7 +50,12 @@ public class DialogChangeTask {
         final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_delete_item, null);
         final WidgetContainer.Dialog.DialogDeleteSubjectWidget widget = WidgetContainer.newInstance(view).getDialog().getDialogDeleteSubjectWidget();
         final DiaryTaskDTO diaryTaskDTO = toDiaryTaskDTO(diaryTask);
-        final NextMondayDatabase db = NextMondayDatabase.getInstance();
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
+
+        if (diaryTask.getRepeats() == null) {
+            db.dairyTaskDAO().deleteOne(diaryTaskDTO);
+            return;
+        }
 
         widget.getDeleteAll().setOnClickListener(v -> {
             db.dairyTaskDAO().deleteAllByGroupId(diaryTaskDTO.getGroupId());

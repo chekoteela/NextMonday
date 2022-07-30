@@ -30,9 +30,12 @@ public class DialogTimePicker {
 
     private void showTimePicker() {
         final TimePickerDialog timePickerDialog = new TimePickerDialog(context, R.style.time_picker_style, (view, hourOfDay, minuteOfHour) -> {
-            calendar.set(Calendar.HOUR, hourOfDay);
-            calendar.set(Calendar.MINUTE, minuteOfHour);
-            calendar.set(Calendar.SECOND, 0);
+
+            calendar.set(calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DATE),
+                    hourOfDay, minuteOfHour, 0);
+
             diaryTask.setTimeForRepeat(calendar.getTimeInMillis());
         }, 0, 0, true);
         timePickerDialog.setOnCancelListener(dialog -> switchMaterial.setChecked(false));
