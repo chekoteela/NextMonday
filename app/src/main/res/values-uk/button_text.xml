@@ -19,4 +19,6 @@
     <string name="button_delete_all">Видалити всі</string>
     <string name="button_change_one">Змінити один</string>
     <string name="button_change_all">Змінити всі</string>
+
+    <string name="button_add">Додати</string>
 </resources>

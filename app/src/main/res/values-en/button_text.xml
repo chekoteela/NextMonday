@@ -20,4 +20,6 @@
     <string name="button_change_one">Modify one</string>
     <string name="button_change_all">Modify all</string>
 
+    <string name="button_add">Add</string>
+
 </resources>

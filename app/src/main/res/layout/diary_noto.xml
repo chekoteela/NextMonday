@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootParent"
     android:orientation="vertical"
@@ -7,7 +7,7 @@
     android:background="@color/calculator_auto_edittext">
 
     <LinearLayout
-        android:id="@+id/finder_layout_id"
+        android:id="@+id/search_layout_id"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@color/calculator_color"
@@ -21,7 +21,7 @@
             android:src="@drawable/icon_search_white" />
 
         <EditText
-            android:id="@+id/find_xml"
+            android:id="@+id/search_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -35,8 +35,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bar"
-        android:layout_below="@id/finder_layout_id"
         android:layout_marginBottom="50dp"
         android:orientation="vertical">
 

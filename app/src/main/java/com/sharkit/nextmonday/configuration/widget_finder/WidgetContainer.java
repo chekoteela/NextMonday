@@ -58,10 +58,27 @@ public final class WidgetContainer {
         return new DiaryUpdateTaskWidget();
     }
 
+    public DiaryNotateWidget getDiaryNotateWidget() {
+        return new DiaryNotateWidget();
+    }
+
     public static WidgetContainer newInstance(View view) {
         return new WidgetContainer(view);
     }
 
+    @Getter
+    public class DiaryNotateWidget {
+        private final EditText search;
+        private final ExpandableListView notateList;
+        private final Button add;
+
+        public DiaryNotateWidget() {
+            this.search = view.findViewById(R.id.search_id);
+            this.notateList = view.findViewById(R.id.diary_main_list_id);
+            this.add = view.findViewById(R.id.add_id);
+        }
+    }
+    
     @Getter
     public class DiaryUpdateTaskWidget {
 

@@ -345,7 +345,7 @@
     <string name="text_view_choose_time">Choose time</string>
     <string name="text_view_repeat">Repeat</string>
     <string name="text_view_add_description">Add description</string>
-    <string name="button_add">Create</string>
+    <string name="button_add">Add</string>
     <string name="button_create">Create</string>
     <string name="text_field_task_name">Name of task</string>
     <string name="text_field_description">Description</string>
