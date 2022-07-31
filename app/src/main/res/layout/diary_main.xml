@@ -11,7 +11,7 @@
         android:layout_marginBottom="50dp">
 
         <ExpandableListView
-            android:id="@+id/expandable_list_xml"
+            android:id="@+id/diary_main_list_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="@color/back"
@@ -22,7 +22,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
-        android:id="@+id/bar"
+        android:id="@+id/bar_id"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"

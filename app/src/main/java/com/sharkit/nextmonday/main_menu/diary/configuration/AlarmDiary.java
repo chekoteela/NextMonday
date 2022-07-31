@@ -1,8 +1,9 @@
-package com.sharkit.nextmonday.configuration.utils.notification;
+package com.sharkit.nextmonday.main_menu.diary.configuration;
 
 import static com.sharkit.nextmonday.configuration.utils.notification.Notification.BIG_TEXT;
 import static com.sharkit.nextmonday.configuration.utils.notification.Notification.CHANNEL_1;
 import static com.sharkit.nextmonday.configuration.utils.notification.Notification.CONTENT_TITLE;
+import static com.sharkit.nextmonday.configuration.utils.notification.Notification.DIARY_TASK_ID;
 import static com.sharkit.nextmonday.configuration.utils.notification.Notification.SUMMARY_TEXT;
 import static com.sharkit.nextmonday.configuration.utils.notification.Notification.UNCOMPLETED_TASK;
 
@@ -18,20 +19,22 @@ import android.graphics.BitmapFactory;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.main_menu.diary.configuration.action.Actions;
 
+@SuppressLint("UnspecifiedImmutableFlag")
 public class AlarmDiary extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(context);
+        final NotificationManagerCompat managerCompat = NotificationManagerCompat.from(context);
+        final PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, new Intent(context, NextMondayActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+        final Bitmap imageDiary = BitmapFactory.decodeResource(context.getResources(), R.drawable.notification_diary);
+        final int taskId = intent.getIntExtra(DIARY_TASK_ID, 0);
 
-        @SuppressLint("UnspecifiedImmutableFlag")
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent,  PendingIntent.FLAG_UPDATE_CURRENT);
-        Bitmap imageDiary = BitmapFactory.decodeResource(context.getResources(), R.drawable.notification_diary);
-
-        Notification notification = new NotificationCompat.Builder(context, CHANNEL_1)
+        final Notification notification = new NotificationCompat.Builder(context, CHANNEL_1)
                 .setSmallIcon(R.drawable.logotype_next_monday)
                 .setLargeIcon(imageDiary)
                 .setStyle(new NotificationCompat.BigTextStyle()
@@ -43,10 +46,21 @@ public class AlarmDiary extends BroadcastReceiver {
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setAutoCancel(true)
-                .setOnlyAlertOnce(true)
                 .setContentIntent(pendingIntent)
                 .setColor(context.getColor(R.color.color_button))
+                .addAction(action(context, taskId, Actions.PERFORM, context.getString(R.string.button_already_performed)))
+                .addAction(action(context, taskId, Actions.PUT_OFF, context.getString(R.string.button_put_off)))
+                .addAction(action(context, taskId, Actions.CANCEL, context.getString(R.string.button_cancel)))
                 .build();
-        managerCompat.notify(1, notification);
+
+        managerCompat.notify(intent.getIntExtra(DIARY_TASK_ID, 0), notification);
+    }
+
+    private NotificationCompat.Action action(Context context, int taskId, Actions actions, String buttonText) {
+        Intent intent = new Intent(context, DiaryNotificationAction.class)
+                .setAction(actions.name())
+                .putExtra(DIARY_TASK_ID, taskId);
+        PendingIntent cancelPI = PendingIntent.getBroadcast(context, taskId, intent, 0);
+        return new NotificationCompat.Action(R.drawable.icon, buttonText, cancelPI);
     }
 }

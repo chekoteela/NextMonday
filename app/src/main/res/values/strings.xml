@@ -345,7 +345,7 @@
     <string name="text_view_choose_time">Choose time</string>
     <string name="text_view_repeat">Repeat</string>
     <string name="text_view_add_description">Add description</string>
-    <string name="button_add">Create</string>
+    <string name="button_add">Add</string>
     <string name="button_create">Create</string>
     <string name="text_field_task_name">Name of task</string>
     <string name="text_field_description">Description</string>
@@ -396,6 +396,15 @@
     <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
     <string name="title_activity_main_meny">MainMeny</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="button_delete_one">Delete one</string>
+    <string name="button_delete_all">Delete all</string>
+    <string name="button_change_one">Modify one</string>
+    <string name="button_change_all">Modify all</string>
+    <string name="text_view_change_diary_task">What do you want to change?</string>
+    <string name="text_view_delete_diary_task">What do you want to delete?</string>
+    <string name="button_already_performed">Already performed</string>
+    <string name="button_put_off">Notify later</string>
+    <string name="button_cancel">Cancel</string>
 
 
 </resources>

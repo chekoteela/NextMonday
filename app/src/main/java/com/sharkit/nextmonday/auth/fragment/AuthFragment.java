@@ -22,14 +22,13 @@ import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
 import com.sharkit.nextmonday.configuration.utils.CryptoAES;
 import com.sharkit.nextmonday.configuration.utils.ToastMenuMessage;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
-import com.sharkit.nextmonday.configuration.widget_finder.layout.AuthorisationMenuWidget;
 import com.sharkit.nextmonday.main_menu.NavigationMenu;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class AuthFragment extends Fragment {
 
     private static final String TAG = AuthFragment.class.getCanonicalName();
-    private AuthorisationMenuWidget widgetContainer;
+    private WidgetContainer.AuthorisationMenuWidget widgetContainer;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -40,9 +39,9 @@ public class AuthFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         widgetContainer = WidgetContainer.newInstance(view).getAuthorisationMenuWidget();
 
-        widgetContainer.createAccount().setOnClickListener(v -> createAccount());
-        widgetContainer.signIn().setOnClickListener(v -> authByEmailAndPassword());
-        widgetContainer.google().setOnClickListener(v -> new GoogleRegistration(getActivity()).signIn());
+        widgetContainer.getCreateAccount().setOnClickListener(v -> createAccount());
+        widgetContainer.getSignIn().setOnClickListener(v -> authByEmailAndPassword());
+        widgetContainer.getGoogle().setOnClickListener(v -> new GoogleRegistration(getActivity()).signIn());
         return view;
     }
 
@@ -57,7 +56,8 @@ public class AuthFragment extends Fragment {
 
         final CryptoAES aes = CryptoAES.getInstance();
 
-        mAuth.signInWithEmailAndPassword(widgetContainer.email().getText().toString(), aes.encrypt(widgetContainer.password().getText().toString().trim()))
+        mAuth.signInWithEmailAndPassword(widgetContainer.getEmail().getText().toString(),
+                aes.encrypt(widgetContainer.getPassword().getText().toString().trim()))
                 .addOnSuccessListener(authResult -> startActivity(new Intent(getActivity(), NavigationMenu.class))).addOnFailureListener(e -> {
             ToastMenuMessage.trowToastMessage();
             Log.i(TAG, e.getMessage(), e);
@@ -65,8 +65,8 @@ public class AuthFragment extends Fragment {
     }
 
     private Boolean isValidAuthData() {
-        return isValidAuthField(widgetContainer.email().getText().toString()) &&
-                isValidAuthField(widgetContainer.password().getText().toString());
+        return isValidAuthField(widgetContainer.getEmail().getText().toString()) &&
+                isValidAuthField(widgetContainer.getPassword().getText().toString());
     }
 
     @Override

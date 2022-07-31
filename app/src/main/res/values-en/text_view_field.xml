@@ -13,7 +13,7 @@
     <string name="text_view_monday">Mon</string>
     <string name="text_view_tuesday">Tus</string>
     <string name="text_view_wednesday">Wed</string>
-    <string name="text_view_thursday">Thr</string>
+    <string name="text_view_thursday">Thu</string>
     <string name="text_view_friday">Fri</string>
     <string name="text_view_saturday">Sat</string>
     <string name="text_view_sunday">Sun</string>
@@ -30,4 +30,7 @@
     <string name="text_view_october">Oct</string>
     <string name="text_view_november">Nov</string>
     <string name="text_view_december">Dec</string>
+
+    <string name="text_view_change_diary_task">What do you want to change?</string>
+    <string name="text_view_delete_diary_task">What do you want to delete?</string>
 </resources>

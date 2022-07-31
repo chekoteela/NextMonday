@@ -11,5 +11,14 @@
     <string name="button_change">Змінити</string>
     <string name="button_save">Зберегти</string>
     <string name="button_register">Зареєструвати</string>
+    <string name="button_already_performed">Вже виконано</string>
+    <string name="button_put_off">Нагадати пізніше</string>
+    <string name="button_cancel">Відмінити</string>
 
+    <string name="button_delete_one">Видалити один</string>
+    <string name="button_delete_all">Видалити всі</string>
+    <string name="button_change_one">Змінити один</string>
+    <string name="button_change_all">Змінити всі</string>
+
+    <string name="button_add">Додати</string>
 </resources>

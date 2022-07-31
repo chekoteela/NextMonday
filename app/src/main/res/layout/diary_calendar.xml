@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/date_xml"
+            android:id="@+id/date_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/play"
@@ -28,7 +28,7 @@
 
     <CalendarView
         android:contentDescription="@string/calendar2"
-        android:id="@+id/calendar_xml"
+        android:id="@+id/calendar_id"
         android:layout_marginTop="50dp"
         android:unfocusedMonthDateColor="@color/white"
         android:layout_width="match_parent"

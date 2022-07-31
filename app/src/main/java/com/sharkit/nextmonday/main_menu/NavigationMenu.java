@@ -1,6 +1,7 @@
 package com.sharkit.nextmonday.main_menu;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
@@ -27,6 +28,9 @@ import com.sharkit.nextmonday.R;
 import java.util.Calendar;
 
 public class NavigationMenu extends AppCompatActivity {
+
+    private static Context context;
+
     @SuppressLint("SourceLockedOrientationActivity")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -39,6 +43,7 @@ public class NavigationMenu extends AppCompatActivity {
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_settings_24);
         toolbar.setOverflowIcon(drawable);
 
+        context = getApplicationContext();
     }
 
     @SuppressLint({"NonConstantResourceId", "SimpleDateFormat"})
@@ -83,10 +88,10 @@ public class NavigationMenu extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         switch (item.getItemId()) {
             case R.id.item_diary_calendar:
-//                navController.navigate(R.id.navigation_diary_calendar);
+                navController.navigate(R.id.navigation_diary_calendar);
                 break;
             case R.id.item_diary_list_of_task:
-//                navController.navigate(R.id.navigation_diary_list_of_task);
+                navController.navigate(R.id.navigation_diary_notate);
                 break;
             case R.id.item_diary_main:
                 listTarget();
@@ -135,5 +140,9 @@ public class NavigationMenu extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    public static Context getContext() {
+        return context;
     }
 }

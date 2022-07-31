@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootParent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/calculator_auto_edittext">
+
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:id="@+id/finder_layout_id"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/calculator_color"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/icon_search_white" />
+
+        <EditText
+            android:id="@+id/find_xml"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/play"
+            android:hint="Поиск"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bar"
+        android:layout_below="@id/finder_layout_id"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
+
+        <ExpandableListView
+            android:id="@+id/diary_main_list_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/back"
+            android:dividerHeight="1dp"
+            android:groupIndicator="@color/Prozorui" />
+
+        <Button
+            android:id="@+id/add_id"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:elevation="5dp"
+            android:text="@string/button_create" />
+
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:elevation="5dp"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id" />
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/dairy_navigation_bottom_bar"
+        app:itemBackground="@drawable/dairy_navigation_bottom_bar"
+        app:itemIconTint="#fff"
+        app:itemTextColor="#fff"
+        app:menu="@menu/toolbar_bottom" />
+</RelativeLayout>

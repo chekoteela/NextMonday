@@ -33,7 +33,7 @@
                     android:src="@drawable/ic_pencil" />
 
                 <EditText
-                    android:id="@+id/name_of_task_xml"
+                    android:id="@+id/name_of_task_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -76,7 +76,7 @@
                         android:textSize="18sp" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/take_time_xml"
+                        android:id="@+id/take_time_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
@@ -102,7 +102,7 @@
                         android:textSize="18sp" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/repeat_xml"
+                        android:id="@+id/repeat_id"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="15dp"
@@ -125,7 +125,7 @@
                         android:text="@string/text_view_add_description" />
 
                     <EditText
-                        android:id="@+id/description_xml"
+                        android:id="@+id/description_id"
                         style="@style/text_field_style"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
@@ -141,7 +141,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/add_xml"
+                    android:id="@+id/create_id"
                     style="@style/button_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
 
     <com.google.android.gms.ads.AdView
         xmlns:ads="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/ad_view_xml"
+        android:id="@+id/ad_view_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bar"

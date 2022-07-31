@@ -30,4 +30,8 @@
     <string name="text_view_october">Жов</string>
     <string name="text_view_november">Лис</string>
     <string name="text_view_december">Гру</string>
+
+    <string name="text_view_change_diary_task">Що ви хочете змінити?</string>
+    <string name="text_view_delete_diary_task">Що ви хочете видалити?</string>
+
 </resources>
