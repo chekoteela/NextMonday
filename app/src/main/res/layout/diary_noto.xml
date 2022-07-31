@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootParent"
     android:orientation="vertical"
@@ -7,6 +7,7 @@
     android:background="@color/calculator_auto_edittext">
 
     <LinearLayout
+        android:layout_alignParentTop="true"
         android:id="@+id/finder_layout_id"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -79,4 +80,4 @@
         app:itemIconTint="#fff"
         app:itemTextColor="#fff"
         app:menu="@menu/toolbar_bottom" />
-</LinearLayout>
+</RelativeLayout>
