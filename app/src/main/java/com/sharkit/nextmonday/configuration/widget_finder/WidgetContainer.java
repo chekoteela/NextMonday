@@ -200,6 +200,7 @@ public final class WidgetContainer {
         private final EditText email;
         private final EditText password;
         private final ImageView google;
+        private final TextView forgotPassword;
 
         public AuthorisationMenuWidget() {
             this.password = view.findViewById(R.id.password_id);
@@ -207,7 +208,7 @@ public final class WidgetContainer {
             this.email = view.findViewById(R.id.email_id);
             this.signIn = view.findViewById(R.id.sign_in_id);
             this.createAccount = view.findViewById(R.id.create_account_id);
-
+            this.forgotPassword = view.findViewById(R.id.forgot_password_id);
         }
     }
 

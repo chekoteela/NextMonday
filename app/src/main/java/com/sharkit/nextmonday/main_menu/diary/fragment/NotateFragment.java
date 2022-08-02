@@ -19,7 +19,12 @@ public class NotateFragment extends Fragment {
         final View view = inflater.inflate(R.layout.diary_noto, container, false);
         final WidgetContainer.DiaryNotateWidget widget = WidgetContainer.newInstance(view).getDiaryNotateWidget();
 
+        widget.getAdd().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         return view;
     }
 }
