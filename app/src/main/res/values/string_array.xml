@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinner_type_of_keeping">
+        <item>@string/text_view_folder</item>
+        <item>@string/text_view_notate</item>
+    </string-array>
+
+    <string-array name="spinner_type_of_notate">
+        <item>@string/text_view_recipe</item>
+        <item>@string/text_view_list_of_purchases</item>
+        <item>@string/text_view_other</item>
+    </string-array>
+</resources>

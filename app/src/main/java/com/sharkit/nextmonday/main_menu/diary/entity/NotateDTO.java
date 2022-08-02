@@ -14,11 +14,17 @@ public class NotateDTO {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private Integer id;
+    private Long id;
 
     @ColumnInfo(name = "template_type")
     private byte[] type;
 
+    @ColumnInfo(name = "notate_type")
+    private byte[] notateType;
+
+    @ColumnInfo(name = "name")
+    private String name;
+
     @ColumnInfo(name = "template_id")
-    private Integer templateId;
+    private Long templateId;
 }

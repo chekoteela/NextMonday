@@ -18,6 +18,7 @@ import androidx.navigation.Navigation;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.auth.dialog.AuthDialog;
 import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
 import com.sharkit.nextmonday.configuration.utils.CryptoAES;
 import com.sharkit.nextmonday.configuration.utils.ToastMenuMessage;
@@ -42,6 +43,7 @@ public class AuthFragment extends Fragment {
         widgetContainer.getCreateAccount().setOnClickListener(v -> createAccount());
         widgetContainer.getSignIn().setOnClickListener(v -> authByEmailAndPassword());
         widgetContainer.getGoogle().setOnClickListener(v -> new GoogleRegistration(getActivity()).signIn());
+        widgetContainer.getForgotPassword().setOnClickListener(v -> new AuthDialog(getContext()).showChangePasswordDialog());
         return view;
     }
 

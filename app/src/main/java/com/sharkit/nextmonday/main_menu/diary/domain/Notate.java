@@ -9,7 +9,9 @@ import lombok.Data;
 @Builder
 public class Notate {
 
-    private Integer id;
-    private TemplateType type;
-    private Integer templateId;
+    private Long id;
+    private TemplateType templateType;
+    private NotateType notateType;
+    private String name;
+    private Long templateId;
 }

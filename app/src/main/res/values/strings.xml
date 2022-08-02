@@ -405,6 +405,11 @@
     <string name="button_already_performed">Already performed</string>
     <string name="button_put_off">Notify later</string>
     <string name="button_cancel">Cancel</string>
+    <string name="text_view_folder">Folder</string>
+    <string name="text_view_notate">Notate</string>
+    <string name="text_view_recipe">Recipe</string>
+    <string name="text_view_list_of_purchases">List of purchases</string>
+    <string name="text_view_other">Other</string>
 
 
 </resources>

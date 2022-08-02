@@ -14,7 +14,7 @@ public class NotateTemplateDTO {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private Integer templateId;
+    private Long templateId;
 
     @ColumnInfo(name = "date")
     private String date;
@@ -22,6 +22,4 @@ public class NotateTemplateDTO {
     @ColumnInfo(name = "text")
     private String text;
 
-    @ColumnInfo(name = "notate_name")
-    private String name;
 }

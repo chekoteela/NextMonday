@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DiaryTask implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String groupId;
     private String name;
     private String description;

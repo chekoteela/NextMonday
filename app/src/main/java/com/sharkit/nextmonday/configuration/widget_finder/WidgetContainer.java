@@ -13,10 +13,12 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdView;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.android.material.textfield.TextInputEditText;
 import com.sharkit.nextmonday.R;
 
 import lombok.Getter;
@@ -200,6 +202,7 @@ public final class WidgetContainer {
         private final EditText email;
         private final EditText password;
         private final ImageView google;
+        private final TextView forgotPassword;
 
         public AuthorisationMenuWidget() {
             this.password = view.findViewById(R.id.password_id);
@@ -207,7 +210,7 @@ public final class WidgetContainer {
             this.email = view.findViewById(R.id.email_id);
             this.signIn = view.findViewById(R.id.sign_in_id);
             this.createAccount = view.findViewById(R.id.create_account_id);
-
+            this.forgotPassword = view.findViewById(R.id.forgot_password_id);
         }
     }
 
@@ -239,11 +242,29 @@ public final class WidgetContainer {
         private final RepeatersWidget repeatersWidget;
         private final DialogChangeSubjectWidget dialogChangeSubjectWidget;
         private final DialogDeleteSubjectWidget dialogDeleteSubjectWidget;
+        private final DialogCreateNotateWidget dialogCreateNotateWidget;
 
         public Dialog() {
             this.repeatersWidget = new RepeatersWidget();
             this.dialogChangeSubjectWidget = new DialogChangeSubjectWidget();
             this.dialogDeleteSubjectWidget = new DialogDeleteSubjectWidget();
+            this.dialogCreateNotateWidget = new DialogCreateNotateWidget();
+        }
+
+        @Getter
+        public class DialogCreateNotateWidget {
+
+            private final TextInputEditText name;
+            private final Spinner typeOfKeeping;
+            private final Spinner typeOfNotate;
+            private final Button create;
+
+            public DialogCreateNotateWidget() {
+                this.name = view.findViewById(R.id.name_id);
+                this.typeOfKeeping = view.findViewById(R.id.type_of_keeping_id);
+                this.typeOfNotate = view.findViewById(R.id.type_of_notate_id);
+                this.create = view.findViewById(R.id.create_id);
+            }
         }
 
         @Getter
