@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.main_menu.diary.dialog.DialogCreateNotate;
 
 public class NotateFragment extends Fragment {
     @Nullable
@@ -22,7 +23,7 @@ public class NotateFragment extends Fragment {
         widget.getAdd().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                new DialogCreateNotate().showCreateNotateDialog(getContext());
             }
         });
         return view;

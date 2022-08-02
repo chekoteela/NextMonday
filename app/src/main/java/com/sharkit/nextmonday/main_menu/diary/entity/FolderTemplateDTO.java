@@ -14,8 +14,6 @@ public class FolderTemplateDTO {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private Integer templateId;
+    private Long templateId;
 
-    @ColumnInfo(name = "folder_name")
-    private String name;
 }

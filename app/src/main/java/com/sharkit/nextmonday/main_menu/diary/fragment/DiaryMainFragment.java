@@ -104,7 +104,7 @@ public class DiaryMainFragment extends Fragment {
         intent.putExtra(BIG_TEXT, diaryTask.getDescription());
         intent.putExtra(DIARY_TASK_ID, diaryTask.getId());
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(NavigationMenu.getContext(), diaryTask.getId(), intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(NavigationMenu.getContext(), Math.toIntExact(diaryTask.getId()), intent, 0);
         AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, diaryTask.getTimeForRepeat(), pendingIntent);
     }

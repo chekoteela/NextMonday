@@ -17,7 +17,7 @@ public class DiaryTaskDTO {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private Integer id;
+    private Long id;
 
     @ColumnInfo(name = "group_id")
     private String groupId;

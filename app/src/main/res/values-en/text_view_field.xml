@@ -33,4 +33,10 @@
 
     <string name="text_view_change_diary_task">What do you want to change?</string>
     <string name="text_view_delete_diary_task">What do you want to delete?</string>
+
+    <string name="text_view_folder">Folder</string>
+    <string name="text_view_notate">Notate</string>
+    <string name="text_view_recipe">Recipe</string>
+    <string name="text_view_list_of_purchases">List of purchases</string>
+    <string name="text_view_other">Other</string>
 </resources>

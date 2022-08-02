@@ -18,8 +18,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/icon_search_white"/>
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/icon_search_white" />
 
         <EditText
             android:id="@+id/search_id"
@@ -44,7 +44,7 @@
         <ExpandableListView
             android:id="@+id/diary_main_list_id"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:divider="@color/back"
             android:dividerHeight="1dp"
             android:groupIndicator="@color/Prozorui" />
@@ -55,7 +55,6 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:elevation="5dp"
             android:text="@string/button_create" />
 
         <com.google.android.gms.ads.AdView

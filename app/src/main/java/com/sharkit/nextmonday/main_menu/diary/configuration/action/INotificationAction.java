@@ -4,5 +4,5 @@ import android.content.Context;
 
 public interface INotificationAction {
 
-    void doAction(int taskId, Context context);
+    void doAction(long taskId, Context context);
 }

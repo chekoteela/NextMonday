@@ -34,4 +34,11 @@
     <string name="text_view_change_diary_task">Що ви хочете змінити?</string>
     <string name="text_view_delete_diary_task">Що ви хочете видалити?</string>
 
+    <string name="text_view_folder">Папка</string>
+    <string name="text_view_notate">Нотатка</string>
+
+    <string name="text_view_recipe">Рецепт</string>
+    <string name="text_view_list_of_purchases">Список покупок</string>
+    <string name="text_view_other">Інше</string>
+
 </resources>

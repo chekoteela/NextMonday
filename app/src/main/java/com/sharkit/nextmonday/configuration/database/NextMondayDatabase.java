@@ -8,15 +8,19 @@ import androidx.room.RoomDatabase;
 
 import com.sharkit.nextmonday.main_menu.diary.dao.DairyTaskDAO;
 import com.sharkit.nextmonday.main_menu.diary.dao.FolderTemplateDAO;
+import com.sharkit.nextmonday.main_menu.diary.dao.NotateDAO;
 import com.sharkit.nextmonday.main_menu.diary.dao.NotateTemplateDAO;
 import com.sharkit.nextmonday.main_menu.diary.entity.DiaryTaskDTO;
 import com.sharkit.nextmonday.main_menu.diary.entity.FolderTemplateDTO;
+import com.sharkit.nextmonday.main_menu.diary.entity.NotateDTO;
 import com.sharkit.nextmonday.main_menu.diary.entity.NotateTemplateDTO;
 
-@Database(entities = {DiaryTaskDTO.class, FolderTemplateDTO.class, NotateTemplateDTO.class}, version = 1, exportSchema = false)
+@Database(entities = {DiaryTaskDTO.class, NotateDTO.class, FolderTemplateDTO.class, NotateTemplateDTO.class}, version = 1, exportSchema = false)
 public abstract class NextMondayDatabase extends RoomDatabase {
 
     public abstract DairyTaskDAO dairyTaskDAO();
+
+    public abstract NotateDAO notateDAO();
 
     public abstract FolderTemplateDAO folderTemplateDAO();
 
