@@ -37,7 +37,6 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public class DiaryMainFragment extends Fragment {
@@ -50,9 +49,9 @@ public class DiaryMainFragment extends Fragment {
         final List<DayInfo> daysInfo = new ArrayList<>();
         final Calendar calendar = Calendar.getInstance();
 
-        Optional.ofNullable(getArguments())
-                .filter(Objects::nonNull)
-                .ifPresent(arg -> calendar.setTimeInMillis(arg.getLong(DIARY_DAY_OF_WEEK)));
+        calendar.setTimeInMillis(Optional.ofNullable(getArguments())
+                .map(arg -> arg.getLong(DIARY_DAY_OF_WEEK))
+                .orElse(Calendar.getInstance().getTimeInMillis()));
 
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
@@ -67,7 +66,7 @@ public class DiaryMainFragment extends Fragment {
         return view;
     }
 
-    private void fillOutList(List<DayInfo> daysInfo, Calendar calendar){
+    private void fillOutList(List<DayInfo> daysInfo, Calendar calendar) {
         final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());
 
         List<DiaryTask> diaryTasks = toDiaryTasks(db.dairyTaskDAO()
