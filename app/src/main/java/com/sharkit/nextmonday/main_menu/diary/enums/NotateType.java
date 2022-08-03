@@ -5,7 +5,9 @@ import android.content.Context;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.main_menu.diary.enums.impl.IActionNotateType;
 
-public enum NotateType implements IActionNotateType {
+import java.io.Serializable;
+
+public enum NotateType implements IActionNotateType, Serializable {
 
     RECIPE{
         @Override

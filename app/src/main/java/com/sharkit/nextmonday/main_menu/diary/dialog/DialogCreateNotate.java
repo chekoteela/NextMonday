@@ -1,17 +1,11 @@
 package com.sharkit.nextmonday.main_menu.diary.dialog;
 
-import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE_FOLDER_ID;
-
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-
-import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
@@ -29,15 +23,19 @@ public class DialogCreateNotate {
 
     private static final String TAG = DiaryTaskTransformer.class.getCanonicalName();
 
-    public void showCreateNotateDialog(Context context, Long parentId, NotateAdaptor adaptor, List<Notate> notates) {
+    public void showCreateNotateDialog(Context context, Long parentId, NotateAdaptor adaptor, List<Notate> notates, NotateType parentType) {
         final AlertDialog dialog = new AlertDialog.Builder(context).create();
         final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_create_noto, null);
         final WidgetContainer.Dialog.DialogCreateNotateWidget widget = WidgetContainer.newInstance(view).getDialog().getDialogCreateNotateWidget();
 
+        if (!parentType.equals(NotateType.OTHER)) {
+            widget.getTypeOfNotate().setVisibility(View.GONE);
+        }
+
         widget.getCreate().setOnClickListener(v -> {
             Notate notate = Notate.builder()
                     .parentFolderId(parentId)
-                    .notateType(getNotateType(widget.getTypeOfNotate().getSelectedItemPosition()))
+                    .notateType(getNotateType(widget.getTypeOfNotate().getSelectedItemPosition(), parentType))
                     .templateType(getTemplateType(widget.getTypeOfKeeping().getSelectedItemPosition()))
                     .name(Objects.requireNonNull(widget.getName().getText()).toString())
                     .build();
@@ -52,12 +50,6 @@ public class DialogCreateNotate {
         dialog.show();
     }
 
-    private void refreshPage(Long parentFolderId, Context context) {
-        Bundle bundle = new Bundle();
-        bundle.putLong(DIARY_NOTATE_FOLDER_ID, parentFolderId);
-        Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
-    }
-
     private TemplateType getTemplateType(int position) {
         switch (position) {
             case 0:
@@ -70,14 +62,19 @@ public class DialogCreateNotate {
         }
     }
 
-    private NotateType getNotateType(int position) {
+    private NotateType getNotateType(int position, NotateType parentType) {
+
+        if (parentType.equals(NotateType.OTHER)) {
+            return NotateType.OTHER;
+        }
+
         switch (position) {
             case 0:
-                return NotateType.RECIPE;
+                return NotateType.OTHER;
             case 1:
                 return NotateType.LIST_OF_PURCHASE;
             case 2:
-                return NotateType.OTHER;
+                return NotateType.RECIPE;
             default:
                 Log.e(TAG, "Unsupported value");
                 throw new RuntimeException();

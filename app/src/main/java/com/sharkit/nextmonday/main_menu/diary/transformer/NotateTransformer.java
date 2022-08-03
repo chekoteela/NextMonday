@@ -1,5 +1,8 @@
 package com.sharkit.nextmonday.main_menu.diary.transformer;
 
+import static com.sharkit.nextmonday.main_menu.diary.transformer.ByteArrayTransformer.toByteArray;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.ByteArrayTransformer.toObject;
+
 import android.util.Log;
 
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
@@ -20,8 +23,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class NotateTransformer {
-
-    private static final String TAG = DiaryTaskTransformer.class.getCanonicalName();
 
     public static List<Notate> toNotates(List<NotateDTO> notateDTOs) {
         return notateDTOs.stream()
@@ -51,24 +52,5 @@ public class NotateTransformer {
                 .build();
     }
 
-    private static Object toObject(byte[] bytes) {
-        try (ByteArrayInputStream in = new ByteArrayInputStream(bytes);
-             ObjectInputStream is = new ObjectInputStream(in)) {
-            return is.readObject();
-        } catch (ClassNotFoundException | IOException e) {
-            Log.e(TAG, e.getMessage(), e);
-            throw new RuntimeException(e.getMessage());
-        }
-    }
 
-    private static byte[] toByteArray(Object repeats) {
-        try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
-             ObjectOutputStream oos = new ObjectOutputStream(bos)) {
-            oos.writeObject(repeats);
-            return bos.toByteArray();
-        } catch (IOException e) {
-            Log.i(TAG, e.getMessage(), e);
-            throw new RuntimeException(e.getMessage());
-        }
-    }
 }
