@@ -15,6 +15,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,10 +38,11 @@ import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public class DiaryMainFragment extends Fragment {
+
+    private static final String TAG = DiaryMainFragment.class.getCanonicalName();
 
     @Nullable
     @Override
@@ -50,9 +52,9 @@ public class DiaryMainFragment extends Fragment {
         final List<DayInfo> daysInfo = new ArrayList<>();
         final Calendar calendar = Calendar.getInstance();
 
-        Optional.ofNullable(getArguments())
-                .filter(Objects::nonNull)
-                .ifPresent(arg -> calendar.setTimeInMillis(arg.getLong(DIARY_DAY_OF_WEEK)));
+        calendar.setTimeInMillis(Optional.ofNullable(getArguments())
+                .map(arg -> arg.getLong(DIARY_DAY_OF_WEEK))
+                .orElse(Calendar.getInstance().getTimeInMillis()));
 
         while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
             calendar.add(Calendar.DAY_OF_WEEK, -1);
@@ -60,6 +62,8 @@ public class DiaryMainFragment extends Fragment {
 
         for (int i = 0; i < 7; i++) {
             fillOutList(daysInfo, calendar);
+
+            Log.i(TAG, String.format("Looking for all tasks by: %s", DateFormat.getDateInstance().format(calendar.getTime())));
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
 
@@ -67,7 +71,7 @@ public class DiaryMainFragment extends Fragment {
         return view;
     }
 
-    private void fillOutList(List<DayInfo> daysInfo, Calendar calendar){
+    private void fillOutList(List<DayInfo> daysInfo, Calendar calendar) {
         final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());
 
         List<DiaryTask> diaryTasks = toDiaryTasks(db.dairyTaskDAO()
@@ -98,6 +102,8 @@ public class DiaryMainFragment extends Fragment {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     private void setTime(DiaryTask diaryTask) {
+
+        Log.i(TAG, String.format("Set time: %s for task: %s", diaryTask, diaryTask.getTimeForRepeat()));
 
         Intent intent = new Intent(NavigationMenu.getContext(), AlarmDiary.class);
         intent.putExtra(CONTENT_TITLE, diaryTask.getName());

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="100dp"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/calculator_button_ripple"
+    android:id="@+id/notate_parent_id">
+
+    <TextView
+        style="@style/text_view_style"
+        android:id="@+id/name_id"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
+
+    <TextView
+        style="@style/text_view_style"
+        android:id="@+id/type_of_notate_id"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
+
+</LinearLayout>

@@ -13,6 +13,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class DayInfoTransformer {
 
+    private static final String UNSUPPORTED_VALUE = "Unsupported value %s";
+
     public static String toMonthName(int month) {
         switch (month) {
             case 0:
@@ -40,7 +42,7 @@ public class DayInfoTransformer {
             case 11:
                 return getValue(R.string.text_view_december);
             default:
-                throw new RuntimeException("Untyped value " + month);
+                throw new RuntimeException(String.format(UNSUPPORTED_VALUE, month));
         }
     }
 
@@ -61,7 +63,7 @@ public class DayInfoTransformer {
             case 1:
                 return getValue(R.string.text_view_sunday);
             default:
-                throw new RuntimeException("Untyped value " + day);
+                throw new RuntimeException(String.format(UNSUPPORTED_VALUE, day));
         }
     }
 
@@ -82,7 +84,7 @@ public class DayInfoTransformer {
             case SUNDAY:
                 return getValue(R.string.text_view_sunday);
             default:
-                throw new RuntimeException("Untyped value " + dayOfRepeat);
+                throw new RuntimeException(String.format(UNSUPPORTED_VALUE, dayOfRepeat));
         }
     }
 
@@ -103,7 +105,7 @@ public class DayInfoTransformer {
             case SUNDAY:
                 return Calendar.SUNDAY;
             default:
-                throw new RuntimeException("Unsupported type");
+                throw new RuntimeException(String.format(UNSUPPORTED_VALUE, dayOfRepeat));
         }
     }
 

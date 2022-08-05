@@ -1,16 +1,12 @@
 package com.sharkit.nextmonday.main_menu.diary.transformer;
 
-import android.util.Log;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.ByteArrayTransformer.toByteArray;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.ByteArrayTransformer.toObject;
 
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 import com.sharkit.nextmonday.main_menu.diary.entity.DiaryTaskDTO;
 import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -22,8 +18,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryTaskTransformer {
-
-    private static final String TAG = DiaryTaskTransformer.class.getCanonicalName();
 
     public static DiaryTaskDTO toDiaryTaskDTO(DiaryTask diaryTask) {
 
@@ -53,34 +47,13 @@ public class DiaryTaskTransformer {
                 .description(diaryTaskDTO.getDescription())
                 .name(diaryTaskDTO.getName())
                 .timeForRepeat(diaryTaskDTO.getTimeForRepeat())
-                .repeats(toList(diaryTaskDTO.getDaysOfRepeat()))
+                .repeats((List<DayOfRepeat>) toObject(diaryTaskDTO.getDaysOfRepeat()))
                 .completed(diaryTaskDTO.getCompleted())
                 .repeated(diaryTaskDTO.getRepeated())
                 .date(diaryTaskDTO.getDate())
                 .groupId(diaryTaskDTO.getGroupId())
                 .alarm(diaryTaskDTO.getAlarm())
                 .build();
-    }
-
-    private static List<DayOfRepeat> toList(byte[] bytes) {
-        try (ByteArrayInputStream in = new ByteArrayInputStream(bytes);
-             ObjectInputStream is = new ObjectInputStream(in)) {
-            return (List<DayOfRepeat>) is.readObject();
-        } catch (ClassNotFoundException | IOException e) {
-            Log.e(TAG, e.getMessage(), e);
-            throw new RuntimeException(e.getMessage());
-        }
-    }
-
-    private static byte[] toByteArray(List<DayOfRepeat> repeats) {
-        try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
-             ObjectOutputStream oos = new ObjectOutputStream(bos)) {
-            oos.writeObject(repeats);
-            return bos.toByteArray();
-        } catch (IOException e) {
-            Log.i(TAG, e.getMessage(), e);
-            throw new RuntimeException(e.getMessage());
-        }
     }
 
     public static DiaryTask toDiaryTask(DiaryTask diaryTask, Calendar calendar) {

@@ -25,6 +25,10 @@
         android:id="@+id/navigation_diary_update_task"
         android:name="com.sharkit.nextmonday.main_menu.diary.fragment.DiaryModifyTask" />
 
+    <fragment
+        android:id="@+id/navigation_diary_notate_recipe"
+        android:name="com.sharkit.nextmonday.main_menu.diary.fragment.NotateRecipeFragment"/>
+
 <!--&lt;!&ndash;    END&ndash;&gt;-->
 
 <!--    <fragment-->

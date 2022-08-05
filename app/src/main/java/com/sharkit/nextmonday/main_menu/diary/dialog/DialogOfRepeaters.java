@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.main_menu.diary.dialog;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
@@ -11,10 +12,13 @@ import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
+import com.sharkit.nextmonday.main_menu.diary.fragment.DiaryMainFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 
+import kotlin.collections.EmptyList;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -22,6 +26,8 @@ public class DialogOfRepeaters {
 
     private final Context context;
     private final DiaryTask diaryTask;
+
+    private static final String TAG = DialogOfRepeaters.class.getCanonicalName();
 
     public void showIfChecked(Boolean isChecked) {
         if (Boolean.TRUE.equals(isChecked)) {
@@ -62,6 +68,9 @@ public class DialogOfRepeaters {
                     } else if (Boolean.TRUE.equals(diaryTask.getRepeats().isEmpty())) {
                         diaryTask.setRepeats(null);
                     }
+
+                    Log.i(TAG, String.format("Set days for repeat : %s", Optional.ofNullable(diaryTask.getRepeats()).orElse(new ArrayList<>())));
+
                     dialog1.dismiss();
                 });
         dialog.show();

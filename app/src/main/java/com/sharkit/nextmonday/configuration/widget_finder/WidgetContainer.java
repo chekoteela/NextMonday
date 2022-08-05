@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -71,13 +72,44 @@ public final class WidgetContainer {
     @Getter
     public class DiaryNotateWidget {
         private final EditText search;
-        private final ExpandableListView notateList;
+        private final ListView notateList;
         private final Button add;
+        private final FolderItemWidget folderItemWidget;
+        private final NotateItemWidget notateItemWidget;
 
         public DiaryNotateWidget() {
+            this.folderItemWidget = new FolderItemWidget();
+            this.notateItemWidget = new NotateItemWidget();
+
             this.search = view.findViewById(R.id.search_id);
             this.notateList = view.findViewById(R.id.diary_main_list_id);
             this.add = view.findViewById(R.id.add_id);
+        }
+
+        @Getter
+        public class FolderItemWidget {
+            private final TextView name;
+            private final TextView folderType;
+            private final LinearLayout parentItem;
+
+            public FolderItemWidget() {
+                this.name = view.findViewById(R.id.name_id);
+                this.folderType = view.findViewById(R.id.folder_type_id);
+                this.parentItem = view.findViewById(R.id.folder_parent_id);
+            }
+        }
+
+        @Getter
+        public class NotateItemWidget {
+            private final TextView name;
+            private final TextView notateWidget;
+            private final LinearLayout parentItem;
+
+            public NotateItemWidget() {
+                this.name = view.findViewById(R.id.name_id);
+                this.notateWidget = view.findViewById(R.id.type_of_notate_id);
+                this.parentItem = view.findViewById(R.id.notate_parent_id);
+            }
         }
     }
     

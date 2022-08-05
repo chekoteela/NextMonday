@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday.main_menu;
 
+import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE_FOLDER_ID;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
