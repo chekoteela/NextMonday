@@ -19,6 +19,7 @@ import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogOfRepeaters;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogTimePicker;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
+import com.sharkit.nextmonday.main_menu.diary.transformer.ByteArrayTransformer;
 
 import java.text.DateFormat;
 import java.util.Calendar;

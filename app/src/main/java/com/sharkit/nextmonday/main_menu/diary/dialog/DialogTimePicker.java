@@ -2,11 +2,14 @@ package com.sharkit.nextmonday.main_menu.diary.dialog;
 
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.util.Log;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
+import com.sharkit.nextmonday.main_menu.diary.fragment.DiaryMainFragment;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
 import lombok.RequiredArgsConstructor;
@@ -18,6 +21,8 @@ public class DialogTimePicker {
     private final DiaryTask diaryTask;
     private final SwitchMaterial switchMaterial;
     private final Calendar calendar;
+
+    private static final String TAG = DialogTimePicker.class.getCanonicalName();
 
     public void showIfChecked(Boolean isChecked){
         diaryTask.setAlarm(isChecked);
@@ -35,6 +40,8 @@ public class DialogTimePicker {
                     calendar.get(Calendar.MONTH),
                     calendar.get(Calendar.DATE),
                     hourOfDay, minuteOfHour, 0);
+
+            Log.i(TAG, String.format("Set time: %s for task", DateFormat.getTimeInstance().format(calendar.getTime())));
 
             diaryTask.setTimeForRepeat(calendar.getTimeInMillis());
         }, 0, 0, true);

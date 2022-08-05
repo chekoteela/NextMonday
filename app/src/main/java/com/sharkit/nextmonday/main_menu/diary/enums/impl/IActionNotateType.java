@@ -4,4 +4,5 @@ import android.content.Context;
 
 public interface IActionNotateType {
     String getName(Context context);
+    void moveToFile(Context context);
 }

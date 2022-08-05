@@ -35,7 +35,7 @@ public class DialogCreateNotate {
         widget.getCreate().setOnClickListener(v -> {
             Notate notate = Notate.builder()
                     .parentFolderId(parentId)
-                    .notateType(getNotateType(widget.getTypeOfNotate().getSelectedItemPosition(), parentType))
+                    .notateType(getNotateType(widget.getTypeOfNotate().getSelectedItemPosition()))
                     .templateType(getTemplateType(widget.getTypeOfKeeping().getSelectedItemPosition()))
                     .name(Objects.requireNonNull(widget.getName().getText()).toString())
                     .build();
@@ -62,22 +62,18 @@ public class DialogCreateNotate {
         }
     }
 
-    private NotateType getNotateType(int position, NotateType parentType) {
+    private NotateType getNotateType(int position) {
 
-        if (parentType.equals(NotateType.OTHER)) {
-            return NotateType.OTHER;
-        }
-
-        switch (position) {
-            case 0:
-                return NotateType.OTHER;
-            case 1:
-                return NotateType.LIST_OF_PURCHASE;
-            case 2:
-                return NotateType.RECIPE;
-            default:
-                Log.e(TAG, "Unsupported value");
-                throw new RuntimeException();
-        }
+            switch (position) {
+                case 0:
+                    return NotateType.OTHER;
+                case 1:
+                    return NotateType.RECIPE;
+                case 2:
+                    return NotateType.LIST_OF_PURCHASE;
+                default:
+                    Log.e(TAG, "Unsupported value");
+                    throw new RuntimeException();
+            }
     }
 }

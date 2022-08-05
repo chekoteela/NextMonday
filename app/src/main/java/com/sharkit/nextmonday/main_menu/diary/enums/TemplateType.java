@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -46,7 +47,9 @@ public enum TemplateType implements ITemplateAction {
 
             notateWidget.getName().setText(notate.getName());
             notateWidget.getNotateWidget().setText(notate.getNotateType().getName(view.getContext()));
+            notateWidget.getParentItem().setOnClickListener(v -> notate.getNotateType().moveToFile(view.getContext()));
         }
+
     },
 
     FOLDER {

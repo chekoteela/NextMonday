@@ -3,18 +3,11 @@ package com.sharkit.nextmonday.main_menu.diary.transformer;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.ByteArrayTransformer.toByteArray;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.ByteArrayTransformer.toObject;
 
-import android.util.Log;
-
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
-import com.sharkit.nextmonday.main_menu.diary.enums.NotateType;
 import com.sharkit.nextmonday.main_menu.diary.entity.NotateDTO;
+import com.sharkit.nextmonday.main_menu.diary.enums.NotateType;
 import com.sharkit.nextmonday.main_menu.diary.enums.TemplateType;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.List;
 import java.util.stream.Collectors;
 

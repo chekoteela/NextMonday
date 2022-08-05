@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ByteArrayTransformer {
 
-    private static final String TAG = DiaryTaskTransformer.class.getCanonicalName();
+    private static final String TAG = ByteArrayTransformer.class.getCanonicalName();
 
     public static Object toObject(byte[] bytes) {
         try (ByteArrayInputStream in = new ByteArrayInputStream(bytes);

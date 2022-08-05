@@ -15,6 +15,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,8 @@ import java.util.Optional;
 
 public class DiaryMainFragment extends Fragment {
 
+    private static final String TAG = DiaryMainFragment.class.getCanonicalName();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,6 +62,8 @@ public class DiaryMainFragment extends Fragment {
 
         for (int i = 0; i < 7; i++) {
             fillOutList(daysInfo, calendar);
+
+            Log.i(TAG, String.format("Looking for all tasks by: %s", DateFormat.getDateInstance().format(calendar.getTime())));
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
 
@@ -97,6 +102,8 @@ public class DiaryMainFragment extends Fragment {
 
     @SuppressLint("UnspecifiedImmutableFlag")
     private void setTime(DiaryTask diaryTask) {
+
+        Log.i(TAG, String.format("Set time: %s for task: %s", diaryTask, diaryTask.getTimeForRepeat()));
 
         Intent intent = new Intent(NavigationMenu.getContext(), AlarmDiary.class);
         intent.putExtra(CONTENT_TITLE, diaryTask.getName());
