@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.main_menu.diary.transformer;
 
-import com.sharkit.nextmonday.main_menu.diary.domain.FolderTemplate;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.FolderTemplate;
 import com.sharkit.nextmonday.main_menu.diary.entity.FolderTemplateDTO;
 
 import lombok.AccessLevel;

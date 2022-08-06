@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary.domain;
+package com.sharkit.nextmonday.main_menu.diary.domain.template;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class NotateTemplate {
+public class FolderTemplate {
 
     private Long templateId;
-    private String date;
-    private String text;
 }

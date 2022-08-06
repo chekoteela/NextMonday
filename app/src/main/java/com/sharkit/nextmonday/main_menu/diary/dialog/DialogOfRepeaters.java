@@ -12,13 +12,11 @@ import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
-import com.sharkit.nextmonday.main_menu.diary.fragment.DiaryMainFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 
-import kotlin.collections.EmptyList;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -40,7 +38,8 @@ public class DialogOfRepeaters {
     @SuppressLint("NonConstantResourceId")
     private void showDialogOfRepeaters() {
         final View view = LayoutInflater.from(context).inflate(R.layout.diary_list_of_repeat, null);
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(context).setView(view);
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(context)
+                .setView(view);
 
         final WidgetContainer.Dialog.RepeatersWidget dialogWidget = WidgetContainer.newInstance(view).getDialog().getRepeatersWidget();
 

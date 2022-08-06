@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
 import com.sharkit.nextmonday.R;
@@ -65,8 +66,35 @@ public final class WidgetContainer {
         return new DiaryNotateWidget();
     }
 
+    public DiaryNotateRecipeWidget getDiaryNotateRecipeWidget() {
+        return new DiaryNotateRecipeWidget();
+    }
+
     public static WidgetContainer newInstance(View view) {
         return new WidgetContainer(view);
+    }
+
+    @Getter
+    public class DiaryNotateRecipeWidget {
+        private final FloatingActionButton addFood;
+        private final EditText editName;
+        private final EditText editDescription;
+        private final TextView name;
+        private final TextView description;
+        private final ImageView recipeImage;
+        private final ListView recipeList;
+        private final Button save;
+
+        public DiaryNotateRecipeWidget() {
+            this.editName = view.findViewById(R.id.edit_name_id);
+            this.editDescription = view.findViewById(R.id.edit_description_id);
+            this.name = view.findViewById(R.id.name_id);
+            this.description = view.findViewById(R.id.description_id);
+            this.recipeImage = view.findViewById(R.id.recipe_image_id);
+            this.recipeList = view.findViewById(R.id.recipe_list_id);
+            this.save = view.findViewById(R.id.save_id);
+            this.addFood = view.findViewById(R.id.add_food_id);
+        }
     }
 
     @Getter
@@ -275,12 +303,25 @@ public final class WidgetContainer {
         private final DialogChangeSubjectWidget dialogChangeSubjectWidget;
         private final DialogDeleteSubjectWidget dialogDeleteSubjectWidget;
         private final DialogCreateNotateWidget dialogCreateNotateWidget;
+        private final RecipeAddFoodWidget recipeAddFoodWidget;
 
         public Dialog() {
             this.repeatersWidget = new RepeatersWidget();
             this.dialogChangeSubjectWidget = new DialogChangeSubjectWidget();
             this.dialogDeleteSubjectWidget = new DialogDeleteSubjectWidget();
             this.dialogCreateNotateWidget = new DialogCreateNotateWidget();
+            this.recipeAddFoodWidget = new RecipeAddFoodWidget();
+        }
+
+        @Getter
+        public class RecipeAddFoodWidget {
+            private final EditText name;
+            private final EditText description;
+
+            public RecipeAddFoodWidget() {
+                this.name = view.findViewById(R.id.name_id);
+                this.description = view.findViewById(R.id.description_id);
+            }
         }
 
         @Getter
