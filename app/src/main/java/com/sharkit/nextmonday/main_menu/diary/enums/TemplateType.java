@@ -2,14 +2,12 @@ package com.sharkit.nextmonday.main_menu.diary.enums;
 
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE_FOLDER_ID;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.FolderTemplateTransformer.toFolderTemplateDTO;
-import static com.sharkit.nextmonday.main_menu.diary.transformer.NotateTemplateTransformer.toNotateTemplateDTO;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.NotateTransformer.toNotateDTO;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -18,9 +16,8 @@ import androidx.navigation.Navigation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
-import com.sharkit.nextmonday.main_menu.diary.domain.FolderTemplate;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.FolderTemplate;
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
-import com.sharkit.nextmonday.main_menu.diary.domain.NotateTemplate;
 import com.sharkit.nextmonday.main_menu.diary.enums.impl.ITemplateAction;
 
 @SuppressLint("InflateParams")
@@ -31,7 +28,7 @@ public enum TemplateType implements ITemplateAction {
         public void create(Context context, Notate notate) {
             final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
             db.runInTransaction(() -> {
-                notate.setTemplateId(db.notateTemplateDAO().create(toNotateTemplateDTO(new NotateTemplate())));
+                notate.setTemplateId(notate.getNotateType().createTemplate(db));
                 db.notateDAO().create(toNotateDTO(notate));
             });
         }
@@ -47,7 +44,7 @@ public enum TemplateType implements ITemplateAction {
 
             notateWidget.getName().setText(notate.getName());
             notateWidget.getNotateWidget().setText(notate.getNotateType().getName(view.getContext()));
-            notateWidget.getParentItem().setOnClickListener(v -> notate.getNotateType().moveToFile(view.getContext()));
+            notateWidget.getParentItem().setOnClickListener(v -> notate.getNotateType().moveToFile(view.getContext(), notate.getTemplateId()));
         }
 
     },
