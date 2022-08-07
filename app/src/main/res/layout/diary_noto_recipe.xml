@@ -9,15 +9,7 @@
         android:id="@+id/edit_name_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="name"
-/>
-
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/name_id"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="name"/>
+        android:text="name" />
 
     <ImageView
         android:id="@+id/recipe_image_id"
@@ -28,14 +20,6 @@
         android:id="@+id/edit_description_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="description"/>
-
-    <TextView
-
-        android:visibility="gone"
-        android:id="@+id/description_id"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:text="description"/>
 
     <ListView
