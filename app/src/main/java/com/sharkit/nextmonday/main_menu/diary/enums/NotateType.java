@@ -1,7 +1,7 @@
 package com.sharkit.nextmonday.main_menu.diary.enums;
 
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE_ID;
-import static com.sharkit.nextmonday.main_menu.diary.transformer.NotateTemplateTransformer.toNotateTemplateDTO;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.NotateTemplateTransformer.toRecipeTemplateDTO;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,7 +33,7 @@ public enum NotateType implements IActionNotateType, Serializable {
 
         @Override
         public Long createTemplate(NextMondayDatabase db) {
-            return db.notateTemplateDAO().create(toNotateTemplateDTO(new RecipeTemplate()));
+            return db.notateTemplateDAO().create(toRecipeTemplateDTO(new RecipeTemplate()));
         }
     },
     LIST_OF_PURCHASE {

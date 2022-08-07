@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class RecipeItem {
 
+    private Long id;
     private Long templateId;
     private String name;
     private String description;

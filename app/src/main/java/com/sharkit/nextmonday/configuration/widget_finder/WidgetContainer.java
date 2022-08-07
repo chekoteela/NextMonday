@@ -319,8 +319,8 @@ public final class WidgetContainer {
             private final EditText description;
 
             public RecipeAddFoodWidget() {
-                this.name = view.findViewById(R.id.name_id);
-                this.description = view.findViewById(R.id.description_id);
+                this.name = view.findViewById(R.id.food_name_id);
+                this.description = view.findViewById(R.id.food_description_id);
             }
         }
 
