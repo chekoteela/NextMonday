@@ -15,6 +15,6 @@ public class RecipeTemplate {
 
     private Long templateId;
     private String date;
-    private String text;
+    private String description;
     private List<RecipeItem> recipeItems;
 }

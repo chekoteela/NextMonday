@@ -16,8 +16,8 @@ import androidx.navigation.Navigation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
-import com.sharkit.nextmonday.main_menu.diary.domain.template.FolderTemplate;
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.FolderTemplate;
 import com.sharkit.nextmonday.main_menu.diary.enums.impl.ITemplateAction;
 
 @SuppressLint("InflateParams")
@@ -44,9 +44,8 @@ public enum TemplateType implements ITemplateAction {
 
             notateWidget.getName().setText(notate.getName());
             notateWidget.getNotateWidget().setText(notate.getNotateType().getName(view.getContext()));
-            notateWidget.getParentItem().setOnClickListener(v -> notate.getNotateType().moveToFile(view.getContext(), notate.getTemplateId()));
+            notateWidget.getParentItem().setOnClickListener(v -> notate.getNotateType().moveToFile(view.getContext(), notate));
         }
-
     },
 
     FOLDER {
@@ -54,6 +53,7 @@ public enum TemplateType implements ITemplateAction {
         public void create(Context context, Notate notate) {
             final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
             db.runInTransaction(() -> {
+
                 notate.setTemplateId(db.folderTemplateDAO().create(toFolderTemplateDTO(new FolderTemplate())));
                 db.notateDAO().create(toNotateDTO(notate));
             });
@@ -80,6 +80,4 @@ public enum TemplateType implements ITemplateAction {
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
         }
     }
-
-
 }

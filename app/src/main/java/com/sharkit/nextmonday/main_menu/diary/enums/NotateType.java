@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.main_menu.diary.enums;
 
-import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE_ID;
+import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.NotateTemplateTransformer.toRecipeTemplateDTO;
 
 import android.app.Activity;
@@ -11,6 +11,7 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
+import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
 import com.sharkit.nextmonday.main_menu.diary.domain.template.RecipeTemplate;
 import com.sharkit.nextmonday.main_menu.diary.enums.impl.IActionNotateType;
 
@@ -18,22 +19,23 @@ import java.io.Serializable;
 
 public enum NotateType implements IActionNotateType, Serializable {
 
-    RECIPE{
+    RECIPE {
         @Override
         public String getName(Context context) {
             return context.getString(R.string.text_view_recipe);
         }
 
         @Override
-        public void moveToFile(Context context, Long templateId) {
+        public void moveToFile(Context context, Notate notate) {
             Bundle bundle = new Bundle();
-            bundle.putLong(DIARY_NOTATE_ID, templateId);
+            bundle.putSerializable(DIARY_NOTATE, notate);
+
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate_recipe, bundle);
         }
 
         @Override
         public Long createTemplate(NextMondayDatabase db) {
-            return db.notateTemplateDAO().create(toRecipeTemplateDTO(new RecipeTemplate()));
+            return db.recipeTemplateDAO().create(toRecipeTemplateDTO(new RecipeTemplate()));
         }
     },
     LIST_OF_PURCHASE {
@@ -43,7 +45,7 @@ public enum NotateType implements IActionNotateType, Serializable {
         }
 
         @Override
-        public void moveToFile(Context context, Long templateId) {
+        public void moveToFile(Context context, Notate notate) {
 
         }
 
@@ -59,7 +61,7 @@ public enum NotateType implements IActionNotateType, Serializable {
         }
 
         @Override
-        public void moveToFile(Context context, Long templateId) {
+        public void moveToFile(Context context, Notate notate) {
 
         }
 

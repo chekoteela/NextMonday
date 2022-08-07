@@ -32,7 +32,7 @@ public abstract class NextMondayDatabase extends RoomDatabase {
 
     public abstract FolderTemplateDAO folderTemplateDAO();
 
-    public abstract RecipeTemplateDAO notateTemplateDAO();
+    public abstract RecipeTemplateDAO recipeTemplateDAO();
 
     public static NextMondayDatabase getInstance(Context context){
         return Room.databaseBuilder(context, NextMondayDatabase.class, "NextMonday")
