@@ -14,6 +14,9 @@ public interface NotateDAO {
     @Insert
     long create(NotateDTO dto);
 
+    @Query("UPDATE diary_notate SET name = :name WHERE id = :id")
+    void updateName(String name, Long id);
+
     @Query("SELECT * FROM diary_notate WHERE parent_folder_id = :parentFolderId")
     List<NotateDTO> getAllNotateByParentFolderId(Long parentFolderId);
 

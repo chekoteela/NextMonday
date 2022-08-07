@@ -23,4 +23,5 @@ public class RecipeTemplateDTO {
 
     @ColumnInfo(name = "text")
     private String text;
+
 }

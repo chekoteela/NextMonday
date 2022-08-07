@@ -77,23 +77,35 @@ public final class WidgetContainer {
     @Getter
     public class DiaryNotateRecipeWidget {
         private final FloatingActionButton addFood;
-        private final EditText editName;
-        private final EditText editDescription;
-        private final TextView name;
-        private final TextView description;
+        private final EditText name;
+        private final EditText description;
         private final ImageView recipeImage;
         private final ListView recipeList;
         private final Button save;
+        private final RecipeItemWidget recipeItemWidget;
 
         public DiaryNotateRecipeWidget() {
-            this.editName = view.findViewById(R.id.edit_name_id);
-            this.editDescription = view.findViewById(R.id.edit_description_id);
-            this.name = view.findViewById(R.id.name_id);
-            this.description = view.findViewById(R.id.description_id);
+            this.name = view.findViewById(R.id.edit_name_id);
+            this.description = view.findViewById(R.id.edit_description_id);
             this.recipeImage = view.findViewById(R.id.recipe_image_id);
             this.recipeList = view.findViewById(R.id.recipe_list_id);
             this.save = view.findViewById(R.id.save_id);
             this.addFood = view.findViewById(R.id.add_food_id);
+
+            this.recipeItemWidget = new RecipeItemWidget();
+        }
+
+        @Getter
+        public class RecipeItemWidget {
+            private final TextView name;
+            private final TextView description;
+            private final LinearLayout item;
+
+            public RecipeItemWidget() {
+                this.name = view.findViewById(R.id.food_name_id);
+                this.description = view.findViewById(R.id.food_description_id);
+                this.item = view.findViewById(R.id.recipe_item_id);
+            }
         }
     }
 

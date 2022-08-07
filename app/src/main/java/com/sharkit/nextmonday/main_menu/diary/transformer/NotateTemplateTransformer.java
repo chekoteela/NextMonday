@@ -12,7 +12,7 @@ public class NotateTemplateTransformer {
     public static RecipeTemplateDTO toRecipeTemplateDTO(RecipeTemplate recipeTemplate) {
         return RecipeTemplateDTO.builder()
                 .date(recipeTemplate.getDate())
-                .text(recipeTemplate.getText())
+                .text(recipeTemplate.getDescription())
                 .templateId(recipeTemplate.getTemplateId())
                 .build();
     }
@@ -20,7 +20,7 @@ public class NotateTemplateTransformer {
     public static RecipeTemplate toRecipeTemplate(RecipeTemplateDTO recipeTemplateDTO) {
         return RecipeTemplate.builder()
                 .date(recipeTemplateDTO.getDate())
-                .text(recipeTemplateDTO.getText())
+                .description(recipeTemplateDTO.getText())
                 .templateId(recipeTemplateDTO.getTemplateId())
                 .build();
     }
