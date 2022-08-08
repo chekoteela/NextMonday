@@ -1,7 +1,7 @@
-package com.sharkit.nextmonday.main_menu.diary.transformer;
+package com.sharkit.nextmonday.main_menu.diary.transformer.recipe;
 
-import com.sharkit.nextmonday.main_menu.diary.domain.template.RecipeItem;
-import com.sharkit.nextmonday.main_menu.diary.entity.RecipeItemDTO;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.RecipeItem;
+import com.sharkit.nextmonday.main_menu.diary.entity.recipe.RecipeItemDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;

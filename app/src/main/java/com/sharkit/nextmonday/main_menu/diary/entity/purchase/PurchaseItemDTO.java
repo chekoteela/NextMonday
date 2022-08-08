@@ -1,5 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary.entity;
-
+package com.sharkit.nextmonday.main_menu.diary.entity.purchase;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -12,11 +11,11 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-@Entity(tableName = "recipe_item")
-public class RecipeItemDTO {
+@Entity(tableName = "purchase_item")
+public class PurchaseItemDTO {
 
-    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
+    @PrimaryKey(autoGenerate = true)
     private Long id;
 
     @ColumnInfo(name = "template_id")
@@ -28,4 +27,6 @@ public class RecipeItemDTO {
     @ColumnInfo(name = "description")
     private String description;
 
+    @ColumnInfo(name = "complete")
+    private Boolean complete;
 }

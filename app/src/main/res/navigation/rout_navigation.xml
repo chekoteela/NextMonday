@@ -27,7 +27,11 @@
 
     <fragment
         android:id="@+id/navigation_diary_notate_recipe"
-        android:name="com.sharkit.nextmonday.main_menu.diary.fragment.NotateRecipeFragment"/>
+        android:name="com.sharkit.nextmonday.main_menu.diary.fragment.RecipeFragment"/>
+
+    <fragment
+        android:id="@+id/navigation_diary_notate_purchase"
+        android:name="com.sharkit.nextmonday.main_menu.diary.fragment.PurchaseFragment"/>
 
 <!--&lt;!&ndash;    END&ndash;&gt;-->
 

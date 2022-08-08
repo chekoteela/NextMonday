@@ -1,8 +1,7 @@
 package com.sharkit.nextmonday.main_menu.diary.dialog;
 
-import static com.sharkit.nextmonday.main_menu.diary.transformer.recipe.RecipeItemTransformer.toRecipeItemDTO;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.purchase.PurchaseItemTransformer.toPurchaseItemDTO;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,51 +11,51 @@ import android.view.View;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
-import com.sharkit.nextmonday.main_menu.diary.adapter.RecipeAdapter;
-import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.RecipeItem;
+import com.sharkit.nextmonday.main_menu.diary.adapter.PurchaseAdapter;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.purchase.PurchaseItem;
 
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
 
-@SuppressLint("InflateParams")
 @RequiredArgsConstructor
-public class DialogRecipeFood {
+public class DialogPurchaseItem {
 
     private final Context context;
     private final Long templateId;
-    private final List<RecipeItem> recipeItems;
-    private final RecipeAdapter recipeAdapter;
+    private final List<PurchaseItem> purchaseItems;
+    private final PurchaseAdapter purchaseAdapter;
     private WidgetContainer.Dialog.TemplateAddItemWidget widget;
 
     public void createItem() {
         final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
         final AlertDialog dialog = showDialog();
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_add), (parent, which) -> {
-            RecipeItem item = RecipeItem.builder()
+            PurchaseItem item = PurchaseItem.builder()
+                    .complete(Boolean.FALSE)
                     .description(widget.getDescription().getText().toString())
                     .name(widget.getName().getText().toString())
                     .templateId(templateId)
                     .build();
-            db.recipeItemDAO().save(toRecipeItemDTO(item));
-            recipeItems.add(item);
-            recipeAdapter.notifyDataSetChanged();
+            db.purchaseItemDAO().create(toPurchaseItemDTO(item));
+            purchaseItems.add(item);
+            purchaseAdapter.notifyDataSetChanged();
             parent.dismiss();
         });
         dialog.show();
     }
 
-    public void changeItem(RecipeItem item, int position){
+    public void changeItem(PurchaseItem item, int position){
         final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
         final AlertDialog dialog = showDialog();
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_change), (parent, which) -> {
             item.setDescription(widget.getDescription().getText().toString());
             item.setName(widget.getName().getText().toString());
 
-            db.recipeItemDAO().update(toRecipeItemDTO(item));
+            db.purchaseItemDAO().update(toPurchaseItemDTO(item));
 
-            recipeItems.set(position, item);
-            recipeAdapter.notifyDataSetChanged();
+            purchaseItems.set(position, item);
+            purchaseAdapter.notifyDataSetChanged();
             parent.dismiss();
         });
         dialog.show();

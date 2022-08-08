@@ -1,7 +1,7 @@
 package com.sharkit.nextmonday.main_menu.diary.enums;
 
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE;
-import static com.sharkit.nextmonday.main_menu.diary.transformer.NotateTemplateTransformer.toRecipeTemplateDTO;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.recipe.RecipeTemplateTransformer.toRecipeTemplateDTO;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,7 +12,8 @@ import androidx.navigation.Navigation;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
-import com.sharkit.nextmonday.main_menu.diary.domain.template.RecipeTemplate;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.RecipeTemplate;
+import com.sharkit.nextmonday.main_menu.diary.entity.purchase.PurchaseTemplateDTO;
 import com.sharkit.nextmonday.main_menu.diary.enums.impl.IActionNotateType;
 
 import java.io.Serializable;
@@ -29,7 +30,6 @@ public enum NotateType implements IActionNotateType, Serializable {
         public void moveToFile(Context context, Notate notate) {
             Bundle bundle = new Bundle();
             bundle.putSerializable(DIARY_NOTATE, notate);
-
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate_recipe, bundle);
         }
 
@@ -46,12 +46,14 @@ public enum NotateType implements IActionNotateType, Serializable {
 
         @Override
         public void moveToFile(Context context, Notate notate) {
-
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(DIARY_NOTATE, notate);
+            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate_purchase, bundle);
         }
 
         @Override
         public Long createTemplate(NextMondayDatabase db) {
-            return null;
+            return db.purchaseTemplateDAO().create(new PurchaseTemplateDTO());
         }
     },
     OTHER {

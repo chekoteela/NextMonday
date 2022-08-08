@@ -2,7 +2,7 @@ package com.sharkit.nextmonday.main_menu.diary.fragment;
 
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE;
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE_FOLDER_ID;
-import static com.sharkit.nextmonday.main_menu.diary.transformer.RecipeTransformer.toRecipe;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.recipe.RecipeTransformer.toRecipe;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,10 +20,10 @@ import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.adapter.RecipeAdapter;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogRecipeFood;
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
-import com.sharkit.nextmonday.main_menu.diary.domain.template.Recipe;
-import com.sharkit.nextmonday.main_menu.diary.domain.template.RecipeTemplate;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.Recipe;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.RecipeTemplate;
 
-public class NotateRecipeFragment extends Fragment {
+public class RecipeFragment extends Fragment {
 
     @Nullable
     @Override
@@ -32,7 +32,7 @@ public class NotateRecipeFragment extends Fragment {
         final View view = inflater.inflate(R.layout.diary_noto_recipe, container, false);
         final WidgetContainer.DiaryNotateRecipeWidget widget = WidgetContainer.newInstance(view).getDiaryNotateRecipeWidget();
         final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());
-        final Recipe recipe = toRecipe(db.recipeDAO().findById(notate.getTemplateId()));
+        final Recipe recipe = toRecipe(db.recipeTemplateDAO().findById(notate.getTemplateId()));
         final RecipeAdapter recipeAdapter = new RecipeAdapter(recipe.getRecipeItems(), getContext());
 
         widget.getName().setText(notate.getName());
