@@ -4,7 +4,7 @@
     android:layout_height="100dp"
     android:layout_width="match_parent"
     android:orientation="horizontal"
-    android:background="@color/calculator_button_ripple"
+    android:background="@color/authorisation_menu_background_color"
     android:id="@+id/notate_parent_id">
 
     <TextView

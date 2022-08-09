@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/calculator_auto_edittext">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    android:background="@color/calculator_auto_edittext"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/text_field_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name">
-
+            android:hint="@string/text_field_name"
+            android:textColorHint="@color/white">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/name_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
         </com.google.android.material.textfield.TextInputLayout>
 
         <Spinner
@@ -42,4 +37,3 @@
             android:text="@string/button_create"/>
     </LinearLayout>
 
-</RelativeLayout>
