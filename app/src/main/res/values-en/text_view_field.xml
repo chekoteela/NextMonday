@@ -39,4 +39,5 @@
     <string name="text_view_recipe">Recipe</string>
     <string name="text_view_list_of_purchases">List of purchases</string>
     <string name="text_view_other">Other</string>
+    <style name="text_view_description">Description</style>
 </resources>
