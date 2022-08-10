@@ -2,6 +2,7 @@ package com.sharkit.nextmonday.main_menu.diary.fragment;
 
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE;
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE_FOLDER_ID;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.recipe.RecipeTemplateTransformer.toRecipeTemplateDTO;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.recipe.RecipeTransformer.toRecipe;
 
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class RecipeFragment extends Fragment {
 
     private void saveChanges(WidgetContainer.DiaryNotateRecipeWidget widget, RecipeTemplate template, NextMondayDatabase db, Notate notate) {
         template.setDescription(widget.getDescription().getText().toString());
+        db.recipeTemplateDAO().update(toRecipeTemplateDTO(template));
         db.notateDAO().updateName(widget.getName().getText().toString(), notate.getId());
 
         Bundle bundle = new Bundle();

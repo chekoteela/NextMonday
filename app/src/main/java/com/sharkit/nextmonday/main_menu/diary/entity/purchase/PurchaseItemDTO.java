@@ -27,6 +27,6 @@ public class PurchaseItemDTO {
     @ColumnInfo(name = "description")
     private String description;
 
-    @ColumnInfo(name = "complete")
-    private Boolean complete;
+    @ColumnInfo(name = "status")
+    private Boolean status;
 }

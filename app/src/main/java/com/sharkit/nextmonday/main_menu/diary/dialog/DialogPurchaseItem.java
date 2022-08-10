@@ -32,7 +32,7 @@ public class DialogPurchaseItem {
         final AlertDialog dialog = showDialog();
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_add), (parent, which) -> {
             PurchaseItem item = PurchaseItem.builder()
-                    .complete(Boolean.FALSE)
+                    .status(Boolean.FALSE)
                     .description(widget.getDescription().getText().toString())
                     .name(widget.getName().getText().toString())
                     .templateId(templateId)

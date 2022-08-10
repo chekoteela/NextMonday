@@ -18,7 +18,7 @@ public class PurchaseItemTransformer {
                 .name(item.getName())
                 .description(item.getDescription())
                 .templateId(item.getTemplateId())
-                .complete(item.getComplete())
+                .status(item.getStatus())
                 .build();
     }
 
@@ -28,7 +28,7 @@ public class PurchaseItemTransformer {
                 .name(itemDTO.getName())
                 .description(itemDTO.getDescription())
                 .templateId(itemDTO.getTemplateId())
-                .complete(itemDTO.getComplete())
+                .status(itemDTO.getStatus())
                 .build();
     }
 

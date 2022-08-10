@@ -13,5 +13,5 @@ public class PurchaseItem {
     private Long templateId;
     private String name;
     private String description;
-    private Boolean complete;
+    private Boolean status;
 }
