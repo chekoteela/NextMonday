@@ -53,7 +53,10 @@ public class PurchaseAdapter extends BaseAdapter {
         widget.getDescription().setText(getItem(position).getDescription());
         widget.getName().setText(getItem(position).getName());
         widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> createMenuListener(menu, context, position));
-
+        widget.getComplete().setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (buttonView.isPressed())
+                db.purchaseItemDAO().updateStatus(isChecked, getItem(position).getId());
+        });
         return convertView;
     }
 

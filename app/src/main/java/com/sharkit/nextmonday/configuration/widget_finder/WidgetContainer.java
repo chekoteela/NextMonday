@@ -121,6 +121,7 @@ public final class WidgetContainer {
         private final ImageView recipeImage;
         private final ListView recipeList;
         private final Button save;
+        private final Button searchImage;
         private final RecipeItemWidget recipeItemWidget;
 
         public DiaryNotateRecipeWidget() {
@@ -130,6 +131,7 @@ public final class WidgetContainer {
             this.recipeList = view.findViewById(R.id.recipe_list_id);
             this.save = view.findViewById(R.id.save_id);
             this.addFood = view.findViewById(R.id.add_food_id);
+            this.searchImage = view.findViewById(R.id.search_image_id);
 
             this.recipeItemWidget = new RecipeItemWidget();
         }

@@ -24,4 +24,6 @@ public class RecipeTemplateDTO {
     @ColumnInfo(name = "text")
     private String text;
 
+    @ColumnInfo(name = "image_cod")
+    private String imageCod;
 }

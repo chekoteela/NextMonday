@@ -19,4 +19,7 @@ public interface RecipeTemplateDAO {
 
     @Query("SELECT * FROM diary_recipe_template WHERE id = :id")
     RecipeDTO findById(Long id);
+
+    @Query("UPDATE diary_recipe_template SET image_cod = :imageCod WHERE id = :id")
+    void updateImageCod(String imageCod, Long id);
 }

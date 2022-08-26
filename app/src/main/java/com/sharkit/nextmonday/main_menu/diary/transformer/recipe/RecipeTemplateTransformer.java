@@ -11,6 +11,7 @@ public class RecipeTemplateTransformer {
 
     public static RecipeTemplateDTO toRecipeTemplateDTO(RecipeTemplate recipeTemplate) {
         return RecipeTemplateDTO.builder()
+                .imageCod(recipeTemplate.getImageCod())
                 .date(recipeTemplate.getDate())
                 .text(recipeTemplate.getDescription())
                 .templateId(recipeTemplate.getTemplateId())
@@ -19,6 +20,7 @@ public class RecipeTemplateTransformer {
 
     public static RecipeTemplate toRecipeTemplate(RecipeTemplateDTO recipeTemplateDTO) {
         return RecipeTemplate.builder()
+                .imageCod(recipeTemplateDTO.getImageCod())
                 .date(recipeTemplateDTO.getDate())
                 .description(recipeTemplateDTO.getText())
                 .templateId(recipeTemplateDTO.getTemplateId())
