@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary.entity;
+package com.sharkit.nextmonday.main_menu.diary.entity.recipe;
 
 
 import androidx.room.ColumnInfo;

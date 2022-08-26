@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary.domain.template;
+package com.sharkit.nextmonday.main_menu.diary.domain.template.recipe;
 
 import lombok.Builder;
 import lombok.Data;

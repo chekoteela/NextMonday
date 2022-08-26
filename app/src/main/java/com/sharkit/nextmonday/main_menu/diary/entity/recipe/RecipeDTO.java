@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary.entity;
+package com.sharkit.nextmonday.main_menu.diary.entity.recipe;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
@@ -16,9 +16,7 @@ public class RecipeDTO {
     @Embedded
     private RecipeTemplateDTO template;
 
-    @Relation(
-            parentColumn = "id",
-            entityColumn = "template_id"
-    )
+    @Relation(parentColumn = "id",
+            entityColumn = "template_id")
     private List<RecipeItemDTO> items;
 }

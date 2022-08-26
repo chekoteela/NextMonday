@@ -49,8 +49,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.jjoe64:graphview:4.2.2'
-
     implementation 'com.github.chivorns:smartmaterialspinner:1.5.0'
     implementation 'com.github.fornewid:neumorphism:0.2.1'
     implementation 'androidx.appcompat:appcompat:1.2.0'
@@ -62,6 +60,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0'
     implementation 'com.google.firebase:firebase-ads:19.8.0'
     implementation 'com.google.firebase:firebase-firestore:22.1.2'
+
     testImplementation 'junit:junit:4.+'
     testImplementation 'org.junit.jupiter:junit-jupiter'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -117,6 +116,8 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.1'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.1'
 
+    implementation 'com.google.dagger:dagger:2.16'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'

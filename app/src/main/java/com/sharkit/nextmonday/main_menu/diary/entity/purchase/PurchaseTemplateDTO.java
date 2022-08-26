@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary.entity;
+package com.sharkit.nextmonday.main_menu.diary.entity.purchase;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -7,21 +7,22 @@ import androidx.room.PrimaryKey;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@Entity(tableName = "diary_recipe_template")
 @AllArgsConstructor
-public class RecipeTemplateDTO {
+@NoArgsConstructor
+@Entity(tableName = "diary_purchase_template")
+public class PurchaseTemplateDTO {
 
-    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    private Long templateId;
+    @PrimaryKey(autoGenerate = true)
+    private Long id;
 
     @ColumnInfo(name = "date")
     private String date;
 
     @ColumnInfo(name = "text")
     private String text;
-
 }

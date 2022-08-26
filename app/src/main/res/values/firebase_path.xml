@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="path_to_user" translatable="false">/User/{userId}</string> //userId
+<!--    FIREBASE CLOUD-->
+    <string name="path_to_user" translatable="false">/User/{userId}</string>
     <string name="path_to_diary_task" translatable="false">/User/{userId}/Diary/Task/date</string>
+
+<!--    FIREBASE STORAGE-->
+    <string name="path_to_recipe_image" translatable="false">/Recipe_Image/{imageCode}</string>
+
+
+<!--    VARIABLES-->
+    <string name="path_variable_image_code" translatable="false">{imageCode}</string>
 </resources>

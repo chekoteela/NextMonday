@@ -1,5 +1,8 @@
 package com.sharkit.nextmonday.main_menu.diary.transformer;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import java.io.ByteArrayInputStream;
@@ -35,5 +38,12 @@ public class ByteArrayTransformer {
             Log.i(TAG, e.getMessage(), e);
             throw new RuntimeException(e.getMessage());
         }
+    }
+
+    public static byte[] toByteArray(Drawable drawable){
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        return baos.toByteArray();
     }
 }

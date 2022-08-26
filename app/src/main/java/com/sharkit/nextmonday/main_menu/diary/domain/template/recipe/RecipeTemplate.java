@@ -1,6 +1,4 @@
-package com.sharkit.nextmonday.main_menu.diary.domain.template;
-
-import java.util.List;
+package com.sharkit.nextmonday.main_menu.diary.domain.template.recipe;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,5 +14,5 @@ public class RecipeTemplate {
     private Long templateId;
     private String date;
     private String description;
-    private List<RecipeItem> recipeItems;
+    private String imageCod;
 }

@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.main_menu.diary.adapter;
 
-import static com.sharkit.nextmonday.main_menu.diary.transformer.RecipeItemTransformer.toRecipeItemDTO;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.recipe.RecipeItemTransformer.toRecipeItemDTO;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,7 +14,7 @@ import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogRecipeFood;
-import com.sharkit.nextmonday.main_menu.diary.domain.template.RecipeItem;
+import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.RecipeItem;
 
 import java.util.List;
 

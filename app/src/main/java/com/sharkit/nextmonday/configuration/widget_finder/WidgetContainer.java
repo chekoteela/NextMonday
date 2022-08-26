@@ -70,8 +70,47 @@ public final class WidgetContainer {
         return new DiaryNotateRecipeWidget();
     }
 
+    public DiaryPurchaseWidget getDiaryPurchaseWidget() {
+        return new DiaryPurchaseWidget();
+    }
+
     public static WidgetContainer newInstance(View view) {
         return new WidgetContainer(view);
+    }
+
+    @Getter
+    public class DiaryPurchaseWidget {
+        private final FloatingActionButton addPurchase;
+        private final EditText name;
+        private final EditText description;
+        private final ListView purchaseList;
+        private final Button save;
+        private final PurchaseItemWidget purchaseItemWidget;
+
+        public DiaryPurchaseWidget() {
+            this.name = view.findViewById(R.id.edit_name_id);
+            this.description = view.findViewById(R.id.edit_description_id);
+            this.purchaseList = view.findViewById(R.id.purchase_list_id);
+            this.save = view.findViewById(R.id.save_id);
+            this.addPurchase = view.findViewById(R.id.add_purchase_id);
+
+            this.purchaseItemWidget = new PurchaseItemWidget();
+        }
+
+        @Getter
+        public class PurchaseItemWidget {
+            private final TextView name;
+            private final TextView description;
+            private final LinearLayout item;
+            private final CheckBox complete;
+
+            public PurchaseItemWidget() {
+                this.name = view.findViewById(R.id.purchase_name_id);
+                this.description = view.findViewById(R.id.purchase_description_id);
+                this.item = view.findViewById(R.id.purchase_item_id);
+                this.complete = view.findViewById(R.id.complete_item_id);
+            }
+        }
     }
 
     @Getter
@@ -82,6 +121,7 @@ public final class WidgetContainer {
         private final ImageView recipeImage;
         private final ListView recipeList;
         private final Button save;
+        private final Button searchImage;
         private final RecipeItemWidget recipeItemWidget;
 
         public DiaryNotateRecipeWidget() {
@@ -91,6 +131,7 @@ public final class WidgetContainer {
             this.recipeList = view.findViewById(R.id.recipe_list_id);
             this.save = view.findViewById(R.id.save_id);
             this.addFood = view.findViewById(R.id.add_food_id);
+            this.searchImage = view.findViewById(R.id.search_image_id);
 
             this.recipeItemWidget = new RecipeItemWidget();
         }
@@ -315,22 +356,22 @@ public final class WidgetContainer {
         private final DialogChangeSubjectWidget dialogChangeSubjectWidget;
         private final DialogDeleteSubjectWidget dialogDeleteSubjectWidget;
         private final DialogCreateNotateWidget dialogCreateNotateWidget;
-        private final RecipeAddFoodWidget recipeAddFoodWidget;
+        private final TemplateAddItemWidget templateAddItemWidget;
 
         public Dialog() {
             this.repeatersWidget = new RepeatersWidget();
             this.dialogChangeSubjectWidget = new DialogChangeSubjectWidget();
             this.dialogDeleteSubjectWidget = new DialogDeleteSubjectWidget();
             this.dialogCreateNotateWidget = new DialogCreateNotateWidget();
-            this.recipeAddFoodWidget = new RecipeAddFoodWidget();
+            this.templateAddItemWidget = new TemplateAddItemWidget();
         }
 
         @Getter
-        public class RecipeAddFoodWidget {
+        public class TemplateAddItemWidget {
             private final EditText name;
             private final EditText description;
 
-            public RecipeAddFoodWidget() {
+            public TemplateAddItemWidget() {
                 this.name = view.findViewById(R.id.food_name_id);
                 this.description = view.findViewById(R.id.food_description_id);
             }
