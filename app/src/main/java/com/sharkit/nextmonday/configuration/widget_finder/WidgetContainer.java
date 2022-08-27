@@ -1,6 +1,5 @@
 package com.sharkit.nextmonday.configuration.widget_finder;
 
-import android.annotation.SuppressLint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -23,16 +22,14 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
 import com.sharkit.nextmonday.R;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@SuppressLint("StaticFieldLeak")
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class WidgetContainer {
 
     private final View view;
-
-    private WidgetContainer(View view) {
-        this.view = view;
-    }
 
     public Dialog getDialog(){
         return new Dialog();

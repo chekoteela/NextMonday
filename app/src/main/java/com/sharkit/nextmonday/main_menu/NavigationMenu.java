@@ -1,7 +1,5 @@
 package com.sharkit.nextmonday.main_menu;
 
-import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_NOTATE_FOLDER_ID;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -27,8 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
 
-import java.util.Calendar;
-
+@SuppressLint("NonConstantResourceId")
 public class NavigationMenu extends AppCompatActivity {
 
     private static Context context;
@@ -48,7 +46,6 @@ public class NavigationMenu extends AppCompatActivity {
         context = getApplicationContext();
     }
 
-    @SuppressLint({"NonConstantResourceId", "SimpleDateFormat"})
     public void onMenuItemClick(MenuItem item) {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         switch (item.getItemId()) {
@@ -74,9 +71,9 @@ public class NavigationMenu extends AppCompatActivity {
             case R.id.exit_item:
                 exit();
                 break;
-            case R.id.setting_item:
+//            case R.id.setting_item:
 //                navController.navigate(R.id.nav_settings);
-                break;
+//                break;
             case R.id.share_item:
                 share();
                 break;
@@ -86,8 +83,20 @@ public class NavigationMenu extends AppCompatActivity {
         }
     }
 
+    public void additionalMenuDrawer(MenuItem item) {
+        final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
+        switch (item.getItemId()) {
+            case R.id.feedback_item:
+                navController.navigate(R.id.navigation_support_feedback);
+                break;
+            default: throw new RuntimeException("Unexpected value");
+        }
+    }
+
     public void diaryMenuClickListener(MenuItem item) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
         switch (item.getItemId()) {
             case R.id.item_diary_calendar:
                 navController.navigate(R.id.navigation_diary_calendar);
@@ -96,9 +105,9 @@ public class NavigationMenu extends AppCompatActivity {
                 navController.navigate(R.id.navigation_diary_notate);
                 break;
             case R.id.item_diary_main:
-                listTarget();
                 navController.navigate(R.id.navigation_diary_main);
                 break;
+            default: throw new RuntimeException("Unexpected value");
         }
     }
 
@@ -116,15 +125,6 @@ public class NavigationMenu extends AppCompatActivity {
         intent.setType("https://play.google.com/store/apps/details?id=com.sharkit.nextmonday");
         intent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.sharkit.nextmonday");
         startActivity(Intent.createChooser(intent, "Share"));
-    }
-
-    private void listTarget() {
-        Calendar calendar = Calendar.getInstance();
-        while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
-            calendar.add(Calendar.DAY_OF_WEEK, -1);
-        }
-//        Bundle bundle = new Bundle();
-//        bundle.putLong(DATE_FOR_MAIN_DIARY_LIST, Calendar.getInstance().getTimeInMillis());
     }
 
     private void exit() {

@@ -2,13 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/setting_item"
-        android:contentDescription="@string/action_settings2"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:onClick="onMenuItemClick"
+    <item android:id="@+id/action_settings"
+        android:title="@string/text_view_setting"
         android:orderInCategory="100"
-        android:title="TODO"
-        app:showAsAction="ifRoom" />
-
+        app:showAsAction="never" />
 </menu>
