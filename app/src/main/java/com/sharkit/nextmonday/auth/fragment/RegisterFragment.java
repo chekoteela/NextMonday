@@ -41,7 +41,7 @@ public class RegisterFragment extends Fragment {
     }
 
     private void createAccountByEmailAndPassword(WidgetContainer.RegisterMenuWidget widget) {
-        EmailAndPasswordService service = new EmailAndPasswordService(widget);
+        EmailAndPasswordService service = new EmailAndPasswordService(widget, getContext());
         Log.i(TAG, "Moving to creation user by email and password");
         service.createAccountByEmailAndPassword();
     }

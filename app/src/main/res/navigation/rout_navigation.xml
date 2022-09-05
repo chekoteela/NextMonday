@@ -33,7 +33,17 @@
         android:id="@+id/navigation_diary_notate_purchase"
         android:name="com.sharkit.nextmonday.main_menu.diary.fragment.PurchaseFragment"/>
 
-<!--&lt;!&ndash;    END&ndash;&gt;-->
+<!--    SUPPORT-->
+
+    <fragment
+        android:id="@+id/navigation_support_feedback_messenger"
+        android:name="com.sharkit.nextmonday.main_menu.support.fragment.FeedbackMessengerFragment"/>
+
+    <fragment
+        android:id="@+id/navigation_support_feedback"
+        android:name="com.sharkit.nextmonday.main_menu.support.fragment.FeedbackFragment"/>
+
+    <!--&lt;!&ndash;    END&ndash;&gt;-->
 
 <!--    <fragment-->
 <!--        android:id="@+id/nav_calculator_main"-->

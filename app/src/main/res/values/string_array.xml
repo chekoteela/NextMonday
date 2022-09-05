@@ -11,4 +11,10 @@
         <item>@string/text_view_recipe</item>
         <item>@string/text_view_list_of_purchases</item>
     </string-array>
+
+    <string-array name="spinner_feedback">
+        <item>@string/text_view_feedback_error</item>
+        <item>@string/text_view_feedback_improvement</item>
+        <item>@string/text_view_feedback_question</item>
+    </string-array>
 </resources>

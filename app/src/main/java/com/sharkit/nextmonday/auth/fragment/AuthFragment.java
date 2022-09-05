@@ -19,9 +19,12 @@ import androidx.navigation.Navigation;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.dialog.AuthDialog;
+import com.sharkit.nextmonday.auth.entity.User;
+import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
 import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
 import com.sharkit.nextmonday.configuration.utils.CryptoAES;
 import com.sharkit.nextmonday.configuration.utils.ToastMenuMessage;
+import com.sharkit.nextmonday.configuration.utils.service.UserSharedPreference;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.NavigationMenu;
 
@@ -52,17 +55,20 @@ public class AuthFragment extends Fragment {
     }
 
     private void authByEmailAndPassword() {
-        if (Boolean.TRUE.equals(isValidAuthData())) {
+        if (Boolean.FALSE.equals(isValidAuthData())) {
+            Log.e(TAG, "not valid auth data");
             return;
         }
-
         final CryptoAES aes = CryptoAES.getInstance();
+
+        Log.i(TAG, "auth by email and password");
 
         mAuth.signInWithEmailAndPassword(widgetContainer.getEmail().getText().toString(),
                 aes.encrypt(widgetContainer.getPassword().getText().toString().trim()))
-                .addOnSuccessListener(authResult -> startActivity(new Intent(getActivity(), NavigationMenu.class))).addOnFailureListener(e -> {
+                .addOnSuccessListener(authResult -> startActivity(new Intent(getActivity(), NavigationMenu.class)))
+                .addOnFailureListener(e -> {
             ToastMenuMessage.trowToastMessage();
-            Log.i(TAG, e.getMessage(), e);
+            Log.e(TAG, e.getMessage(), e);
         });
     }
 
@@ -75,7 +81,12 @@ public class AuthFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(getActivity(), NavigationMenu.class));
+            new UserRepository().findById(mAuth.getCurrentUser().getUid())
+                    .addOnSuccessListener(documentSnapshot -> {
+                        User currentUser = documentSnapshot.toObject(User.class);
+                        new UserSharedPreference(getContext()).set(currentUser);
+                        startActivity(new Intent(getActivity(), NavigationMenu.class));
+                    });
         }
     }
 }

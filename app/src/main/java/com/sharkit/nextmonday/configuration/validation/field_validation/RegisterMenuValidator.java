@@ -30,7 +30,7 @@ public class RegisterMenuValidator {
                 .notEmpty()
                 .hasNoSpace()
                 .tooLongValue(50)
-                .tooSmallValue(6)
+                .tooSmallValue(4)
                 .hasNotCyrillic()
                 .build();
     }

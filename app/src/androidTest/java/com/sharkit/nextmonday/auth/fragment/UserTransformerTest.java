@@ -12,7 +12,7 @@ public class UserTransformerTest {
 
     @Test
     public void testToUser() {
-        assertEquals(buildUser(), UserTransformer.toUser("uId", "google@gmail.com", "Name", "LastName", "qwerty"));
+        assertEquals(buildUser(), UserTransformer.toUser("google@gmail.com", "Name", "LastName", "qwerty"));
     }
 
     @Test
@@ -30,7 +30,6 @@ public class UserTransformerTest {
     }
     private User buildUser() {
         return User.builder()
-                .id("uId")
                 .name("Name")
                 .lastName("LastName")
                 .password("vkpnOOJcIAvYr9guLrYAvA==")

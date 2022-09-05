@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday.auth.fb_repository;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
@@ -17,5 +19,11 @@ public class UserRepository {
     public void create(User user) {
         path = path.replace("{userId}", user.getId());
         db.document(path).set(user);
+    }
+
+    public Task<DocumentSnapshot> findById(String id) {
+        path = path.replace("{userId}", id);
+        return db.document(path)
+                .get();
     }
 }

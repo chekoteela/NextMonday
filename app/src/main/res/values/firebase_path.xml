@@ -3,6 +3,7 @@
 <!--    FIREBASE CLOUD-->
     <string name="path_to_user" translatable="false">/User/{userId}</string>
     <string name="path_to_diary_task" translatable="false">/User/{userId}/Diary/Task/date</string>
+    <string name="path_to_feedback" translatable="false">/Feedback</string>
 
 <!--    FIREBASE STORAGE-->
     <string name="path_to_recipe_image" translatable="false">/Recipe_Image/{imageCode}</string>

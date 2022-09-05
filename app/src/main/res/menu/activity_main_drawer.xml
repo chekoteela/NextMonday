@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
 
@@ -46,9 +47,11 @@
                     android:title="@string/PROVersion" />
 
                 <item
-                    android:id="@+id/nav_feedback"
+                    android:id="@+id/feedback_item"
                     android:contentDescription="@string/Connection2"
                     android:icon="@drawable/icon_feedback"
+                    android:onClick="additionalMenuDrawer"
+                    app:showAsAction="ifRoom"
                     android:title="@string/Connection" />
 
                 <item

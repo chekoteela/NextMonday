@@ -20,7 +20,6 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
-import com.sharkit.nextmonday.configuration.utils.service.SharedPreference;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.adapter.RecipeAdapter;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogRecipeFood;
@@ -29,6 +28,7 @@ import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.Recipe;
 import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.RecipeTemplate;
 import com.sharkit.nextmonday.main_menu.diary.service.ImageStorageService;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class RecipeFragment extends Fragment {
@@ -38,15 +38,13 @@ public class RecipeFragment extends Fragment {
     private Recipe recipe;
     private ImageStorageService imageStorageService;
 
-    private static final String DIARY_RECIPE_IMAGE = "diary_recipe_image";
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final Notate notate = (Notate) requireArguments().getSerializable(DIARY_NOTATE);
         final View view = inflater.inflate(R.layout.diary_noto_recipe, container, false);
 
-        this.imageStorageService = new ImageStorageService(getContext(), getString(R.string.path_to_recipe_image));
+        this.imageStorageService = new ImageStorageService(requireContext());
         this.db = NextMondayDatabase.getInstance(getContext());
         this.recipe = toRecipe(this.db.recipeTemplateDAO().findById(notate.getTemplateId()));
         final RecipeAdapter recipeAdapter = new RecipeAdapter(recipe.getRecipeItems(), getContext());
@@ -55,12 +53,12 @@ public class RecipeFragment extends Fragment {
         this.widget.getName().setText(notate.getName());
         this.widget.getDescription().setText(recipe.getRecipeTemplate().getDescription());
         this.widget.getRecipeList().setAdapter(recipeAdapter);
-        this.widget.getRecipeImage().setImageBitmap(new SharedPreference(getContext(), DIARY_RECIPE_IMAGE).getImage(recipe.getRecipeTemplate().getImageCod()));
         this.widget.getAddFood().setOnClickListener(v -> new DialogRecipeFood(getContext(), notate.getTemplateId(), recipe.getRecipeItems(), recipeAdapter).createItem());
         this.widget.getSearchImage().setOnClickListener(v -> downloadNewImageAndDeleteOld());
         this.widget.getSave().setOnClickListener(v -> saveChanges(recipe.getRecipeTemplate(), db, notate));
 
-        this.imageStorageService.downloadFile(recipe.getRecipeTemplate().getImageCod(), widget.getRecipeImage());
+        this.imageStorageService.downloadFile(Optional.ofNullable(recipe.getRecipeTemplate().getImageCod()).orElse(""),
+                widget.getRecipeImage());
         return view;
     }
 

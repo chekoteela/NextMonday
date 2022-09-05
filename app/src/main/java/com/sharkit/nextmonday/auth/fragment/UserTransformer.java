@@ -15,11 +15,10 @@ import lombok.AllArgsConstructor;
 public class UserTransformer {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static User toUser(String uId, String email, String name, String lastName, String password) {
+    public static User toUser(String email, String name, String lastName, String password) {
         final CryptoAES aes = CryptoAES.getInstance();
 
         return User.builder()
-                .id(uId)
                 .email(email.trim())
                 .name(name.trim())
                 .lastName(lastName.trim())

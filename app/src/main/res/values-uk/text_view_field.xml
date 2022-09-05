@@ -41,4 +41,11 @@
     <string name="text_view_list_of_purchases">Список покупок</string>
     <string name="text_view_other">Інше</string>
 
+    <string name="text_view_feedback">Зворотній звязок</string>
+    <string name="text_view_setting">Налаштування</string>
+
+    <string name="text_view_feedback_error">Помилка</string>
+    <string name="text_view_feedback_improvement">Побажання</string>
+    <string name="text_view_feedback_question">Питання</string>
+
 </resources>
