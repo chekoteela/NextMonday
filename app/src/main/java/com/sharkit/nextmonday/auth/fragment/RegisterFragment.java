@@ -15,6 +15,7 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.fragment.register.EmailAndPasswordService;
+import com.sharkit.nextmonday.auth.validation.RegistrationMenuValidation;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -41,9 +42,12 @@ public class RegisterFragment extends Fragment {
     }
 
     private void createAccountByEmailAndPassword(WidgetContainer.RegisterMenuWidget widget) {
+        if (!new RegistrationMenuValidation(widget, getContext()).validateField()){
+            Log.e(TAG, "Not valid registration data");
+            return;
+        }
         EmailAndPasswordService service = new EmailAndPasswordService(widget, getContext());
         Log.i(TAG, "Moving to creation user by email and password");
         service.createAccountByEmailAndPassword();
     }
-
 }

@@ -1,9 +1,6 @@
 package com.sharkit.nextmonday.auth.fragment.register;
 
-import static com.sharkit.nextmonday.auth.fragment.UserTransformer.toUser;
-import static com.sharkit.nextmonday.configuration.validation.field_validation.RegisterMenuValidator.isNameValid;
-import static com.sharkit.nextmonday.configuration.validation.field_validation.RegisterMenuValidator.isPasswordValid;
-import static com.sharkit.nextmonday.configuration.validation.field_validation.RegisterMenuValidator.isValidEmail;
+import static com.sharkit.nextmonday.auth.transformer.UserTransformer.toUser;
 
 import android.content.Context;
 import android.os.Build;
@@ -31,11 +28,6 @@ public class EmailAndPasswordService {
     private final Context context;
 
     public void createAccountByEmailAndPassword() {
-        if (Boolean.FALSE.equals(validateField())) {
-            Log.e(TAG, "not valid fields");
-            return;
-        }
-
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final User user = toUser(
                 widgetContainer.getEmail().getText().toString(),
@@ -54,14 +46,4 @@ public class EmailAndPasswordService {
                 })
                 .addOnFailureListener(e -> Log.e(TAG, e.getMessage(), e));
     }
-
-    private Boolean validateField() {
-
-        return isValidEmail(widgetContainer.getEmail().getText().toString()) &&
-                isNameValid(widgetContainer.getUserName().getText().toString()) &&
-                isNameValid(widgetContainer.getUserLastName().getText().toString()) &&
-                isPasswordValid(widgetContainer.getPassword().getText().toString());
-    }
-
-
 }

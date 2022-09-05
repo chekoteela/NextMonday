@@ -10,17 +10,17 @@
     <string name="toast_task_added_successfully">Задача додана</string>
 
 <!--    VALIDATION-->
-    <string name="toast_field_must_be_not_empty">Поле не повино бути пустим : %s</string>
-    <string name="toast_field_value_to_long">Дуже довге значення поля : %s</string>
-    <string name="toast_field_value_to_short">Дуже коротке значення поля : %s</string>
-    <string name="toast_field_has_symbols">Поле не повино містити символів : %s</string>
-    <string name="toast_field_has_space">Поле не повино містити пробілів : %s</string>
+    <string name="toast_field_must_be_not_empty">Поле не повино бути пустим</string>
+    <string name="toast_field_value_to_long">Повино бути знаків меньше ніж: {size}</string>
+    <string name="toast_field_value_to_short">Повино бути знаків більше ніж: {size}</string>
+    <string name="toast_field_has_symbols">Поле не повино містити символів</string>
+    <string name="toast_field_has_space">Поле не повино містити пробілів</string>
     <string name="toast_email_is_not_valid">Введіть коректний електроний адрес</string>
-    <string name="toast_field_has_number">Поле не повино містити цифер : %s</string>
-    <string name="toast_field_has_cyrillic">Поле не повино містити кирилиці : %s</string>
-    <string name="toast_null_spinner_position">Поле повино бути вибрано : %s</string>
-    <string name="toast_field_value_to_big">Дуже велике значення поля : %s</string>
-    <string name="toast_field_value_to_small">Дуже маленьке значення поля : %s</string>
+    <string name="toast_field_has_number">Поле не повино містити цифер</string>
+    <string name="toast_field_has_cyrillic">Поле не повино містити кирилиці</string>
+    <string name="toast_null_spinner_position">Поле повино бути вибрано</string>
+    <string name="toast_field_value_to_big">Дуже велике значення поля</string>
+    <string name="toast_field_value_to_small">Дуже маленьке значення поля</string>
 
 
 

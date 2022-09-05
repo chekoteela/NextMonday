@@ -1,7 +1,12 @@
 package com.sharkit.nextmonday.configuration.validation.widget_validation;
 
+import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
+
+import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.auth.entity.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,64 +16,78 @@ import java.util.regex.Pattern;
 public class TextValidation {
 
     private final String textFromField;
-    private final List<Boolean> result;
+    private final List<Validator> result;
+    private final Context context;
+    private final String size;
 
-    public TextValidation(String textFromField) {
+    public TextValidation(String textFromField, Context context) {
         result = new ArrayList<>();
         this.textFromField = textFromField;
-
+        this.context = context;
+        this.size = context.getText(R.string.variable_size).toString();
     }
 
     public TextValidation notEmpty() {
-        result.add(!TextUtils.isEmpty(textFromField));
+        toValidatorList(context.getString(R.string.toast_field_must_be_not_empty), !TextUtils.isEmpty(textFromField));
         return this;
     }
 
     public TextValidation isValidEmail() {
-        result.add(Patterns.EMAIL_ADDRESS.matcher(textFromField).matches());
+        toValidatorList(context.getString(R.string.toast_email_is_not_valid), Patterns.EMAIL_ADDRESS.matcher(textFromField).matches());
         return this;
     }
 
     public TextValidation tooLongValue(Integer size) {
-        result.add(textFromField.length() < size);
+        toValidatorList(context.getString(R.string.toast_field_value_to_long).replace(this.size, size.toString()), textFromField.length() < size);
         return this;
     }
 
-    public TextValidation tooSmallValue(Integer size) {
-        result.add(textFromField.length() > size);
+    public TextValidation tooShortValue(Integer size) {
+        toValidatorList(context.getString(R.string.toast_field_value_to_short).replace(this.size, size.toString()), textFromField.length() > size);
         return this;
     }
 
     public TextValidation hasNoSymbols() {
         Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,°•○●□■♤♡◇♧☆▪¤《》¡¿.`]");
         Matcher hasSign = sign.matcher(textFromField);
-        result.add(!hasSign.find());
+        toValidatorList(context.getString(R.string.toast_field_has_symbols), !hasSign.find());
         return this;
     }
 
     public TextValidation hasNotCyrillic() {
         Pattern cyrillic = Pattern.compile("[а-яА-Я]");
         Matcher hasCyrillic = cyrillic.matcher(textFromField);
-        result.add(!hasCyrillic.find());
+        toValidatorList(context.getString(R.string.toast_field_has_cyrillic), !hasCyrillic.find());
         return this;
     }
 
     public TextValidation hasNoNumber() {
         Pattern num = Pattern.compile("[0-9]");
         Matcher hasNum = num.matcher(textFromField);
-        result.add(!hasNum.find());
+        toValidatorList(context.getString(R.string.toast_field_has_number), !hasNum.find());
         return this;
     }
 
     public TextValidation hasNoSpace() {
         Pattern space = Pattern.compile(" ");
         Matcher hasSpace = space.matcher(textFromField);
-        result.add(!hasSpace.find());
+        toValidatorList(context.getString(R.string.toast_field_has_space), !hasSpace.find());
         return this;
     }
 
     public Boolean build() {
-        return !result.contains(Boolean.FALSE);
+        return result.stream()
+                .filter(res -> res.getValid().equals(Boolean.FALSE))
+                .findFirst()
+                .map(res -> {
+                    res.throwToastMessage(context);
+                    Log.i("TAGA", "build: " + res.getMessageText());
+                    return Boolean.TRUE;
+                })
+                .orElse(Boolean.FALSE);
     }
 
+    private void toValidatorList(String message, Boolean isValid) {
+        result.add(new Validator(message, isValid));
+    }
 }

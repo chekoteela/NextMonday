@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import com.sharkit.nextmonday.auth.entity.User;
 import com.sharkit.nextmonday.auth.entity.enums.UserRole;
+import com.sharkit.nextmonday.auth.transformer.UserTransformer;
 
 import org.junit.Test;
 
