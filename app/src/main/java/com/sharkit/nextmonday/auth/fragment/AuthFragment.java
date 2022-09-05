@@ -1,7 +1,5 @@
 package com.sharkit.nextmonday.auth.fragment;
 
-import static com.sharkit.nextmonday.configuration.validation.field_validation.AuthValidation.isValidAuthField;
-
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +20,7 @@ import com.sharkit.nextmonday.auth.dialog.AuthDialog;
 import com.sharkit.nextmonday.auth.entity.User;
 import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
 import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
+import com.sharkit.nextmonday.auth.validation.AuthValidation;
 import com.sharkit.nextmonday.configuration.utils.CryptoAES;
 import com.sharkit.nextmonday.configuration.utils.ToastMenuMessage;
 import com.sharkit.nextmonday.configuration.utils.service.UserSharedPreference;
@@ -55,8 +54,8 @@ public class AuthFragment extends Fragment {
     }
 
     private void authByEmailAndPassword() {
-        if (Boolean.FALSE.equals(isValidAuthData())) {
-            Log.e(TAG, "not valid auth data");
+        if (!Boolean.FALSE.equals(new AuthValidation(getContext(), widgetContainer).isValidAuthData())) {
+            Log.e(TAG, "Not valid auth data");
             return;
         }
         final CryptoAES aes = CryptoAES.getInstance();
@@ -70,11 +69,6 @@ public class AuthFragment extends Fragment {
             ToastMenuMessage.trowToastMessage();
             Log.e(TAG, e.getMessage(), e);
         });
-    }
-
-    private Boolean isValidAuthData() {
-        return isValidAuthField(widgetContainer.getEmail().getText().toString()) &&
-                isValidAuthField(widgetContainer.getPassword().getText().toString());
     }
 
     @Override

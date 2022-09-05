@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.auth.fragment;
+package com.sharkit.nextmonday.auth.transformer;
 
 import android.os.Build;
 

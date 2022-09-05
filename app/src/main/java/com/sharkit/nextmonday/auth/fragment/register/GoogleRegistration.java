@@ -2,7 +2,7 @@ package com.sharkit.nextmonday.auth.fragment.register;
 
 
 import static com.sharkit.nextmonday.NextMondayActivity.RC_SIGN_IN;
-import static com.sharkit.nextmonday.auth.fragment.UserTransformer.toUser;
+import static com.sharkit.nextmonday.auth.transformer.UserTransformer.toUser;
 
 import android.app.Activity;
 import android.content.Intent;
