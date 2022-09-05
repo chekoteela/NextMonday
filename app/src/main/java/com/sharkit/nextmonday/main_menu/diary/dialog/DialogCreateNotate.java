@@ -1,5 +1,8 @@
 package com.sharkit.nextmonday.main_menu.diary.dialog;
 
+import static com.sharkit.nextmonday.main_menu.diary.enums.NotateType.getNotateTypeById;
+import static com.sharkit.nextmonday.main_menu.diary.enums.TemplateType.getTemplateTypeById;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -28,6 +31,8 @@ public class DialogCreateNotate {
         final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_create_noto, null);
         final WidgetContainer.Dialog.DialogCreateNotateWidget widget = WidgetContainer.newInstance(view).getDialog().getDialogCreateNotateWidget();
 
+        widget.getTypeOfNotate().setSelection(parentType.getId());
+
         if (!parentType.equals(NotateType.OTHER)) {
             widget.getTypeOfNotate().setVisibility(View.GONE);
         }
@@ -35,8 +40,8 @@ public class DialogCreateNotate {
         widget.getCreate().setOnClickListener(v -> {
             Notate notate = Notate.builder()
                     .parentFolderId(parentId)
-                    .notateType(getNotateType(widget.getTypeOfNotate().getSelectedItemPosition()))
-                    .templateType(getTemplateType(widget.getTypeOfKeeping().getSelectedItemPosition()))
+                    .notateType(getNotateTypeById(widget.getTypeOfNotate().getSelectedItemPosition()))
+                    .templateType(getTemplateTypeById(widget.getTypeOfKeeping().getSelectedItemPosition()))
                     .name(Objects.requireNonNull(widget.getName().getText()).toString())
                     .build();
 
@@ -50,30 +55,4 @@ public class DialogCreateNotate {
         dialog.show();
     }
 
-    private TemplateType getTemplateType(int position) {
-        switch (position) {
-            case 0:
-                return TemplateType.FOLDER;
-            case 1:
-                return TemplateType.FILE;
-            default:
-                Log.e(TAG, "Unsupported value");
-                throw new RuntimeException();
-        }
-    }
-
-    private NotateType getNotateType(int position) {
-
-            switch (position) {
-                case 0:
-                    return NotateType.OTHER;
-                case 1:
-                    return NotateType.RECIPE;
-                case 2:
-                    return NotateType.LIST_OF_PURCHASE;
-                default:
-                    Log.e(TAG, "Unsupported value");
-                    throw new RuntimeException();
-            }
-    }
 }

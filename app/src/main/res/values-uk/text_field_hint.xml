@@ -6,5 +6,6 @@
     <string name="text_field_last_name">Фамілія</string>
     <string name="text_field_task_name">Назва задачі</string>
     <string name="text_field_description">Опис</string>
+    <string name="text_field_tittle">Заголовок</string>
 
 </resources>

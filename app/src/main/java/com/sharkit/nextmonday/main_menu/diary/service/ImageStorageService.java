@@ -16,10 +16,10 @@ public class ImageStorageService {
 
     private final String imageCode;
 
-    public ImageStorageService(Context context, String pathToImage) {
+    public ImageStorageService(Context context) {
         this.storage = FirebaseStorage.getInstance();
         this.context = context;
-        this.pathToImage = pathToImage;
+        this.pathToImage = context.getString(R.string.path_to_recipe_image);
         this.imageCode = context.getString(R.string.path_variable_image_code);
     }
 

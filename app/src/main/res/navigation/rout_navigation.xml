@@ -36,6 +36,10 @@
 <!--    SUPPORT-->
 
     <fragment
+        android:id="@+id/navigation_support_feedback_messenger"
+        android:name="com.sharkit.nextmonday.main_menu.support.fragment.FeedbackMessengerFragment"/>
+
+    <fragment
         android:id="@+id/navigation_support_feedback"
         android:name="com.sharkit.nextmonday.main_menu.support.fragment.FeedbackFragment"/>
 

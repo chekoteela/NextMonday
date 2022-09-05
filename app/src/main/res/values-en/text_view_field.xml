@@ -43,4 +43,8 @@
     <string name="text_view_feedback">Feedback</string>
     <string name="text_view_setting">Setting</string>
 
+    <string name="text_view_feedback_error">Error</string>
+    <string name="text_view_feedback_improvement">Wish</string>
+    <string name="text_view_feedback_question">Question</string>
+
 </resources>
