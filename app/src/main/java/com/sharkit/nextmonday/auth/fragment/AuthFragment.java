@@ -54,7 +54,7 @@ public class AuthFragment extends Fragment {
     }
 
     private void authByEmailAndPassword() {
-        if (!Boolean.FALSE.equals(new AuthValidation(getContext(), widgetContainer).isValidAuthData())) {
+        if (!new AuthValidation(getContext(), widgetContainer).isValidAuthData()) {
             Log.e(TAG, "Not valid auth data");
             return;
         }
