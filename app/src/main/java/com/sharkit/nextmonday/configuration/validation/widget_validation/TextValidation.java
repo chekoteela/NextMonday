@@ -2,29 +2,32 @@ package com.sharkit.nextmonday.configuration.validation.widget_validation;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.entity.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextValidation {
 
+    private final TextInputEditText inputEditText;
+    private final Context context;
     private final String textFromField;
     private final List<Validator> result;
-    private final Context context;
     private final String size;
 
-    public TextValidation(String textFromField, Context context) {
+    public TextValidation(TextInputEditText inputEditText, Context context) {
         result = new ArrayList<>();
-        this.textFromField = textFromField;
+        this.inputEditText = inputEditText;
         this.context = context;
         this.size = context.getText(R.string.variable_size).toString();
+        this.textFromField = Objects.requireNonNull(inputEditText.getText()).toString().trim();
     }
 
     public TextValidation notEmpty() {
@@ -81,7 +84,7 @@ public class TextValidation {
                 .findFirst()
                 .map(res -> {
                     res.throwToastMessage(context);
-                    Log.i("TAGA", "build: " + res.getMessageText());
+                    //TODO set some animation for text field
                     return Boolean.TRUE;
                 })
                 .orElse(Boolean.FALSE);
@@ -90,4 +93,5 @@ public class TextValidation {
     private void toValidatorList(String message, Boolean isValid) {
         result.add(new Validator(message, isValid));
     }
+
 }

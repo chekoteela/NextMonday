@@ -283,10 +283,10 @@ public final class WidgetContainer {
     @Getter
     public class RegisterMenuWidget {
 
-        private final EditText userName;
-        private final EditText userLastName;
-        private final EditText email;
-        private final EditText password;
+        private final TextInputEditText userName;
+        private final TextInputEditText userLastName;
+        private final TextInputEditText email;
+        private final TextInputEditText password;
         private final Button createAccount;
         private final Button signIn;
         private final CheckBox policy;
@@ -309,8 +309,8 @@ public final class WidgetContainer {
 
         private final Button createAccount;
         private final Button signIn;
-        private final EditText email;
-        private final EditText password;
+        private final TextInputEditText email;
+        private final TextInputEditText password;
         private final ImageView google;
         private final TextView forgotPassword;
 
