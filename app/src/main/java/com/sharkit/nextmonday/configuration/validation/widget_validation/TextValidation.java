@@ -4,9 +4,10 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Patterns;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.entity.Validator;
+import com.sharkit.nextmonday.configuration.animation.YoYoAnimation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,18 +17,18 @@ import java.util.regex.Pattern;
 
 public class TextValidation {
 
-    private final TextInputEditText inputEditText;
+    private final TextInputLayout inputLayout;
     private final Context context;
     private final String textFromField;
     private final List<Validator> result;
     private final String size;
 
-    public TextValidation(TextInputEditText inputEditText, Context context) {
+    public TextValidation(TextInputLayout inputLayout, Context context) {
         result = new ArrayList<>();
-        this.inputEditText = inputEditText;
+        this.inputLayout = inputLayout;
         this.context = context;
         this.size = context.getText(R.string.variable_size).toString();
-        this.textFromField = Objects.requireNonNull(inputEditText.getText()).toString().trim();
+        this.textFromField = Objects.requireNonNull(inputLayout.getEditText()).getText().toString().trim();
     }
 
     public TextValidation notEmpty() {
@@ -84,7 +85,7 @@ public class TextValidation {
                 .findFirst()
                 .map(res -> {
                     res.throwToastMessage(context);
-                    //TODO set some animation for text field
+                    YoYoAnimation.getInstance().setRubberBandAnimation(inputLayout);
                     return Boolean.TRUE;
                 })
                 .orElse(Boolean.FALSE);

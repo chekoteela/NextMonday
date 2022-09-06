@@ -28,6 +28,7 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_name_layout_id"
             style="@style/text_field_style"
             android:layout_margin="5dp"
             android:layout_width="match_parent"
@@ -47,6 +48,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/user_last_name_layout_id"
             style="@style/text_field_style"
             android:layout_margin="5dp"
             android:layout_width="match_parent"
@@ -66,6 +68,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_layout_id"
             style="@style/text_field_style"
             android:layout_margin="5dp"
             android:layout_width="match_parent"
@@ -85,6 +88,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_layout_id"
             style="@style/text_field_style"
             android:layout_margin="5dp"
             android:layout_width="match_parent"

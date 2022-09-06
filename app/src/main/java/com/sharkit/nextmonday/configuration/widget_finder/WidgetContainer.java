@@ -20,6 +20,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.sharkit.nextmonday.R;
 
 import lombok.AccessLevel;
@@ -283,14 +284,18 @@ public final class WidgetContainer {
     @Getter
     public class RegisterMenuWidget {
 
-        private final TextInputEditText userName;
-        private final TextInputEditText userLastName;
-        private final TextInputEditText email;
-        private final TextInputEditText password;
+        private final EditText userName;
+        private final EditText userLastName;
+        private final EditText email;
+        private final EditText password;
         private final Button createAccount;
         private final Button signIn;
         private final CheckBox policy;
         private final TextView policyText;
+        private final TextInputLayout emailLayout;
+        private final TextInputLayout passwordLayout;
+        private final TextInputLayout userNameLayout;
+        private final TextInputLayout userLastNameLayout;
 
         public RegisterMenuWidget() {
             this.userName = view.findViewById(R.id.user_name_id);
@@ -301,6 +306,10 @@ public final class WidgetContainer {
             this.createAccount = view.findViewById(R.id.create_account_id);
             this.userLastName = view.findViewById(R.id.user_last_name_id);
             this.policyText = view.findViewById(R.id.policy_text_id);
+            this.emailLayout = view.findViewById(R.id.email_layout_id);
+            this.passwordLayout = view.findViewById(R.id.password_layout_id);
+            this.userNameLayout = view.findViewById(R.id.user_name_layout_id);
+            this.userLastNameLayout = view.findViewById(R.id.user_last_name_layout_id);
         }
     }
 
@@ -309,10 +318,12 @@ public final class WidgetContainer {
 
         private final Button createAccount;
         private final Button signIn;
-        private final TextInputEditText email;
-        private final TextInputEditText password;
+        private final EditText email;
+        private final EditText password;
         private final ImageView google;
         private final TextView forgotPassword;
+        private final TextInputLayout emailLayout;
+        private final TextInputLayout passwordLayout;
 
         public AuthorisationMenuWidget() {
             this.password = view.findViewById(R.id.password_id);
@@ -321,6 +332,8 @@ public final class WidgetContainer {
             this.signIn = view.findViewById(R.id.sign_in_id);
             this.createAccount = view.findViewById(R.id.create_account_id);
             this.forgotPassword = view.findViewById(R.id.forgot_password_id);
+            this.emailLayout = view.findViewById(R.id.email_layout_id);
+            this.passwordLayout = view.findViewById(R.id.password_layout_id);
         }
     }
 
