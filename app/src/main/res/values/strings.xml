@@ -412,6 +412,11 @@
     <string name="text_view_estimate">Estimate</string>
     <string name="text_view_exit">Exit</string>
     <string name="text_view_additionally">Additionally</string>
+    <string name="text_field_tittle">Tittle</string>
+    <string name="text_view_feedback_error">Error</string>
+    <string name="text_view_feedback_improvement">Wish</string>
+    <string name="text_view_feedback_question">Question</string>
+    <string name="text_view_setting">Setting</string>
 
 
 </resources>

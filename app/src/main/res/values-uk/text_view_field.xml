@@ -36,10 +36,15 @@
 
     <string name="text_view_folder">Папка</string>
     <string name="text_view_notate">Нотатка</string>
-
     <string name="text_view_recipe">Рецепт</string>
     <string name="text_view_list_of_purchases">Список покупок</string>
     <string name="text_view_other">Інше</string>
+
+    <string name="text_view_setting">Налаштування</string>
+
+    <string name="text_view_feedback_error">Помилка</string>
+    <string name="text_view_feedback_improvement">Побажання</string>
+    <string name="text_view_feedback_question">Питання</string>
 
     <string name="text_view_diary">Щоденник</string>
     <string name="text_view_health">Здоров\'я</string>

@@ -87,10 +87,7 @@ public class NavigationMenu extends AppCompatActivity {
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
         switch (item.getItemId()) {
-            case R.id.feedback_item:
-                navController.navigate(R.id.navigation_support_feedback);
-                break;
-            default: throw new RuntimeException("Unexpected value");
+
         }
     }
 
