@@ -2,7 +2,7 @@ package com.sharkit.nextmonday.auth.validation;
 
 import android.content.Context;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.sharkit.nextmonday.configuration.validation.widget_validation.TextValidation;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 
@@ -15,29 +15,29 @@ public class RegistrationMenuValidation {
     private final Context context;
 
     public boolean validateField() {
-        if (isNameValid(widget.getUserName())) {
+        if (isNameValid(widget.getUserNameLayout())) {
             return Boolean.FALSE;
         }
-        if (isNameValid(widget.getUserLastName())){
+        if (isNameValid(widget.getUserLastNameLayout())){
             return Boolean.FALSE;
         }
-        if (isValidEmail(widget.getEmail())) {
+        if (isValidEmail(widget.getEmailLayout())) {
             return Boolean.FALSE;
         }
-        if (isPasswordValid(widget.getPassword())) {
+        if (isPasswordValid(widget.getPasswordLayout())) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
     }
 
-    private boolean isValidEmail(TextInputEditText emailWidget) {
-        return new TextValidation(emailWidget, context)
+    private boolean isValidEmail(TextInputLayout inputLayout) {
+        return new TextValidation(inputLayout, context)
                 .isValidEmail()
                 .build();
     }
 
-    private boolean isNameValid(TextInputEditText widget) {
-        return new TextValidation(widget, context)
+    private boolean isNameValid(TextInputLayout inputLayout) {
+        return new TextValidation(inputLayout, context)
                 .notEmpty()
                 .hasNoNumber()
                 .hasNoSpace()
@@ -47,8 +47,8 @@ public class RegistrationMenuValidation {
                 .build();
     }
 
-    private boolean isPasswordValid(TextInputEditText widget) {
-        return new TextValidation(widget, context)
+    private boolean isPasswordValid(TextInputLayout inputLayout) {
+        return new TextValidation(inputLayout, context)
                 .notEmpty()
                 .hasNoSpace()
                 .tooLongValue(50)
