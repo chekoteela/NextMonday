@@ -410,6 +410,15 @@
     <string name="text_view_recipe">Recipe</string>
     <string name="text_view_list_of_purchases">List of purchases</string>
     <string name="text_view_other">Other</string>
+    <string name="text_view_diary">Diary</string>
+    <string name="text_view_health">Health</string>
+    <string name="text_view_corporate_account">Corporate Account</string>
+    <string name="text_view_pro_version_subscription">PRO version subscription</string>
+    <string name="text_view_feedback">Feedback</string>
+    <string name="text_view_share_app">Share</string>
+    <string name="text_view_estimate">Estimate</string>
+    <string name="text_view_exit">Exit</string>
+    <string name="text_view_additionally">Additionally</string>
 
 
 </resources>

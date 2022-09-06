@@ -7,70 +7,61 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_diary"
-            android:contentDescription="@string/dairy2"
+            android:contentDescription="@string/description_diary"
             android:icon="@drawable/icon_tagret_two"
-            android:title="@string/dairy" />
-
-        <item
-
-            android:id="@+id/nav_target"
-            android:contentDescription="@string/Postanovschik2"
-            android:enabled="false"
-            android:icon="@drawable/icon_tagret"
-            android:title="@string/Postanovschik" />
+            android:title="@string/text_view_diary" />
 
         <item
             android:id="@+id/calculator_item"
-            android:contentDescription="@string/Calculator2"
+            android:contentDescription="@string/description_health"
             android:icon="@drawable/icon_calculate"
             android:onClick="onMenuItemClick"
-            android:title="@string/Calculator" />
+            android:title="@string/text_view_health" />
 
         <item
             android:id="@+id/CorporationAcc"
-            android:contentDescription="@string/CorporationAcc2"
+            android:contentDescription="@string/description_corporate_account"
             android:enabled="false"
             android:icon="@drawable/icon_corp_one"
-            android:title="@string/CorporationAcc" />
+            android:title="@string/text_view_corporate_account" />
     </group>
     <group android:checkableBehavior="none">
-        <item android:title="Дополнительно">
+        <item android:title="@string/text_view_additionally">
 
             <menu>
-
                 <item
                     android:id="@+id/PROVersion"
-                    android:contentDescription="@string/PROVersion2"
+                    android:contentDescription="@string/description_pro_version_subscription"
                     android:enabled="false"
                     android:icon="@drawable/icon_pro_first"
-                    android:title="@string/PROVersion" />
+                    android:title="@string/text_view_pro_version_subscription" />
 
                 <item
                     android:id="@+id/nav_feedback"
-                    android:contentDescription="@string/Connection2"
+                    android:contentDescription="@string/description_feedback"
                     android:icon="@drawable/icon_feedback"
-                    android:title="@string/Connection" />
+                    android:title="@string/text_view_feedback" />
 
                 <item
                     android:id="@+id/share_item"
-                    android:contentDescription="@string/Share2"
+                    android:contentDescription="@string/description_share_app"
                     android:icon="@drawable/icon_share"
                     android:onClick="onMenuItemClick"
-                    android:title="@string/Share" />
+                    android:title="@string/text_view_share_app" />
 
                 <item
                     android:id="@+id/rating_item"
-                    android:contentDescription="@string/Estimate"
+                    android:contentDescription="@string/description_estimate"
                     android:icon="@drawable/ic_star"
                     android:onClick="onMenuItemClick"
-                    android:title="@string/Estimate1" />
+                    android:title="@string/text_view_estimate" />
 
                 <item
                     android:id="@+id/exit_item"
-                    android:contentDescription="@string/exit2"
+                    android:contentDescription="@string/description_exit"
                     android:icon="@drawable/exit_icon"
                     android:onClick="onMenuItemClick"
-                    android:title="@string/exit" />
+                    android:title="@string/text_view_exit" />
             </menu>
         </item>
     </group>

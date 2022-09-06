@@ -17,4 +17,13 @@
     <string name="description_save" translatable="false">Save</string>
     <string name="description_description" translatable="false">Description</string>
 
+    <string name="description_diary" translatable="false">Diary</string>
+    <string name="description_health" translatable="false">Health</string>
+    <string name="description_corporate_account" translatable="false">Corporate Account</string>
+    <string name="description_additionally" translatable="false">Additionally</string>
+    <string name="description_pro_version_subscription" translatable="false">PRO version subscription</string>
+    <string name="description_feedback" translatable="false">Feedback</string>
+    <string name="description_share_app" translatable="false">Share</string>
+    <string name="description_estimate" translatable="false">Estimate</string>
+    <string name="description_exit" translatable="false">Exit</string>
 </resources>
