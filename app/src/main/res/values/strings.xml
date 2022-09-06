@@ -388,7 +388,7 @@
     <string name="toast_field_value_to_short">Field value too short : %s</string>
     <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
     <string name="title_activity_main_meny">MainMeny</string>
-    <string name="title_activity_main">Evaluate</string>
+    <string name="title_activity_main">MainActivity</string>
     <string name="button_delete_one">Delete one</string>
     <string name="button_delete_all">Delete all</string>
     <string name="button_change_one">Modify one</string>
@@ -403,13 +403,15 @@
     <string name="text_view_recipe">Recipe</string>
     <string name="text_view_list_of_purchases">List of purchases</string>
     <string name="text_view_other">Other</string>
+    <string name="text_view_diary">Diary</string>
+    <string name="text_view_health">Health</string>
+    <string name="text_view_corporate_account">Corporate Account</string>
+    <string name="text_view_pro_version_subscription">PRO version subscription</string>
     <string name="text_view_feedback">Feedback</string>
-    <string name="text_view_setting">Setting</string>
-    <string name="text_view_feedback_error">Error</string>
-    <string name="text_view_feedback_question">Question</string>
-    <string name="text_view_feedback_improvement">Wish</string>
-    <string name="text_view_feedback_evaluate">Evaluate</string>
-    <string name="text_field_tittle">Tittle</string>
+    <string name="text_view_share_app">Share</string>
+    <string name="text_view_estimate">Estimate</string>
+    <string name="text_view_exit">Exit</string>
+    <string name="text_view_additionally">Additionally</string>
 
 
 </resources>

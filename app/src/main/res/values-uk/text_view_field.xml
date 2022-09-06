@@ -41,11 +41,14 @@
     <string name="text_view_list_of_purchases">Список покупок</string>
     <string name="text_view_other">Інше</string>
 
-    <string name="text_view_feedback">Зворотній звязок</string>
-    <string name="text_view_setting">Налаштування</string>
-
-    <string name="text_view_feedback_error">Помилка</string>
-    <string name="text_view_feedback_improvement">Побажання</string>
-    <string name="text_view_feedback_question">Питання</string>
+    <string name="text_view_diary">Щоденник</string>
+    <string name="text_view_health">Здоров\'я</string>
+    <string name="text_view_corporate_account">Корпоративний Акаунт</string>
+    <string name="text_view_additionally">Додатково</string>
+    <string name="text_view_pro_version_subscription">Підписка на PRO версію</string>
+    <string name="text_view_feedback">Зворотній зв\'язок</string>
+    <string name="text_view_share_app">Поділитись</string>
+    <string name="text_view_estimate">Оцінити</string>
+    <string name="text_view_exit">Вихід</string>
 
 </resources>
