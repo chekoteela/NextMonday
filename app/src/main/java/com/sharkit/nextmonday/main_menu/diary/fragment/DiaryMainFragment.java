@@ -27,7 +27,6 @@ import androidx.fragment.app.Fragment;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
-import com.sharkit.nextmonday.main_menu.NavigationMenu;
 import com.sharkit.nextmonday.main_menu.diary.adapter.DiaryMainListAdapter;
 import com.sharkit.nextmonday.main_menu.diary.configuration.AlarmDiary;
 import com.sharkit.nextmonday.main_menu.diary.domain.DayInfo;
@@ -77,8 +76,8 @@ public class DiaryMainFragment extends Fragment {
         List<DiaryTask> diaryTasks = toDiaryTasks(db.dairyTaskDAO()
                 .findAllByDate(DateFormat.getDateInstance().format(calendar.getTime())));
         daysInfo.add(DayInfo.builder()
-                .dayOfWeek(toDayName(calendar.get(Calendar.DAY_OF_WEEK)))
-                .month(toMonthName(calendar.get(Calendar.MONTH)))
+                .dayOfWeek(toDayName(getContext(), calendar.get(Calendar.DAY_OF_WEEK)))
+                .month(toMonthName(getContext(), calendar.get(Calendar.MONTH)))
                 .dayNumber(calendar.get(Calendar.DATE))
                 .dataTime(calendar.getTimeInMillis())
                 .diaryTasks(diaryTasks)
@@ -97,7 +96,7 @@ public class DiaryMainFragment extends Fragment {
 
     private void repeat(List<DayOfRepeat> repeats, DiaryTask diaryTask) {
         Optional.ofNullable(repeats)
-                .ifPresent(repeat -> repeat.forEach(dayOfRepeat -> dayOfRepeat.repeat(diaryTask, toDayOfWeek(dayOfRepeat))));
+                .ifPresent(repeat -> repeat.forEach(dayOfRepeat -> dayOfRepeat.repeat(diaryTask, toDayOfWeek(dayOfRepeat), getContext())));
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
@@ -105,12 +104,12 @@ public class DiaryMainFragment extends Fragment {
 
         Log.i(TAG, String.format("Set time: %s for task: %s", diaryTask, diaryTask.getTimeForRepeat()));
 
-        Intent intent = new Intent(NavigationMenu.getContext(), AlarmDiary.class);
+        Intent intent = new Intent(getContext(), AlarmDiary.class);
         intent.putExtra(CONTENT_TITLE, diaryTask.getName());
         intent.putExtra(BIG_TEXT, diaryTask.getDescription());
         intent.putExtra(DIARY_TASK_ID, diaryTask.getId());
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(NavigationMenu.getContext(), Math.toIntExact(diaryTask.getId()), intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), Math.toIntExact(diaryTask.getId()), intent, 0);
         AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, diaryTask.getTimeForRepeat(), pendingIntent);
     }

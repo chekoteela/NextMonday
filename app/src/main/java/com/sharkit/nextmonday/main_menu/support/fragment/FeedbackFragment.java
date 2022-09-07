@@ -34,7 +34,7 @@ public class FeedbackFragment extends Fragment {
 
         widget.getCreate().setOnClickListener(v -> new CreateFeedbackDialog(getContext()).showDialog());
 
-        user.getRole().getAllActiveFeedbacks(user.getId())
+        user.getRole().getAllActiveFeedbacks(getContext(), user.getId())
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     List<FeedbackEntity> entities = new ArrayList<>(queryDocumentSnapshots.toObjects(FeedbackEntity.class));
                     widget.getListOfFeedback().setAdapter(new MainFeedbackAdapter(entities, getContext()));

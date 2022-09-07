@@ -1,14 +1,12 @@
 package com.sharkit.nextmonday.main_menu;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -25,11 +23,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.navigation.MenuDrawerNavigation;
 
 @SuppressLint("NonConstantResourceId")
 public class NavigationMenu extends AppCompatActivity {
-
-    private static Context context;
 
     @SuppressLint("SourceLockedOrientationActivity")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -43,51 +40,26 @@ public class NavigationMenu extends AppCompatActivity {
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_settings_24);
         toolbar.setOverflowIcon(drawable);
 
-        context = getApplicationContext();
     }
 
-    public void onMenuItemClick(MenuItem item) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+    public void additionalMenuDrawer(MenuItem item) {
+        final MenuDrawerNavigation navigation = MenuDrawerNavigation.getInstance(getApplicationContext());
+
         switch (item.getItemId()) {
-            case R.id.weight_item:
-//                navController.navigate(R.id.nav_cal_weight);
+            case R.id.feedback_item:
+                navigation.moveToFeedback();
                 break;
-            case R.id.calendar_item:
-//                navController.navigate(R.id.nav_cal_calendar);
+            case R.id.share_item:
+                share();
                 break;
-            case R.id.ration_item:
-//                Bundle bundle = new Bundle();
-//                bundle.putString(FRAGMENT_RATION_DATE, new SimpleDateFormat(SHOW_DATE_FORMAT).format(Calendar.getInstance().getTimeInMillis()));
-//                navController.navigate(R.id.nav_cal_ration, bundle);
-                break;
-            case R.id.main_item:
-//                navController.navigate(R.id.nav_calculator_main);
-                break;
-            case R.id.calculator_item:
-//                DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//                navController.navigate(R.id.nav_calculator_main);
-//                drawer.closeDrawer(GravityCompat.START);
+            case R.id.estimate_item:
+                rating();
                 break;
             case R.id.exit_item:
                 exit();
                 break;
-//            case R.id.setting_item:
-//                navController.navigate(R.id.nav_settings);
-//                break;
-            case R.id.share_item:
-                share();
-                break;
-            case R.id.rating_item:
-                rating();
-                break;
-        }
-    }
-
-    public void additionalMenuDrawer(MenuItem item) {
-        final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-
-        switch (item.getItemId()) {
-
+            default:
+                throw new RuntimeException("Unexpected value");
         }
     }
 
@@ -104,7 +76,8 @@ public class NavigationMenu extends AppCompatActivity {
             case R.id.item_diary_main:
                 navController.navigate(R.id.navigation_diary_main);
                 break;
-            default: throw new RuntimeException("Unexpected value");
+            default:
+                throw new RuntimeException("Unexpected value");
         }
     }
 
@@ -139,9 +112,5 @@ public class NavigationMenu extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
-    }
-
-    public static Context getContext() {
-        return context;
     }
 }

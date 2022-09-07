@@ -22,7 +22,6 @@ import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
 import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
 import com.sharkit.nextmonday.auth.validation.AuthValidation;
 import com.sharkit.nextmonday.configuration.utils.CryptoAES;
-import com.sharkit.nextmonday.configuration.utils.ToastMenuMessage;
 import com.sharkit.nextmonday.configuration.utils.service.UserSharedPreference;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.NavigationMenu;
@@ -65,17 +64,14 @@ public class AuthFragment extends Fragment {
         mAuth.signInWithEmailAndPassword(widgetContainer.getEmail().getText().toString(),
                 aes.encrypt(widgetContainer.getPassword().getText().toString().trim()))
                 .addOnSuccessListener(authResult -> startActivity(new Intent(getActivity(), NavigationMenu.class)))
-                .addOnFailureListener(e -> {
-            ToastMenuMessage.trowToastMessage();
-            Log.e(TAG, e.getMessage(), e);
-        });
+                .addOnFailureListener(e -> Log.e(TAG, e.getMessage(), e));
     }
 
     @Override
     public void onStart() {
         super.onStart();
         if (mAuth.getCurrentUser() != null) {
-            new UserRepository().findById(mAuth.getCurrentUser().getUid())
+            UserRepository.getInstance(getContext()).findById(mAuth.getCurrentUser().getUid())
                     .addOnSuccessListener(documentSnapshot -> {
                         User currentUser = documentSnapshot.toObject(User.class);
                         new UserSharedPreference(getContext()).set(currentUser);

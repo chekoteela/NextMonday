@@ -1,6 +1,5 @@
 package com.sharkit.nextmonday.main_menu.diary.adapter;
 
-import static com.sharkit.nextmonday.main_menu.NavigationMenu.getContext;
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_DAY_OF_WEEK;
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_TASK_FOR_CHANGE;
 
@@ -16,7 +15,6 @@ import android.widget.BaseExpandableListAdapter;
 
 import androidx.navigation.Navigation;
 
-import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
@@ -76,7 +74,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.diary_main_parent_list, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.diary_main_parent_list, null);
         }
         final WidgetContainer.DiaryMainWidget.DiaryMainParentWidget widget = WidgetContainer.newInstance(convertView).getDiaryMainWidget().getParentWidget();
         final Long allCompleted = daysInfo.get(groupPosition)
@@ -104,7 +102,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.diary_main_child_item, null);
+            convertView = LayoutInflater.from(context).inflate(R.layout.diary_main_child_item, null);
         }
         final WidgetContainer.DiaryMainWidget.DiaryMainParentWidget.DiaryMainChildWidget widget = WidgetContainer.newInstance(convertView).getDiaryMainWidget().getParentWidget().getChildWidget();
         final Calendar calendar = Calendar.getInstance();
@@ -116,7 +114,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         widget.getTimeTask().setText(DateFormat.getTimeInstance().format(calendar.getTime()));
 
         widget.getGetByTask().setOnCheckedChangeListener((buttonView, isChecked) -> {
-            NextMondayDatabase.getInstance(NextMondayActivity.getContext()).dairyTaskDAO().updateStatus(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getId(), isChecked);
+            NextMondayDatabase.getInstance(context).dairyTaskDAO().updateStatus(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getId(), isChecked);
             daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).setCompleted(isChecked);
             notifyDataSetChanged();
         });

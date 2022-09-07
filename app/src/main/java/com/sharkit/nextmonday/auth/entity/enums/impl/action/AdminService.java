@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday.auth.entity.enums.impl.action;
 
+import android.content.Context;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.auth.entity.enums.impl.IUserRoleAction;
@@ -8,11 +10,9 @@ import com.sharkit.nextmonday.main_menu.support.entity.enums.MessageType;
 
 public class AdminService implements IUserRoleAction {
 
-    private final FeedbackRepository repository = FeedbackRepository.getInstance();
-
     @Override
-    public Task<QuerySnapshot> getAllActiveFeedbacks(String id) {
-        return repository.getAllActiveFeedbacks();
+    public Task<QuerySnapshot> getAllActiveFeedbacks(Context context, String id) {
+        return FeedbackRepository.getInstance(context).getAllActiveFeedbacks();
     }
 
     @Override

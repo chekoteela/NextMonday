@@ -45,13 +45,13 @@ public class FeedbackMessengerFragment extends Fragment {
     }
 
     private void closeFeedback(String feedbackId) {
-        final FeedbackRepository repository = FeedbackRepository.getInstance();
+        final FeedbackRepository repository = FeedbackRepository.getInstance(getContext());
         repository.closeFeedback(feedbackId);
     }
 
     private void sendMessage(SupportWidget.FeedbackMessengerWidget widget, FeedbackMessageAdapter adapter, List<FeedbackMessage> messages, String feedbackId) {
         final User user = new UserSharedPreference(requireContext()).get();
-        final FeedbackRepository repository = FeedbackRepository.getInstance();
+        final FeedbackRepository repository = FeedbackRepository.getInstance(getContext());
 
         FeedbackMessage message = FeedbackMessage.builder()
                 .id(UUID.randomUUID().toString())
