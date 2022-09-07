@@ -34,33 +34,35 @@
                     android:contentDescription="@string/description_pro_version_subscription"
                     android:enabled="false"
                     android:icon="@drawable/icon_pro_first"
+                    android:onClick="additionalMenuDrawer"
                     android:title="@string/text_view_pro_version_subscription" />
 
                 <item
-                    android:id="@+id/nav_feedback"
+                    android:id="@+id/feedback_item"
                     android:contentDescription="@string/description_feedback"
                     android:icon="@drawable/icon_feedback"
+                    android:onClick="additionalMenuDrawer"
                     android:title="@string/text_view_feedback" />
 
                 <item
                     android:id="@+id/share_item"
                     android:contentDescription="@string/description_share_app"
                     android:icon="@drawable/icon_share"
-                    android:onClick="onMenuItemClick"
+                    android:onClick="additionalMenuDrawer"
                     android:title="@string/text_view_share_app" />
 
                 <item
-                    android:id="@+id/rating_item"
+                    android:id="@+id/estimate_item"
                     android:contentDescription="@string/description_estimate"
                     android:icon="@drawable/ic_star"
-                    android:onClick="onMenuItemClick"
+                    android:onClick="additionalMenuDrawer"
                     android:title="@string/text_view_estimate" />
 
                 <item
                     android:id="@+id/exit_item"
                     android:contentDescription="@string/description_exit"
                     android:icon="@drawable/exit_icon"
-                    android:onClick="onMenuItemClick"
+                    android:onClick="additionalMenuDrawer"
                     android:title="@string/text_view_exit" />
             </menu>
         </item>

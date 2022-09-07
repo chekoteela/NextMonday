@@ -40,13 +40,13 @@ public class GoogleRegistration {
 
         Log.i(TAG, String.format("create request for google: %s", gso));
 
-        mGoogleSignInClient = GoogleSignIn.getClient(activity, gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(this.activity, gso);
     }
 
     public void signIn() {
         createRequest();
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        activity.startActivityForResult(signInIntent, RC_SIGN_IN);
+        this.activity.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
     public void firebaseAuthWithGoogle(String idToken) {
@@ -56,7 +56,7 @@ public class GoogleRegistration {
         Log.i(TAG, "sign in with google");
 
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(activity, task -> {
+                .addOnCompleteListener(this.activity, task -> {
                     if (Boolean.TRUE.equals(Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser())) {
                         createNewUser(mAuth);
                     }
@@ -65,7 +65,7 @@ public class GoogleRegistration {
     }
 
     private void moveToMainMenu() {
-        activity.startActivity(new Intent(activity, NavigationMenu.class));
+        this.activity.startActivity(new Intent(this.activity, NavigationMenu.class));
     }
 
     private void createNewUser(FirebaseAuth mAuth) {
@@ -74,7 +74,7 @@ public class GoogleRegistration {
                 Objects.requireNonNull(mAuth.getCurrentUser().getEmail()),
                 Objects.requireNonNull(mAuth.getCurrentUser().getDisplayName()));
 
-        new UserRepository().create(user);
-        new UserSharedPreference(activity.getApplicationContext()).set(user);
+        UserRepository.getInstance(this.activity).create(user);
+        new UserSharedPreference(this.activity.getApplicationContext()).set(user);
     }
 }

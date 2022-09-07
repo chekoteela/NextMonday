@@ -1,6 +1,5 @@
 package com.sharkit.nextmonday;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,12 +17,10 @@ public class NextMondayActivity extends AppCompatActivity {
 
     public static final int RC_SIGN_IN = 15;
     private static final String TAG = NextMondayActivity.class.getCanonicalName();
-    private static Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getApplicationContext();
         setContentView(R.layout.start_activity);
 //        getContext().deleteDatabase("NextMonday");
 
@@ -41,10 +38,6 @@ public class NextMondayActivity extends AppCompatActivity {
                 throw new RuntimeException(e.getMessage());
             }
         }
-    }
-
-    public static Context getContext() {
-        return context;
     }
 
 }

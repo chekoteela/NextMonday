@@ -47,7 +47,7 @@ public class CreateFeedbackDialog {
 
             dialog.dismiss();
 
-            FeedbackRepository.getInstance().create(entity);
+            FeedbackRepository.getInstance(context).create(entity);
             navigation.moveToFeedbackMessenger(entity.getId(), entity.getMessages());
         });
 

@@ -1,9 +1,9 @@
 package com.sharkit.nextmonday.main_menu.diary.enums;
 
-import static com.sharkit.nextmonday.NextMondayActivity.getContext;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.DiaryTaskTransformer.toDiaryTask;
 import static com.sharkit.nextmonday.main_menu.diary.transformer.DiaryTaskTransformer.toDiaryTaskDTO;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
@@ -26,9 +26,9 @@ public enum DayOfRepeat implements IDayAction, Serializable {
     private static final String TAG = DayOfRepeat.class.getCanonicalName();
 
     @Override
-    public void repeat(DiaryTask diaryTask, int calendarDay) {
+    public void repeat(DiaryTask diaryTask, int calendarDay, Context context) {
         final Calendar calendar = Calendar.getInstance();
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
 
         calendar.setTimeInMillis(diaryTask.getTimeForRepeat());
 

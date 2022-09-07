@@ -1,6 +1,7 @@
 package com.sharkit.nextmonday.main_menu.diary.fragment;
 
 import static com.sharkit.nextmonday.main_menu.diary.configuration.DiaryBundleTag.DIARY_TASK_FOR_CHANGE;
+import static com.sharkit.nextmonday.main_menu.diary.transformer.DayInfoTransformer.toDayName;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -21,7 +22,6 @@ import com.sharkit.nextmonday.main_menu.diary.dialog.DialogOfRepeaters;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogTimePicker;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
-import com.sharkit.nextmonday.main_menu.diary.transformer.DayInfoTransformer;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -75,6 +75,8 @@ public class DiaryModifyTask extends Fragment {
     }
 
     private String getListDays(List<DayOfRepeat> repeats) {
-        return repeats.stream().map(DayInfoTransformer::toDayName).collect(Collectors.joining(", "));
+        return repeats.stream()
+                .map(dayOfRepeat -> toDayName(getContext(), dayOfRepeat))
+                .collect(Collectors.joining(", "));
     }
 }

@@ -1,5 +1,7 @@
 package com.sharkit.nextmonday.auth.entity.enums;
 
+import android.content.Context;
+
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.auth.entity.enums.impl.IUserRoleAction;
@@ -12,8 +14,8 @@ public enum UserRole implements IUserRoleAction {
     USER;
 
     @Override
-    public Task<QuerySnapshot> getAllActiveFeedbacks(String id) {
-        return getService().getAllActiveFeedbacks(id);
+    public Task<QuerySnapshot> getAllActiveFeedbacks(Context context, String id) {
+        return getService().getAllActiveFeedbacks(context, id);
     }
 
     @Override

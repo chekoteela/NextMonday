@@ -41,7 +41,7 @@ public class EmailAndPasswordService {
 
                     Log.i(TAG, String.format("User: %s is created", user));
 
-                    new UserRepository().create(user);
+                    UserRepository.getInstance(context).create(user);
                     new UserSharedPreference(context).set(user);
                 })
                 .addOnFailureListener(e -> Log.e(TAG, e.getMessage(), e));
