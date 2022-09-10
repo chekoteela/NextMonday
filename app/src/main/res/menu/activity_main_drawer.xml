@@ -15,7 +15,6 @@
             android:id="@+id/calculator_item"
             android:contentDescription="@string/description_health"
             android:icon="@drawable/icon_calculate"
-            android:onClick="onMenuItemClick"
             android:title="@string/text_view_health" />
 
         <item
