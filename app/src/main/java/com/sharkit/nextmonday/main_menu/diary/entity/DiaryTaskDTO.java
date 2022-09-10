@@ -19,6 +19,9 @@ public class DiaryTaskDTO {
     @ColumnInfo(name = "id")
     private Long id;
 
+    @ColumnInfo(name = "user_id")
+    private String userId;
+
     @ColumnInfo(name = "group_id")
     private String groupId;
 

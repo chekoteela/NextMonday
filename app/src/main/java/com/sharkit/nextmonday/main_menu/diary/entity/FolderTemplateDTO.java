@@ -18,4 +18,7 @@ public class FolderTemplateDTO {
     @ColumnInfo(name = "id")
     private Long templateId;
 
+    @ColumnInfo(name = "user_id")
+    private String userId;
+
 }
