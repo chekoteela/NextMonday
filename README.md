@@ -1,5 +1,6 @@
-#Commit convention 
-All the commits should have prefix:
+# Commit convention 
+
+- All the commits should have prefix:
 
 `feat` - for feature.
 
@@ -7,6 +8,24 @@ All the commits should have prefix:
 
 Examle:
 `feat: some commit`
+
+# Issue name convention
+
+- All the issues should start from prefix:
+
+`[BACK]` - workflow concerns only back functionality,
+
+`[FRONT]` - workflow concerns only front functionality,
+
+- All the issues should have name of workflow process:
+
+`Feature` - issue concern new functionality
+
+`Bugfix` - issue concern bugfix functionality
+
+`Hotfix` - issue concern hotfix functionality (only for main and release branches)
+
+Example: `[BACK] - Feature: name of issue`
 
 # NextMonday
 
