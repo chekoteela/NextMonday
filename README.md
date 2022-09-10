@@ -2,6 +2,7 @@
 All the commits should have prefix:
 
 `feat` - for feature.
+
 `bugfix` - for bugfix.
 
 Examle:
