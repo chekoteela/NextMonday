@@ -25,6 +25,10 @@ Examle:
 
 `Hotfix` - issue concern hotfix functionality (only for main and release branches)
 
+`Documentation` - issue related with adding new documentation
+
+`Refactoring` - issue related whith code refactoring
+
 Example: `[BACK] - Feature: name of issue`
 
 # NextMonday
