@@ -22,7 +22,7 @@ public class NextMondayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity);
-//        getContext().deleteDatabase("NextMonday");
+//        getApplicationContext().deleteDatabase("NextMonday");
 
     }
 
