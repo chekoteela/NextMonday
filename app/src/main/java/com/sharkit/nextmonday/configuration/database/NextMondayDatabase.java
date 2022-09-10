@@ -21,9 +21,11 @@ import com.sharkit.nextmonday.main_menu.diary.entity.purchase.PurchaseTemplateDT
 import com.sharkit.nextmonday.main_menu.diary.entity.recipe.RecipeItemDTO;
 import com.sharkit.nextmonday.main_menu.diary.entity.recipe.RecipeTemplateDTO;
 
+import static com.sharkit.nextmonday.configuration.database.NextMondayMigration.MIGRATION_1_2;
+
 @Database(entities = {PurchaseTemplateDTO.class, PurchaseItemDTO.class, RecipeItemDTO.class,
         DiaryTaskDTO.class, NotateDTO.class, FolderTemplateDTO.class,
-        RecipeTemplateDTO.class}, version = 1, exportSchema = false)
+        RecipeTemplateDTO.class}, version = 2)
 public abstract class NextMondayDatabase extends RoomDatabase {
 
     public abstract RecipeItemDAO recipeItemDAO();
@@ -43,6 +45,8 @@ public abstract class NextMondayDatabase extends RoomDatabase {
     public static NextMondayDatabase getInstance(Context context) {
         return Room.databaseBuilder(context, NextMondayDatabase.class, "NextMonday")
                 .allowMainThreadQueries()
+                .addMigrations(MIGRATION_1_2)
+                .fallbackToDestructiveMigration()
                 .build();
     }
 

@@ -18,6 +18,9 @@ public class NotateDTO {
     @ColumnInfo(name = "id")
     private Long id;
 
+    @ColumnInfo(name = "user_id")
+    private String userId;
+
     @ColumnInfo(name = "parent_folder_id")
     private Long parentFolderId;
 
