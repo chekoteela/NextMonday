@@ -13,6 +13,7 @@ import lombok.Data;
 public class Notate implements Serializable {
 
     private Long id;
+    private String userId;
     private Long parentFolderId;
     private TemplateType templateType;
     private NotateType notateType;

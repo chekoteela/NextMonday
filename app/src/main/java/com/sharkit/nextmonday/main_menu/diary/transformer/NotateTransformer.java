@@ -30,6 +30,7 @@ public class NotateTransformer {
                 .templateType((TemplateType) toObject(notateDTO.getTemplateType()))
                 .id(notateDTO.getId())
                 .templateId(notateDTO.getTemplateId())
+                .userId(notateDTO.getUserId())
                 .name(notateDTO.getName())
                 .build();
     }
@@ -37,6 +38,7 @@ public class NotateTransformer {
     public static NotateDTO toNotateDTO(Notate notate) {
         return NotateDTO.builder()
                 .id(notate.getId())
+                .userId(notate.getUserId())
                 .parentFolderId(notate.getParentFolderId())
                 .name(notate.getName())
                 .templateId(notate.getTemplateId())
