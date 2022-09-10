@@ -12,6 +12,7 @@ public class FolderTemplateTransformer {
     public static FolderTemplateDTO toFolderTemplateDTO(FolderTemplate template) {
         return FolderTemplateDTO.builder()
                 .templateId(template.getTemplateId())
+                .userId(template.getUserId())
                 .build();
     }
 }
