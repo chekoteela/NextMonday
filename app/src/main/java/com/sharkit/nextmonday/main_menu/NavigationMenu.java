@@ -43,7 +43,7 @@ public class NavigationMenu extends AppCompatActivity {
     }
 
     public void additionalMenuDrawer(MenuItem item) {
-        final MenuDrawerNavigation navigation = MenuDrawerNavigation.getInstance(getApplicationContext());
+        final MenuDrawerNavigation navigation = MenuDrawerNavigation.getInstance(this);
 
         switch (item.getItemId()) {
             case R.id.feedback_item:
