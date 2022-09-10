@@ -2,9 +2,15 @@
 
 - All the commits should have prefix:
 
-`feat` - for feature.
+`feat` - for new features
 
-`bugfix` - for bugfix.
+`bugfix` - for bugfix
+
+`ref` - for refactoring
+
+`hotfix` - for hotfix
+
+`doc` - for new documentation
 
 Examle:
 `feat: some commit`
