@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.sharkit.nextmonday.auth.widget.AuthWidget;
 import com.sharkit.nextmonday.configuration.validation.widget_validation.TextValidation;
 import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 
@@ -13,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class AuthValidation {
 
     private final Context context;
-    private final WidgetContainer.AuthorisationMenuWidget widget;
+    private final AuthWidget.AuthorisationMenuWidget widget;
 
     public boolean isValidAuthData() {
         if (isValidAuthField(widget.getEmailLayout())) {
