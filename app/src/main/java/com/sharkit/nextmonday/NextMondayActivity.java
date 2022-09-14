@@ -25,7 +25,7 @@ public class NextMondayActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == RC_SIGN_IN  ) {
+        if (requestCode == RC_SIGN_IN   ) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 new GoogleRegistration(this).firebaseAuthWithGoogle(task.getResult(ApiException.class).getIdToken());
