@@ -48,9 +48,9 @@ public class AlarmDiary extends BroadcastReceiver {
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
                 .setColor(context.getColor(R.color.color_button))
-                .addAction(action(context, taskId, Actions.PERFORM, context.getString(R.string.button_already_performed)))
-                .addAction(action(context, taskId, Actions.PUT_OFF, context.getString(R.string.button_put_off)))
-                .addAction(action(context, taskId, Actions.CANCEL, context.getString(R.string.button_cancel)))
+                .addAction(this.action(context, taskId, Actions.PERFORM, context.getString(R.string.button_already_performed)))
+                .addAction(this.action(context, taskId, Actions.PUT_OFF, context.getString(R.string.button_put_off)))
+                .addAction(this.action(context, taskId, Actions.CANCEL, context.getString(R.string.button_cancel)))
                 .build();
 
         managerCompat.notify(intent.getIntExtra(DIARY_TASK_ID, 0), notification);

@@ -39,12 +39,12 @@ public class DiaryTaskCreator extends Fragment {
 
         this.calendar = Calendar.getInstance();
         this.widget = WidgetContainer.newInstance(view).getTaskCreatorWidget();
-        this.widget.getCreate().setOnClickListener(v -> createTask());
-        this.widget.getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogTimePicker(requireContext(), this.diaryTask, this.widget.getTakeTime(), this.calendar)
+        this.widget.getCreate().setOnClickListener(v -> this.createTask());
+        this.widget.getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogTimePicker(this.requireContext(), this.diaryTask, this.widget.getTakeTime(), this.calendar)
                 .showIfChecked(isChecked));
-        this.widget.getRepeat().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogOfRepeaters(requireContext(), this.diaryTask).showIfChecked(isChecked));
+        this.widget.getRepeat().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogOfRepeaters(this.requireContext(), this.diaryTask).showIfChecked(isChecked));
 
-        this.calendar.setTimeInMillis(requireArguments().getLong(DIARY_DAY_OF_WEEK));
+        this.calendar.setTimeInMillis(this.requireArguments().getLong(DIARY_DAY_OF_WEEK));
 
 
         return view;
@@ -57,11 +57,11 @@ public class DiaryTaskCreator extends Fragment {
         this.diaryTask.setGroupId(UUID.randomUUID().toString());
 
 
-        NextMondayDatabase.getInstance(getContext()).dairyTaskDAO().create(toDiaryTaskDTO(this.diaryTask));
-        moveToMainMenu();
+        NextMondayDatabase.getInstance(this.getContext()).dairyTaskDAO().create(toDiaryTaskDTO(this.diaryTask));
+        this.moveToMainMenu();
     }
 
     private void moveToMainMenu(){
-        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
+        Navigation.findNavController(this.requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
     }
 }

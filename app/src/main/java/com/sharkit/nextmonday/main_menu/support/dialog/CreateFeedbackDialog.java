@@ -39,7 +39,7 @@ public class CreateFeedbackDialog {
             final FeedbackEntity entity = FeedbackEntity.builder()
                     .id(UUID.randomUUID().toString())
                     .feedbackStatus(FeedbackStatus.ACTIVE)
-                    .feedbackType(getFeedbackType(widget.getTypeOfFeedback().getSelectedItemPosition()))
+                    .feedbackType(this.getFeedbackType(widget.getTypeOfFeedback().getSelectedItemPosition()))
                     .messages(new ArrayList<>())
                     .tittle(widget.getTittle().getText().toString())
                     .userId(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())

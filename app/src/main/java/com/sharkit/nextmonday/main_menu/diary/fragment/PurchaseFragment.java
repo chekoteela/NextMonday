@@ -31,16 +31,16 @@ public class PurchaseFragment extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_notate_purchase_fragment, container, false);
         final WidgetContainer.DiaryPurchaseWidget widget = WidgetContainer.newInstance(view).getDiaryPurchaseWidget();
-        final Notate notate = (Notate) requireArguments().getSerializable(DIARY_NOTATE);
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());
+        final Notate notate = (Notate) this.requireArguments().getSerializable(DIARY_NOTATE);
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(this.getContext());
         final Purchase purchase = toPurchase(db.purchaseTemplateDAO().findById(notate.getTemplateId()));
-        final PurchaseAdapter purchaseAdapter = new PurchaseAdapter(purchase.getItems(), getContext());
+        final PurchaseAdapter purchaseAdapter = new PurchaseAdapter(purchase.getItems(), this.getContext());
 
         widget.getPurchaseList().setAdapter(purchaseAdapter);
         widget.getName().setText(notate.getName());
         widget.getDescription().setText(purchase.getTemplate().getText());
-        widget.getAddPurchase().setOnClickListener(v -> new DialogPurchaseItem(getContext(), notate.getTemplateId(), purchase.getItems(), purchaseAdapter).createItem());
-        widget.getSave().setOnClickListener(v -> saveChanges(widget, purchase.getTemplate(), db, notate));
+        widget.getAddPurchase().setOnClickListener(v -> new DialogPurchaseItem(this.getContext(), notate.getTemplateId(), purchase.getItems(), purchaseAdapter).createItem());
+        widget.getSave().setOnClickListener(v -> this.saveChanges(widget, purchase.getTemplate(), db, notate));
         return view;
     }
 
@@ -51,6 +51,6 @@ public class PurchaseFragment extends Fragment {
 
         final Bundle bundle = new Bundle();
         bundle.putLong(DIARY_NOTATE_FOLDER_ID, notate.getParentFolderId());
-        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
+        Navigation.findNavController(this.requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
     }
 }

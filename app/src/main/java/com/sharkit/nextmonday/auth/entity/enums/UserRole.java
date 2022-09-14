@@ -15,12 +15,12 @@ public enum UserRole implements IUserRoleAction {
 
     @Override
     public Task<QuerySnapshot> getAllActiveFeedbacks(final Context context, final String id) {
-        return getService().getAllActiveFeedbacks(context, id);
+        return this.getService().getAllActiveFeedbacks(context, id);
     }
 
     @Override
     public MessageType getFeedbackMessageType() {
-        return getService().getFeedbackMessageType();
+        return this.getService().getFeedbackMessageType();
     }
 
     private IUserRoleAction getService() {

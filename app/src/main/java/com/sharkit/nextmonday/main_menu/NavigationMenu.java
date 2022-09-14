@@ -33,11 +33,11 @@ public class NavigationMenu extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_menu);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        final Toolbar toolbar = findViewById(R.id.toolbar_core);
-        setSupportActionBar(toolbar);
-        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_settings_24);
+        this.setContentView(R.layout.activity_navigation_menu);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        final Toolbar toolbar = this.findViewById(R.id.toolbar_core);
+        this.setSupportActionBar(toolbar);
+        final Drawable drawable = ContextCompat.getDrawable(this.getApplicationContext(), R.drawable.ic_baseline_settings_24);
         toolbar.setOverflowIcon(drawable);
 
     }
@@ -50,13 +50,13 @@ public class NavigationMenu extends AppCompatActivity {
                 navigation.moveToFeedback();
                 break;
             case R.id.share_item:
-                share();
+                this.share();
                 break;
             case R.id.estimate_item:
-                rating();
+                this.rating();
                 break;
             case R.id.exit_item:
-                exit();
+                this.exit();
                 break;
             default:
                 throw new RuntimeException("Unexpected value");
@@ -82,11 +82,11 @@ public class NavigationMenu extends AppCompatActivity {
     }
 
     private void rating() {
-        final String appPackageName = getPackageName();
+        final String appPackageName = this.getPackageName();
         try {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+            this.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
         } catch (final android.content.ActivityNotFoundException anfe) {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+            this.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
         }
     }
 
@@ -94,7 +94,7 @@ public class NavigationMenu extends AppCompatActivity {
         final Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("https://play.google.com/store/apps/details?id=com.sharkit.nextmonday");
         intent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.sharkit.nextmonday");
-        startActivity(Intent.createChooser(intent, "Share"));
+        this.startActivity(Intent.createChooser(intent, "Share"));
     }
 
     private void exit() {
@@ -104,13 +104,13 @@ public class NavigationMenu extends AppCompatActivity {
         final GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(NavigationMenu.this, gso);
         googleSignInClient.signOut();
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(NavigationMenu.this, NextMondayActivity.class));
-        finish();
+        this.startActivity(new Intent(NavigationMenu.this, NextMondayActivity.class));
+        this.finish();
     }
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
+        this.getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 }

@@ -41,21 +41,21 @@ public class RecipeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
-        final Notate notate = (Notate) requireArguments().getSerializable(DIARY_NOTATE);
+        final Notate notate = (Notate) this.requireArguments().getSerializable(DIARY_NOTATE);
         final View view = inflater.inflate(R.layout.diary_noto_recipe, container, false);
 
-        this.imageStorageService = new ImageStorageService(requireContext());
-        this.db = NextMondayDatabase.getInstance(getContext());
+        this.imageStorageService = new ImageStorageService(this.requireContext());
+        this.db = NextMondayDatabase.getInstance(this.getContext());
         this.recipe = toRecipe(this.db.recipeTemplateDAO().findById(notate.getTemplateId()));
-        final RecipeAdapter recipeAdapter = new RecipeAdapter(this.recipe.getRecipeItems(), getContext());
+        final RecipeAdapter recipeAdapter = new RecipeAdapter(this.recipe.getRecipeItems(), this.getContext());
 
         this.widget = WidgetContainer.newInstance(view).getDiaryNotateRecipeWidget();
         this.widget.getName().setText(notate.getName());
         this.widget.getDescription().setText(this.recipe.getRecipeTemplate().getDescription());
         this.widget.getRecipeList().setAdapter(recipeAdapter);
-        this.widget.getAddFood().setOnClickListener(v -> new DialogRecipeFood(getContext(), notate.getTemplateId(), this.recipe.getRecipeItems(), recipeAdapter).createItem());
-        this.widget.getSearchImage().setOnClickListener(v -> downloadNewImageAndDeleteOld());
-        this.widget.getSave().setOnClickListener(v -> saveChanges(this.recipe.getRecipeTemplate(), this.db, notate));
+        this.widget.getAddFood().setOnClickListener(v -> new DialogRecipeFood(this.getContext(), notate.getTemplateId(), this.recipe.getRecipeItems(), recipeAdapter).createItem());
+        this.widget.getSearchImage().setOnClickListener(v -> this.downloadNewImageAndDeleteOld());
+        this.widget.getSave().setOnClickListener(v -> this.saveChanges(this.recipe.getRecipeTemplate(), this.db, notate));
 
         this.imageStorageService.downloadFile(Optional.ofNullable(this.recipe.getRecipeTemplate().getImageCod()).orElse(""),
                 this.widget.getRecipeImage());
@@ -64,7 +64,7 @@ public class RecipeFragment extends Fragment {
 
     private void downloadNewImageAndDeleteOld() {
         final Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, 3);
+        this.startActivityForResult(intent, 3);
     }
 
     private void saveChanges(final RecipeTemplate template, final NextMondayDatabase db, final Notate notate) {
@@ -74,7 +74,7 @@ public class RecipeFragment extends Fragment {
 
         final Bundle bundle = new Bundle();
         bundle.putLong(DIARY_NOTATE_FOLDER_ID, notate.getParentFolderId());
-        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
+        Navigation.findNavController(this.requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
     }
 
     @Override

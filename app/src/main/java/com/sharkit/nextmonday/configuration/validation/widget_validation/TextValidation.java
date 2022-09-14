@@ -32,50 +32,50 @@ public class TextValidation {
     }
 
     public TextValidation notEmpty() {
-        toValidatorList(this.context.getString(R.string.toast_field_must_be_not_empty), !TextUtils.isEmpty(this.textFromField));
+        this.toValidatorList(this.context.getString(R.string.toast_field_must_be_not_empty), !TextUtils.isEmpty(this.textFromField));
         return this;
     }
 
     public TextValidation isValidEmail() {
-        toValidatorList(this.context.getString(R.string.toast_email_is_not_valid), Patterns.EMAIL_ADDRESS.matcher(this.textFromField).matches());
+        this.toValidatorList(this.context.getString(R.string.toast_email_is_not_valid), Patterns.EMAIL_ADDRESS.matcher(this.textFromField).matches());
         return this;
     }
 
     public TextValidation tooLongValue(final Integer size) {
-        toValidatorList(this.context.getString(R.string.toast_field_value_to_long).replace(this.size, size.toString()), this.textFromField.length() < size);
+        this.toValidatorList(this.context.getString(R.string.toast_field_value_to_long).replace(this.size, size.toString()), this.textFromField.length() < size);
         return this;
     }
 
     public TextValidation tooShortValue(final Integer size) {
-        toValidatorList(this.context.getString(R.string.toast_field_value_to_short).replace(this.size, size.toString()), this.textFromField.length() > size);
+        this.toValidatorList(this.context.getString(R.string.toast_field_value_to_short).replace(this.size, size.toString()), this.textFromField.length() > size);
         return this;
     }
 
     public TextValidation hasNoSymbols() {
         final Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,°•○●□■♤♡◇♧☆▪¤《》¡¿.`]");
         final Matcher hasSign = sign.matcher(this.textFromField);
-        toValidatorList(this.context.getString(R.string.toast_field_has_symbols), !hasSign.find());
+        this.toValidatorList(this.context.getString(R.string.toast_field_has_symbols), !hasSign.find());
         return this;
     }
 
     public TextValidation hasNotCyrillic() {
         final Pattern cyrillic = Pattern.compile("[а-яА-Я]");
         final Matcher hasCyrillic = cyrillic.matcher(this.textFromField);
-        toValidatorList(this.context.getString(R.string.toast_field_has_cyrillic), !hasCyrillic.find());
+        this.toValidatorList(this.context.getString(R.string.toast_field_has_cyrillic), !hasCyrillic.find());
         return this;
     }
 
     public TextValidation hasNoNumber() {
         final Pattern num = Pattern.compile("[0-9]");
         final Matcher hasNum = num.matcher(this.textFromField);
-        toValidatorList(this.context.getString(R.string.toast_field_has_number), !hasNum.find());
+        this.toValidatorList(this.context.getString(R.string.toast_field_has_number), !hasNum.find());
         return this;
     }
 
     public TextValidation hasNoSpace() {
         final Pattern space = Pattern.compile(" ");
         final Matcher hasSpace = space.matcher(this.textFromField);
-        toValidatorList(this.context.getString(R.string.toast_field_has_space), !hasSpace.find());
+        this.toValidatorList(this.context.getString(R.string.toast_field_has_space), !hasSpace.find());
         return this;
     }
 

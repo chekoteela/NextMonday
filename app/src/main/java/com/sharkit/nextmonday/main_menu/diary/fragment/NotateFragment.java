@@ -32,8 +32,8 @@ public class NotateFragment extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_noto, container, false);
         final WidgetContainer.DiaryNotateWidget widget = WidgetContainer.newInstance(view).getDiaryNotateWidget();
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());
-        final Long parentId = Optional.ofNullable(getArguments())
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(this.getContext());
+        final Long parentId = Optional.ofNullable(this.getArguments())
                 .map(arg -> arg.getLong(DIARY_NOTATE_FOLDER_ID))
                 .orElse(0L);
 
@@ -42,12 +42,12 @@ public class NotateFragment extends Fragment {
                 .orElse(NotateType.OTHER);
 
         final List<Notate> notate = toNotates(db.notateDAO().getAllNotateByParentFolderId(parentId));
-        final NotateAdaptor adaptor = new NotateAdaptor(notate, getContext());
+        final NotateAdaptor adaptor = new NotateAdaptor(notate, this.getContext());
 
         widget.getNotateList().setAdapter(adaptor);
 
         widget.getAdd().setOnClickListener(v -> new DialogCreateNotate()
-                .showCreateNotateDialog(getContext(), parentId, adaptor, notate, parentType));
+                .showCreateNotateDialog(this.getContext(), parentId, adaptor, notate, parentType));
 
         return view;
     }

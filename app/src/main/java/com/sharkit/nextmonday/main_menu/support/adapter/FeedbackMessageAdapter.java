@@ -46,7 +46,7 @@ public class FeedbackMessageAdapter extends BaseAdapter {
 
         final SupportAdapterWidget.FeedbackMessageWidget widget = SupportAdapterWidget.newInstance(convertView).getFeedbackMessageWidget();
 
-        widget.getMessageText().setText(getItem(position).getMessage());
+        widget.getMessageText().setText(this.getItem(position).getMessage());
 
         return convertView;
     }

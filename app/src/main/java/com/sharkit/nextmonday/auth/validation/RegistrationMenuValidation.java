@@ -13,16 +13,16 @@ public class RegistrationMenuValidation {
     private final Context context;
 
     public boolean validateField() {
-        if (isNameValid(this.widget.getUserNameLayout())) {
+        if (this.isNameValid(this.widget.getUserNameLayout())) {
             return Boolean.FALSE;
         }
-        if (isNameValid(this.widget.getUserLastNameLayout())){
+        if (this.isNameValid(this.widget.getUserLastNameLayout())){
             return Boolean.FALSE;
         }
-        if (isValidEmail(this.widget.getEmailLayout())) {
+        if (this.isValidEmail(this.widget.getEmailLayout())) {
             return Boolean.FALSE;
         }
-        if (isPasswordValid(this.widget.getPasswordLayout())) {
+        if (this.isPasswordValid(this.widget.getPasswordLayout())) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;

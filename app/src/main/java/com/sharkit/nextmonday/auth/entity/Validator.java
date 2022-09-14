@@ -14,6 +14,6 @@ public class Validator {
     private Boolean valid;
 
     public void throwToastMessage(final Context context) {
-        Toast.makeText(context, getMessageText(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, this.getMessageText(), Toast.LENGTH_SHORT).show();
     }
 }

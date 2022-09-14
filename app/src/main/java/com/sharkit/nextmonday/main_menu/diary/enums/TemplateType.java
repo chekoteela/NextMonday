@@ -52,7 +52,7 @@ public enum TemplateType implements ITemplateAction {
             folderWidget.getName().setText(notate.getName());
             folderWidget.getFolderType().setText(notate.getNotateType().getName(view.getContext()));
 
-            folderWidget.getParentItem().setOnClickListener(v -> moveToFolder(notate.getTemplateId(), view.getContext()));
+            folderWidget.getParentItem().setOnClickListener(v -> this.moveToFolder(notate.getTemplateId(), view.getContext()));
 
         }
 
