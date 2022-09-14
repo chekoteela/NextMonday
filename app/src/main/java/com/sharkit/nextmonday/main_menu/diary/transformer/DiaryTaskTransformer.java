@@ -23,6 +23,7 @@ public class DiaryTaskTransformer {
 
         return DiaryTaskDTO.builder()
                 .id(diaryTask.getId())
+                .userId(diaryTask.getUserId())
                 .daysOfRepeat(toByteArray(diaryTask.getRepeats()))
                 .name(diaryTask.getName())
                 .description(diaryTask.getDescription())

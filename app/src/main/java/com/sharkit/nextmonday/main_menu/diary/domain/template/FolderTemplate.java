@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class FolderTemplate {
 
     private Long templateId;
+    private String userId;
 }
