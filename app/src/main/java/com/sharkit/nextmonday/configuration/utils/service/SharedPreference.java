@@ -21,13 +21,13 @@ public class SharedPreference {
 
     public void setJSON(final String json) {
         final SharedPreferences.Editor editor = getEditor();
-        editor.putString(sharedName, json);
+        editor.putString(this.sharedName, json);
         editor.commit();
     }
 
     public String getJSON() {
         final SharedPreferences sharedPreferences = getSharedPreferences();
-        return sharedPreferences.getString(sharedName, null);
+        return sharedPreferences.getString(this.sharedName, null);
     }
 
     public Map<String, ?> getValueShared() {
@@ -36,10 +36,10 @@ public class SharedPreference {
     }
 
     private SharedPreferences.Editor getEditor() {
-        return context.getSharedPreferences(sharedName, Context.MODE_PRIVATE).edit();
+        return this.context.getSharedPreferences(this.sharedName, Context.MODE_PRIVATE).edit();
     }
 
     private SharedPreferences getSharedPreferences() {
-        return context.getSharedPreferences(sharedName, Context.MODE_PRIVATE);
+        return this.context.getSharedPreferences(this.sharedName, Context.MODE_PRIVATE);
     }
 }

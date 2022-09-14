@@ -31,14 +31,14 @@ public class DialogOfRepeaters {
         if (Boolean.TRUE.equals(isChecked)) {
             showDialogOfRepeaters();
         } else {
-            diaryTask.setRepeats(null);
+            this.diaryTask.setRepeats(null);
         }
     }
 
     @SuppressLint("NonConstantResourceId")
     private void showDialogOfRepeaters() {
-        final View view = LayoutInflater.from(context).inflate(R.layout.diary_list_of_repeat, null);
-        final AlertDialog.Builder dialog = new AlertDialog.Builder(context)
+        final View view = LayoutInflater.from(this.context).inflate(R.layout.diary_list_of_repeat, null);
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this.context)
                 .setView(view);
 
         final WidgetContainer.Dialog.RepeatersWidget dialogWidget = WidgetContainer.newInstance(view).getDialog().getRepeatersWidget();
@@ -47,28 +47,28 @@ public class DialogOfRepeaters {
             switch (checkedId) {
                 case R.id.repeat_everyday_id:
                     dialogWidget.getCheckBoxList().setVisibility(View.GONE);
-                    diaryTask.setRepeats(Arrays.asList(DayOfRepeat.values()));
+                    this.diaryTask.setRepeats(Arrays.asList(DayOfRepeat.values()));
                     break;
                 case R.id.select_day_id:
                     dialogWidget.getCheckBoxList().setVisibility(View.VISIBLE);
-                    diaryTask.setRepeats(new ArrayList<>());
+                    this.diaryTask.setRepeats(new ArrayList<>());
                     break;
                 default:
-                    diaryTask.setRepeats(null);
+                    this.diaryTask.setRepeats(null);
             }
         });
 
         this.setCheckBoxActivity(dialogWidget.getEveryDayWidget());
 
-        dialog.setPositiveButton(context.getString(R.string.button_accept),
+        dialog.setPositiveButton(this.context.getString(R.string.button_accept),
                 (dialog1, which) -> {
                     if (Boolean.TRUE.equals(dialogWidget.getEveryDay().isChecked())) {
-                        diaryTask.setRepeats(Arrays.asList(DayOfRepeat.values()));
-                    } else if (Boolean.TRUE.equals(diaryTask.getRepeats().isEmpty())) {
-                        diaryTask.setRepeats(null);
+                        this.diaryTask.setRepeats(Arrays.asList(DayOfRepeat.values()));
+                    } else if (Boolean.TRUE.equals(this.diaryTask.getRepeats().isEmpty())) {
+                        this.diaryTask.setRepeats(null);
                     }
 
-                    Log.i(TAG, String.format("Set days for repeat : %s", Optional.ofNullable(diaryTask.getRepeats()).orElse(new ArrayList<>())));
+                    Log.i(TAG, String.format("Set days for repeat : %s", Optional.ofNullable(this.diaryTask.getRepeats()).orElse(new ArrayList<>())));
 
                     dialog1.dismiss();
                 });
@@ -91,9 +91,9 @@ public class DialogOfRepeaters {
 
     private void setDayForRepeat(final boolean isChecked, final DayOfRepeat dayOfRepeat) {
         if (isChecked) {
-            diaryTask.getRepeats().add(dayOfRepeat);
+            this.diaryTask.getRepeats().add(dayOfRepeat);
         } else {
-            diaryTask.getRepeats().remove(dayOfRepeat);
+            this.diaryTask.getRepeats().remove(dayOfRepeat);
         }
     }
 }

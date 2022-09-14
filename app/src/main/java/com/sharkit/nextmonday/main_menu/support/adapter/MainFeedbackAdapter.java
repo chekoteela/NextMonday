@@ -26,12 +26,12 @@ public class MainFeedbackAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return entities.size();
+        return this.entities.size();
     }
 
     @Override
     public FeedbackEntity getItem(final int position) {
-        return entities.get(position);
+        return this.entities.get(position);
     }
 
     @Override
@@ -43,10 +43,10 @@ public class MainFeedbackAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         if (isNull(convertView))
-            convertView = LayoutInflater.from(context).inflate(R.layout.support_feedback_item, null);
+            convertView = LayoutInflater.from(this.context).inflate(R.layout.support_feedback_item, null);
 
         final SupportAdapterWidget.MainFeedbackAdapterWidget widget = SupportAdapterWidget.newInstance(convertView).getMainFeedbackAdapterWidget();
-        final SupportNavigation navigation = SupportNavigation.getInstance(context);
+        final SupportNavigation navigation = SupportNavigation.getInstance(this.context);
 
         widget.getText().setText(getItem(position).getFeedbackType().name());
         widget.getParentItem().setOnClickListener(v -> navigation.moveToFeedbackMessenger(getItem(position).getId(), getItem(position).getMessages()));

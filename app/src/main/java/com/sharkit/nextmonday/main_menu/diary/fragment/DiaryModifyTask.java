@@ -58,7 +58,7 @@ public class DiaryModifyTask extends Fragment {
 
         Log.i(TAG, "Successful initialize variables");
 
-        this.widget.getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogTimePicker(getContext(), diaryTask, widget.getTakeTime(), calendar).showIfChecked(isChecked));
+        this.widget.getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogTimePicker(getContext(), diaryTask, this.widget.getTakeTime(), calendar).showIfChecked(isChecked));
         this.widget.getRepeat().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogOfRepeaters(getContext(), diaryTask).showIfChecked(isChecked));
         this.widget.getSave().setOnClickListener(v -> save(diaryTask, calendar));
         return view;

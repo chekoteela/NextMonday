@@ -25,27 +25,27 @@ public class DialogTimePicker {
     private static final String TAG = DialogTimePicker.class.getCanonicalName();
 
     public void showIfChecked(final Boolean isChecked){
-        diaryTask.setAlarm(isChecked);
+        this.diaryTask.setAlarm(isChecked);
         if (Boolean.TRUE.equals(isChecked)) {
             showTimePicker();
         } else {
-            diaryTask.setTimeForRepeat(Calendar.getInstance().getTimeInMillis());
+            this.diaryTask.setTimeForRepeat(Calendar.getInstance().getTimeInMillis());
         }
     }
 
     private void showTimePicker() {
-        final TimePickerDialog timePickerDialog = new TimePickerDialog(context, R.style.time_picker_style, (view, hourOfDay, minuteOfHour) -> {
+        final TimePickerDialog timePickerDialog = new TimePickerDialog(this.context, R.style.time_picker_style, (view, hourOfDay, minuteOfHour) -> {
 
-            calendar.set(calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DATE),
+            this.calendar.set(this.calendar.get(Calendar.YEAR),
+                    this.calendar.get(Calendar.MONTH),
+                    this.calendar.get(Calendar.DATE),
                     hourOfDay, minuteOfHour, 0);
 
-            Log.i(TAG, String.format("Set time: %s for task", DateFormat.getTimeInstance().format(calendar.getTime())));
+            Log.i(TAG, String.format("Set time: %s for task", DateFormat.getTimeInstance().format(this.calendar.getTime())));
 
-            diaryTask.setTimeForRepeat(calendar.getTimeInMillis());
+            this.diaryTask.setTimeForRepeat(this.calendar.getTimeInMillis());
         }, 0, 0, true);
-        timePickerDialog.setOnCancelListener(dialog -> switchMaterial.setChecked(false));
+        timePickerDialog.setOnCancelListener(dialog -> this.switchMaterial.setChecked(false));
         timePickerDialog.show();
     }
 }

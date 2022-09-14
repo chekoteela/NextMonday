@@ -24,18 +24,18 @@ public class ImageStorageService {
     }
 
     public void delete(final String imageCod) {
-        storage.getReference(pathToImage.replace(imageCode, imageCod))
+        this.storage.getReference(this.pathToImage.replace(this.imageCode, imageCod))
                 .delete();
     }
 
     public void upload(final Uri imageUri, final String imageCod) {
-        storage.getReference(pathToImage.replace(imageCode, imageCod)).putFile(imageUri);
+        this.storage.getReference(this.pathToImage.replace(this.imageCode, imageCod)).putFile(imageUri);
     }
 
     public void downloadFile(final String imageCod, final ImageView imageView) {
-        storage.getReference(pathToImage.replace(imageCode, imageCod))
+        this.storage.getReference(this.pathToImage.replace(this.imageCode, imageCod))
                 .getDownloadUrl()
-                .addOnSuccessListener(uri -> Glide.with(context)
+                .addOnSuccessListener(uri -> Glide.with(this.context)
                         .load(uri)
                         .into(imageView)
                         .getRequest());

@@ -24,7 +24,7 @@ public class TextValidation {
     private final String size;
 
     public TextValidation(final TextInputLayout inputLayout, final Context context) {
-        result = new ArrayList<>();
+        this.result = new ArrayList<>();
         this.inputLayout = inputLayout;
         this.context = context;
         this.size = context.getText(R.string.variable_size).toString();
@@ -32,67 +32,67 @@ public class TextValidation {
     }
 
     public TextValidation notEmpty() {
-        toValidatorList(context.getString(R.string.toast_field_must_be_not_empty), !TextUtils.isEmpty(textFromField));
+        toValidatorList(this.context.getString(R.string.toast_field_must_be_not_empty), !TextUtils.isEmpty(this.textFromField));
         return this;
     }
 
     public TextValidation isValidEmail() {
-        toValidatorList(context.getString(R.string.toast_email_is_not_valid), Patterns.EMAIL_ADDRESS.matcher(textFromField).matches());
+        toValidatorList(this.context.getString(R.string.toast_email_is_not_valid), Patterns.EMAIL_ADDRESS.matcher(this.textFromField).matches());
         return this;
     }
 
     public TextValidation tooLongValue(final Integer size) {
-        toValidatorList(context.getString(R.string.toast_field_value_to_long).replace(this.size, size.toString()), textFromField.length() < size);
+        toValidatorList(this.context.getString(R.string.toast_field_value_to_long).replace(this.size, size.toString()), this.textFromField.length() < size);
         return this;
     }
 
     public TextValidation tooShortValue(final Integer size) {
-        toValidatorList(context.getString(R.string.toast_field_value_to_short).replace(this.size, size.toString()), textFromField.length() > size);
+        toValidatorList(this.context.getString(R.string.toast_field_value_to_short).replace(this.size, size.toString()), this.textFromField.length() > size);
         return this;
     }
 
     public TextValidation hasNoSymbols() {
         final Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,°•○●□■♤♡◇♧☆▪¤《》¡¿.`]");
-        final Matcher hasSign = sign.matcher(textFromField);
-        toValidatorList(context.getString(R.string.toast_field_has_symbols), !hasSign.find());
+        final Matcher hasSign = sign.matcher(this.textFromField);
+        toValidatorList(this.context.getString(R.string.toast_field_has_symbols), !hasSign.find());
         return this;
     }
 
     public TextValidation hasNotCyrillic() {
         final Pattern cyrillic = Pattern.compile("[а-яА-Я]");
-        final Matcher hasCyrillic = cyrillic.matcher(textFromField);
-        toValidatorList(context.getString(R.string.toast_field_has_cyrillic), !hasCyrillic.find());
+        final Matcher hasCyrillic = cyrillic.matcher(this.textFromField);
+        toValidatorList(this.context.getString(R.string.toast_field_has_cyrillic), !hasCyrillic.find());
         return this;
     }
 
     public TextValidation hasNoNumber() {
         final Pattern num = Pattern.compile("[0-9]");
-        final Matcher hasNum = num.matcher(textFromField);
-        toValidatorList(context.getString(R.string.toast_field_has_number), !hasNum.find());
+        final Matcher hasNum = num.matcher(this.textFromField);
+        toValidatorList(this.context.getString(R.string.toast_field_has_number), !hasNum.find());
         return this;
     }
 
     public TextValidation hasNoSpace() {
         final Pattern space = Pattern.compile(" ");
-        final Matcher hasSpace = space.matcher(textFromField);
-        toValidatorList(context.getString(R.string.toast_field_has_space), !hasSpace.find());
+        final Matcher hasSpace = space.matcher(this.textFromField);
+        toValidatorList(this.context.getString(R.string.toast_field_has_space), !hasSpace.find());
         return this;
     }
 
     public Boolean build() {
-        return result.stream()
+        return this.result.stream()
                 .filter(res -> res.getValid().equals(Boolean.FALSE))
                 .findFirst()
                 .map(res -> {
-                    res.throwToastMessage(context);
-                    YoYoAnimation.getInstance().setRubberBandAnimation(inputLayout);
+                    res.throwToastMessage(this.context);
+                    YoYoAnimation.getInstance().setRubberBandAnimation(this.inputLayout);
                     return Boolean.TRUE;
                 })
                 .orElse(Boolean.FALSE);
     }
 
     private void toValidatorList(final String message, final Boolean isValid) {
-        result.add(new Validator(message, isValid));
+        this.result.add(new Validator(message, isValid));
     }
 
 }

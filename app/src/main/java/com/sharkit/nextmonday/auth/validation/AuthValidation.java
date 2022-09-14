@@ -17,17 +17,17 @@ public class AuthValidation {
     private final AuthWidget.AuthorisationMenuWidget widget;
 
     public boolean isValidAuthData() {
-        if (isValidAuthField(widget.getEmailLayout())) {
+        if (isValidAuthField(this.widget.getEmailLayout())) {
             return Boolean.FALSE;
         }
-        if (isValidAuthField(widget.getPasswordLayout())) {
+        if (isValidAuthField(this.widget.getPasswordLayout())) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
     }
 
     private boolean isValidAuthField(final TextInputLayout inputEditText) {
-        return new TextValidation(inputEditText, context)
+        return new TextValidation(inputEditText, this.context)
                 .notEmpty()
                 .build();
     }

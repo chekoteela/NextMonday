@@ -28,34 +28,34 @@ public class DialogPurchaseItem {
     private WidgetContainer.Dialog.TemplateAddItemWidget widget;
 
     public void createItem() {
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(this.context);
         final AlertDialog dialog = showDialog();
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_add), (parent, which) -> {
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, this.context.getString(R.string.button_add), (parent, which) -> {
             final PurchaseItem item = PurchaseItem.builder()
                     .status(Boolean.FALSE)
-                    .description(widget.getDescription().getText().toString())
-                    .name(widget.getName().getText().toString())
-                    .templateId(templateId)
+                    .description(this.widget.getDescription().getText().toString())
+                    .name(this.widget.getName().getText().toString())
+                    .templateId(this.templateId)
                     .build();
             db.purchaseItemDAO().create(toPurchaseItemDTO(item));
-            purchaseItems.add(item);
-            purchaseAdapter.notifyDataSetChanged();
+            this.purchaseItems.add(item);
+            this.purchaseAdapter.notifyDataSetChanged();
             parent.dismiss();
         });
         dialog.show();
     }
 
     public void changeItem(final PurchaseItem item, final int position){
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(this.context);
         final AlertDialog dialog = showDialog();
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_change), (parent, which) -> {
-            item.setDescription(widget.getDescription().getText().toString());
-            item.setName(widget.getName().getText().toString());
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, this.context.getString(R.string.button_change), (parent, which) -> {
+            item.setDescription(this.widget.getDescription().getText().toString());
+            item.setName(this.widget.getName().getText().toString());
 
             db.purchaseItemDAO().update(toPurchaseItemDTO(item));
 
-            purchaseItems.set(position, item);
-            purchaseAdapter.notifyDataSetChanged();
+            this.purchaseItems.set(position, item);
+            this.purchaseAdapter.notifyDataSetChanged();
             parent.dismiss();
         });
         dialog.show();
@@ -63,10 +63,10 @@ public class DialogPurchaseItem {
     }
 
     private AlertDialog showDialog() {
-        final AlertDialog dialog = new AlertDialog.Builder(context).create();
-        final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_recipe_food, null);
+        final AlertDialog dialog = new AlertDialog.Builder(this.context).create();
+        final View view = LayoutInflater.from(this.context).inflate(R.layout.dialog_diary_recipe_food, null);
 
-        widget = WidgetContainer.newInstance(view).getDialog().getTemplateAddItemWidget();
+        this.widget = WidgetContainer.newInstance(view).getDialog().getTemplateAddItemWidget();
         dialog.setView(view);
         return dialog;
     }

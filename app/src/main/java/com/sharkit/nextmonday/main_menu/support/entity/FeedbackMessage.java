@@ -21,8 +21,8 @@ public class FeedbackMessage implements Parcelable {
     private MessageType messageType;
 
     protected FeedbackMessage(final Parcel in) {
-        id = in.readString();
-        message = in.readString();
+        this.id = in.readString();
+        this.message = in.readString();
     }
 
     public static final Creator<FeedbackMessage> CREATOR = new Creator<FeedbackMessage>() {
@@ -44,7 +44,7 @@ public class FeedbackMessage implements Parcelable {
 
     @Override
     public void writeToParcel(final Parcel dest, final int flags) {
-        dest.writeString(id);
-        dest.writeString(message);
+        dest.writeString(this.id);
+        dest.writeString(this.message);
     }
 }

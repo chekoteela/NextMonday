@@ -50,18 +50,18 @@ public final class AuthWidget {
         private final TextInputLayout userLastNameLayout;
 
         public RegisterMenuWidget() {
-            this.userName = view.findViewById(R.id.user_name_id);
-            this.email = view.findViewById(R.id.email_id);
-            this.password = view.findViewById(R.id.password_id);
-            this.signIn = view.findViewById(R.id.sign_in_id);
-            this.policy = view.findViewById(R.id.policy_id);
-            this.createAccount = view.findViewById(R.id.create_account_id);
-            this.userLastName = view.findViewById(R.id.user_last_name_id);
-            this.policyText = view.findViewById(R.id.policy_text_id);
-            this.emailLayout = view.findViewById(R.id.email_layout_id);
-            this.passwordLayout = view.findViewById(R.id.password_layout_id);
-            this.userNameLayout = view.findViewById(R.id.user_name_layout_id);
-            this.userLastNameLayout = view.findViewById(R.id.user_last_name_layout_id);
+            this.userName = AuthWidget.this.view.findViewById(R.id.user_name_id);
+            this.email = AuthWidget.this.view.findViewById(R.id.email_id);
+            this.password = AuthWidget.this.view.findViewById(R.id.password_id);
+            this.signIn = AuthWidget.this.view.findViewById(R.id.sign_in_id);
+            this.policy = AuthWidget.this.view.findViewById(R.id.policy_id);
+            this.createAccount = AuthWidget.this.view.findViewById(R.id.create_account_id);
+            this.userLastName = AuthWidget.this.view.findViewById(R.id.user_last_name_id);
+            this.policyText = AuthWidget.this.view.findViewById(R.id.policy_text_id);
+            this.emailLayout = AuthWidget.this.view.findViewById(R.id.email_layout_id);
+            this.passwordLayout = AuthWidget.this.view.findViewById(R.id.password_layout_id);
+            this.userNameLayout = AuthWidget.this.view.findViewById(R.id.user_name_layout_id);
+            this.userLastNameLayout = AuthWidget.this.view.findViewById(R.id.user_last_name_layout_id);
         }
     }
 
@@ -78,14 +78,14 @@ public final class AuthWidget {
         private final TextInputLayout passwordLayout;
 
         public AuthorisationMenuWidget() {
-            this.password = view.findViewById(R.id.password_id);
-            this.google = view.findViewById(R.id.google_id);
-            this.email = view.findViewById(R.id.email_id);
-            this.signIn = view.findViewById(R.id.sign_in_id);
-            this.createAccount = view.findViewById(R.id.create_account_id);
-            this.forgotPassword = view.findViewById(R.id.forgot_password_id);
-            this.emailLayout = view.findViewById(R.id.email_layout_id);
-            this.passwordLayout = view.findViewById(R.id.password_layout_id);
+            this.password = AuthWidget.this.view.findViewById(R.id.password_id);
+            this.google = AuthWidget.this.view.findViewById(R.id.google_id);
+            this.email = AuthWidget.this.view.findViewById(R.id.email_id);
+            this.signIn = AuthWidget.this.view.findViewById(R.id.sign_in_id);
+            this.createAccount = AuthWidget.this.view.findViewById(R.id.create_account_id);
+            this.forgotPassword = AuthWidget.this.view.findViewById(R.id.forgot_password_id);
+            this.emailLayout = AuthWidget.this.view.findViewById(R.id.email_layout_id);
+            this.passwordLayout = AuthWidget.this.view.findViewById(R.id.password_layout_id);
         }
     }
 
@@ -104,8 +104,8 @@ public final class AuthWidget {
             private final EditText email;
 
             public ResetPasswordWidget() {
-                this.emailLayout = view.findViewById(R.id.email_layout_id);
-                this.email = view.findViewById(R.id.email_id);
+                this.emailLayout = AuthWidget.this.view.findViewById(R.id.email_layout_id);
+                this.email = AuthWidget.this.view.findViewById(R.id.email_id);
             }
         }
 

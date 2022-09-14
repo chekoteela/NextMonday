@@ -13,29 +13,29 @@ public class RegistrationMenuValidation {
     private final Context context;
 
     public boolean validateField() {
-        if (isNameValid(widget.getUserNameLayout())) {
+        if (isNameValid(this.widget.getUserNameLayout())) {
             return Boolean.FALSE;
         }
-        if (isNameValid(widget.getUserLastNameLayout())){
+        if (isNameValid(this.widget.getUserLastNameLayout())){
             return Boolean.FALSE;
         }
-        if (isValidEmail(widget.getEmailLayout())) {
+        if (isValidEmail(this.widget.getEmailLayout())) {
             return Boolean.FALSE;
         }
-        if (isPasswordValid(widget.getPasswordLayout())) {
+        if (isPasswordValid(this.widget.getPasswordLayout())) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
     }
 
     private boolean isValidEmail(final TextInputLayout inputLayout) {
-        return new TextValidation(inputLayout, context)
+        return new TextValidation(inputLayout, this.context)
                 .isValidEmail()
                 .build();
     }
 
     private boolean isNameValid(final TextInputLayout inputLayout) {
-        return new TextValidation(inputLayout, context)
+        return new TextValidation(inputLayout, this.context)
                 .notEmpty()
                 .hasNoNumber()
                 .hasNoSpace()
@@ -46,7 +46,7 @@ public class RegistrationMenuValidation {
     }
 
     private boolean isPasswordValid(final TextInputLayout inputLayout) {
-        return new TextValidation(inputLayout, context)
+        return new TextValidation(inputLayout, this.context)
                 .notEmpty()
                 .hasNoSpace()
                 .tooLongValue(50)

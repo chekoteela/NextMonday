@@ -22,13 +22,13 @@ public class UserRepository {
     }
 
     public void create(final User user) {
-        path = path.replace("{userId}", user.getId());
-        db.document(path).set(user);
+        this.path = this.path.replace("{userId}", user.getId());
+        this.db.document(this.path).set(user);
     }
 
     public Task<DocumentSnapshot> findById(final String id) {
-        path = path.replace("{userId}", id);
-        return db.document(path)
+        this.path = this.path.replace("{userId}", id);
+        return this.db.document(this.path)
                 .get();
     }
 }
