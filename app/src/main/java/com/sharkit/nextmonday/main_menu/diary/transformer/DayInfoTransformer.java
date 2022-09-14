@@ -15,7 +15,7 @@ public class DayInfoTransformer {
 
     private static final String UNSUPPORTED_VALUE = "Unsupported value %s";
 
-    public static String toMonthName(Context context, int month) {
+    public static String toMonthName(final Context context, final int month) {
         switch (month) {
             case 0:
                 return getValue(context, R.string.text_view_january);
@@ -46,7 +46,7 @@ public class DayInfoTransformer {
         }
     }
 
-    public static String toDayName(Context context, int day) {
+    public static String toDayName(final Context context, final int day) {
         switch (day) {
             case 2:
                 return getValue(context, R.string.text_view_monday);
@@ -67,7 +67,7 @@ public class DayInfoTransformer {
         }
     }
 
-    public static String toDayName(Context context, DayOfRepeat dayOfRepeat) {
+    public static String toDayName(final Context context, final DayOfRepeat dayOfRepeat) {
         switch (dayOfRepeat) {
             case MONDAY:
                 return getValue(context, R.string.text_view_monday);
@@ -88,7 +88,7 @@ public class DayInfoTransformer {
         }
     }
 
-    public static int toDayOfWeek(DayOfRepeat dayOfRepeat) {
+    public static int toDayOfWeek(final DayOfRepeat dayOfRepeat) {
         switch (dayOfRepeat) {
             case MONDAY:
                 return Calendar.MONDAY;
@@ -109,7 +109,7 @@ public class DayInfoTransformer {
         }
     }
 
-    private static String getValue(Context context, int idRes) {
+    private static String getValue(final Context context, final int idRes) {
         return context.getString(idRes);
     }
 

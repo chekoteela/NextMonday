@@ -42,7 +42,7 @@ public abstract class NextMondayDatabase extends RoomDatabase {
 
     public abstract PurchaseTemplateDAO purchaseTemplateDAO();
 
-    public static NextMondayDatabase getInstance(Context context) {
+    public static NextMondayDatabase getInstance(final Context context) {
         return Room.databaseBuilder(context, NextMondayDatabase.class, "NextMonday")
                 .allowMainThreadQueries()
                 .addMigrations(MIGRATION_1_2)

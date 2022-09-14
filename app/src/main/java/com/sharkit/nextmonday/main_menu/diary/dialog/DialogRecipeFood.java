@@ -33,7 +33,7 @@ public class DialogRecipeFood {
         final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
         final AlertDialog dialog = showDialog();
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_add), (parent, which) -> {
-            RecipeItem item = RecipeItem.builder()
+            final RecipeItem item = RecipeItem.builder()
                     .description(widget.getDescription().getText().toString())
                     .name(widget.getName().getText().toString())
                     .templateId(templateId)
@@ -46,7 +46,7 @@ public class DialogRecipeFood {
         dialog.show();
     }
 
-    public void changeItem(RecipeItem item, int position){
+    public void changeItem(final RecipeItem item, final int position){
         final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
         final AlertDialog dialog = showDialog();
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_change), (parent, which) -> {

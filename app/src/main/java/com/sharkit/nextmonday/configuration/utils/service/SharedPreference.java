@@ -13,14 +13,14 @@ public class SharedPreference {
     private final Context context;
     private final String sharedName;
 
-    public void setValueShared(Map<String, String> map) {
-        SharedPreferences.Editor editor = getEditor();
+    public void setValueShared(final Map<String, String> map) {
+        final SharedPreferences.Editor editor = getEditor();
         map.keySet().forEach(key -> editor.putString(key, map.get(key)));
         editor.apply();
     }
 
-    public void setJSON(String json) {
-        SharedPreferences.Editor editor = getEditor();
+    public void setJSON(final String json) {
+        final SharedPreferences.Editor editor = getEditor();
         editor.putString(sharedName, json);
         editor.commit();
     }
@@ -31,7 +31,7 @@ public class SharedPreference {
     }
 
     public Map<String, ?> getValueShared() {
-        SharedPreferences sharedPreferences = getSharedPreferences();
+        final SharedPreferences sharedPreferences = getSharedPreferences();
         return sharedPreferences.getAll();
     }
 

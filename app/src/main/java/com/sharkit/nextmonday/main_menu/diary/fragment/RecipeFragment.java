@@ -40,7 +40,7 @@ public class RecipeFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final Notate notate = (Notate) requireArguments().getSerializable(DIARY_NOTATE);
         final View view = inflater.inflate(R.layout.diary_noto_recipe, container, false);
 
@@ -63,22 +63,22 @@ public class RecipeFragment extends Fragment {
     }
 
     private void downloadNewImageAndDeleteOld() {
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        final Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 3);
     }
 
-    private void saveChanges(RecipeTemplate template, NextMondayDatabase db, Notate notate) {
+    private void saveChanges(final RecipeTemplate template, final NextMondayDatabase db, final Notate notate) {
         template.setDescription(this.widget.getDescription().getText().toString());
         db.recipeTemplateDAO().update(toRecipeTemplateDTO(template));
         db.notateDAO().updateName(this.widget.getName().getText().toString(), notate.getId());
 
-        Bundle bundle = new Bundle();
+        final Bundle bundle = new Bundle();
         bundle.putLong(DIARY_NOTATE_FOLDER_ID, notate.getParentFolderId());
         Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && data != null) {
 

@@ -20,19 +20,19 @@ public class FeedbackMessage implements Parcelable {
     private String message;
     private MessageType messageType;
 
-    protected FeedbackMessage(Parcel in) {
+    protected FeedbackMessage(final Parcel in) {
         id = in.readString();
         message = in.readString();
     }
 
     public static final Creator<FeedbackMessage> CREATOR = new Creator<FeedbackMessage>() {
         @Override
-        public FeedbackMessage createFromParcel(Parcel in) {
+        public FeedbackMessage createFromParcel(final Parcel in) {
             return new FeedbackMessage(in);
         }
 
         @Override
-        public FeedbackMessage[] newArray(int size) {
+        public FeedbackMessage[] newArray(final int size) {
             return new FeedbackMessage[size];
         }
     };
@@ -43,7 +43,7 @@ public class FeedbackMessage implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(final Parcel dest, final int flags) {
         dest.writeString(id);
         dest.writeString(message);
     }

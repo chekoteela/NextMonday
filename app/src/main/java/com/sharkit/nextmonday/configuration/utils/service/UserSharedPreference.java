@@ -14,13 +14,13 @@ public class UserSharedPreference {
 
     private static final String USER_PREFERENCE = "user_shared_preference";
 
-    public void set(User user) {
-        Gson gson = new Gson();
+    public void set(final User user) {
+        final Gson gson = new Gson();
         new SharedPreference(context, USER_PREFERENCE).setJSON(gson.toJson(user));
     }
 
     public User get() {
-        Gson gson = new Gson();
+        final Gson gson = new Gson();
         return gson.fromJson(new SharedPreference(context, USER_PREFERENCE).getJSON(), User.class);
     }
 }

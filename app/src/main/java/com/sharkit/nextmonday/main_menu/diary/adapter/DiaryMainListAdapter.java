@@ -42,27 +42,27 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public int getChildrenCount(int groupPosition) {
+    public int getChildrenCount(final int groupPosition) {
         return daysInfo.get(groupPosition).getDiaryTasks().size();
     }
 
     @Override
-    public Object getGroup(int groupPosition) {
+    public Object getGroup(final int groupPosition) {
         return groupPosition;
     }
 
     @Override
-    public Object getChild(int groupPosition, int childPosition) {
+    public Object getChild(final int groupPosition, final int childPosition) {
         return childPosition;
     }
 
     @Override
-    public long getGroupId(int groupPosition) {
+    public long getGroupId(final int groupPosition) {
         return groupPosition;
     }
 
     @Override
-    public long getChildId(int groupPosition, int childPosition) {
+    public long getChildId(final int groupPosition, final int childPosition) {
         return childPosition;
     }
 
@@ -72,7 +72,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+    public View getGroupView(final int groupPosition, final boolean isExpanded, View convertView, final ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.diary_main_parent_list, null);
         }
@@ -100,7 +100,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(final int groupPosition, final int childPosition, final boolean isLastChild, View convertView, final ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.diary_main_child_item, null);
         }
@@ -123,15 +123,15 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         return convertView;
     }
 
-    private void moveToCreateTask(int groupPosition) {
-        Bundle time = new Bundle();
+    private void moveToCreateTask(final int groupPosition) {
+        final Bundle time = new Bundle();
         time.putLong(DIARY_DAY_OF_WEEK, daysInfo.get(groupPosition).getDataTime());
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_create_task, time);
     }
 
-    private void showContextMenu(Menu menu, int groupPosition, int childPosition){
+    private void showContextMenu(final Menu menu, final int groupPosition, final int childPosition){
         menu.add(context.getString(R.string.button_change)).setOnMenuItemClickListener(item -> {
-            Bundle bundle = new Bundle();
+            final Bundle bundle = new Bundle();
 
             bundle.putSerializable(DIARY_TASK_FOR_CHANGE, daysInfo.get(groupPosition).getDiaryTasks().get(childPosition));
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_update_task, bundle);
@@ -146,7 +146,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public boolean isChildSelectable(int groupPosition, int childPosition) {
+    public boolean isChildSelectable(final int groupPosition, final int childPosition) {
         return false;
     }
 }

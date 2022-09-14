@@ -13,7 +13,7 @@ public class Validator {
     private String messageText;
     private Boolean valid;
 
-    public void throwToastMessage(Context context) {
+    public void throwToastMessage(final Context context) {
         Toast.makeText(context, getMessageText(), Toast.LENGTH_SHORT).show();
     }
 }

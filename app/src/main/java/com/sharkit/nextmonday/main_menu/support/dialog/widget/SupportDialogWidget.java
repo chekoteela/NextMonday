@@ -20,7 +20,7 @@ public class SupportDialogWidget {
         return new NewFeedbackDialogWidget();
     }
 
-    public static SupportDialogWidget newInstance(View view){
+    public static SupportDialogWidget newInstance(final View view){
         return new SupportDialogWidget(view);
     }
 

@@ -24,18 +24,18 @@ public class DiaryCalendarFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_calendar, container, false);
         final WidgetContainer.DiaryCalendarWidget widget = WidgetContainer.newInstance(view).getDiaryCalendarWidget();
 
         widget.getCalendarView().setOnDateChangeListener((view1, year, month, dayOfMonth) -> {
-            Calendar calendar = Calendar.getInstance();
+            final Calendar calendar = Calendar.getInstance();
 
             calendar.set(Calendar.YEAR, year);
             calendar.set(Calendar.MONTH, month);
             calendar.set(Calendar.DATE, dayOfMonth);
 
-            Bundle bundle = new Bundle();
+            final Bundle bundle = new Bundle();
 
             bundle.putLong(DIARY_DAY_OF_WEEK, calendar.getTimeInMillis());
 

@@ -34,7 +34,7 @@ public class DiaryTaskCreator extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_create_task, container, false);
 
         this.calendar = Calendar.getInstance();

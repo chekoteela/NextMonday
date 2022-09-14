@@ -20,7 +20,7 @@ import com.sharkit.nextmonday.main_menu.diary.entity.DiaryTaskDTO;
 @SuppressLint("InflateParams")
 public class DialogChangeTask {
 
-    public void showDialogUpdate(Context context, DiaryTask diaryTask) {
+    public void showDialogUpdate(final Context context, final DiaryTask diaryTask) {
 
         final AlertDialog dialog = new AlertDialog.Builder(context).create();
         final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_change_item, null);
@@ -45,7 +45,7 @@ public class DialogChangeTask {
         dialog.show();
     }
 
-    public void showDialogDelete(Context context, DiaryTask diaryTask) {
+    public void showDialogDelete(final Context context, final DiaryTask diaryTask) {
         final AlertDialog dialog = new AlertDialog.Builder(context).create();
         final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_delete_item, null);
         final WidgetContainer.Dialog.DialogDeleteSubjectWidget widget = WidgetContainer.newInstance(view).getDialog().getDialogDeleteSubjectWidget();
@@ -73,7 +73,7 @@ public class DialogChangeTask {
         dialog.show();
     }
 
-    private void moveToDiaryMain(Context context) {
+    private void moveToDiaryMain(final Context context) {
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_main);
     }
 }

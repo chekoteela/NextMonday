@@ -29,18 +29,18 @@ public class FeedbackMessageAdapter extends BaseAdapter {
     }
 
     @Override
-    public FeedbackMessage getItem(int position) {
+    public FeedbackMessage getItem(final int position) {
         return messages.get(position);
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(final int position) {
         return position;
     }
 
     @SuppressLint("InflateParams")
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         if (isNull(convertView))
             convertView = LayoutInflater.from(context).inflate(R.layout.support_feedback_message_item, null);
 

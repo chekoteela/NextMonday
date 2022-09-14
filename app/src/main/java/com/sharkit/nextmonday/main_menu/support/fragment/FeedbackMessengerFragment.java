@@ -27,7 +27,7 @@ public class FeedbackMessengerFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.support_feedback_messanger, container, false);
 
@@ -44,16 +44,16 @@ public class FeedbackMessengerFragment extends Fragment {
         return view;
     }
 
-    private void closeFeedback(String feedbackId) {
+    private void closeFeedback(final String feedbackId) {
         final FeedbackRepository repository = FeedbackRepository.getInstance(getContext());
         repository.closeFeedback(feedbackId);
     }
 
-    private void sendMessage(SupportWidget.FeedbackMessengerWidget widget, FeedbackMessageAdapter adapter, List<FeedbackMessage> messages, String feedbackId) {
+    private void sendMessage(final SupportWidget.FeedbackMessengerWidget widget, final FeedbackMessageAdapter adapter, final List<FeedbackMessage> messages, final String feedbackId) {
         final User user = new UserSharedPreference(requireContext()).get();
         final FeedbackRepository repository = FeedbackRepository.getInstance(getContext());
 
-        FeedbackMessage message = FeedbackMessage.builder()
+        final FeedbackMessage message = FeedbackMessage.builder()
                 .id(UUID.randomUUID().toString())
                 .message(widget.getTextOfFeedback().getText().toString())
                 .messageType(user.getRole().getFeedbackMessageType())

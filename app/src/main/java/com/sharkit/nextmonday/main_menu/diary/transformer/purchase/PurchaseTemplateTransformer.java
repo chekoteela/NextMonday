@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseTemplateTransformer {
 
-    public static PurchaseTemplateDTO toPurchaseTemplateDTO(PurchaseTemplate template) {
+    public static PurchaseTemplateDTO toPurchaseTemplateDTO(final PurchaseTemplate template) {
         return PurchaseTemplateDTO.builder()
                 .date(template.getDate())
                 .id(template.getId())
@@ -17,7 +17,7 @@ public class PurchaseTemplateTransformer {
                 .build();
     }
 
-    public static PurchaseTemplate toPurchaseTemplate(PurchaseTemplateDTO templateDTO) {
+    public static PurchaseTemplate toPurchaseTemplate(final PurchaseTemplateDTO templateDTO) {
         return PurchaseTemplate.builder()
                 .date(templateDTO.getDate())
                 .id(templateDTO.getId())

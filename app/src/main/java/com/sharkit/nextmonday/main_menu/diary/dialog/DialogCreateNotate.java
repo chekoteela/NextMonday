@@ -26,7 +26,7 @@ public class DialogCreateNotate {
 
     private static final String TAG = DiaryTaskTransformer.class.getCanonicalName();
 
-    public void showCreateNotateDialog(Context context, Long parentId, NotateAdaptor adaptor, List<Notate> notates, NotateType parentType) {
+    public void showCreateNotateDialog(final Context context, final Long parentId, final NotateAdaptor adaptor, final List<Notate> notates, final NotateType parentType) {
         final AlertDialog dialog = new AlertDialog.Builder(context).create();
         final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_create_noto, null);
         final WidgetContainer.Dialog.DialogCreateNotateWidget widget = WidgetContainer.newInstance(view).getDialog().getDialogCreateNotateWidget();
@@ -38,7 +38,7 @@ public class DialogCreateNotate {
         }
 
         widget.getCreate().setOnClickListener(v -> {
-            Notate notate = Notate.builder()
+            final Notate notate = Notate.builder()
                     .parentFolderId(parentId)
                     .notateType(getNotateTypeById(widget.getTypeOfNotate().getSelectedItemPosition()))
                     .templateType(getTemplateTypeById(widget.getTypeOfKeeping().getSelectedItemPosition()))

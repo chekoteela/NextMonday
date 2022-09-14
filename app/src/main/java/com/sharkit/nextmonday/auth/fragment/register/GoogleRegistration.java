@@ -28,12 +28,12 @@ public class GoogleRegistration {
     private GoogleSignInClient mGoogleSignInClient;
     private static final String TAG = GoogleRegistration.class.getCanonicalName();
 
-    public GoogleRegistration(Activity activity) {
+    public GoogleRegistration(final Activity activity) {
         this.activity = activity;
     }
 
     private void createRequest() {
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        final GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(activity.getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
@@ -45,13 +45,13 @@ public class GoogleRegistration {
 
     public void signIn() {
         createRequest();
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        final Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         this.activity.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    public void firebaseAuthWithGoogle(String idToken) {
+    public void firebaseAuthWithGoogle(final String idToken) {
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        final AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
 
         Log.i(TAG, "sign in with google");
 
@@ -68,7 +68,7 @@ public class GoogleRegistration {
         this.activity.startActivity(new Intent(this.activity, NavigationMenu.class));
     }
 
-    private void createNewUser(FirebaseAuth mAuth) {
+    private void createNewUser(final FirebaseAuth mAuth) {
         final User user = toUser(
                 Objects.requireNonNull(mAuth.getCurrentUser()).getUid(),
                 Objects.requireNonNull(mAuth.getCurrentUser().getEmail()),

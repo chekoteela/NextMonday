@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseItemTransformer {
 
-    public static PurchaseItemDTO toPurchaseItemDTO(PurchaseItem item) {
+    public static PurchaseItemDTO toPurchaseItemDTO(final PurchaseItem item) {
         return PurchaseItemDTO.builder()
                 .id(item.getId())
                 .name(item.getName())
@@ -22,7 +22,7 @@ public class PurchaseItemTransformer {
                 .build();
     }
 
-    public static PurchaseItem toPurchaseItem(PurchaseItemDTO itemDTO) {
+    public static PurchaseItem toPurchaseItem(final PurchaseItemDTO itemDTO) {
         return PurchaseItem.builder()
                 .id(itemDTO.getId())
                 .name(itemDTO.getName())
@@ -32,7 +32,7 @@ public class PurchaseItemTransformer {
                 .build();
     }
 
-    public static List<PurchaseItem> toPurchaseItems(List<PurchaseItemDTO> itemDTOList) {
+    public static List<PurchaseItem> toPurchaseItems(final List<PurchaseItemDTO> itemDTOList) {
         return itemDTOList.stream()
                 .map(PurchaseItemTransformer::toPurchaseItem)
                 .collect(Collectors.toList());

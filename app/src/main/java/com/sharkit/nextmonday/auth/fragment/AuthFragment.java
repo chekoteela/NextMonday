@@ -32,7 +32,7 @@ public class AuthFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.authorisation_menu, container, false);
 
         this.mAuth = FirebaseAuth.getInstance();
@@ -69,7 +69,7 @@ public class AuthFragment extends Fragment {
         if (this.mAuth.getCurrentUser() != null) {
             UserRepository.getInstance(getContext()).findById(this.mAuth.getCurrentUser().getUid())
                     .addOnSuccessListener(documentSnapshot -> {
-                        User currentUser = documentSnapshot.toObject(User.class);
+                        final User currentUser = documentSnapshot.toObject(User.class);
                         new UserSharedPreference(getContext()).set(currentUser);
                         startActivity(new Intent(getActivity(), NavigationMenu.class));
                     });

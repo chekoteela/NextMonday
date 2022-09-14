@@ -13,12 +13,12 @@ public class MenuDrawerNavigation {
     private final Context context;
     private final NavController navController;
 
-    private MenuDrawerNavigation(Context context){
+    private MenuDrawerNavigation(final Context context){
         this.context = context;
         this.navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment);
     }
 
-    public static MenuDrawerNavigation getInstance(Context context) {
+    public static MenuDrawerNavigation getInstance(final Context context) {
         return new MenuDrawerNavigation(context);
     }
 

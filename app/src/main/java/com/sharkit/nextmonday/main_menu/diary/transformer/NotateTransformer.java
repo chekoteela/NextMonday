@@ -17,13 +17,13 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class NotateTransformer {
 
-    public static List<Notate> toNotates(List<NotateDTO> notateDTOs) {
+    public static List<Notate> toNotates(final List<NotateDTO> notateDTOs) {
         return notateDTOs.stream()
                 .map(NotateTransformer::toNotate)
                 .collect(Collectors.toList());
     }
 
-    public static Notate toNotate(NotateDTO notateDTO) {
+    public static Notate toNotate(final NotateDTO notateDTO) {
         return Notate.builder()
                 .parentFolderId(notateDTO.getParentFolderId())
                 .notateType((NotateType) toObject(notateDTO.getNotateType()))
@@ -35,7 +35,7 @@ public class NotateTransformer {
                 .build();
     }
 
-    public static NotateDTO toNotateDTO(Notate notate) {
+    public static NotateDTO toNotateDTO(final Notate notate) {
         return NotateDTO.builder()
                 .id(notate.getId())
                 .userId(notate.getUserId())

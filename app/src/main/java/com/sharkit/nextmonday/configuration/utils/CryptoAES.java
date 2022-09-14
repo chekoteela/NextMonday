@@ -34,25 +34,25 @@ public class CryptoAES {
 
     @SuppressLint("GetInstance")
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public String encrypt(String strToEncrypt) {
+    public String encrypt(final String strToEncrypt) {
         try {
-            SecretKeySpec secretKey = getSecretKeySpec(encodeSecret());
-            Cipher cipher = Cipher.getInstance(CIPHER_CONFIG_TRANSFORMER);
+            final SecretKeySpec secretKey = getSecretKeySpec(encodeSecret());
+            final Cipher cipher = Cipher.getInstance(CIPHER_CONFIG_TRANSFORMER);
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             return Base64.getEncoder()
                     .encodeToString(cipher.doFinal(strToEncrypt.getBytes(UTF_8)));
-        } catch (Exception e) {
+        } catch (final Exception e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RuntimeException(e.getMessage());
         }
     }
 
-    private SecretKeySpec getSecretKeySpec(String myKey) {
+    private SecretKeySpec getSecretKeySpec(final String myKey) {
         try {
-            MessageDigest sha = MessageDigest.getInstance(SHA_1);
-            byte[] key = Arrays.copyOf(sha.digest(myKey.getBytes(UTF_8)), 16);
+            final MessageDigest sha = MessageDigest.getInstance(SHA_1);
+            final byte[] key = Arrays.copyOf(sha.digest(myKey.getBytes(UTF_8)), 16);
             return new SecretKeySpec(key, ALGORITHM);
-        } catch (Exception e) {
+        } catch (final Exception e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RuntimeException(e.getMessage());
         }

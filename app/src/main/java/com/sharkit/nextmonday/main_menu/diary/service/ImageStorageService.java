@@ -16,23 +16,23 @@ public class ImageStorageService {
 
     private final String imageCode;
 
-    public ImageStorageService(Context context) {
+    public ImageStorageService(final Context context) {
         this.storage = FirebaseStorage.getInstance();
         this.context = context;
         this.pathToImage = context.getString(R.string.path_to_recipe_image);
         this.imageCode = context.getString(R.string.path_variable_image_code);
     }
 
-    public void delete(String imageCod) {
+    public void delete(final String imageCod) {
         storage.getReference(pathToImage.replace(imageCode, imageCod))
                 .delete();
     }
 
-    public void upload(Uri imageUri, String imageCod) {
+    public void upload(final Uri imageUri, final String imageCod) {
         storage.getReference(pathToImage.replace(imageCode, imageCod)).putFile(imageUri);
     }
 
-    public void downloadFile(String imageCod, ImageView imageView) {
+    public void downloadFile(final String imageCod, final ImageView imageView) {
         storage.getReference(pathToImage.replace(imageCode, imageCod))
                 .getDownloadUrl()
                 .addOnSuccessListener(uri -> Glide.with(context)

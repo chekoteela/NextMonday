@@ -30,18 +30,18 @@ public class MainFeedbackAdapter extends BaseAdapter {
     }
 
     @Override
-    public FeedbackEntity getItem(int position) {
+    public FeedbackEntity getItem(final int position) {
         return entities.get(position);
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(final int position) {
         return position;
     }
 
     @SuppressLint("InflateParams")
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         if (isNull(convertView))
             convertView = LayoutInflater.from(context).inflate(R.layout.support_feedback_item, null);
 

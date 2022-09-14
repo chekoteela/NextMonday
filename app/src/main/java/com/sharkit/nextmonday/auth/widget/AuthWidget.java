@@ -17,7 +17,7 @@ public final class AuthWidget {
 
     private final View view;
 
-    public static AuthWidget newInstance(View view) {
+    public static AuthWidget newInstance(final View view) {
         return new AuthWidget(view);
     }
 

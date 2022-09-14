@@ -11,7 +11,7 @@ import com.sharkit.nextmonday.main_menu.support.entity.enums.MessageType;
 public class AdminService implements IUserRoleAction {
 
     @Override
-    public Task<QuerySnapshot> getAllActiveFeedbacks(Context context, String id) {
+    public Task<QuerySnapshot> getAllActiveFeedbacks(final Context context, final String id) {
         return FeedbackRepository.getInstance(context).getAllActiveFeedbacks();
     }
 

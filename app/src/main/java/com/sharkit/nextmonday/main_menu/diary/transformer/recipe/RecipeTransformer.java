@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class RecipeTransformer {
 
-    public static Recipe toRecipe(RecipeDTO dto) {
+    public static Recipe toRecipe(final RecipeDTO dto) {
         return Recipe.builder()
                 .recipeTemplate(toRecipeTemplate(dto.getTemplate()))
                 .recipeItems(toRecipeItems(dto.getItems()))

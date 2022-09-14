@@ -17,12 +17,12 @@ public class ChannelNotification extends Application {
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel1 = new NotificationChannel(
+            final NotificationChannel channel1 = new NotificationChannel(
                     CHANNEL_1,
                     CHANNEL_1,
                     NotificationManager.IMPORTANCE_HIGH);
             channel1.setDescription(CHANNEL_1);
-            NotificationManager manager = getSystemService(NotificationManager.class);
+            final NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel1);
         }
         }

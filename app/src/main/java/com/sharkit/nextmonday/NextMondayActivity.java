@@ -17,19 +17,19 @@ public class NextMondayActivity extends AppCompatActivity {
     private static final String TAG = NextMondayActivity.class.getCanonicalName();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(final int requestCode, final int resultCode, @Nullable final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            final Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 new GoogleRegistration(this).firebaseAuthWithGoogle(task.getResult(ApiException.class).getIdToken());
-            } catch (ApiException e) {
+            } catch (final ApiException e) {
                 Log.e(TAG, e.getMessage(), e);
                 throw new RuntimeException(e.getMessage());
             }

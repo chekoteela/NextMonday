@@ -12,13 +12,13 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class RecipeItemTransformer {
 
-    public static List<RecipeItem> toRecipeItems(List<RecipeItemDTO> recipeItemDTOS) {
+    public static List<RecipeItem> toRecipeItems(final List<RecipeItemDTO> recipeItemDTOS) {
         return recipeItemDTOS.stream()
                 .map(RecipeItemTransformer::toRecipeItem)
                 .collect(Collectors.toList());
     }
 
-    public static RecipeItemDTO toRecipeItemDTO(RecipeItem item) {
+    public static RecipeItemDTO toRecipeItemDTO(final RecipeItem item) {
         return RecipeItemDTO.builder()
                 .templateId(item.getTemplateId())
                 .name(item.getName())
@@ -27,7 +27,7 @@ public class RecipeItemTransformer {
                 .build();
     }
 
-    public static RecipeItem toRecipeItem(RecipeItemDTO item) {
+    public static RecipeItem toRecipeItem(final RecipeItemDTO item) {
         return RecipeItem.builder()
                 .templateId(item.getTemplateId())
                 .name(item.getName())

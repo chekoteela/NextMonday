@@ -12,7 +12,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class PurchaseTransformer {
 
-    public static Purchase toPurchase(PurchaseDTO dto) {
+    public static Purchase toPurchase(final PurchaseDTO dto) {
         return Purchase.builder()
                 .template(toPurchaseTemplate(dto.getTemplate()))
                 .items(toPurchaseItems(dto.getItems()))

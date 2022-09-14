@@ -17,7 +17,7 @@ public class YoYoAnimation {
         return animation;
     }
 
-    public void setRubberBandAnimation(View view) {
+    public void setRubberBandAnimation(final View view) {
         YoYo.with(Techniques.RubberBand)
                 .duration(700)
                 .repeat(1)

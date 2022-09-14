@@ -6,7 +6,7 @@ public class CryptoAESTest extends TestCase {
 
 
     public void testEncrypt() {
-        CryptoAES aes = CryptoAES.getInstance();
+        final CryptoAES aes = CryptoAES.getInstance();
 
         assertEquals("T1FPn88kh2JGL4AzoaEBQA==", aes.encrypt("123456"));
         assertEquals("vkpnOOJcIAvYr9guLrYAvA==", aes.encrypt("qwerty"));

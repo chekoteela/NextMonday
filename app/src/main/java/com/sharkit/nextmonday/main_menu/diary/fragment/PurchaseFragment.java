@@ -28,7 +28,7 @@ public class PurchaseFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_notate_purchase_fragment, container, false);
         final WidgetContainer.DiaryPurchaseWidget widget = WidgetContainer.newInstance(view).getDiaryPurchaseWidget();
         final Notate notate = (Notate) requireArguments().getSerializable(DIARY_NOTATE);
@@ -44,12 +44,12 @@ public class PurchaseFragment extends Fragment {
         return view;
     }
 
-    private void saveChanges(WidgetContainer.DiaryPurchaseWidget widget, PurchaseTemplate template, NextMondayDatabase db, Notate notate) {
+    private void saveChanges(final WidgetContainer.DiaryPurchaseWidget widget, final PurchaseTemplate template, final NextMondayDatabase db, final Notate notate) {
         template.setText(widget.getDescription().getText().toString());
         db.purchaseTemplateDAO().update(toPurchaseTemplateDTO(template));
         db.notateDAO().updateName(widget.getName().getText().toString(), notate.getId());
 
-        Bundle bundle = new Bundle();
+        final Bundle bundle = new Bundle();
         bundle.putLong(DIARY_NOTATE_FOLDER_ID, notate.getParentFolderId());
         Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
     }

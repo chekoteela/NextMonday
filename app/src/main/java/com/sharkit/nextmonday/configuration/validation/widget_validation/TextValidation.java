@@ -23,7 +23,7 @@ public class TextValidation {
     private final List<Validator> result;
     private final String size;
 
-    public TextValidation(TextInputLayout inputLayout, Context context) {
+    public TextValidation(final TextInputLayout inputLayout, final Context context) {
         result = new ArrayList<>();
         this.inputLayout = inputLayout;
         this.context = context;
@@ -41,40 +41,40 @@ public class TextValidation {
         return this;
     }
 
-    public TextValidation tooLongValue(Integer size) {
+    public TextValidation tooLongValue(final Integer size) {
         toValidatorList(context.getString(R.string.toast_field_value_to_long).replace(this.size, size.toString()), textFromField.length() < size);
         return this;
     }
 
-    public TextValidation tooShortValue(Integer size) {
+    public TextValidation tooShortValue(final Integer size) {
         toValidatorList(context.getString(R.string.toast_field_value_to_short).replace(this.size, size.toString()), textFromField.length() > size);
         return this;
     }
 
     public TextValidation hasNoSymbols() {
-        Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,°•○●□■♤♡◇♧☆▪¤《》¡¿.`]");
-        Matcher hasSign = sign.matcher(textFromField);
+        final Pattern sign = Pattern.compile("[!@#$:%&*()_+=|<>?{}\\[\\]~×÷/€£¥₴^\";,°•○●□■♤♡◇♧☆▪¤《》¡¿.`]");
+        final Matcher hasSign = sign.matcher(textFromField);
         toValidatorList(context.getString(R.string.toast_field_has_symbols), !hasSign.find());
         return this;
     }
 
     public TextValidation hasNotCyrillic() {
-        Pattern cyrillic = Pattern.compile("[а-яА-Я]");
-        Matcher hasCyrillic = cyrillic.matcher(textFromField);
+        final Pattern cyrillic = Pattern.compile("[а-яА-Я]");
+        final Matcher hasCyrillic = cyrillic.matcher(textFromField);
         toValidatorList(context.getString(R.string.toast_field_has_cyrillic), !hasCyrillic.find());
         return this;
     }
 
     public TextValidation hasNoNumber() {
-        Pattern num = Pattern.compile("[0-9]");
-        Matcher hasNum = num.matcher(textFromField);
+        final Pattern num = Pattern.compile("[0-9]");
+        final Matcher hasNum = num.matcher(textFromField);
         toValidatorList(context.getString(R.string.toast_field_has_number), !hasNum.find());
         return this;
     }
 
     public TextValidation hasNoSpace() {
-        Pattern space = Pattern.compile(" ");
-        Matcher hasSpace = space.matcher(textFromField);
+        final Pattern space = Pattern.compile(" ");
+        final Matcher hasSpace = space.matcher(textFromField);
         toValidatorList(context.getString(R.string.toast_field_has_space), !hasSpace.find());
         return this;
     }
@@ -91,7 +91,7 @@ public class TextValidation {
                 .orElse(Boolean.FALSE);
     }
 
-    private void toValidatorList(String message, Boolean isValid) {
+    private void toValidatorList(final String message, final Boolean isValid) {
         result.add(new Validator(message, isValid));
     }
 

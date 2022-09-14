@@ -40,7 +40,7 @@ public class DiaryModifyTask extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_update_task, container, false);
         final DiaryTask diaryTask = (DiaryTask) requireArguments().getSerializable(DIARY_TASK_FOR_CHANGE);
         final Calendar calendar = Calendar.getInstance();
@@ -64,7 +64,7 @@ public class DiaryModifyTask extends Fragment {
         return view;
     }
 
-    private void save(DiaryTask diaryTask, Calendar calendar) {
+    private void save(final DiaryTask diaryTask, final Calendar calendar) {
         diaryTask.setDescription(this.widget.getDescription().getText().toString());
         diaryTask.setName(this.widget.getNameOfTask().getText().toString());
         diaryTask.setDate(DateFormat.getDateInstance().format(calendar.getTime()));
@@ -74,7 +74,7 @@ public class DiaryModifyTask extends Fragment {
         new DialogChangeTask().showDialogUpdate(getContext(), diaryTask);
     }
 
-    private String getListDays(List<DayOfRepeat> repeats) {
+    private String getListDays(final List<DayOfRepeat> repeats) {
         return repeats.stream()
                 .map(dayOfRepeat -> toDayName(getContext(), dayOfRepeat))
                 .collect(Collectors.joining(", "));

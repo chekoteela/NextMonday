@@ -16,13 +16,13 @@ public enum Actions implements INotificationAction {
 
     PERFORM {
         @Override
-        public void doAction(long taskId, Context context) {
+        public void doAction(final long taskId, final Context context) {
             NextMondayDatabase.getInstance(context).dairyTaskDAO().updateStatus(taskId, true);
         }
     },
     PUT_OFF {
         @Override
-        public void doAction(long taskId, Context context) {
+        public void doAction(final long taskId, final Context context) {
             final AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             final PendingIntent pendingIntent = PendingIntent.getBroadcast(context, (int) taskId, new Intent(context, AlarmDiary.class), 0);
             final long newTime = Calendar.getInstance().getTimeInMillis() + 10000;
@@ -32,7 +32,7 @@ public enum Actions implements INotificationAction {
     },
     CANCEL {
         @Override
-        public void doAction(long taskId, Context context) {
+        public void doAction(final long taskId, final Context context) {
             NextMondayDatabase.getInstance(context).dairyTaskDAO().updateAlarmStatus(taskId, false);
         }
     }

@@ -31,7 +31,7 @@ public enum TemplateType implements ITemplateAction {
 
     FOLDER(0) {
         @Override
-        public void create(Context context, Notate notate) {
+        public void create(final Context context, final Notate notate) {
             final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
             db.runInTransaction(() -> {
 
@@ -41,12 +41,12 @@ public enum TemplateType implements ITemplateAction {
         }
 
         @Override
-        public View getView(Context context) {
+        public View getView(final Context context) {
             return LayoutInflater.from(context).inflate(R.layout.diary_noto_folder_item, null);
         }
 
         @Override
-        public void setAction(View view, Notate notate) {
+        public void setAction(final View view, final Notate notate) {
             final WidgetContainer.DiaryNotateWidget.FolderItemWidget folderWidget = WidgetContainer.newInstance(view).getDiaryNotateWidget().getFolderItemWidget();
 
             folderWidget.getName().setText(notate.getName());
@@ -56,11 +56,11 @@ public enum TemplateType implements ITemplateAction {
 
         }
 
-        private void moveToFolder(Long folderId, Context context) {
+        private void moveToFolder(final Long folderId, final Context context) {
 
             Log.i(TAG, "move to folder with folderId: " + folderId);
 
-            Bundle bundle = new Bundle();
+            final Bundle bundle = new Bundle();
             bundle.putLong(DIARY_NOTATE_FOLDER_ID, folderId);
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate, bundle);
         }
@@ -68,7 +68,7 @@ public enum TemplateType implements ITemplateAction {
 
     FILE(1) {
         @Override
-        public void create(Context context, Notate notate) {
+        public void create(final Context context, final Notate notate) {
             final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
             db.runInTransaction(() -> {
                 notate.setTemplateId(notate.getNotateType().createTemplate(db));
@@ -77,12 +77,12 @@ public enum TemplateType implements ITemplateAction {
         }
 
         @Override
-        public View getView(Context context) {
+        public View getView(final Context context) {
             return LayoutInflater.from(context).inflate(R.layout.diary_noto_notate_item, null);
         }
 
         @Override
-        public void setAction(View view, Notate notate) {
+        public void setAction(final View view, final Notate notate) {
             final WidgetContainer.DiaryNotateWidget.NotateItemWidget notateWidget = WidgetContainer.newInstance(view).getDiaryNotateWidget().getNotateItemWidget();
 
             notateWidget.getName().setText(notate.getName());
@@ -96,7 +96,7 @@ public enum TemplateType implements ITemplateAction {
     private final Integer id;
     private static final String TAG = NotateAdaptor.class.getCanonicalName();
 
-    public static TemplateType getTemplateTypeById(int id) {
+    public static TemplateType getTemplateTypeById(final int id) {
         switch (id) {
             case 0:
                 return TemplateType.FOLDER;

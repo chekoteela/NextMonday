@@ -31,7 +31,7 @@ public class DialogPurchaseItem {
         final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
         final AlertDialog dialog = showDialog();
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_add), (parent, which) -> {
-            PurchaseItem item = PurchaseItem.builder()
+            final PurchaseItem item = PurchaseItem.builder()
                     .status(Boolean.FALSE)
                     .description(widget.getDescription().getText().toString())
                     .name(widget.getName().getText().toString())
@@ -45,7 +45,7 @@ public class DialogPurchaseItem {
         dialog.show();
     }
 
-    public void changeItem(PurchaseItem item, int position){
+    public void changeItem(final PurchaseItem item, final int position){
         final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
         final AlertDialog dialog = showDialog();
         dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_change), (parent, which) -> {

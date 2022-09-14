@@ -21,19 +21,19 @@ public class FeedbackRepository {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final String path;
 
-    public static FeedbackRepository getInstance(Context context) {
+    public static FeedbackRepository getInstance(final Context context) {
         return new FeedbackRepository(context);
     }
 
-    private FeedbackRepository(Context context) {
+    private FeedbackRepository(final Context context) {
         this.path = context.getString(R.string.path_to_feedback);
     }
 
-    public void create(FeedbackEntity entity) {
+    public void create(final FeedbackEntity entity) {
         db.collection(path).document(entity.getId()).set(entity);
     }
 
-    public Task<QuerySnapshot> getAllActiveFeedbacks(String id) {
+    public Task<QuerySnapshot> getAllActiveFeedbacks(final String id) {
         return db.collection(path)
                 .whereEqualTo(FEEDBACK_STATUS, FeedbackStatus.ACTIVE)
                 .whereEqualTo(USER_ID, id)
@@ -46,13 +46,13 @@ public class FeedbackRepository {
                 .get();
     }
 
-    public void updateMessage(String feedbackId, List<FeedbackMessage> messages) {
+    public void updateMessage(final String feedbackId, final List<FeedbackMessage> messages) {
         db.collection(path)
                 .document(feedbackId)
                 .update(MESSAGES, messages);
     }
 
-    public void closeFeedback(String feedbackId) {
+    public void closeFeedback(final String feedbackId) {
         db.collection(path)
                 .document(feedbackId)
                 .update(FEEDBACK_STATUS, FeedbackStatus.CLOSED);

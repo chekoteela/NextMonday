@@ -27,7 +27,7 @@ public class FeedbackFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.support_feedback_list, container, false);
         final SupportWidget.FeedbackWidget widget = SupportWidget.newInstance(view).getFeedbackWidget();
         final User user = new UserSharedPreference(getContext()).get();
@@ -36,7 +36,7 @@ public class FeedbackFragment extends Fragment {
 
         user.getRole().getAllActiveFeedbacks(getContext(), user.getId())
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    List<FeedbackEntity> entities = new ArrayList<>(queryDocumentSnapshots.toObjects(FeedbackEntity.class));
+                    final List<FeedbackEntity> entities = new ArrayList<>(queryDocumentSnapshots.toObjects(FeedbackEntity.class));
                     widget.getListOfFeedback().setAdapter(new MainFeedbackAdapter(entities, getContext()));
                 });
 

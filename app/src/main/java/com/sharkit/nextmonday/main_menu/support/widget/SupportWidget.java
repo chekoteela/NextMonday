@@ -24,7 +24,7 @@ public class SupportWidget {
         return new FeedbackWidget();
     }
 
-    public static SupportWidget newInstance(View view) {
+    public static SupportWidget newInstance(final View view) {
         return new SupportWidget(view);
     }
 

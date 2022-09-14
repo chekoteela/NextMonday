@@ -19,30 +19,30 @@ public class ByteArrayTransformer {
 
     private static final String TAG = ByteArrayTransformer.class.getCanonicalName();
 
-    public static Object toObject(byte[] bytes) {
-        try (ByteArrayInputStream in = new ByteArrayInputStream(bytes);
-             ObjectInputStream is = new ObjectInputStream(in)) {
+    public static Object toObject(final byte[] bytes) {
+        try (final ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+             final ObjectInputStream is = new ObjectInputStream(in)) {
             return is.readObject();
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (final ClassNotFoundException | IOException e) {
             Log.e(TAG, e.getMessage(), e);
             throw new RuntimeException(e.getMessage());
         }
     }
 
-    public static byte[] toByteArray(Object repeats) {
-        try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
-             ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+    public static byte[] toByteArray(final Object repeats) {
+        try (final ByteArrayOutputStream bos = new ByteArrayOutputStream();
+             final ObjectOutputStream oos = new ObjectOutputStream(bos)) {
             oos.writeObject(repeats);
             return bos.toByteArray();
-        } catch (IOException e) {
+        } catch (final IOException e) {
             Log.i(TAG, e.getMessage(), e);
             throw new RuntimeException(e.getMessage());
         }
     }
 
-    public static byte[] toByteArray(Drawable drawable){
-        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    public static byte[] toByteArray(final Drawable drawable){
+        final Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         return baos.toByteArray();
     }

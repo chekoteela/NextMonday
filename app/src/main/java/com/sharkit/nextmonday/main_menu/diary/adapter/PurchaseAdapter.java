@@ -32,18 +32,18 @@ public class PurchaseAdapter extends BaseAdapter {
     }
 
     @Override
-    public PurchaseItem getItem(int position) {
+    public PurchaseItem getItem(final int position) {
         return items.get(position);
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(final int position) {
         return position;
     }
 
     @SuppressLint("InflateParams")
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         if (convertView == null)
             convertView = LayoutInflater.from(context).inflate(R.layout.diary_purchase_item, null);
         final WidgetContainer.DiaryPurchaseWidget.PurchaseItemWidget widget = WidgetContainer.newInstance(convertView).getDiaryPurchaseWidget().getPurchaseItemWidget();
@@ -60,7 +60,7 @@ public class PurchaseAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private void createMenuListener(ContextMenu menu, Context context, int position) {
+    private void createMenuListener(final ContextMenu menu, final Context context, final int position) {
         menu.add(context.getString(R.string.button_change))
                 .setOnMenuItemClickListener(item -> {
                     new DialogPurchaseItem(context, items.get(position).getTemplateId(), items, PurchaseAdapter.this)

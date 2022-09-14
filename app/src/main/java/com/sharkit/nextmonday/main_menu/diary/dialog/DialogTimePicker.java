@@ -24,7 +24,7 @@ public class DialogTimePicker {
 
     private static final String TAG = DialogTimePicker.class.getCanonicalName();
 
-    public void showIfChecked(Boolean isChecked){
+    public void showIfChecked(final Boolean isChecked){
         diaryTask.setAlarm(isChecked);
         if (Boolean.TRUE.equals(isChecked)) {
             showTimePicker();

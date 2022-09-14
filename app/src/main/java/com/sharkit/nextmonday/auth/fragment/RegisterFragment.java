@@ -23,7 +23,7 @@ public class RegisterFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.registration_menu, container, false);
         final AuthWidget.RegisterMenuWidget widgetContainer = AuthWidget.newInstance(view).getRegisterMenuWidget();
@@ -39,12 +39,12 @@ public class RegisterFragment extends Fragment {
         Navigation.findNavController(requireActivity(), R.id.start_navigation).navigate(R.id.nav_auth_fragment);
     }
 
-    private void createAccountByEmailAndPassword(AuthWidget.RegisterMenuWidget widget) {
+    private void createAccountByEmailAndPassword(final AuthWidget.RegisterMenuWidget widget) {
         if (!new RegistrationMenuValidation(widget, getContext()).validateField()){
             Log.e(TAG, "Not valid registration data");
             return;
         }
-        EmailAndPasswordService service = new EmailAndPasswordService(widget, getContext());
+        final EmailAndPasswordService service = new EmailAndPasswordService(widget, getContext());
         Log.i(TAG, "Moving to creation user by email and password");
         service.createAccountByEmailAndPassword();
     }

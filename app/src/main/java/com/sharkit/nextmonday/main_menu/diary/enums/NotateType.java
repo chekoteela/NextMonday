@@ -28,59 +28,59 @@ public enum NotateType implements IActionNotateType, Serializable {
 
     OTHER(0) {
         @Override
-        public String getName(Context context) {
+        public String getName(final Context context) {
             return context.getString(R.string.text_view_other);
         }
 
         @Override
-        public void moveToFile(Context context, Notate notate) {
+        public void moveToFile(final Context context, final Notate notate) {
             Log.i(TAG, "move to notate: " + notate);
 
         }
 
         @Override
-        public Long createTemplate(NextMondayDatabase db) {
+        public Long createTemplate(final NextMondayDatabase db) {
             return null;
         }
     },
 
     RECIPE(1) {
         @Override
-        public String getName(Context context) {
+        public String getName(final Context context) {
             return context.getString(R.string.text_view_recipe);
         }
 
         @Override
-        public void moveToFile(Context context, Notate notate) {
+        public void moveToFile(final Context context, final Notate notate) {
             Log.i(TAG, "move to notate: " + notate);
 
-            Bundle bundle = new Bundle();
+            final Bundle bundle = new Bundle();
             bundle.putSerializable(DIARY_NOTATE, notate);
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate_recipe, bundle);
         }
 
         @Override
-        public Long createTemplate(NextMondayDatabase db) {
+        public Long createTemplate(final NextMondayDatabase db) {
             return db.recipeTemplateDAO().create(toRecipeTemplateDTO(new RecipeTemplate()));
         }
     },
     LIST_OF_PURCHASE(2) {
         @Override
-        public String getName(Context context) {
+        public String getName(final Context context) {
             return context.getString(R.string.text_view_list_of_purchases);
         }
 
         @Override
-        public void moveToFile(Context context, Notate notate) {
+        public void moveToFile(final Context context, final Notate notate) {
             Log.i(TAG, "move to notate: " + notate);
 
-            Bundle bundle = new Bundle();
+            final Bundle bundle = new Bundle();
             bundle.putSerializable(DIARY_NOTATE, notate);
             Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_notate_purchase, bundle);
         }
 
         @Override
-        public Long createTemplate(NextMondayDatabase db) {
+        public Long createTemplate(final NextMondayDatabase db) {
             return db.purchaseTemplateDAO().create(new PurchaseTemplateDTO());
         }
     };
@@ -89,7 +89,7 @@ public enum NotateType implements IActionNotateType, Serializable {
     private final Integer id;
     private static final String TAG = NotateAdaptor.class.getCanonicalName();
 
-    public static NotateType getNotateTypeById(int id) {
+    public static NotateType getNotateTypeById(final int id) {
 
         switch (id) {
             case 0:

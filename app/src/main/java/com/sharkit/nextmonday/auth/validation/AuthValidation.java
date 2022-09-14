@@ -26,7 +26,7 @@ public class AuthValidation {
         return Boolean.TRUE;
     }
 
-    private boolean isValidAuthField(TextInputLayout inputEditText) {
+    private boolean isValidAuthField(final TextInputLayout inputEditText) {
         return new TextValidation(inputEditText, context)
                 .notEmpty()
                 .build();

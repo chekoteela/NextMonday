@@ -23,18 +23,18 @@ public class NotateAdaptor extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Object getItem(final int position) {
         return notates.get(position);
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(final int position) {
         return position;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = notates.get(position).getTemplateType().getView(context);
+    public View getView(final int position, final View convertView, final ViewGroup parent) {
+        final View view = notates.get(position).getTemplateType().getView(context);
 
         notates.get(position).getTemplateType().setAction(view, notates.get(position));
 

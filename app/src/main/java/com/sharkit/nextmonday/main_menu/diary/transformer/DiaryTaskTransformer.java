@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class DiaryTaskTransformer {
 
-    public static DiaryTaskDTO toDiaryTaskDTO(DiaryTask diaryTask) {
+    public static DiaryTaskDTO toDiaryTaskDTO(final DiaryTask diaryTask) {
 
         return DiaryTaskDTO.builder()
                 .id(diaryTask.getId())
@@ -36,13 +36,13 @@ public class DiaryTaskTransformer {
                 .build();
     }
 
-    public static List<DiaryTask> toDiaryTasks(List<DiaryTaskDTO> list) {
+    public static List<DiaryTask> toDiaryTasks(final List<DiaryTaskDTO> list) {
         return list.stream()
                 .map(DiaryTaskTransformer::toDiaryTask)
                 .collect(Collectors.toList());
     }
 
-    private static DiaryTask toDiaryTask(DiaryTaskDTO diaryTaskDTO) {
+    private static DiaryTask toDiaryTask(final DiaryTaskDTO diaryTaskDTO) {
         return DiaryTask.builder()
                 .id(diaryTaskDTO.getId())
                 .description(diaryTaskDTO.getDescription())
@@ -57,7 +57,7 @@ public class DiaryTaskTransformer {
                 .build();
     }
 
-    public static DiaryTask toDiaryTask(DiaryTask diaryTask, Calendar calendar) {
+    public static DiaryTask toDiaryTask(final DiaryTask diaryTask, final Calendar calendar) {
         return DiaryTask.builder()
                 .timeForRepeat(calendar.getTimeInMillis())
                 .date(DateFormat.getDateInstance().format(calendar.getTime()))

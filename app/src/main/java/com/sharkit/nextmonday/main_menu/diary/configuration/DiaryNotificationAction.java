@@ -13,7 +13,7 @@ import com.sharkit.nextmonday.main_menu.diary.configuration.action.Actions;
 public class DiaryNotificationAction extends BroadcastReceiver {
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, final Intent intent) {
         final int taskId = intent.getIntExtra(DIARY_TASK_ID, 0);
         final NotificationManagerCompat managerCompat = NotificationManagerCompat.from(context);
 

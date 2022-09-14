@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class RecipeTemplateTransformer {
 
-    public static RecipeTemplateDTO toRecipeTemplateDTO(RecipeTemplate recipeTemplate) {
+    public static RecipeTemplateDTO toRecipeTemplateDTO(final RecipeTemplate recipeTemplate) {
         return RecipeTemplateDTO.builder()
                 .imageCod(recipeTemplate.getImageCod())
                 .date(recipeTemplate.getDate())
@@ -18,7 +18,7 @@ public class RecipeTemplateTransformer {
                 .build();
     }
 
-    public static RecipeTemplate toRecipeTemplate(RecipeTemplateDTO recipeTemplateDTO) {
+    public static RecipeTemplate toRecipeTemplate(final RecipeTemplateDTO recipeTemplateDTO) {
         return RecipeTemplate.builder()
                 .imageCod(recipeTemplateDTO.getImageCod())
                 .date(recipeTemplateDTO.getDate())

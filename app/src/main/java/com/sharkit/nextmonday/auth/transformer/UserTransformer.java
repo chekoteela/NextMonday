@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 public class UserTransformer {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public static User toUser(String email, String name, String lastName, String password) {
+    public static User toUser(final String email, final String name, final String lastName, final String password) {
         final CryptoAES aes = CryptoAES.getInstance();
 
         return User.builder()
@@ -27,7 +27,7 @@ public class UserTransformer {
                 .build();
     }
 
-    public static User toUser(String uId, String email, String name) {
+    public static User toUser(final String uId, final String email, final String name) {
         return User.builder()
                 .id(uId.trim())
                 .email(email.trim())

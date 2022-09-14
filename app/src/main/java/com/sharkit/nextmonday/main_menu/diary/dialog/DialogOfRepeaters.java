@@ -27,7 +27,7 @@ public class DialogOfRepeaters {
 
     private static final String TAG = DialogOfRepeaters.class.getCanonicalName();
 
-    public void showIfChecked(Boolean isChecked) {
+    public void showIfChecked(final Boolean isChecked) {
         if (Boolean.TRUE.equals(isChecked)) {
             showDialogOfRepeaters();
         } else {
@@ -75,7 +75,7 @@ public class DialogOfRepeaters {
         dialog.show();
     }
 
-    private void setCheckBoxActivity(WidgetContainer.Dialog.RepeatersWidget.EveryDayWidget widget) {
+    private void setCheckBoxActivity(final WidgetContainer.Dialog.RepeatersWidget.EveryDayWidget widget) {
         setOnChecked(widget.getMonday(), DayOfRepeat.MONDAY);
         setOnChecked(widget.getTuesday(), DayOfRepeat.TUESDAY);
         setOnChecked(widget.getWednesday(), DayOfRepeat.WEDNESDAY);
@@ -85,11 +85,11 @@ public class DialogOfRepeaters {
         setOnChecked(widget.getSunday(), DayOfRepeat.SUNDAY);
     }
 
-    private void setOnChecked(CheckBox checkBox, DayOfRepeat dayOfRepeat) {
+    private void setOnChecked(final CheckBox checkBox, final DayOfRepeat dayOfRepeat) {
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> setDayForRepeat(isChecked, dayOfRepeat));
     }
 
-    private void setDayForRepeat(boolean isChecked, DayOfRepeat dayOfRepeat) {
+    private void setDayForRepeat(final boolean isChecked, final DayOfRepeat dayOfRepeat) {
         if (isChecked) {
             diaryTask.getRepeats().add(dayOfRepeat);
         } else {

@@ -61,7 +61,7 @@ public final class WidgetContainer {
         return new DiaryPurchaseWidget();
     }
 
-    public static WidgetContainer newInstance(View view) {
+    public static WidgetContainer newInstance(final View view) {
         return new WidgetContainer(view);
     }
 

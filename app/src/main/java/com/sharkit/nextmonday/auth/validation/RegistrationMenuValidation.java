@@ -28,13 +28,13 @@ public class RegistrationMenuValidation {
         return Boolean.TRUE;
     }
 
-    private boolean isValidEmail(TextInputLayout inputLayout) {
+    private boolean isValidEmail(final TextInputLayout inputLayout) {
         return new TextValidation(inputLayout, context)
                 .isValidEmail()
                 .build();
     }
 
-    private boolean isNameValid(TextInputLayout inputLayout) {
+    private boolean isNameValid(final TextInputLayout inputLayout) {
         return new TextValidation(inputLayout, context)
                 .notEmpty()
                 .hasNoNumber()
@@ -45,7 +45,7 @@ public class RegistrationMenuValidation {
                 .build();
     }
 
-    private boolean isPasswordValid(TextInputLayout inputLayout) {
+    private boolean isPasswordValid(final TextInputLayout inputLayout) {
         return new TextValidation(inputLayout, context)
                 .notEmpty()
                 .hasNoSpace()

@@ -26,7 +26,7 @@ public enum DayOfRepeat implements IDayAction, Serializable {
     private static final String TAG = DayOfRepeat.class.getCanonicalName();
 
     @Override
-    public void repeat(DiaryTask diaryTask, int calendarDay, Context context) {
+    public void repeat(final DiaryTask diaryTask, final int calendarDay, final Context context) {
         final Calendar calendar = Calendar.getInstance();
         final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
 
@@ -42,7 +42,7 @@ public enum DayOfRepeat implements IDayAction, Serializable {
 
         Log.i(TAG, String.format("Repeat: %s in the day : %s", diaryTask, calendarDay));
 
-        DiaryTask newDiaryTask = toDiaryTask(diaryTask, calendar);
+        final DiaryTask newDiaryTask = toDiaryTask(diaryTask, calendar);
         db.dairyTaskDAO().updateRepeat(diaryTask.getId());
         db.dairyTaskDAO().create(toDiaryTaskDTO(newDiaryTask));
     }

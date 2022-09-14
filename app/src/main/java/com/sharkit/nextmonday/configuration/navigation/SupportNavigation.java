@@ -22,12 +22,12 @@ public class SupportNavigation {
 
     private final Context context;
 
-    public static SupportNavigation getInstance(Context context) {
+    public static SupportNavigation getInstance(final Context context) {
         return new SupportNavigation(context);
     }
 
-    public void moveToFeedbackMessenger(String feedbackId, ArrayList<FeedbackMessage> messages) {
-        Bundle bundle = new Bundle();
+    public void moveToFeedbackMessenger(final String feedbackId, final ArrayList<FeedbackMessage> messages) {
+        final Bundle bundle = new Bundle();
         bundle.putParcelableArrayList(LIST_OF_FEEDBACK_MESSAGES, messages);
         bundle.putString(FEEDBACK_ID, feedbackId);
         Navigation.findNavController((Activity) context, R.id.nav_host_fragment)

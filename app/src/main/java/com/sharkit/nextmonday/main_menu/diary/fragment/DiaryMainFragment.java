@@ -45,7 +45,7 @@ public class DiaryMainFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_main, container, false);
         final WidgetContainer.DiaryMainWidget widget = WidgetContainer.newInstance(view).getDiaryMainWidget();
         final List<DayInfo> daysInfo = new ArrayList<>();
@@ -70,10 +70,10 @@ public class DiaryMainFragment extends Fragment {
         return view;
     }
 
-    private void fillOutList(List<DayInfo> daysInfo, Calendar calendar) {
+    private void fillOutList(final List<DayInfo> daysInfo, final Calendar calendar) {
         final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());
 
-        List<DiaryTask> diaryTasks = toDiaryTasks(db.dairyTaskDAO()
+        final List<DiaryTask> diaryTasks = toDiaryTasks(db.dairyTaskDAO()
                 .findAllByDate(DateFormat.getDateInstance().format(calendar.getTime())));
         daysInfo.add(DayInfo.builder()
                 .dayOfWeek(toDayName(getContext(), calendar.get(Calendar.DAY_OF_WEEK)))
@@ -94,23 +94,23 @@ public class DiaryMainFragment extends Fragment {
                 .forEach(this::setTime);
     }
 
-    private void repeat(List<DayOfRepeat> repeats, DiaryTask diaryTask) {
+    private void repeat(final List<DayOfRepeat> repeats, final DiaryTask diaryTask) {
         Optional.ofNullable(repeats)
                 .ifPresent(repeat -> repeat.forEach(dayOfRepeat -> dayOfRepeat.repeat(diaryTask, toDayOfWeek(dayOfRepeat), getContext())));
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
-    private void setTime(DiaryTask diaryTask) {
+    private void setTime(final DiaryTask diaryTask) {
 
         Log.i(TAG, String.format("Set time: %s for task: %s", diaryTask, diaryTask.getTimeForRepeat()));
 
-        Intent intent = new Intent(getContext(), AlarmDiary.class);
+        final Intent intent = new Intent(getContext(), AlarmDiary.class);
         intent.putExtra(CONTENT_TITLE, diaryTask.getName());
         intent.putExtra(BIG_TEXT, diaryTask.getDescription());
         intent.putExtra(DIARY_TASK_ID, diaryTask.getId());
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), Math.toIntExact(diaryTask.getId()), intent, 0);
-        AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
+        final PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), Math.toIntExact(diaryTask.getId()), intent, 0);
+        final AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, diaryTask.getTimeForRepeat(), pendingIntent);
     }
 

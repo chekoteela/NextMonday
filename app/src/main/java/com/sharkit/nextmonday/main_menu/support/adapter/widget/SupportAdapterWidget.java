@@ -23,7 +23,7 @@ public class SupportAdapterWidget {
         return new FeedbackMessageWidget();
     }
 
-    public static SupportAdapterWidget newInstance(View view) {
+    public static SupportAdapterWidget newInstance(final View view) {
         return new SupportAdapterWidget(view);
     }
 

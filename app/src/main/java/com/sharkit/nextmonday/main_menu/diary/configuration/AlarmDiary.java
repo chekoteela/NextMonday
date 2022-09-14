@@ -27,7 +27,7 @@ import com.sharkit.nextmonday.main_menu.diary.configuration.action.Actions;
 public class AlarmDiary extends BroadcastReceiver {
 
     @Override
-    public void onReceive(Context context, Intent intent) {
+    public void onReceive(final Context context, final Intent intent) {
 
         final NotificationManagerCompat managerCompat = NotificationManagerCompat.from(context);
         final PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, new Intent(context, NextMondayActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
@@ -56,11 +56,11 @@ public class AlarmDiary extends BroadcastReceiver {
         managerCompat.notify(intent.getIntExtra(DIARY_TASK_ID, 0), notification);
     }
 
-    private NotificationCompat.Action action(Context context, int taskId, Actions actions, String buttonText) {
-        Intent intent = new Intent(context, DiaryNotificationAction.class)
+    private NotificationCompat.Action action(final Context context, final int taskId, final Actions actions, final String buttonText) {
+        final Intent intent = new Intent(context, DiaryNotificationAction.class)
                 .setAction(actions.name())
                 .putExtra(DIARY_TASK_ID, taskId);
-        PendingIntent cancelPI = PendingIntent.getBroadcast(context, taskId, intent, 0);
+        final PendingIntent cancelPI = PendingIntent.getBroadcast(context, taskId, intent, 0);
         return new NotificationCompat.Action(R.drawable.icon, buttonText, cancelPI);
     }
 }

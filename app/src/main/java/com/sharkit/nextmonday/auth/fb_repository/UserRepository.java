@@ -13,20 +13,20 @@ public class UserRepository {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String path;
 
-    public static UserRepository getInstance(Context context) {
+    public static UserRepository getInstance(final Context context) {
         return new UserRepository(context);
     }
 
-    private UserRepository(Context context) {
+    private UserRepository(final Context context) {
         this.path = context.getString(R.string.path_to_user);
     }
 
-    public void create(User user) {
+    public void create(final User user) {
         path = path.replace("{userId}", user.getId());
         db.document(path).set(user);
     }
 
-    public Task<DocumentSnapshot> findById(String id) {
+    public Task<DocumentSnapshot> findById(final String id) {
         path = path.replace("{userId}", id);
         return db.document(path)
                 .get();

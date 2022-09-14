@@ -31,18 +31,18 @@ public class NavigationMenu extends AppCompatActivity {
     @SuppressLint("SourceLockedOrientationActivity")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_menu);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        Toolbar toolbar = findViewById(R.id.toolbar_core);
+        final Toolbar toolbar = findViewById(R.id.toolbar_core);
         setSupportActionBar(toolbar);
-        Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_settings_24);
+        final Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_settings_24);
         toolbar.setOverflowIcon(drawable);
 
     }
 
-    public void additionalMenuDrawer(MenuItem item) {
+    public void additionalMenuDrawer(final MenuItem item) {
         final MenuDrawerNavigation navigation = MenuDrawerNavigation.getInstance(this);
 
         switch (item.getItemId()) {
@@ -63,7 +63,7 @@ public class NavigationMenu extends AppCompatActivity {
         }
     }
 
-    public void diaryMenuClickListener(MenuItem item) {
+    public void diaryMenuClickListener(final MenuItem item) {
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
         switch (item.getItemId()) {
@@ -85,23 +85,23 @@ public class NavigationMenu extends AppCompatActivity {
         final String appPackageName = getPackageName();
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-        } catch (android.content.ActivityNotFoundException anfe) {
+        } catch (final android.content.ActivityNotFoundException anfe) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
         }
     }
 
     private void share() {
-        Intent intent = new Intent(Intent.ACTION_SEND);
+        final Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("https://play.google.com/store/apps/details?id=com.sharkit.nextmonday");
         intent.putExtra(Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.sharkit.nextmonday");
         startActivity(Intent.createChooser(intent, "Share"));
     }
 
     private void exit() {
-        GoogleSignInOptions gso = new GoogleSignInOptions.
+        final GoogleSignInOptions gso = new GoogleSignInOptions.
                 Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
                 build();
-        GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(NavigationMenu.this, gso);
+        final GoogleSignInClient googleSignInClient = GoogleSignIn.getClient(NavigationMenu.this, gso);
         googleSignInClient.signOut();
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(NavigationMenu.this, NextMondayActivity.class));
@@ -109,7 +109,7 @@ public class NavigationMenu extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(final Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }

@@ -29,7 +29,7 @@ import java.util.Optional;
 public class NotateFragment extends Fragment {
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_noto, container, false);
         final WidgetContainer.DiaryNotateWidget widget = WidgetContainer.newInstance(view).getDiaryNotateWidget();
         final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());

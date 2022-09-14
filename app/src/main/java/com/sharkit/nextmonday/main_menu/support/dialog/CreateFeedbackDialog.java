@@ -36,7 +36,7 @@ public class CreateFeedbackDialog {
         final SupportDialogWidget.NewFeedbackDialogWidget widget = SupportDialogWidget.newInstance(view).getNewFeedbackDialogWidget();
 
         widget.getCreate().setOnClickListener(v -> {
-            FeedbackEntity entity = FeedbackEntity.builder()
+            final FeedbackEntity entity = FeedbackEntity.builder()
                     .id(UUID.randomUUID().toString())
                     .feedbackStatus(FeedbackStatus.ACTIVE)
                     .feedbackType(getFeedbackType(widget.getTypeOfFeedback().getSelectedItemPosition()))
@@ -57,7 +57,7 @@ public class CreateFeedbackDialog {
 
 
 
-    private FeedbackType getFeedbackType(int position) {
+    private FeedbackType getFeedbackType(final int position) {
         switch (position) {
             case 0:
                 return FeedbackType.ERROR;

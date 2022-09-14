@@ -14,7 +14,7 @@ public enum UserRole implements IUserRoleAction {
     USER;
 
     @Override
-    public Task<QuerySnapshot> getAllActiveFeedbacks(Context context, String id) {
+    public Task<QuerySnapshot> getAllActiveFeedbacks(final Context context, final String id) {
         return getService().getAllActiveFeedbacks(context, id);
     }
 
