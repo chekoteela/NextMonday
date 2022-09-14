@@ -30,9 +30,9 @@ public class CreateFeedbackDialog {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void showDialog() {
-        final AlertDialog dialog = new AlertDialog.Builder(context).create();
-        final View view = LayoutInflater.from(context).inflate(R.layout.dialog_support_create_feedback, null);
-        final SupportNavigation navigation = SupportNavigation.getInstance(context);
+        final AlertDialog dialog = new AlertDialog.Builder(this.context).create();
+        final View view = LayoutInflater.from(this.context).inflate(R.layout.dialog_support_create_feedback, null);
+        final SupportNavigation navigation = SupportNavigation.getInstance(this.context);
         final SupportDialogWidget.NewFeedbackDialogWidget widget = SupportDialogWidget.newInstance(view).getNewFeedbackDialogWidget();
 
         widget.getCreate().setOnClickListener(v -> {
@@ -47,7 +47,7 @@ public class CreateFeedbackDialog {
 
             dialog.dismiss();
 
-            FeedbackRepository.getInstance(context).create(entity);
+            FeedbackRepository.getInstance(this.context).create(entity);
             navigation.moveToFeedbackMessenger(entity.getId(), entity.getMessages());
         });
 

@@ -75,11 +75,11 @@ public final class WidgetContainer {
         private final PurchaseItemWidget purchaseItemWidget;
 
         public DiaryPurchaseWidget() {
-            this.name = view.findViewById(R.id.edit_name_id);
-            this.description = view.findViewById(R.id.edit_description_id);
-            this.purchaseList = view.findViewById(R.id.purchase_list_id);
-            this.save = view.findViewById(R.id.save_id);
-            this.addPurchase = view.findViewById(R.id.add_purchase_id);
+            this.name = WidgetContainer.this.view.findViewById(R.id.edit_name_id);
+            this.description = WidgetContainer.this.view.findViewById(R.id.edit_description_id);
+            this.purchaseList = WidgetContainer.this.view.findViewById(R.id.purchase_list_id);
+            this.save = WidgetContainer.this.view.findViewById(R.id.save_id);
+            this.addPurchase = WidgetContainer.this.view.findViewById(R.id.add_purchase_id);
 
             this.purchaseItemWidget = new PurchaseItemWidget();
         }
@@ -92,10 +92,10 @@ public final class WidgetContainer {
             private final CheckBox complete;
 
             public PurchaseItemWidget() {
-                this.name = view.findViewById(R.id.purchase_name_id);
-                this.description = view.findViewById(R.id.purchase_description_id);
-                this.item = view.findViewById(R.id.purchase_item_id);
-                this.complete = view.findViewById(R.id.complete_item_id);
+                this.name = WidgetContainer.this.view.findViewById(R.id.purchase_name_id);
+                this.description = WidgetContainer.this.view.findViewById(R.id.purchase_description_id);
+                this.item = WidgetContainer.this.view.findViewById(R.id.purchase_item_id);
+                this.complete = WidgetContainer.this.view.findViewById(R.id.complete_item_id);
             }
         }
     }
@@ -112,13 +112,13 @@ public final class WidgetContainer {
         private final RecipeItemWidget recipeItemWidget;
 
         public DiaryNotateRecipeWidget() {
-            this.name = view.findViewById(R.id.edit_name_id);
-            this.description = view.findViewById(R.id.edit_description_id);
-            this.recipeImage = view.findViewById(R.id.recipe_image_id);
-            this.recipeList = view.findViewById(R.id.recipe_list_id);
-            this.save = view.findViewById(R.id.save_id);
-            this.addFood = view.findViewById(R.id.add_food_id);
-            this.searchImage = view.findViewById(R.id.search_image_id);
+            this.name = WidgetContainer.this.view.findViewById(R.id.edit_name_id);
+            this.description = WidgetContainer.this.view.findViewById(R.id.edit_description_id);
+            this.recipeImage = WidgetContainer.this.view.findViewById(R.id.recipe_image_id);
+            this.recipeList = WidgetContainer.this.view.findViewById(R.id.recipe_list_id);
+            this.save = WidgetContainer.this.view.findViewById(R.id.save_id);
+            this.addFood = WidgetContainer.this.view.findViewById(R.id.add_food_id);
+            this.searchImage = WidgetContainer.this.view.findViewById(R.id.search_image_id);
 
             this.recipeItemWidget = new RecipeItemWidget();
         }
@@ -130,9 +130,9 @@ public final class WidgetContainer {
             private final LinearLayout item;
 
             public RecipeItemWidget() {
-                this.name = view.findViewById(R.id.food_name_id);
-                this.description = view.findViewById(R.id.food_description_id);
-                this.item = view.findViewById(R.id.recipe_item_id);
+                this.name = WidgetContainer.this.view.findViewById(R.id.food_name_id);
+                this.description = WidgetContainer.this.view.findViewById(R.id.food_description_id);
+                this.item = WidgetContainer.this.view.findViewById(R.id.recipe_item_id);
             }
         }
     }
@@ -149,9 +149,9 @@ public final class WidgetContainer {
             this.folderItemWidget = new FolderItemWidget();
             this.notateItemWidget = new NotateItemWidget();
 
-            this.search = view.findViewById(R.id.search_id);
-            this.notateList = view.findViewById(R.id.diary_main_list_id);
-            this.add = view.findViewById(R.id.add_id);
+            this.search = WidgetContainer.this.view.findViewById(R.id.search_id);
+            this.notateList = WidgetContainer.this.view.findViewById(R.id.diary_main_list_id);
+            this.add = WidgetContainer.this.view.findViewById(R.id.add_id);
         }
 
         @Getter
@@ -161,9 +161,9 @@ public final class WidgetContainer {
             private final LinearLayout parentItem;
 
             public FolderItemWidget() {
-                this.name = view.findViewById(R.id.name_id);
-                this.folderType = view.findViewById(R.id.folder_type_id);
-                this.parentItem = view.findViewById(R.id.folder_parent_id);
+                this.name = WidgetContainer.this.view.findViewById(R.id.name_id);
+                this.folderType = WidgetContainer.this.view.findViewById(R.id.folder_type_id);
+                this.parentItem = WidgetContainer.this.view.findViewById(R.id.folder_parent_id);
             }
         }
 
@@ -174,9 +174,9 @@ public final class WidgetContainer {
             private final LinearLayout parentItem;
 
             public NotateItemWidget() {
-                this.name = view.findViewById(R.id.name_id);
-                this.notateWidget = view.findViewById(R.id.type_of_notate_id);
-                this.parentItem = view.findViewById(R.id.notate_parent_id);
+                this.name = WidgetContainer.this.view.findViewById(R.id.name_id);
+                this.notateWidget = WidgetContainer.this.view.findViewById(R.id.type_of_notate_id);
+                this.parentItem = WidgetContainer.this.view.findViewById(R.id.notate_parent_id);
             }
         }
     }
@@ -193,13 +193,13 @@ public final class WidgetContainer {
         private final Button save;
 
         public DiaryUpdateTaskWidget() {
-            this.nameOfTask = view.findViewById(R.id.name_of_task_id);
-            this.listOfDays = view.findViewById(R.id.list_of_days_id);
-            this.currentAlarm = view.findViewById(R.id.rang_time_id);
-            this.takeTime = view.findViewById(R.id.take_time_id);
-            this.repeat = view.findViewById(R.id.repeat_id);
-            this.description = view.findViewById(R.id.description_id);
-            this.save = view.findViewById(R.id.save_id);
+            this.nameOfTask = WidgetContainer.this.view.findViewById(R.id.name_of_task_id);
+            this.listOfDays = WidgetContainer.this.view.findViewById(R.id.list_of_days_id);
+            this.currentAlarm = WidgetContainer.this.view.findViewById(R.id.rang_time_id);
+            this.takeTime = WidgetContainer.this.view.findViewById(R.id.take_time_id);
+            this.repeat = WidgetContainer.this.view.findViewById(R.id.repeat_id);
+            this.description = WidgetContainer.this.view.findViewById(R.id.description_id);
+            this.save = WidgetContainer.this.view.findViewById(R.id.save_id);
         }
     }
 
@@ -210,8 +210,8 @@ public final class WidgetContainer {
         private final TextView dateText;
 
         public DiaryCalendarWidget() {
-            this.calendarView = view.findViewById(R.id.calendar_id);
-            this.dateText = view.findViewById(R.id.date_id);
+            this.calendarView = WidgetContainer.this.view.findViewById(R.id.calendar_id);
+            this.dateText = WidgetContainer.this.view.findViewById(R.id.date_id);
         }
     }
 
@@ -222,7 +222,7 @@ public final class WidgetContainer {
         private final DiaryMainParentWidget parentWidget;
 
         public DiaryMainWidget() {
-            this.expandableListView = view.findViewById(R.id.diary_main_list_id);
+            this.expandableListView = WidgetContainer.this.view.findViewById(R.id.diary_main_list_id);
 
             this.parentWidget = new DiaryMainParentWidget();
         }
@@ -240,13 +240,13 @@ public final class WidgetContainer {
             private final ImageView create;
 
             public DiaryMainParentWidget() {
-                this.dayName = view.findViewById(R.id.day_name_id);
-                this.dayNumber = view.findViewById(R.id.day_number_id);
-                this.monthName = view.findViewById(R.id.month_name_id);
-                this.completedTask = view.findViewById(R.id.completed_task_id);
-                this.allTask = view.findViewById(R.id.all_tasks_id);
-                this.taskProgress = view.findViewById(R.id.task_progress_id);
-                this.create = view.findViewById(R.id.create_id);
+                this.dayName = WidgetContainer.this.view.findViewById(R.id.day_name_id);
+                this.dayNumber = WidgetContainer.this.view.findViewById(R.id.day_number_id);
+                this.monthName = WidgetContainer.this.view.findViewById(R.id.month_name_id);
+                this.completedTask = WidgetContainer.this.view.findViewById(R.id.completed_task_id);
+                this.allTask = WidgetContainer.this.view.findViewById(R.id.all_tasks_id);
+                this.taskProgress = WidgetContainer.this.view.findViewById(R.id.task_progress_id);
+                this.create = WidgetContainer.this.view.findViewById(R.id.create_id);
 
                 this.childWidget = new DiaryMainChildWidget();
             }
@@ -260,10 +260,10 @@ public final class WidgetContainer {
                 private final TextView timeTask;
 
                 public DiaryMainChildWidget() {
-                    this.getByTask = view.findViewById(R.id.complete_task_id);
-                    this.textTask = view.findViewById(R.id.text_task_id);
-                    this.timeTask = view.findViewById(R.id.time_task_id);
-                    this.childItem = view.findViewById(R.id.child_item_id);
+                    this.getByTask = WidgetContainer.this.view.findViewById(R.id.complete_task_id);
+                    this.textTask = WidgetContainer.this.view.findViewById(R.id.text_task_id);
+                    this.timeTask = WidgetContainer.this.view.findViewById(R.id.time_task_id);
+                    this.childItem = WidgetContainer.this.view.findViewById(R.id.child_item_id);
                 }
             }
         }
@@ -282,12 +282,12 @@ public final class WidgetContainer {
 
         public TaskCreatorWidget() {
 
-            this.nameOfTask = view.findViewById(R.id.name_of_task_id);
-            this.takeTime = view.findViewById(R.id.take_time_id);
-            this.repeat = view.findViewById(R.id.repeat_id);
-            this.description = view.findViewById(R.id.description_id);
-            this.create = view.findViewById(R.id.create_id);
-            this.adView = view.findViewById(R.id.ad_view_id);
+            this.nameOfTask = WidgetContainer.this.view.findViewById(R.id.name_of_task_id);
+            this.takeTime = WidgetContainer.this.view.findViewById(R.id.take_time_id);
+            this.repeat = WidgetContainer.this.view.findViewById(R.id.repeat_id);
+            this.description = WidgetContainer.this.view.findViewById(R.id.description_id);
+            this.create = WidgetContainer.this.view.findViewById(R.id.create_id);
+            this.adView = WidgetContainer.this.view.findViewById(R.id.ad_view_id);
         }
 
     }
@@ -315,8 +315,8 @@ public final class WidgetContainer {
             private final EditText description;
 
             public TemplateAddItemWidget() {
-                this.name = view.findViewById(R.id.food_name_id);
-                this.description = view.findViewById(R.id.food_description_id);
+                this.name = WidgetContainer.this.view.findViewById(R.id.food_name_id);
+                this.description = WidgetContainer.this.view.findViewById(R.id.food_description_id);
             }
         }
 
@@ -329,10 +329,10 @@ public final class WidgetContainer {
             private final Button create;
 
             public DialogCreateNotateWidget() {
-                this.name = view.findViewById(R.id.name_id);
-                this.typeOfKeeping = view.findViewById(R.id.type_of_keeping_id);
-                this.typeOfNotate = view.findViewById(R.id.type_of_notate_id);
-                this.create = view.findViewById(R.id.create_id);
+                this.name = WidgetContainer.this.view.findViewById(R.id.name_id);
+                this.typeOfKeeping = WidgetContainer.this.view.findViewById(R.id.type_of_keeping_id);
+                this.typeOfNotate = WidgetContainer.this.view.findViewById(R.id.type_of_notate_id);
+                this.create = WidgetContainer.this.view.findViewById(R.id.create_id);
             }
         }
 
@@ -342,8 +342,8 @@ public final class WidgetContainer {
              private final Button changeOne;
 
             public DialogChangeSubjectWidget() {
-                this.changeAll = view.findViewById(R.id.change_all_id);
-                this.changeOne = view.findViewById(R.id.change_one_id);
+                this.changeAll = WidgetContainer.this.view.findViewById(R.id.change_all_id);
+                this.changeOne = WidgetContainer.this.view.findViewById(R.id.change_one_id);
             }
         }
         @Getter
@@ -352,8 +352,8 @@ public final class WidgetContainer {
              private final Button deleteOne;
 
             public DialogDeleteSubjectWidget() {
-                this.deleteAll = view.findViewById(R.id.delete_all_id);
-                this.deleteOne = view.findViewById(R.id.delete_one_id);
+                this.deleteAll = WidgetContainer.this.view.findViewById(R.id.delete_all_id);
+                this.deleteOne = WidgetContainer.this.view.findViewById(R.id.delete_one_id);
             }
         }
 
@@ -367,10 +367,10 @@ public final class WidgetContainer {
             private final RadioButton everyDay;
 
             public RepeatersWidget() {
-                this.selectDay = view.findViewById(R.id.select_day_id);
-                this.everyDay = view.findViewById(R.id.repeat_everyday_id);
-                this.radioGroup = view.findViewById(R.id.repeat_radio_group_id);
-                this.checkBoxList = view.findViewById(R.id.checkbox_list_id);
+                this.selectDay = WidgetContainer.this.view.findViewById(R.id.select_day_id);
+                this.everyDay = WidgetContainer.this.view.findViewById(R.id.repeat_everyday_id);
+                this.radioGroup = WidgetContainer.this.view.findViewById(R.id.repeat_radio_group_id);
+                this.checkBoxList = WidgetContainer.this.view.findViewById(R.id.checkbox_list_id);
 
                 this.everyDayWidget = new EveryDayWidget();
             }
@@ -387,13 +387,13 @@ public final class WidgetContainer {
                 private final CheckBox sunday;
 
                 public EveryDayWidget() {
-                    this.monday = view.findViewById(R.id.monday_id);
-                    this.tuesday = view.findViewById(R.id.tuesday_id);
-                    this.wednesday = view.findViewById(R.id.wednesday_id);
-                    this.thursday = view.findViewById(R.id.thursday_id);
-                    this.friday = view.findViewById(R.id.friday_id);
-                    this.saturday = view.findViewById(R.id.saturday_id);
-                    this.sunday = view.findViewById(R.id.sunday_id);
+                    this.monday = WidgetContainer.this.view.findViewById(R.id.monday_id);
+                    this.tuesday = WidgetContainer.this.view.findViewById(R.id.tuesday_id);
+                    this.wednesday = WidgetContainer.this.view.findViewById(R.id.wednesday_id);
+                    this.thursday = WidgetContainer.this.view.findViewById(R.id.thursday_id);
+                    this.friday = WidgetContainer.this.view.findViewById(R.id.friday_id);
+                    this.saturday = WidgetContainer.this.view.findViewById(R.id.saturday_id);
+                    this.sunday = WidgetContainer.this.view.findViewById(R.id.sunday_id);
                 }
             }
 

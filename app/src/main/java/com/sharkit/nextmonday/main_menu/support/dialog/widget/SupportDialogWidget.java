@@ -31,9 +31,9 @@ public class SupportDialogWidget {
         private final Button create;
 
         public NewFeedbackDialogWidget() {
-            this.typeOfFeedback = view.findViewById(R.id.feedback_type_id);
-            this.tittle = view.findViewById(R.id.tittle_id);
-            this.create = view.findViewById(R.id.create_id);
+            this.typeOfFeedback = SupportDialogWidget.this.view.findViewById(R.id.feedback_type_id);
+            this.tittle = SupportDialogWidget.this.view.findViewById(R.id.tittle_id);
+            this.create = SupportDialogWidget.this.view.findViewById(R.id.create_id);
         }
     }
 }

@@ -28,12 +28,12 @@ public class PurchaseAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return items.size();
+        return this.items.size();
     }
 
     @Override
     public PurchaseItem getItem(final int position) {
-        return items.get(position);
+        return this.items.get(position);
     }
 
     @Override
@@ -45,14 +45,14 @@ public class PurchaseAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         if (convertView == null)
-            convertView = LayoutInflater.from(context).inflate(R.layout.diary_purchase_item, null);
+            convertView = LayoutInflater.from(this.context).inflate(R.layout.diary_purchase_item, null);
         final WidgetContainer.DiaryPurchaseWidget.PurchaseItemWidget widget = WidgetContainer.newInstance(convertView).getDiaryPurchaseWidget().getPurchaseItemWidget();
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(this.context);
 
         widget.getComplete().setChecked(getItem(position).getStatus());
         widget.getDescription().setText(getItem(position).getDescription());
         widget.getName().setText(getItem(position).getName());
-        widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> createMenuListener(menu, context, position));
+        widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> createMenuListener(menu, this.context, position));
         widget.getComplete().setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (buttonView.isPressed())
                 db.purchaseItemDAO().updateStatus(isChecked, getItem(position).getId());
@@ -63,14 +63,14 @@ public class PurchaseAdapter extends BaseAdapter {
     private void createMenuListener(final ContextMenu menu, final Context context, final int position) {
         menu.add(context.getString(R.string.button_change))
                 .setOnMenuItemClickListener(item -> {
-                    new DialogPurchaseItem(context, items.get(position).getTemplateId(), items, PurchaseAdapter.this)
-                            .changeItem(items.get(position), position);
+                    new DialogPurchaseItem(context, this.items.get(position).getTemplateId(), this.items, PurchaseAdapter.this)
+                            .changeItem(this.items.get(position), position);
                     return true;
                 });
         menu.add(context.getString(R.string.button_delete))
                 .setOnMenuItemClickListener(item -> {
-                    NextMondayDatabase.getInstance(context).purchaseItemDAO().delete(toPurchaseItemDTO(items.get(position)));
-                    items.remove(position);
+                    NextMondayDatabase.getInstance(context).purchaseItemDAO().delete(toPurchaseItemDTO(this.items.get(position)));
+                    this.items.remove(position);
                     notifyDataSetChanged();
                     return true;
                 });

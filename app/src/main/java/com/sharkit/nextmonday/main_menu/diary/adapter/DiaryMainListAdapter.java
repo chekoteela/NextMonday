@@ -38,12 +38,12 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        return daysInfo.size();
+        return this.daysInfo.size();
     }
 
     @Override
     public int getChildrenCount(final int groupPosition) {
-        return daysInfo.get(groupPosition).getDiaryTasks().size();
+        return this.daysInfo.get(groupPosition).getDiaryTasks().size();
     }
 
     @Override
@@ -74,26 +74,26 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(final int groupPosition, final boolean isExpanded, View convertView, final ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.diary_main_parent_list, null);
+            convertView = LayoutInflater.from(this.context).inflate(R.layout.diary_main_parent_list, null);
         }
         final WidgetContainer.DiaryMainWidget.DiaryMainParentWidget widget = WidgetContainer.newInstance(convertView).getDiaryMainWidget().getParentWidget();
-        final Long allCompleted = daysInfo.get(groupPosition)
+        final Long allCompleted = this.daysInfo.get(groupPosition)
                 .getDiaryTasks()
                 .stream()
                 .filter(DiaryTask::getCompleted)
                 .count();
 
-        widget.getDayName().setText(daysInfo.get(groupPosition).getDayOfWeek());
-        widget.getMonthName().setText(daysInfo.get(groupPosition).getMonth());
-        widget.getDayNumber().setText(String.valueOf(daysInfo.get(groupPosition).getDayNumber()));
+        widget.getDayName().setText(this.daysInfo.get(groupPosition).getDayOfWeek());
+        widget.getMonthName().setText(this.daysInfo.get(groupPosition).getMonth());
+        widget.getDayNumber().setText(String.valueOf(this.daysInfo.get(groupPosition).getDayNumber()));
 
-        widget.getAllTask().setText(String.valueOf(daysInfo.get(groupPosition).getDiaryTasks().size()));
+        widget.getAllTask().setText(String.valueOf(this.daysInfo.get(groupPosition).getDiaryTasks().size()));
         widget.getCompletedTask().setText(String.valueOf(allCompleted));
 
         Optional.of(allCompleted)
                 .filter(aLong -> { widget.getTaskProgress().setProgress(0);
                     return aLong != 0; })
-                .ifPresent(aLong -> widget.getTaskProgress().setProgress((int) (daysInfo.get(groupPosition).getDiaryTasks().size() / aLong * 100)));
+                .ifPresent(aLong -> widget.getTaskProgress().setProgress((int) (this.daysInfo.get(groupPosition).getDiaryTasks().size() / aLong * 100)));
 
         widget.getCreate().setOnClickListener(v -> moveToCreateTask(groupPosition));
         return convertView;
@@ -102,20 +102,20 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(final int groupPosition, final int childPosition, final boolean isLastChild, View convertView, final ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.diary_main_child_item, null);
+            convertView = LayoutInflater.from(this.context).inflate(R.layout.diary_main_child_item, null);
         }
         final WidgetContainer.DiaryMainWidget.DiaryMainParentWidget.DiaryMainChildWidget widget = WidgetContainer.newInstance(convertView).getDiaryMainWidget().getParentWidget().getChildWidget();
         final Calendar calendar = Calendar.getInstance();
 
-        calendar.setTimeInMillis(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getTimeForRepeat());
+        calendar.setTimeInMillis(this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getTimeForRepeat());
 
-        widget.getGetByTask().setChecked(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getCompleted());
-        widget.getTextTask().setText(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getName());
+        widget.getGetByTask().setChecked(this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getCompleted());
+        widget.getTextTask().setText(this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getName());
         widget.getTimeTask().setText(DateFormat.getTimeInstance().format(calendar.getTime()));
 
         widget.getGetByTask().setOnCheckedChangeListener((buttonView, isChecked) -> {
-            NextMondayDatabase.getInstance(context).dairyTaskDAO().updateStatus(daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getId(), isChecked);
-            daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).setCompleted(isChecked);
+            NextMondayDatabase.getInstance(this.context).dairyTaskDAO().updateStatus(this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getId(), isChecked);
+            this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).setCompleted(isChecked);
             notifyDataSetChanged();
         });
 
@@ -125,21 +125,21 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
 
     private void moveToCreateTask(final int groupPosition) {
         final Bundle time = new Bundle();
-        time.putLong(DIARY_DAY_OF_WEEK, daysInfo.get(groupPosition).getDataTime());
-        Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_create_task, time);
+        time.putLong(DIARY_DAY_OF_WEEK, this.daysInfo.get(groupPosition).getDataTime());
+        Navigation.findNavController((Activity) this.context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_create_task, time);
     }
 
     private void showContextMenu(final Menu menu, final int groupPosition, final int childPosition){
-        menu.add(context.getString(R.string.button_change)).setOnMenuItemClickListener(item -> {
+        menu.add(this.context.getString(R.string.button_change)).setOnMenuItemClickListener(item -> {
             final Bundle bundle = new Bundle();
 
-            bundle.putSerializable(DIARY_TASK_FOR_CHANGE, daysInfo.get(groupPosition).getDiaryTasks().get(childPosition));
-            Navigation.findNavController((Activity) context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_update_task, bundle);
+            bundle.putSerializable(DIARY_TASK_FOR_CHANGE, this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition));
+            Navigation.findNavController((Activity) this.context, R.id.nav_host_fragment).navigate(R.id.navigation_diary_update_task, bundle);
             return true;
         });
-        menu.add(context.getString(R.string.button_delete)).setOnMenuItemClickListener(item -> {
-            new DialogChangeTask().showDialogDelete(context, daysInfo.get(groupPosition).getDiaryTasks().get(childPosition));
-            daysInfo.get(groupPosition).getDiaryTasks().remove(childPosition);
+        menu.add(this.context.getString(R.string.button_delete)).setOnMenuItemClickListener(item -> {
+            new DialogChangeTask().showDialogDelete(this.context, this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition));
+            this.daysInfo.get(groupPosition).getDiaryTasks().remove(childPosition);
             notifyDataSetChanged();
             return true;
         });

@@ -16,11 +16,11 @@ public class UserSharedPreference {
 
     public void set(final User user) {
         final Gson gson = new Gson();
-        new SharedPreference(context, USER_PREFERENCE).setJSON(gson.toJson(user));
+        new SharedPreference(this.context, USER_PREFERENCE).setJSON(gson.toJson(user));
     }
 
     public User get() {
         final Gson gson = new Gson();
-        return gson.fromJson(new SharedPreference(context, USER_PREFERENCE).getJSON(), User.class);
+        return gson.fromJson(new SharedPreference(this.context, USER_PREFERENCE).getJSON(), User.class);
     }
 }

@@ -28,12 +28,12 @@ public class RecipeAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return items.size();
+        return this.items.size();
     }
 
     @Override
     public Object getItem(final int position) {
-        return items.get(position);
+        return this.items.get(position);
     }
 
     @Override
@@ -45,26 +45,26 @@ public class RecipeAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         if (convertView == null)
-            convertView = LayoutInflater.from(context).inflate(R.layout.diary_noto_recipe_item, null);
+            convertView = LayoutInflater.from(this.context).inflate(R.layout.diary_noto_recipe_item, null);
 
         final WidgetContainer.DiaryNotateRecipeWidget.RecipeItemWidget widget = WidgetContainer.newInstance(convertView).getDiaryNotateRecipeWidget().getRecipeItemWidget();
 
-        widget.getDescription().setText(items.get(position).getDescription());
-        widget.getName().setText(items.get(position).getName());
-        widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> createMenuListener(menu, context, position));
+        widget.getDescription().setText(this.items.get(position).getDescription());
+        widget.getName().setText(this.items.get(position).getName());
+        widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> createMenuListener(menu, this.context, position));
         return convertView;
     }
 
     private void createMenuListener(final ContextMenu menu, final Context context, final int position) {
         menu.add(context.getString(R.string.button_change))
                 .setOnMenuItemClickListener(item -> {
-                    new DialogRecipeFood(context, items.get(position).getTemplateId(), items, RecipeAdapter.this)
-                            .changeItem(items.get(position), position);
+                    new DialogRecipeFood(context, this.items.get(position).getTemplateId(), this.items, RecipeAdapter.this)
+                            .changeItem(this.items.get(position), position);
                     return true; });
         menu.add(context.getString(R.string.button_delete))
                 .setOnMenuItemClickListener(item -> {
-                    NextMondayDatabase.getInstance(context).recipeItemDAO().delete(toRecipeItemDTO(items.get(position)));
-                    items.remove(position);
+                    NextMondayDatabase.getInstance(context).recipeItemDAO().delete(toRecipeItemDTO(this.items.get(position)));
+                    this.items.remove(position);
                     notifyDataSetChanged();
                     return true; });
     }

@@ -30,33 +30,33 @@ public class DialogRecipeFood {
     private WidgetContainer.Dialog.TemplateAddItemWidget widget;
 
     public void createItem() {
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(this.context);
         final AlertDialog dialog = showDialog();
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_add), (parent, which) -> {
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, this.context.getString(R.string.button_add), (parent, which) -> {
             final RecipeItem item = RecipeItem.builder()
-                    .description(widget.getDescription().getText().toString())
-                    .name(widget.getName().getText().toString())
-                    .templateId(templateId)
+                    .description(this.widget.getDescription().getText().toString())
+                    .name(this.widget.getName().getText().toString())
+                    .templateId(this.templateId)
                     .build();
             db.recipeItemDAO().save(toRecipeItemDTO(item));
-            recipeItems.add(item);
-            recipeAdapter.notifyDataSetChanged();
+            this.recipeItems.add(item);
+            this.recipeAdapter.notifyDataSetChanged();
             parent.dismiss();
         });
         dialog.show();
     }
 
     public void changeItem(final RecipeItem item, final int position){
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(context);
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(this.context);
         final AlertDialog dialog = showDialog();
-        dialog.setButton(DialogInterface.BUTTON_POSITIVE, context.getString(R.string.button_change), (parent, which) -> {
-            item.setDescription(widget.getDescription().getText().toString());
-            item.setName(widget.getName().getText().toString());
+        dialog.setButton(DialogInterface.BUTTON_POSITIVE, this.context.getString(R.string.button_change), (parent, which) -> {
+            item.setDescription(this.widget.getDescription().getText().toString());
+            item.setName(this.widget.getName().getText().toString());
 
             db.recipeItemDAO().update(toRecipeItemDTO(item));
 
-            recipeItems.set(position, item);
-            recipeAdapter.notifyDataSetChanged();
+            this.recipeItems.set(position, item);
+            this.recipeAdapter.notifyDataSetChanged();
             parent.dismiss();
         });
         dialog.show();
@@ -64,10 +64,10 @@ public class DialogRecipeFood {
     }
 
     private AlertDialog showDialog() {
-        final AlertDialog dialog = new AlertDialog.Builder(context).create();
-        final View view = LayoutInflater.from(context).inflate(R.layout.dialog_diary_recipe_food, null);
+        final AlertDialog dialog = new AlertDialog.Builder(this.context).create();
+        final View view = LayoutInflater.from(this.context).inflate(R.layout.dialog_diary_recipe_food, null);
 
-        widget = WidgetContainer.newInstance(view).getDialog().getTemplateAddItemWidget();
+        this.widget = WidgetContainer.newInstance(view).getDialog().getTemplateAddItemWidget();
         dialog.setView(view);
         return dialog;
     }

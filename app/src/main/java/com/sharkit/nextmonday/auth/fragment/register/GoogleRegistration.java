@@ -34,18 +34,18 @@ public class GoogleRegistration {
 
     private void createRequest() {
         final GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(activity.getString(R.string.default_web_client_id))
+                .requestIdToken(this.activity.getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
         Log.i(TAG, String.format("create request for google: %s", gso));
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this.activity, gso);
+        this.mGoogleSignInClient = GoogleSignIn.getClient(this.activity, gso);
     }
 
     public void signIn() {
         createRequest();
-        final Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        final Intent signInIntent = this.mGoogleSignInClient.getSignInIntent();
         this.activity.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 

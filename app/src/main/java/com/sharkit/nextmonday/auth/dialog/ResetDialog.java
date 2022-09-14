@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.auth.validation.ForgotPasswordDialogValidation;
 import com.sharkit.nextmonday.auth.widget.AuthWidget;
 import lombok.RequiredArgsConstructor;
 
@@ -28,9 +29,12 @@ public class ResetDialog {
 
         dialog.setButton(DialogInterface.BUTTON_POSITIVE,
                 this.context.getString(R.string.button_send),
-                (dialog1, which) -> mAuth.sendPasswordResetEmail(widget.getEmail().getText().toString().trim())
-                        .addOnSuccessListener(unused -> Toast.makeText(this.context, "Check your email", Toast.LENGTH_SHORT).show())
-                        .addOnFailureListener(e -> Log.e(TAG, e.getMessage(), e)));
+                (dialog1, which) -> {
+            if (new ForgotPasswordDialogValidation(this.context, widget).isValidEmail())
+            mAuth.sendPasswordResetEmail(widget.getEmail().getText().toString().trim())
+                            .addOnSuccessListener(unused -> Toast.makeText(this.context, "Check your email", Toast.LENGTH_SHORT).show())
+                            .addOnFailureListener(e -> Log.e(TAG, e.getMessage(), e));
+                });
 
         dialog.setView(view);
         dialog.show();

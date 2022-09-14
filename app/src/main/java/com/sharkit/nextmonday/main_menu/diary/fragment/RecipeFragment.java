@@ -47,18 +47,18 @@ public class RecipeFragment extends Fragment {
         this.imageStorageService = new ImageStorageService(requireContext());
         this.db = NextMondayDatabase.getInstance(getContext());
         this.recipe = toRecipe(this.db.recipeTemplateDAO().findById(notate.getTemplateId()));
-        final RecipeAdapter recipeAdapter = new RecipeAdapter(recipe.getRecipeItems(), getContext());
+        final RecipeAdapter recipeAdapter = new RecipeAdapter(this.recipe.getRecipeItems(), getContext());
 
         this.widget = WidgetContainer.newInstance(view).getDiaryNotateRecipeWidget();
         this.widget.getName().setText(notate.getName());
-        this.widget.getDescription().setText(recipe.getRecipeTemplate().getDescription());
+        this.widget.getDescription().setText(this.recipe.getRecipeTemplate().getDescription());
         this.widget.getRecipeList().setAdapter(recipeAdapter);
-        this.widget.getAddFood().setOnClickListener(v -> new DialogRecipeFood(getContext(), notate.getTemplateId(), recipe.getRecipeItems(), recipeAdapter).createItem());
+        this.widget.getAddFood().setOnClickListener(v -> new DialogRecipeFood(getContext(), notate.getTemplateId(), this.recipe.getRecipeItems(), recipeAdapter).createItem());
         this.widget.getSearchImage().setOnClickListener(v -> downloadNewImageAndDeleteOld());
-        this.widget.getSave().setOnClickListener(v -> saveChanges(recipe.getRecipeTemplate(), db, notate));
+        this.widget.getSave().setOnClickListener(v -> saveChanges(this.recipe.getRecipeTemplate(), this.db, notate));
 
-        this.imageStorageService.downloadFile(Optional.ofNullable(recipe.getRecipeTemplate().getImageCod()).orElse(""),
-                widget.getRecipeImage());
+        this.imageStorageService.downloadFile(Optional.ofNullable(this.recipe.getRecipeTemplate().getImageCod()).orElse(""),
+                this.widget.getRecipeImage());
         return view;
     }
 
@@ -84,9 +84,9 @@ public class RecipeFragment extends Fragment {
 
             final String imageCode = UUID.randomUUID().toString();
 
-            this.imageStorageService.delete(recipe.getRecipeTemplate().getImageCod());
+            this.imageStorageService.delete(this.recipe.getRecipeTemplate().getImageCod());
             this.widget.getRecipeImage().setImageURI(data.getData());
-            this.db.recipeTemplateDAO().updateImageCod(imageCode, recipe.getRecipeTemplate().getTemplateId());
+            this.db.recipeTemplateDAO().updateImageCod(imageCode, this.recipe.getRecipeTemplate().getTemplateId());
             this.imageStorageService.upload(data.getData(), imageCode);
         }
     }

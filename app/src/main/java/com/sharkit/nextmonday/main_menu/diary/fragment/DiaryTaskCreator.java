@@ -40,11 +40,11 @@ public class DiaryTaskCreator extends Fragment {
         this.calendar = Calendar.getInstance();
         this.widget = WidgetContainer.newInstance(view).getTaskCreatorWidget();
         this.widget.getCreate().setOnClickListener(v -> createTask());
-        this.widget.getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogTimePicker(requireContext(), diaryTask, widget.getTakeTime(), calendar)
+        this.widget.getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogTimePicker(requireContext(), this.diaryTask, this.widget.getTakeTime(), this.calendar)
                 .showIfChecked(isChecked));
-        this.widget.getRepeat().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogOfRepeaters(requireContext(), diaryTask).showIfChecked(isChecked));
+        this.widget.getRepeat().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogOfRepeaters(requireContext(), this.diaryTask).showIfChecked(isChecked));
 
-        calendar.setTimeInMillis(requireArguments().getLong(DIARY_DAY_OF_WEEK));
+        this.calendar.setTimeInMillis(requireArguments().getLong(DIARY_DAY_OF_WEEK));
 
 
         return view;

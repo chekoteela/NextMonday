@@ -30,30 +30,30 @@ public class FeedbackRepository {
     }
 
     public void create(final FeedbackEntity entity) {
-        db.collection(path).document(entity.getId()).set(entity);
+        this.db.collection(this.path).document(entity.getId()).set(entity);
     }
 
     public Task<QuerySnapshot> getAllActiveFeedbacks(final String id) {
-        return db.collection(path)
+        return this.db.collection(this.path)
                 .whereEqualTo(FEEDBACK_STATUS, FeedbackStatus.ACTIVE)
                 .whereEqualTo(USER_ID, id)
                 .get();
     }
 
     public Task<QuerySnapshot> getAllActiveFeedbacks() {
-        return db.collection(path)
+        return this.db.collection(this.path)
                 .whereEqualTo(FEEDBACK_STATUS, FeedbackStatus.ACTIVE)
                 .get();
     }
 
     public void updateMessage(final String feedbackId, final List<FeedbackMessage> messages) {
-        db.collection(path)
+        this.db.collection(this.path)
                 .document(feedbackId)
                 .update(MESSAGES, messages);
     }
 
     public void closeFeedback(final String feedbackId) {
-        db.collection(path)
+        this.db.collection(this.path)
                 .document(feedbackId)
                 .update(FEEDBACK_STATUS, FeedbackStatus.CLOSED);
     }

@@ -36,10 +36,10 @@ public class SupportWidget {
         private final Button closeFeedback;
 
         public FeedbackMessengerWidget() {
-            this.textOfFeedback = view.findViewById(R.id.feedback_text_id);
-            this.messageList = view.findViewById(R.id.message_list_id);
-            this.sendFeedback = view.findViewById(R.id.send_feedback_id);
-            this.closeFeedback = view.findViewById(R.id.close_feedback_id);
+            this.textOfFeedback = SupportWidget.this.view.findViewById(R.id.feedback_text_id);
+            this.messageList = SupportWidget.this.view.findViewById(R.id.message_list_id);
+            this.sendFeedback = SupportWidget.this.view.findViewById(R.id.send_feedback_id);
+            this.closeFeedback = SupportWidget.this.view.findViewById(R.id.close_feedback_id);
         }
     }
 
@@ -49,8 +49,8 @@ public class SupportWidget {
         private final Button create;
 
         public FeedbackWidget() {
-            this.listOfFeedback = view.findViewById(R.id.list_of_feedback_id);
-            this.create = view.findViewById(R.id.create_id);
+            this.listOfFeedback = SupportWidget.this.view.findViewById(R.id.list_of_feedback_id);
+            this.create = SupportWidget.this.view.findViewById(R.id.create_id);
         }
     }
 }

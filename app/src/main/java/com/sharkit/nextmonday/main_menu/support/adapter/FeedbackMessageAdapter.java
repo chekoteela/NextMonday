@@ -25,12 +25,12 @@ public class FeedbackMessageAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return messages.size();
+        return this.messages.size();
     }
 
     @Override
     public FeedbackMessage getItem(final int position) {
-        return messages.get(position);
+        return this.messages.get(position);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class FeedbackMessageAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         if (isNull(convertView))
-            convertView = LayoutInflater.from(context).inflate(R.layout.support_feedback_message_item, null);
+            convertView = LayoutInflater.from(this.context).inflate(R.layout.support_feedback_message_item, null);
 
         final SupportAdapterWidget.FeedbackMessageWidget widget = SupportAdapterWidget.newInstance(convertView).getFeedbackMessageWidget();
 

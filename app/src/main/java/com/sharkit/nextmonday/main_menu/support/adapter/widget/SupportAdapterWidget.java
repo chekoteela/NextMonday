@@ -33,8 +33,8 @@ public class SupportAdapterWidget {
         private final LinearLayout parentItem;
 
         public MainFeedbackAdapterWidget() {
-            this.text = view.findViewById(R.id.creation_date);
-            this.parentItem = view.findViewById(R.id.parent_item_id);
+            this.text = SupportAdapterWidget.this.view.findViewById(R.id.creation_date);
+            this.parentItem = SupportAdapterWidget.this.view.findViewById(R.id.parent_item_id);
         }
     }
 
@@ -43,7 +43,7 @@ public class SupportAdapterWidget {
         private final TextView messageText;
 
         public FeedbackMessageWidget() {
-            this.messageText = view.findViewById(R.id.message_text);
+            this.messageText = SupportAdapterWidget.this.view.findViewById(R.id.message_text);
         }
     }
 

@@ -30,7 +30,7 @@ public class SupportNavigation {
         final Bundle bundle = new Bundle();
         bundle.putParcelableArrayList(LIST_OF_FEEDBACK_MESSAGES, messages);
         bundle.putString(FEEDBACK_ID, feedbackId);
-        Navigation.findNavController((Activity) context, R.id.nav_host_fragment)
+        Navigation.findNavController((Activity) this.context, R.id.nav_host_fragment)
                 .navigate(R.id.navigation_support_feedback_messenger, bundle);
     }
 

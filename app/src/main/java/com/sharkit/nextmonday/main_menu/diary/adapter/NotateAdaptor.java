@@ -19,12 +19,12 @@ public class NotateAdaptor extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return notates.size();
+        return this.notates.size();
     }
 
     @Override
     public Object getItem(final int position) {
-        return notates.get(position);
+        return this.notates.get(position);
     }
 
     @Override
@@ -34,9 +34,9 @@ public class NotateAdaptor extends BaseAdapter {
 
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent) {
-        final View view = notates.get(position).getTemplateType().getView(context);
+        final View view = this.notates.get(position).getTemplateType().getView(this.context);
 
-        notates.get(position).getTemplateType().setAction(view, notates.get(position));
+        this.notates.get(position).getTemplateType().setAction(view, this.notates.get(position));
 
         return view;
     }
