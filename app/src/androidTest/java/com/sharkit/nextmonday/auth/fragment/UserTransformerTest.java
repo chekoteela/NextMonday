@@ -13,12 +13,12 @@ public class UserTransformerTest {
 
     @Test
     public void testToUser() {
-        assertEquals(buildUser(), UserTransformer.toUser("google@gmail.com", "Name", "LastName", "qwerty"));
+        assertEquals(this.buildUser(), UserTransformer.toUser("google@gmail.com", "Name", "LastName", "qwerty"));
     }
 
     @Test
     public void testToGoogleUser() {
-        assertEquals(buildGoogleUser(), UserTransformer.toUser("uId", "google@gmail.com", "Name"));
+        assertEquals(this.buildGoogleUser(), UserTransformer.toUser("uId", "google@gmail.com", "Name"));
     }
 
     private User buildGoogleUser() {

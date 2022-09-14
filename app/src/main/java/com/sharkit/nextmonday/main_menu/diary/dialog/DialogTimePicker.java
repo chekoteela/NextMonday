@@ -27,7 +27,7 @@ public class DialogTimePicker {
     public void showIfChecked(final Boolean isChecked){
         this.diaryTask.setAlarm(isChecked);
         if (Boolean.TRUE.equals(isChecked)) {
-            showTimePicker();
+            this.showTimePicker();
         } else {
             this.diaryTask.setTimeForRepeat(Calendar.getInstance().getTimeInMillis());
         }

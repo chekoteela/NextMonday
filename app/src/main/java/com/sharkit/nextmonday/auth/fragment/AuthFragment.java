@@ -38,19 +38,19 @@ public class AuthFragment extends Fragment {
         this.mAuth = FirebaseAuth.getInstance();
         this.widget = AuthWidget.newInstance(view).getAuthorisationMenuWidget();
 
-        this.widget.getCreateAccount().setOnClickListener(v -> createAccount());
-        this.widget.getSignIn().setOnClickListener(v -> authByEmailAndPassword());
-        this.widget.getGoogle().setOnClickListener(v -> new GoogleRegistration(getActivity()).signIn());
-        this.widget.getForgotPassword().setOnClickListener(v -> new ResetDialog(getContext()).reset());
+        this.widget.getCreateAccount().setOnClickListener(v -> this.createAccount());
+        this.widget.getSignIn().setOnClickListener(v -> this.authByEmailAndPassword());
+        this.widget.getGoogle().setOnClickListener(v -> new GoogleRegistration(this.getActivity()).signIn());
+        this.widget.getForgotPassword().setOnClickListener(v -> new ResetDialog(this.getContext()).reset());
         return view;
     }
 
     private void createAccount() {
-        Navigation.findNavController(requireActivity(), R.id.start_navigation).navigate(R.id.nav_register_fragment);
+        Navigation.findNavController(this.requireActivity(), R.id.start_navigation).navigate(R.id.nav_register_fragment);
     }
 
     private void authByEmailAndPassword() {
-        if (!new AuthValidation(getContext(), this.widget).isValidAuthData()) {
+        if (!new AuthValidation(this.getContext(), this.widget).isValidAuthData()) {
             Log.e(TAG, "Not valid auth data");
             return;
         }
@@ -59,7 +59,7 @@ public class AuthFragment extends Fragment {
 
         this.mAuth.signInWithEmailAndPassword(this.widget.getEmail().getText().toString().trim(),
                         this.widget.getPassword().getText().toString().trim())
-                .addOnSuccessListener(authResult -> startActivity(new Intent(getActivity(), NavigationMenu.class)))
+                .addOnSuccessListener(authResult -> this.startActivity(new Intent(this.getActivity(), NavigationMenu.class)))
                 .addOnFailureListener(e -> Log.e(TAG, e.getMessage(), e));
     }
 
@@ -67,11 +67,11 @@ public class AuthFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (this.mAuth.getCurrentUser() != null) {
-            UserRepository.getInstance(getContext()).findById(this.mAuth.getCurrentUser().getUid())
+            UserRepository.getInstance(this.getContext()).findById(this.mAuth.getCurrentUser().getUid())
                     .addOnSuccessListener(documentSnapshot -> {
                         final User currentUser = documentSnapshot.toObject(User.class);
-                        new UserSharedPreference(getContext()).set(currentUser);
-                        startActivity(new Intent(getActivity(), NavigationMenu.class));
+                        new UserSharedPreference(this.getContext()).set(currentUser);
+                        this.startActivity(new Intent(this.getActivity(), NavigationMenu.class));
                     });
         }
     }

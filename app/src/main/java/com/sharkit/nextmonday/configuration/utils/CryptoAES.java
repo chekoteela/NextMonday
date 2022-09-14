@@ -36,7 +36,7 @@ public class CryptoAES {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public String encrypt(final String strToEncrypt) {
         try {
-            final SecretKeySpec secretKey = getSecretKeySpec(encodeSecret());
+            final SecretKeySpec secretKey = this.getSecretKeySpec(this.encodeSecret());
             final Cipher cipher = Cipher.getInstance(CIPHER_CONFIG_TRANSFORMER);
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             return Base64.getEncoder()

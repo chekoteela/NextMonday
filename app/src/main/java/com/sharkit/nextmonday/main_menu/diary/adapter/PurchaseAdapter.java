@@ -49,13 +49,13 @@ public class PurchaseAdapter extends BaseAdapter {
         final WidgetContainer.DiaryPurchaseWidget.PurchaseItemWidget widget = WidgetContainer.newInstance(convertView).getDiaryPurchaseWidget().getPurchaseItemWidget();
         final NextMondayDatabase db = NextMondayDatabase.getInstance(this.context);
 
-        widget.getComplete().setChecked(getItem(position).getStatus());
-        widget.getDescription().setText(getItem(position).getDescription());
-        widget.getName().setText(getItem(position).getName());
-        widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> createMenuListener(menu, this.context, position));
+        widget.getComplete().setChecked(this.getItem(position).getStatus());
+        widget.getDescription().setText(this.getItem(position).getDescription());
+        widget.getName().setText(this.getItem(position).getName());
+        widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> this.createMenuListener(menu, this.context, position));
         widget.getComplete().setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (buttonView.isPressed())
-                db.purchaseItemDAO().updateStatus(isChecked, getItem(position).getId());
+                db.purchaseItemDAO().updateStatus(isChecked, this.getItem(position).getId());
         });
         return convertView;
     }
@@ -71,7 +71,7 @@ public class PurchaseAdapter extends BaseAdapter {
                 .setOnMenuItemClickListener(item -> {
                     NextMondayDatabase.getInstance(context).purchaseItemDAO().delete(toPurchaseItemDTO(this.items.get(position)));
                     this.items.remove(position);
-                    notifyDataSetChanged();
+                    this.notifyDataSetChanged();
                     return true;
                 });
     }

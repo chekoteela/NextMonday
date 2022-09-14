@@ -41,7 +41,7 @@ public class DiaryCalendarFragment extends Fragment {
 
             Log.i(TAG, String.format("Move to diary main with calendar time: %s", calendar.getTimeInMillis()));
 
-            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main, bundle);
+            Navigation.findNavController(this.requireActivity(), R.id.nav_host_fragment).navigate(R.id.navigation_diary_main, bundle);
         });
         return view;
     }

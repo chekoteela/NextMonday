@@ -1,12 +1,10 @@
 package com.sharkit.nextmonday.auth.validation;
 
 import android.content.Context;
-import android.widget.EditText;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.sharkit.nextmonday.auth.widget.AuthWidget;
 import com.sharkit.nextmonday.configuration.validation.widget_validation.TextValidation;
-import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,10 +15,10 @@ public class AuthValidation {
     private final AuthWidget.AuthorisationMenuWidget widget;
 
     public boolean isValidAuthData() {
-        if (isValidAuthField(this.widget.getEmailLayout())) {
+        if (this.isValidAuthField(this.widget.getEmailLayout())) {
             return Boolean.FALSE;
         }
-        if (isValidAuthField(this.widget.getPasswordLayout())) {
+        if (this.isValidAuthField(this.widget.getPasswordLayout())) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;

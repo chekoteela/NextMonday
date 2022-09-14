@@ -28,23 +28,23 @@ public class RegisterFragment extends Fragment {
         final View view = inflater.inflate(R.layout.registration_menu, container, false);
         final AuthWidget.RegisterMenuWidget widgetContainer = AuthWidget.newInstance(view).getRegisterMenuWidget();
 
-        widgetContainer.getSignIn().setOnClickListener(v -> returnToAuthFragment());
-        widgetContainer.getCreateAccount().setOnClickListener(v -> createAccountByEmailAndPassword(widgetContainer));
+        widgetContainer.getSignIn().setOnClickListener(v -> this.returnToAuthFragment());
+        widgetContainer.getCreateAccount().setOnClickListener(v -> this.createAccountByEmailAndPassword(widgetContainer));
 
         return view;
     }
 
     private void returnToAuthFragment() {
         Log.i(TAG, "Moving to auth fragment");
-        Navigation.findNavController(requireActivity(), R.id.start_navigation).navigate(R.id.nav_auth_fragment);
+        Navigation.findNavController(this.requireActivity(), R.id.start_navigation).navigate(R.id.nav_auth_fragment);
     }
 
     private void createAccountByEmailAndPassword(final AuthWidget.RegisterMenuWidget widget) {
-        if (!new RegistrationMenuValidation(widget, getContext()).validateField()){
+        if (!new RegistrationMenuValidation(widget, this.getContext()).validateField()){
             Log.e(TAG, "Not valid registration data");
             return;
         }
-        final EmailAndPasswordService service = new EmailAndPasswordService(widget, getContext());
+        final EmailAndPasswordService service = new EmailAndPasswordService(widget, this.getContext());
         Log.i(TAG, "Moving to creation user by email and password");
         service.createAccountByEmailAndPassword();
     }

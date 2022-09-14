@@ -48,8 +48,8 @@ public class MainFeedbackAdapter extends BaseAdapter {
         final SupportAdapterWidget.MainFeedbackAdapterWidget widget = SupportAdapterWidget.newInstance(convertView).getMainFeedbackAdapterWidget();
         final SupportNavigation navigation = SupportNavigation.getInstance(this.context);
 
-        widget.getText().setText(getItem(position).getFeedbackType().name());
-        widget.getParentItem().setOnClickListener(v -> navigation.moveToFeedbackMessenger(getItem(position).getId(), getItem(position).getMessages()));
+        widget.getText().setText(this.getItem(position).getFeedbackType().name());
+        widget.getParentItem().setOnClickListener(v -> navigation.moveToFeedbackMessenger(this.getItem(position).getId(), this.getItem(position).getMessages()));
         return convertView;
     }
 

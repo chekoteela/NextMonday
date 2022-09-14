@@ -51,7 +51,7 @@ public class RecipeAdapter extends BaseAdapter {
 
         widget.getDescription().setText(this.items.get(position).getDescription());
         widget.getName().setText(this.items.get(position).getName());
-        widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> createMenuListener(menu, this.context, position));
+        widget.getItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> this.createMenuListener(menu, this.context, position));
         return convertView;
     }
 
@@ -65,7 +65,7 @@ public class RecipeAdapter extends BaseAdapter {
                 .setOnMenuItemClickListener(item -> {
                     NextMondayDatabase.getInstance(context).recipeItemDAO().delete(toRecipeItemDTO(this.items.get(position)));
                     this.items.remove(position);
-                    notifyDataSetChanged();
+                    this.notifyDataSetChanged();
                     return true; });
     }
 }

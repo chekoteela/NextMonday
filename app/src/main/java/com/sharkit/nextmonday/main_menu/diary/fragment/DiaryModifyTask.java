@@ -42,7 +42,7 @@ public class DiaryModifyTask extends Fragment {
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.diary_update_task, container, false);
-        final DiaryTask diaryTask = (DiaryTask) requireArguments().getSerializable(DIARY_TASK_FOR_CHANGE);
+        final DiaryTask diaryTask = (DiaryTask) this.requireArguments().getSerializable(DIARY_TASK_FOR_CHANGE);
         final Calendar calendar = Calendar.getInstance();
 
         calendar.setTimeInMillis(diaryTask.getTimeForRepeat());
@@ -50,7 +50,7 @@ public class DiaryModifyTask extends Fragment {
         this.widget = WidgetContainer.newInstance(view).getDiaryUpdateTaskWidget();
         this.widget.getNameOfTask().setText(diaryTask.getName());
         this.widget.getDescription().setText(diaryTask.getDescription());
-        this.widget.getListOfDays().setText(getListDays(Optional.ofNullable(diaryTask.getRepeats()).orElse(new ArrayList<>())));
+        this.widget.getListOfDays().setText(this.getListDays(Optional.ofNullable(diaryTask.getRepeats()).orElse(new ArrayList<>())));
         this.widget.getTakeTime().setChecked(diaryTask.getAlarm());
 
         if (diaryTask.getRepeats() != null) this.widget.getRepeat().setChecked(Boolean.TRUE);
@@ -58,9 +58,9 @@ public class DiaryModifyTask extends Fragment {
 
         Log.i(TAG, "Successful initialize variables");
 
-        this.widget.getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogTimePicker(getContext(), diaryTask, this.widget.getTakeTime(), calendar).showIfChecked(isChecked));
-        this.widget.getRepeat().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogOfRepeaters(getContext(), diaryTask).showIfChecked(isChecked));
-        this.widget.getSave().setOnClickListener(v -> save(diaryTask, calendar));
+        this.widget.getTakeTime().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogTimePicker(this.getContext(), diaryTask, this.widget.getTakeTime(), calendar).showIfChecked(isChecked));
+        this.widget.getRepeat().setOnCheckedChangeListener((buttonView, isChecked) -> new DialogOfRepeaters(this.getContext(), diaryTask).showIfChecked(isChecked));
+        this.widget.getSave().setOnClickListener(v -> this.save(diaryTask, calendar));
         return view;
     }
 
@@ -71,12 +71,12 @@ public class DiaryModifyTask extends Fragment {
 
         Log.i(TAG, String.format("Modify task : %s", diaryTask));
 
-        new DialogChangeTask().showDialogUpdate(getContext(), diaryTask);
+        new DialogChangeTask().showDialogUpdate(this.getContext(), diaryTask);
     }
 
     private String getListDays(final List<DayOfRepeat> repeats) {
         return repeats.stream()
-                .map(dayOfRepeat -> toDayName(getContext(), dayOfRepeat))
+                .map(dayOfRepeat -> toDayName(this.getContext(), dayOfRepeat))
                 .collect(Collectors.joining(", "));
     }
 }

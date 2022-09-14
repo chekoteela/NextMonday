@@ -51,7 +51,7 @@ public class DiaryMainFragment extends Fragment {
         final List<DayInfo> daysInfo = new ArrayList<>();
         final Calendar calendar = Calendar.getInstance();
 
-        calendar.setTimeInMillis(Optional.ofNullable(getArguments())
+        calendar.setTimeInMillis(Optional.ofNullable(this.getArguments())
                 .map(arg -> arg.getLong(DIARY_DAY_OF_WEEK))
                 .orElse(Calendar.getInstance().getTimeInMillis()));
 
@@ -60,24 +60,24 @@ public class DiaryMainFragment extends Fragment {
         }
 
         for (int i = 0; i < 7; i++) {
-            fillOutList(daysInfo, calendar);
+            this.fillOutList(daysInfo, calendar);
 
             Log.i(TAG, String.format("Looking for all tasks by: %s", DateFormat.getDateInstance().format(calendar.getTime())));
             calendar.add(Calendar.DAY_OF_WEEK, 1);
         }
 
-        widget.getExpandableListView().setAdapter(new DiaryMainListAdapter(daysInfo, getContext()));
+        widget.getExpandableListView().setAdapter(new DiaryMainListAdapter(daysInfo, this.getContext()));
         return view;
     }
 
     private void fillOutList(final List<DayInfo> daysInfo, final Calendar calendar) {
-        final NextMondayDatabase db = NextMondayDatabase.getInstance(getContext());
+        final NextMondayDatabase db = NextMondayDatabase.getInstance(this.getContext());
 
         final List<DiaryTask> diaryTasks = toDiaryTasks(db.dairyTaskDAO()
                 .findAllByDate(DateFormat.getDateInstance().format(calendar.getTime())));
         daysInfo.add(DayInfo.builder()
-                .dayOfWeek(toDayName(getContext(), calendar.get(Calendar.DAY_OF_WEEK)))
-                .month(toMonthName(getContext(), calendar.get(Calendar.MONTH)))
+                .dayOfWeek(toDayName(this.getContext(), calendar.get(Calendar.DAY_OF_WEEK)))
+                .month(toMonthName(this.getContext(), calendar.get(Calendar.MONTH)))
                 .dayNumber(calendar.get(Calendar.DATE))
                 .dataTime(calendar.getTimeInMillis())
                 .diaryTasks(diaryTasks)
@@ -87,7 +87,7 @@ public class DiaryMainFragment extends Fragment {
                 .filter(f -> calendar.get(Calendar.DATE) == Calendar.getInstance().get(Calendar.DATE))
                 .ifPresent(diaryTask -> diaryTask
                         .stream().filter(f -> !f.getRepeated())
-                        .forEach(task -> repeat(task.getRepeats(), task)));
+                        .forEach(task -> this.repeat(task.getRepeats(), task)));
 
         diaryTasks.stream()
                 .filter(f -> f.getAlarm() && !f.getCompleted() && f.getTimeForRepeat() > calendar.getTimeInMillis())
@@ -96,7 +96,7 @@ public class DiaryMainFragment extends Fragment {
 
     private void repeat(final List<DayOfRepeat> repeats, final DiaryTask diaryTask) {
         Optional.ofNullable(repeats)
-                .ifPresent(repeat -> repeat.forEach(dayOfRepeat -> dayOfRepeat.repeat(diaryTask, toDayOfWeek(dayOfRepeat), getContext())));
+                .ifPresent(repeat -> repeat.forEach(dayOfRepeat -> dayOfRepeat.repeat(diaryTask, toDayOfWeek(dayOfRepeat), this.getContext())));
     }
 
     @SuppressLint("UnspecifiedImmutableFlag")
@@ -104,13 +104,13 @@ public class DiaryMainFragment extends Fragment {
 
         Log.i(TAG, String.format("Set time: %s for task: %s", diaryTask, diaryTask.getTimeForRepeat()));
 
-        final Intent intent = new Intent(getContext(), AlarmDiary.class);
+        final Intent intent = new Intent(this.getContext(), AlarmDiary.class);
         intent.putExtra(CONTENT_TITLE, diaryTask.getName());
         intent.putExtra(BIG_TEXT, diaryTask.getDescription());
         intent.putExtra(DIARY_TASK_ID, diaryTask.getId());
 
-        final PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), Math.toIntExact(diaryTask.getId()), intent, 0);
-        final AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
+        final PendingIntent pendingIntent = PendingIntent.getBroadcast(this.getContext(), Math.toIntExact(diaryTask.getId()), intent, 0);
+        final AlarmManager alarmManager = (AlarmManager) this.requireContext().getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, diaryTask.getTimeForRepeat(), pendingIntent);
     }
 

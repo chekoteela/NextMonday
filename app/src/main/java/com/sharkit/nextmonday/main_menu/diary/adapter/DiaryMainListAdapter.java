@@ -95,7 +95,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
                     return aLong != 0; })
                 .ifPresent(aLong -> widget.getTaskProgress().setProgress((int) (this.daysInfo.get(groupPosition).getDiaryTasks().size() / aLong * 100)));
 
-        widget.getCreate().setOnClickListener(v -> moveToCreateTask(groupPosition));
+        widget.getCreate().setOnClickListener(v -> this.moveToCreateTask(groupPosition));
         return convertView;
     }
 
@@ -116,10 +116,10 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         widget.getGetByTask().setOnCheckedChangeListener((buttonView, isChecked) -> {
             NextMondayDatabase.getInstance(this.context).dairyTaskDAO().updateStatus(this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).getId(), isChecked);
             this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition).setCompleted(isChecked);
-            notifyDataSetChanged();
+            this.notifyDataSetChanged();
         });
 
-        widget.getChildItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> showContextMenu(menu, groupPosition, childPosition));
+        widget.getChildItem().setOnCreateContextMenuListener((menu, v, menuInfo) -> this.showContextMenu(menu, groupPosition, childPosition));
         return convertView;
     }
 
@@ -140,7 +140,7 @@ public class DiaryMainListAdapter extends BaseExpandableListAdapter {
         menu.add(this.context.getString(R.string.button_delete)).setOnMenuItemClickListener(item -> {
             new DialogChangeTask().showDialogDelete(this.context, this.daysInfo.get(groupPosition).getDiaryTasks().get(childPosition));
             this.daysInfo.get(groupPosition).getDiaryTasks().remove(childPosition);
-            notifyDataSetChanged();
+            this.notifyDataSetChanged();
             return true;
         });
     }

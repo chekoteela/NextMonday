@@ -29,7 +29,7 @@ public class DialogOfRepeaters {
 
     public void showIfChecked(final Boolean isChecked) {
         if (Boolean.TRUE.equals(isChecked)) {
-            showDialogOfRepeaters();
+            this.showDialogOfRepeaters();
         } else {
             this.diaryTask.setRepeats(null);
         }
@@ -76,17 +76,17 @@ public class DialogOfRepeaters {
     }
 
     private void setCheckBoxActivity(final WidgetContainer.Dialog.RepeatersWidget.EveryDayWidget widget) {
-        setOnChecked(widget.getMonday(), DayOfRepeat.MONDAY);
-        setOnChecked(widget.getTuesday(), DayOfRepeat.TUESDAY);
-        setOnChecked(widget.getWednesday(), DayOfRepeat.WEDNESDAY);
-        setOnChecked(widget.getThursday(), DayOfRepeat.THURSDAY);
-        setOnChecked(widget.getFriday(), DayOfRepeat.FRIDAY);
-        setOnChecked(widget.getSaturday(), DayOfRepeat.SATURDAY);
-        setOnChecked(widget.getSunday(), DayOfRepeat.SUNDAY);
+        this.setOnChecked(widget.getMonday(), DayOfRepeat.MONDAY);
+        this.setOnChecked(widget.getTuesday(), DayOfRepeat.TUESDAY);
+        this.setOnChecked(widget.getWednesday(), DayOfRepeat.WEDNESDAY);
+        this.setOnChecked(widget.getThursday(), DayOfRepeat.THURSDAY);
+        this.setOnChecked(widget.getFriday(), DayOfRepeat.FRIDAY);
+        this.setOnChecked(widget.getSaturday(), DayOfRepeat.SATURDAY);
+        this.setOnChecked(widget.getSunday(), DayOfRepeat.SUNDAY);
     }
 
     private void setOnChecked(final CheckBox checkBox, final DayOfRepeat dayOfRepeat) {
-        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> setDayForRepeat(isChecked, dayOfRepeat));
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> this.setDayForRepeat(isChecked, dayOfRepeat));
     }
 
     private void setDayForRepeat(final boolean isChecked, final DayOfRepeat dayOfRepeat) {

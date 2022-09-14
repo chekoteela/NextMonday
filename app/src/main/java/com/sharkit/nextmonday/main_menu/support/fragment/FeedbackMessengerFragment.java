@@ -31,27 +31,27 @@ public class FeedbackMessengerFragment extends Fragment {
 
         final View view = inflater.inflate(R.layout.support_feedback_messanger, container, false);
 
-        final String feedbackId = requireArguments().getString(FEEDBACK_ID);
-        final List<FeedbackMessage> messages = requireArguments().getParcelableArrayList(LIST_OF_FEEDBACK_MESSAGES);
+        final String feedbackId = this.requireArguments().getString(FEEDBACK_ID);
+        final List<FeedbackMessage> messages = this.requireArguments().getParcelableArrayList(LIST_OF_FEEDBACK_MESSAGES);
 
         final SupportWidget.FeedbackMessengerWidget widget = SupportWidget.newInstance(view).getFeedbackMessengerWidget();
-        final FeedbackMessageAdapter adapter = new FeedbackMessageAdapter(messages, getContext());
+        final FeedbackMessageAdapter adapter = new FeedbackMessageAdapter(messages, this.getContext());
 
         widget.getMessageList().setAdapter(adapter);
-        widget.getSendFeedback().setOnClickListener(v -> sendMessage(widget, adapter, messages, feedbackId));
-        widget.getCloseFeedback().setOnClickListener(v -> closeFeedback(feedbackId));
+        widget.getSendFeedback().setOnClickListener(v -> this.sendMessage(widget, adapter, messages, feedbackId));
+        widget.getCloseFeedback().setOnClickListener(v -> this.closeFeedback(feedbackId));
 
         return view;
     }
 
     private void closeFeedback(final String feedbackId) {
-        final FeedbackRepository repository = FeedbackRepository.getInstance(getContext());
+        final FeedbackRepository repository = FeedbackRepository.getInstance(this.getContext());
         repository.closeFeedback(feedbackId);
     }
 
     private void sendMessage(final SupportWidget.FeedbackMessengerWidget widget, final FeedbackMessageAdapter adapter, final List<FeedbackMessage> messages, final String feedbackId) {
-        final User user = new UserSharedPreference(requireContext()).get();
-        final FeedbackRepository repository = FeedbackRepository.getInstance(getContext());
+        final User user = new UserSharedPreference(this.requireContext()).get();
+        final FeedbackRepository repository = FeedbackRepository.getInstance(this.getContext());
 
         final FeedbackMessage message = FeedbackMessage.builder()
                 .id(UUID.randomUUID().toString())

@@ -12,7 +12,7 @@ public class ChannelNotification extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        createNotificationChannel();
+        this.createNotificationChannel();
     }
 
     private void createNotificationChannel() {
@@ -22,7 +22,7 @@ public class ChannelNotification extends Application {
                     CHANNEL_1,
                     NotificationManager.IMPORTANCE_HIGH);
             channel1.setDescription(CHANNEL_1);
-            final NotificationManager manager = getSystemService(NotificationManager.class);
+            final NotificationManager manager = this.getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel1);
         }
         }

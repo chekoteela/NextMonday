@@ -44,7 +44,7 @@ public class GoogleRegistration {
     }
 
     public void signIn() {
-        createRequest();
+        this.createRequest();
         final Intent signInIntent = this.mGoogleSignInClient.getSignInIntent();
         this.activity.startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -58,9 +58,9 @@ public class GoogleRegistration {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this.activity, task -> {
                     if (Boolean.TRUE.equals(Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser())) {
-                        createNewUser(mAuth);
+                        this.createNewUser(mAuth);
                     }
-                    moveToMainMenu();
+                    this.moveToMainMenu();
                 });
     }
 

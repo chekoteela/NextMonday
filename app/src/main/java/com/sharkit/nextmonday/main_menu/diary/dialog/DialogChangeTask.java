@@ -32,13 +32,13 @@ public class DialogChangeTask {
             db.dairyTaskDAO().deleteAllByGroupId(diaryTaskDTO.getGroupId());
             db.dairyTaskDAO().create(diaryTaskDTO);
             dialog.dismiss();
-            moveToDiaryMain(context);
+            this.moveToDiaryMain(context);
         });
 
         widget.getChangeOne().setOnClickListener(v -> {
             db.dairyTaskDAO().updateOne(diaryTaskDTO);
             dialog.dismiss();
-            moveToDiaryMain(context);
+            this.moveToDiaryMain(context);
         });
 
         dialog.setView(view);
@@ -60,13 +60,13 @@ public class DialogChangeTask {
         widget.getDeleteAll().setOnClickListener(v -> {
             db.dairyTaskDAO().deleteAllByGroupId(diaryTaskDTO.getGroupId());
             dialog.dismiss();
-            moveToDiaryMain(context);
+            this.moveToDiaryMain(context);
         });
 
         widget.getDeleteOne().setOnClickListener(v -> {
             db.dairyTaskDAO().deleteOne(diaryTaskDTO);
             dialog.dismiss();
-            moveToDiaryMain(context);
+            this.moveToDiaryMain(context);
         });
 
         dialog.setView(view);
