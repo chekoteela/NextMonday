@@ -6,11 +6,14 @@ import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.SwitchCompat;
 
+import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
 import com.google.android.material.tabs.TabLayout;
 import com.jjoe64.graphview.GraphView;
 import com.progress.progressview.ProgressView;
@@ -309,6 +312,52 @@ public class CalculatorWidget {
             this.graphWeight = CalculatorWidget.this.view.findViewById(R.id.graph_weight_id);
             this.weightList = CalculatorWidget.this.view.findViewById(R.id.list_weight_id);
             this.create = CalculatorWidget.this.view.findViewById(R.id.create_id);
+        }
+    }
+
+    @Getter
+    public class AutomateCalculatorWidget {
+        private final TabLayout typeOfCalculator;
+        private final EditText currentWeight;
+        private final EditText age;
+        private final EditText desiredWeight;
+        private final EditText height;
+        private final EditText weight;
+        private final EditText protein;
+        private final EditText carbohydrate;
+        private final EditText fat;
+        private final EditText water;
+        private final RadioGroup sex;
+        private final RadioGroup formula;
+        private final SmartMaterialSpinner target;
+        private final SmartMaterialSpinner activity;
+        private final Button calculate;
+        private final Button save;
+        private final TextView conclusion;
+        private final ScrollView automateCalculator;
+        private final ScrollView manualCalculator;
+
+        public AutomateCalculatorWidget() {
+            this.typeOfCalculator = CalculatorWidget.this.view.findViewById(R.id.type_of_calculator_id);
+            this.currentWeight = CalculatorWidget.this.view.findViewById(R.id.current_weight_id);
+            this.age = CalculatorWidget.this.view.findViewById(R.id.age_id);
+            this.desiredWeight = CalculatorWidget.this.view.findViewById(R.id.desired_weight_id);
+            this.height = CalculatorWidget.this.view.findViewById(R.id.height_id);
+            this.weight = CalculatorWidget.this.view.findViewById(R.id.weight_id);
+            this.protein = CalculatorWidget.this.view.findViewById(R.id.protein_id);
+            this.carbohydrate = CalculatorWidget.this.view.findViewById(R.id.carbohydrate_id);
+            this.fat = CalculatorWidget.this.view.findViewById(R.id.fat_id);
+            this.water = CalculatorWidget.this.view.findViewById(R.id.water_id);
+            this.sex = CalculatorWidget.this.view.findViewById(R.id.sex_id);
+            this.formula = CalculatorWidget.this.view.findViewById(R.id.formula_id);
+            this.target = CalculatorWidget.this.view.findViewById(R.id.target_id);
+            this.activity = CalculatorWidget.this.view.findViewById(R.id.activity_id);
+            this.calculate = CalculatorWidget.this.view.findViewById(R.id.calculate_id);
+            this.save = CalculatorWidget.this.view.findViewById(R.id.save_id);
+            this.conclusion = CalculatorWidget.this.view.findViewById(R.id.conclusion_id);
+            this.automateCalculator = CalculatorWidget.this.view.findViewById(R.id.auto_calculator_id);
+            this.manualCalculator = CalculatorWidget.this.view.findViewById(R.id.manual_calculator_id);
+
         }
     }
 }
