@@ -69,11 +69,11 @@
         android:id="@+id/navigation_calculator_weight"
         android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.WeightFragment"/>
 
-<!--    SETTINGS-->
-
     <fragment
-        android:id="@+id/navigation_setting_calculator_manual"
-        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.settings.ManualCalculatorFragment"/>
+        android:id="@+id/navigation_calculator_calendar"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.CalendarFragment"/>
+
+<!--    SETTINGS-->
 
     <fragment
         android:id="@+id/navigation_setting_calculator_automate"
