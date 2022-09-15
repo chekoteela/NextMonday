@@ -11,11 +11,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/create_meal_xml"
+        android:layout_above="@+id/create_id"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/date_xml"
+            android:id="@+id/date_id"
             style="@style/StandartTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:layout_margin="20dp" />
 
         <ExpandableListView
-            android:id="@+id/ration_xml"
+            android:id="@+id/ration_list_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -31,7 +31,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/create_meal_xml"
+        android:id="@+id/create_id"
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

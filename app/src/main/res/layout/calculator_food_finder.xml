@@ -9,7 +9,7 @@
     tools:context=".ui.calculator.FindFood">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout_xml"
+        android:id="@+id/food_finder_tab_layout_id"
         android:background="@color/calculator_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,6 @@
             android:text="@string/find_by_name" />
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/bar_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_by_barcode" />
@@ -42,11 +41,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/create_new_food_xml"
+        android:layout_above="@+id/create_id"
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/find_food_xml"
+            android:id="@+id/find_food_id"
             style="@style/EditText_change_food_white"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -58,7 +57,7 @@
 
 
         <ExpandableListView
-            android:id="@+id/list_of_item_xml"
+            android:id="@+id/list_of_food_id"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -66,7 +65,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/create_new_food_xml"
+        android:id="@+id/create_id"
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

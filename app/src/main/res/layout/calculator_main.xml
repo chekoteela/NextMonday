@@ -10,6 +10,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/linear_dima"
         android:layout_width="match_parent"
@@ -23,9 +24,8 @@
             android:layout_gravity="center"
             android:background="@color/calculator_color">
 
-
             <com.progress.progressview.ProgressView
-                android:id="@+id/calorie_xml"
+                android:id="@+id/calorie_progress_id"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
@@ -38,7 +38,7 @@
                 app:pvShape="circle" />
 
             <TextView
-                android:id="@+id/percent_calorie_xml"
+                android:id="@+id/percent_calorie_id"
                 style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
 
 
             <TextView
-                android:id="@+id/eat_calorie_xml"
+                android:id="@+id/eaten_calorie_id"
                 style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                 android:background="@drawable/calculator_linear_white" />
 
             <TextView
-                android:id="@+id/all_eat_calorie_xml"
+                android:id="@+id/all_eaten_calorie_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -107,7 +107,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/all_calorie_xml"
+                android:id="@+id/all_calorie_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
@@ -159,7 +159,7 @@
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
 
                     <com.progress.progressview.ProgressView
-                        android:id="@+id/fat_xml"
+                        android:id="@+id/fat_progress_id"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_horizontal"
@@ -171,7 +171,7 @@
                         app:pvShape="arc" />
 
                     <TextView
-                        android:id="@+id/percent_fat_xml"
+                        android:id="@+id/percent_fat_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -217,7 +217,7 @@
 
                     <TextView
                         android:visibility="gone"
-                        android:id="@+id/eat_fat_xml"
+                        android:id="@+id/eaten_fat_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -226,7 +226,7 @@
                         android:fontFamily="@font/play" />
 
                     <TextView
-                        android:id="@+id/all_eat_fat_xml"
+                        android:id="@+id/all_eaten_fat_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -236,7 +236,7 @@
                         android:fontFamily="@font/play" />
 
                     <TextView
-                        android:id="@+id/all_fat_xml"
+                        android:id="@+id/all_fat_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -276,7 +276,7 @@
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
 
                     <com.progress.progressview.ProgressView
-                        android:id="@+id/carbohydrate_xml"
+                        android:id="@+id/carbohydrate_progress_id"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
                         android:layout_gravity="center_horizontal"
@@ -288,7 +288,7 @@
                         app:pvShape="arc" />
 
                     <TextView
-                        android:id="@+id/percent_carbohydrate_xml"
+                        android:id="@+id/percent_carbohydrate_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -326,7 +326,7 @@
 
                     <TextView
                         android:visibility="gone"
-                        android:id="@+id/eat_carbohydrate_xml"
+                        android:id="@+id/eaten_carbohydrate_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -345,7 +345,7 @@
                         android:orientation="horizontal" />
 
                     <TextView
-                        android:id="@+id/all_eat_carbohydrate_xml"
+                        android:id="@+id/all_eaten_carbohydrate_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -355,7 +355,7 @@
                         android:fontFamily="@font/play" />
 
                     <TextView
-                        android:id="@+id/all_carbohydrate_xml"
+                        android:id="@+id/all_carbohydrate_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -399,7 +399,7 @@
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
 
                     <com.progress.progressview.ProgressView
-                        android:id="@+id/protein_xml"
+                        android:id="@+id/protein_progress_id"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
                         android:layout_gravity="center_horizontal"
@@ -411,7 +411,7 @@
                         app:pvShape="arc" />
 
                     <TextView
-                        android:id="@+id/percent_protein_xml"
+                        android:id="@+id/percent_protein_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -446,7 +446,7 @@
 
                     <TextView
                         android:visibility="gone"
-                        android:id="@+id/eat_protein_xml"
+                        android:id="@+id/eaten_protein_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -466,7 +466,7 @@
                         android:orientation="horizontal" />
 
                     <TextView
-                        android:id="@+id/all_eat_protein_xml"
+                        android:id="@+id/all_eaten_protein_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -475,7 +475,7 @@
                         android:layout_marginBottom="20dp" />
 
                     <TextView
-                        android:id="@+id/all_protein_xml"
+                        android:id="@+id/all_protein_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -510,7 +510,7 @@
                     app:neumorph_shadowColorLight="@color/shadowColorLight">
 
                     <com.progress.progressview.ProgressView
-                        android:id="@+id/water_xml"
+                        android:id="@+id/water_progress_id"
                         android:layout_width="wrap_content"
                         android:layout_height="150dp"
                         android:layout_gravity="center_horizontal"
@@ -522,7 +522,7 @@
                         app:pvShape="arc" />
 
                     <TextView
-                        android:id="@+id/percent_water_xml"
+                        android:id="@+id/percent_water_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -534,7 +534,7 @@
 
                     <TextView
                         android:visibility="gone"
-                        android:id="@+id/drink_water_xml"
+                        android:id="@+id/drink_water_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -575,7 +575,7 @@
                         android:orientation="horizontal" />
 
                     <TextView
-                        android:id="@+id/all_drink_water_xml"
+                        android:id="@+id/all_drink_water_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -584,7 +584,7 @@
                         android:layout_marginBottom="20dp" />
 
                     <TextView
-                        android:id="@+id/all_water_xml"
+                        android:id="@+id/all_water_id"
                         style="@style/StandartTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -617,7 +617,7 @@
 
             <ImageView
                 android:visibility="gone"
-                android:id="@+id/add_food_xml"
+                android:id="@+id/add_food_id"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -625,7 +625,7 @@
                 android:src="@drawable/add_food_menu"/>
 
             <ImageView
-                android:id="@+id/add_watter_xml"
+                android:id="@+id/add_water_id"
                 android:visibility="gone"
                 android:layout_weight="1"
                 android:src="@drawable/watter_menu"
@@ -634,7 +634,7 @@
                 android:layout_height="wrap_content"/>
 
             <ImageView
-                android:id="@+id/add_weight_xml"
+                android:id="@+id/add_weight_id"
                 android:visibility="gone"
                 android:layout_weight="1"
                 android:layout_width="match_parent"

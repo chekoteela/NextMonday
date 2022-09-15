@@ -43,7 +43,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/current_weight_xml"
+                    android:id="@+id/current_weight_id"
                     style="@style/StandartTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/desired_weight_xml"
+                    android:id="@+id/desired_weight_id"
                     style="@style/StandartTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,13 +85,13 @@
         </LinearLayout>
 
         <com.jjoe64.graphview.GraphView
-            android:id="@+id/graph_view_xml"
+            android:id="@+id/graph_weight_id"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="10dp" />
 
         <ListView
-            android:id="@+id/list_weight_xml"
+            android:id="@+id/list_weight_id"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginVertical="10dp" />
@@ -104,7 +104,7 @@
     <Button
         android:layout_marginVertical="10dp"
         android:layout_above="@+id/adView"
-        android:id="@+id/add_weight_xml"
+        android:id="@+id/create_id"
         style="@style/button_setting_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
