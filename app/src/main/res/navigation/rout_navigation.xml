@@ -43,9 +43,43 @@
         android:id="@+id/navigation_support_feedback"
         android:name="com.sharkit.nextmonday.main_menu.support.fragment.FeedbackFragment"/>
 
-    <!--&lt;!&ndash;    END&ndash;&gt;-->
+<!--    CALCULATOR-->
 
-<!--    <fragment-->
+    <fragment
+        android:id="@+id/navigation_calculator_main"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.CalculatorMainFragment"/>
+
+    <fragment
+        android:id="@+id/navigation_calculator_add_meal"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.AddMealFragment"/>
+
+    <fragment
+        android:id="@+id/navigation_calculator_create_food"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.CreateFoodFragment"/>
+
+    <fragment
+        android:id="@+id/navigation_calculator_food_finder"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.FoodFinderFragment"/>
+
+    <fragment
+        android:id="@+id/navigation_calculator_ration"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.RationFragment"/>
+
+    <fragment
+        android:id="@+id/navigation_calculator_weight"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.WeightFragment"/>
+
+<!--    SETTINGS-->
+
+    <fragment
+        android:id="@+id/navigation_setting_calculator_manual"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.settings.ManualCalculatorFragment"/>
+
+    <fragment
+        android:id="@+id/navigation_setting_calculator_automate"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.settings.AutomateCalculatorFragment"/>
+
+    <!--    <fragment-->
 <!--        android:id="@+id/nav_calculator_main"-->
 <!--        android:name="com.sharkit.nextmonday.ui.calculator.CalculatorMain"-->
 <!--        tools:layout="@layout/calculator_main" />-->
