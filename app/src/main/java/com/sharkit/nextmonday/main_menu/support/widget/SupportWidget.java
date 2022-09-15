@@ -35,6 +35,7 @@ public class SupportWidget {
         private final Button sendFeedback;
         private final Button closeFeedback;
 
+
         public FeedbackMessengerWidget() {
             this.textOfFeedback = view.findViewById(R.id.feedback_text_id);
             this.messageList = view.findViewById(R.id.message_list_id);
