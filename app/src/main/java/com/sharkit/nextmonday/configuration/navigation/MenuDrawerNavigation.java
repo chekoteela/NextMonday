@@ -10,11 +10,9 @@ import com.sharkit.nextmonday.R;
 
 public class MenuDrawerNavigation {
 
-    private final Context context;
     private final NavController navController;
 
-    private MenuDrawerNavigation(final Context context){
-        this.context = context;
+    private MenuDrawerNavigation(final Context context) {
         this.navController = Navigation.findNavController((Activity) context, R.id.nav_host_fragment);
     }
 
@@ -22,7 +20,15 @@ public class MenuDrawerNavigation {
         return new MenuDrawerNavigation(context);
     }
 
-    public void moveToFeedback(){
+    public void moveToDiary() {
+        this.navController.navigate(R.id.navigation_diary_main);
+    }
+
+    public void moveToCalculator() {
+        this.navController.navigate(R.id.navigation_calculator_main);
+    }
+
+    public void moveToFeedback() {
 
     }
 }

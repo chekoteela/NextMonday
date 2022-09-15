@@ -7,6 +7,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.auth.entity.enums.impl.IUserRoleAction;
 import com.sharkit.nextmonday.auth.entity.enums.impl.action.AdminService;
 import com.sharkit.nextmonday.auth.entity.enums.impl.action.UserService;
+import com.sharkit.nextmonday.configuration.blocker.TypeBlocker;
 import com.sharkit.nextmonday.main_menu.support.entity.enums.MessageType;
 
 public enum UserRole implements IUserRoleAction {
@@ -23,12 +24,18 @@ public enum UserRole implements IUserRoleAction {
         return this.getService().getFeedbackMessageType();
     }
 
+    @Override
+    public TypeBlocker setBlock() {
+       return this.getService().setBlock();
+    }
+
     private IUserRoleAction getService() {
         switch (this) {
             case ADMIN:
                 return new AdminService();
             case USER:
-            default: return new UserService();
+            default:
+                return new UserService();
         }
     }
 }

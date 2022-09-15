@@ -1,61 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tools="http://schemas.android.com/tools"
-      tools:showIn="navigation_view">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
 
     <group android:checkableBehavior="single">
 
         <item
-                android:id="@+id/nav_diary"
-                android:icon="@drawable/icon_tagret_two"
-                android:title="@string/text_view_diary"/>
+            android:id="@+id/diary_item"
+            android:icon="@drawable/icon_tagret_two"
+            android:onClick="mainMenuDrawerClickListener"
+            android:title="@string/text_view_diary" />
 
         <item
-                android:id="@+id/calculator_item"
-                android:icon="@drawable/icon_calculate"
-                android:title="@string/text_view_health"/>
+            android:id="@+id/calculator_item"
+            android:icon="@drawable/icon_calculate"
+            android:onClick="mainMenuDrawerClickListener"
+            android:title="@string/text_view_health" />
 
         <item
-                android:id="@+id/CorporationAcc"
-                android:enabled="false"
-                android:icon="@drawable/icon_corp_one"
-                android:title="@string/text_view_corporate_account"/>
+            android:id="@+id/corporate_account_item"
+            android:enabled="false"
+            android:icon="@drawable/icon_corp_one"
+            android:onClick="mainMenuDrawerClickListener"
+            android:title="@string/text_view_corporate_account" />
     </group>
     <group android:checkableBehavior="none">
         <item android:title="@string/text_view_additionally">
 
             <menu>
                 <item
-                        android:id="@+id/PROVersion"
-                        android:enabled="false"
-                        android:icon="@drawable/icon_pro_first"
-                        android:onClick="additionalMenuDrawer"
-                        android:title="@string/text_view_pro_version_subscription"/>
+                    android:id="@+id/PROVersion_item"
+                    android:enabled="false"
+                    android:icon="@drawable/icon_pro_first"
+                    android:onClick="additionalMenuDrawer"
+                    android:title="@string/text_view_pro_version_subscription" />
 
                 <item
-                        android:id="@+id/feedback_item"
-                        android:icon="@drawable/icon_feedback"
-                        android:onClick="additionalMenuDrawer"
-                        android:title="@string/text_view_feedback"/>
+                    android:id="@+id/feedback_item"
+                    android:icon="@drawable/icon_feedback"
+                    android:onClick="additionalMenuDrawer"
+                    android:title="@string/text_view_feedback" />
 
                 <item
-                        android:id="@+id/share_item"
-                        android:icon="@drawable/icon_share"
-                        android:onClick="additionalMenuDrawer"
-                        android:title="@string/text_view_share_app"/>
+                    android:id="@+id/share_item"
+                    android:icon="@drawable/icon_share"
+                    android:onClick="additionalMenuDrawer"
+                    android:title="@string/text_view_share_app" />
 
                 <item
-                        android:id="@+id/estimate_item"
-                        android:icon="@drawable/ic_star"
-                        android:onClick="additionalMenuDrawer"
-                        android:title="@string/text_view_estimate"/>
+                    android:id="@+id/estimate_item"
+                    android:icon="@drawable/ic_star"
+                    android:onClick="additionalMenuDrawer"
+                    android:title="@string/text_view_estimate" />
 
                 <item
-                        android:id="@+id/exit_item"
-                        android:icon="@drawable/exit_icon"
-                        android:onClick="additionalMenuDrawer"
-                        android:title="@string/text_view_exit"/>
+                    android:id="@+id/exit_item"
+                    android:icon="@drawable/exit_icon"
+                    android:onClick="additionalMenuDrawer"
+                    android:title="@string/text_view_exit" />
             </menu>
         </item>
     </group>

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.auth.entity.enums.impl.IUserRoleAction;
+import com.sharkit.nextmonday.configuration.blocker.TypeBlocker;
 import com.sharkit.nextmonday.main_menu.support.db.FeedbackRepository;
 import com.sharkit.nextmonday.main_menu.support.entity.enums.MessageType;
 
@@ -19,4 +20,10 @@ public class AdminService implements IUserRoleAction {
     public MessageType getFeedbackMessageType() {
         return MessageType.CALLBACK;
     }
+
+    @Override
+    public TypeBlocker setBlock() {
+        return TypeBlocker.UNBLOCK;
+    }
+
 }
