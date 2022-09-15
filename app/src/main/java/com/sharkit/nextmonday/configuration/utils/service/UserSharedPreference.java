@@ -23,4 +23,8 @@ public class UserSharedPreference {
         final Gson gson = new Gson();
         return gson.fromJson(new SharedPreference(this.context, USER_PREFERENCE).getJSON(), User.class);
     }
+
+    public void clear() {
+        new SharedPreference(this.context, USER_PREFERENCE).clear();
+    }
 }

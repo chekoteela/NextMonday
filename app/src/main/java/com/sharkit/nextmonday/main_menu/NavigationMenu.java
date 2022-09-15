@@ -20,11 +20,14 @@ import androidx.navigation.Navigation;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.auth.entity.User;
 import com.sharkit.nextmonday.configuration.navigation.CalculatorNavigation;
 import com.sharkit.nextmonday.configuration.navigation.MenuDrawerNavigation;
+import com.sharkit.nextmonday.configuration.utils.service.UserSharedPreference;
 
 @SuppressLint("NonConstantResourceId")
 public class NavigationMenu extends AppCompatActivity {
@@ -39,8 +42,32 @@ public class NavigationMenu extends AppCompatActivity {
         final Toolbar toolbar = this.findViewById(R.id.toolbar_core);
         this.setSupportActionBar(toolbar);
         final Drawable drawable = ContextCompat.getDrawable(this.getApplicationContext(), R.drawable.ic_baseline_settings_24);
+        this.setWidgetAccessibility();
         toolbar.setOverflowIcon(drawable);
+    }
 
+    private void setWidgetAccessibility() {
+        final NavigationView navigationView = this.findViewById(R.id.nav_view);
+        final MenuItem calculatorItem = navigationView.getMenu().findItem(R.id.calculator_item);
+        final User user = new UserSharedPreference(this).get();
+        user.getRole().setBlock().visibility(calculatorItem);
+    }
+
+    public void mainMenuDrawerClickListener(final MenuItem item) {
+        final MenuDrawerNavigation navigation = MenuDrawerNavigation.getInstance(this);
+
+        switch (item.getItemId()) {
+            case R.id.diary_item:
+                navigation.moveToDiary();
+                break;
+            case R.id.calculate_id:
+                navigation.moveToCalculator();
+                break;
+            case R.id.corporate_account_item:
+                break;
+            default:
+                throw new RuntimeException("Unexpected value");
+        }
     }
 
     public void additionalMenuDrawer(final MenuItem item) {
@@ -85,7 +112,7 @@ public class NavigationMenu extends AppCompatActivity {
     public void calculatorMenuClickListener(final MenuItem item) {
         final CalculatorNavigation navigation = CalculatorNavigation.getInstance(this);
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.main_item:
                 navigation.toMainMenu();
                 break;
@@ -128,6 +155,7 @@ public class NavigationMenu extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         this.startActivity(new Intent(NavigationMenu.this, NextMondayActivity.class));
         this.finish();
+        new UserSharedPreference(this).clear();
     }
 
     @Override

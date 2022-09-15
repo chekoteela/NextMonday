@@ -13,6 +13,12 @@ public class SharedPreference {
     private final Context context;
     private final String sharedName;
 
+    public void clear() {
+        final SharedPreferences.Editor editor = this.getEditor();
+        editor.clear();
+        editor.apply();
+    }
+
     public void setValueShared(final Map<String, String> map) {
         final SharedPreferences.Editor editor = this.getEditor();
         map.keySet().forEach(key -> editor.putString(key, map.get(key)));
