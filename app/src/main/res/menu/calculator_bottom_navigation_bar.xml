@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/main_item"
         android:icon="@drawable/ic_home_24"
-        android:onClick="onMenuItemClick"
+        android:onClick="calculatorMenuClickListener"
         app:showAsAction="ifRoom"
         android:title="Главная">
     </item>
@@ -13,7 +13,7 @@
     <item
         android:id="@+id/ration_item"
         android:icon="@drawable/meal"
-        android:onClick="onMenuItemClick"
+        android:onClick="calculatorMenuClickListener"
         android:title="Рацион" >
     </item>
 
@@ -21,13 +21,13 @@
         android:id="@+id/calendar_item"
         android:contentDescription="@string/calendar2"
         android:icon="@drawable/ic_calendar"
-        android:onClick="onMenuItemClick"
+        android:onClick="calculatorMenuClickListener"
         android:title="Календарь"/>
 
     <item
         android:id="@+id/weight_item"
         android:icon="@drawable/ic_monitor_weight"
-        android:onClick="onMenuItemClick"
+        android:onClick="calculatorMenuClickListener"
         android:title="Вес" >
     </item>
 

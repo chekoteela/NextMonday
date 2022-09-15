@@ -23,6 +23,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.navigation.CalculatorNavigation;
 import com.sharkit.nextmonday.configuration.navigation.MenuDrawerNavigation;
 
 @SuppressLint("NonConstantResourceId")
@@ -75,6 +76,27 @@ public class NavigationMenu extends AppCompatActivity {
                 break;
             case R.id.item_diary_main:
                 navController.navigate(R.id.navigation_diary_main);
+                break;
+            default:
+                throw new RuntimeException("Unexpected value");
+        }
+    }
+
+    public void calculatorMenuClickListener(final MenuItem item) {
+        final CalculatorNavigation navigation = CalculatorNavigation.getInstance(this);
+
+        switch (item.getItemId()){
+            case R.id.main_item:
+                navigation.toMainMenu();
+                break;
+            case R.id.ration_item:
+                navigation.toRationMenu();
+                break;
+            case R.id.calendar_item:
+                navigation.toCalendarMenu();
+                break;
+            case R.id.weight_item:
+                navigation.toWeightMenu();
                 break;
             default:
                 throw new RuntimeException("Unexpected value");
