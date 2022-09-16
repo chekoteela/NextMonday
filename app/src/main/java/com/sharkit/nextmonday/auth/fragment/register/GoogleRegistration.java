@@ -56,25 +56,40 @@ public class GoogleRegistration {
         Log.i(TAG, "sign in with google");
 
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this.activity, task -> {
-                    if (Boolean.TRUE.equals(Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser())) {
-                        this.createNewUser(mAuth);
-                    }
-                    this.moveToMainMenu();
-                });
+                .addOnCompleteListener(this.activity,
+                        task -> this.registerUser(mAuth, Boolean.TRUE.equals(Objects.requireNonNull(task.getResult().getAdditionalUserInfo()).isNewUser())));
+    }
+
+    private User buildUser(final FirebaseAuth mAuth) {
+        return toUser(
+                Objects.requireNonNull(mAuth.getCurrentUser()).getUid(),
+                Objects.requireNonNull(mAuth.getCurrentUser().getEmail()),
+                Objects.requireNonNull(mAuth.getCurrentUser().getDisplayName()));
     }
 
     private void moveToMainMenu() {
         this.activity.startActivity(new Intent(this.activity, NavigationMenu.class));
     }
 
-    private void createNewUser(final FirebaseAuth mAuth) {
-        final User user = toUser(
-                Objects.requireNonNull(mAuth.getCurrentUser()).getUid(),
-                Objects.requireNonNull(mAuth.getCurrentUser().getEmail()),
-                Objects.requireNonNull(mAuth.getCurrentUser().getDisplayName()));
+    private void registerUser(final FirebaseAuth mAuth, final boolean isNewUser) {
+        final UserRepository userRepository = UserRepository.getInstance(this.activity);
+        if (Boolean.TRUE.equals(isNewUser)) {
+            final User user = this.buildUser(mAuth);
+            this.setUserToSharedPreferences(user);
+            userRepository.create(user);
+            this.moveToMainMenu();
+        } else {
+            userRepository.findById(Objects.requireNonNull(mAuth.getCurrentUser()).getUid())
+                    .addOnSuccessListener(documentSnapshot -> {
+                        final User currentUser = documentSnapshot.toObject(User.class);
+                        GoogleRegistration.this.setUserToSharedPreferences(currentUser);
+                        GoogleRegistration.this.moveToMainMenu();
+                    });
+        }
 
-        UserRepository.getInstance(this.activity).create(user);
+    }
+
+    private void setUserToSharedPreferences(final User user) {
         new UserSharedPreference(this.activity.getApplicationContext()).set(user);
     }
 }
