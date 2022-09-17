@@ -213,23 +213,6 @@ public class CalculatorWidget {
         private final EditText nameOfFood;
         private final EditText calorie;
         private final EditText portion;
-        private final EditText protein;
-        private final EditText wheyProtein;
-        private final EditText soyProtein;
-        private final EditText aggProtein;
-        private final EditText caseinProtein;
-        private final EditText carbohydrate;
-        private final EditText simpleCarbohydrate;
-        private final EditText complexCarbohydrate;
-        private final EditText fat;
-        private final EditText saturatedFat;
-        private final EditText transFat;
-        private final EditText omega3;
-        private final EditText omega6;
-        private final EditText omega9;
-        private final EditText ala;
-        private final EditText epa;
-        private final EditText dha;
         private final EditText water;
         private final EditText cellulose;
         private final EditText salt;
@@ -237,33 +220,93 @@ public class CalculatorWidget {
         private final EditText potassium;
         private final Button save;
 
+        private final FatWidget fatWidget;
+        private final CarbohydrateWidget carbohydrateWidget;
+        private final ProteinWidget proteinWidget;
+
         public CreateFoodWidget() {
             this.nameOfFood = CalculatorWidget.this.view.findViewById(R.id.name_of_food_id);
             this.calorie = CalculatorWidget.this.view.findViewById(R.id.calorie_id);
             this.portion = CalculatorWidget.this.view.findViewById(R.id.portion_id);
-            this.protein = CalculatorWidget.this.view.findViewById(R.id.protein_id);
-            this.wheyProtein = CalculatorWidget.this.view.findViewById(R.id.whey_protein_id);
-            this.soyProtein = CalculatorWidget.this.view.findViewById(R.id.soy_protein_id);
-            this.aggProtein = CalculatorWidget.this.view.findViewById(R.id.all_protein_id);
-            this.caseinProtein = CalculatorWidget.this.view.findViewById(R.id.casein_protein_id);
-            this.carbohydrate = CalculatorWidget.this.view.findViewById(R.id.carbohydrate_id);
-            this.simpleCarbohydrate = CalculatorWidget.this.view.findViewById(R.id.simple_carbohydrates_id);
-            this.complexCarbohydrate = CalculatorWidget.this.view.findViewById(R.id.complex_carbohydrate_id);
-            this.fat = CalculatorWidget.this.view.findViewById(R.id.fat_id);
-            this.saturatedFat = CalculatorWidget.this.view.findViewById(R.id.saturated_fat_id);
-            this.transFat = CalculatorWidget.this.view.findViewById(R.id.trans_fat_id);
-            this.omega3 = CalculatorWidget.this.view.findViewById(R.id.omega3_id);
-            this.omega6 = CalculatorWidget.this.view.findViewById(R.id.omega6_id);
-            this.omega9 = CalculatorWidget.this.view.findViewById(R.id.omega9_id);
-            this.ala = CalculatorWidget.this.view.findViewById(R.id.ala_id);
-            this.epa = CalculatorWidget.this.view.findViewById(R.id.epa_id);
-            this.dha = CalculatorWidget.this.view.findViewById(R.id.dha_id);
             this.water = CalculatorWidget.this.view.findViewById(R.id.water_id);
             this.cellulose = CalculatorWidget.this.view.findViewById(R.id.cellulose_id);
             this.salt = CalculatorWidget.this.view.findViewById(R.id.salt_id);
             this.calcium = CalculatorWidget.this.view.findViewById(R.id.calcium_id);
             this.potassium = CalculatorWidget.this.view.findViewById(R.id.potassium_id);
             this.save = CalculatorWidget.this.view.findViewById(R.id.save_id);
+
+            this.fatWidget = new FatWidget();
+            this.carbohydrateWidget = new CarbohydrateWidget();
+            this.proteinWidget = new ProteinWidget();
+        }
+
+        @Getter
+        public class FatWidget {
+
+            private final EditText fat;
+            private final EditText saturatedFat;
+            private final EditText transFat;
+            private final EditText omega9;
+            private final EditText omega6;
+            private final Omega3Widget omega3Widget;
+
+            public FatWidget() {
+                this.fat = CalculatorWidget.this.view.findViewById(R.id.fat_id);
+                this.saturatedFat = CalculatorWidget.this.view.findViewById(R.id.saturated_fat_id);
+                this.transFat = CalculatorWidget.this.view.findViewById(R.id.trans_fat_id);
+                this.omega9 = CalculatorWidget.this.view.findViewById(R.id.omega9_id);
+                this.omega6 = CalculatorWidget.this.view.findViewById(R.id.omega6_id);
+
+                this.omega3Widget = new Omega3Widget();
+            }
+
+            @Getter
+            public class Omega3Widget {
+
+                private final EditText omega3;
+                private final EditText ala;
+                private final EditText epa;
+                private final EditText dha;
+
+                public Omega3Widget() {
+                    this.omega3 = CalculatorWidget.this.view.findViewById(R.id.omega3_id);
+                    this.ala = CalculatorWidget.this.view.findViewById(R.id.ala_id);
+                    this.epa = CalculatorWidget.this.view.findViewById(R.id.epa_id);
+                    this.dha = CalculatorWidget.this.view.findViewById(R.id.dha_id);
+                }
+            }
+        }
+
+        @Getter
+        public class CarbohydrateWidget {
+
+            private final EditText carbohydrate;
+            private final EditText simpleCarbohydrate;
+            private final EditText complexCarbohydrate;
+
+            public CarbohydrateWidget(){
+                this.carbohydrate = CalculatorWidget.this.view.findViewById(R.id.carbohydrate_id);
+                this.simpleCarbohydrate = CalculatorWidget.this.view.findViewById(R.id.simple_carbohydrates_id);
+                this.complexCarbohydrate = CalculatorWidget.this.view.findViewById(R.id.complex_carbohydrate_id);
+            }
+        }
+
+        @Getter
+        public class ProteinWidget {
+
+            private final EditText protein;
+            private final EditText wheyProtein;
+            private final EditText soyProtein;
+            private final EditText aggProtein;
+            private final EditText caseinProtein;
+
+            public ProteinWidget() {
+                this.protein = CalculatorWidget.this.view.findViewById(R.id.protein_id);
+                this.wheyProtein = CalculatorWidget.this.view.findViewById(R.id.whey_protein_id);
+                this.soyProtein = CalculatorWidget.this.view.findViewById(R.id.soy_protein_id);
+                this.aggProtein = CalculatorWidget.this.view.findViewById(R.id.agg_protein_id);
+                this.caseinProtein = CalculatorWidget.this.view.findViewById(R.id.casein_protein_id);
+            }
         }
     }
 

@@ -1,6 +1,8 @@
 package com.sharkit.nextmonday.main_menu.calculator.domain.nutrition;
 
 
+import java.util.Arrays;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,7 +17,7 @@ public class Protein {
     private float caseinProtein;
 
     public void calculateByPortion(final Integer portion) {
-        final float coefficient  = 100f / portion;
+        final float coefficient = 100f / portion;
 
         this.generalProteinWeight = coefficient * this.generalProteinWeight;
         this.wheyProtein = coefficient * this.wheyProtein;
@@ -24,4 +26,13 @@ public class Protein {
         this.caseinProtein = coefficient * this.caseinProtein;
     }
 
+    public Float getSum() {
+        this.generalProteinWeight = this.sum(this.aggProtein, this.caseinProtein, this.soyProtein, this.wheyProtein);
+        return this.generalProteinWeight;
+    }
+
+    private Float sum(final Float... values) {
+        return Arrays.stream(values)
+                .reduce(0.0f, Float::sum);
+    }
 }
