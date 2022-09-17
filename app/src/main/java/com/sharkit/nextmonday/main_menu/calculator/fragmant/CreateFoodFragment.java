@@ -11,6 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.main_menu.calculator.configuration.widget.CalculatorWidget;
+import com.sharkit.nextmonday.main_menu.calculator.domain.FoodInfo;
+import com.sharkit.nextmonday.main_menu.calculator.domain.nutrition.Carbohydrate;
+import com.sharkit.nextmonday.main_menu.calculator.domain.nutrition.Fat;
+import com.sharkit.nextmonday.main_menu.calculator.domain.nutrition.Omega3;
+import com.sharkit.nextmonday.main_menu.calculator.domain.nutrition.Protein;
+import com.sharkit.nextmonday.main_menu.calculator.service.CreateFoodValidator;
 
 public class CreateFoodFragment extends Fragment {
 
@@ -19,6 +25,15 @@ public class CreateFoodFragment extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.calculator_create_food, container, false);
         final CalculatorWidget.CreateFoodWidget widget = CalculatorWidget.getInstance(view).getCreateFoodWidget();
+        final FoodInfo foodInfo = FoodInfo.builder()
+                .carbohydrate(Carbohydrate.builder().build())
+                .protein(Protein.builder().build())
+                .fat(Fat.builder()
+                        .omega3(Omega3.builder().build())
+                        .build())
+                .build();
+
+        new CreateFoodValidator(widget, foodInfo).execute();
 
         return view;
     }

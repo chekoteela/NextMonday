@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.entity.User;
-import com.sharkit.nextmonday.configuration.navigation.CalculatorNavigation;
+import com.sharkit.nextmonday.main_menu.calculator.configuration.navigation.CalculatorNavigation;
 import com.sharkit.nextmonday.configuration.navigation.MenuDrawerNavigation;
 import com.sharkit.nextmonday.configuration.utils.service.UserSharedPreference;
 
@@ -60,7 +60,7 @@ public class NavigationMenu extends AppCompatActivity {
             case R.id.diary_item:
                 navigation.moveToDiary();
                 break;
-            case R.id.calculate_id:
+            case R.id.calculator_item:
                 navigation.moveToCalculator();
                 break;
             case R.id.corporate_account_item:
@@ -114,16 +114,16 @@ public class NavigationMenu extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.main_item:
-                navigation.toMainMenu();
+                navigation.moveToMainMenu();
                 break;
             case R.id.ration_item:
-                navigation.toRationMenu();
+                navigation.moveToRationMenu();
                 break;
             case R.id.calendar_item:
-                navigation.toCalendarMenu();
+                navigation.moveToCalendarMenu();
                 break;
             case R.id.weight_item:
-                navigation.toWeightMenu();
+                navigation.moveToWeightMenu();
                 break;
             default:
                 throw new RuntimeException("Unexpected value");

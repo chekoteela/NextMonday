@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.configuration.navigation;
+package com.sharkit.nextmonday.main_menu.calculator.configuration.navigation;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,19 +20,23 @@ public class CalculatorNavigation {
         return new CalculatorNavigation(context);
     }
 
-    public void toMainMenu() {
+    public void moveToMainMenu() {
         this.navController.navigate(R.id.navigation_calculator_main);
     }
 
-    public void toRationMenu() {
+    public void moveToRationMenu() {
         this.navController.navigate(R.id.navigation_calculator_ration);
     }
 
-    public void toCalendarMenu() {
+    public void moveToCalendarMenu() {
         this.navController.navigate(R.id.navigation_calculator_calendar);
     }
 
-    public void toWeightMenu() {
+    public void moveToCreateFood() {
+        this.navController.navigate(R.id.navigation_calculator_create_food);
+    }
+
+    public void moveToWeightMenu() {
         this.navController.navigate(R.id.navigation_calculator_weight);
     }
 }
