@@ -15,11 +15,10 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
-import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.main_menu.diary.configuration.widget.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogOfRepeaters;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogTimePicker;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
-import com.sharkit.nextmonday.main_menu.diary.transformer.ByteArrayTransformer;
 
 import java.text.DateFormat;
 import java.util.Calendar;

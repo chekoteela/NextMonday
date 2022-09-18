@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.configuration.widget_finder;
+package com.sharkit.nextmonday.main_menu.diary.configuration.widget;
 
 import android.view.View;
 import android.widget.Button;

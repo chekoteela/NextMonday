@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
-import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.main_menu.diary.configuration.widget.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.adapter.NotateAdaptor;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogCreateNotate;
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;

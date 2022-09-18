@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
-import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.main_menu.diary.configuration.widget.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.adapter.PurchaseAdapter;
 import com.sharkit.nextmonday.main_menu.diary.domain.template.purchase.PurchaseItem;
 
