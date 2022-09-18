@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.sharkit.nextmonday.auth.widget.AuthWidget;
-import com.sharkit.nextmonday.configuration.validation.widget_validation.TextValidation;
+import com.sharkit.nextmonday.configuration.validation.TextValidation;
 
 import lombok.RequiredArgsConstructor;
 

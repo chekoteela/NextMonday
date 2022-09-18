@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.CheckBox;
 
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.main_menu.diary.configuration.widget.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.domain.DiaryTask;
 import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
 

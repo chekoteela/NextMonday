@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.main_menu.diary.transformer;
 import android.content.Context;
 
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.exception.UnsupportedValueException;
 import com.sharkit.nextmonday.main_menu.diary.enums.DayOfRepeat;
 
 import java.util.Calendar;
@@ -12,8 +13,6 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class DayInfoTransformer {
-
-    private static final String UNSUPPORTED_VALUE = "Unsupported value %s";
 
     public static String toMonthName(final Context context, final int month) {
         switch (month) {
@@ -42,7 +41,7 @@ public class DayInfoTransformer {
             case 11:
                 return getValue(context, R.string.text_view_december);
             default:
-                throw new RuntimeException(String.format(UNSUPPORTED_VALUE, month));
+                throw new UnsupportedValueException(month);
         }
     }
 
@@ -63,7 +62,7 @@ public class DayInfoTransformer {
             case 1:
                 return getValue(context, R.string.text_view_sunday);
             default:
-                throw new RuntimeException(String.format(UNSUPPORTED_VALUE, day));
+                throw new UnsupportedValueException(day);
         }
     }
 
@@ -84,7 +83,7 @@ public class DayInfoTransformer {
             case SUNDAY:
                 return getValue(context, R.string.text_view_sunday);
             default:
-                throw new RuntimeException(String.format(UNSUPPORTED_VALUE, dayOfRepeat));
+                throw new UnsupportedValueException(String.valueOf(dayOfRepeat));
         }
     }
 
@@ -105,7 +104,7 @@ public class DayInfoTransformer {
             case SUNDAY:
                 return Calendar.SUNDAY;
             default:
-                throw new RuntimeException(String.format(UNSUPPORTED_VALUE, dayOfRepeat));
+                throw new UnsupportedValueException(String.valueOf(dayOfRepeat));
         }
     }
 

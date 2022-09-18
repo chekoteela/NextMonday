@@ -6,16 +6,14 @@ import static com.sharkit.nextmonday.main_menu.diary.enums.TemplateType.getTempl
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.main_menu.diary.configuration.widget.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.adapter.NotateAdaptor;
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
 import com.sharkit.nextmonday.main_menu.diary.enums.NotateType;
-import com.sharkit.nextmonday.main_menu.diary.enums.TemplateType;
 import com.sharkit.nextmonday.main_menu.diary.transformer.DiaryTaskTransformer;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.configuration.validation.widget_validation;
+package com.sharkit.nextmonday.configuration.validation;
 
 import android.content.Context;
 import android.text.TextUtils;

@@ -16,7 +16,8 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
-import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.configuration.exception.UnsupportedIdException;
+import com.sharkit.nextmonday.main_menu.diary.configuration.widget.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.adapter.NotateAdaptor;
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
 import com.sharkit.nextmonday.main_menu.diary.domain.template.FolderTemplate;
@@ -103,8 +104,7 @@ public enum TemplateType implements ITemplateAction {
             case 1:
                 return TemplateType.FILE;
             default:
-                Log.e(TAG, "Unsupported value");
-                throw new RuntimeException();
+                throw new UnsupportedIdException(id);
         }
     }
 }

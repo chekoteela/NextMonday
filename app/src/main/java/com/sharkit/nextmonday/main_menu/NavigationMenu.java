@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.NextMondayActivity;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.entity.User;
+import com.sharkit.nextmonday.configuration.exception.UnsupportedIdException;
 import com.sharkit.nextmonday.main_menu.calculator.configuration.navigation.CalculatorNavigation;
 import com.sharkit.nextmonday.configuration.navigation.MenuDrawerNavigation;
 import com.sharkit.nextmonday.configuration.utils.service.UserSharedPreference;
@@ -66,7 +67,7 @@ public class NavigationMenu extends AppCompatActivity {
             case R.id.corporate_account_item:
                 break;
             default:
-                throw new RuntimeException("Unexpected value");
+                throw new UnsupportedIdException(item.getItemId());
         }
     }
 
@@ -87,7 +88,7 @@ public class NavigationMenu extends AppCompatActivity {
                 this.exit();
                 break;
             default:
-                throw new RuntimeException("Unexpected value");
+                throw new UnsupportedIdException(item.getItemId());
         }
     }
 
@@ -105,7 +106,7 @@ public class NavigationMenu extends AppCompatActivity {
                 navController.navigate(R.id.navigation_diary_main);
                 break;
             default:
-                throw new RuntimeException("Unexpected value");
+                throw new UnsupportedIdException(item.getItemId());
         }
     }
 
@@ -126,7 +127,7 @@ public class NavigationMenu extends AppCompatActivity {
                 navigation.moveToWeightMenu();
                 break;
             default:
-                throw new RuntimeException("Unexpected value");
+                throw new UnsupportedIdException(item.getItemId());
         }
     }
 

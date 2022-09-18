@@ -16,7 +16,7 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.sharkit.nextmonday.R;
-import com.sharkit.nextmonday.configuration.widget_finder.WidgetContainer;
+import com.sharkit.nextmonday.main_menu.diary.configuration.widget.WidgetContainer;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogChangeTask;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogOfRepeaters;
 import com.sharkit.nextmonday.main_menu.diary.dialog.DialogTimePicker;
@@ -36,7 +36,6 @@ public class DiaryModifyTask extends Fragment {
     private WidgetContainer.DiaryUpdateTaskWidget widget;
 
     private static final String TAG = DiaryModifyTask.class.getCanonicalName();
-
 
     @Nullable
     @Override

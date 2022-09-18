@@ -1,9 +1,11 @@
 package com.sharkit.nextmonday.auth.validation;
 
 import android.content.Context;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.sharkit.nextmonday.auth.widget.AuthWidget;
-import com.sharkit.nextmonday.configuration.validation.widget_validation.TextValidation;
+import com.sharkit.nextmonday.configuration.validation.TextValidation;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -16,7 +18,7 @@ public class RegistrationMenuValidation {
         if (!this.isNameValid(this.widget.getUserNameLayout())) {
             return Boolean.FALSE;
         }
-        if (!this.isNameValid(this.widget.getUserLastNameLayout())){
+        if (!this.isNameValid(this.widget.getUserLastNameLayout())) {
             return Boolean.FALSE;
         }
         if (!this.isValidEmail(this.widget.getEmailLayout())) {

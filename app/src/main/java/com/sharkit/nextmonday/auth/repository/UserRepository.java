@@ -1,4 +1,4 @@
-package com.sharkit.nextmonday.auth.fb_repository;
+package com.sharkit.nextmonday.auth.repository;
 
 import android.content.Context;
 

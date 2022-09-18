@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 public class Carbohydrate implements Serializable {
 
     private float generalCarbohydrateWeight;
