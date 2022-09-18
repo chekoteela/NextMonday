@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="Transparent">#00000000</color>
 
-    <color name="Primary">#536dfe</color>
+    <color name="Primary_100">#DFE4F1</color>
+    <color name="Primary_300">#CCD0DC</color>
+    <color name="Primary_500">#B8BCC7</color>
+    <color name="Primary_700">#7A7D81</color>
+
     <color name="Secondary">#311b92</color>
-    <color name="Background"></color>
     <color name="Error">#d32f2f</color>
 
     <color name="OnError">#fff</color>
-    <color name="OnBackground"></color>
     <color name="OnPrimary">#fafafa</color>
     <color name="OnSecondary">#ffffff</color>
 </resources>
