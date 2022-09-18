@@ -4,7 +4,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/authorisation_menu_background_color">
+    android:background="@color/primary_500">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +12,6 @@
         android:layout_above="@+id/linearLayout"
         android:gravity="center"
         android:orientation="horizontal">
-
         <ImageView
             android:id="@+id/logotype_id"
             android:layout_width="170dp"
@@ -31,43 +30,31 @@
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/email_layout_id"
-            style="@style/text_field_style"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:hint="@string/text_field_email"
-            android:autofillHints="@string/text_field_email"
-            android:inputType="textEmailAddress"
-            android:textColorHint="@color/white"
-            android:textAlignment="center">
-
+            android:layout_width="match_parent"
+            android:id="@+id/email_layout_id"
+            android:autofillHints="emailAddress"
+            android:hint="@string/text_field_email">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/email_id"
-                style="@style/text_field_style"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:id="@+id/email_id"
+                android:inputType="textEmailAddress"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_layout_id"
-            style="@style/text_field_style"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:hint="@string/text_field_password"
+            android:layout_width="match_parent"
+            android:id="@+id/password_layout_id"
             android:autofillHints="@string/text_field_password"
-            android:inputType="textPassword"
-            android:textColorHint="@color/white"
-            android:textAlignment="center">
-
+            android:hint="@string/text_field_password">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_id"
-                style="@style/text_field_style"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:id="@+id/password_id"
+                android:inputType="textPassword"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
