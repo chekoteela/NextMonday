@@ -37,7 +37,7 @@ public class UpdateFoodFragment extends Fragment {
             if (Boolean.FALSE.equals(validator.isValidField())) {
                 return;
             }
-            FoodInfoRepository.getInstance(UpdateFoodFragment.this.getContext()).save(foodInfo);
+            FoodInfoRepository.getInstance(UpdateFoodFragment.this.getContext()).update(foodInfo);
         });
 
         return view;
