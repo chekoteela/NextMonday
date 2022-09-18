@@ -19,6 +19,8 @@ import com.sharkit.nextmonday.main_menu.calculator.domain.nutrition.Omega3;
 import com.sharkit.nextmonday.main_menu.calculator.domain.nutrition.Protein;
 import com.sharkit.nextmonday.main_menu.calculator.service.CreateFoodValidator;
 
+import java.util.UUID;
+
 public class CreateFoodFragment extends Fragment {
 
     @Nullable
@@ -43,6 +45,7 @@ public class CreateFoodFragment extends Fragment {
 
     private FoodInfo buildSkeletonFoodInfo() {
         return FoodInfo.builder()
+                .id(UUID.randomUUID().toString())
                 .carbohydrate(Carbohydrate.builder().build())
                 .protein(Protein.builder().build())
                 .fat(Fat.builder()

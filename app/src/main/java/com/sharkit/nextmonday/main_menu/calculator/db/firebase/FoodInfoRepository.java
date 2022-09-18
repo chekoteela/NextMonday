@@ -22,6 +22,13 @@ public class FoodInfoRepository {
 
     public void save(final FoodInfo foodInfo) {
         this.db.collection(this.path)
-                .add(foodInfo);
+                .document(foodInfo.getId())
+                .set(foodInfo);
+    }
+
+    public void update(final FoodInfo foodInfo) {
+        this.db.collection(this.path)
+                .document(foodInfo.getId())
+                .set(foodInfo);
     }
 }

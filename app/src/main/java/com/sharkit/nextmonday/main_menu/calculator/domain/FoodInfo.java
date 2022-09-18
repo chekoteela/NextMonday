@@ -3,6 +3,7 @@ package com.sharkit.nextmonday.main_menu.calculator.domain;
 import com.sharkit.nextmonday.main_menu.calculator.domain.nutrition.FoodNutrition;
 import com.sharkit.nextmonday.main_menu.calculator.enums.FoodStatus;
 
+import java.io.Serializable;
 import java.util.Optional;
 
 import lombok.Data;
@@ -14,8 +15,9 @@ import lombok.experimental.SuperBuilder;
 @Data
 @ToString(callSuper = true)
 @SuperBuilder
-public class FoodInfo extends FoodNutrition {
+public class FoodInfo extends FoodNutrition implements Serializable {
 
+    private String id;
     private String name;
     private Integer portion;
     private FoodStatus foodStatus;
