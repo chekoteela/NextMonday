@@ -1,13 +1,16 @@
 package com.sharkit.nextmonday.main_menu.calculator.domain.nutrition;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-public class Carbohydrate {
+@NoArgsConstructor
+public class Carbohydrate implements Serializable {
 
     private float generalCarbohydrateWeight;
     private float simpleCarbohydrate;

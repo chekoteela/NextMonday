@@ -41,6 +41,7 @@ public class CreateFoodValidator {
         this.foodInfo.setName(this.widget.getNameOfFood().getText().toString().trim());
         this.foodInfo.setPortion(this.getValueFromField(this.widget.getPortion()).intValue());
         this.foodInfo.setCalorie(this.getValueFromField(this.widget.getCalorie()).intValue());
+        this.foodInfo.setCalcium(this.getValueFromField(this.widget.getCalcium()));
         this.foodInfo.setCellulose(this.getValueFromField(this.widget.getCellulose()));
         this.foodInfo.setSalt(this.getValueFromField(this.widget.getSalt()));
         this.foodInfo.setPotassium(this.getValueFromField(this.widget.getPotassium()));

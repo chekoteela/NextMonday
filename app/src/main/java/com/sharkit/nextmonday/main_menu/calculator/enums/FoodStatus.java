@@ -1,6 +1,8 @@
 package com.sharkit.nextmonday.main_menu.calculator.enums;
 
-public enum FoodStatus {
+import java.io.Serializable;
+
+public enum FoodStatus implements Serializable {
     ACTIVE,
     INACTIVE
 }

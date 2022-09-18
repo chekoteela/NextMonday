@@ -1,5 +1,6 @@
 package com.sharkit.nextmonday.main_menu.calculator.domain.nutrition;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import lombok.Builder;
@@ -7,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Omega3 {
+public class Omega3 implements Serializable {
 
     private float omega3;
     private float ala;

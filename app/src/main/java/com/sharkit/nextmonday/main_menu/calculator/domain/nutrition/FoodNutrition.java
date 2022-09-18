@@ -1,12 +1,17 @@
 package com.sharkit.nextmonday.main_menu.calculator.domain.nutrition;
 
-import lombok.Builder;
+import java.io.Serializable;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @Data
 @SuperBuilder
-public class FoodNutrition {
+@NoArgsConstructor
+@AllArgsConstructor
+public class FoodNutrition implements Serializable {
 
     private Protein protein;
     private Carbohydrate carbohydrate;
@@ -15,6 +20,7 @@ public class FoodNutrition {
     private Float cellulose;
     private Float water;
     private Float salt;
+    private Float calcium;
     private Float potassium;
 
     protected void calculateByPortion(final Integer portion) {
