@@ -417,6 +417,7 @@
     <string name="text_view_feedback_improvement">Wish</string>
     <string name="text_view_feedback_question">Question</string>
     <string name="text_view_setting">Setting</string>
+    <string name="toast_field_must_be_not_zero">Field must be not equals zero</string>
 
 
 </resources>

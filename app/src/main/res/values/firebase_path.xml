@@ -5,6 +5,8 @@
     <string name="path_to_diary_task" translatable="false">/User/{userId}/Diary/Task/date</string>
     <string name="path_to_feedback" translatable="false">/Feedback</string>
 
+    <string name="path_to_product" translatable="false">/Product</string>
+
 <!--    FIREBASE STORAGE-->
     <string name="path_to_recipe_image" translatable="false">/Recipe_Image/{imageCode}</string>
 

@@ -21,5 +21,6 @@
     <string name="toast_null_spinner_position">Field must be selected</string>
     <string name="toast_field_value_to_big">Field value too big</string>
     <string name="toast_field_value_to_small">Field value too small</string>
+    <string name="toast_field_must_be_not_zero">Field must be not equals zero</string>
 
 </resources>
