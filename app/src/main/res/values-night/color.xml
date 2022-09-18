@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="Primary_100">#DFE4F1</color>
-    <color name="Primary_300">#CCD0DC</color>
-    <color name="Primary_500">#B8BCC7</color>
-    <color name="Primary_700">#7A7D81</color>
+    <color name="primary_100">#DFE4F1</color>
+    <color name="primary_300">#CCD0DC</color>
+    <color name="primary_500">#B8BCC7</color>
+    <color name="primary_700">#7A7D81</color>
 
-    <color name="Secondary">#311b92</color>
-    <color name="Error">#d32f2f</color>
+    <color name="secondary">#311b92</color>
+    <color name="error">#d32f2f</color>
 
-    <color name="OnError">#fff</color>
-    <color name="OnPrimary">#fafafa</color>
-    <color name="OnSecondary">#ffffff</color>
+    <color name="on_error">#fff</color>
+    <color name="on_primary">#fafafa</color>
+    <color name="on_secondary">#ffffff</color>
 </resources>
