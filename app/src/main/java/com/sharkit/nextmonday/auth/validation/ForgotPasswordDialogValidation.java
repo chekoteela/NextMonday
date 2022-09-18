@@ -14,7 +14,7 @@ public class ForgotPasswordDialogValidation {
     private final AuthWidget.Dialog.ResetPasswordWidget widget;
 
     public boolean isValidEmail() {
-        return !new TextValidation(this.widget.getEmailLayout(), this.context)
+        return new TextValidation(this.widget.getEmailLayout(), this.context)
                 .notEmpty()
                 .isValidEmail()
                 .build();

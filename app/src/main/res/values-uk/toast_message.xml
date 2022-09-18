@@ -21,7 +21,6 @@
     <string name="toast_null_spinner_position">Поле повино бути вибрано</string>
     <string name="toast_field_value_to_big">Дуже велике значення поля</string>
     <string name="toast_field_value_to_small">Дуже маленьке значення поля</string>
-
-
+    <string name="toast_field_must_be_not_zero">Поле не повино бути рівним нулю</string>
 
 </resources>

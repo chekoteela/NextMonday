@@ -1,6 +1,6 @@
 package com.sharkit.nextmonday.main_menu.calculator.service;
 
-import android.text.TextUtils;
+import android.content.Context;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
@@ -8,15 +8,16 @@ import com.sharkit.nextmonday.configuration.animation.YoYoAnimation;
 import com.sharkit.nextmonday.configuration.validation.widget_validation.TextValidation;
 import com.sharkit.nextmonday.main_menu.calculator.configuration.widget.CalculatorWidget;
 import com.sharkit.nextmonday.main_menu.calculator.domain.FoodInfo;
+import com.sharkit.nextmonday.main_menu.calculator.enums.FoodStatus;
 import com.sharkit.nextmonday.main_menu.calculator.service.text_listner.CarbohydrateTextWatcher;
 import com.sharkit.nextmonday.main_menu.calculator.service.text_listner.FatTextWatcher;
 import com.sharkit.nextmonday.main_menu.calculator.service.text_listner.Omega3TextWatcher;
 import com.sharkit.nextmonday.main_menu.calculator.service.text_listner.ProteinTextWatcher;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Optional;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -24,15 +25,45 @@ public class CreateFoodValidator {
 
     private final CalculatorWidget.CreateFoodWidget widget;
     private final FoodInfo foodInfo;
+    private final Context context;
 
-    private final ArrayList<Boolean> valid = new ArrayList<>();
+    private ArrayList<Boolean> valid;
 
-    public boolean isValidFields() {
+    public void execute() {
         this.calculateProtein();
         this.calculateCarbohydrate();
         this.calculateFat();
         this.validateGeneralFields();
+    }
 
+    private void checkLeastFields() {
+        this.foodInfo.setFoodStatus(FoodStatus.ACTIVE);
+        this.foodInfo.setName(this.widget.getNameOfFood().getText().toString().trim());
+        this.foodInfo.setPortion(this.getValueFromField(this.widget.getPortion()).intValue());
+        this.foodInfo.setCalorie(this.getValueFromField(this.widget.getCalorie()).intValue());
+        this.foodInfo.setCellulose(this.getValueFromField(this.widget.getCellulose()));
+        this.foodInfo.setSalt(this.getValueFromField(this.widget.getSalt()));
+        this.foodInfo.setPotassium(this.getValueFromField(this.widget.getPotassium()));
+        this.foodInfo.setWater(this.getValueFromField(this.widget.getWater()));
+
+        this.checkCalorie(this.widget.getCalorie());
+        this.checkValidText(this.widget.getNameOfFood());
+        this.checkSum(this.widget.getFatWidget().getFat(), this.foodInfo.getFat().getSum());
+        this.checkSum(this.widget.getProteinWidget().getProtein(), this.foodInfo.getProtein().getSum());
+        this.checkSum(this.widget.getCarbohydrateWidget().getCarbohydrate(), this.foodInfo.getCarbohydrate().getSum());
+        this.checkSum(this.widget.getFatWidget().getOmega3Widget().getOmega3(), this.foodInfo.getFat().getOmega3().getSum());
+    }
+
+    private void checkSum(final EditText editText, final Float sum) {
+        if (this.getValueFromField(editText) < sum) {
+            this.valid.add(Boolean.FALSE);
+            this.setAnimationToInvalidFields(editText);
+        }
+    }
+
+    public boolean isValidField() {
+        this.valid = new ArrayList<>();
+        this.checkLeastFields();
         return !this.valid.contains(Boolean.FALSE);
     }
 
@@ -60,12 +91,8 @@ public class CreateFoodValidator {
     }
 
     private void animateNotValidField(final Boolean hasFocus, final EditText focusableWidget, final Float value) {
-        if (Boolean.FALSE.equals(hasFocus) &&
-                Boolean.TRUE.equals(this.getValueFromField(focusableWidget) < value)) {
-            YoYoAnimation.getInstance().setRubberBandAnimation(focusableWidget);
-            this.valid.set(0, Boolean.FALSE);
-        } else {
-            this.valid.set(0, Boolean.TRUE);
+        if (Boolean.FALSE.equals(hasFocus)) {
+            this.checkSum(focusableWidget, value);
         }
     }
 
@@ -118,6 +145,34 @@ public class CreateFoodValidator {
                 .filter(s -> !s.isEmpty())
                 .orElse("0");
         return Float.parseFloat(value);
+    }
+
+    private void checkValidText(final EditText textField) {
+        final boolean isValidText = new TextValidation(textField, this.context)
+                .notEmpty()
+                .build();
+
+        this.valid.add(isValidText);
+    }
+
+    private void setAnimationToInvalidFields(final EditText... fields) {
+        Arrays.stream(fields)
+                .forEach(field -> YoYoAnimation.getInstance().setRubberBandAnimation(field));
+    }
+
+    private void checkCalorie(final EditText textField) {
+        if (this.getValueFromField(textField).intValue() == 0) {
+            this.setAnimationToInvalidFields(this.widget.getCalcium(),
+                    this.widget.getCellulose(),
+                    this.widget.getWater(),
+                    this.widget.getPotassium(),
+                    this.widget.getSalt());
+        } else {
+            this.setAnimationToInvalidFields(this.widget.getProteinWidget().getProtein(),
+                    this.widget.getCarbohydrateWidget().getCarbohydrate(),
+                    this.widget.getFatWidget().getFat());
+        }
+
     }
 
 }

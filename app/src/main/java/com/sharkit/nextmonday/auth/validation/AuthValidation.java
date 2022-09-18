@@ -15,10 +15,10 @@ public class AuthValidation {
     private final AuthWidget.AuthorisationMenuWidget widget;
 
     public boolean isValidAuthData() {
-        if (this.isValidAuthField(this.widget.getEmailLayout())) {
+        if (!this.isValidAuthField(this.widget.getEmailLayout())) {
             return Boolean.FALSE;
         }
-        if (this.isValidAuthField(this.widget.getPasswordLayout())) {
+        if (!this.isValidAuthField(this.widget.getPasswordLayout())) {
             return Boolean.FALSE;
         }
         return Boolean.TRUE;
