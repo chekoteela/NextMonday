@@ -5,7 +5,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 import com.sharkit.nextmonday.configuration.animation.YoYoAnimation;
-import com.sharkit.nextmonday.configuration.validation.widget_validation.TextValidation;
+import com.sharkit.nextmonday.configuration.validation.TextValidation;
 import com.sharkit.nextmonday.main_menu.calculator.configuration.widget.CalculatorWidget;
 import com.sharkit.nextmonday.main_menu.calculator.domain.FoodInfo;
 import com.sharkit.nextmonday.main_menu.calculator.enums.FoodStatus;

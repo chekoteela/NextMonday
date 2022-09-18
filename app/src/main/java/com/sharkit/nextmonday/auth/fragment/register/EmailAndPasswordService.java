@@ -6,7 +6,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.auth.entity.User;
-import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
+import com.sharkit.nextmonday.auth.repository.UserRepository;
 import com.sharkit.nextmonday.auth.widget.AuthWidget;
 import com.sharkit.nextmonday.configuration.utils.service.UserSharedPreference;
 import lombok.RequiredArgsConstructor;

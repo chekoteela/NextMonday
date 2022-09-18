@@ -5,6 +5,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import com.sharkit.nextmonday.configuration.exception.ByteConvertationException;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -25,7 +27,7 @@ public class ByteArrayTransformer {
             return is.readObject();
         } catch (final ClassNotFoundException | IOException e) {
             Log.e(TAG, e.getMessage(), e);
-            throw new RuntimeException(e.getMessage());
+            throw new ByteConvertationException(e.getMessage(), e);
         }
     }
 
@@ -36,7 +38,7 @@ public class ByteArrayTransformer {
             return bos.toByteArray();
         } catch (final IOException e) {
             Log.i(TAG, e.getMessage(), e);
-            throw new RuntimeException(e.getMessage());
+            throw new ByteConvertationException(e.getMessage(), e);
         }
     }
 

@@ -10,6 +10,7 @@ import androidx.annotation.RequiresApi;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
+import com.sharkit.nextmonday.configuration.exception.UnexpectedPositionException;
 import com.sharkit.nextmonday.configuration.navigation.SupportNavigation;
 import com.sharkit.nextmonday.main_menu.support.db.FeedbackRepository;
 import com.sharkit.nextmonday.main_menu.support.dialog.widget.SupportDialogWidget;
@@ -55,8 +56,6 @@ public class CreateFeedbackDialog {
         dialog.show();
     }
 
-
-
     private FeedbackType getFeedbackType(final int position) {
         switch (position) {
             case 0:
@@ -65,7 +64,7 @@ public class CreateFeedbackDialog {
                 return FeedbackType.WISH;
             case 2:
                 return FeedbackType.QUESTION;
-            default: throw new RuntimeException("Unexpected position");
+            default: throw new UnexpectedPositionException(position);
         }
     }
 }

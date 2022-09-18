@@ -37,7 +37,6 @@ public class DiaryModifyTask extends Fragment {
 
     private static final String TAG = DiaryModifyTask.class.getCanonicalName();
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {

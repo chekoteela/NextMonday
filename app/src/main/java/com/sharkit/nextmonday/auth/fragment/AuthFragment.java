@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.auth.dialog.ResetDialog;
 import com.sharkit.nextmonday.auth.entity.User;
-import com.sharkit.nextmonday.auth.fb_repository.UserRepository;
+import com.sharkit.nextmonday.auth.repository.UserRepository;
 import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
 import com.sharkit.nextmonday.auth.validation.AuthValidation;
 import com.sharkit.nextmonday.auth.widget.AuthWidget;

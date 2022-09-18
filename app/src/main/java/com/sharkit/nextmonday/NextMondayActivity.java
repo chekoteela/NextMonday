@@ -10,6 +10,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.sharkit.nextmonday.auth.fragment.register.GoogleRegistration;
+import com.sharkit.nextmonday.configuration.exception.GoogleApiException;
 
 public class NextMondayActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class NextMondayActivity extends AppCompatActivity {
                 new GoogleRegistration(this).firebaseAuthWithGoogle(task.getResult(ApiException.class).getIdToken());
             } catch (final ApiException e) {
                 Log.e(TAG, e.getMessage(), e);
-                throw new RuntimeException(e.getMessage());
+                throw new GoogleApiException(e.getMessage(), e);
             }
         }
     }

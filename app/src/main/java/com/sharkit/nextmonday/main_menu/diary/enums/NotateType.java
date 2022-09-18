@@ -12,6 +12,7 @@ import androidx.navigation.Navigation;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.configuration.database.NextMondayDatabase;
+import com.sharkit.nextmonday.configuration.exception.UnsupportedIdException;
 import com.sharkit.nextmonday.main_menu.diary.adapter.NotateAdaptor;
 import com.sharkit.nextmonday.main_menu.diary.domain.Notate;
 import com.sharkit.nextmonday.main_menu.diary.domain.template.recipe.RecipeTemplate;
@@ -99,8 +100,7 @@ public enum NotateType implements IActionNotateType, Serializable {
             case 2:
                 return NotateType.LIST_OF_PURCHASE;
             default:
-                Log.e(TAG, "Unsupported value");
-                throw new RuntimeException();
+                throw new UnsupportedIdException(id);
         }
     }
 }
