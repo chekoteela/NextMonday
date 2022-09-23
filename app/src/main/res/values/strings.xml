@@ -14,8 +14,8 @@
     <!--    <string name="facebook_app_id">1086653145137007</string>-->
     <!--    <string name="fb_login_protocol_scheme">fb1086653145137007</string>-->
 
-<!--        <string name="facebook_app_id">822596168332514</string>-->
-<!--    <string name="fb_login_protocol_scheme">fb822596168332514</string>-->
+    <!--        <string name="facebook_app_id">822596168332514</string>-->
+    <!--    <string name="fb_login_protocol_scheme">fb822596168332514</string>-->
 
     <string name="facebook_app_id">1086653145137007</string>
     <string name="fb_login_protocol_scheme">fb1086653145137007</string>
