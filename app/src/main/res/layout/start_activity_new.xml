@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_image_new">
+
+    <ImageView
+        android:id="@+id/logo_local"
+        android:layout_width="match_parent"
+        android:layout_height="383dp"
+        android:layout_margin="50dp"
+        app:srcCompat="@drawable/logo_white_new" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/logo_local"
+        android:orientation="vertical"
+        android:weightSum="5">
+
+        <Button
+            android:id="@+id/Sign_In_activity_fir"
+            style="@style/button_style_new"
+            android:text="@string/Sign_In" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/Sign_Up_activity_fir"
+            style="@style/button_style_new"
+            android:text="@string/Sign_Up" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageButton
+                style="@style/button_style_new"
+                android:layout_marginStart="0dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/descr_google"
+                android:src="@drawable/google_new" />
+
+            <androidx.legacy.widget.Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageButton
+                style="@style/button_style_new"
+                android:layout_marginEnd="0dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/descr_twitter"
+                android:src="@drawable/twitter_new" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

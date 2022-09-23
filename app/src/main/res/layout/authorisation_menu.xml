@@ -129,7 +129,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="1dp"
                 android:contentDescription="@string/description_sign_in_with_google"
-                app:srcCompat="@drawable/goggle" />
+                app:srcCompat="@drawable/google_new" />
 
         </LinearLayout>
 

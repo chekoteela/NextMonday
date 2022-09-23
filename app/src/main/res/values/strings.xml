@@ -284,6 +284,8 @@
     <string name="descr_auto_tuning">Auto tuning</string>
     <string name="descr_add_meal">Add meal</string>
     <string name="descr_change_weight">Change weight</string>
+    <string name="descr_google">Sign in with google</string>
+    <string name="descr_twitter">Sign in with twitter</string>
 
 
     <string name="theme">Темы</string>
@@ -387,7 +389,7 @@
     <string name="toast_field_value_to_long">Field value too long : %s</string>
     <string name="toast_field_value_to_short">Field value too short : %s</string>
     <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
-    <string name="title_activity_main_meny">MainMeny</string>
+    <string name="title_activity_main_meny">Main Menu</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="button_delete_one">Delete one</string>
     <string name="button_delete_all">Delete all</string>
