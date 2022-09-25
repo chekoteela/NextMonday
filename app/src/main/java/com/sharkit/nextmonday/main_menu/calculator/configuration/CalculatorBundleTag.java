@@ -7,5 +7,6 @@ import lombok.AllArgsConstructor;
 public class CalculatorBundleTag {
 
     public static final String CALCULATOR_PRODUCT_FOR_UPDATE = "calculator_product_for_update";
+    public static final String CALCULATOR_CALENDAR_INFO = "calculator_calendar_info";
 
 }
