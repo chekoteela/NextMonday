@@ -20,7 +20,7 @@ public class NextMondayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.start_activity);
+        this.setContentView(R.layout.start_activity_old);
     }
 
     @Override

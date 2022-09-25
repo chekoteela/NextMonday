@@ -16,6 +16,8 @@
     <string name="description_create" translatable="false">Create</string>
     <string name="description_save" translatable="false">Save</string>
     <string name="description_description" translatable="false">Description</string>
+    <string name="description_google" translatable="false">Sign in with google</string>
+    <string name="description_twitter" translatable="false">Sign in with twitter</string>
 
     <string name="description_diary" translatable="false">Diary</string>
     <string name="description_health" translatable="false">Health</string>
@@ -26,4 +28,5 @@
     <string name="description_share_app" translatable="false">Share</string>
     <string name="description_estimate" translatable="false">Estimate</string>
     <string name="description_exit" translatable="false">Exit</string>
+
 </resources>

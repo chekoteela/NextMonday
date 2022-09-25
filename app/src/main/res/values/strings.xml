@@ -284,8 +284,7 @@
     <string name="descr_auto_tuning">Auto tuning</string>
     <string name="descr_add_meal">Add meal</string>
     <string name="descr_change_weight">Change weight</string>
-    <string name="descr_google">Sign in with google</string>
-    <string name="descr_twitter">Sign in with twitter</string>
+
 
 
     <string name="theme">Темы</string>

@@ -142,7 +142,7 @@
 
                 <Button
                     android:id="@+id/create_id"
-                    style="@style/button_style"
+                    style="@style/button_style_old"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="60dp"
