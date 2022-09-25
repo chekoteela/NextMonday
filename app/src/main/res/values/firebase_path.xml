@@ -6,7 +6,7 @@
     <string name="path_to_feedback" translatable="false">/Feedback</string>
 
     <string name="path_to_product" translatable="false">/Product</string>
-    <string name="path_to_ration" translatable="false">/User/{userId}/Calculator/Ration/Template</string>
+    <string name="path_to_ration" translatable="false">/User/{userId}/Calculator/Ration/{typeOfRation}</string>
 
 <!--    FIREBASE STORAGE-->
     <string name="path_to_recipe_image" translatable="false">/Recipe_Image/{imageCode}</string>
@@ -15,4 +15,8 @@
 <!--    VARIABLES-->
     <string name="path_variable_image_code" translatable="false">{imageCode}</string>
     <string name="path_variable_user_id" translatable="false">{userId}</string>
+    <string name="path_variable_type_of_ration" translatable="false">{typeOfRation}</string>
+
+
+    <string name="path_replacement_type_of_ration" translatable="false">Template</string>
 </resources>

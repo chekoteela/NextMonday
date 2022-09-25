@@ -14,8 +14,11 @@ import com.sharkit.nextmonday.main_menu.calculator.domain.Ration;
 
 import java.util.List;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@SuppressLint("InflateParams")
+@Getter
 @RequiredArgsConstructor
 public class RationAdapter extends BaseExpandableListAdapter {
 
@@ -57,7 +60,6 @@ public class RationAdapter extends BaseExpandableListAdapter {
         return false;
     }
 
-    @SuppressLint("InflateParams")
     @Override
     public View getGroupView(final int groupPosition, final boolean isExpanded, View convertView, final ViewGroup parent) {
         if (isNull(convertView))
@@ -67,8 +69,11 @@ public class RationAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(final int groupPosition, final int childPosition, final boolean isLastChild, final View convertView, final ViewGroup parent) {
-        return null;
+    public View getChildView(final int groupPosition, final int childPosition, final boolean isLastChild, View convertView, final ViewGroup parent) {
+        if (isNull(convertView))
+            convertView = LayoutInflater.from(this.context).inflate(R.layout.calculator_food_item_list, null);
+
+        return convertView;
     }
 
     @Override
