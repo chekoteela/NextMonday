@@ -35,7 +35,7 @@
             android:entries="@array/spinner_type_of_notate"/>
 
         <Button
-            style="@style/button_style"
+            style="@style/button_style_old"
             android:id="@+id/create_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

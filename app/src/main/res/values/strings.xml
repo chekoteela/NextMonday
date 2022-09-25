@@ -14,8 +14,8 @@
     <!--    <string name="facebook_app_id">1086653145137007</string>-->
     <!--    <string name="fb_login_protocol_scheme">fb1086653145137007</string>-->
 
-<!--        <string name="facebook_app_id">822596168332514</string>-->
-<!--    <string name="fb_login_protocol_scheme">fb822596168332514</string>-->
+    <!--        <string name="facebook_app_id">822596168332514</string>-->
+    <!--    <string name="fb_login_protocol_scheme">fb822596168332514</string>-->
 
     <string name="facebook_app_id">1086653145137007</string>
     <string name="fb_login_protocol_scheme">fb1086653145137007</string>
@@ -286,6 +286,7 @@
     <string name="descr_change_weight">Change weight</string>
 
 
+
     <string name="theme">Темы</string>
     <string name="bright">Светлая</string>
     <string name="dark">Темная</string>
@@ -387,7 +388,7 @@
     <string name="toast_field_value_to_long">Field value too long : %s</string>
     <string name="toast_field_value_to_short">Field value too short : %s</string>
     <string name="toast_field_must_be_not_empty">Field must be not empty : %s</string>
-    <string name="title_activity_main_meny">MainMeny</string>
+    <string name="title_activity_main_meny">Main Menu</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="button_delete_one">Delete one</string>
     <string name="button_delete_all">Delete all</string>

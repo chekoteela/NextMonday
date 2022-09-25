@@ -21,14 +21,14 @@
 
         <Button
             android:id="@+id/delete_one_id"
-            style="@style/button_style"
+            style="@style/button_style_old"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/button_delete_one" />
 
         <Button
             android:id="@+id/delete_all_id"
-            style="@style/button_style"
+            style="@style/button_style_old"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/button_delete_all" />

@@ -20,14 +20,14 @@
 
         <Button
             android:id="@+id/change_one_id"
-            style="@style/button_style"
+            style="@style/button_style_old"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/button_change_one" />
 
         <Button
             android:id="@+id/change_all_id"
-            style="@style/button_style"
+            style="@style/button_style_old"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="@string/button_change_all" />
