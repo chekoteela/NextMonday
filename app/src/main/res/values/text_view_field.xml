@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_view_continue_with">Continue with</string>
+    <string name="text_view_forgot_password">Forgot password?</string>
+    <string name="text_view_not_have_account">Does not have an account?</string>
+    <string name="text_view_privacy_policy">Privacy Policy</string>
+    <string name="text_view_have_account">Does have an account?</string>
+    <string name="text_view_choose_time">Choose time</string>
+    <string name="text_view_repeat">Repeat</string>
+    <string name="text_view_add_description">Add description</string>
+    <string name="text_view_time">Time:</string>
+
+    <string name="text_view_monday">Mon</string>
+    <string name="text_view_tuesday">Tus</string>
+    <string name="text_view_wednesday">Wed</string>
+    <string name="text_view_thursday">Thu</string>
+    <string name="text_view_friday">Fri</string>
+    <string name="text_view_saturday">Sat</string>
+    <string name="text_view_sunday">Sun</string>
+
+    <string name="text_view_january">Jan</string>
+    <string name="text_view_february">Feb</string>
+    <string name="text_view_march">Mar</string>
+    <string name="text_view_april">Apr</string>
+    <string name="text_view_may">May</string>
+    <string name="text_view_june">Jun</string>
+    <string name="text_view_jule">Jul</string>
+    <string name="text_view_august">Aug</string>
+    <string name="text_view_september">Sep</string>
+    <string name="text_view_october">Oct</string>
+    <string name="text_view_november">Nov</string>
+    <string name="text_view_december">Dec</string>
+
+    <string name="text_view_change_diary_task">What do you want to change?</string>
+    <string name="text_view_delete_diary_task">What do you want to delete?</string>
+
+    <string name="text_view_folder">Folder</string>
+    <string name="text_view_notate">Notate</string>
+    <string name="text_view_recipe">Recipe</string>
+    <string name="text_view_list_of_purchases">List of purchases</string>
+    <string name="text_view_other">Other</string>
+
+    <string name="text_view_feedback">Feedback</string>
+    <string name="text_view_setting">Setting</string>
+
+    <string name="text_view_feedback_error">Error</string>
+    <string name="text_view_feedback_improvement">Wish</string>
+    <string name="text_view_feedback_question">Question</string>
+
+    <string name="text_view_diary">Diary</string>
+    <string name="text_view_health">Health</string>
+    <string name="text_view_corporate_account">Corporate Account</string>
+    <string name="text_view_additionally">Additionally</string>
+    <string name="text_view_pro_version_subscription">PRO version subscription</string>
+    <string name="text_view_share_app">Share</string>
+    <string name="text_view_estimate">Estimate</string>
+    <string name="text_view_exit">Exit</string>
+</resources>

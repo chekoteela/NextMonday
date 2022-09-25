@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="button_send">Send</string>
+    <string name="button_accept">Accept</string>
+
+    <string name="button_agree_policy">I agree</string>
+    <string name="button_sign_in">Sign In</string>
+    <string name="button_create_new_account">Create new account</string>
+    <string name="button_create">Create</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_change">Change</string>
+    <string name="button_save">Save</string>
+    <string name="button_register">Register</string>
+    <string name="button_already_performed">Already performed</string>
+    <string name="button_put_off">Notify later</string>
+    <string name="button_cancel">Cancel</string>
+
+    <string name="button_delete_one">Delete one</string>
+    <string name="button_delete_all">Delete all</string>
+    <string name="button_change_one">Modify one</string>
+    <string name="button_change_all">Modify all</string>
+
+    <string name="button_add">Add</string>
+
+</resources>
