@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_field_email">Email</string>
+    <string name="text_field_password">Password</string>
+    <string name="text_field_name">Name</string>
+    <string name="text_field_last_name">Last Name</string>
+    <string name="text_field_task_name">Name of task</string>
+    <string name="text_field_description">Description</string>
+    <string name="text_field_tittle">Tittle</string>
+
+</resources>
