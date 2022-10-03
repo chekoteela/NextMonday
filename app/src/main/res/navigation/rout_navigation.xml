@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_calculator_ration">
+    app:startDestination="@+id/navigation_calculator_food_search">
 
 <!--    DIARY-->
     <fragment
@@ -58,8 +58,8 @@
         android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.CreateFoodFragment"/>
 
     <fragment
-        android:id="@+id/navigation_calculator_food_finder"
-        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.FoodFinderFragment"/>
+        android:id="@+id/navigation_calculator_food_search"
+        android:name="com.sharkit.nextmonday.main_menu.calculator.fragmant.FoodSearchFragment"/>
 
     <fragment
         android:id="@+id/navigation_calculator_ration"

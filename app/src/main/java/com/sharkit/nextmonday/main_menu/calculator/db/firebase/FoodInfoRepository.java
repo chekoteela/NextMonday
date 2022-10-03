@@ -2,7 +2,9 @@ package com.sharkit.nextmonday.main_menu.calculator.db.firebase;
 
 import android.content.Context;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.main_menu.calculator.domain.FoodInfo;
 
@@ -30,5 +32,10 @@ public class FoodInfoRepository {
         this.db.collection(this.path)
                 .document(foodInfo.getId())
                 .set(foodInfo);
+    }
+
+    public Task<QuerySnapshot> findAll() {
+        return this.db.collection(this.path)
+                .get();
     }
 }
