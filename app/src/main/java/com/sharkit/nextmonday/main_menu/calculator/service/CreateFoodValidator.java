@@ -47,6 +47,9 @@ public class CreateFoodValidator {
         this.foodInfo.setPotassium(this.getValueFromField(this.widget.getPotassium()));
         this.foodInfo.setWater(this.getValueFromField(this.widget.getWater()));
 
+        this.foodInfo.calculateByPortion();
+        this.foodInfo.generateKey();
+
         this.checkCalorie(this.widget.getCalorie());
         this.checkValidText(this.widget.getNameOfFood());
         this.checkSum(this.widget.getFatWidget().getFat(), this.foodInfo.getFat().getSum());
