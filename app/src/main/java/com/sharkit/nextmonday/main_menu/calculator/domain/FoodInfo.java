@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
@@ -15,6 +16,7 @@ import lombok.experimental.SuperBuilder;
 @Data
 @ToString(callSuper = true)
 @SuperBuilder
+@NoArgsConstructor
 public class FoodInfo extends FoodNutrition implements Serializable {
 
     private String id;

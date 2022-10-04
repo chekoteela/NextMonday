@@ -644,7 +644,7 @@
 
             <ImageView
                 android:layout_weight="1"
-                android:id="@+id/plus_xml"
+                android:id="@+id/plus_id"
                 android:layout_width="match_parent"
                 android:clickable="true"
                 android:layout_height="wrap_content"
@@ -654,10 +654,6 @@
 
     </LinearLayout>
 </ScrollView>
-
-
-
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         app:labelVisibilityMode ="labeled"

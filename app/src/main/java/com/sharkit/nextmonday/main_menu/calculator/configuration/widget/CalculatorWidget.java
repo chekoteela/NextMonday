@@ -45,8 +45,8 @@ public class CalculatorWidget {
         return new RationWidget();
     }
 
-    public FoodFinderWidget getFoodFinderWidget() {
-        return new FoodFinderWidget();
+    public FoodSearchWidget getFoodSearchWidget() {
+        return new FoodSearchWidget();
     }
 
     public CreateFoodWidget getCreateFoodWidget() {
@@ -93,6 +93,7 @@ public class CalculatorWidget {
         private final ImageView addFood;
         private final ImageView addWater;
         private final ImageView addWeight;
+        private final ImageView plus;
 
         public MainWidget() {
             this.calorieProgress = CalculatorWidget.this.view.findViewById(R.id.calorie_progress_id);
@@ -128,6 +129,7 @@ public class CalculatorWidget {
             this.addFood = CalculatorWidget.this.view.findViewById(R.id.add_food_id);
             this.addWater = CalculatorWidget.this.view.findViewById(R.id.add_water_id);
             this.addWeight = CalculatorWidget.this.view.findViewById(R.id.add_weight_id);
+            this.plus = CalculatorWidget.this.view.findViewById(R.id.plus_id);
 
         }
     }
@@ -311,16 +313,16 @@ public class CalculatorWidget {
     }
 
     @Getter
-    public class FoodFinderWidget {
+    public class FoodSearchWidget {
 
         private final TabLayout tabLayout;
         private final EditText findFood;
         private final ExpandableListView listOfFood;
         private final Button create;
 
-        public FoodFinderWidget() {
-            this.tabLayout = CalculatorWidget.this.view.findViewById(R.id.food_finder_tab_layout_id);
-            this.findFood = CalculatorWidget.this.view.findViewById(R.id.find_food_id);
+        public FoodSearchWidget() {
+            this.tabLayout = CalculatorWidget.this.view.findViewById(R.id.food_search_tab_layout_id);
+            this.findFood = CalculatorWidget.this.view.findViewById(R.id.food_search_id);
             this.listOfFood = CalculatorWidget.this.view.findViewById(R.id.list_of_food_id);
             this.create = CalculatorWidget.this.view.findViewById(R.id.create_id);
         }

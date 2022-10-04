@@ -39,4 +39,8 @@ public class CalculatorNavigation {
     public void moveToWeightMenu() {
         this.navController.navigate(R.id.navigation_calculator_weight);
     }
+
+    public void moveToFoodSearch() {
+        this.navController.navigate(R.id.navigation_calculator_food_search);
+    }
 }
