@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.sharkit.nextmonday.R;
 import com.sharkit.nextmonday.main_menu.calculator.configuration.widget.CalculatorAdapterWidget;
@@ -80,6 +82,32 @@ public class FoodSearchAdapter extends BaseExpandableListAdapter {
         if (isNull(convertView))
             convertView = LayoutInflater.from(this.context).inflate(R.layout.calculator_child_info, null);
 
+        final CalculatorAdapterWidget.FoodInfoItemWidget widget = CalculatorAdapterWidget.getInstance(convertView).getFoodInfoItemWidget();
+
+        this.fillOutFoodInfo(widget.getCalorie(), widget.getCalorieLayout(), this.getGroup(childPosition).getCalorie());
+        this.fillOutFoodInfo(widget.getProtein(), widget.getProteinLayout(), this.getGroup(childPosition).getProtein().getGeneralProteinWeight());
+        this.fillOutFoodInfo(widget.getWheyProtein(), widget.getWheyProteinLayout(), this.getGroup(childPosition).getProtein().getWheyProtein());
+        this.fillOutFoodInfo(widget.getSoyProtein(), widget.getSoyProteinLayout(), this.getGroup(childPosition).getProtein().getSoyProtein());
+        this.fillOutFoodInfo(widget.getAggProtein(), widget.getAggProteinLayout(), this.getGroup(childPosition).getProtein().getAggProtein());
+        this.fillOutFoodInfo(widget.getCaseinProtein(), widget.getCaseinProteinLayout(), this.getGroup(childPosition).getProtein().getCaseinProtein());
+        this.fillOutFoodInfo(widget.getCarbohydrate(), widget.getCarbohydrateLayout(), this.getGroup(childPosition).getCarbohydrate().getGeneralCarbohydrateWeight());
+        this.fillOutFoodInfo(widget.getSimpleCarbohydrate(), widget.getSimpleCarbohydrateLayout(), this.getGroup(childPosition).getCarbohydrate().getSimpleCarbohydrate());
+        this.fillOutFoodInfo(widget.getComplexCarbohydrate(), widget.getComplexCarbohydrateLayout(), this.getGroup(childPosition).getCarbohydrate().getComplexCarbohydrate());
+        this.fillOutFoodInfo(widget.getFat(), widget.getFatLayout(), this.getGroup(childPosition).getFat().getGeneralFatWeight());
+        this.fillOutFoodInfo(widget.getSaturatedFat(), widget.getSaturatedFatLayout(), this.getGroup(childPosition).getFat().getSaturatedFat());
+        this.fillOutFoodInfo(widget.getTransFat(), widget.getTransFatLayout(), this.getGroup(childPosition).getFat().getTransFat());
+        this.fillOutFoodInfo(widget.getOmega9(), widget.getOmega9Layout(), this.getGroup(childPosition).getFat().getOmega9());
+        this.fillOutFoodInfo(widget.getOmega6(), widget.getOmega6Layout(), this.getGroup(childPosition).getFat().getOmega6());
+        this.fillOutFoodInfo(widget.getOmega3(), widget.getOmega3Layout(), this.getGroup(childPosition).getFat().getOmega3().getOmega3());
+        this.fillOutFoodInfo(widget.getDha(), widget.getDhaLayout(), this.getGroup(childPosition).getFat().getOmega3().getDha());
+        this.fillOutFoodInfo(widget.getEpa(), widget.getEpaLayout(), this.getGroup(childPosition).getFat().getOmega3().getEpa());
+        this.fillOutFoodInfo(widget.getAla(), widget.getAlaLayout(), this.getGroup(childPosition).getFat().getOmega3().getAla());
+        this.fillOutFoodInfo(widget.getWater(), widget.getWaterLayout(), this.getGroup(childPosition).getWater());
+        this.fillOutFoodInfo(widget.getCellulose(), widget.getCelluloseLayout(), this.getGroup(childPosition).getCellulose());
+        this.fillOutFoodInfo(widget.getSalt(), widget.getSaltLayout(), this.getGroup(childPosition).getSalt());
+        this.fillOutFoodInfo(widget.getCalcium(), widget.getCalciumLayout(), this.getGroup(childPosition).getCalcium());
+        this.fillOutFoodInfo(widget.getPotassium(), widget.getPotassiumLayout(), this.getGroup(childPosition).getPotassium());
+
         return convertView;
     }
 
@@ -87,4 +115,13 @@ public class FoodSearchAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(final int groupPosition, final int childPosition) {
         return false;
     }
+
+    private <T> void fillOutFoodInfo(final TextView textView, final LinearLayout layout, final T value) {
+        if (value.equals(0f)) {
+            layout.setVisibility(View.GONE);
+        } else {
+            textView.setText(String.valueOf(value));
+        }
+    }
+
 }

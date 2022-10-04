@@ -11,13 +11,13 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/calorie_layout_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/calorie_text"
                 style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
                 android:text="@string/energ_price" />
 
             <TextView
-                android:id="@+id/calorie_xml"
+                android:id="@+id/calorie_id"
                 style="@style/StandardTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,11 +48,11 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/protein_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/protein_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/protein_xml"
+                        android:id="@+id/protein_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -74,11 +74,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/whey_protein_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/whey_protein_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                         android:text="@string/whey_protein_hint" />
 
                     <TextView
-                        android:id="@+id/whey_protein_xml"
+                        android:id="@+id/whey_protein_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -97,11 +97,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/soy_protein_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/soy_protein_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                         android:text="@string/soy_protein_hint" />
 
                     <TextView
-                        android:id="@+id/soy_protein_xml"
+                        android:id="@+id/soy_protein_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -119,11 +119,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/agg_protein_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/agg_protein_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                         android:text="@string/egg_protein_hint" />
 
                     <TextView
-                        android:id="@+id/agg_protein_xml"
+                        android:id="@+id/agg_protein_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -142,11 +142,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/casein_protein_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/casein_protein_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
                         android:text="@string/casein_protein_hint" />
 
                     <TextView
-                        android:id="@+id/casein_protein_xml"
+                        android:id="@+id/casein_protein_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -164,9 +164,7 @@
 
                 </LinearLayout>
 
-
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,11 +173,11 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/carbohydrate_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/carbohydrate_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -189,7 +187,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/carbohydrate_xml"
+                        android:id="@+id/carbohydrate_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -199,11 +197,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/simple_carbohydrate_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/simple_carbohydrates_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -211,7 +209,7 @@
                         android:text="@string/simple_hint" />
 
                     <TextView
-                        android:id="@+id/simple_carbohydrates_xml"
+                        android:id="@+id/simple_carbohydrate_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -221,11 +219,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/complex_carbohydrate_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/complex_carbohydrate_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -233,7 +231,7 @@
                         android:text="@string/complicated_carbs_hint" />
 
                     <TextView
-                        android:id="@+id/complex_carbohydrate_xml"
+                        android:id="@+id/complex_carbohydrate_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -252,11 +250,11 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/fat_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/fat_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -266,7 +264,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/fat_xml"
+                        android:id="@+id/fat_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -276,12 +274,12 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/saturated_fat_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/saturated_fat_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -289,7 +287,7 @@
                         android:text="@string/saturated_fatty_acids_hint" />
 
                     <TextView
-                        android:id="@+id/saturated_fat_xml"
+                        android:id="@+id/saturated_fat_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -299,11 +297,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/trans_fat_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/trans_fat_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -311,7 +309,7 @@
                         android:text="@string/trans_fats_hint" />
 
                     <TextView
-                        android:id="@+id/trans_fat_xml"
+                        android:id="@+id/trans_fat_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -321,11 +319,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/omega9_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/omega9_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -333,7 +331,7 @@
                         android:text="@string/omega9_hint" />
 
                     <TextView
-                        android:id="@+id/omega9_xml"
+                        android:id="@+id/omega9_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -343,11 +341,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/omega6_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/omega6_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -355,7 +353,7 @@
                         android:text="@string/omega6_hint" />
 
                     <TextView
-                        android:id="@+id/omega6_xml"
+                        android:id="@+id/omega6_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -366,11 +364,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/omega3_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/omega3_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -378,7 +376,7 @@
                         android:text="@string/omega3_hint" />
 
                     <TextView
-                        android:id="@+id/omega3_xml"
+                        android:id="@+id/omega3_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -388,11 +386,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ala_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/ala_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -401,7 +399,7 @@
                         android:text="@string/ala_hint" />
 
                     <TextView
-                        android:id="@+id/ala_xml"
+                        android:id="@+id/ala_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -411,11 +409,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/epa_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/epa_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -424,7 +422,7 @@
                         android:text="@string/epa_hint" />
 
                     <TextView
-                        android:id="@+id/epa_xml"
+                        android:id="@+id/epa_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -435,11 +433,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/dha_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/dha_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -448,7 +446,7 @@
                         android:text="@string/dha_hint" />
 
                     <TextView
-                        android:id="@+id/dha_xml"
+                        android:id="@+id/dha_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -474,11 +472,11 @@
                     android:textSize="18sp" />
 
                 <LinearLayout
+                    android:id="@+id/water_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/water_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -486,7 +484,7 @@
                         android:text="@string/water_hint" />
 
                     <TextView
-                        android:id="@+id/water_xml"
+                        android:id="@+id/water_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -496,11 +494,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/cellulose_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/cellulose_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -508,7 +506,7 @@
                         android:text="@string/cellulose_hint" />
 
                     <TextView
-                        android:id="@+id/cellulose_xml"
+                        android:id="@+id/cellulose_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -518,11 +516,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/salt_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/salt_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -530,7 +528,7 @@
                         android:text="@string/salt_hint" />
 
                     <TextView
-                        android:id="@+id/salt_xml"
+                        android:id="@+id/salt_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -541,11 +539,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/calcium_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/calcium_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -553,7 +551,7 @@
                         android:text="@string/ca_hint" />
 
                     <TextView
-                        android:id="@+id/calcium_xml"
+                        android:id="@+id/calcium_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -565,11 +563,11 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/potassium_layout_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/potassium_text"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -577,7 +575,7 @@
                         android:text="@string/k_hint" />
 
                     <TextView
-                        android:id="@+id/potassium_xml"
+                        android:id="@+id/potassium_id"
                         style="@style/StandardTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
