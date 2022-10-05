@@ -1,6 +1,7 @@
 package com.sharkit.nextmonday.main_menu.calculator.fragmant;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +26,14 @@ public class FoodSearchFragment extends Fragment {
 
         final CalculatorNavigation navigation = CalculatorNavigation.getInstance(this.getContext());
 
+        SearchType.getById(widget.getTabLayout().getSelectedTabPosition()).findDefault(this.getContext(), widget.getListOfFood());
+
         widget.getCreate().setOnClickListener(v -> navigation.moveToCreateFood());
-        widget.getFindFood().addTextChangedListener(new SearchTextListener(widget.getListOfFood(), this.getContext(), SearchType.GENERAL));
+        widget.getFindFood().addTextChangedListener(new SearchTextListener(widget.getListOfFood(),
+                this.getContext(),
+                widget.getTabLayout()));
 
         return view;
     }
+
 }

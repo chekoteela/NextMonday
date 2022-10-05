@@ -18,24 +18,29 @@
         app:tabTextColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/my_food_tab_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/my_food" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/all_food_tab_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/find_by_name" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/favorite_food_tab_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favorites" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/food_by_bar_code_tab_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_by_barcode" />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/favorites" />
     </com.google.android.material.tabs.TabLayout>
 
     <LinearLayout

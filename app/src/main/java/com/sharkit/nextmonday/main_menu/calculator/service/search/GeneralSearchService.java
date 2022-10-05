@@ -22,4 +22,9 @@ public class GeneralSearchService implements CalculatorSearchTypeAction {
             foodList.setAdapter(adapter);
         });
     }
+
+    @Override
+    public void findDefault(final Context context, final ExpandableListView foodList) {
+
+    }
 }
