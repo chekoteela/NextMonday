@@ -5,5 +5,7 @@ import android.widget.ExpandableListView;
 
 public interface CalculatorSearchTypeAction {
 
-    void search(String tag, Context context, final ExpandableListView foodList);
+    void search(String tag, Context context, ExpandableListView foodList);
+
+    void findDefault(Context context, ExpandableListView foodList);
 }

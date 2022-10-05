@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.ExpandableListView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.sharkit.nextmonday.main_menu.calculator.enums.SearchType;
 
 import lombok.RequiredArgsConstructor;
@@ -14,7 +15,7 @@ public class SearchTextListener implements TextWatcher {
 
     private final ExpandableListView foodList;
     private final Context context;
-    private final SearchType searchType;
+    private final TabLayout tabLayout;
 
     @Override
     public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
@@ -25,7 +26,7 @@ public class SearchTextListener implements TextWatcher {
     }
 
     @Override
-    public void afterTextChanged( final Editable s) {
-        this.searchType.search(s.toString(), this.context, this.foodList);
+    public void afterTextChanged(final Editable s) {
+        SearchType.getById(this.tabLayout.getSelectedTabPosition()).search(s.toString(), this.context, this.foodList);
     }
 }
