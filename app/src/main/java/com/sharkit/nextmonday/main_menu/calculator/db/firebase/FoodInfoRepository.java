@@ -13,6 +13,8 @@ public class FoodInfoRepository {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final String path;
 
+    private static final String TAG = "tag";
+
     public static FoodInfoRepository getInstance(final Context context) {
         return new FoodInfoRepository(context);
     }
@@ -34,8 +36,9 @@ public class FoodInfoRepository {
                 .set(foodInfo);
     }
 
-    public Task<QuerySnapshot> findAll() {
+    public Task<QuerySnapshot> findAllByTag(final String tag) {
         return this.db.collection(this.path)
+                .whereArrayContains(TAG, tag)
                 .get();
     }
 }
